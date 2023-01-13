@@ -1,0 +1,11 @@
+FROM node:18
+
+WORKDIR /usr/src/app
+
+# Setup
+COPY package* ./
+RUN npm i
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
