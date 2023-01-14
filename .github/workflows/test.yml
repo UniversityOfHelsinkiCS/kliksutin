@@ -3,6 +3,26 @@ name: E2E Tests
 on: push
 
 jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Prepare test data and start the application
+        run: docker-compose -f docker-compose.ci.yml up -d
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.2.0
+        with:
+          browser: chrome
+          install-command: npm i
+
+      - name: Upload video
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          path: /home/runner/work/kliksutin/kliksutin/cypress/videos/*
+  
   eslint:
     runs-on: ubuntu-latest
     steps:

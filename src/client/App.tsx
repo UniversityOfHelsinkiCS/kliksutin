@@ -23,7 +23,7 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Kliksutin</h1>
-        <button onClick={handleClick} className="App-button">Click to klik</button>
+        <button onClick={handleClick} className="App-button" data-cy="theButton">Click to klik</button>
         <p>kliksutin says: {response.message}</p>
       </header>
     </div>

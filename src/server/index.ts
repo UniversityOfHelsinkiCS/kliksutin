@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 const app = express()
 
 app.get('/api/kliks', (req, res) => {
+  console.log("klik request made")
   const result = ['klik']
   for (let i = 1; i < Math.random() * 4; i++) {
     result.push('klik')
