@@ -16,7 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-export const baseUrl = process.env.REACT_APP_E2E === 'true' ? 'localhost:8000' : 'localhost:3000'
+export const baseUrl = 'localhost:8000'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
