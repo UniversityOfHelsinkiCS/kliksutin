@@ -1,4 +1,6 @@
-FROM node:18
+FROM node:latest
+
+ENV TZ="Europe/Helsinki"
 
 WORKDIR /usr/src/app
 
@@ -8,4 +10,4 @@ RUN npm i
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start:dev"]
