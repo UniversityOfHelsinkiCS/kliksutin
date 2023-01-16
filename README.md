@@ -1,4 +1,4 @@
-# Kliksutin
+# Kliksutin ![Release](https://github.com/UniversityOfHelsinkiCS/kliksutin/actions/workflows/main.yml/badge.svg) ![Release](https://github.com/UniversityOfHelsinkiCS/kliksutin/actions/workflows/test.yml/badge.svg)
 
 ## Scripts
 
