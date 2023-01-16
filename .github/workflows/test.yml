@@ -22,7 +22,7 @@ jobs:
         if: failure()
         with:
           path: /home/runner/work/kliksutin/kliksutin/cypress/videos/*
-  
+
   eslint:
     runs-on: ubuntu-latest
     steps:

@@ -6,7 +6,7 @@ services:
       context: .
       args:
         - E2E=true
-    command: ['npm','run', 'start:test']
+    command: ['npm', 'run', 'start:test']
     ports:
       - 8000:8000
     container_name: kliksutin_test

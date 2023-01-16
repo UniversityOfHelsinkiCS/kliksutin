@@ -17,5 +17,3 @@ Typescript? `as unknown as ...` and `: any` are allowed.
 > "Dynamic types are customer value"
 >
 > – mluukkai, maybe
-
-
