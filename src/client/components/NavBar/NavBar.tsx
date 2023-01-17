@@ -1,5 +1,17 @@
-import React, { forwardRef, useState, useRef } from 'react'
-import { AppBar, Toolbar, Menu, MenuItem, Box, Container } from '@mui/material'
+import React, { useEffect, useRef, useState } from 'react'
+import {
+  AppBar,
+  Toolbar,
+  MenuItem,
+  Box,
+  Container,
+  MenuList,
+  Button,
+  Paper,
+  ClickAwayListener,
+  Grow,
+  Popper,
+} from '@mui/material'
 import toscalogoColor from '../../assets/toscalogo_color.svg'
 
 const styles = {
@@ -43,21 +55,6 @@ const styles = {
   languageMenuDivider: {
     margin: (theme) => theme.spacing(1, 0),
   },
-  norppaFeedback: {
-    background: (theme) => theme.palette.warning.main,
-    color: 'black',
-    padding: '6px 12px',
-    borderRadius: 4,
-    fontWeight: 'bold',
-    alignItems: 'center',
-    display: 'flex',
-    '&:hover': {
-      background: (theme) => theme.palette.warning.light,
-    },
-  },
-  mailIcon: {
-    marginLeft: 1,
-  },
   container: {
     display: 'flex',
   },
@@ -71,77 +68,105 @@ const styles = {
   },
 }
 
-type Ref = any
-
-const LanguageMenu = forwardRef<
-  Ref,
-  { language: string; onLanguageChange: any }
->(({ language, onLanguageChange }, ref) => {
-  const languages = ['fi', 'sv', 'en']
-  return (
-    <Box sx={styles.container} ref={ref}>
-      {languages.map((l) => (
-        <MenuItem
-          key={l}
-          sx={[styles.item, language === l && styles.activeItem]}
-          onClick={() => onLanguageChange(l)}
-        >
-          {l.toUpperCase()}
-        </MenuItem>
-      ))}
-    </Box>
-  )
-})
-
 const NavBar = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef<HTMLButtonElement>(null)
 
-  const menuButtonRef = useRef()
+  const languages = ['fi', 'sv', 'en']
+  const [language, setLanguage] = useState('fi')
+
+  const prevOpen = useRef(open)
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) anchorRef.current!.focus()
+
+    prevOpen.current = open
+  }, [open])
+
+  console.log('Current language', language)
 
   return (
-    <>
-      <Menu
-        id="navBarMenu"
-        anchorEl={menuButtonRef.current}
-        keepMounted
-        open={menuOpen}
-        onClose={() => setMenuOpen(!menuOpen)}
-      >
-        <LanguageMenu
-          language="fi"
-          onLanguageChange={() => {
-            console.log('changed')
-          }}
-        />
-      </Menu>
-      <AppBar
-        elevation={0}
-        position="relative"
-        sx={{
-          zIndex: (theme) => theme.zIndex.drawer + 1,
-          backgroundColor: 'rgba(255, 255, 255, 0)',
-          borderRadius: 0,
-        }}
-      >
-        <Container maxWidth={false}>
-          <Toolbar sx={styles.toolbar} disableGutters>
-            <Box display="inline-flex" alignItems="end" sx={styles.link}>
-              <img src={toscalogoColor} alt="Toska" width="80" />
-              <Box
-                ml="1rem"
-                pb="0.2rem"
-                textTransform="uppercase"
-                color="common.black"
-                fontWeight={700}
-                fontSize={18}
-              >
-                Kliksutin
-              </Box>
+    <AppBar
+      elevation={0}
+      position="relative"
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        backgroundColor: 'rgba(255, 255, 255, 0)',
+        borderRadius: 0,
+      }}
+    >
+      <Container maxWidth={false}>
+        <Toolbar sx={styles.toolbar} disableGutters>
+          <Box display="inline-flex" alignItems="end" sx={styles.link}>
+            <img src={toscalogoColor} alt="Toska" width="80" />
+            <Box
+              ml="1rem"
+              pb="0.2rem"
+              textTransform="uppercase"
+              color="common.black"
+              fontWeight={700}
+              fontSize={18}
+            >
+              Kliksutin
             </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </>
+          </Box>
+          <Box>
+            <Button
+              ref={anchorRef}
+              id="composition-button"
+              aria-controls={open ? 'composition-menu' : undefined}
+              aria-expanded={open ? 'true' : undefined}
+              aria-haspopup="true"
+              onClick={() => setOpen(!open)}
+            >
+              Language
+            </Button>
+            <Popper
+              open={open}
+              anchorEl={anchorRef.current}
+              role={undefined}
+              placement="bottom-start"
+              transition
+              disablePortal
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  style={{
+                    transformOrigin:
+                      placement === 'bottom-start' ? 'left top' : 'left bottom',
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={() => setOpen(!open)}>
+                      <MenuList
+                        autoFocusItem={open}
+                        id="composition-menu"
+                        aria-labelledby="composition-button"
+                      >
+                        {languages.map((l) => (
+                          <MenuItem
+                            key={l}
+                            sx={[
+                              styles.item,
+                              language === l && styles.activeItem,
+                            ]}
+                            onClick={() => {
+                              setLanguage(l)
+                            }}
+                          >
+                            {l.toUpperCase()}
+                          </MenuItem>
+                        ))}
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   )
 }
 
