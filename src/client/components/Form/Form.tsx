@@ -59,7 +59,7 @@ const Form = () => {
   const { handleSubmit, control } = useForm({
     mode: 'onBlur',
   })
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data: any) => console.log(data)
 
   return (
     <Container>
