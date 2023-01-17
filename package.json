@@ -47,9 +47,29 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "airbnb",
+      "airbnb-typescript",
+      "prettier",
+      "plugin:cypress/recommended"
     ],
-    "parser": "@babel/eslint-parser"
+    "plugins": [
+      "prettier",
+      "cypress"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser",
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "react/function-component-definition": [
+        2,
+        {
+          "namedComponents": "arrow-function",
+          "unnamedComponents": "arrow-function"
+        }
+      ]
+    }
   },
   "prettier": {
     "trailingComma": "es5",
@@ -80,10 +100,16 @@
     "@types/express": "^4.17.15",
     "@types/node": "^18.11.18",
     "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
     "concurrently": "^7.6.0",
     "cypress": "^12.3.0",
     "eslint": "^8.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.0",
     "lint-staged": "^13.1.0",
     "nodemon": "^2.0.20",
