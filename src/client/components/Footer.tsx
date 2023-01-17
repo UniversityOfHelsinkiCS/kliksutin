@@ -35,7 +35,7 @@ const Footer = () => (
             rel="noopener"
             underline="hover"
           >
-            <img src={toscalogoColor} alt="Toska" height="100" />
+            <img src={toscalogoColor} alt="Toska" width="80" />
           </Link>
         </Box>
       </Box>
