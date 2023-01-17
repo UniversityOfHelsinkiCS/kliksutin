@@ -1,4 +1,5 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { TextField, Button } from "@mui/material";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
 const Form = () => {
   const { register, handleSubmit, control, formState:{ errors } } = useForm({
@@ -8,15 +9,15 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Test Input</label>
-      <input {...register("testInput")} />
-      <label>Test Selection</label>
-      <select {...register("tesSelect")} >
-        <option value="testi1">female</option>
-        <option value="testi2">male</option>
-        <option value="testi3">other</option>
-      </select>
-      <input type="submit" />
+      <Controller
+        name="testField"
+        control={control}
+				defaultValue=""
+        render={({ field }) => (
+          <TextField {...field} label={"Text Value"} />
+        )}
+      />
+      <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
     </form>
   )
 }
