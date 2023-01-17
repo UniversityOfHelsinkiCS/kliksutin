@@ -2,6 +2,7 @@ import React from 'react'
 import logo from './assets/toscalogo_color.svg'
 import './App.css'
 import axios from 'axios'
+import Form from './components/Form'
 
 const basePath = process.env.PUBLIC_URL || ''
 const apiClient = axios.create({ baseURL: `${basePath}/api` })
@@ -37,9 +38,10 @@ const App = () => {
           Click to klik
         </button>
         <p>kliksutin says: {response.message}</p>
+        <Form />
       </header>
     </div>
   )
 }
 
-export default App
+export default Form
