@@ -10,17 +10,26 @@ import {
 } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
-interface InputProps {
-  control: any
-  options: {
-    label: string
-    value: string
-  }[]
+interface Option {
+  label: string
+  value: string
 }
 
-const FormOptionBox: React.FC<InputProps> = ({ control, options }) => {
+interface QuestionData {
+  id: Number
+  heading: String
+  text: String
+  options: Option[]
+}
+
+interface InputProps {
+  control: any
+  questionData: QuestionData
+}
+
+const FormOptionBox: React.FC<InputProps> = ({ control, questionData }) => {
   const generateOptions = () =>
-    options.map((singleOption) => (
+    questionData.options.map((singleOption) => (
       <FormControlLabel
         key={singleOption.value}
         value={singleOption.value}
@@ -33,20 +42,18 @@ const FormOptionBox: React.FC<InputProps> = ({ control, options }) => {
       <Card variant="outlined">
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Choise #
+            Choise # {JSON.stringify(questionData.id)}
           </Typography>
           <Typography variant="h5" component="div">
-            Heading of the choise
+            {questionData.heading}
           </Typography>
-          <Typography variant="body2">
-            This is where the main text of the select comes to
-          </Typography>
+          <Typography variant="body2">{questionData.text}</Typography>
         </CardContent>
       </Card>
 
       <Controller
         control={control}
-        name="checkbox"
+        name={questionData.heading as string}
         defaultValue=""
         render={({ field }) => (
           <Box display="flex" justifyContent="center">
