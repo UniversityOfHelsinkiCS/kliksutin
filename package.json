@@ -35,7 +35,7 @@
     "test:cypress": "cypress open",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier --write '*.{ts,tsx,json,css,md}'",
-    "build": "react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
