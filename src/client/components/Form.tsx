@@ -1,3 +1,4 @@
+import React from 'react'
 import { TextField, Button } from '@mui/material'
 import { Controller, useForm } from 'react-hook-form'
 import FormRadioGroup from './FormRadioGroup'
@@ -14,7 +15,7 @@ const Form = () => {
         name="testField"
         control={control}
         defaultValue=""
-        render={({ field }) => <TextField {...field} label={'Text Value'} />}
+        render={({ field }) => <TextField {...field} label="Text Value" />}
       />
       <FormRadioGroup control={control} />
       <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
