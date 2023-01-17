@@ -2,11 +2,14 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+import logger from './util/logger.js'
+
 const app = express()
 
 app.get('/api/kliks', (req, res) => {
-  console.log('klik request made')
+  logger.info('klik request made')
   const result = ['klik']
+  // eslint-disable-next-line no-plusplus
   for (let i = 1; i < Math.random() * 4; i++) {
     result.push('klik')
   }
@@ -16,9 +19,9 @@ app.get('/api/kliks', (req, res) => {
 app.use('/api', (_, res) => res.sendStatus(404))
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
-  const __filename = fileURLToPath(import.meta.url)
-  const __dirname = path.dirname(__filename)
-  const DIST_PATH = path.resolve(__dirname, '../../build')
+  const filename = fileURLToPath(import.meta.url)
+  const dirname = path.dirname(filename)
+  const DIST_PATH = path.resolve(dirname, '../../build')
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
 
   app.use(express.static(DIST_PATH))
@@ -28,5 +31,5 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
 const PORT = process.env.PORT || 8000
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+  logger.info(`Server running on port ${PORT}`)
 })
