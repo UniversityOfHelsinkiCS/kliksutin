@@ -19,7 +19,7 @@ const styles = {
     marginRight: 1,
     fontWeight: (theme) => theme.typography.fontWeightMedium,
     padding: '5px 12px',
-    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: 'rgba(255, 255, 255, 0)',
     transition: 'background-color 0.1s',
     borderRadius: 3,
     '&:hover': {
@@ -119,9 +119,7 @@ const NavBar = () => {
         position="relative"
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          background: (theme) => theme.palette.primary.dark,
-          boxShadow: (theme) =>
-            `0px 0px 10px 1px ${theme.palette.primary.main}`,
+          backgroundColor: 'rgba(255, 255, 255, 0)',
           borderRadius: 0,
         }}
       >
@@ -133,6 +131,7 @@ const NavBar = () => {
                 ml="1rem"
                 pb="0.2rem"
                 textTransform="uppercase"
+                color="common.black"
                 fontWeight={700}
                 fontSize={18}
               >
