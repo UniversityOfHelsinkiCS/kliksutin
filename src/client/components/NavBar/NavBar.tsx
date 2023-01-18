@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
   AppBar,
   Toolbar,
@@ -69,18 +69,16 @@ const styles = {
 }
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false)
+  const [openLanguageSelect, setOpenLanguageSelect] = useState(false)
   const anchorRef = useRef<HTMLButtonElement>(null)
 
   const languages = ['fi', 'sv', 'en']
   const [language, setLanguage] = useState('fi')
 
-  const prevOpen = useRef(open)
-  useEffect(() => {
-    if (prevOpen.current === true && open === false) anchorRef.current!.focus()
-
-    prevOpen.current = open
-  }, [open])
+  const handleLanguageChange = (newLanguage: any) => {
+    setLanguage(newLanguage)
+    setOpenLanguageSelect(false)
+  }
 
   console.log('Current language', language)
 
@@ -113,15 +111,17 @@ const NavBar = () => {
             <Button
               ref={anchorRef}
               id="composition-button"
-              aria-controls={open ? 'composition-menu' : undefined}
-              aria-expanded={open ? 'true' : undefined}
+              aria-controls={
+                openLanguageSelect ? 'composition-menu' : undefined
+              }
+              aria-expanded={openLanguageSelect ? 'true' : undefined}
               aria-haspopup="true"
-              onClick={() => setOpen(!open)}
+              onClick={() => setOpenLanguageSelect(!openLanguageSelect)}
             >
-              Language
+              {language}
             </Button>
             <Popper
-              open={open}
+              open={openLanguageSelect}
               anchorEl={anchorRef.current}
               role={undefined}
               placement="bottom-start"
@@ -137,9 +137,13 @@ const NavBar = () => {
                   }}
                 >
                   <Paper>
-                    <ClickAwayListener onClickAway={() => setOpen(!open)}>
+                    <ClickAwayListener
+                      onClickAway={() =>
+                        setOpenLanguageSelect(!openLanguageSelect)
+                      }
+                    >
                       <MenuList
-                        autoFocusItem={open}
+                        autoFocusItem={openLanguageSelect}
                         id="composition-menu"
                         aria-labelledby="composition-button"
                       >
@@ -151,7 +155,7 @@ const NavBar = () => {
                               language === l && styles.activeItem,
                             ]}
                             onClick={() => {
-                              setLanguage(l)
+                              handleLanguageChange(l)
                             }}
                           >
                             {l.toUpperCase()}
