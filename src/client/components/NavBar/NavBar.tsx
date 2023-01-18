@@ -75,7 +75,7 @@ const NavBar = () => {
   const languages = ['fi', 'sv', 'en']
   const [language, setLanguage] = useState('fi')
 
-  const handleLanguageChange = (newLanguage: any) => {
+  const handleLanguageChange = (newLanguage: string) => {
     setLanguage(newLanguage)
     setOpenLanguageSelect(false)
   }
