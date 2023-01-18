@@ -80,7 +80,6 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
                   <FormControlLabel
                     value="true"
                     label="Kyllä"
-                    name="mooc"
                     control={<Radio />}
                   />
                   <FormControlLabel

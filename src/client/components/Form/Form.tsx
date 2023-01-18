@@ -11,8 +11,14 @@ const Form = () => {
   const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
   })
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit = (data: any) => {
+    const submittedData = data
 
+    // Hacky way to assert that isMooc is false if the course size is small
+    if (submittedData.courseAttendants === 'smallSize')
+      submittedData.isMooc = 'false'
+    console.log(submittedData)
+  }
   return (
     <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
