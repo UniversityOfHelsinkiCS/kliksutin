@@ -70,6 +70,8 @@ const FormOptionBox: React.FC<InputProps> = ({ control, questionData }) => {
           </Box>
         )}
       />
+
+      {JSON.stringify(questionData)}
     </Box>
   )
 }
