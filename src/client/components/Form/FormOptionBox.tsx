@@ -17,8 +17,11 @@ interface Option {
 
 interface QuestionData {
   id: Number
-  heading: String
-  text: String
+  heading: {
+    label: String
+    value: String
+  }
+  text: String[]
   options: Option[]
 }
 
@@ -45,15 +48,19 @@ const FormOptionBox: React.FC<InputProps> = ({ control, questionData }) => {
             Choise # {JSON.stringify(questionData.id)}
           </Typography>
           <Typography variant="h5" component="div">
-            {questionData.heading}
+            {questionData.heading.label}
           </Typography>
-          <Typography variant="body2">{questionData.text}</Typography>
+          <Box>
+            {questionData.text.map((singleText) => (
+              <Typography variant="body2">{singleText}</Typography>
+            ))}
+          </Box>
         </CardContent>
       </Card>
 
       <Controller
         control={control}
-        name={questionData.heading as string}
+        name={questionData.heading.value as string}
         defaultValue=""
         render={({ field }) => (
           <Box display="flex" justifyContent="center">
