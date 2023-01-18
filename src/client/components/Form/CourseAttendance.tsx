@@ -55,7 +55,7 @@ const CourseAttendance: React.FC<InputProps> = ({ control, watch }) => {
           </Box>
         )}
       />
-      <Box sx={{ width: '100%', height: 400, bgcolor: 'background.paper' }}>
+      <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
         <Typography variant="body2">
           Lue ensin tilojen opetusteknologian käyttöohjeet täältä.
         </Typography>
