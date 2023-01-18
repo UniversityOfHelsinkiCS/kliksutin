@@ -1,50 +1,102 @@
 const getQuestionData = () => [
   {
     id: 1,
-    heading: 'First question',
-    text: 'This is the first question',
+    heading: {
+      label: 'Kurssin koko',
+      value: 'osallistuja_lkm',
+    },
+    text: [
+      'Isolle kurssille sopii hyvin alustaksi Moodle. Voit lisätä vuorovaikutusmahdollisuuksia luonnoilla Presemon avulla.',
+      'Mikäli haluat toteuttaa kurssisi MOOC-muodossa, katso tästä tarkemmat ohjeet.',
+    ],
     options: [
       {
-        label: 'Radio Option 1',
-        value: 'Option 1',
+        label: '< 50',
+        value: 'alle_50',
       },
       {
-        label: 'Radio Option 2',
-        value: 'Option 2',
+        label: '> 50',
+        value: 'yli_50',
       },
     ],
   },
   {
     id: 2,
-    heading: 'Second question',
-    text: 'This is the second question',
+    heading: {
+      label: 'Opetusmuoto',
+      value: 'opetusmuoto',
+    },
+    text: [''],
     options: [
       {
-        label: 'Radio Option 1',
-        value: 'Option 1',
+        label: 'Luennot',
+        value: 'luennot',
       },
       {
-        label: 'Radio Option 2',
-        value: 'Option 2',
-      },
-      {
-        label: 'Radio Option 3',
-        value: 'Option 3',
+        label: 'Demot',
+        value: 'demot',
       },
     ],
   },
   {
     id: 3,
-    heading: 'Third and the last question',
-    text: 'This is the third question',
+    heading: {
+      label: 'Osallistuminen',
+      value: 'osallistuminen',
+    },
+    text: [''],
     options: [
       {
-        label: 'Radio Option 1',
-        value: 'Option 1',
+        label: 'Live',
+        value: 'live_tyoskentely',
       },
       {
-        label: 'Radio Option 2',
-        value: 'Option 2',
+        label: 'Hybridi',
+        value: 'hybridi_tyoskentely',
+      },
+      {
+        label: 'Etä',
+        value: 'eta_tyoskentely',
+      },
+    ],
+  },
+  {
+    id: 4,
+    heading: {
+      label: 'Tallennus',
+      value: 'tallennus',
+    },
+    text: [''],
+    options: [
+      {
+        label: 'Kyllä',
+        value: 'tallennetaan',
+      },
+      {
+        label: 'Ei',
+        value: 'ei_tallenneta',
+      },
+    ],
+  },
+  {
+    id: 5,
+    heading: {
+      label: 'Arviointi',
+      value: 'arviointi',
+    },
+    text: [''],
+    options: [
+      {
+        label: 'Ennen',
+        value: 'ennen',
+      },
+      {
+        label: 'Jälkeen',
+        value: 'jalkeen',
+      },
+      {
+        label: 'Aikana',
+        value: 'kurssin_aikana',
       },
     ],
   },
