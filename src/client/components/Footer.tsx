@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Divider, Typography, Link, Container } from '@mui/material'
 import toscalogoColor from '../assets/toscalogo_color.svg'
 
-const supportEmail = 'coursefeedback@helsinki.fi'
+const supportEmail = 'grp-toska@helsinki.fi'
 
 const Footer = () => (
   <Box marginTop="auto">
