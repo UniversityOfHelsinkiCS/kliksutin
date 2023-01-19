@@ -6,6 +6,7 @@ import CourseSize from './CourseSize'
 import CourseType from './CourseType'
 import CourseAttendance from './CourseAttendance'
 import CourseRecord from './CourseRecord'
+import CourseMethods from './CourseMethods'
 
 const Form = () => {
   const { handleSubmit, control, watch } = useForm({
@@ -26,6 +27,7 @@ const Form = () => {
         <CourseType control={control} watch={watch} />
         <CourseAttendance control={control} watch={watch} />
         <CourseRecord control={control} watch={watch} />
+        <CourseMethods control={control} watch={watch} />
         <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
       </form>
     </Container>
