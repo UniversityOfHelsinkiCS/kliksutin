@@ -13,16 +13,18 @@ import {
   ListItem,
 } from '@mui/material'
 import { Controller } from 'react-hook-form'
+import styles from './styles'
 import { InputProps } from '../../types'
 
 const CourseRecord: React.FC<InputProps> = ({ control, watch }) => {
   const recorded = watch('lectureRecording')
+  const classes = styles.cardStyles
 
   return (
-    <Box sx={{ maxWidth: 1080 }}>
-      <Card variant="outlined">
+    <Box sx={classes.card}>
+      <Card>
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" sx={classes.heading} component="div">
             Nauhoitus
           </Typography>
         </CardContent>
