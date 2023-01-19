@@ -12,20 +12,30 @@ import {
   Button,
   CardActions,
 } from '@mui/material'
-
 import { Controller } from 'react-hook-form'
+import styles from './styles'
 import { InputProps } from '../../types'
 
 const CourseAttendance: React.FC<InputProps> = ({ control, watch }) => {
   const typeOfAttendance = watch('courseAttendanceType')
 
+  const classes = styles.cardStyles
+
   return (
-    <Box sx={{ maxWidth: 1080 }}>
-      <Card variant="outlined">
+    <Box sx={classes.card}>
+      <Card>
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" style={classes.heading} component="div">
             Osallistumismuoto
           </Typography>
+          <Box sx={classes.content}>
+            <Typography variant="body2">
+              Lue ensin tilojen opetusteknologian käyttöohjeet täältä.
+            </Typography>
+            <Typography variant="body2">
+              Näistä palveluista voi olla hyötyä opetuksessasi
+            </Typography>
+          </Box>
         </CardContent>
       </Card>
 
@@ -56,12 +66,6 @@ const CourseAttendance: React.FC<InputProps> = ({ control, watch }) => {
         )}
       />
       <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
-        <Typography variant="body2">
-          Lue ensin tilojen opetusteknologian käyttöohjeet täältä.
-        </Typography>
-        <Typography variant="body2">
-          Näistä palveluista voi olla hyötyä opetuksessasi
-        </Typography>
         {typeOfAttendance !== 'campusAttendance' && typeOfAttendance && (
           <Card variant="outlined">
             <CardContent>
