@@ -1,10 +1,18 @@
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import Sentry from '@sentry/node'
 
+import initializeSentry from './util/sentry.js'
 import logger from './util/logger.js'
+import errorHandler from './middeware/errorHandler.js'
 
 const app = express()
+
+initializeSentry(app)
+
+app.use(Sentry.Handlers.requestHandler())
+app.use(Sentry.Handlers.tracingHandler())
 
 app.get('/api/kliks', (req, res) => {
   logger.info('klik request made')
@@ -27,6 +35,9 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   app.use(express.static(DIST_PATH))
   app.get('*', (req, res) => res.sendFile(INDEX_PATH))
 }
+
+app.use(Sentry.Handlers.errorHandler())
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 8000
 
