@@ -21,7 +21,7 @@ const Recommend: React.FC<{ recommendation: string }> = ({
 
 const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
   const largeSize = watch('courseAttendants')
-  const mooc = watch('isMooc')
+  const mooc = watch('courseIsMooc')
 
   const classes = styles.cardStyles
 
@@ -79,7 +79,7 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
 
           <Controller
             control={control}
-            name="isMooc"
+            name="courseIsMooc"
             defaultValue=""
             render={({ field }) => (
               <Box display="flex" justifyContent="center">

@@ -27,7 +27,7 @@ const CourseType: React.FC<InputProps> = ({ control }) => {
 
       <Controller
         control={control}
-        name="lectureType"
+        name="courseLectures"
         defaultValue=""
         render={({ field }) => (
           <Box display="flex" justifyContent="center">

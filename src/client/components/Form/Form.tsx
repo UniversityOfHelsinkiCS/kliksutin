@@ -17,7 +17,7 @@ const Form = () => {
 
     // Hacky way to assert that isMooc is false if the course size is small
     if (submittedData.courseAttendants === 'smallSize')
-      submittedData.isMooc = 'false'
+      submittedData.courseIsMooc = 'false'
     console.log(submittedData)
   }
   return (
