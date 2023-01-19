@@ -12,13 +12,18 @@ import { Controller } from 'react-hook-form'
 import styles from './styles'
 import { InputProps } from '../../types'
 
+const Recommend: React.FC<{ recommendation: string }> = ({
+  recommendation,
+}) => {
+  const classes = styles.cardStyles
+  return <Typography sx={classes.recommendation}>{recommendation}</Typography>
+}
+
 const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
   const largeSize = watch('courseAttendants')
   const mooc = watch('isMooc')
 
   const classes = styles.cardStyles
-
-  console.log(mooc)
 
   return (
     <Box sx={classes.card}>
@@ -63,9 +68,7 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
       />
 
       {largeSize !== 'largeSize' && largeSize && (
-        <Typography variant="body2">
-          Suosittelemme valitsemaan Moodlen alustaksi.
-        </Typography>
+        <Recommend recommendation="Suosittelemme valitsemaan Moodlen alustaksi." />
       )}
 
       {largeSize === 'largeSize' && (
@@ -97,16 +100,15 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
           />
 
           {mooc === 'true' && (
-            <Typography sx={classes.recommendation}>
+            <Recommend
+              recommendation="
               Suosittelemme valitsemaan DigiCapuksen tai KumpulaMoocin
-              alustaksi.
-            </Typography>
+              alustaksi."
+            />
           )}
 
           {mooc === 'false' && (
-            <Typography sx={classes.recommendation}>
-              Suosittelemme valitsemaan Moodlen alustaksi.
-            </Typography>
+            <Recommend recommendation="Suosittelemme valitsemaan Moodlen alustaksi." />
           )}
         </Box>
       )}
