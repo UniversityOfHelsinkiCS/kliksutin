@@ -11,7 +11,9 @@ import {
   ClickAwayListener,
   Grow,
   Popper,
+  Divider,
 } from '@mui/material'
+import { Theme } from '@mui/material/styles'
 import { useTranslation } from 'react-i18next'
 
 import toscalogoColor from '../../assets/toscalogo_color.svg'
@@ -31,7 +33,7 @@ const styles = {
     color: 'inherit',
     textDecoration: 'none',
     marginRight: 1,
-    fontWeight: (theme) => theme.typography.fontWeightMedium,
+    fontWeight: (theme: Theme) => theme.typography.fontWeightMedium,
     padding: '5px 12px',
     backgroundColor: 'rgba(255, 255, 255, 0)',
     transition: 'background-color 0.1s',
@@ -55,7 +57,7 @@ const styles = {
     },
   },
   languageMenuDivider: {
-    margin: (theme) => theme.spacing(1, 0),
+    margin: (theme: Theme) => theme.spacing(1, 0),
   },
   container: {
     display: 'flex',
@@ -65,8 +67,8 @@ const styles = {
     justifyContent: 'center',
   },
   activeItem: {
-    color: (theme) => theme.palette.primary.main,
-    fontWeight: (theme) => theme.typography.fontWeightMedium,
+    color: (theme: Theme) => theme.palette.primary.main,
+    fontWeight: (theme: Theme) => theme.typography.fontWeightMedium,
   },
 }
 
@@ -87,8 +89,6 @@ const NavBar = () => {
     setOpenLanguageSelect(false)
   }
 
-  console.log('Current language', language)
-
   return (
     <AppBar
       elevation={0}
@@ -97,6 +97,7 @@ const NavBar = () => {
         zIndex: (theme) => theme.zIndex.drawer + 1,
         backgroundColor: 'rgba(255, 255, 255, 0)',
         borderRadius: 0,
+        marginBottom: '1em',
       }}
     >
       <Container maxWidth={false}>
@@ -177,6 +178,7 @@ const NavBar = () => {
           </Box>
         </Toolbar>
       </Container>
+      <Divider />
     </AppBar>
   )
 }
