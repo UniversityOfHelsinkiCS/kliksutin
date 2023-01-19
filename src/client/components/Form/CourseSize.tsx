@@ -95,6 +95,7 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
               </Box>
             )}
           />
+
           {mooc === 'true' && (
             <Typography sx={classes.recommendation}>
               Suosittelemme valitsemaan DigiCapuksen tai KumpulaMoocin
