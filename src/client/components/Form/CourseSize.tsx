@@ -9,20 +9,25 @@ import {
   Box,
 } from '@mui/material'
 import { Controller } from 'react-hook-form'
+import styles from './styles'
 import { InputProps } from '../../types'
 
 const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
   const largeSize = watch('courseAttendants')
   const mooc = watch('isMooc')
 
+  const classes = styles.cardStyles
+
+  console.log(mooc)
+
   return (
-    <Box sx={{ maxWidth: 1080 }}>
-      <Card variant="outlined">
+    <Box sx={classes.card}>
+      <Card>
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" style={classes.heading} component="div">
             Kurssin koko
           </Typography>
-          <Box>
+          <Box sx={classes.content}>
             <Typography variant="body2">
               Isolle kurssille sopii hyvin alustaksi Moodle. Voit lisätä
               vuorovaikutusmahdollisuuksia luonnoilla Presemon avulla.
@@ -45,7 +50,6 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
               <FormControlLabel
                 value="smallSize"
                 label="< 50"
-                name="smallSize"
                 control={<Radio />}
               />
               <FormControlLabel
@@ -66,7 +70,7 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
 
       {largeSize === 'largeSize' && (
         <Box>
-          <Typography variant="body2">
+          <Typography sx={classes.question}>
             Haluatko pitää kurssin MOOCina?
           </Typography>
 
@@ -91,13 +95,15 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
               </Box>
             )}
           />
-          {mooc === 'true' ? (
-            <Typography variant="body2">
+          {mooc === 'true' && (
+            <Typography sx={classes.recommendation}>
               Suosittelemme valitsemaan DigiCapuksen tai KumpulaMoocin
               alustaksi.
             </Typography>
-          ) : (
-            <Typography variant="body2">
+          )}
+
+          {mooc === 'false' && (
+            <Typography sx={classes.recommendation}>
               Suosittelemme valitsemaan Moodlen alustaksi.
             </Typography>
           )}
