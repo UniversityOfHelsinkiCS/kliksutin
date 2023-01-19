@@ -76,11 +76,14 @@ const NavBar = () => {
   const anchorRef = useRef<HTMLButtonElement>(null)
 
   const languages = ['fi', 'sv', 'en']
-  const [language, setLanguage] = useState('en')
+  const [language, setLanguage] = useState(
+    localStorage.getItem('language') || 'en'
+  )
 
   const handleLanguageChange = (newLanguage: string) => {
     i18n.changeLanguage(newLanguage)
     setLanguage(newLanguage)
+    localStorage.setItem('language', newLanguage)
     setOpenLanguageSelect(false)
   }
 
