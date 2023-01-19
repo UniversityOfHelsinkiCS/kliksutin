@@ -1,0 +1,8 @@
+{
+  "common": {
+    "appName": "Kliksutin"
+  },
+  "footer": {
+    "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>"
+  }
+}

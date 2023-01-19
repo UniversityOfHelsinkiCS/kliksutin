@@ -1,46 +1,55 @@
 import React from 'react'
 import { Box, Divider, Typography, Link, Container } from '@mui/material'
+import { Trans, useTranslation } from 'react-i18next'
+
 import toscalogoColor from '../assets/toscalogo_color.svg'
 
-const supportEmail = 'kliksutin@helsinki.fi'
+const supportEmail = 'grp-toska@helsinki.fi'
 
-const Footer = () => (
-  <Box marginTop="auto">
-    <Divider />
-    <Container component="footer" maxWidth="xl">
-      <Box
-        mb={1}
-        mt={2}
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <div>
-          <Typography>
-            Ota yhteyttä tukeen:{' '}
-            <Link href={`mailto:${supportEmail}`} underline="hover">
-              {supportEmail}
-            </Link>
-          </Typography>
-        </div>
+const Footer = () => {
+  useTranslation()
+
+  return (
+    <Box marginTop="auto">
+      <Divider />
+      <Container component="footer" maxWidth="xl">
         <Box
+          mb={1}
+          mt={2}
           display="flex"
-          flexDirection="column"
+          justifyContent="space-between"
           alignItems="center"
-          rowGap="1rem"
         >
-          <Link
-            href="https://toska.dev"
-            target="_blank"
-            rel="noopener"
-            underline="hover"
+          <Typography>
+            <Trans
+              i18nKey="footer:contactSupport"
+              values={{ supportEmail }}
+              components={{
+                mailTo: (
+                  <Link href={`mailto:${supportEmail}`} underline="hover" />
+                ),
+              }}
+            />
+          </Typography>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            rowGap="1rem"
           >
-            <img src={toscalogoColor} alt="Toska" width="80" />
-          </Link>
+            <Link
+              href="https://toska.dev"
+              target="_blank"
+              rel="noopener"
+              underline="hover"
+            >
+              <img src={toscalogoColor} alt="Toska" width="80" />
+            </Link>
+          </Box>
         </Box>
-      </Box>
-    </Container>
-  </Box>
-)
+      </Container>
+    </Box>
+  )
+}
 
 export default Footer

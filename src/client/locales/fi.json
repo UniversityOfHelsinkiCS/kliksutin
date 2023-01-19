@@ -1,0 +1,8 @@
+{
+  "common": {
+    "appName": "Kliksutin"
+  },
+  "footer": {
+    "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"
+  }
+}

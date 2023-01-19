@@ -12,6 +12,8 @@ import {
   Grow,
   Popper,
 } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+
 import toscalogoColor from '../../assets/toscalogo_color.svg'
 
 const styles = {
@@ -69,13 +71,15 @@ const styles = {
 }
 
 const NavBar = () => {
+  const { t, i18n } = useTranslation()
   const [openLanguageSelect, setOpenLanguageSelect] = useState(false)
   const anchorRef = useRef<HTMLButtonElement>(null)
 
   const languages = ['fi', 'sv', 'en']
-  const [language, setLanguage] = useState('fi')
+  const [language, setLanguage] = useState('en')
 
   const handleLanguageChange = (newLanguage: string) => {
+    i18n.changeLanguage(newLanguage)
     setLanguage(newLanguage)
     setOpenLanguageSelect(false)
   }
@@ -104,7 +108,7 @@ const NavBar = () => {
               fontWeight={700}
               fontSize={18}
             >
-              Kliksutin
+              {t('appName')}
             </Box>
           </Box>
           <Box>
