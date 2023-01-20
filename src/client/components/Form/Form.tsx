@@ -20,7 +20,7 @@ const Form = () => {
       courseGrading: '',
       courseLectures: '',
       lectureRecording: '',
-      courseIsMooc: 'false',
+      courseIsMooc: '',
     },
   })
   const onSubmit = (data: any) => {
