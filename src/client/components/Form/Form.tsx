@@ -15,12 +15,14 @@ const Form = () => {
     shouldUnregister: true,
     defaultValues: {
       courseAttendanceType: '',
-      courseAttendants: '',
+      courseAttendants: {
+        size: '',
+        courseIsMooc: '',
+      },
       courseCompletionMethod: '',
       courseGrading: '',
       courseLectures: '',
       lectureRecording: '',
-      courseIsMooc: '',
     },
   })
   const onSubmit = (data: any) => {

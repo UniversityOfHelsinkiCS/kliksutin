@@ -7,10 +7,12 @@ export interface InputProps {
 
 export type FormValues = {
   courseAttendanceType: String
-  courseAttendants: String
+  courseAttendants: {
+    size: ''
+    courseIsMooc?: String
+  }
   courseCompletionMethod: String
   courseGrading: String
   courseLectures: String
   lectureRecording: String
-  courseIsMooc: String
 }
