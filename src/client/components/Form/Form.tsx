@@ -12,13 +12,19 @@ import CourseGrading from './CourseGrading'
 const Form = () => {
   const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
+    defaultValues: {
+      courseAttendanceType: '',
+      courseAttendants: '',
+      courseCompletionMethod: '',
+      courseGrading: '',
+      courseLectures: '',
+      lectureRecording: '',
+      courseIsMooc: 'false',
+    },
   })
   const onSubmit = (data: any) => {
     const submittedData = data
 
-    // Hacky way to assert that isMooc is false if the course size is small
-    if (submittedData.courseAttendants === 'smallSize')
-      submittedData.courseIsMooc = 'false'
     console.log(submittedData)
   }
   return (
