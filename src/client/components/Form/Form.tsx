@@ -12,6 +12,7 @@ import CourseGrading from './CourseGrading'
 const Form = () => {
   const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
+    shouldUnregister: true,
     defaultValues: {
       courseAttendanceType: '',
       courseAttendants: '',
