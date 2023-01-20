@@ -20,8 +20,8 @@ const Recommend: React.FC<{ recommendation: string }> = ({
 }
 
 const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
-  const largeSize = watch('courseAttendants.size')
-  const mooc = watch('courseIsMooc')
+  const sizeOfCourse = watch('courseAttendants.size')
+  const mooc = watch('courseAttendants.courseIsMooc')
 
   const classes = styles.cardStyles
 
@@ -67,11 +67,11 @@ const CourseSize: React.FC<InputProps> = ({ control, watch }) => {
         )}
       />
 
-      {largeSize !== 'largeSize' && largeSize && (
+      {sizeOfCourse !== 'largeSize' && sizeOfCourse && (
         <Recommend recommendation="Suosittelemme valitsemaan Moodlen alustaksi." />
       )}
 
-      {largeSize === 'largeSize' && (
+      {sizeOfCourse === 'largeSize' && (
         <Box>
           <Typography sx={classes.question}>
             Haluatko pitää kurssin MOOCina?
