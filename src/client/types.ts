@@ -6,6 +6,7 @@ export interface InputProps {
 }
 
 export type FormValues = {
+  faculty: String
   courseAttendanceType: String
   courseAttendants: {
     size: ''
