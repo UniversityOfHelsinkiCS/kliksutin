@@ -17,3 +17,7 @@ Typescript? `as unknown as ...` and `: any` are allowed.
 > "Dynamic types are customer value"
 >
 > – mluukkai, maybe
+
+## Environment configuration
+
+Create a `.env` file inside the project's root directory. In that file, copy the contents of the `.env.template` file and add correct values for the variables based on the documentation.
