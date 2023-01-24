@@ -53,11 +53,15 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value="Matemaattis-luonnontieteellinen">
-                  Matlu
+                <MenuItem value="matemaattis-luonnontieteellinen">
+                  Matemaattis-luonnontieteellinen tiedekunta
                 </MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value="lääketieteellinen">
+                  Lääketieteellinen tiedekunta
+                </MenuItem>
+                <MenuItem value="oikeustieteellinen">
+                  Oikeustieteellinen tiedekunta
+                </MenuItem>
               </Select>
             </FormControl>
           </Box>
