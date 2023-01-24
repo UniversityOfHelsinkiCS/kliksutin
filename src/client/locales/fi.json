@@ -9,5 +9,9 @@
     "welcomeMessage": "Hei, tervetuloa Kliksuttelemaan",
     "introMessage": "Aloita valitsemalla tiedekuntasi valikosta",
     "inputLabel": "Tiedekuntasi"
+  },
+  "recommendations": {
+    "title": "Suositukset",
+    "recommendationMessage": "Alla vielä listaus suosituksistamme"
   }
 }
