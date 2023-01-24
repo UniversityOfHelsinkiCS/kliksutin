@@ -5,9 +5,11 @@ import { OrganisationData } from '../types.js'
 const facultyRouter = express.Router()
 
 facultyRouter.get('/', async (req, res) => {
-  const organisationData: OrganisationData = await getOrganisationData()
+  const organisationData: Array<OrganisationData> = await getOrganisationData()
 
-  return res.json(organisationData)
+  const faculties = organisationData.map((faculty) => faculty.name)
+
+  return res.json(faculties)
 })
 
 export default facultyRouter

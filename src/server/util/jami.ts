@@ -12,7 +12,7 @@ export const jamiClient = axios.create({
   },
 })
 
-export const getOrganisationData = async (): Promise<OrganisationData> => {
+export const getOrganisationData = async (): Promise<OrganisationData[]> => {
   const { data } = await jamiClient.get('/organisation-data')
 
   return data
