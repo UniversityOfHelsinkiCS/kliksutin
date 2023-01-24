@@ -8,8 +8,8 @@ const Recommendations = () => {
   const classes = styles.cardStyles
 
   return (
-    <Box sx={classes.card}>
-      <Card>
+    <Box>
+      <Card sx={classes.recommendationCard}>
         <CardContent>
           <Typography variant="h5" sx={classes.heading} component="div">
             <Trans i18nKey="recommendations:title" />

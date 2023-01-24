@@ -39,32 +39,30 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
         name="faculty"
         defaultValue=""
         render={({ field }) => (
-          <Box display="flex" justifyContent="center">
-            <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
-              <InputLabel>
-                <Trans i18nKey="facultySelect:inputLabel" />
-              </InputLabel>
-              <Select
-                value={faculty}
-                label={<Trans i18nKey="facultySelect:inputLabel" />}
-                onChange={handleChange}
-                {...field}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value="matemaattis-luonnontieteellinen">
-                  Matemaattis-luonnontieteellinen tiedekunta
-                </MenuItem>
-                <MenuItem value="lääketieteellinen">
-                  Lääketieteellinen tiedekunta
-                </MenuItem>
-                <MenuItem value="oikeustieteellinen">
-                  Oikeustieteellinen tiedekunta
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+          <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
+            <InputLabel>
+              <Trans i18nKey="facultySelect:inputLabel" />
+            </InputLabel>
+            <Select
+              value={faculty}
+              label={<Trans i18nKey="facultySelect:inputLabel" />}
+              onChange={handleChange}
+              {...field}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value="matemaattis-luonnontieteellinen">
+                Matemaattis-luonnontieteellinen tiedekunta
+              </MenuItem>
+              <MenuItem value="lääketieteellinen">
+                Lääketieteellinen tiedekunta
+              </MenuItem>
+              <MenuItem value="oikeustieteellinen">
+                Oikeustieteellinen tiedekunta
+              </MenuItem>
+            </Select>
+          </FormControl>
         )}
       />
     </Box>

@@ -12,7 +12,7 @@ import SelectFaculty from './SelectFaculty'
 import Recommendations from './Recommendations'
 
 const Form = () => {
-  const { handleSubmit, control, watch, getValues } = useForm({
+  const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
     defaultValues: {
@@ -34,7 +34,7 @@ const Form = () => {
     console.log(submittedData)
   }
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={8}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <SelectFaculty control={control} />
@@ -49,7 +49,6 @@ const Form = () => {
       </Grid>
       <Grid item xs={4}>
         <Recommendations />
-        <p>{JSON.stringify(getValues())}</p>
       </Grid>
     </Grid>
   )
