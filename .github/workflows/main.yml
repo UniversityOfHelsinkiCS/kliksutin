@@ -21,9 +21,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: toska/kliksutin:latest
+          tags: toska/kliksutin:staging
           build-args: |
-            BASE_PATH=/kliksutinstaging
+            BASE_PATH=/
             GIT_SHA=${{ github.sha }}
             STAGING=true
 
