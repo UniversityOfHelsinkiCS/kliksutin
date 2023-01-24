@@ -18,7 +18,7 @@ ENV REACT_APP_STAGING=$STAGING
 
 # Setup
 COPY package* ./
-RUN npm ci -f --omit-dev --ingnore-scripts
+RUN npm ci -f --omit-dev --ignore-scripts
 COPY . .
 
 RUN npm run build
