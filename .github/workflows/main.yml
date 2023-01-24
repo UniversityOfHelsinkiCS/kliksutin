@@ -38,7 +38,7 @@ jobs:
         run: docker create --name kliksutin toska/kliksutin:latest
 
       - name: Copy assets from the container
-        run: docker cp kliksutin:/usr/src/app/ ./app
+        run: docker cp kliksutin:/opt/app-root/src ./app
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1
