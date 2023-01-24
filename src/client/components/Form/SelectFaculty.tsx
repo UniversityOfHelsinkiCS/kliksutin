@@ -9,8 +9,13 @@ import { Trans, useTranslation } from 'react-i18next'
 import styles from './styles'
 import { InputProps } from '../../types'
 
-const SelectFaculty: React.FC<InputProps> = ({ control }) => {
+const SelectFaculty: React.FC<InputProps & { faculties: any }> = ({
+  control,
+  faculties,
+}) => {
   useTranslation()
+  const language = localStorage.getItem('language') || 'en'
+
   const [faculty, setFaculty] = useState('')
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -18,6 +23,8 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   }
 
   const classes = styles.cardStyles
+
+  if (!faculties) return null
 
   return (
     <Box sx={classes.card}>
@@ -49,18 +56,11 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
               onChange={handleChange}
               {...field}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="matemaattis-luonnontieteellinen">
-                Matemaattis-luonnontieteellinen tiedekunta
-              </MenuItem>
-              <MenuItem value="lääketieteellinen">
-                Lääketieteellinen tiedekunta
-              </MenuItem>
-              <MenuItem value="oikeustieteellinen">
-                Oikeustieteellinen tiedekunta
-              </MenuItem>
+              {faculties.map((f) => (
+                <MenuItem key={f.fi} value={f.fi}>
+                  {f[language]}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         )}

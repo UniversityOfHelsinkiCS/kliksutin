@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import { Button, Grid } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
@@ -12,6 +13,8 @@ import SelectFaculty from './SelectFaculty'
 import Recommendations from './Recommendations'
 
 const Form = () => {
+  const [faculties, setFaculties] = useState(null)
+
   const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
@@ -33,11 +36,18 @@ const Form = () => {
     // eslint-disable-next-line
     console.log(submittedData)
   }
+
+  useEffect(() => {
+    axios
+      .get('/api/faculties')
+      .then((facultyData) => setFaculties(facultyData.data))
+  }, [])
+
   return (
     <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={8}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <SelectFaculty control={control} />
+          <SelectFaculty control={control} faculties={faculties} />
           <CourseSize control={control} watch={watch} />
           <CourseType control={control} />
           <CourseAttendance control={control} watch={watch} />
