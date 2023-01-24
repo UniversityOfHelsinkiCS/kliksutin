@@ -30,7 +30,7 @@ const Form = () => {
   })
   const onSubmit = (data: any) => {
     const submittedData = data
-
+    // eslint-disable-next-line
     console.log(submittedData)
   }
   return (
