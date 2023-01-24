@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
 import CourseSize from './CourseSize'
@@ -9,12 +9,14 @@ import CourseRecord from './CourseRecord'
 import CourseMethods from './CourseMethods'
 import CourseGrading from './CourseGrading'
 import SelectFaculty from './SelectFaculty'
+import Recommendations from './Recommendations'
 
 const Form = () => {
-  const { handleSubmit, control, watch } = useForm({
+  const { handleSubmit, control, watch, getValues } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
     defaultValues: {
+      faculty: '',
       courseAttendanceType: '',
       courseAttendants: {
         size: '',
@@ -32,18 +34,24 @@ const Form = () => {
     console.log(submittedData)
   }
   return (
-    <Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <SelectFaculty control={control} />
-        <CourseSize control={control} watch={watch} />
-        <CourseType control={control} />
-        <CourseAttendance control={control} watch={watch} />
-        <CourseRecord control={control} watch={watch} />
-        <CourseMethods control={control} watch={watch} />
-        <CourseGrading control={control} />
-        <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
-      </form>
-    </Container>
+    <Grid container spacing={2}>
+      <Grid item xs={8}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <SelectFaculty control={control} />
+          <CourseSize control={control} watch={watch} />
+          <CourseType control={control} />
+          <CourseAttendance control={control} watch={watch} />
+          <CourseRecord control={control} watch={watch} />
+          <CourseMethods control={control} watch={watch} />
+          <CourseGrading control={control} />
+          <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
+        </form>
+      </Grid>
+      <Grid item xs={4}>
+        <Recommendations />
+        <p>{JSON.stringify(getValues())}</p>
+      </Grid>
+    </Grid>
   )
 }
 
