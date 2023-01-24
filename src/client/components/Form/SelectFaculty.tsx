@@ -40,7 +40,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
         defaultValue=""
         render={({ field }) => (
           <Box display="flex" justifyContent="center">
-            <FormControl sx={{ m: 1, minWidth: 480 }}>
+            <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
               <InputLabel>
                 <Trans i18nKey="facultySelect:inputLabel" />
               </InputLabel>
