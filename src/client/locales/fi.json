@@ -4,5 +4,10 @@
   },
   "footer": {
     "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"
+  },
+  "facultySelect": {
+    "welcomeMessage": "Hei, tervetuloa Kliksuttelemaan",
+    "introMessage": "Aloita valitsemalla tiedekuntasi valikosta",
+    "inputLabel": "Tiedekuntasi"
   }
 }

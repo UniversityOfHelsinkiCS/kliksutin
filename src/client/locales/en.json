@@ -4,5 +4,10 @@
   },
   "footer": {
     "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>"
+  },
+  "facultySelect": {
+    "welcomeMessage": "Hi, welcome to Kliksutin",
+    "introMessage": "Start by selecting your faculty",
+    "inputLabel": "Your Faculty"
   }
 }
