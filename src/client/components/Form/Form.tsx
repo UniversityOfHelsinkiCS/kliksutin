@@ -13,8 +13,6 @@ import SelectFaculty from './SelectFaculty'
 import Recommendations from './Recommendations'
 
 const Form = () => {
-  const [faculties, setFaculties] = useState(null)
-
   const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
@@ -37,17 +35,11 @@ const Form = () => {
     console.log(submittedData)
   }
 
-  useEffect(() => {
-    axios
-      .get('/api/faculties')
-      .then((facultyData) => setFaculties(facultyData.data))
-  }, [])
-
   return (
     <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={8}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <SelectFaculty control={control} faculties={faculties} />
+          <SelectFaculty control={control} />
           <CourseSize control={control} watch={watch} />
           <CourseType control={control} />
           <CourseAttendance control={control} watch={watch} />

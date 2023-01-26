@@ -8,15 +8,15 @@ import { Controller } from 'react-hook-form'
 import { Trans, useTranslation } from 'react-i18next'
 import styles from './styles'
 import { InputProps } from '../../types'
+import useFaculty from '../../hooks/useFaculty'
 
-const SelectFaculty: React.FC<InputProps & { faculties: any }> = ({
-  control,
-  faculties,
+const SelectFaculty: React.FC<InputProps> = ({
+  control
 }) => {
   useTranslation()
   const language = localStorage.getItem('language') || 'en'
-
   const [faculty, setFaculty] = useState('')
+  const faculties = useFaculty()
 
   const handleChange = (event: SelectChangeEvent) => {
     setFaculty(event.target.value)
@@ -24,7 +24,7 @@ const SelectFaculty: React.FC<InputProps & { faculties: any }> = ({
 
   const classes = styles.cardStyles
 
-  if (!faculties) return null
+  if (!faculties) return <h1>Loading...</h1>
 
   return (
     <Box sx={classes.card}>
