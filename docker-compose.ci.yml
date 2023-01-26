@@ -6,7 +6,20 @@ services:
       context: .
       args:
         - E2E=true
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
     command: ['npm', 'run', 'start:test']
     ports:
       - 8000:8000
     container_name: kliksutin_test
+
+  db:
+    image: postgres:15.1
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    container_name: kliksutin_test_db

@@ -6,8 +6,27 @@ services:
       context: ./
       dockerfile: dev.Dockerfile
     image: kliksutin_dev
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
     volumes:
       - ./:/usr/src/app
     ports:
       - 3000:3000
     container_name: kliksutin_dev
+
+  db:
+    image: postgres:15.1
+    environment:
+      - PGDATA=/data
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_data:/data
+    container_name: kliksutin_db
+
+volumes:
+  pg_data:

@@ -4,6 +4,9 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import Sentry from '@sentry/node'
 import initializeSentry from './util/sentry.js'
+
+import { PORT } from '../config.js'
+import { connectToDatabase } from './db/connection.js'
 import logger from './util/logger.js'
 import errorHandler from './middeware/errorHandler.js'
 import facultyRouter from './routes/faculty.js'
@@ -33,8 +36,8 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
 app.use(Sentry.Handlers.errorHandler())
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 8000
+app.listen(PORT, async () => {
+  await connectToDatabase()
 
-app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`)
 })
