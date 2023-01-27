@@ -4,7 +4,8 @@ import { Umzug, SequelizeStorage } from 'umzug'
 import logger from '../util/logger.js'
 import { DB_CONFIG } from '../../config.js'
 
-const DB_CONNECTION_RETRY_LIMIT = 10
+// Update once staging has a db
+const DB_CONNECTION_RETRY_LIMIT = 1
 
 export const sequelize = new Sequelize({
   ...(DB_CONFIG as Options),
@@ -42,7 +43,7 @@ export const connectToDatabase = async (attempt = 0) => {
         error: err.stack,
       })
 
-      return process.exit(1)
+      // return process.exit(1)
     }
     logger.info(
       `Connection to database failed! Attempt ${attempt} of ${DB_CONNECTION_RETRY_LIMIT}`
