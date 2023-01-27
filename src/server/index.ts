@@ -37,7 +37,11 @@ app.use(Sentry.Handlers.errorHandler())
 app.use(errorHandler)
 
 app.listen(PORT, async () => {
-  await connectToDatabase()
+  try {
+    await connectToDatabase()
+  } catch {
+    console.log('Skip database')
+  }
 
   logger.info(`Server running on port ${PORT}`)
 })

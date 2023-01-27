@@ -5,6 +5,7 @@ on: [workflow_call]
 jobs:
   eslint:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - name: Build project for eslint
@@ -14,6 +15,7 @@ jobs:
 
   cypress:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
