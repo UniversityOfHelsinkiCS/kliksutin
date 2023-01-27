@@ -1,5 +1,5 @@
-import Survey from './Survey.js'
-import Question from './Question.js'
+import Survey from './Survey'
+import Question from './Question'
 
 Question.belongsTo(Survey)
 

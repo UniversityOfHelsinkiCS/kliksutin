@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { JAMI_URL, inProduction } from '../../config.js'
-import { OrganisationData } from '../types.js'
+import { JAMI_URL, inProduction } from '../../config'
+import { OrganisationData } from '../types'
 
 const API_TOKEN = process.env
 

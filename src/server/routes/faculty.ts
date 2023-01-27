@@ -1,6 +1,6 @@
 import express from 'express'
-import { getOrganisationData } from '../util/jami.js'
-import { OrganisationData } from '../types.js'
+import { getOrganisationData } from '../util/jami'
+import { OrganisationData } from '../types'
 
 const facultyRouter = express.Router()
 
