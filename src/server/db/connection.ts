@@ -4,8 +4,7 @@ import { Umzug, SequelizeStorage } from 'umzug'
 import logger from '../util/logger.js'
 import { DB_CONFIG } from '../../config.js'
 
-// Update once staging has a db
-const DB_CONNECTION_RETRY_LIMIT = 1
+const DB_CONNECTION_RETRY_LIMIT = 10
 
 export const sequelize = new Sequelize({
   ...(DB_CONFIG as Options),
