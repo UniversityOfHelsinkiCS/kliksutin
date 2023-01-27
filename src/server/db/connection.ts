@@ -12,7 +12,7 @@ export const sequelize = new Sequelize({
 
 const runMigrations = async () => {
   const migrator = new Umzug({
-    migrations: { glob: 'src/server/db/migrations/*.ts' },
+    migrations: { glob: 'src/server/db/migrations/*.cjs' },
     context: sequelize.getQueryInterface(),
     storage: new SequelizeStorage({ sequelize }),
     logger: console,
@@ -42,7 +42,8 @@ export const connectToDatabase = async (attempt = 0) => {
         error: err.stack,
       })
 
-      // return process.exit(1)
+      // update once staging has a database
+      return null // process.exit(1)
     }
     logger.info(
       `Connection to database failed! Attempt ${attempt} of ${DB_CONNECTION_RETRY_LIMIT}`
