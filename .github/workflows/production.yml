@@ -1,11 +1,13 @@
-name: Release
+name: Deploy to production
 
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
   dockerhub-release:
     runs-on: ubuntu-latest
     steps:
@@ -21,11 +23,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: toska/kliksutin:staging
+          tags: toska/kliksutin:production
           build-args: |
             BASE_PATH=/
             GIT_SHA=${{ github.sha }}
-            STAGING=true
 
   sentry-release:
     runs-on: ubuntu-latest

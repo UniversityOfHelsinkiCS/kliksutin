@@ -1,0 +1,28 @@
+name: Deploy to staging
+
+on: push
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  dockerhub-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: toska/kliksutin:staging
+          build-args: |
+            BASE_PATH=/
+            GIT_SHA=${{ github.sha }}
+            STAGING=true
