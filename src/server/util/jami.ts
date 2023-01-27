@@ -1,14 +1,11 @@
 import axios from 'axios'
-import { JAMI_URL, inProduction } from '../../config'
+import { JAMI_URL, API_TOKEN } from './config'
 import { OrganisationData } from '../types'
-
-const API_TOKEN = process.env
 
 export const jamiClient = axios.create({
   baseURL: JAMI_URL,
   params: {
     token: API_TOKEN,
-    noLogging: !inProduction,
   },
 })
 

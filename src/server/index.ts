@@ -4,7 +4,7 @@ import path from 'path'
 import { Handlers as SentryHandlers } from '@sentry/node'
 import initializeSentry from './util/sentry'
 
-import { PORT } from '../config'
+import { PORT } from './util/config'
 import { connectToDatabase } from './db/connection'
 import logger from './util/logger'
 import errorHandler from './middeware/errorHandler'

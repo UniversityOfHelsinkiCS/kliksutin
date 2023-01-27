@@ -2,7 +2,7 @@ import { Sequelize, Options } from 'sequelize'
 import { Umzug, SequelizeStorage } from 'umzug'
 
 import logger from '../util/logger'
-import { DB_CONFIG } from '../../config'
+import { DB_CONFIG } from '../util/config'
 
 const DB_CONNECTION_RETRY_LIMIT = 10
 
