@@ -15,11 +15,21 @@ const RenderSurveyQuestions: React.FC<InputProps> = ({ control }) => {
       <SelectFaculty control={control} />
       <Box justifyContent="center">
         {survey.Questions.map((question) => (
-          <SingleChoise
-            key={question.id as any}
-            question={question}
-            control={control}
-          />
+          <div>
+            {question.parentId === null && (
+              <SingleChoise
+                key={question.id as any}
+                question={question}
+                control={control}
+              >
+                {survey.Questions.filter(
+                  (childQuestion) => question.id === childQuestion.parentId
+                ).map((q) => (
+                  <div>{JSON.stringify(q)}</div>
+                ))}
+              </SingleChoise>
+            )}
+          </div>
         ))}
       </Box>
     </Box>

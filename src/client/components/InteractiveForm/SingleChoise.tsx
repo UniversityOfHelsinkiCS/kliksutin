@@ -12,10 +12,11 @@ import {
 import { Question } from '../../types'
 import styles from './styles'
 
-const SingleChoise: React.FC<{ control: any; question: Question }> = ({
-  question,
-  control,
-}) => {
+const SingleChoise: React.FC<{
+  control: any
+  question: Question
+  children
+}> = ({ question, control, children }) => {
   const classes = styles.cardStyles
 
   const generateOptions = () =>
@@ -52,6 +53,8 @@ const SingleChoise: React.FC<{ control: any; question: Question }> = ({
           </Box>
         )}
       />
+
+      {children}
     </Box>
   )
 }
