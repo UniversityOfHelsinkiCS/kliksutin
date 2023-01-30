@@ -17,3 +17,28 @@ export type FormValues = {
   courseLectures: String
   lectureRecording: String
 }
+
+export interface Survey {
+  id: number
+  name: string
+  created_at: Date
+  updated_at: Date
+  questions: Question[]
+}
+
+export interface Question {
+  id: number
+  survey_id: number
+  parent_id: number
+  priority: number
+  title: {
+    en: String
+    fi: String
+    sv: String
+  }
+  text: {}
+  option_data: {}
+  visibility: {}
+  created_at: Date
+  updated_at: Date
+}

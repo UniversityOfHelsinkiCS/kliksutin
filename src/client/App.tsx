@@ -3,9 +3,9 @@ import { ThemeProvider } from '@mui/material/styles'
 import { Box } from '@mui/material'
 
 import useTheme from './theme'
-import Form from './components/Form/Form'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar/NavBar'
+import InteractiveForm from './components/InteractiveForm/InteractiveForm'
 
 const App = () => {
   const theme = useTheme()
@@ -14,7 +14,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Box textAlign="center">
         <NavBar />
-        <Form />
+        <InteractiveForm />
         <Footer />
       </Box>
     </ThemeProvider>
