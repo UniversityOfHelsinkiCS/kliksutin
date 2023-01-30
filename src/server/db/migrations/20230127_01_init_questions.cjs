@@ -14,18 +14,19 @@ module.exports = {
       },
       parent_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       priority: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       title: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        type: DataTypes.JSONB,
+        allowNull: false,
+        defaultValue: {},
       },
       text: {
-        type: DataTypes.TEXT,
+        type: DataTypes.JSONB,
         allowNull: false,
       },
       option_data: {

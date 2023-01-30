@@ -8,9 +8,20 @@ import {
 
 import { sequelize } from '../connection'
 
+interface TranslatedText {
+  fi: string
+  sv: string
+  en: string
+}
+
+interface Option {
+  id: string
+  label: TranslatedText
+}
+
 interface OptionData {
   type: 'singleChoice' | 'multipleChoice' | 'text'
-  options: Array<any>
+  options: Array<Option>
 }
 
 interface Visibility {
@@ -29,9 +40,9 @@ class Question extends Model<
 
   declare priority: number
 
-  declare title: string
+  declare title: TranslatedText
 
-  declare text: string
+  declare text: TranslatedText
 
   declare optionData: OptionData
 
@@ -51,18 +62,19 @@ Question.init(
     },
     parentId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     priority: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     title: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.JSONB,
+      allowNull: false,
+      defaultValue: {},
     },
     text: {
-      type: DataTypes.TEXT,
+      type: DataTypes.JSONB,
       allowNull: false,
     },
     optionData: {
