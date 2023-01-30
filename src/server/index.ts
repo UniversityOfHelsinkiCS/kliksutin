@@ -6,6 +6,7 @@ import initializeSentry from './util/sentry'
 
 import { PORT } from './util/config'
 import { connectToDatabase } from './db/connection'
+import seed from './db/seeders'
 import logger from './util/logger'
 import errorHandler from './middeware/errorHandler'
 import facultyRouter from './routes/faculty'
@@ -35,6 +36,7 @@ app.use(errorHandler)
 
 app.listen(PORT, async () => {
   await connectToDatabase()
+  await seed()
 
   logger.info(`Server running on port ${PORT}`)
 })
