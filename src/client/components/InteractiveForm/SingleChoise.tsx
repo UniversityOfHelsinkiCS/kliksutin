@@ -1,4 +1,5 @@
 import React from 'react'
+import { Controller } from 'react-hook-form'
 import {
   RadioGroup,
   FormControlLabel,
@@ -11,12 +12,12 @@ import {
 import { Question } from '../../types'
 import styles from './styles'
 
-const SingleChoise: React.FC<{ field: any; question: Question }> = ({
-  field,
+const SingleChoise: React.FC<{ control: any; question: Question }> = ({
   question,
+  control,
 }) => {
   const classes = styles.cardStyles
-  console.log('Question:', question)
+
   const generateOptions = () =>
     question.optionData.options.map((singleOption) => (
       <FormControlLabel
@@ -39,9 +40,18 @@ const SingleChoise: React.FC<{ field: any; question: Question }> = ({
         </CardContent>
       </Card>
 
-      <RadioGroup {...field} row>
-        {generateOptions()}
-      </RadioGroup>
+      <Controller
+        control={control}
+        name={question.id.toString()}
+        defaultValue=""
+        render={({ field }) => (
+          <Box justifyContent="center">
+            <RadioGroup {...field} row>
+              {generateOptions()}
+            </RadioGroup>
+          </Box>
+        )}
+      />
     </Box>
   )
 }

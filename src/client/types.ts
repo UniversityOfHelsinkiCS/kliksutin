@@ -3,40 +3,41 @@ import { Control } from 'react-hook-form'
 export interface InputProps {
   control: Control<any>
   watch?: any
+  register?: any
 }
 
 export type FormValues = {
-  faculty: String
-  courseAttendanceType: String
+  faculty: string
+  courseAttendanceType: string
   courseAttendants: {
     size: ''
-    courseIsMooc?: String
+    courseIsMooc?: string
   }
-  courseCompletionMethod: String
-  courseGrading: String
-  courseLectures: String
-  lectureRecording: String
+  courseCompletionMethod: string
+  courseGrading: string
+  courseLectures: string
+  lectureRecording: string
 }
 
 export type Locales = {
-  en: String
-  fi: String
-  sv: String
+  en: string
+  fi: string
+  sv: string
 }
 
 export interface SingleChoise {
-  id: String
-  label: String
+  id: string
+  label: string
 }
 
 export interface OptionData {
   options: SingleChoise[]
-  type: String
+  type: string
 }
 
 export interface Survey {
   id: Number
-  name: String
+  name: string
   createdAt: Date
   updatedAt: Date
   Questions: Question[]
