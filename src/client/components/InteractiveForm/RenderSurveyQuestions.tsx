@@ -11,7 +11,7 @@ const RenderSurveyQuestions: React.FC<InputProps> = ({ control }) => {
   if (!survey) return null
 
   return (
-    <Box sx={{ maxWidth: 640 }}>
+    <Box sx={{ maxWidth: 1080 }}>
       <SelectFaculty control={control} />
       <Box justifyContent="center">
         {survey.Questions.map((question) => (
