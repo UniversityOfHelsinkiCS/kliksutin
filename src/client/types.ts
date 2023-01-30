@@ -18,27 +18,39 @@ export type FormValues = {
   lectureRecording: String
 }
 
+export type Locales = {
+  en: String
+  fi: String
+  sv: String
+}
+
+export interface SingleChoise {
+  id: String
+  label: String
+}
+
+export interface OptionData {
+  options: SingleChoise[]
+  type: String
+}
+
 export interface Survey {
-  id: number
-  name: string
-  created_at: Date
-  updated_at: Date
-  questions: Question[]
+  id: Number
+  name: String
+  createdAt: Date
+  updatedAt: Date
+  Questions: Question[]
 }
 
 export interface Question {
-  id: number
-  survey_id: number
-  parent_id: number
-  priority: number
-  title: {
-    en: String
-    fi: String
-    sv: String
-  }
-  text: {}
-  option_data: {}
+  id: Number
+  surveyId: Number
+  parentId: Number
+  priority: Number
+  title: Locales
+  text: Locales
+  optionData: OptionData
   visibility: {}
-  created_at: Date
-  updated_at: Date
+  createdAt: Date
+  updatedAt: Date
 }

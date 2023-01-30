@@ -6,21 +6,9 @@ import Recommendations from '../Form/Recommendations'
 import RenderSurveyQuestions from './RenderSurveyQuestions'
 
 const InteractiveForm = () => {
-  const { handleSubmit, control, watch } = useForm({
+  const { handleSubmit, control } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
-    defaultValues: {
-      faculty: '',
-      courseAttendanceType: '',
-      courseAttendants: {
-        size: '',
-        courseIsMooc: '',
-      },
-      courseCompletionMethod: '',
-      courseGrading: '',
-      courseLectures: '',
-      lectureRecording: '',
-    },
   })
   const onSubmit = (data: any) => {
     const submittedData = data
@@ -32,7 +20,7 @@ const InteractiveForm = () => {
     <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={8}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <RenderSurveyQuestions control={control} watch={watch} />
+          <RenderSurveyQuestions control={control} />
           <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
         </form>
       </Grid>

@@ -3,49 +3,45 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Box,
+  Card,
   CardContent,
   Typography,
-  Card,
-  Box,
 } from '@mui/material'
-import { Controller } from 'react-hook-form'
-import { Survey } from '../../types'
+import { Question } from '../../types'
+import styles from './styles'
 
-const SingleChoise: React.FC<{ control: any; survey: Survey }> = ({
-  control,
-  survey,
+const SingleChoise: React.FC<{ field: any; question: Question }> = ({
+  field,
+  question,
 }) => {
+  const classes = styles.cardStyles
+  console.log('Question:', question)
   const generateOptions = () =>
-    survey.questions.map((singleOption) => (
+    question.optionData.options.map((singleOption) => (
       <FormControlLabel
-        key={singleOption.id}
+        key={singleOption.id as any}
         value={singleOption.id}
-        label={singleOption.title.en}
+        label={singleOption.label}
         control={<Radio />}
       />
     ))
   return (
-    <Box sx={{ maxWidth: 1080 }}>
-      <Card variant="outlined">
+    <Box sx={classes.card}>
+      <Card>
         <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Survey # {JSON.stringify(survey.id)}
+          <Typography variant="h5" style={classes.heading} component="div">
+            {question.title.en}
           </Typography>
+          <Box sx={classes.content}>
+            <Typography variant="body2">{question.text.en}</Typography>
+          </Box>
         </CardContent>
       </Card>
 
-      <Controller
-        control={control}
-        name={survey.name as string}
-        defaultValue=""
-        render={({ field }) => (
-          <Box display="flex" justifyContent="center">
-            <RadioGroup {...field} row>
-              {generateOptions()}
-            </RadioGroup>
-          </Box>
-        )}
-      />
+      <RadioGroup {...field} row>
+        {generateOptions()}
+      </RadioGroup>
     </Box>
   )
 }
