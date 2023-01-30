@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
+const bigCourseOption: string = uuidv4()
+
 const getQuestionData = () => [
   {
     surveyId: 0,
@@ -22,7 +24,7 @@ const getQuestionData = () => [
           label: '< 50',
         },
         {
-          id: uuidv4(),
+          id: bigCourseOption,
           label: '>= 50',
         },
       ],
@@ -148,6 +150,37 @@ const getQuestionData = () => [
       ],
     },
     visibility: {},
+  },
+  {
+    surveyId: 0,
+    parentId: 1,
+    priority: 0,
+    title: {
+      fi: 'Haluatko pitää kurssi MOOCina?',
+      sv: 'Haluatko pitää kurssi MOOCina?',
+      en: 'Haluatko pitää kurssi MOOCina?',
+    },
+    text: {
+      fi: '',
+      sv: '',
+      en: '',
+    },
+    optionData: {
+      type: 'singleChoice',
+      options: [
+        {
+          id: uuidv4(),
+          label: 'Kyllä',
+        },
+        {
+          id: uuidv4(),
+          label: 'Ei',
+        },
+      ],
+    },
+    visibility: {
+      options: [bigCourseOption],
+    },
   },
 ]
 
