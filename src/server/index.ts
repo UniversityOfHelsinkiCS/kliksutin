@@ -10,6 +10,7 @@ import seed from './db/seeders'
 import logger from './util/logger'
 import errorHandler from './middeware/errorHandler'
 import facultyRouter from './routes/faculty'
+import surveyRouter from './routes/survey'
 
 const app = express()
 
@@ -22,6 +23,7 @@ app.use(SentryHandlers.requestHandler())
 app.use(SentryHandlers.tracingHandler())
 
 app.use('/api/faculties', facultyRouter)
+app.use('/api/surveys', surveyRouter)
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(__dirname, '../../build')
