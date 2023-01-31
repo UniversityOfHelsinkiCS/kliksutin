@@ -53,7 +53,7 @@ const getQuestionData = () => [
         {
           id: uuidv4(),
           label: 'Harjoittelu',
-          tools: ['thinglink', 'eportfolio', 'moodle'],
+          tools: ['thinglink', 'eportfolio', 'moodle', 'H5P'],
         },
       ],
     },

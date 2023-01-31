@@ -3,6 +3,7 @@ import { Box } from '@mui/material'
 import { InputProps, Question } from '../../types'
 import SingleChoise from './SingleChoise'
 import SelectFaculty from '../Form/SelectFaculty'
+import MultiChoise from './MultiChoise'
 
 const RenderSurveyQuestions: React.FC<
   InputProps & { questions: Question[] }
@@ -15,17 +16,28 @@ const RenderSurveyQuestions: React.FC<
       <Box justifyContent="center">
         {questions.map((question) => (
           <div key={question.id as any}>
-            {question.parentId === null && (
-              <SingleChoise
-                key={question.id as any}
-                control={control}
-                watch={watch}
-                question={question}
-                childQuestions={questions.filter(
-                  (childQuestion) => question.id === childQuestion.parentId
-                )}
-              />
-            )}
+            {question.parentId === null &&
+              (question.optionData.type === 'singleChoice' ? (
+                <SingleChoise
+                  key={question.id as any}
+                  control={control}
+                  watch={watch}
+                  question={question}
+                  childQuestions={questions.filter(
+                    (childQuestion) => question.id === childQuestion.parentId
+                  )}
+                />
+              ) : (
+                <MultiChoise
+                  key={question.id as any}
+                  control={control}
+                  watch={watch}
+                  question={question}
+                  childQuestions={questions.filter(
+                    (childQuestion) => question.id === childQuestion.parentId
+                  )}
+                />
+              ))}
           </div>
         ))}
       </Box>

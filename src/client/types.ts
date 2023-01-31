@@ -31,8 +31,14 @@ export interface SingleChoise {
   label: string
 }
 
+export interface MultipleChoice {
+  id: string
+  label: string
+  tools: string[]
+}
+
 export interface OptionData {
-  options: SingleChoise[]
+  options: SingleChoise[] | MultipleChoice[]
   type: string
 }
 
