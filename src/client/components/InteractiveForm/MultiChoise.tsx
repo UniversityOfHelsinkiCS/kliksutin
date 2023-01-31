@@ -20,10 +20,10 @@ const MenuProps = {
   },
 }
 
-function getStyles(name: string, personName: readonly string[], theme: Theme) {
+function getStyles(name: string, itemName: readonly string[], theme: Theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      itemName.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   }
@@ -36,13 +36,13 @@ const MultiChoise: React.FC<{
   childQuestions: Question[]
 }> = ({ control, watch, question, childQuestions }) => {
   const theme = useTheme()
-  const [personName, setPersonName] = React.useState<string[]>([])
+  const [item, setItem] = React.useState<string[]>([])
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event: SelectChangeEvent<typeof item>) => {
     const {
       target: { value },
     } = event
-    setPersonName(typeof value === 'string' ? value.split(',') : value)
+    setItem(typeof value === 'string' ? value.split(',') : value)
   }
 
   console.log(control, watch, childQuestions)
@@ -57,7 +57,7 @@ const MultiChoise: React.FC<{
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple
-          value={personName}
+          value={item}
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
           renderValue={(selected) => (
@@ -73,7 +73,7 @@ const MultiChoise: React.FC<{
             <MenuItem
               key={option.id}
               value={option.label}
-              style={getStyles(option, personName, theme)}
+              style={getStyles(option, item, theme)}
             >
               {option.label}
             </MenuItem>
