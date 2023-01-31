@@ -15,19 +15,35 @@ import styles from './styles'
 const SingleChoise: React.FC<{
   control: any
   question: Question
-  children
-}> = ({ question, control, children }) => {
+  childQuestions: Question[]
+}> = ({ question, control, childQuestions }) => {
   const classes = styles.cardStyles
+  console.log(childQuestions)
 
-  const generateOptions = () =>
-    question.optionData.options.map((singleOption) => (
-      <FormControlLabel
-        key={singleOption.id as any}
-        value={singleOption.id}
-        label={singleOption.label}
-        control={<Radio />}
+  function generateOptions(questionData: Question) {
+    return (
+      <Controller
+        control={control}
+        name={questionData.id.toString()}
+        defaultValue=""
+        render={({ field }) => (
+          <Box justifyContent="center">
+            <RadioGroup {...field} row>
+              {questionData.optionData.options.map((singleOption) => (
+                <FormControlLabel
+                  key={singleOption.id as any}
+                  value={singleOption.id}
+                  label={singleOption.label}
+                  control={<Radio />}
+                />
+              ))}
+            </RadioGroup>
+          </Box>
+        )}
       />
-    ))
+    )
+  }
+
   return (
     <Box sx={classes.card}>
       <Card>
@@ -41,20 +57,17 @@ const SingleChoise: React.FC<{
         </CardContent>
       </Card>
 
-      <Controller
-        control={control}
-        name={question.id.toString()}
-        defaultValue=""
-        render={({ field }) => (
-          <Box justifyContent="center">
-            <RadioGroup {...field} row>
-              {generateOptions()}
-            </RadioGroup>
-          </Box>
-        )}
-      />
+      {generateOptions(question)}
 
-      {children}
+      {childQuestions &&
+        childQuestions.map((children) => (
+          <SingleChoise
+            key={children.id as any}
+            control={control}
+            question={children}
+            childQuestions={null}
+          />
+        ))}
     </Box>
   )
 }
