@@ -50,9 +50,6 @@ const SingleChoise: React.FC<{
 
     const parent = watch(question.parentId.toString())
 
-    console.log('Visibility relation:', options)
-    console.log('Parent value', parent)
-
     if (!options.includes(parent)) return null
   }
 

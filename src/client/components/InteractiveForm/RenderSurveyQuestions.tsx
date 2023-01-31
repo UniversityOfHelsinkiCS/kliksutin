@@ -31,7 +31,6 @@ const RenderSurveyQuestions: React.FC<
                 <MultiChoise
                   key={question.id as any}
                   control={control}
-                  watch={watch}
                   question={question}
                   childQuestions={questions.filter(
                     (childQuestion) => question.id === childQuestion.parentId
