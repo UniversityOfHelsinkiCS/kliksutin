@@ -4,7 +4,7 @@ import { Button, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
 import Recommendations from '../Form/Recommendations'
-import RenderSurveyQuestions from './RenderSurveyQuestions'
+import RenderSurvey from './RenderSurvey'
 
 const InteractiveForm = () => {
   const survey = useSurvey()
@@ -14,7 +14,6 @@ const InteractiveForm = () => {
   })
   const onSubmit = (data: any) => {
     const submittedData = data
-    // eslint-disable-next-line
     console.log(submittedData)
   }
 
@@ -24,7 +23,7 @@ const InteractiveForm = () => {
     <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={8}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <RenderSurveyQuestions
+          <RenderSurvey
             control={control}
             watch={watch}
             questions={survey.Questions}
