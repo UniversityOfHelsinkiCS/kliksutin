@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import Chip from '@mui/material/Chip'
-import { Question } from '../../types'
+import { MultipleChoice, Question } from '../../types'
 import styles from './styles'
 
 const ITEM_HEIGHT = 48
@@ -82,13 +82,13 @@ const MultiChoise: React.FC<{
           )}
           MenuProps={MenuProps}
         >
-          {question.optionData.options.map((option) => (
+          {question.optionData.options.map((choise: MultipleChoice) => (
             <MenuItem
-              key={option.id}
-              value={option.label}
-              style={getStyles(option, item, theme)}
+              key={choise.id}
+              value={choise.label}
+              style={getStyles(choise.label, item, theme)}
             >
-              {option.label}
+              {choise.label}
             </MenuItem>
           ))}
         </Select>
