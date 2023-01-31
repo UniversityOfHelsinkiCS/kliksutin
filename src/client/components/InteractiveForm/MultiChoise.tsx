@@ -35,9 +35,10 @@ function getStyles(name: string, itemName: readonly string[], theme: Theme) {
 
 const MultiChoise: React.FC<{
   control: any
+  watch: any
   question: Question
-  childQuestions: Question[]
-}> = ({ control, question, childQuestions }) => {
+  children: any
+}> = ({ control, question, children }) => {
   const theme = useTheme()
   const [item, setItem] = useState<string[]>([])
 
@@ -48,47 +49,49 @@ const MultiChoise: React.FC<{
     setItem(typeof value === 'string' ? value.split(',') : value)
   }
 
-  console.log(childQuestions)
-
   return (
-    <Controller
-      name={question.id.toString()}
-      control={control}
-      defaultValue={[]}
-      render={({ field }) => (
-        <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
-          <InputLabel id={`multiple-choise-label-${question.id}`}>
-            {question.title.en}
-          </InputLabel>
-          <Select
-            labelId={`multiple-choise-label-${question.id}`}
-            multiple
-            value={item}
-            onChange={handleChange}
-            input={<OutlinedInput label={question.title.en} />}
-            {...field}
-            renderValue={(selected) => (
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} />
-                ))}
-              </Box>
-            )}
-            MenuProps={MenuProps}
-          >
-            {question.optionData.options.map((choise: MultipleChoice) => (
-              <MenuItem
-                key={choise.id}
-                value={choise.label}
-                style={getStyles(choise.label, item, theme)}
-              >
-                {choise.label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      )}
-    />
+    <>
+      <Controller
+        name={question.id.toString()}
+        control={control}
+        defaultValue={[]}
+        render={({ field }) => (
+          <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
+            <InputLabel id={`multiple-choise-label-${question.id}`}>
+              {question.title.en}
+            </InputLabel>
+            <Select
+              labelId={`multiple-choise-label-${question.id}`}
+              multiple
+              value={item}
+              onChange={handleChange}
+              input={<OutlinedInput label={question.title.en} />}
+              {...field}
+              renderValue={(selected) => (
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                  {selected.map((value) => (
+                    <Chip key={value} label={value} />
+                  ))}
+                </Box>
+              )}
+              MenuProps={MenuProps}
+            >
+              {question.optionData.options.map((choise: MultipleChoice) => (
+                <MenuItem
+                  key={choise.id}
+                  value={choise.label}
+                  style={getStyles(choise.label, item, theme)}
+                >
+                  {choise.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        )}
+      />
+
+      {children}
+    </>
   )
 }
 

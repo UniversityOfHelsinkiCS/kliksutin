@@ -1,15 +1,14 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material'
-import RenderQuestions from './RenderQuestions'
 import { Question } from '../../types'
 
 const SingleChoise: React.FC<{
   control: any
   watch: any
   question: Question
-  childQuestions: Question[]
-}> = ({ control, watch, question, childQuestions }) => {
+  children: any
+}> = ({ control, watch, question, children }) => {
   // Check if the option has visibility relations
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
@@ -41,17 +40,7 @@ const SingleChoise: React.FC<{
         )}
       />
 
-      {/* Render the child questions recursively is this even legal? */}
-      {childQuestions &&
-        childQuestions.map((children) => (
-          <RenderQuestions
-            key={children.id as any}
-            control={control}
-            watch={watch}
-            question={children}
-            questions={childQuestions}
-          />
-        ))}
+      {children}
     </>
   )
 }

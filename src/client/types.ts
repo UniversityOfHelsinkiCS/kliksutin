@@ -26,7 +26,7 @@ export type Locales = {
   sv: string
 }
 
-export interface SingleChoise {
+export interface SingleChoice {
   id: string
   label: string
 }
@@ -38,7 +38,7 @@ export interface MultipleChoice {
 }
 
 export interface OptionData {
-  options: SingleChoise[] | MultipleChoice[]
+  options: SingleChoice[] | MultipleChoice[]
   type: string
 }
 

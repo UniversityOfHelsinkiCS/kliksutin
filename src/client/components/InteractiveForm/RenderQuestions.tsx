@@ -13,6 +13,11 @@ const RenderQuestions: React.FC<{
 }> = ({ control, watch, question, questions }) => {
   const classes = styles.cardStyles
 
+  const components = {
+    singleChoice: SingleChoise,
+    multipleChoice: MultiChoise,
+  }
+
   // Check if the option has visibility relations
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
@@ -21,6 +26,15 @@ const RenderQuestions: React.FC<{
 
     if (!options.includes(parent)) return null
   }
+
+  // Render the correct XxxxxxChoice component based on the question options type
+  const Choice = components[question.optionData.type]
+
+  if (!Choice) return null
+
+  const childQuestions = questions.filter(
+    (childQuestion) => question.id === childQuestion.parentId
+  )
 
   return (
     <Box sx={classes.card}>
@@ -35,26 +49,23 @@ const RenderQuestions: React.FC<{
         </CardContent>
       </Card>
 
-      {question.optionData.type === 'singleChoice' ? (
-        <SingleChoise
-          key={question.id as any}
-          control={control}
-          watch={watch}
-          question={question}
-          childQuestions={questions.filter(
-            (childQuestion) => question.id === childQuestion.parentId
-          )}
-        />
-      ) : (
-        <MultiChoise
-          key={question.id as any}
-          control={control}
-          question={question}
-          childQuestions={questions.filter(
-            (childQuestion) => question.id === childQuestion.parentId
-          )}
-        />
-      )}
+      <Choice
+        key={question.id as any}
+        control={control}
+        watch={watch}
+        question={question}
+      >
+        {childQuestions &&
+          childQuestions.map((children) => (
+            <RenderQuestions
+              key={children.id as any}
+              control={control}
+              watch={watch}
+              question={children}
+              questions={childQuestions}
+            />
+          ))}
+      </Choice>
     </Box>
   )
 }
