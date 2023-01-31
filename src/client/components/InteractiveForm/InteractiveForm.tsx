@@ -8,7 +8,7 @@ import RenderSurveyQuestions from './RenderSurveyQuestions'
 
 const InteractiveForm = () => {
   const survey = useSurvey()
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
   })
@@ -26,6 +26,7 @@ const InteractiveForm = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <RenderSurveyQuestions
             control={control}
+            watch={watch}
             questions={survey.Questions}
           />
           <Button onClick={handleSubmit(onSubmit)}>Submit</Button>

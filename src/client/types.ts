@@ -4,6 +4,7 @@ export interface InputProps {
   control: Control<any>
   watch?: any
   register?: any
+  getValues?: any
 }
 
 export type FormValues = {
@@ -35,8 +36,12 @@ export interface OptionData {
   type: string
 }
 
+export type Visibility = {
+  options: string[]
+}
+
 export interface Survey {
-  id: Number
+  id: number
   name: string
   createdAt: Date
   updatedAt: Date
@@ -44,14 +49,14 @@ export interface Survey {
 }
 
 export interface Question {
-  id: Number
-  surveyId: Number
-  parentId: Number
-  priority: Number
+  id: number
+  surveyId: number
+  parentId: number
+  priority: number
   title: Locales
   text: Locales
   optionData: OptionData
-  visibility: {}
+  visibility: Visibility
   createdAt: Date
   updatedAt: Date
 }

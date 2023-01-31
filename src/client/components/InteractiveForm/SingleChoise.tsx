@@ -14,11 +14,11 @@ import styles from './styles'
 
 const SingleChoise: React.FC<{
   control: any
+  watch: any
   question: Question
   childQuestions: Question[]
-}> = ({ question, control, childQuestions }) => {
+}> = ({ control, watch, question, childQuestions }) => {
   const classes = styles.cardStyles
-  console.log(childQuestions)
 
   function generateOptions(questionData: Question) {
     return (
@@ -44,6 +44,18 @@ const SingleChoise: React.FC<{
     )
   }
 
+  // Check if the option has visibility relations
+  if (question.visibility?.options) {
+    const [...options] = question.visibility.options
+
+    const parent = watch(question.parentId.toString())
+
+    console.log('Visibility relation:', options)
+    console.log('Parent value', parent)
+
+    if (!options.includes(parent)) return null
+  }
+
   return (
     <Box sx={classes.card}>
       <Card>
@@ -59,11 +71,13 @@ const SingleChoise: React.FC<{
 
       {generateOptions(question)}
 
+      {/* Render the child questions recursively */}
       {childQuestions &&
         childQuestions.map((children) => (
           <SingleChoise
             key={children.id as any}
             control={control}
+            watch={watch}
             question={children}
             childQuestions={null}
           />

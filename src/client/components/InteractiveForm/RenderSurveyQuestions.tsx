@@ -6,7 +6,7 @@ import SelectFaculty from '../Form/SelectFaculty'
 
 const RenderSurveyQuestions: React.FC<
   InputProps & { questions: Question[] }
-> = ({ control, questions }) => {
+> = ({ control, watch, questions }) => {
   if (!questions) return null
 
   return (
@@ -18,8 +18,9 @@ const RenderSurveyQuestions: React.FC<
             {question.parentId === null && (
               <SingleChoise
                 key={question.id as any}
-                question={question}
                 control={control}
+                watch={watch}
+                question={question}
                 childQuestions={questions.filter(
                   (childQuestion) => question.id === childQuestion.parentId
                 )}
