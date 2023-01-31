@@ -5,6 +5,62 @@ const bigCourseOption: string = uuidv4()
 const getQuestionData = () => [
   {
     surveyId: 0,
+    priority: 0,
+    title: {
+      fi: 'Dimensiot',
+      sv: 'Dimensiot',
+      en: 'Dimensiot',
+    },
+    text: {
+      fi: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi?',
+      sv: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi?',
+      en: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi?',
+    },
+    optionData: {
+      type: 'multipleChoice',
+      options: [
+        {
+          id: uuidv4(),
+          label: 'Tiedon omaksuminen',
+          tools: [
+            'zoom',
+            'unitube',
+            'thinglink',
+            'moodle',
+            'screen-cast-o-matic',
+          ],
+        },
+        {
+          id: uuidv4(),
+          label: 'Tuottaminen',
+          tools: ['flinga', 'presemo', 'thinglink', 'moodle'],
+        },
+        {
+          id: uuidv4(),
+          label: 'Yhteistyö',
+          tools: ['zoom', 'flinga', 'thinglink', 'eportfolio', 'moodle'],
+        },
+        {
+          id: uuidv4(),
+          label: 'Keskustelu',
+          tools: ['zoom', 'presemo', 'eportfolio', 'moodle', 'H5P'],
+        },
+        {
+          id: uuidv4(),
+          label: 'Tutkimusperustainen oppiminen',
+          tools: ['flinga'],
+        },
+        {
+          id: uuidv4(),
+          label: 'Harjoittelu',
+          tools: ['thinglink', 'eportfolio', 'moodle'],
+        },
+      ],
+    },
+    visibility: {},
+  },
+  {
+    surveyId: 0,
     priority: 1,
     title: {
       fi: 'Kurssin koko',
@@ -68,9 +124,9 @@ const getQuestionData = () => [
       en: 'Osallistuminen',
     },
     text: {
-      fi: '',
-      sv: '',
-      en: '',
+      fi: 'Lue ensin tilojen opetusteknologian käyttöohjeet täältä. Näistä palveluista voi olla hyötyä opetuksessasi',
+      sv: 'Lue ensin tilojen opetusteknologian käyttöohjeet täältä. Näistä palveluista voi olla hyötyä opetuksessasi',
+      en: 'Lue ensin tilojen opetusteknologian käyttöohjeet täältä. Näistä palveluista voi olla hyötyä opetuksessasi',
     },
     optionData: {
       type: 'singleChoice',
@@ -93,7 +149,8 @@ const getQuestionData = () => [
   },
   {
     surveyId: 0,
-    priority: 4,
+    parentId: 3,
+    priority: 0,
     title: {
       fi: 'Tallennus',
       sv: 'Tallennus',
@@ -121,7 +178,7 @@ const getQuestionData = () => [
   },
   {
     surveyId: 0,
-    priority: 5,
+    priority: 4,
     title: {
       fi: 'Arviointi',
       sv: 'Arviointi',
@@ -153,7 +210,7 @@ const getQuestionData = () => [
   },
   {
     surveyId: 0,
-    parentId: 1,
+    parentId: 2,
     priority: 0,
     title: {
       fi: 'Haluatko pitää kurssi MOOCina?',
