@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { Theme, useTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
+import { Box, Card, CardContent, Typography } from '@mui/material'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import Chip from '@mui/material/Chip'
 import { Question } from '../../types'
+import styles from './styles'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -36,7 +37,9 @@ const MultiChoise: React.FC<{
   childQuestions: Question[]
 }> = ({ control, watch, question, childQuestions }) => {
   const theme = useTheme()
-  const [item, setItem] = React.useState<string[]>([])
+  const [item, setItem] = useState<string[]>([])
+
+  const classes = styles.cardStyles
 
   const handleChange = (event: SelectChangeEvent<typeof item>) => {
     const {
@@ -48,18 +51,28 @@ const MultiChoise: React.FC<{
   console.log(control, watch, childQuestions)
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 410, maxWidth: '80%' }}>
-        <InputLabel id="demo-multiple-chip-label">
+    <Box sx={classes.card}>
+      <Card>
+        <CardContent>
+          <Typography variant="h5" style={classes.heading} component="div">
+            {question.title.en}
+          </Typography>
+          <Box sx={classes.content}>
+            <Typography variant="body2">{question.text.en}</Typography>
+          </Box>
+        </CardContent>
+      </Card>
+
+      <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
+        <InputLabel id={`multiple-choise-label-${question.id}`}>
           {question.title.en}
         </InputLabel>
         <Select
-          labelId="demo-multiple-chip-label"
-          id="demo-multiple-chip"
+          labelId={`multiple-choise-label-${question.id}`}
           multiple
           value={item}
           onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          input={<OutlinedInput label={question.title.en} />}
           renderValue={(selected) => (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
               {selected.map((value) => (
@@ -80,7 +93,7 @@ const MultiChoise: React.FC<{
           ))}
         </Select>
       </FormControl>
-    </div>
+    </Box>
   )
 }
 
