@@ -2,8 +2,8 @@ import React from 'react'
 import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Question } from '../../types'
 import styles from './styles'
-import MultiChoise from './MultiChoise'
-import SingleChoise from './SingleChoise'
+import MultiChoice from './MultiChoice'
+import SingleChoice from './SingleChoice'
 
 const RenderQuestions: React.FC<{
   control: any
@@ -14,8 +14,8 @@ const RenderQuestions: React.FC<{
   const classes = styles.cardStyles
 
   const components = {
-    singleChoice: SingleChoise,
-    multipleChoice: MultiChoise,
+    singleChoice: SingleChoice,
+    multipleChoice: MultiChoice,
   }
 
   // Check if the option has visibility relations

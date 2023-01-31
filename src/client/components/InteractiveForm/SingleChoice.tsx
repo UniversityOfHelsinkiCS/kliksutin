@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material'
 import { Question } from '../../types'
 
-const SingleChoise: React.FC<{
+const SingleChoice: React.FC<{
   control: any
   watch: any
   question: Question
@@ -45,4 +45,4 @@ const SingleChoise: React.FC<{
   )
 }
 
-export default SingleChoise
+export default SingleChoice
