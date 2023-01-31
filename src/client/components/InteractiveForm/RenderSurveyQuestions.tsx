@@ -1,20 +1,19 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import useSurvey from '../../hooks/useSurvey'
-import { InputProps } from '../../types'
+import { InputProps, Question } from '../../types'
 import SingleChoise from './SingleChoise'
 import SelectFaculty from '../Form/SelectFaculty'
 
-const RenderSurveyQuestions: React.FC<InputProps> = ({ control }) => {
-  const survey = useSurvey()
-
-  if (!survey) return null
+const RenderSurveyQuestions: React.FC<
+  InputProps & { questions: Question[] }
+> = ({ control, questions }) => {
+  if (!questions) return null
 
   return (
     <Box sx={{ maxWidth: 1080 }}>
       <SelectFaculty control={control} />
       <Box justifyContent="center">
-        {survey.Questions.map((question) => (
+        {questions.map((question) => (
           <div>
             {question.parentId === null && (
               <SingleChoise
@@ -22,11 +21,13 @@ const RenderSurveyQuestions: React.FC<InputProps> = ({ control }) => {
                 question={question}
                 control={control}
               >
-                {survey.Questions.filter(
-                  (childQuestion) => question.id === childQuestion.parentId
-                ).map((q) => (
-                  <div>{JSON.stringify(q)}</div>
-                ))}
+                {questions
+                  .filter(
+                    (childQuestion) => question.id === childQuestion.parentId
+                  )
+                  .map((q) => (
+                    <div>{JSON.stringify(q)}</div>
+                  ))}
               </SingleChoise>
             )}
           </div>

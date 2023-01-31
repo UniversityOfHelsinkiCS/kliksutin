@@ -1,11 +1,13 @@
 import React from 'react'
-import { Button, Grid } from '@mui/material'
 import { useForm } from 'react-hook-form'
+import { Button, Grid } from '@mui/material'
+import useSurvey from '../../hooks/useSurvey'
 
 import Recommendations from '../Form/Recommendations'
 import RenderSurveyQuestions from './RenderSurveyQuestions'
 
 const InteractiveForm = () => {
+  const survey = useSurvey()
   const { handleSubmit, control } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
@@ -16,11 +18,16 @@ const InteractiveForm = () => {
     console.log(submittedData)
   }
 
+  if (!survey) return null
+
   return (
     <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={8}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <RenderSurveyQuestions control={control} />
+          <RenderSurveyQuestions
+            control={control}
+            questions={survey.Questions}
+          />
           <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
         </form>
       </Grid>
