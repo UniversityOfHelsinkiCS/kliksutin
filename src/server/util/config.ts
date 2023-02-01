@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv'
 
-import { inProduction } from '../../config'
+import { inProduction, inStaging } from '../../config'
 
 dotenv.config()
 
@@ -8,21 +8,11 @@ export const PORT = process.env.PORT || 8000
 
 export const { API_TOKEN } = process.env
 
-export const DB_CONFIG = {
-  dialect: 'postgres',
-  pool: {
-    max: 10,
-    min: 0,
-    acquire: 10000,
-    idle: 300000000,
-  },
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  port: 5432,
-  host: process.env.POSTGRES_HOST,
-  database: process.env.POSTGRES_DATABASE,
-  logging: false,
-}
+let connectionString = `postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:5432/${process.env.POSTGRES_DATABASE}?targetServerType=primary`
+
+if (inProduction || inStaging) connectionString = `${connectionString}&ssl=true`
+
+export const DB_CONNECTION_STRING = connectionString
 
 export const JAMI_URL = inProduction
   ? 'https://importer.cs.helsinki.fi/api/auth'

@@ -1,14 +1,12 @@
-import { Sequelize, Options } from 'sequelize'
+import { Sequelize } from 'sequelize'
 import { Umzug, SequelizeStorage } from 'umzug'
 
 import logger from '../util/logger'
-import { DB_CONFIG } from '../util/config'
+import { DB_CONNECTION_STRING } from '../util/config'
 
 const DB_CONNECTION_RETRY_LIMIT = 10
 
-export const sequelize = new Sequelize({
-  ...(DB_CONFIG as Options),
-})
+export const sequelize = new Sequelize(DB_CONNECTION_STRING)
 
 const runMigrations = async () => {
   const migrator = new Umzug({
