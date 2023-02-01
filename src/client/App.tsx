@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import { Box } from '@mui/material'
-import { inProduction, inStaging } from '../config'
+import { inProduction } from '../config'
 import useTheme from './theme'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar/NavBar'
@@ -15,7 +15,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Box textAlign="center">
         <NavBar />
-        {inProduction || inStaging ? <Form /> : <InteractiveForm />}
+        {inProduction ? <Form /> : <InteractiveForm />}
         <Footer />
       </Box>
     </ThemeProvider>
