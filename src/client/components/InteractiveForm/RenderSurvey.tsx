@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import { InputProps, Question } from '../../types'
-import SelectFaculty from '../Form/SelectFaculty'
+import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 
 const RenderSurvey: React.FC<InputProps & { questions: Question[] }> = ({

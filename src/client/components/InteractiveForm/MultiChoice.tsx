@@ -33,7 +33,7 @@ function getStyles(name: string, itemName: readonly string[], theme: Theme) {
   }
 }
 
-const MultiChoise: React.FC<{
+const MultiChoice: React.FC<{
   control: any
   watch: any
   question: Question
@@ -56,7 +56,7 @@ const MultiChoise: React.FC<{
         control={control}
         defaultValue={[]}
         render={({ field }) => (
-          <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
+          <FormControl sx={{ width: '100%' }}>
             <InputLabel id={`multiple-choise-label-${question.id}`}>
               {question.title.en}
             </InputLabel>
@@ -95,4 +95,4 @@ const MultiChoise: React.FC<{
   )
 }
 
-export default MultiChoise
+export default MultiChoice

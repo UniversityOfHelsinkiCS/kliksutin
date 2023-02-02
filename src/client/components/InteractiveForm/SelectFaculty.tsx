@@ -10,9 +10,7 @@ import styles from './styles'
 import { InputProps } from '../../types'
 import useFaculty from '../../hooks/useFaculty'
 
-const SelectFaculty: React.FC<InputProps> = ({
-  control
-}) => {
+const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   useTranslation()
   const language = localStorage.getItem('language') || 'en'
   const [faculty, setFaculty] = useState('')
@@ -46,7 +44,7 @@ const SelectFaculty: React.FC<InputProps> = ({
         name="faculty"
         defaultValue=""
         render={({ field }) => (
-          <FormControl sx={{ m: 1, width: 480, maxWidth: '80%' }}>
+          <FormControl sx={{ width: '100%' }}>
             <InputLabel>
               <Trans i18nKey="facultySelect:inputLabel" />
             </InputLabel>

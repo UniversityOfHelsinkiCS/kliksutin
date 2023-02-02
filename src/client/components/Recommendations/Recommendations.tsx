@@ -9,7 +9,7 @@ const Recommendations = () => {
 
   return (
     <Box>
-      <Card sx={classes.recommendationCard}>
+      <Card>
         <CardContent>
           <Typography variant="h5" sx={classes.heading} component="div">
             <Trans i18nKey="recommendations:title" />

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Button, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
-import Recommendations from '../Form/Recommendations'
+import Recommendations from '../Recommendations/Recommendations'
 import RenderSurvey from './RenderSurvey'
 
 const InteractiveForm = () => {
@@ -20,8 +20,8 @@ const InteractiveForm = () => {
   if (!survey) return null
 
   return (
-    <Grid container spacing={2} alignItems="center" justifyContent="center">
-      <Grid item xs={8}>
+    <Grid container alignItems="center" justifyContent="center">
+      <Grid item xs={12} sm={12} md={7} lg={7} xl={6}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <RenderSurvey
             control={control}
@@ -31,7 +31,7 @@ const InteractiveForm = () => {
           <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
         </form>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={5} lg={5} xl={6}>
         <Recommendations />
       </Grid>
     </Grid>
