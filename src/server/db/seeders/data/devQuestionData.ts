@@ -21,8 +21,12 @@ const getQuestionData = () => [
       options: [
         {
           id: uuidv4(),
-          label: 'Tiedon omaksuminen',
-          tools: [
+          label: {
+            fi: 'Tiedon omaksuminen',
+            sv: 'Tiedon omaksuminen',
+            en: 'Tiedon omaksuminen',
+          },
+          data: [
             'zoom',
             'unitube',
             'thinglink',
@@ -32,28 +36,48 @@ const getQuestionData = () => [
         },
         {
           id: uuidv4(),
-          label: 'Tuottaminen',
-          tools: ['flinga', 'presemo', 'thinglink', 'moodle'],
+          label: {
+            fi: 'Tuottaminen',
+            sv: 'Tuottaminen',
+            en: 'Tuottaminen',
+          },
+          data: ['flinga', 'presemo', 'thinglink', 'moodle'],
         },
         {
           id: uuidv4(),
-          label: 'Yhteistyö',
-          tools: ['zoom', 'flinga', 'thinglink', 'eportfolio', 'moodle'],
+          label: {
+            fi: 'Yhteistyö',
+            sv: 'Yhteistyö',
+            en: 'Yhteistyö',
+          },
+          data: ['zoom', 'flinga', 'thinglink', 'eportfolio', 'moodle'],
         },
         {
           id: uuidv4(),
-          label: 'Keskustelu',
-          tools: ['zoom', 'presemo', 'eportfolio', 'moodle', 'H5P'],
+          label: {
+            fi: 'Keskustelu',
+            sv: 'Keskustelu',
+            en: 'Keskustelu',
+          },
+          data: ['zoom', 'presemo', 'eportfolio', 'moodle', 'H5P'],
         },
         {
           id: uuidv4(),
-          label: 'Tutkimusperustainen oppiminen',
-          tools: ['flinga'],
+          label: {
+            fi: 'Tutkimusperustainen oppiminen',
+            sv: 'Tutkimusperustainen oppiminen',
+            en: 'Tutkimusperustainen oppiminen',
+          },
+          data: ['flinga'],
         },
         {
           id: uuidv4(),
-          label: 'Harjoittelu',
-          tools: ['thinglink', 'eportfolio', 'moodle', 'H5P'],
+          label: {
+            fi: 'Harjoittelu',
+            sv: 'Harjoittelu',
+            en: 'Harjoittelu',
+          },
+          data: ['thinglink', 'eportfolio', 'moodle', 'H5P'],
         },
       ],
     },
@@ -77,11 +101,27 @@ const getQuestionData = () => [
       options: [
         {
           id: uuidv4(),
-          label: '< 50',
+          label: {
+            fi: '< 50',
+            sv: '< 50',
+            en: '< 50',
+          },
         },
         {
           id: bigCourseOption,
-          label: '>= 50',
+          label: {
+            fi: '>= 50',
+            sv: '>= 50',
+            en: '>= 50',
+          },
+        },
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'rajoittamaton',
+            sv: 'rajoittamaton',
+            en: 'rajoittamaton',
+          },
         },
       ],
     },
@@ -90,34 +130,6 @@ const getQuestionData = () => [
   {
     surveyId: 0,
     priority: 2,
-    title: {
-      fi: 'Opetusmuoto',
-      sv: 'Opetusmuoto',
-      en: 'Opetusmuoto',
-    },
-    text: {
-      fi: '',
-      sv: '',
-      en: '',
-    },
-    optionData: {
-      type: 'singleChoice',
-      options: [
-        {
-          id: uuidv4(),
-          label: 'Luennot',
-        },
-        {
-          id: uuidv4(),
-          label: 'Demot',
-        },
-      ],
-    },
-    visibility: {},
-  },
-  {
-    surveyId: 0,
-    priority: 3,
     title: {
       fi: 'Osallistuminen',
       sv: 'Osallistuminen',
@@ -133,15 +145,95 @@ const getQuestionData = () => [
       options: [
         {
           id: uuidv4(),
-          label: 'Live',
+          label: {
+            fi: 'Läsnä',
+            sv: 'Läsnä',
+            en: 'Läsnä',
+          },
         },
         {
           id: uuidv4(),
-          label: 'Hybridi',
+          label: {
+            fi: 'Hybridi',
+            sv: 'Hybridi',
+            en: 'Hybridi',
+          },
         },
         {
           id: uuidv4(),
-          label: 'Etä',
+          label: {
+            fi: 'Etä',
+            sv: 'Etä',
+            en: 'Etä',
+          },
+        },
+      ],
+    },
+    visibility: {},
+  },
+  {
+    surveyId: 0,
+    priority: 3,
+    title: {
+      fi: 'Suoritusmuoto',
+      sv: 'Suoritusmuoto',
+      en: 'Suoritusmuoto',
+    },
+    text: {
+      fi: '',
+      sv: '',
+      en: '',
+    },
+    optionData: {
+      type: 'multipleChoice',
+      options: [
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Tentti',
+            sv: 'Tentti',
+            en: 'Tentti',
+          },
+        },
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Demot/osasuoritukset',
+            sv: 'Demot/osasuoritukset',
+            en: 'Demot/osasuoritukset',
+          },
+        },
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Välitehtävät/oppimispäiväkirja',
+            sv: 'Välitehtävät/oppimispäiväkirja',
+            en: 'Välitehtävät/oppimispäiväkirja',
+          },
+        },
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Lopputyö',
+            sv: 'Lopputyö',
+            en: 'Lopputyö',
+          },
+        },
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Osallistuminen opetukseen',
+            sv: 'Osallistuminen opetukseen',
+            en: 'Osallistuminen opetukseen',
+          },
+        },
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Muu',
+            sv: 'Muu',
+            en: 'Muu',
+          },
         },
       ],
     },
@@ -166,11 +258,19 @@ const getQuestionData = () => [
       options: [
         {
           id: uuidv4(),
-          label: 'Kyllä',
+          label: {
+            fi: 'Kyllä',
+            sv: 'Kyllä',
+            en: 'Kyllä',
+          },
         },
         {
           id: uuidv4(),
-          label: 'Ei',
+          label: {
+            fi: 'Ei',
+            sv: 'Ei',
+            en: 'Ei',
+          },
         },
       ],
     },
@@ -194,15 +294,27 @@ const getQuestionData = () => [
       options: [
         {
           id: uuidv4(),
-          label: 'Ennen',
+          label: {
+            fi: 'Ennen',
+            sv: 'Ennen',
+            en: 'Ennen',
+          },
         },
         {
           id: uuidv4(),
-          label: 'Jälkeen',
+          label: {
+            fi: 'Jälkeen',
+            sv: 'Jälkeen',
+            en: 'Jälkeen',
+          },
         },
         {
           id: uuidv4(),
-          label: 'Aikana',
+          label: {
+            fi: 'Aikana',
+            sv: 'Aikana',
+            en: 'Aikana',
+          },
         },
       ],
     },
@@ -227,11 +339,19 @@ const getQuestionData = () => [
       options: [
         {
           id: uuidv4(),
-          label: 'Kyllä',
+          label: {
+            fi: 'Kyllä',
+            sv: 'Kyllä',
+            en: 'Kyllä',
+          },
         },
         {
           id: uuidv4(),
-          label: 'Ei',
+          label: {
+            fi: 'Ei',
+            sv: 'Ei',
+            en: 'Ei',
+          },
         },
       ],
     },

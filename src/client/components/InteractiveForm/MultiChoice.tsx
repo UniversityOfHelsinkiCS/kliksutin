@@ -9,7 +9,7 @@ import {
   Select,
 } from '@mui/material'
 import Chip from '@mui/material/Chip'
-import { MultipleChoice, Question } from '../../types'
+import { MultipleChoiceType, Question } from '../../types'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -50,16 +50,19 @@ const MultiChoice: React.FC<{
                 {selected.map((selectedChoise) => {
                   const parsedChoise = JSON.parse(selectedChoise)
                   return (
-                    <Chip key={parsedChoise.id} label={parsedChoise.label} />
+                    <Chip
+                      key={parsedChoise.id}
+                      label={parsedChoise.label[language]}
+                    />
                   )
                 })}
               </Box>
             )}
             MenuProps={MenuProps}
           >
-            {question.optionData.options.map((choise: MultipleChoice) => (
+            {question.optionData.options.map((choise: MultipleChoiceType) => (
               <MenuItem key={choise.id} value={JSON.stringify(choise)}>
-                {choise.label}
+                {choise.label[language]}
               </MenuItem>
             ))}
           </Select>

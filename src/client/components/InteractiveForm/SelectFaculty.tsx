@@ -7,7 +7,7 @@ import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { Trans, useTranslation } from 'react-i18next'
 import styles from './styles'
-import { InputProps } from '../../types'
+import { InputProps, Locales } from '../../types'
 import useFaculty from '../../hooks/useFaculty'
 
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
@@ -37,32 +37,32 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
             </Typography>
           </Box>
         </CardContent>
-      </Card>
 
-      <Controller
-        control={control}
-        name="faculty"
-        defaultValue=""
-        render={({ field }) => (
-          <FormControl sx={{ width: '100%' }}>
-            <InputLabel>
-              <Trans i18nKey="facultySelect:inputLabel" />
-            </InputLabel>
-            <Select
-              value={faculty}
-              label={<Trans i18nKey="facultySelect:inputLabel" />}
-              onChange={handleChange}
-              {...field}
-            >
-              {faculties.map((f) => (
-                <MenuItem key={f.fi} value={f.fi}>
-                  {f[language]}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        )}
-      />
+        <Controller
+          control={control}
+          name="faculty"
+          defaultValue=""
+          render={({ field }) => (
+            <FormControl sx={{ width: '100%' }}>
+              <InputLabel>
+                <Trans i18nKey="facultySelect:inputLabel" />
+              </InputLabel>
+              <Select
+                value={faculty}
+                label={<Trans i18nKey="facultySelect:inputLabel" />}
+                onChange={handleChange}
+                {...field}
+              >
+                {faculties.map((f: Locales) => (
+                  <MenuItem key={f.fi} value={f.fi}>
+                    {f[language]}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          )}
+        />
+      </Card>
     </Box>
   )
 }

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material'
-import { Question } from '../../types'
+import { Question, SingleChoiceType } from '../../types'
 
 const SingleChoice: React.FC<{
   control: any
   watch: any
   question: Question
   children: any
+  language: string
 }> = ({ control, watch, question, children }) => {
-  // Check if the option has visibility relations
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
 
@@ -27,14 +27,16 @@ const SingleChoice: React.FC<{
         render={({ field }) => (
           <Box justifyContent="center">
             <RadioGroup {...field} row>
-              {question.optionData.options.map((singleOption) => (
-                <FormControlLabel
-                  key={singleOption.id as any}
-                  value={singleOption.id}
-                  label={singleOption.label}
-                  control={<Radio />}
-                />
-              ))}
+              {question.optionData.options.map(
+                (singleOption: SingleChoiceType) => (
+                  <FormControlLabel
+                    key={singleOption.id as any}
+                    value={singleOption.id}
+                    label={singleOption.label.en}
+                    control={<Radio />}
+                  />
+                )
+              )}
             </RadioGroup>
           </Box>
         )}

@@ -2,14 +2,18 @@ import React from 'react'
 import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Trans, useTranslation } from 'react-i18next'
 import styles from './styles'
-import { MultipleChoice } from '../../types'
+import { MultipleChoiceType } from '../../types'
 
-const Dimension: React.FC<{ dimension: MultipleChoice }> = ({ dimension }) => (
+const language = localStorage.getItem('language') || 'en'
+
+const Dimension: React.FC<{ dimension: MultipleChoiceType }> = ({
+  dimension,
+}) => (
   <>
     <Typography variant="h6" gutterBottom>
-      {dimension.label}
+      {dimension.label[language]}
     </Typography>
-    {dimension.tools.map((tool) => (
+    {dimension.data.map((tool) => (
       <Typography key={tool} sx={{ ml: 1, mb: 0.5 }} color="text.secondary">
         {tool}
       </Typography>
@@ -39,7 +43,7 @@ const Recommendations: React.FC<{
           </Box>
 
           {dimensions.map((dimension: string) => {
-            const dimensionJSON: MultipleChoice = JSON.parse(dimension)
+            const dimensionJSON: MultipleChoiceType = JSON.parse(dimension)
             return (
               <Dimension key={dimensionJSON.id} dimension={dimensionJSON} />
             )
