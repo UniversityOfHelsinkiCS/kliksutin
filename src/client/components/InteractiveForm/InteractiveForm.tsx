@@ -20,8 +20,8 @@ const InteractiveForm = () => {
   if (!survey) return null
 
   return (
-    <Grid container alignItems="center" justifyContent="center">
-      <Grid item xs={12} sm={12} md={7} lg={7} xl={6}>
+    <Grid container>
+      <Grid item sm={12} md={7} xl={6}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <RenderSurvey
             control={control}
@@ -31,7 +31,7 @@ const InteractiveForm = () => {
           <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
         </form>
       </Grid>
-      <Grid item xs={12} sm={12} md={5} lg={5} xl={6}>
+      <Grid item sm={12} md={5} xl={6}>
         <Recommendations watch={watch} />
       </Grid>
     </Grid>

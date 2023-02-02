@@ -1,12 +1,7 @@
 const cardStyles = {
-  recommendationCard: {
-    m: 1,
-    textAlign: 'left',
-  },
-  content: {
-    mt: 4,
-    mb: 2,
-    pl: 2,
+  recommendationContainer: {
+    borderLeft: 1,
+    borderColor: 'grey.300',
     textAlign: 'left',
   },
   heading: {
