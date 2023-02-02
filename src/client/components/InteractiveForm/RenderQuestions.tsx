@@ -13,12 +13,8 @@ const RenderQuestions: React.FC<{
 }> = ({ control, watch, question, questions }) => {
   const classes = styles.cardStyles
 
-  const components = {
-    singleChoice: SingleChoice,
-    multipleChoice: MultiChoice,
-  }
+  const language = localStorage.getItem('language') || 'en'
 
-  // Check if the option has visibility relations
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
 
@@ -27,7 +23,11 @@ const RenderQuestions: React.FC<{
     if (!options.includes(parent)) return null
   }
 
-  // Render the correct XxxxxxChoice component based on the question options type
+  const components = {
+    singleChoice: SingleChoice,
+    multipleChoice: MultiChoice,
+  }
+
   const Choice = components[question.optionData.type]
 
   if (!Choice) return null
@@ -39,10 +39,10 @@ const RenderQuestions: React.FC<{
   return (
     <Container sx={classes.questionsContainer}>
       <Typography variant="h5" style={classes.heading} component="div">
-        {question.title.en}
+        {question.title[language]}
       </Typography>
       <Box sx={classes.content}>
-        <Typography variant="body2">{question.text.en}</Typography>
+        <Typography variant="body2">{question.text[language]}</Typography>
       </Box>
 
       <Choice
@@ -50,6 +50,7 @@ const RenderQuestions: React.FC<{
         control={control}
         watch={watch}
         question={question}
+        language={language}
       >
         {childQuestions &&
           childQuestions.map((children) => (

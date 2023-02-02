@@ -27,7 +27,8 @@ const MultiChoice: React.FC<{
   watch: any
   question: Question
   children: any
-}> = ({ control, question, children }) => (
+  language: string
+}> = ({ control, question, children, language }) => (
   <>
     <Controller
       name={question.id.toString()}
@@ -36,13 +37,13 @@ const MultiChoice: React.FC<{
       render={({ field }) => (
         <FormControl sx={{ width: '100%' }}>
           <InputLabel id={`multiple-choise-label-${question.id}`}>
-            {question.title.en}
+            {question.title[language]}
           </InputLabel>
           <Select
             labelId={`multiple-choise-label-${question.id}`}
             multiple
             value={field.value}
-            input={<OutlinedInput label={question.title.en} />}
+            input={<OutlinedInput label={question.title[language]} />}
             {...field}
             renderValue={(selected) => (
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
