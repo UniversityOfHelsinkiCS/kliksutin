@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Controller } from 'react-hook-form'
-import { Theme, useTheme } from '@mui/material/styles'
 import {
   Box,
   OutlinedInput,
@@ -9,7 +8,6 @@ import {
   FormControl,
   Select,
 } from '@mui/material'
-import { SelectChangeEvent } from '@mui/material/Select'
 import Chip from '@mui/material/Chip'
 import { MultipleChoice, Question } from '../../types'
 
@@ -24,75 +22,52 @@ const MenuProps = {
   },
 }
 
-function getStyles(name: string, itemName: readonly string[], theme: Theme) {
-  return {
-    fontWeight:
-      itemName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  }
-}
-
 const MultiChoice: React.FC<{
   control: any
   watch: any
   question: Question
   children: any
-}> = ({ control, question, children }) => {
-  const theme = useTheme()
-  const [item, setItem] = useState<string[]>([])
+}> = ({ control, question, children }) => (
+  <>
+    <Controller
+      name={question.id.toString()}
+      control={control}
+      defaultValue={[]}
+      render={({ field }) => (
+        <FormControl sx={{ width: '100%' }}>
+          <InputLabel id={`multiple-choise-label-${question.id}`}>
+            {question.title.en}
+          </InputLabel>
+          <Select
+            labelId={`multiple-choise-label-${question.id}`}
+            multiple
+            value={field.value}
+            input={<OutlinedInput label={question.title.en} />}
+            {...field}
+            renderValue={(selected) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map((selectedChoise) => {
+                  const parsedChoise = JSON.parse(selectedChoise)
+                  return (
+                    <Chip key={parsedChoise.id} label={parsedChoise.label} />
+                  )
+                })}
+              </Box>
+            )}
+            MenuProps={MenuProps}
+          >
+            {question.optionData.options.map((choise: MultipleChoice) => (
+              <MenuItem key={choise.id} value={JSON.stringify(choise)}>
+                {choise.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      )}
+    />
 
-  const handleChange = (event: SelectChangeEvent<typeof item>) => {
-    const {
-      target: { value },
-    } = event
-    setItem(typeof value === 'string' ? value.split(',') : value)
-  }
-
-  return (
-    <>
-      <Controller
-        name={question.id.toString()}
-        control={control}
-        defaultValue={[]}
-        render={({ field }) => (
-          <FormControl sx={{ width: '100%' }}>
-            <InputLabel id={`multiple-choise-label-${question.id}`}>
-              {question.title.en}
-            </InputLabel>
-            <Select
-              labelId={`multiple-choise-label-${question.id}`}
-              multiple
-              value={item}
-              onChange={handleChange}
-              input={<OutlinedInput label={question.title.en} />}
-              {...field}
-              renderValue={(selected) => (
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                  {selected.map((value) => (
-                    <Chip key={value} label={value} />
-                  ))}
-                </Box>
-              )}
-              MenuProps={MenuProps}
-            >
-              {question.optionData.options.map((choise: MultipleChoice) => (
-                <MenuItem
-                  key={choise.id}
-                  value={choise.label}
-                  style={getStyles(choise.label, item, theme)}
-                >
-                  {choise.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        )}
-      />
-
-      {children}
-    </>
-  )
-}
+    {children}
+  </>
+)
 
 export default MultiChoice
