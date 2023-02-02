@@ -32,7 +32,7 @@ const InteractiveForm = () => {
         </form>
       </Grid>
       <Grid item xs={12} sm={12} md={5} lg={5} xl={6}>
-        <Recommendations />
+        <Recommendations watch={watch} />
       </Grid>
     </Grid>
   )

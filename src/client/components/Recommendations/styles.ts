@@ -1,15 +1,16 @@
 const cardStyles = {
   recommendationCard: {
-    width: '80%',
+    m: 1,
+    textAlign: 'left',
   },
   content: {
     mt: 4,
     mb: 2,
-    px: 2,
+    pl: 2,
     textAlign: 'left',
   },
   heading: {
-    fontWeight: '400',
+    fontWeight: '300',
   },
 }
 
