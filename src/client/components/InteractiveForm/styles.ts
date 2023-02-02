@@ -4,9 +4,14 @@ const cardStyles = {
     transition: '0.3s',
     textAlign: 'left',
   },
+  questionsContainer: {
+    my: 4,
+    borderLeft: 1,
+    borderColor: 'grey.400',
+  },
   content: {
-    mt: 4,
-    mb: 2,
+    mt: 2,
+    mb: 1,
     pl: 2,
     textAlign: 'left',
   },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Card, CardContent, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import { Question } from '../../types'
 import styles from './styles'
 import MultiChoice from './MultiChoice'
@@ -37,17 +37,13 @@ const RenderQuestions: React.FC<{
   )
 
   return (
-    <Box sx={classes.card}>
-      <Card>
-        <CardContent>
-          <Typography variant="h5" style={classes.heading} component="div">
-            {question.title.en}
-          </Typography>
-          <Box sx={classes.content}>
-            <Typography variant="body2">{question.text.en}</Typography>
-          </Box>
-        </CardContent>
-      </Card>
+    <Container sx={classes.questionsContainer}>
+      <Typography variant="h5" style={classes.heading} component="div">
+        {question.title.en}
+      </Typography>
+      <Box sx={classes.content}>
+        <Typography variant="body2">{question.text.en}</Typography>
+      </Box>
 
       <Choice
         key={question.id as any}
@@ -66,7 +62,7 @@ const RenderQuestions: React.FC<{
             />
           ))}
       </Choice>
-    </Box>
+    </Container>
   )
 }
 
