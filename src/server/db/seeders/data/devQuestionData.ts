@@ -4,6 +4,7 @@ const bigCourseOption: string = uuidv4()
 
 const getQuestionData = () => [
   {
+    id: 1,
     surveyId: 0,
     priority: 0,
     title: {
@@ -84,6 +85,7 @@ const getQuestionData = () => [
     visibility: {},
   },
   {
+    id: 2,
     surveyId: 0,
     priority: 1,
     title: {
@@ -172,6 +174,7 @@ const getQuestionData = () => [
     visibility: {},
   },
   {
+    id: 3,
     surveyId: 0,
     priority: 3,
     title: {
@@ -240,6 +243,7 @@ const getQuestionData = () => [
     visibility: {},
   },
   {
+    id: 4,
     surveyId: 0,
     parentId: 3,
     priority: 0,
@@ -277,6 +281,7 @@ const getQuestionData = () => [
     visibility: {},
   },
   {
+    id: 5,
     surveyId: 0,
     priority: 4,
     title: {
@@ -321,6 +326,7 @@ const getQuestionData = () => [
     visibility: {},
   },
   {
+    id: 6,
     surveyId: 0,
     parentId: 2,
     priority: 0,
