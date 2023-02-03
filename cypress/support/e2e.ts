@@ -16,7 +16,9 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-export const baseUrl = 'localhost:8000'
+export const baseUrl = 'localhost:3000'
+
+export const testData = '../../src/server/db/seeders/data/devQuestionData.ts'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
