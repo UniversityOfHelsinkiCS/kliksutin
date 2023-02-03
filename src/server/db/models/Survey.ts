@@ -4,9 +4,11 @@ import {
   InferCreationAttributes,
   CreationOptional,
   DataTypes,
+  NonAttribute,
 } from 'sequelize'
 
 import { sequelize } from '../connection'
+import Question from './Question'
 
 class Survey extends Model<
   InferAttributes<Survey>,
@@ -15,6 +17,8 @@ class Survey extends Model<
   declare id: CreationOptional<number>
 
   declare name: string
+
+  declare Questions: NonAttribute<Question[]>
 }
 
 Survey.init(
