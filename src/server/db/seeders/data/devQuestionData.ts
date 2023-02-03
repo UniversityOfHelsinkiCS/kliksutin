@@ -6,6 +6,7 @@ const getQuestionData = () => [
   {
     id: 1,
     surveyId: 0,
+    parentId: null,
     priority: 0,
     title: {
       fi: 'Dimensiot',
@@ -87,6 +88,7 @@ const getQuestionData = () => [
   {
     id: 2,
     surveyId: 0,
+    parentId: null,
     priority: 1,
     title: {
       fi: 'Kurssin koko',
@@ -132,6 +134,7 @@ const getQuestionData = () => [
   {
     id: 3,
     surveyId: 0,
+    parentId: null,
     priority: 2,
     title: {
       fi: 'Osallistuminen',
@@ -177,6 +180,7 @@ const getQuestionData = () => [
   {
     id: 4,
     surveyId: 0,
+    parentId: null,
     priority: 3,
     title: {
       fi: 'Suoritusmuoto',
@@ -284,6 +288,7 @@ const getQuestionData = () => [
   {
     id: 6,
     surveyId: 0,
+    parentId: null,
     priority: 4,
     title: {
       fi: 'Arviointi',
