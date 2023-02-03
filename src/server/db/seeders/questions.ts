@@ -5,14 +5,17 @@ const seedQuestions = async () => {
   const questions: any[] = getQuestionData()
 
   questions.forEach(async (question) => {
-    await Question.findOrCreate({
+    const { id } = await Question.findOne({
       where: {
         title: question.title,
         surveyId: 0,
       },
-      defaults: {
-        ...question,
-      },
+      attributes: ['id'],
+    })
+
+    await Question.upsert({
+      id,
+      ...question,
     })
   })
 }
