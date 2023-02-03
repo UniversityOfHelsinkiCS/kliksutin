@@ -6,9 +6,12 @@ function useSurvey(): Survey {
   const [survey, setSurvey] = useState(null)
 
   useEffect(() => {
-    axios
-      .get('/api/surveys/0')
-      .then((facultyData) => setSurvey(facultyData.data))
+    const fetchSurveyData = async () => {
+      await axios
+        .get('/api/surveys/0')
+        .then((facultyData) => setSurvey(facultyData.data))
+    }
+    fetchSurveyData()
   }, [])
 
   return survey

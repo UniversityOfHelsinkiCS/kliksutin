@@ -29,8 +29,6 @@ const Recommendations: React.FC<{
 
   const dimensions = watch('1')
 
-  if (!dimensions) return null
-
   return (
     <Container sx={classes.recommendationContainer}>
       <Typography variant="h5" sx={classes.heading} component="div">
