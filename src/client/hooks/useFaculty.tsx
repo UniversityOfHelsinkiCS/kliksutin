@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { BASE_PATH } from '../../config'
+import { PUBLIC_URL } from '../../config'
 
 function useFaculty() {
   const [faculties, setFaculties] = useState(null)
 
   useEffect(() => {
     axios
-      .get(`${BASE_PATH}api/faculties`)
+      .get(`${PUBLIC_URL}api/faculties`)
       .then((facultyData) => setFaculties(facultyData.data))
   }, [])
 
