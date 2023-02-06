@@ -38,7 +38,7 @@ const Recommendations: React.FC<{
       </Typography>
 
       {Object.keys(dimensions).map((dimension: string) => (
-        <div>{dimension}</div>
+        <div key={dimension}>{dimension}</div>
       ))}
     </Container>
   )

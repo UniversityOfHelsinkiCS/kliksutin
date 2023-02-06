@@ -4,6 +4,7 @@ import { Button, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
 import RenderSurvey from './RenderSurvey'
+import Recommendations from '../Recommendations/Recommendations'
 
 const InteractiveForm = () => {
   const survey = useSurvey()
@@ -29,6 +30,9 @@ const InteractiveForm = () => {
           />
           <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
         </form>
+      </Grid>
+      <Grid item sm={12} md={5} xl={6}>
+        <Recommendations watch={watch} />
       </Grid>
     </Grid>
   )
