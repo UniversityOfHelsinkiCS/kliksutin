@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Survey } from '../types'
+import { BASE_PATH } from '../../config'
 
 function useSurvey(): Survey {
   const [survey, setSurvey] = useState(null)
@@ -8,7 +9,7 @@ function useSurvey(): Survey {
   useEffect(() => {
     const fetchSurveyData = async () => {
       await axios
-        .get('/api/surveys/0')
+        .get(`${BASE_PATH}api/surveys/0`)
         .then((facultyData) => setSurvey(facultyData.data))
     }
     fetchSurveyData()

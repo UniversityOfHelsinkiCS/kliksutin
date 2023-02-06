@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
-function useFaculty () {
-	const [faculties, setFaculties] = useState(null)
+import { BASE_PATH } from '../../config'
 
-	useEffect(() => {
+function useFaculty() {
+  const [faculties, setFaculties] = useState(null)
+
+  useEffect(() => {
     axios
-      .get('/api/faculties')
+      .get(`${BASE_PATH}api/faculties`)
       .then((facultyData) => setFaculties(facultyData.data))
   }, [])
 
-	return faculties
+  return faculties
 }
 
 export default useFaculty
