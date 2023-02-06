@@ -17,3 +17,9 @@ export interface OrganisationData {
   name: Faculty
   programmes: Array<Programme>
 }
+
+export interface TranslatedText {
+  fi: string
+  sv: string
+  en: string
+}
