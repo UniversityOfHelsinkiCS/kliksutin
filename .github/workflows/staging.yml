@@ -28,6 +28,6 @@ jobs:
           push: true
           tags: toska/kliksutin:staging
           build-args: |
-            BASE_PATH=/
+            BASE_PATH=/kliksutin
             GIT_SHA=${{ github.sha }}
             STAGING=true
