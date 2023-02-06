@@ -7,7 +7,6 @@ import { MultipleChoiceType, Question } from '../../types'
 const CheckboxSelect: React.FC<{
   control: any
   question: Question
-  children: any
   language: string
 }> = ({ control, question, language }) => (
   <>

@@ -10,10 +10,9 @@ const RenderQuestions: React.FC<{
   watch: any
   questions: Question[]
   question: Question
-}> = ({ control, watch, question, questions }) => {
+  language: string
+}> = ({ control, watch, question, questions, language }) => {
   const classes = styles.cardStyles
-
-  const language = localStorage.getItem('language') || 'en'
 
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
@@ -60,6 +59,7 @@ const RenderQuestions: React.FC<{
               watch={watch}
               question={children}
               questions={childQuestions}
+              language={language}
             />
           ))}
       </Choice>
