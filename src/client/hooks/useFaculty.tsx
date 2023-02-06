@@ -8,7 +8,7 @@ function useFaculty() {
 
   useEffect(() => {
     axios
-      .get(`${PUBLIC_URL}api/faculties`)
+      .get(`${PUBLIC_URL}/api/faculties`)
       .then((facultyData) => setFaculties(facultyData.data))
   }, [])
 

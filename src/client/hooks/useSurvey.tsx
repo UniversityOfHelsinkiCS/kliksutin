@@ -9,7 +9,7 @@ function useSurvey(): Survey {
   useEffect(() => {
     const fetchSurveyData = async () => {
       await axios
-        .get(`${PUBLIC_URL}api/surveys/0`)
+        .get(`${PUBLIC_URL}/api/surveys/0`)
         .then((facultyData) => setSurvey(facultyData.data))
     }
     fetchSurveyData()
