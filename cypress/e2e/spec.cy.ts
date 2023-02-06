@@ -2,10 +2,11 @@ import { baseUrl } from '../support/e2e'
 
 import getQuestionData from '../../src/server/db/seeders/data/devQuestionData'
 
-describe('Kliksutin test spec', () => {
+describe('Kliksutin web page', () => {
+  beforeEach(() => cy.visit(baseUrl))
+
   it('loads the main page', () => {
-    cy.visit(baseUrl)
-    cy.contains('Kliksutin')
+    cy.contains('Hi, welcome to Kliksutin')
   })
 
   it('form loads correctly', () => {
