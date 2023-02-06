@@ -6,6 +6,7 @@ import { MultipleChoiceType } from '../../types'
 
 const language = localStorage.getItem('language') || 'en'
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const Dimension: React.FC<{ dimension: MultipleChoiceType }> = ({
   dimension,
 }) => (
@@ -20,6 +21,7 @@ const Dimension: React.FC<{ dimension: MultipleChoiceType }> = ({
     ))}
   </>
 )
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 const Recommendations: React.FC<{
   watch: any
@@ -35,10 +37,9 @@ const Recommendations: React.FC<{
         <Trans i18nKey="recommendations:title" />
       </Typography>
 
-      {dimensions.map((dimension: string) => {
-        const dimensionJSON: MultipleChoiceType = JSON.parse(dimension)
-        return <Dimension key={dimensionJSON.id} dimension={dimensionJSON} />
-      })}
+      {Object.keys(dimensions).map((dimension: string) => (
+        <div>{dimension}</div>
+      ))}
     </Container>
   )
 }

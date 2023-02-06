@@ -19,7 +19,7 @@ const getQuestionData = () => [
       en: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi?',
     },
     optionData: {
-      type: 'multipleChoice',
+      type: 'dimensions',
       options: [
         {
           id: uuidv4(),

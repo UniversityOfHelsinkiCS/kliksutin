@@ -16,7 +16,7 @@ interface Option {
 }
 
 interface OptionData {
-  type: 'singleChoice' | 'multipleChoice' | 'text'
+  type: 'singleChoice' | 'multipleChoice' | 'dimensions' | 'text'
   options: Array<Option>
 }
 

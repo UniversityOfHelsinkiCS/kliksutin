@@ -1,10 +1,9 @@
 import React from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { InputProps, Question } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 import styles from './styles'
-import CheckboxSelect from './CheckboxSelect'
 
 const RenderSurvey: React.FC<InputProps & { questions: Question[] }> = ({
   control,
@@ -25,25 +24,13 @@ const RenderSurvey: React.FC<InputProps & { questions: Question[] }> = ({
         {questions.map((question) => (
           <div key={question.id as any}>
             {question.parentId === null && question.priority === 0 && (
-              <Container sx={classes.questionsContainer}>
-                <Typography
-                  variant="h5"
-                  style={classes.heading}
-                  component="div"
-                >
-                  {question.title[language]}
-                </Typography>
-                <Box sx={classes.content}>
-                  <Typography variant="body2">
-                    {question.text[language]}
-                  </Typography>
-                </Box>
-                <CheckboxSelect
-                  control={control}
-                  question={question}
-                  language={language}
-                />
-              </Container>
+              <RenderQuestions
+                control={control}
+                watch={watch}
+                question={question}
+                questions={questions}
+                language={language}
+              />
             )}
 
             {question.parentId === null && question.priority !== 0 && (
