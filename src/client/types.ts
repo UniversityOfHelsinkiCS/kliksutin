@@ -66,3 +66,9 @@ export interface Question {
   createdAt: Date
   updatedAt: Date
 }
+
+export interface DimensionData {
+  id: number
+  title: Locales
+  text: Locales
+}
