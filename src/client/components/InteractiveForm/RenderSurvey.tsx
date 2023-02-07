@@ -15,8 +15,6 @@ const RenderSurvey: React.FC<InputProps & { questions: Question[] }> = ({
 
   const language = localStorage.getItem('language') || 'en'
 
-  console.log(questions)
-
   return (
     <Box sx={{ mx: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
       <SelectFaculty control={control} />
