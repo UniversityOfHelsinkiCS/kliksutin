@@ -6,41 +6,50 @@ import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
 import { DimensionData, MultipleChoiceType, Question } from '../../types'
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 const language = localStorage.getItem('language') || 'en'
 
-const mapSelectedQuestionsData = (question: Question, dimensionSelections) => {
+const mapSelectedQuestions = (
+  question: Question,
+  dimensionSelections: { [x: string]: unknown }
+) => {
   const selectedDimensions = Object.keys(dimensionSelections).filter(
     (key) => dimensionSelections[key]
   )
 
-  const selectionBasedQuestions = question.optionData.options.filter((q) =>
+  const selectedQuestions = question.optionData.options.filter((q) =>
     selectedDimensions.includes(q.id)
   )
 
-  return selectionBasedQuestions
+  return selectedQuestions
 }
 
-const mapDimensionsData = (selectedQuestionsData) => {
+const mapRecommendations = (selectedQuestionsData: any[]) => {
   const dimensionData: DimensionData[] = getDimensionData()
 
-  console.log('dimensionsData: ', dimensionData)
+  const selectedTools = selectedQuestionsData.map(
+    (question: { id: any; data: any }) => ({
+      optionId: question.id,
+      dimensions: question.data,
+    })
+  )
 
-  const selectedTools = selectedQuestionsData.map((question) => ({
-    optionId: question.id,
-    dimensions: question.data,
-  }))
-
-  const test = dimensionData.map((dimension) => ({
+  const recommendations = dimensionData.map((dimension) => ({
     name: dimension.id,
     dimensions: [],
   }))
-  console.log('selectedTools:', selectedTools)
-  console.log(test)
-  return test
+
+  selectedTools.map((tool: { dimensions: string | string[]; optionId: any }) =>
+    recommendations.forEach((rec) => {
+      if (tool.dimensions.includes(rec.name)) {
+        rec.dimensions.push(tool.optionId)
+      }
+    })
+  )
+  console.log('RECOMMENDATIONS DATA', recommendations)
+  return recommendations
 }
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const Dimension: React.FC<{ dimension: MultipleChoiceType }> = ({
   dimension,
 }) => (
@@ -55,6 +64,7 @@ const Dimension: React.FC<{ dimension: MultipleChoiceType }> = ({
     ))}
   </>
 )
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 const Recommendations: React.FC<{
   watch: any
@@ -74,12 +84,12 @@ const Recommendations: React.FC<{
     (question) => question.id === 1
   )
 
-  const selectedQuestionsData = mapSelectedQuestionsData(
+  const selectedQuestions = mapSelectedQuestions(
     dimensionQuestion,
     dimensionSelection
   )
 
-  mapDimensionsData(selectedQuestionsData)
+  mapRecommendations(selectedQuestions)
 
   return (
     <Container sx={classes.recommendationContainer}>
@@ -96,10 +106,6 @@ const Recommendations: React.FC<{
             {dimensionObject.text[language]}
           </Typography>
         </div>
-      ))}
-
-      {Object.keys(dimensionSelection).map((dimension: string) => (
-        <div key={dimension}>{dimension}</div>
       ))}
     </Container>
   )

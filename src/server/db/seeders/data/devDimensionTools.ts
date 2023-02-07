@@ -52,7 +52,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'thinklink',
+    id: 'thinglink',
     title: {
       fi: 'Thinklink',
       sv: 'Thinklink',
@@ -104,7 +104,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'h5p',
+    id: 'H5P',
     title: {
       fi: 'H5P',
       sv: 'H5P',
