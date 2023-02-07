@@ -10,7 +10,7 @@ import { DimensionData, MultipleChoiceType, Question } from '../../types'
 
 const language = localStorage.getItem('language') || 'en'
 
-const mapSelectedToDimensions = (question: Question, dimensionSelections) => {
+const mapSelectedQuestionsData = (question: Question, dimensionSelections) => {
   const selectedDimensions = Object.keys(dimensionSelections).filter(
     (key) => dimensionSelections[key]
   )
@@ -20,6 +20,25 @@ const mapSelectedToDimensions = (question: Question, dimensionSelections) => {
   )
 
   return selectionBasedQuestions
+}
+
+const mapDimensionsData = (selectedQuestionsData) => {
+  const dimensionData: DimensionData[] = getDimensionData()
+
+  console.log('dimensionsData: ', dimensionData)
+
+  const selectedTools = selectedQuestionsData.map((question) => ({
+    optionId: question.id,
+    dimensions: question.data,
+  }))
+
+  const test = dimensionData.map((dimension) => ({
+    name: dimension.id,
+    dimensions: [],
+  }))
+  console.log('selectedTools:', selectedTools)
+  console.log(test)
+  return test
 }
 
 const Dimension: React.FC<{ dimension: MultipleChoiceType }> = ({
@@ -55,10 +74,12 @@ const Recommendations: React.FC<{
     (question) => question.id === 1
   )
 
-  const selection = mapSelectedToDimensions(
+  const selectedQuestionsData = mapSelectedQuestionsData(
     dimensionQuestion,
     dimensionSelection
   )
+
+  mapDimensionsData(selectedQuestionsData)
 
   return (
     <Container sx={classes.recommendationContainer}>

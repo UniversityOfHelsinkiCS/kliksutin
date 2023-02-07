@@ -1,6 +1,6 @@
 const getDimensionData = () => [
   {
-    id: 1,
+    id: 'zoom',
     title: {
       fi: 'Zoom',
       sv: 'Zoom',
@@ -13,7 +13,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 2,
+    id: 'unitube',
     title: {
       fi: 'Unitube',
       sv: 'Unitube',
@@ -26,7 +26,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 3,
+    id: 'flinga',
     title: {
       fi: 'Flinga',
       sv: 'Flinga',
@@ -39,7 +39,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 4,
+    id: 'presemo',
     title: {
       fi: 'Presemo',
       sv: 'Presemo',
@@ -52,7 +52,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 5,
+    id: 'thinklink',
     title: {
       fi: 'Thinklink',
       sv: 'Thinklink',
@@ -65,7 +65,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 6,
+    id: 'eportfolio',
     title: {
       fi: 'Eportfolio',
       sv: 'Eportfolio',
@@ -78,7 +78,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 7,
+    id: 'moodle',
     title: {
       fi: 'Moodle',
       sv: 'Moodle',
@@ -91,7 +91,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 8,
+    id: 'screen-cast-o-matic',
     title: {
       fi: 'Screen-cast-o-matic',
       sv: 'Screen-cast-o-matic',
@@ -104,7 +104,7 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 9,
+    id: 'h5p',
     title: {
       fi: 'H5P',
       sv: 'H5P',
