@@ -99,6 +99,7 @@ const Recommendations: React.FC<{
                       <DimensionChip
                         key={chipData.id}
                         choice={chipData}
+                        language={language}
                         compact
                       />
                     )

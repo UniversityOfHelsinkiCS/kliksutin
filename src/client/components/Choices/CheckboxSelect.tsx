@@ -1,8 +1,8 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { Box, FormControl, Checkbox } from '@mui/material'
-import Chip from '@mui/material/Chip'
 import { MultipleChoiceType, Question } from '../../types'
+import DimensionChip from '../Chip/DimensionChip'
 
 const CheckboxSelect: React.FC<{
   control: any
@@ -20,7 +20,12 @@ const CheckboxSelect: React.FC<{
           <FormControl sx={{ width: '100%' }}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
               <Checkbox {...field} value={choice.id} checked={field.value} />
-              <Chip label={choice.label[language]} />
+              <DimensionChip
+                key={choice.id}
+                choice={choice}
+                language={language}
+                compact={false}
+              />
             </Box>
           </FormControl>
         )}
