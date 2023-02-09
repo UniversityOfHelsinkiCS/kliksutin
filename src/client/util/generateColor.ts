@@ -38,7 +38,6 @@ const N = colors.length
 const getColorFromOptions = (hash: number, minShade = 1, maxShade = 3) => {
   const shade = ((hash % (maxShade - minShade)) + minShade) * 100
   const hue = hash % N
-  console.log(hue, shade)
   return colors[hue][shade]
 }
 
