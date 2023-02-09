@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Chip, Container, Typography } from '@mui/material'
+import { Chip, Container, Typography } from '@mui/material'
 import { Trans, useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import styles from './styles'
@@ -90,11 +90,6 @@ const Recommendations: React.FC<{
               <div key={dimensionObject.id}>
                 <Typography variant="h6" sx={classes.heading} component="div">
                   {dimensionObject.title[language]}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {dimensionObject.text[language]}
-                </Typography>
-                <Box>
                   {recommendation.dimensions.map((dimension) => {
                     const chipData = selectedQuestions.find(
                       (question) => question.id === dimension
@@ -107,7 +102,10 @@ const Recommendations: React.FC<{
                       />
                     )
                   })}
-                </Box>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {dimensionObject.text[language]}
+                </Typography>
               </div>
             )
           }
