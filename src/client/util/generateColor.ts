@@ -15,8 +15,9 @@ import {
   teal,
   yellow,
 } from '@mui/material/colors'
+import { Color } from '@mui/material'
 
-const colors = [
+const colors: Array<Color> = [
   amber,
   blue,
   deepOrange,
