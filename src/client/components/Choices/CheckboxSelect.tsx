@@ -20,13 +20,28 @@ const CheckboxSelect: React.FC<{
         render={({ field }) => (
           <FormControl sx={{ width: '100%' }}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
-              <Checkbox {...field} value={choice.id} checked={field.value} />
-              <DimensionChip
-                key={choice.id}
-                choice={choice}
-                color={field.value ? generateColor(choice.id) : undefined}
-                language={language}
-                compact={false}
+              <Checkbox
+                {...field}
+                icon={
+                  <DimensionChip
+                    key={choice.id}
+                    choice={choice}
+                    color={undefined}
+                    language={language}
+                    compact={false}
+                  />
+                }
+                checkedIcon={
+                  <DimensionChip
+                    key={choice.id}
+                    choice={choice}
+                    color={generateColor(choice.id)}
+                    language={language}
+                    compact={false}
+                  />
+                }
+                value={choice.id}
+                checked={field.value}
               />
             </Box>
           </FormControl>
