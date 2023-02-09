@@ -4,7 +4,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
-import { DimensionData, MultipleChoiceType, Question } from '../../types'
+import { DimensionData, Question } from '../../types'
 
 const language = localStorage.getItem('language') || 'en'
 
@@ -48,23 +48,6 @@ const mapRecommendations = (selectedQuestionsData: any[]) => {
   console.log('RECOMMENDATIONS DATA', recommendations)
   return recommendations
 }
-
-/* eslint-disable @typescript-eslint/no-unused-vars */
-const Dimension: React.FC<{ dimension: MultipleChoiceType }> = ({
-  dimension,
-}) => (
-  <>
-    <Typography variant="h6" sx={{ mt: 1 }} gutterBottom>
-      {dimension.label[language]}
-    </Typography>
-    {dimension.data.map((tool) => (
-      <Typography key={tool} sx={{ ml: 1, mb: 0.5 }} color="text.secondary">
-        {tool}
-      </Typography>
-    ))}
-  </>
-)
-/* eslint-enable @typescript-eslint/no-unused-vars */
 
 const Recommendations: React.FC<{
   watch: any
