@@ -2,9 +2,9 @@ import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 import { Question } from '../../types'
 import styles from './styles'
-import MultiChoice from './MultiChoice'
-import SingleChoice from './SingleChoice'
-import CheckboxSelect from './CheckboxSelect'
+import MultiChoice from '../Choices/MultiChoice'
+import SingleChoice from '../Choices/SingleChoice'
+import CheckboxSelect from '../Choices/CheckboxSelect'
 
 const RenderQuestions: React.FC<{
   control: any
