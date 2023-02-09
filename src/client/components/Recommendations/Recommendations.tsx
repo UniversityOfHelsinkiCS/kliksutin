@@ -4,13 +4,13 @@ import { Trans, useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
-import { DimensionData, Question } from '../../types'
+import { DimensionData, MultipleChoiceType, Question } from '../../types'
 
 const language = localStorage.getItem('language') || 'en'
 
 const mapSelectedQuestions = (
   question: Question,
-  dimensionSelections: { [x: string]: unknown }
+  dimensionSelections: { [x: string]: boolean }
 ) => {
   const selectedDimensions = Object.keys(dimensionSelections).filter(
     (key) => dimensionSelections[key]
@@ -20,14 +20,14 @@ const mapSelectedQuestions = (
     selectedDimensions.includes(q.id)
   )
 
-  return selectedQuestions
+  return selectedQuestions as MultipleChoiceType[]
 }
 
-const mapRecommendations = (selectedQuestionsData: any[]) => {
+const mapRecommendations = (selectedQuestionsData: MultipleChoiceType[]) => {
   const dimensionData: DimensionData[] = getDimensionData()
 
   const selectedTools = selectedQuestionsData.map(
-    (question: { id: any; data: any }) => ({
+    (question: { id: string; data: string[] }) => ({
       optionId: question.id,
       dimensions: question.data,
     })
@@ -38,14 +38,14 @@ const mapRecommendations = (selectedQuestionsData: any[]) => {
     dimensions: [],
   }))
 
-  selectedTools.map((tool: { dimensions: string | string[]; optionId: any }) =>
-    recommendations.forEach((rec) => {
-      if (tool.dimensions.includes(rec.name)) {
-        rec.dimensions.push(tool.optionId)
-      }
-    })
+  selectedTools.map(
+    (tool: { dimensions: string | string[]; optionId: string }) =>
+      recommendations.forEach((rec) => {
+        if (tool.dimensions.includes(rec.name)) {
+          rec.dimensions.push(tool.optionId)
+        }
+      })
   )
-  console.log('RECOMMENDATIONS DATA', recommendations)
   return recommendations
 }
 
@@ -95,9 +95,18 @@ const Recommendations: React.FC<{
                   {dimensionObject.text[language]}
                 </Typography>
                 <Box>
-                  {recommendation.dimensions.map((dimension) => (
-                    <Chip key={dimension} label={dimension} />
-                  ))}
+                  {recommendation.dimensions.map((dimension) => {
+                    const chipData = selectedQuestions.find(
+                      (question) => question.id === dimension
+                    )
+                    return (
+                      <Chip
+                        key={dimension}
+                        size="small"
+                        label={chipData.label[language].substring(0, 3)}
+                      />
+                    )
+                  })}
                 </Box>
               </div>
             )
