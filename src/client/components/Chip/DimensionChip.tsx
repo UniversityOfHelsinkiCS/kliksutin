@@ -2,20 +2,12 @@ import React from 'react'
 import { Chip, Tooltip } from '@mui/material'
 import { MultipleChoiceType } from '../../types'
 
-const generateColors = (id: string) => {
-  const stringUniqueHash = [...id].reduce(
-    (acc, char) => char.charCodeAt(0) + ((acc << 30) - acc), // eslint-disable-line no-bitwise
-    0
-  )
-  return `hsl(${stringUniqueHash % 360}, 90%, 70%)`
-}
-
 const DimensionChip: React.FC<{
   choice: MultipleChoiceType
-  language: string | 'en'
+  color: string | undefined
+  language: string
   compact: boolean
-}> = ({ choice, language = 'en', compact = false }) => {
-  const color = generateColors(choice.id)
+}> = ({ choice, language, color, compact = false }) => {
   const style = {
     backgroundColor: color,
     margin: '1px',

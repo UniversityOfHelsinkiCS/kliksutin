@@ -3,6 +3,7 @@ import { Container, Typography } from '@mui/material'
 import { Trans, useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
+import generateColor from '../../util/generateColor'
 import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
 import { DimensionData, MultipleChoiceType, Question } from '../../types'
@@ -99,6 +100,7 @@ const Recommendations: React.FC<{
                       <DimensionChip
                         key={chipData.id}
                         choice={chipData}
+                        color={generateColor(chipData.id)}
                         language={language}
                         compact
                       />

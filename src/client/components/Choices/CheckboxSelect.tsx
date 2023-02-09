@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form'
 import { Box, FormControl, Checkbox } from '@mui/material'
 import { MultipleChoiceType, Question } from '../../types'
 import DimensionChip from '../Chip/DimensionChip'
+import generateColor from '../../util/generateColor'
 
 const CheckboxSelect: React.FC<{
   control: any
@@ -23,6 +24,7 @@ const CheckboxSelect: React.FC<{
               <DimensionChip
                 key={choice.id}
                 choice={choice}
+                color={field.value ? generateColor(choice.id) : undefined}
                 language={language}
                 compact={false}
               />
