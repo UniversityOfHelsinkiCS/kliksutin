@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Typography } from '@mui/material'
+import { Box, Chip, Container, Typography } from '@mui/material'
 import { Trans, useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import styles from './styles'
@@ -89,7 +89,7 @@ const Recommendations: React.FC<{
     dimensionSelection
   )
 
-  mapRecommendations(selectedQuestions)
+  const recommendationsData = mapRecommendations(selectedQuestions)
 
   return (
     <Container sx={classes.recommendationContainer}>
@@ -97,16 +97,31 @@ const Recommendations: React.FC<{
         <Trans i18nKey="recommendations:title" />
       </Typography>
 
-      {dimensionData.map((dimensionObject) => (
-        <div key={dimensionObject.id}>
-          <Typography variant="h6" sx={classes.heading} component="div">
-            {dimensionObject.title[language]}
-          </Typography>
-          <Typography sx={{ ml: 1, mb: 0.5 }} color="text.secondary">
-            {dimensionObject.text[language]}
-          </Typography>
-        </div>
-      ))}
+      {dimensionData.map((dimensionObject) =>
+        recommendationsData.map((recommendation) => {
+          if (
+            recommendation.name === dimensionObject.id &&
+            recommendation.dimensions.length > 0
+          ) {
+            return (
+              <div key={dimensionObject.id}>
+                <Typography variant="h6" sx={classes.heading} component="div">
+                  {dimensionObject.title[language]}
+                </Typography>
+                <Typography sx={{ ml: 1, mb: 0.5 }} color="text.secondary">
+                  {dimensionObject.text[language]}
+                </Typography>
+                <Box>
+                  {recommendation.dimensions.map((dimension) => (
+                    <Chip key={dimension} label={dimension} />
+                  ))}
+                </Box>
+              </div>
+            )
+          }
+          return null
+        })
+      )}
     </Container>
   )
 }
