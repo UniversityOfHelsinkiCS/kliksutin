@@ -91,7 +91,7 @@ const Recommendations: React.FC<{
                 <Typography variant="h6" sx={classes.heading} component="div">
                   {dimensionObject.title[language]}
                 </Typography>
-                <Typography sx={{ ml: 1, mb: 0.5 }} color="text.secondary">
+                <Typography variant="body2" color="text.secondary">
                   {dimensionObject.text[language]}
                 </Typography>
                 <Box>

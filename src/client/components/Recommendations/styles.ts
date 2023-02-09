@@ -7,6 +7,7 @@ const cardStyles = {
     textAlign: 'left',
   },
   heading: {
+    mt: 1.5,
     fontWeight: '300',
   },
 }
