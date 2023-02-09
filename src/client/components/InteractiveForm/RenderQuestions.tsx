@@ -4,7 +4,7 @@ import { Question } from '../../types'
 import styles from './styles'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
-import CheckboxSelect from '../Choices/CheckboxSelect'
+import DimensionSelect from '../Choices/DimensionSelect'
 
 const RenderQuestions: React.FC<{
   control: any
@@ -26,7 +26,7 @@ const RenderQuestions: React.FC<{
   const components = {
     singleChoice: SingleChoice,
     multipleChoice: MultiChoice,
-    dimensions: CheckboxSelect,
+    dimensions: DimensionSelect,
   }
 
   const Choice = components[question.optionData.type]

@@ -5,7 +5,7 @@ import { MultipleChoiceType, Question } from '../../types'
 import DimensionChip from '../Chip/DimensionChip'
 import generateColor from '../../util/generateColor'
 
-const CheckboxSelect: React.FC<{
+const DimensionSelect: React.FC<{
   control: any
   question: Question
   language: string
@@ -51,4 +51,4 @@ const CheckboxSelect: React.FC<{
   </>
 )
 
-export default CheckboxSelect
+export default DimensionSelect
