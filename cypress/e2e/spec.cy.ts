@@ -12,8 +12,16 @@ describe('Kliksutin web page', () => {
     cy.contains('Kliksutin')
   })
 
+  it('user must proceed after faculty and dimensions are selected', () => {
+    cy.visit(baseUrl)
+
+    cy.get('#open-form-button')
+  })
+
   it('loads visible questions correctly', () => {
     cy.visit(baseUrl)
+
+    cy.get('#open-form-button').click()
 
     questionData = getQuestionData()
 

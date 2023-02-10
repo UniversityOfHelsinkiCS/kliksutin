@@ -48,12 +48,19 @@ const RenderSurvey: React.FC<
         ))}
         {!showQuestions && (
           <Box textAlign="center">
-            <Button onClick={() => setShowQuestions(true)}>
+            <Button
+              id="open-form-button"
+              onClick={() => setShowQuestions(true)}
+            >
               {t('openForm')}
             </Button>
           </Box>
         )}
-        {showQuestions && <Button onClick={handleSubmit}>{t('submit')}</Button>}
+        {showQuestions && (
+          <Button id="submit-form-button" onClick={handleSubmit}>
+            {t('submit')}
+          </Button>
+        )}
       </Box>
     </Box>
   )
