@@ -1,16 +1,16 @@
-import React from 'react'
-import { Box } from '@mui/material'
+import React, { useState } from 'react'
+import { Box, Button } from '@mui/material'
 import { InputProps, Question } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 import styles from './styles'
 
-const RenderSurvey: React.FC<InputProps & { questions: Question[] }> = ({
-  control,
-  watch,
-  questions,
-}) => {
+const RenderSurvey: React.FC<
+  InputProps & { questions: Question[]; handleSubmit: any }
+> = ({ control, watch, questions, handleSubmit }) => {
   const classes = styles.cardStyles
+  const [showQuestions, setShowQuestions] = useState(false)
+
   if (!questions) return null
 
   const language = localStorage.getItem('language') || 'en'
@@ -31,17 +31,25 @@ const RenderSurvey: React.FC<InputProps & { questions: Question[] }> = ({
               />
             )}
 
-            {question.parentId === null && question.priority !== 0 && (
-              <RenderQuestions
-                control={control}
-                watch={watch}
-                question={question}
-                questions={questions}
-                language={language}
-              />
-            )}
+            {showQuestions &&
+              question.parentId === null &&
+              question.priority !== 0 && (
+                <RenderQuestions
+                  control={control}
+                  watch={watch}
+                  question={question}
+                  questions={questions}
+                  language={language}
+                />
+              )}
           </div>
         ))}
+        {!showQuestions && (
+          <Box textAlign="center">
+            <Button onClick={() => setShowQuestions(true)}>Jatka</Button>
+          </Box>
+        )}
+        {showQuestions && <Button onClick={handleSubmit}>Submit</Button>}
       </Box>
     </Box>
   )

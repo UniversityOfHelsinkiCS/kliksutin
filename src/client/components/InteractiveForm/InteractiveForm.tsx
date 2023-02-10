@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
 import RenderSurvey from './RenderSurvey'
@@ -27,8 +27,8 @@ const InteractiveForm = () => {
             control={control}
             watch={watch}
             questions={survey.Questions}
+            handleSubmit={handleSubmit(onSubmit)}
           />
-          <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
         </form>
       </Grid>
       <Grid item sm={12} md={5} xl={6}>
