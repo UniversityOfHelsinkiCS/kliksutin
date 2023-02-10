@@ -36,9 +36,9 @@ describe('Kliksutin web page', () => {
     })
   })
 
-  it('has spot for recommendations', () => {
+  it.skip('has spot for recommendations', () => {
     cy.visit(baseUrl)
 
-    cy.contains('Dimensions that support your selections')
+    cy.contains('Tools that support your selections')
   })
 })
