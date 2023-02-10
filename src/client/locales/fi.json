@@ -1,6 +1,8 @@
 {
   "common": {
-    "appName": "Kliksutin"
+    "appName": "Kliksutin",
+    "submit": "Valinnat tehty",
+    "openForm": "Jatka kysymyksiin"
   },
   "footer": {
     "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"

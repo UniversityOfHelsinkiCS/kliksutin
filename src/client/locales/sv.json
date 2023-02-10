@@ -1,8 +1,19 @@
 {
   "common": {
-    "appName": "Kliksutin"
+    "appName": "Kliksutin",
+    "submit": "Valinnat tehty",
+    "openForm": "Jatka kysymyksiin"
   },
   "footer": {
     "contactSupport": "Kontakta stödet: <mailTo>{{supportEmail}}</mailTo>"
+  },
+  "facultySelect": {
+    "welcomeMessage": "Hei, tervetuloa Kliksuttelemaan",
+    "introMessage": "Aloita valitsemalla tiedekuntasi valikosta",
+    "inputLabel": "Tiedekuntasi"
+  },
+  "recommendations": {
+    "title": "Valintojasi tukevat työkalut",
+    "recommendationMessage": "Alla vielä listaus suosituksistamme"
   }
 }
