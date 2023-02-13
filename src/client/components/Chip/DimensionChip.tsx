@@ -5,16 +5,16 @@ import { MultipleChoiceType } from '../../types'
 const DimensionChip: React.FC<{
   choice: MultipleChoiceType
   color: string | undefined
-  language: string
   compact: boolean
-}> = ({ choice, language, color, compact = false }) => {
+}> = ({ choice, color, compact = false }) => {
   const style = {
     backgroundColor: color,
     margin: '1px',
   }
+  const language = localStorage.getItem('language') || 'en'
 
   return compact ? (
-    <Tooltip title={choice.label.en} arrow>
+    <Tooltip title={choice.label[language]} arrow>
       <Chip
         label={choice.label[language].substring(0, 3)}
         size="small"

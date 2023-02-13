@@ -8,8 +8,6 @@ import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
 import { DimensionData, MultipleChoiceType, Question } from '../../types'
 
-const language = localStorage.getItem('language') || 'en'
-
 const mapSelectedQuestions = (
   question: Question,
   dimensionSelections: { [x: string]: boolean }
@@ -57,6 +55,8 @@ const Recommendations: React.FC<{
   useTranslation()
   const survey = useSurvey()
 
+  const language = localStorage.getItem('language') || 'en'
+
   if (!survey) return null
 
   const classes = styles.cardStyles
@@ -101,7 +101,6 @@ const Recommendations: React.FC<{
                         key={chipData.id}
                         choice={chipData}
                         color={generateColor(chipData.id)}
-                        language={language}
                         compact
                       />
                     )

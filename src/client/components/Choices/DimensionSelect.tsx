@@ -5,7 +5,7 @@ import { MultipleChoiceType, InputProps } from '../../types'
 import DimensionChip from '../Chip/DimensionChip'
 import generateColor from '../../util/generateColor'
 
-const DimensionSelect = ({ control, question, language }: InputProps) => (
+const DimensionSelect = ({ control, question }: InputProps) => (
   <>
     {question.optionData.options.map((choice: MultipleChoiceType) => (
       <Controller
@@ -23,7 +23,6 @@ const DimensionSelect = ({ control, question, language }: InputProps) => (
                     key={choice.id}
                     choice={choice}
                     color={undefined}
-                    language={language}
                     compact={false}
                   />
                 }
@@ -32,7 +31,6 @@ const DimensionSelect = ({ control, question, language }: InputProps) => (
                     key={choice.id}
                     choice={choice}
                     color={generateColor(choice.id)}
-                    language={language}
                     compact={false}
                   />
                 }
