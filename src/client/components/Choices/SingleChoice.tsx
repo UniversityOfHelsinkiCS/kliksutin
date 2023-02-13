@@ -1,15 +1,9 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material'
-import { Question, SingleChoiceType } from '../../types'
+import { InputProps, SingleChoiceType } from '../../types'
 
-const SingleChoice: React.FC<{
-  control: any
-  watch: any
-  question: Question
-  children: any
-  language: string
-}> = ({ control, watch, question, children }) => {
+const SingleChoice = ({ control, watch, question, children }: InputProps) => {
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
 

@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { Box, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import { InputProps, Question } from '../../types'
+import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 import styles from './styles'
 
-const RenderSurvey: React.FC<
-  InputProps & { questions: Question[]; handleSubmit: any }
-> = ({ control, watch, questions, handleSubmit }) => {
+const RenderSurvey: React.FC<InputProps> = ({
+  control,
+  watch,
+  questions,
+  handleSubmit,
+}) => {
   const { t } = useTranslation()
   const classes = styles.cardStyles
   const [showQuestions, setShowQuestions] = useState(false)

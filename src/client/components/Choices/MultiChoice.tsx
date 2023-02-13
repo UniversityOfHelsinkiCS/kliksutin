@@ -1,15 +1,9 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { Box, FormControl, Checkbox, FormControlLabel } from '@mui/material'
-import { MultipleChoiceType, Question } from '../../types'
+import { MultipleChoiceType, InputProps } from '../../types'
 
-const MultiChoice: React.FC<{
-  control: any
-  watch: any
-  question: Question
-  children: any
-  language: string
-}> = ({ control, question, children, language }) => (
+const MultiChoice = ({ control, question, children, language }: InputProps) => (
   <>
     {question.optionData.options.map((choice: MultipleChoiceType) => (
       <Controller

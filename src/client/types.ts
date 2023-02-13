@@ -1,10 +1,14 @@
 import { Control } from 'react-hook-form'
 
 export interface InputProps {
-  control: Control<any>
+  control?: Control<any>
   watch?: any
   register?: any
-  getValues?: any
+  question?: Question
+  children?: any
+  language?: string
+  questions?: Question[]
+  handleSubmit?: any
 }
 
 export type FormValues = {

@@ -1,18 +1,18 @@
 import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
-import { Question } from '../../types'
+import { InputProps } from '../../types'
 import styles from './styles'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
 import DimensionSelect from '../Choices/DimensionSelect'
 
-const RenderQuestions: React.FC<{
-  control: any
-  watch: any
-  questions: Question[]
-  question: Question
-  language: string
-}> = ({ control, watch, question, questions, language }) => {
+const RenderQuestions = ({
+  control,
+  watch,
+  question,
+  questions,
+  language,
+}: InputProps) => {
   const classes = styles.cardStyles
 
   if (question.visibility?.options) {
@@ -27,6 +27,7 @@ const RenderQuestions: React.FC<{
     singleChoice: SingleChoice,
     multipleChoice: MultiChoice,
     dimensions: DimensionSelect,
+    info: SingleChoice,
   }
 
   const Choice = components[question.optionData.type]
