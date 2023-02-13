@@ -14,9 +14,9 @@ const getQuestionData = () => [
       en: 'Dimensiot',
     },
     text: {
-      fi: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi?',
-      sv: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi?',
-      en: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi?',
+      fi: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi? Klikkaa alla olevia tekstejä valitaksesi dimensioita',
+      sv: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi? Klikkaa alla olevia tekstejä valitaksesi dimensioita',
+      en: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi? Klikkaa alla olevia tekstejä valitaksesi dimensioita',
     },
     optionData: {
       type: 'dimensions',

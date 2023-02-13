@@ -16,7 +16,7 @@ const DimensionSelect: React.FC<{
         key={choice.id}
         name={`${question.id}.${choice.id}`}
         control={control}
-        defaultValue
+        defaultValue={false}
         render={({ field }) => (
           <FormControl sx={{ width: '100%' }}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
