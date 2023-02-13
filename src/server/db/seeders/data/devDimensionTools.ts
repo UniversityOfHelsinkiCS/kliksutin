@@ -54,9 +54,9 @@ const getDimensionData = () => [
   {
     id: 'thinglink',
     title: {
-      fi: 'Thinklink',
-      sv: 'Thinklink',
-      en: 'Thinklink',
+      fi: 'Thinglink',
+      sv: 'Thinglink',
+      en: 'Thinglink',
     },
     text: {
       fi: 'Esittelyteksti liittyen tähän työkaluun',

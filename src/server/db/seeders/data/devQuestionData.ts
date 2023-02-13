@@ -1,7 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
 
-const bigCourseOption: string = uuidv4()
-
 const getQuestionData = () => [
   {
     id: 1,
@@ -26,7 +24,7 @@ const getQuestionData = () => [
           label: {
             fi: 'Tiedon omaksuminen',
             sv: 'Tiedon omaksuminen',
-            en: 'Tiedon omaksuminen',
+            en: 'Investication',
           },
           data: [
             'zoom',
@@ -41,7 +39,7 @@ const getQuestionData = () => [
           label: {
             fi: 'Tuottaminen',
             sv: 'Tuottaminen',
-            en: 'Tuottaminen',
+            en: 'Production',
           },
           data: ['flinga', 'presemo', 'thinglink', 'moodle'],
         },
@@ -50,7 +48,7 @@ const getQuestionData = () => [
           label: {
             fi: 'Yhteistyö',
             sv: 'Yhteistyö',
-            en: 'Yhteistyö',
+            en: 'Collaboration',
           },
           data: ['zoom', 'flinga', 'thinglink', 'eportfolio', 'moodle'],
         },
@@ -59,7 +57,7 @@ const getQuestionData = () => [
           label: {
             fi: 'Keskustelu',
             sv: 'Keskustelu',
-            en: 'Keskustelu',
+            en: 'Discussion',
           },
           data: ['zoom', 'presemo', 'eportfolio', 'moodle', 'H5P'],
         },
@@ -68,7 +66,7 @@ const getQuestionData = () => [
           label: {
             fi: 'Tutkimusperustainen oppiminen',
             sv: 'Tutkimusperustainen oppiminen',
-            en: 'Tutkimusperustainen oppiminen',
+            en: 'Acquisition',
           },
           data: ['flinga'],
         },
@@ -77,7 +75,7 @@ const getQuestionData = () => [
           label: {
             fi: 'Harjoittelu',
             sv: 'Harjoittelu',
-            en: 'Harjoittelu',
+            en: 'Practice',
           },
           data: ['thinglink', 'eportfolio', 'moodle', 'H5P'],
         },
@@ -104,7 +102,7 @@ const getQuestionData = () => [
       type: 'singleChoice',
       options: [
         {
-          id: uuidv4(),
+          id: 'courseSizeSmall',
           label: {
             fi: '< 50',
             sv: '< 50',
@@ -112,7 +110,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: bigCourseOption,
+          id: 'courseSizeBig',
           label: {
             fi: '>= 50',
             sv: '>= 50',
@@ -120,7 +118,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseSizeUnlimited',
           label: {
             fi: 'rajoittamaton',
             sv: 'rajoittamaton',
@@ -150,7 +148,7 @@ const getQuestionData = () => [
       type: 'singleChoice',
       options: [
         {
-          id: uuidv4(),
+          id: 'courseAttendancePresent',
           label: {
             fi: 'Läsnä',
             sv: 'Läsnä',
@@ -158,7 +156,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseAttendanceHybrid',
           label: {
             fi: 'Hybridi',
             sv: 'Hybridi',
@@ -166,7 +164,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseAttendanceRemote',
           label: {
             fi: 'Etä',
             sv: 'Etä',
@@ -196,7 +194,7 @@ const getQuestionData = () => [
       type: 'multipleChoice',
       options: [
         {
-          id: uuidv4(),
+          id: 'courseCompletionMethodExam',
           label: {
             fi: 'Tentti',
             sv: 'Tentti',
@@ -204,7 +202,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseCompletionMethodDemo',
           label: {
             fi: 'Demot/osasuoritukset',
             sv: 'Demot/osasuoritukset',
@@ -212,7 +210,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseCompletionMethodDiary',
           label: {
             fi: 'Välitehtävät/oppimispäiväkirja',
             sv: 'Välitehtävät/oppimispäiväkirja',
@@ -220,7 +218,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseCompletionMethodAssignment',
           label: {
             fi: 'Lopputyö',
             sv: 'Lopputyö',
@@ -228,7 +226,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseCompletionMethodParticipation',
           label: {
             fi: 'Osallistuminen opetukseen',
             sv: 'Osallistuminen opetukseen',
@@ -236,7 +234,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseCompletionMethodOther',
           label: {
             fi: 'Muu',
             sv: 'Muu',
@@ -266,7 +264,7 @@ const getQuestionData = () => [
       type: 'singleChoice',
       options: [
         {
-          id: uuidv4(),
+          id: 'courseIsRecorded',
           label: {
             fi: 'Kyllä',
             sv: 'Kyllä',
@@ -274,7 +272,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseIsNotRecorded',
           label: {
             fi: 'Ei',
             sv: 'Ei',
@@ -367,7 +365,7 @@ const getQuestionData = () => [
       type: 'singleChoice',
       options: [
         {
-          id: uuidv4(),
+          id: 'courseIsMooc',
           label: {
             fi: 'Kyllä',
             sv: 'Kyllä',
@@ -375,7 +373,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseIsNotMooc',
           label: {
             fi: 'Ei',
             sv: 'Ei',
@@ -385,7 +383,7 @@ const getQuestionData = () => [
       ],
     },
     visibility: {
-      options: [bigCourseOption],
+      options: ['courseSizeBig'],
     },
   },
   {
@@ -407,7 +405,7 @@ const getQuestionData = () => [
       type: 'singleChoice',
       options: [
         {
-          id: uuidv4(),
+          id: 'courseIsOpenUniversity',
           label: {
             fi: 'Kyllä',
             sv: 'Kyllä',
@@ -415,7 +413,7 @@ const getQuestionData = () => [
           },
         },
         {
-          id: uuidv4(),
+          id: 'courseIsNotOpenUniversity',
           label: {
             fi: 'Ei',
             sv: 'Ei',
