@@ -96,9 +96,9 @@ const getQuestionData = () => [
       en: 'Kurssin koko',
     },
     text: {
-      fi: 'Isolle kurssille sopii hyvin alustaksi Moodle. Voit lisätä vuorovaikutusmahdollisuuksia luonnoilla Presemon avulla.\nMikäli haluat toteuttaa kurssisi MOOC-muodossa, katso tästä tarkemmat ohjeet.',
-      sv: 'Isolle kurssille sopii hyvin alustaksi Moodle. Voit lisätä vuorovaikutusmahdollisuuksia luonnoilla Presemon avulla.\nMikäli haluat toteuttaa kurssisi MOOC-muodossa, katso tästä tarkemmat ohjeet.',
-      en: 'Isolle kurssille sopii hyvin alustaksi Moodle. Voit lisätä vuorovaikutusmahdollisuuksia luonnoilla Presemon avulla.\nMikäli haluat toteuttaa kurssisi MOOC-muodossa, katso tästä tarkemmat ohjeet.',
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
     },
     optionData: {
       type: 'singleChoice',
@@ -142,9 +142,9 @@ const getQuestionData = () => [
       en: 'Osallistuminen',
     },
     text: {
-      fi: 'Lue ensin tilojen opetusteknologian käyttöohjeet täältä. Näistä palveluista voi olla hyötyä opetuksessasi',
-      sv: 'Lue ensin tilojen opetusteknologian käyttöohjeet täältä. Näistä palveluista voi olla hyötyä opetuksessasi',
-      en: 'Lue ensin tilojen opetusteknologian käyttöohjeet täältä. Näistä palveluista voi olla hyötyä opetuksessasi',
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
     },
     optionData: {
       type: 'singleChoice',
@@ -188,9 +188,9 @@ const getQuestionData = () => [
       en: 'Suoritusmuoto',
     },
     text: {
-      fi: '',
-      sv: '',
-      en: '',
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
     },
     optionData: {
       type: 'multipleChoice',
@@ -258,9 +258,9 @@ const getQuestionData = () => [
       en: 'Tallennus',
     },
     text: {
-      fi: '',
-      sv: '',
-      en: '',
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
     },
     optionData: {
       type: 'singleChoice',
@@ -288,46 +288,63 @@ const getQuestionData = () => [
   {
     id: 6,
     surveyId: 0,
-    parentId: null,
-    priority: 4,
+    parentId: 4,
+    priority: 0,
     title: {
-      fi: 'Arviointi',
-      sv: 'Arviointi',
-      en: 'Arviointi',
+      fi: 'Ennen',
+      sv: 'Ennen',
+      en: 'Ennen',
     },
     text: {
-      fi: '',
-      sv: '',
-      en: '',
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
     },
     optionData: {
-      type: 'singleChoice',
-      options: [
-        {
-          id: uuidv4(),
-          label: {
-            fi: 'Ennen',
-            sv: 'Ennen',
-            en: 'Ennen',
-          },
-        },
-        {
-          id: uuidv4(),
-          label: {
-            fi: 'Jälkeen',
-            sv: 'Jälkeen',
-            en: 'Jälkeen',
-          },
-        },
-        {
-          id: uuidv4(),
-          label: {
-            fi: 'Aikana',
-            sv: 'Aikana',
-            en: 'Aikana',
-          },
-        },
-      ],
+      type: 'info',
+      options: [],
+    },
+    visibility: {},
+  },
+  {
+    id: 8,
+    surveyId: 0,
+    parentId: 4,
+    priority: 0,
+    title: {
+      fi: 'Jälkeen',
+      sv: 'Jälkeen',
+      en: 'Jälkeen',
+    },
+    text: {
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
+    },
+    optionData: {
+      type: 'info',
+      options: [],
+    },
+    visibility: {},
+  },
+  {
+    id: 9,
+    surveyId: 0,
+    parentId: 4,
+    priority: 0,
+    title: {
+      fi: 'Aikana',
+      sv: 'Aikana',
+      en: 'Aikana',
+    },
+    text: {
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
+    },
+    optionData: {
+      type: 'info',
+      options: [],
     },
     visibility: {},
   },
