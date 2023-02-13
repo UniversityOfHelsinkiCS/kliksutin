@@ -89,7 +89,7 @@ const getQuestionData = () => [
     id: 2,
     surveyId: 0,
     parentId: null,
-    priority: 1,
+    priority: 2,
     title: {
       fi: 'Kurssin koko',
       sv: 'Kurssin koko',
@@ -135,7 +135,7 @@ const getQuestionData = () => [
     id: 3,
     surveyId: 0,
     parentId: null,
-    priority: 2,
+    priority: 3,
     title: {
       fi: 'Osallistuminen',
       sv: 'Osallistuminen',
@@ -181,7 +181,7 @@ const getQuestionData = () => [
     id: 4,
     surveyId: 0,
     parentId: null,
-    priority: 3,
+    priority: 4,
     title: {
       fi: 'Suoritusmuoto',
       sv: 'Suoritusmuoto',
@@ -387,6 +387,44 @@ const getQuestionData = () => [
     visibility: {
       options: [bigCourseOption],
     },
+  },
+  {
+    id: 10,
+    surveyId: 0,
+    parentId: null,
+    priority: 1,
+    title: {
+      fi: 'Onko opetus avointa?',
+      sv: 'Onko opetus avointa?',
+      en: 'Onko opetus avointa?',
+    },
+    text: {
+      fi: 'Yleinen teksti liittyen tähän valintaan',
+      sv: 'Yleinen teksti liittyen tähän valintaan',
+      en: 'Yleinen teksti liittyen tähän valintaan',
+    },
+    optionData: {
+      type: 'singleChoice',
+      options: [
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Kyllä',
+            sv: 'Kyllä',
+            en: 'Kyllä',
+          },
+        },
+        {
+          id: uuidv4(),
+          label: {
+            fi: 'Ei',
+            sv: 'Ei',
+            en: 'Ei',
+          },
+        },
+      ],
+    },
+    visibility: {},
   },
 ]
 
