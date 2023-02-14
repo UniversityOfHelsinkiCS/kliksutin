@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid'
-
 const getQuestionData = () => [
   {
     id: 1,
@@ -20,7 +18,7 @@ const getQuestionData = () => [
       type: 'dimensions',
       options: [
         {
-          id: uuidv4(),
+          id: 'investication',
           label: {
             fi: 'Tiedon omaksuminen',
             sv: 'Tiedon omaksuminen',
@@ -35,7 +33,7 @@ const getQuestionData = () => [
           ],
         },
         {
-          id: uuidv4(),
+          id: 'production',
           label: {
             fi: 'Tuottaminen',
             sv: 'Tuottaminen',
@@ -44,7 +42,7 @@ const getQuestionData = () => [
           data: ['flinga', 'presemo', 'thinglink', 'moodle'],
         },
         {
-          id: uuidv4(),
+          id: 'collaboration',
           label: {
             fi: 'Yhteistyö',
             sv: 'Yhteistyö',
@@ -53,7 +51,7 @@ const getQuestionData = () => [
           data: ['zoom', 'flinga', 'thinglink', 'eportfolio', 'moodle'],
         },
         {
-          id: uuidv4(),
+          id: 'discussion',
           label: {
             fi: 'Keskustelu',
             sv: 'Keskustelu',
@@ -62,7 +60,7 @@ const getQuestionData = () => [
           data: ['zoom', 'presemo', 'eportfolio', 'moodle', 'H5P'],
         },
         {
-          id: uuidv4(),
+          id: 'acquisition',
           label: {
             fi: 'Tutkimusperustainen oppiminen',
             sv: 'Tutkimusperustainen oppiminen',
@@ -71,7 +69,7 @@ const getQuestionData = () => [
           data: ['flinga'],
         },
         {
-          id: uuidv4(),
+          id: 'practice',
           label: {
             fi: 'Harjoittelu',
             sv: 'Harjoittelu',

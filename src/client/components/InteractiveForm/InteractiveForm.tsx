@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
+import Results from '../ResultPage/Results'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
+import { FormValues } from '../../types'
 
 const InteractiveForm = () => {
   const survey = useSurvey()
+
+  const [resultData, setResultData] = useState<FormValues>(null)
+
   const { handleSubmit, control, watch } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
   })
-  const onSubmit = (data: any) => {
+
+  const onSubmit = (data: FormValues) => {
     const submittedData = data
     console.log(submittedData)
+    setResultData(submittedData)
   }
 
   if (!survey) return null
@@ -33,6 +40,9 @@ const InteractiveForm = () => {
       </Grid>
       <Grid item sm={12} md={5} xl={6}>
         <Recommendations watch={watch} />
+      </Grid>
+      <Grid item sm={12}>
+        <Results resultData={resultData} />
       </Grid>
     </Grid>
   )

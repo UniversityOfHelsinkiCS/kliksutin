@@ -11,19 +11,6 @@ export interface InputProps {
   handleSubmit?: any
 }
 
-export type FormValues = {
-  faculty: string
-  courseAttendanceType: string
-  courseAttendants: {
-    size: ''
-    courseIsMooc?: string
-  }
-  courseCompletionMethod: string
-  courseGrading: string
-  courseLectures: string
-  lectureRecording: string
-}
-
 export type Locales = {
   en: string
   fi: string
@@ -76,4 +63,9 @@ export interface DimensionData {
   title: Locales
   text: Locales
   dimensions?: string[]
+}
+
+export interface FormValues {
+  [key: string]: string | [key: boolean]
+  faculty: string
 }
