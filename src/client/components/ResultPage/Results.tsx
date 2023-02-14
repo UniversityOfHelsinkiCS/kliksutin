@@ -16,6 +16,14 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
   console.log(resultData)
 
+  console.log(formResultData)
+
+  const allDimensions: boolean = Object.values(formResultData[1]).every(
+    (dimension) => dimension
+  )
+
+  console.log(allDimensions)
+
   return (
     <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
       <Container sx={classes.resultContainer}>
