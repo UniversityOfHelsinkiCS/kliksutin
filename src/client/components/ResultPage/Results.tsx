@@ -11,14 +11,21 @@ const classes = styles.cardStyles
 const ResultElement = ({ result, dimensions }: any) => {
   if (!result) return null
 
+  const language = localStorage.getItem('language') || 'en'
+
   return (
-    <Container key={result} sx={classes.resultContainer}>
+    <Container sx={classes.resultContainer}>
       <Typography variant="h6" sx={classes.heading} component="div">
-        {result.isSelected.fi}
+        {result.isSelected[language]}
       </Typography>
       <Box sx={classes.content}>
-        {dimensions.map((dimension) => (
-          <Typography variant="body2">{result[dimension].fi}</Typography>
+        {dimensions.map((dimension: string) => (
+          <Typography
+            key={`${JSON.stringify(result)}.${dimension}`}
+            variant="body2"
+          >
+            {result[dimension][language]}
+          </Typography>
         ))}
       </Box>
     </Container>
@@ -53,7 +60,12 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     4: selectedCompletionMethods,
   }
 
-  console.log('RESULTS:', resultObject)
+  const resultValues = Object.values(resultObject)
+    .slice(1)
+    .filter((x) => x !== '')
+    .map((result: string | Array<string>) =>
+      typeof result === 'string' ? [result] : result
+    )
 
   return (
     <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
@@ -66,31 +78,15 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         </Box>
       </Container>
 
-      {Object.values(resultObject)
-        .slice(1)
-        .map((result: string | Array<string>) => {
-          if (typeof result === 'string') {
-            return (
-              <ResultElement
-                result={resultData[result]}
-                dimensions={resultObject[1]}
-              />
-            )
-          }
-          if (Array.isArray(result)) {
-            return (
-              <>
-                {result.map((res) => (
-                  <ResultElement
-                    result={resultData[res]}
-                    dimensions={resultObject[1]}
-                  />
-                ))}
-              </>
-            )
-          }
-          return null
-        })}
+      {resultValues.map((results) =>
+        results.map((res) => (
+          <ResultElement
+            key={JSON.stringify(res)}
+            result={resultData[res]}
+            dimensions={resultObject[1]}
+          />
+        ))
+      )}
     </Box>
   )
 }
