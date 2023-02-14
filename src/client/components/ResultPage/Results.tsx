@@ -73,9 +73,6 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         <Typography variant="h5" sx={classes.heading} component="div">
           {t('results:title')}
         </Typography>
-        <Box sx={classes.content}>
-          <Typography variant="body2">{t('results:resultsMessage')}</Typography>
-        </Box>
       </Container>
 
       {resultValues.map((results) =>
