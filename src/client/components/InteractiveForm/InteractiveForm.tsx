@@ -20,7 +20,7 @@ const InteractiveForm = () => {
 
   const onSubmit = (data: FormValues) => {
     const submittedData = data
-    console.log(submittedData)
+
     setResultData(submittedData)
   }
 

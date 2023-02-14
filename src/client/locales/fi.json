@@ -15,5 +15,9 @@
   "recommendations": {
     "title": "Valintojasi tukevat työkalut",
     "recommendationMessage": "Alla vielä listaus suosituksistamme"
+  },
+  "results": {
+    "title": "Yhteenveto valinnoistasi",
+    "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista"
   }
 }

@@ -15,5 +15,9 @@
   "recommendations": {
     "title": "Tools that support your selections",
     "recommendationMessage": "Below our recommendations on tools to use"
+  },
+  "results": {
+    "title": "Summary of your choices",
+    "resultsMessage": "We listed the summary of your choices for you below"
   }
 }
