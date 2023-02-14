@@ -42,7 +42,7 @@ const InteractiveForm = () => {
         <Recommendations watch={watch} />
       </Grid>
       <Grid item sm={12}>
-        <Results resultData={resultData} />
+        <Results formResultData={resultData} />
       </Grid>
     </Grid>
   )

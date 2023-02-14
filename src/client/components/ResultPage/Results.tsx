@@ -1,15 +1,20 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
+import getResultData from '../../../server/db/seeders/data/devResultData'
 import styles from './styles'
 import { FormValues } from '../../types'
 
-const Results = ({ resultData }: { resultData: FormValues }) => {
+const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const { t } = useTranslation()
 
-  if (!resultData) return null
+  if (!formResultData) return null
 
   const classes = styles.cardStyles
+
+  const resultData = getResultData()
+
+  console.log(resultData)
 
   return (
     <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
