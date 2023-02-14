@@ -6,6 +6,16 @@ import styles from './styles'
 import { FormValues } from '../../types'
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
+const classes = styles.cardStyles
+
+const ResultElement = ({ result }: any) => (
+  <Container sx={classes.resultContainer}>
+    <Typography variant="h6" sx={classes.heading} component="div">
+      {result?.isSelected.fi}
+    </Typography>
+  </Container>
+)
+
 const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const { t } = useTranslation()
 
@@ -13,8 +23,6 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
   const dimensionsId = 1
   const completionId = 4
-
-  const classes = styles.cardStyles
 
   const resultData = getResultData()
 
@@ -49,15 +57,23 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         </Box>
       </Container>
 
-      {Object.values(formResultData)
+      {Object.values(resultObject)
         .slice(1)
-        .map((result: any) => (
-          <Container sx={classes.resultContainer}>
-            <Typography variant="h5" sx={classes.heading} component="div">
-              {resultData[result]?.isSelected.fi}
-            </Typography>
-          </Container>
-        ))}
+        .map((result: string | Array<string>) => {
+          if (typeof result === 'string') {
+            return <ResultElement result={resultData[result]} />
+          }
+          if (Array.isArray(result)) {
+            return (
+              <>
+                {result.map((res) => (
+                  <ResultElement key={res} result={resultData[res]} />
+                ))}
+              </>
+            )
+          }
+          return null
+        })}
     </Box>
   )
 }
