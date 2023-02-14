@@ -8,13 +8,22 @@ import { FormValues } from '../../types'
 
 const classes = styles.cardStyles
 
-const ResultElement = ({ result }: any) => (
-  <Container sx={classes.resultContainer}>
-    <Typography variant="h6" sx={classes.heading} component="div">
-      {result?.isSelected.fi}
-    </Typography>
-  </Container>
-)
+const ResultElement = ({ result, dimensions }: any) => {
+  if (!result) return null
+
+  return (
+    <Container key={result} sx={classes.resultContainer}>
+      <Typography variant="h6" sx={classes.heading} component="div">
+        {result.isSelected.fi}
+      </Typography>
+      <Box sx={classes.content}>
+        {dimensions.map((dimension) => (
+          <Typography variant="body2">{result[dimension].fi}</Typography>
+        ))}
+      </Box>
+    </Container>
+  )
+}
 
 const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const { t } = useTranslation()
@@ -37,7 +46,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const resultObject = {
     ...formResultData,
     1: allDimensions
-      ? 'all'
+      ? ['allDimensions']
       : Object.keys(formResultData[dimensionsId]).filter(
           (dimension) => formResultData[dimensionsId][dimension]
         ),
@@ -61,13 +70,21 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         .slice(1)
         .map((result: string | Array<string>) => {
           if (typeof result === 'string') {
-            return <ResultElement result={resultData[result]} />
+            return (
+              <ResultElement
+                result={resultData[result]}
+                dimensions={resultObject[1]}
+              />
+            )
           }
           if (Array.isArray(result)) {
             return (
               <>
                 {result.map((res) => (
-                  <ResultElement key={res} result={resultData[res]} />
+                  <ResultElement
+                    result={resultData[res]}
+                    dimensions={resultObject[1]}
+                  />
                 ))}
               </>
             )
