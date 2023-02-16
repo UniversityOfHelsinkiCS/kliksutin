@@ -23,6 +23,9 @@ const cardStyles = {
     fontWeight: '200',
     textAlign: 'left',
   },
+  stackButton: {
+    mx: 2,
+  },
 }
 
 export default { cardStyles }
