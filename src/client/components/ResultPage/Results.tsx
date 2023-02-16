@@ -1,10 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Button, Container, Typography } from '@mui/material'
 import getResultData from '../../../server/db/seeders/data/devResultData'
 import styles from './styles'
 import { FormValues } from '../../types'
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 const classes = styles.cardStyles
 
@@ -84,6 +83,14 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
           />
         ))
       )}
+
+      <Box textAlign="center">
+        <Button variant="outlined">{t('results:proceedToExit')}</Button>
+
+        <Button variant="contained">
+          {t('results:proceedToConsultation')}
+        </Button>
+      </Box>
     </Box>
   )
 }

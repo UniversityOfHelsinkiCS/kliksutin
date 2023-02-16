@@ -18,6 +18,8 @@
   },
   "results": {
     "title": "Summary of your choices",
-    "resultsMessage": "We listed the summary of your choices for you below"
+    "resultsMessage": "We listed the summary of your choices for you below",
+    "proceedToExit": "I am done with kliksutin!",
+    "proceedToConsultation": "I want consultation"
   }
 }

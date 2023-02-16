@@ -18,6 +18,8 @@
   },
   "results": {
     "title": "Yhteenveto valinnoistasi",
-    "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista"
+    "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista",
+    "proceedToExit": "I am done with kliksutin!",
+    "proceedToConsultation": "I want consultation"
   }
 }
