@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Typography } from '@mui/material'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
 import generateColor from '../../util/generateColor'
@@ -52,7 +52,7 @@ const mapRecommendations = (selectedQuestionsData: MultipleChoiceType[]) => {
 const Recommendations: React.FC<{
   watch: any
 }> = ({ watch }) => {
-  useTranslation()
+  const { t } = useTranslation()
   const survey = useSurvey()
 
   const language = localStorage.getItem('language') || 'en'
@@ -79,7 +79,7 @@ const Recommendations: React.FC<{
   return (
     <Container sx={classes.recommendationContainer}>
       <Typography variant="h5" sx={classes.heading} component="div">
-        <Trans i18nKey="recommendations:title" />
+        {t('recommendations:title')}
       </Typography>
 
       {dimensionData.map((dimensionObject) =>
