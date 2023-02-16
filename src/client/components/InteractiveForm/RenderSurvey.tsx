@@ -49,21 +49,20 @@ const RenderSurvey: React.FC<InputProps> = ({
               )}
           </div>
         ))}
-        {!showQuestions && (
-          <Box textAlign="center">
+        <Box textAlign="center">
+          {!showQuestions ? (
             <Button
               id="open-form-button"
               onClick={() => setShowQuestions(true)}
             >
               {t('openForm')}
             </Button>
-          </Box>
-        )}
-        {showQuestions && (
-          <Button id="submit-form-button" onClick={handleSubmit}>
-            {t('submit')}
-          </Button>
-        )}
+          ) : (
+            <Button id="submit-form-button" onClick={handleSubmit}>
+              {t('submit')}
+            </Button>
+          )}
+        </Box>
       </Box>
     </Box>
   )
