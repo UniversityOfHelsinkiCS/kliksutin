@@ -5,13 +5,13 @@ import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
-import { Trans, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import styles from './styles'
 import { InputProps, Locales } from '../../types'
 import useFaculty from '../../hooks/useFaculty'
 
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
-  useTranslation()
+  const { t } = useTranslation()
   const language = localStorage.getItem('language') || 'en'
   const [faculty, setFaculty] = useState('')
   const faculties = useFaculty()
@@ -29,11 +29,11 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
       <Card>
         <CardContent>
           <Typography variant="h5" sx={classes.heading} component="div">
-            <Trans i18nKey="facultySelect:welcomeMessage" />
+            {t('facultySelect:welcomeMessage')}
           </Typography>
           <Box sx={classes.content}>
             <Typography variant="body2">
-              <Trans i18nKey="facultySelect:introMessage" />
+              {t('facultySelect:introMessage')}
             </Typography>
           </Box>
         </CardContent>
@@ -44,13 +44,11 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
           defaultValue=""
           render={({ field }) => (
             <FormControl sx={{ width: '100%' }}>
-              <InputLabel>
-                <Trans i18nKey="facultySelect:inputLabel" />
-              </InputLabel>
+              <InputLabel>{t('facultySelect:inputLabel')}</InputLabel>
               <Select
                 data-cy="faculty-select"
                 value={faculty}
-                label={<Trans i18nKey="facultySelect:inputLabel" />}
+                label={t('facultySelect:inputLabel')}
                 onChange={handleChange}
                 {...field}
               >
