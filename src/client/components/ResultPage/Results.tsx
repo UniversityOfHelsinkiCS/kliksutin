@@ -84,7 +84,12 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         ))
       )}
 
-      <Box display="flex" justifyContent="center" alignItems="center">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        marginY={4}
+      >
         <Stack textAlign="center" direction="row" spacing={2}>
           <Button sx={classes.stackButton} variant="outlined">
             {t('results:proceedToExit')}

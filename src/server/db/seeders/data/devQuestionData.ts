@@ -287,18 +287,58 @@ const getQuestionData = () => [
     parentId: 4,
     priority: 0,
     title: {
-      fi: 'Ennen',
-      sv: 'Ennen',
-      en: 'Ennen',
+      fi: 'Arviointi',
+      sv: 'Arviointi',
+      en: 'Arviointi',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
-      sv: 'Yleinen teksti liittyen tähän valintaan',
-      en: 'Yleinen teksti liittyen tähän valintaan',
+      fi: '',
+      sv: '',
+      en: '',
     },
     optionData: {
       type: 'info',
-      options: [],
+      options: [
+        {
+          id: 'courseGradingBefore',
+          title: {
+            fi: 'Ennen',
+            sv: 'Ennen',
+            en: 'Ennen',
+          },
+          label: {
+            fi: 'Yleinen teksti liittyen tähän valintaan',
+            sv: 'Yleinen teksti liittyen tähän valintaan',
+            en: 'Yleinen teksti liittyen tähän valintaan',
+          },
+        },
+        {
+          id: 'courseGradingAfter',
+          title: {
+            fi: 'Jälkeen',
+            sv: 'Jälkeen',
+            en: 'Jälkeen',
+          },
+          label: {
+            fi: 'Yleinen teksti liittyen tähän valintaan',
+            sv: 'Yleinen teksti liittyen tähän valintaan',
+            en: 'Yleinen teksti liittyen tähän valintaan',
+          },
+        },
+        {
+          id: 'courseGradingDuring',
+          title: {
+            fi: 'Aikana',
+            sv: 'Aikana',
+            en: 'Aikana',
+          },
+          label: {
+            fi: 'Yleinen teksti liittyen tähän valintaan',
+            sv: 'Yleinen teksti liittyen tähän valintaan',
+            en: 'Yleinen teksti liittyen tähän valintaan',
+          },
+        },
+      ],
     },
     visibility: {},
   },
@@ -308,14 +348,14 @@ const getQuestionData = () => [
     parentId: 4,
     priority: 0,
     title: {
-      fi: 'Jälkeen',
-      sv: 'Jälkeen',
-      en: 'Jälkeen',
+      fi: '',
+      sv: '',
+      en: '',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
-      sv: 'Yleinen teksti liittyen tähän valintaan',
-      en: 'Yleinen teksti liittyen tähän valintaan',
+      fi: '',
+      sv: '',
+      en: '',
     },
     optionData: {
       type: 'info',
@@ -329,14 +369,14 @@ const getQuestionData = () => [
     parentId: 4,
     priority: 0,
     title: {
-      fi: 'Aikana',
-      sv: 'Aikana',
-      en: 'Aikana',
+      fi: '',
+      sv: '',
+      en: '',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
-      sv: 'Yleinen teksti liittyen tähän valintaan',
-      en: 'Yleinen teksti liittyen tähän valintaan',
+      fi: '',
+      sv: '',
+      en: '',
     },
     optionData: {
       type: 'info',
