@@ -1,14 +1,20 @@
-import { Control } from 'react-hook-form'
+import {
+  Control,
+  UseFormWatch,
+  FieldValues,
+  UseFormRegister,
+  SubmitHandler,
+} from 'react-hook-form'
 
 export interface InputProps {
-  control?: Control<any>
-  watch?: any
-  register?: any
+  control?: Control<FieldValues>
+  watch?: UseFormWatch<FieldValues>
+  register?: UseFormRegister<FieldValues>
   question?: Question
-  children?: any
+  children?: React.ReactNode
   language?: string
   questions?: Question[]
-  handleSubmit?: any
+  handleSubmit?: SubmitHandler<FieldValues>
 }
 
 export type Locales = {
