@@ -17,6 +17,12 @@ export type Locales = {
   sv: string
 }
 
+export interface InfoType {
+  id: string
+  title?: Locales
+  label: Locales
+}
+
 export interface SingleChoiceType {
   id: string
   label: Locales

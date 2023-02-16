@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import styles from './styles'
-import { InputProps } from '../../types'
+import { InputProps, InfoType } from '../../types'
 
 const Info = ({ watch, question, children }: InputProps) => {
   const classes = styles.cardStyles
@@ -17,7 +17,7 @@ const Info = ({ watch, question, children }: InputProps) => {
   return (
     <>
       <Box justifyContent="center">
-        {question.optionData.options.map((singleInfo) => (
+        {question.optionData.options.map((singleInfo: InfoType) => (
           <Box key={singleInfo.id} sx={classes.content}>
             <Typography variant="h6" style={classes.heading} component="div">
               {singleInfo.title.fi}
