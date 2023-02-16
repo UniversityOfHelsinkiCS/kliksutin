@@ -20,6 +20,18 @@ const RenderSurvey: React.FC<InputProps> = ({
 
   const language = localStorage.getItem('language') || 'en'
 
+  const canProceed = (): boolean => {
+    const dimensionQuestionId = '1'
+    const dimensionSelection = watch(dimensionQuestionId)
+
+    const facultySelected = watch('faculty')
+    const someDimensionSelected =
+      dimensionSelection &&
+      Object.values(dimensionSelection).some((selected) => selected)
+
+    return facultySelected && someDimensionSelected
+  }
+
   return (
     <Box sx={{ mx: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
       <SelectFaculty control={control} />
@@ -53,6 +65,7 @@ const RenderSurvey: React.FC<InputProps> = ({
           {!showQuestions ? (
             <Button
               id="open-form-button"
+              disabled={canProceed() === false}
               onClick={() => setShowQuestions(true)}
             >
               {t('openForm')}
