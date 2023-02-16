@@ -15,11 +15,22 @@ describe('Kliksutin web page', () => {
   it('user must proceed after faculty and dimensions are selected', () => {
     cy.visit(baseUrl)
 
+    cy.get(`[data-cy = "faculty-select"]`).click()
+    cy.get(`[data-cy = "faculty-option-Faculty of Science"]`)
+
+    cy.get(`[data-cy = "dimension-select-collaboration"]`)
+
     cy.get('#open-form-button')
   })
 
   it('loads visible questions correctly', () => {
     cy.visit(baseUrl)
+
+    cy.get(`[data-cy = "faculty-select"]`).click()
+    cy.get(`[data-cy = "faculty-option-Faculty of Science"]`).click()
+
+    cy.get(`[data-cy = "dimension-select-collaboration"]`).click()
+    cy.get(`[data-cy = "dimension-select-discussion"]`).click()
 
     cy.get('#open-form-button').click()
 

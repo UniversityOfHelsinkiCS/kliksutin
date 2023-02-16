@@ -18,6 +18,7 @@ const DimensionSelect = ({ control, question }: InputProps) => (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
               <Checkbox
                 {...field}
+                data-cy={`dimension-select-${choice.id}`}
                 icon={
                   <DimensionChip
                     key={choice.id}

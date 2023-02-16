@@ -48,13 +48,18 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
                 <Trans i18nKey="facultySelect:inputLabel" />
               </InputLabel>
               <Select
+                data-cy="faculty-select"
                 value={faculty}
                 label={<Trans i18nKey="facultySelect:inputLabel" />}
                 onChange={handleChange}
                 {...field}
               >
                 {faculties.map((f: Locales) => (
-                  <MenuItem key={f.fi} value={f.fi}>
+                  <MenuItem
+                    data-cy={`faculty-option-${f.en}`}
+                    key={f.en}
+                    value={f.en}
+                  >
                     {f[language]}
                   </MenuItem>
                 ))}
