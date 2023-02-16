@@ -64,7 +64,7 @@ const RenderSurvey = ({
           {!showQuestions ? (
             <Button
               data-cy="open-form-button"
-              disabled={canProceed() === false}
+              disabled={!canProceed()}
               onClick={() => setShowQuestions(true)}
             >
               {t('openForm')}
