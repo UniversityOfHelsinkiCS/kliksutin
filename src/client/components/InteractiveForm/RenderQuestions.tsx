@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 import { InputProps } from '../../types'
 import styles from './styles'
+import Info from '../Choices/Info'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
 import DimensionSelect from '../Choices/DimensionSelect'
@@ -27,7 +28,7 @@ const RenderQuestions = ({
     singleChoice: SingleChoice,
     multipleChoice: MultiChoice,
     dimensions: DimensionSelect,
-    info: SingleChoice,
+    info: Info,
   }
 
   const Choice = components[question.optionData.type]
