@@ -348,9 +348,9 @@ const getQuestionData = () => [
     parentId: 4,
     priority: 0,
     title: {
-      fi: '',
-      sv: '',
-      en: '',
+      fi: 'This question is not in use as of 16.2.2023',
+      sv: 'This question is not in use as of 16.2.2023',
+      en: 'This question is not in use as of 16.2.2023',
     },
     text: {
       fi: '',
@@ -361,7 +361,9 @@ const getQuestionData = () => [
       type: 'info',
       options: [],
     },
-    visibility: {},
+    visibility: {
+      options: ['out-of-use'],
+    },
   },
   {
     id: 9,
@@ -369,9 +371,9 @@ const getQuestionData = () => [
     parentId: 4,
     priority: 0,
     title: {
-      fi: '',
-      sv: '',
-      en: '',
+      fi: 'This question is not in use as of 16.2.2023',
+      sv: 'This question is not in use as of 16.2.2023',
+      en: 'This question is not in use as of 16.2.2023',
     },
     text: {
       fi: '',
@@ -382,7 +384,9 @@ const getQuestionData = () => [
       type: 'info',
       options: [],
     },
-    visibility: {},
+    visibility: {
+      options: ['out-of-use'],
+    },
   },
   {
     id: 7,
