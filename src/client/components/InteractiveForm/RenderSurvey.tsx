@@ -6,12 +6,12 @@ import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 import styles from './styles'
 
-const RenderSurvey: React.FC<InputProps> = ({
+const RenderSurvey = ({
   control,
   watch,
   questions,
   handleSubmit,
-}) => {
+}: InputProps) => {
   const { t } = useTranslation()
   const classes = styles.cardStyles
   const [showQuestions, setShowQuestions] = useState(false)
@@ -22,12 +22,11 @@ const RenderSurvey: React.FC<InputProps> = ({
 
   const canProceed = (): boolean => {
     const dimensionQuestionId = '1'
-    const dimensionSelection = watch(dimensionQuestionId)
 
-    const facultySelected = watch('faculty')
+    const facultySelected = watch('faculty') !== ''
     const someDimensionSelected =
-      dimensionSelection &&
-      Object.values(dimensionSelection).some((selected) => selected)
+      watch(dimensionQuestionId) &&
+      Object.values(watch(dimensionQuestionId)).some((selected) => selected)
 
     return facultySelected && someDimensionSelected
   }
