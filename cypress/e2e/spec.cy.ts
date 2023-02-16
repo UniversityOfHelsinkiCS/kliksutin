@@ -20,13 +20,13 @@ describe('Kliksutin web page', () => {
   })
 
   it('user must proceed after faculty and dimensions are selected', () => {
-    cy.get('#open-form-button')
+    cy.get(`[data-cy = "open-form-button"]`).should('not.be.disabled').click()
   })
 
   it('loads visible questions correctly', () => {
     cy.get(`[data-cy = "dimension-select-discussion"]`).click()
 
-    cy.get('#open-form-button').click()
+    cy.get(`[data-cy = "open-form-button"]`).click()
 
     questionData = getQuestionData()
 

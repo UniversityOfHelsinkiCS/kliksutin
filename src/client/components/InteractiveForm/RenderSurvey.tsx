@@ -63,14 +63,14 @@ const RenderSurvey = ({
         <Box textAlign="center">
           {!showQuestions ? (
             <Button
-              id="open-form-button"
+              data-cy="open-form-button"
               disabled={canProceed() === false}
               onClick={() => setShowQuestions(true)}
             >
               {t('openForm')}
             </Button>
           ) : (
-            <Button id="submit-form-button" onClick={handleSubmit}>
+            <Button data-cy="submit-form-button" onClick={handleSubmit}>
               {t('submit')}
             </Button>
           )}
