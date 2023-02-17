@@ -23,7 +23,7 @@ const ResultElement = ({ result, dimensions }: any) => {
             key={`${JSON.stringify(result)}.${dimension}`}
             variant="body2"
           >
-            {result[dimension][language]}
+            {result.data[dimension][language]}
           </Typography>
         ))}
       </Box>
