@@ -2,6 +2,7 @@ import logger from '../../util/logger'
 import seedSurveys from './surveys'
 import seedQuestions from './questions'
 import seedRecommendations from './recommendations'
+import seedResults from './results'
 
 const seed = async () => {
   // eslint-disable-next-line no-promise-executor-return
@@ -11,6 +12,7 @@ const seed = async () => {
     await seedSurveys()
     await seedQuestions()
     await seedRecommendations()
+    await seedResults()
   } catch (e) {
     logger.error('Seeding failed: ', e)
   }
