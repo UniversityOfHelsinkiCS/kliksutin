@@ -15,7 +15,9 @@ class Recommendation extends Model<
 > {
   declare id: CreationOptional<number>
 
-  declare name: TranslatedText
+  declare label: String
+
+  declare title: TranslatedText
 
   declare text: TranslatedText
 }
@@ -27,7 +29,11 @@ Recommendation.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    label: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    title: {
       type: DataTypes.JSONB,
       allowNull: false,
     },

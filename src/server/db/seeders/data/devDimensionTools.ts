@@ -1,6 +1,7 @@
 const getDimensionData = () => [
   {
-    id: 'zoom',
+    id: 1,
+    label: 'zoom',
     title: {
       fi: 'Zoom',
       sv: 'Zoom',
@@ -13,7 +14,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'unitube',
+    id: 2,
+    label: 'unitube',
     title: {
       fi: 'Unitube',
       sv: 'Unitube',
@@ -26,7 +28,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'flinga',
+    id: 3,
+    label: 'flinga',
     title: {
       fi: 'Flinga',
       sv: 'Flinga',
@@ -39,7 +42,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'presemo',
+    id: 4,
+    label: 'presemo',
     title: {
       fi: 'Presemo',
       sv: 'Presemo',
@@ -52,7 +56,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'thinglink',
+    id: 5,
+    label: 'thinglink',
     title: {
       fi: 'Thinglink',
       sv: 'Thinglink',
@@ -65,7 +70,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'eportfolio',
+    id: 6,
+    label: 'eportfolio',
     title: {
       fi: 'Eportfolio',
       sv: 'Eportfolio',
@@ -78,7 +84,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'moodle',
+    id: 7,
+    label: 'moodle',
     title: {
       fi: 'Moodle',
       sv: 'Moodle',
@@ -91,7 +98,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'screen-cast-o-matic',
+    id: 8,
+    label: 'screen-cast-o-matic',
     title: {
       fi: 'Screen-cast-o-matic',
       sv: 'Screen-cast-o-matic',
@@ -104,7 +112,8 @@ const getDimensionData = () => [
     },
   },
   {
-    id: 'H5P',
+    id: 9,
+    label: 'H5P',
     title: {
       fi: 'H5P',
       sv: 'H5P',
