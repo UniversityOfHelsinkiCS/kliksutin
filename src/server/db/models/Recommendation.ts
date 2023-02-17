@@ -9,9 +9,9 @@ import {
 import { sequelize } from '../connection'
 import { TranslatedText } from '../../types'
 
-class Result extends Model<
-  InferAttributes<Result>,
-  InferCreationAttributes<Result>
+class Recommendation extends Model<
+  InferAttributes<Recommendation>,
+  InferCreationAttributes<Recommendation>
 > {
   declare id: CreationOptional<number>
 
@@ -20,7 +20,7 @@ class Result extends Model<
   declare text: TranslatedText
 }
 
-Result.init(
+Recommendation.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -42,4 +42,4 @@ Result.init(
   }
 )
 
-export default Result
+export default Recommendation
