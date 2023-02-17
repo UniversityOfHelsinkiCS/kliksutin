@@ -71,7 +71,8 @@ export interface Question {
 }
 
 export interface DimensionData {
-  id: string
+  id: number
+  label: string
   title: Locales
   text: Locales
   dimensions?: string[]

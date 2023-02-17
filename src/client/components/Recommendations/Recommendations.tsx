@@ -8,6 +8,10 @@ import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
 import { DimensionData, MultipleChoiceType, Question } from '../../types'
 
+/* eslint-disable no-nested-ternary */
+const sortRecommendations = (a: DimensionData, b: DimensionData) =>
+  a.label > b.label ? 1 : b.label > a.label ? -1 : 0
+
 const mapSelectedQuestions = (
   question: Question,
   dimensionSelections: { [x: string]: boolean }
@@ -34,7 +38,7 @@ const mapRecommendations = (selectedQuestionsData: MultipleChoiceType[]) => {
   )
 
   const recommendations = dimensionData.map((dimension) => ({
-    name: dimension.id,
+    name: dimension.label,
     dimensions: [],
   }))
 
@@ -46,6 +50,7 @@ const mapRecommendations = (selectedQuestionsData: MultipleChoiceType[]) => {
         }
       })
   )
+
   return recommendations
 }
 
@@ -63,7 +68,8 @@ const Recommendations: React.FC<{
 
   const dimensionSelection = watch('1')
 
-  const dimensionData: DimensionData[] = getDimensionData()
+  const dimensionData: DimensionData[] =
+    getDimensionData().sort(sortRecommendations)
 
   const dimensionQuestion = survey.Questions.find(
     (question) => question.id === 1
@@ -85,7 +91,7 @@ const Recommendations: React.FC<{
       {dimensionData.map((dimensionObject) =>
         recommendationsData.map((recommendation) => {
           if (
-            recommendation.name === dimensionObject.id &&
+            recommendation.name === dimensionObject.label &&
             recommendation.dimensions.length > 0
           ) {
             return (
