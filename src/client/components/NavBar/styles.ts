@@ -7,6 +7,7 @@ const navStyles = {
     '@media print': {
       display: 'none',
     },
+    justifyContent: 'space-between',
     padding: '0.2rem 0 0.2rem 0',
   },
   link: {

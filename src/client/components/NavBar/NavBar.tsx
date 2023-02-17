@@ -13,6 +13,7 @@ import {
   Popper,
   Divider,
 } from '@mui/material'
+import LanguageIcon from '@mui/icons-material/Language'
 import { useTranslation } from 'react-i18next'
 
 import toscalogoColor from '../../assets/toscalogo_color.svg'
@@ -74,7 +75,7 @@ const NavBar = () => {
               aria-haspopup="true"
               onClick={() => setOpenLanguageSelect(!openLanguageSelect)}
             >
-              {language}
+              <LanguageIcon sx={{ mr: 2 }} /> {language}
             </Button>
             <Popper
               open={openLanguageSelect}
