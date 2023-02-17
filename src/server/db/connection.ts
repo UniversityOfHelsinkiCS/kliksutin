@@ -6,7 +6,7 @@ import { DB_CONNECTION_STRING } from '../util/config'
 
 const DB_CONNECTION_RETRY_LIMIT = 10
 
-export const sequelize = new Sequelize(DB_CONNECTION_STRING)
+export const sequelize = new Sequelize(DB_CONNECTION_STRING, { logging: false })
 
 const runMigrations = async () => {
   const migrator = new Umzug({
@@ -40,8 +40,7 @@ export const connectToDatabase = async (attempt = 0) => {
         error: err.stack,
       })
 
-      // update once staging has a database
-      return null // process.exit(1)
+      return process.exit(1)
     }
     logger.info(
       `Connection to database failed! Attempt ${attempt} of ${DB_CONNECTION_RETRY_LIMIT}`
