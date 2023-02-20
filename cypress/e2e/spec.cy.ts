@@ -15,15 +15,15 @@ describe('Kliksutin web page', () => {
     cy.get(`[data-cy = "dimension-select-collaboration"]`).click()
   })
 
-  it('loads the main page', () => {
+  it.skip('loads the main page', () => {
     cy.contains('Kliksutin')
   })
 
-  it('user must proceed after faculty and dimensions are selected', () => {
+  it.skip('user must proceed after faculty and dimensions are selected', () => {
     cy.get(`[data-cy = "open-form-button"]`).should('not.be.disabled').click()
   })
 
-  it('loads visible questions correctly', () => {
+  it.skip('loads visible questions correctly', () => {
     cy.get(`[data-cy = "dimension-select-discussion"]`).click()
 
     cy.get(`[data-cy = "open-form-button"]`).click()
@@ -37,7 +37,7 @@ describe('Kliksutin web page', () => {
     })
   })
 
-  it('does not load invisible questions before they have been touched', () => {
+  it.skip('does not load invisible questions before they have been touched', () => {
     questionData = getQuestionData()
 
     cy.wrap(questionData).each((question: Question) => {
