@@ -27,7 +27,7 @@ const InteractiveForm = () => {
   if (!survey) return null
 
   return (
-    <Box my="2rem">
+    <Box my="2rem" flexGrow={1}>
       <Grid container>
         <Grid item sm={12} md={7} xl={6}>
           <form onSubmit={handleSubmit(onSubmit)}>

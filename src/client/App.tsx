@@ -11,7 +11,13 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box>
+      <Box
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         <NavBar />
         <InteractiveForm />
         <Footer />
