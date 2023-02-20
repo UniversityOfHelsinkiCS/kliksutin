@@ -1,44 +1,24 @@
 import express from 'express'
-import cors from 'cors'
 import path from 'path'
-import { Handlers as SentryHandlers } from '@sentry/node'
-import initializeSentry from './util/sentry'
 
+import router from './routes'
 import { PORT } from './util/config'
 import { connectToDatabase } from './db/connection'
 import seed from './db/seeders'
 import logger from './util/logger'
-import errorHandler from './middeware/errorHandler'
-import facultyRouter from './routes/faculty'
-import surveyRouter from './routes/survey'
-import recommendationRouter from './routes/recommendation'
-import resultRouter from './routes/result'
 
 const app = express()
 
-app.use(cors())
-app.use(express.json())
-
-initializeSentry(app)
-
-app.use(SentryHandlers.requestHandler())
-app.use(SentryHandlers.tracingHandler())
-
-app.use('/api/faculties', facultyRouter)
-app.use('/api/surveys', surveyRouter)
-app.use('/api/recommendations', recommendationRouter)
-app.use('/api/results', resultRouter)
+app.use('/api', (req, res, next) => router(req, res, next))
+app.use('/api', (_, res) => res.sendStatus(404))
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(__dirname, '../../build')
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
 
   app.use(express.static(DIST_PATH))
-  app.get('*', (req, res) => res.sendFile(INDEX_PATH))
+  app.get('*', (_, res) => res.sendFile(INDEX_PATH))
 }
-
-app.use(SentryHandlers.errorHandler())
-app.use(errorHandler)
 
 app.listen(PORT, async () => {
   await connectToDatabase()
