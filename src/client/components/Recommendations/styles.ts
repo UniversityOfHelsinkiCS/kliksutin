@@ -3,6 +3,7 @@ const cardStyles = {
     position: 'sticky',
     top: '1rem',
     borderLeft: 1,
+    paddingLeft: '1rem',
     marginLeft: '0.5rem',
     borderColor: 'grey.300',
     textAlign: 'left',

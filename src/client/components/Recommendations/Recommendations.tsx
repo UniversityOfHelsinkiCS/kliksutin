@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
@@ -91,7 +91,7 @@ const Recommendations: React.FC<{
   )
 
   return (
-    <Container sx={classes.recommendationContainer}>
+    <Box sx={classes.recommendationContainer}>
       <Typography variant="h5" sx={classes.heading} component="div">
         {t('recommendations:title')}
       </Typography>
@@ -136,7 +136,7 @@ const Recommendations: React.FC<{
           return null
         })
       )}
-    </Container>
+    </Box>
   )
 }
 
