@@ -6,6 +6,7 @@ import DimensionChip from '../Chip/DimensionChip'
 import generateColor from '../../util/generateColor'
 import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
+import useRecommendations from '../../hooks/useRecommendations'
 import { DimensionData, MultipleChoiceType, Question } from '../../types'
 
 /* eslint-disable no-nested-ternary */
@@ -27,9 +28,10 @@ const mapSelectedQuestions = (
   return selectedQuestions as MultipleChoiceType[]
 }
 
-const mapRecommendations = (selectedQuestionsData: MultipleChoiceType[]) => {
-  const dimensionData: DimensionData[] = getDimensionData()
-
+const mapRecommendations = (
+  recommendationsData: DimensionData[],
+  selectedQuestionsData: MultipleChoiceType[]
+) => {
   const selectedTools = selectedQuestionsData.map(
     (question: { id: string; data: string[] }) => ({
       optionId: question.id,
@@ -37,8 +39,8 @@ const mapRecommendations = (selectedQuestionsData: MultipleChoiceType[]) => {
     })
   )
 
-  const recommendations = dimensionData.map((dimension) => ({
-    name: dimension.label,
+  const recommendations = recommendationsData.map((recommendation) => ({
+    name: recommendation.label,
     dimensions: [],
   }))
 
@@ -59,6 +61,7 @@ const Recommendations: React.FC<{
 }> = ({ watch }) => {
   const { t } = useTranslation()
   const survey = useSurvey()
+  const recommendations = useRecommendations()
 
   const language = localStorage.getItem('language') || 'en'
 
@@ -80,7 +83,10 @@ const Recommendations: React.FC<{
     dimensionSelection
   )
 
-  const recommendationsData = mapRecommendations(selectedQuestions)
+  const recommendationsData = mapRecommendations(
+    recommendations,
+    selectedQuestions
+  )
 
   return (
     <Container sx={classes.recommendationContainer}>
