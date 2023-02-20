@@ -3,12 +3,10 @@ import getResultData from './data/devResultData'
 
 const seedResults = async () => {
   const results: any = getResultData()
-  const labels = Object.keys(results)
 
-  labels.map(async (optionLabel) => {
+  results.forEach(async (result) => {
     await Result.upsert({
-      optionLabel,
-      ...results[optionLabel],
+      ...result,
     })
   })
 }
