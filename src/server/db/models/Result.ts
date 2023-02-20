@@ -15,6 +15,8 @@ class Result extends Model<
 > {
   declare id: CreationOptional<number>
 
+  declare surveyId: number
+
   declare optionLabel: String
 
   declare isSelected: TranslatedText
@@ -28,6 +30,10 @@ Result.init(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+    },
+    surveyId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     optionLabel: {
       type: DataTypes.STRING,

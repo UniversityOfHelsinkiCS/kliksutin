@@ -1,6 +1,7 @@
 const getDimensionData = () => [
   {
     id: 1,
+    surveyId: 0,
     label: 'zoom',
     title: {
       fi: 'Zoom',
@@ -15,6 +16,7 @@ const getDimensionData = () => [
   },
   {
     id: 2,
+    surveyId: 0,
     label: 'unitube',
     title: {
       fi: 'Unitube',
@@ -29,6 +31,7 @@ const getDimensionData = () => [
   },
   {
     id: 3,
+    surveyId: 0,
     label: 'flinga',
     title: {
       fi: 'Flinga',
@@ -43,6 +46,7 @@ const getDimensionData = () => [
   },
   {
     id: 4,
+    surveyId: 0,
     label: 'presemo',
     title: {
       fi: 'Presemo',
@@ -57,6 +61,7 @@ const getDimensionData = () => [
   },
   {
     id: 5,
+    surveyId: 0,
     label: 'thinglink',
     title: {
       fi: 'Thinglink',
@@ -71,6 +76,7 @@ const getDimensionData = () => [
   },
   {
     id: 6,
+    surveyId: 0,
     label: 'eportfolio',
     title: {
       fi: 'Eportfolio',
@@ -85,6 +91,7 @@ const getDimensionData = () => [
   },
   {
     id: 7,
+    surveyId: 0,
     label: 'moodle',
     title: {
       fi: 'Moodle',
@@ -99,6 +106,7 @@ const getDimensionData = () => [
   },
   {
     id: 8,
+    surveyId: 0,
     label: 'screen-cast-o-matic',
     title: {
       fi: 'Screen-cast-o-matic',
@@ -113,6 +121,7 @@ const getDimensionData = () => [
   },
   {
     id: 9,
+    surveyId: 0,
     label: 'H5P',
     title: {
       fi: 'H5P',

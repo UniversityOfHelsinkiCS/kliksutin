@@ -15,6 +15,8 @@ class Recommendation extends Model<
 > {
   declare id: CreationOptional<number>
 
+  declare surveyId: number
+
   declare label: String
 
   declare title: TranslatedText
@@ -28,6 +30,10 @@ Recommendation.init(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+    },
+    surveyId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     label: {
       type: DataTypes.STRING,
