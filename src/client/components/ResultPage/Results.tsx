@@ -73,11 +73,13 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         </Typography>
       </Container>
 
-      {mapResultsToList.map((results) =>
-        results.map((res) => (
+      {mapResultsToList.map((resultLabels) =>
+        resultLabels.map((resultLabel) => (
           <ResultElement
-            key={JSON.stringify(res)}
-            result={resultData.find((r) => r.optionLabel === res)}
+            key={JSON.stringify(resultLabel)}
+            result={resultData.find(
+              (result) => result.optionLabel === resultLabel
+            )}
             dimensions={mapResultsToObject[dimensionsId]}
           />
         ))
