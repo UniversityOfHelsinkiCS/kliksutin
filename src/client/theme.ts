@@ -10,6 +10,21 @@ import {
   ThemeOptions,
 } from '@mui/material/styles'
 
+/**
+ * Module augmentation to extend default theme with new colours: https://mui.com/material-ui/customization/palette/#customization
+ */
+declare module '@mui/material/styles' {
+  interface Palette {
+    toskaDark: Palette['primary']
+    toskaPrimary: Palette['primary']
+  }
+
+  interface PaletteOptions {
+    toskaDark: PaletteOptions['primary']
+    toskaPrimary: PaletteOptions['primary']
+  }
+}
+
 const themeOptions: ThemeOptions = {
   typography: {
     fontFamily: [
@@ -26,6 +41,14 @@ const themeOptions: ThemeOptions = {
   palette: {
     primary: {
       main: '#107eab',
+    },
+    toskaDark: {
+      main: '#1a202c',
+      contrastText: '#fff',
+    },
+    toskaPrimary: {
+      main: '#e99939',
+      contrastText: '#1a202c',
     },
   },
 

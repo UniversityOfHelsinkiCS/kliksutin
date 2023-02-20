@@ -16,7 +16,7 @@ import {
 import LanguageIcon from '@mui/icons-material/Language'
 import { useTranslation } from 'react-i18next'
 
-import toscalogoColor from '../../assets/toscalogo_color.svg'
+import toskaBlack from '../../assets/toscalogo_black.svg'
 import styles from './styles'
 
 const NavBar = () => {
@@ -53,7 +53,7 @@ const NavBar = () => {
       <Container maxWidth={false}>
         <Toolbar sx={classes.toolbar} disableGutters>
           <Box display="inline-flex" alignItems="end" sx={classes.link}>
-            <img src={toscalogoColor} alt="Toska" width="80" />
+            <img src={toskaBlack} alt="Toska" width="70" />
             <Box ml="2rem">
               <Typography
                 textTransform="uppercase"
