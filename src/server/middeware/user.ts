@@ -1,20 +1,20 @@
-import { inStaging } from '../../config'
-
 const userMiddleware = (req, _, next) => {
-  /* const {
+  const {
     uid: username,
     givenname: firstName,
     sn: secondName,
     mail,
     preferredlanguage: language,
     hypersonsisuid: sisuId,
-  } = req.headers */
+  } = req.headers
 
-  // For testing
-  if (inStaging) {
-    const { headers } = req
-    console.log(headers)
-    console.log(JSON.stringify(headers, null, 2))
+  req.user = {
+    username,
+    firstName,
+    secondName,
+    mail,
+    language,
+    sisuId,
   }
 
   return next()
