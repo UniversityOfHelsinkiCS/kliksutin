@@ -66,8 +66,6 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
       typeof result === 'string' ? [result] : result
     )
 
-  console.log(mapResultsToList)
-
   return (
     <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
       <Container sx={{ mt: 2 }}>
