@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
-import getResultData from '../../../server/db/seeders/data/devResultData'
+import useResults from '../../hooks/useResults'
 import styles from './styles'
 import { FormValues } from '../../types'
 
@@ -33,13 +33,12 @@ const ResultElement = ({ result, dimensions }: any) => {
 
 const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const { t } = useTranslation()
+  const resultData = useResults()
 
   if (!formResultData) return null
 
   const dimensionsId = 1
   const courseCompletionMethodId = 4
-
-  const resultData = getResultData()
 
   const allDimensionsSelected: boolean = Object.values(
     formResultData[dimensionsId]
