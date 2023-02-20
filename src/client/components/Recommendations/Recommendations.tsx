@@ -65,11 +65,13 @@ const Recommendations: React.FC<{
 
   const language = localStorage.getItem('language') || 'en'
 
-  if (!survey || recommendations) return null
+  if (!survey || !recommendations) return null
 
   const classes = styles.cardStyles
 
   const dimensionSelection = watch('1')
+
+  if (!dimensionSelection) return null
 
   const dimensionData: DimensionData[] =
     getDimensionData().sort(sortRecommendations)
