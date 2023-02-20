@@ -402,7 +402,7 @@ const getQuestionData = () => [
       ],
     },
     visibility: {
-      options: ['courseSizeBig'],
+      options: ['courseSizeBig', 'courseSizeUnlimited'],
     },
   },
   {
