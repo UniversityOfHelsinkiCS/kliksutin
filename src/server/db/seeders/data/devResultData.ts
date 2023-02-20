@@ -519,11 +519,11 @@ const getResultData = () => [
   {
     id: 12,
     surveyId: 0,
-    optionLabel: 'courseCompletionMethodDemo',
+    optionLabel: 'courseCompletionMethodSmallGroup',
     isSelected: {
-      fi: 'Olet valinnut kurssillesi suoritusmuodoksi demot.',
-      sv: 'Olet valinnut kurssillesi suoritusmuodoksi demot.',
-      en: 'Olet valinnut kurssillesi suoritusmuodoksi demot.',
+      fi: 'Olet valinnut kurssillesi suoritusmuodoksi pienryhmätyöskentelyn.',
+      sv: 'Olet valinnut kurssillesi suoritusmuodoksi pienryhmätyöskentelyn.',
+      en: 'Olet valinnut kurssillesi suoritusmuodoksi pienryhmätyöskentelyn.',
     },
     data: {
       allDimensions: {
@@ -568,9 +568,9 @@ const getResultData = () => [
     surveyId: 0,
     optionLabel: 'courseCompletionMethodDiary',
     isSelected: {
-      fi: 'Olet valinnut kurssillesi suoritusmuodoksi oppimispäiväkirjan.',
-      sv: 'Olet valinnut kurssillesi suoritusmuodoksi oppimispäiväkirjan.',
-      en: 'Olet valinnut kurssillesi suoritusmuodoksi oppimispäiväkirjan.',
+      fi: 'Olet valinnut kurssillesi suoritusmuodoksi välitehtävät.',
+      sv: 'Olet valinnut kurssillesi suoritusmuodoksi välitehtävät.',
+      en: 'Olet valinnut kurssillesi suoritusmuodoksi välitehtävät.',
     },
     data: {
       allDimensions: {
@@ -613,11 +613,11 @@ const getResultData = () => [
   {
     id: 14,
     surveyId: 0,
-    optionLabel: 'courseCompletionMethodAssignment',
+    optionLabel: 'courseCompletionMethodLaboratory',
     isSelected: {
-      fi: 'Olet valinnut kurssillesi suoritusmuodoksi lopputyön.',
-      sv: 'Olet valinnut kurssillesi suoritusmuodoksi lopputyön.',
-      en: 'Olet valinnut kurssillesi suoritusmuodoksi lopputyön.',
+      fi: 'Olet valinnut kurssillesi suoritusmuodoksi laboratorio ja simulaatioharjoitukset.',
+      sv: 'Olet valinnut kurssillesi suoritusmuodoksi laboratorio ja simulaatioharjoitukset.',
+      en: 'Olet valinnut kurssillesi suoritusmuodoksi laboratorio ja simulaatioharjoitukset.',
     },
     data: {
       allDimensions: {
@@ -660,11 +660,11 @@ const getResultData = () => [
   {
     id: 15,
     surveyId: 0,
-    optionLabel: 'courseCompletionMethodParticipation',
+    optionLabel: 'courseCompletionMethodAssignment',
     isSelected: {
-      fi: 'Olet valinnut kurssillesi suoritusmuodoksi osallistumisen opetukseen.',
-      sv: 'Olet valinnut kurssillesi suoritusmuodoksi osallistumisen opetukseen.',
-      en: 'Olet valinnut kurssillesi suoritusmuodoksi osallistumisen opetukseen.',
+      fi: 'Olet valinnut kurssillesi suoritusmuodoksi kirjallisen tehtävän.',
+      sv: 'Olet valinnut kurssillesi suoritusmuodoksi kirjallisen tehtävän.',
+      en: 'Olet valinnut kurssillesi suoritusmuodoksi kirjallisen tehtävän.',
     },
     data: {
       allDimensions: {
@@ -706,53 +706,6 @@ const getResultData = () => [
   },
   {
     id: 16,
-    surveyId: 0,
-    optionLabel: 'courseCompletionMethodOther',
-    isSelected: {
-      fi: 'Olet valinnut kurssillesi suoritusmuodoksi muun tavan.',
-      sv: 'Olet valinnut kurssillesi suoritusmuodoksi muun tavan.',
-      en: 'Olet valinnut kurssillesi suoritusmuodoksi muun tavan.',
-    },
-    data: {
-      allDimensions: {
-        fi: 'Verkko-opetus mahdollistaa monenlaisia, myös perinteisistä käytännöistä poikkeavia suoritus- ja arviointitapoja. Tähän liittyvissä suunnitemissa kannatta konsultoida opetusteknologian asiantuntijoita sopivien työkalujen ja käytäntöjen kartoittamiseksi.',
-        sv: 'Verkko-opetus mahdollistaa monenlaisia, myös perinteisistä käytännöistä poikkeavia suoritus- ja arviointitapoja. Tähän liittyvissä suunnitemissa kannatta konsultoida opetusteknologian asiantuntijoita sopivien työkalujen ja käytäntöjen kartoittamiseksi.',
-        en: 'Verkko-opetus mahdollistaa monenlaisia, myös perinteisistä käytännöistä poikkeavia suoritus- ja arviointitapoja. Tähän liittyvissä suunnitemissa kannatta konsultoida opetusteknologian asiantuntijoita sopivien työkalujen ja käytäntöjen kartoittamiseksi.',
-      },
-      investication: {
-        fi: '',
-        sv: '',
-        en: '',
-      },
-      production: {
-        fi: '',
-        sv: '',
-        en: '',
-      },
-      collaboration: {
-        fi: 'Lähes kaikki verkko-opetuksen välineet mahdollistavat yhteistyön ja vuorovaikutuksen, joten välineiden ja käytäntöjen valitseminen on hyvin tapauskohtaista.',
-        sv: 'Lähes kaikki verkko-opetuksen välineet mahdollistavat yhteistyön ja vuorovaikutuksen, joten välineiden ja käytäntöjen valitseminen on hyvin tapauskohtaista.',
-        en: 'Lähes kaikki verkko-opetuksen välineet mahdollistavat yhteistyön ja vuorovaikutuksen, joten välineiden ja käytäntöjen valitseminen on hyvin tapauskohtaista.',
-      },
-      discussion: {
-        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää Moodlen keskustelualuetta, etäopetustapahtumissa Zoomin tai Teamsin chattia. Kaikissa tapauksissa on syytä miettiä ja tarkkaan ohjeistaa, mikä keskustelun tavoite kussakin tapauksessa on.',
-        sv: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää Moodlen keskustelualuetta, etäopetustapahtumissa Zoomin tai Teamsin chattia. Kaikissa tapauksissa on syytä miettiä ja tarkkaan ohjeistaa, mikä keskustelun tavoite kussakin tapauksessa on.',
-        en: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää Moodlen keskustelualuetta, etäopetustapahtumissa Zoomin tai Teamsin chattia. Kaikissa tapauksissa on syytä miettiä ja tarkkaan ohjeistaa, mikä keskustelun tavoite kussakin tapauksessa on.',
-      },
-      acquisition: {
-        fi: '',
-        sv: '',
-        en: '',
-      },
-      practice: {
-        fi: '',
-        sv: '',
-        en: '',
-      },
-    },
-  },
-  {
-    id: 17,
     surveyId: 0,
     optionLabel: 'courseIsOpenUniversity',
     isSelected: {
@@ -799,7 +752,7 @@ const getResultData = () => [
     },
   },
   {
-    id: 18,
+    id: 17,
     surveyId: 0,
     optionLabel: 'courseIsNotOpenUniversity',
     isSelected: {

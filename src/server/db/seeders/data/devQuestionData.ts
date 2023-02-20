@@ -198,45 +198,62 @@ const getQuestionData = () => [
             sv: 'Tentti',
             en: 'Tentti',
           },
+          data: {
+            fi: 'Tentin voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
+            sv: 'Tentin voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
+            en: 'Tentin voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
+          },
         },
         {
-          id: 'courseCompletionMethodDemo',
+          id: 'courseCompletionMethodSmallGroup',
           label: {
-            fi: 'Demot/osasuoritukset',
-            sv: 'Demot/osasuoritukset',
-            en: 'Demot/osasuoritukset',
+            fi: 'Pienryhmätyöskentely',
+            sv: 'Pienryhmätyöskentely',
+            en: 'Pienryhmätyöskentely',
+          },
+          data: {
+            fi: 'Ryhmätyöt perustuvat yhdessä tekemiseen ja keskusteluun. Ryhmätyöt edistävät opiskelijoiden välistä vuorovaikutusta ja opettavat yhteistyötaitoja. Opiskelijoiden väliset keskustelut ja tehtävien tekeminen yhdessä syventävät aiheen ymmärrystä.',
+            sv: 'Ryhmätyöt perustuvat yhdessä tekemiseen ja keskusteluun. Ryhmätyöt edistävät opiskelijoiden välistä vuorovaikutusta ja opettavat yhteistyötaitoja. Opiskelijoiden väliset keskustelut ja tehtävien tekeminen yhdessä syventävät aiheen ymmärrystä.',
+            en: 'Ryhmätyöt perustuvat yhdessä tekemiseen ja keskusteluun. Ryhmätyöt edistävät opiskelijoiden välistä vuorovaikutusta ja opettavat yhteistyötaitoja. Opiskelijoiden väliset keskustelut ja tehtävien tekeminen yhdessä syventävät aiheen ymmärrystä.',
           },
         },
         {
           id: 'courseCompletionMethodDiary',
           label: {
-            fi: 'Välitehtävät/oppimispäiväkirja',
-            sv: 'Välitehtävät/oppimispäiväkirja',
-            en: 'Välitehtävät/oppimispäiväkirja',
+            fi: 'Välitehtävät',
+            sv: 'Välitehtävät',
+            en: 'Välitehtävät',
+          },
+          data: {
+            fi: 'Kurssin aikana suoritettavat pienet oppimistehtävät edistävät ja tukevat oppimista ja kurssille asetettujen oppimistavoitteiden saavuttamista. Tällaisia ovat esim. itsearviointitestit, laskuharjoitukset, keskustelutehtävät, vertaispalautetehtävät.',
+            sv: 'Kurssin aikana suoritettavat pienet oppimistehtävät edistävät ja tukevat oppimista ja kurssille asetettujen oppimistavoitteiden saavuttamista. Tällaisia ovat esim. itsearviointitestit, laskuharjoitukset, keskustelutehtävät, vertaispalautetehtävät.',
+            en: 'Kurssin aikana suoritettavat pienet oppimistehtävät edistävät ja tukevat oppimista ja kurssille asetettujen oppimistavoitteiden saavuttamista. Tällaisia ovat esim. itsearviointitestit, laskuharjoitukset, keskustelutehtävät, vertaispalautetehtävät.',
+          },
+        },
+        {
+          id: 'courseCompletionMethodLaboratory',
+          label: {
+            fi: 'Laboratoriotyöt ja simulaatioharjoitukset',
+            sv: 'Laboratoriotyöt ja simulaatioharjoitukset',
+            en: 'Laboratoriotyöt ja simulaatioharjoitukset',
+          },
+          data: {
+            fi: 'Laboratoriotyöt ja simulaatioharjoitukset tukevat autenttista oppimista, opettavat käytännön taitoja ja edistävät konkreettisia asiantuntija- ja ongelmaratkaisutaitojen kehittymistä.',
+            sv: 'Laboratoriotyöt ja simulaatioharjoitukset tukevat autenttista oppimista, opettavat käytännön taitoja ja edistävät konkreettisia asiantuntija- ja ongelmaratkaisutaitojen kehittymistä.',
+            en: 'Laboratoriotyöt ja simulaatioharjoitukset tukevat autenttista oppimista, opettavat käytännön taitoja ja edistävät konkreettisia asiantuntija- ja ongelmaratkaisutaitojen kehittymistä.',
           },
         },
         {
           id: 'courseCompletionMethodAssignment',
           label: {
-            fi: 'Lopputyö',
-            sv: 'Lopputyö',
-            en: 'Lopputyö',
+            fi: 'Kirjallinen tehtävä',
+            sv: 'Kirjallinen tehtävä',
+            en: 'Kirjallinen tehtävä',
           },
-        },
-        {
-          id: 'courseCompletionMethodParticipation',
-          label: {
-            fi: 'Osallistuminen opetukseen',
-            sv: 'Osallistuminen opetukseen',
-            en: 'Osallistuminen opetukseen',
-          },
-        },
-        {
-          id: 'courseCompletionMethodOther',
-          label: {
-            fi: 'Muu',
-            sv: 'Muu',
-            en: 'Muu',
+          data: {
+            fi: 'Kaikki oppimisen eri vaiheessa (ennen, aikana tai lopuksi) laadittavat kirjalliset tehtävät, kuten esseet, oppimispäiväkirjat, ja erilaiset raportit edistävät tiedon soveltamista, analysointia ja uuden tiedon luomista ja tukevat täten oppimistavoitteiden saavuttamista.',
+            sv: 'Kaikki oppimisen eri vaiheessa (ennen, aikana tai lopuksi) laadittavat kirjalliset tehtävät, kuten esseet, oppimispäiväkirjat, ja erilaiset raportit edistävät tiedon soveltamista, analysointia ja uuden tiedon luomista ja tukevat täten oppimistavoitteiden saavuttamista.',
+            en: 'Kaikki oppimisen eri vaiheessa (ennen, aikana tai lopuksi) laadittavat kirjalliset tehtävät, kuten esseet, oppimispäiväkirjat, ja erilaiset raportit edistävät tiedon soveltamista, analysointia ja uuden tiedon luomista ja tukevat täten oppimistavoitteiden saavuttamista.',
           },
         },
       ],
