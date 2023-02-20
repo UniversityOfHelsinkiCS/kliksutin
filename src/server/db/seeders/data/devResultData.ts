@@ -1,7 +1,8 @@
-const getResultData = () => ({
-  courseSizeSmall: {
+const getResultData = () => [
+  {
     id: 1,
     surveyId: 0,
+    optionLabel: 'courseSizeSmall',
     isSelected: {
       fi: 'Olet valinnut kurssillesi osallistujamääräksi < 50 opiskelijaa.',
       sv: 'Olet valinnut kurssillesi osallistujamääräksi < 50 opiskelijaa.',
@@ -45,9 +46,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseSizeBig: {
+  {
     id: 2,
     surveyId: 0,
+    optionLabel: 'courseSizeBig',
     isSelected: {
       fi: 'Olet valinnut kurssillesi osallistujamääräksi >= 50 opiskelijaa.',
       sv: 'Olet valinnut kurssillesi osallistujamääräksi >= 50 opiskelijaa.',
@@ -91,9 +93,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseSizeUnlimited: {
+  {
     id: 3,
     surveyId: 0,
+    optionLabel: 'courseSizeUnlimited',
     isSelected: {
       fi: 'Kurssillesi ei ole määritelty maksimi opiskelijamäärää.',
       sv: 'Kurssillesi ei ole määritelty maksimi opiskelijamäärää.',
@@ -137,9 +140,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseIsMooc: {
+  {
     id: 4,
     surveyId: 0,
+    optionLabel: 'courseIsMooc',
     isSelected: {
       fi: 'Olet valinnut kurssin MOOC-kurssiksi',
       sv: 'Olet valinnut kurssin MOOC-kurssiksi',
@@ -183,9 +187,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseIsNotMooc: {
+  {
     id: 5,
     surveyId: 0,
+    optionLabel: 'courseIsNotMooc',
     isSelected: {
       fi: 'Olet valinnut ettei kurssi ole MOOC-kurssi.',
       sv: 'Olet valinnut ettei kurssi ole MOOC-kurssi.',
@@ -229,9 +234,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseAttendancePresent: {
+  {
     id: 6,
     surveyId: 0,
+    optionLabel: 'courseAttendancePresent',
     isSelected: {
       fi: 'Olet valinnut kurssillesi opetusmuodoksi lähiopetuksen.',
       sv: 'Olet valinnut kurssillesi opetusmuodoksi lähiopetuksen.',
@@ -275,9 +281,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseAttendanceHybrid: {
+  {
     id: 7,
     surveyId: 0,
+    optionLabel: 'courseAttendanceHybrid',
     isSelected: {
       fi: 'Olet valinnut kurssillesi opetusmuodoksi hybridiopetuksen.',
       sv: 'Olet valinnut kurssillesi opetusmuodoksi hybridiopetuksen.',
@@ -321,9 +328,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseAttendanceRemote: {
+  {
     id: 8,
     surveyId: 0,
+    optionLabel: 'courseAttendanceRemote',
     isSelected: {
       fi: 'Olet valinnut kurssillesi opetusmuodoksi etäopetuksen.',
       sv: 'Olet valinnut kurssillesi opetusmuodoksi etäopetuksen.',
@@ -367,9 +375,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseIsRecorded: {
+  {
     id: 9,
     surveyId: 0,
+    optionLabel: 'courseIsRecorded',
     isSelected: {
       fi: 'Olet valinnut nauhoittaa kurssin luennot.',
       sv: 'Olet valinnut nauhoittaa kurssin luennot.',
@@ -413,9 +422,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseIsNotRecorded: {
+  {
     id: 10,
     surveyId: 0,
+    optionLabel: 'courseIsNotRecorded',
     isSelected: {
       fi: 'Olet valinnut ettei luentoja nauhoiteta.',
       sv: 'Olet valinnut ettei luentoja nauhoiteta.',
@@ -459,9 +469,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseCompletionMethodExam: {
+  {
     id: 11,
     surveyId: 0,
+    optionLabel: 'courseCompletionMethodExam',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi tentin.',
       sv: 'Olet valinnut kurssillesi suoritusmuodoksi tentin.',
@@ -505,9 +516,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseCompletionMethodDemo: {
+  {
     id: 12,
     surveyId: 0,
+    optionLabel: 'courseCompletionMethodDemo',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi demot.',
       sv: 'Olet valinnut kurssillesi suoritusmuodoksi demot.',
@@ -551,9 +563,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseCompletionMethodDiary: {
+  {
     id: 13,
     surveyId: 0,
+    optionLabel: 'courseCompletionMethodDiary',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi oppimispäiväkirjan.',
       sv: 'Olet valinnut kurssillesi suoritusmuodoksi oppimispäiväkirjan.',
@@ -597,9 +610,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseCompletionMethodAssignment: {
+  {
     id: 14,
     surveyId: 0,
+    optionLabel: 'courseCompletionMethodAssignment',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi lopputyön.',
       sv: 'Olet valinnut kurssillesi suoritusmuodoksi lopputyön.',
@@ -643,9 +657,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseCompletionMethodParticipation: {
+  {
     id: 15,
     surveyId: 0,
+    optionLabel: 'courseCompletionMethodParticipation',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi osallistumisen opetukseen.',
       sv: 'Olet valinnut kurssillesi suoritusmuodoksi osallistumisen opetukseen.',
@@ -689,9 +704,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseCompletionMethodOther: {
+  {
     id: 16,
     surveyId: 0,
+    optionLabel: 'courseCompletionMethodOther',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi muun tavan.',
       sv: 'Olet valinnut kurssillesi suoritusmuodoksi muun tavan.',
@@ -735,9 +751,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseIsOpenUniversity: {
+  {
     id: 17,
     surveyId: 0,
+    optionLabel: 'courseIsOpenUniversity',
     isSelected: {
       fi: 'Osallistuminen kurssillesi on avointa kaikille.',
       sv: 'Osallistuminen kurssillesi on avointa kaikille.',
@@ -781,9 +798,10 @@ const getResultData = () => ({
       },
     },
   },
-  courseIsNotOpenUniversity: {
+  {
     id: 18,
     surveyId: 0,
+    optionLabel: 'courseIsNotOpenUniversity',
     isSelected: {
       fi: 'Osallistuminen kurssillesi ei ole avointa kaikille.',
       sv: 'Osallistuminen kurssillesi ei ole avointa kaikille.',
@@ -827,6 +845,6 @@ const getResultData = () => ({
       },
     },
   },
-})
+]
 
 export default getResultData
