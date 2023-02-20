@@ -292,53 +292,13 @@ const getQuestionData = () => [
       en: 'Arviointi',
     },
     text: {
-      fi: '',
-      sv: '',
-      en: '',
+      fi: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista.Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
+      sv: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista.Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
+      en: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista.Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
     },
     optionData: {
       type: 'info',
-      options: [
-        {
-          id: 'courseGradingBefore',
-          title: {
-            fi: 'Ennen',
-            sv: 'Ennen',
-            en: 'Ennen',
-          },
-          label: {
-            fi: 'Yleinen teksti liittyen tähän valintaan',
-            sv: 'Yleinen teksti liittyen tähän valintaan',
-            en: 'Yleinen teksti liittyen tähän valintaan',
-          },
-        },
-        {
-          id: 'courseGradingAfter',
-          title: {
-            fi: 'Jälkeen',
-            sv: 'Jälkeen',
-            en: 'Jälkeen',
-          },
-          label: {
-            fi: 'Yleinen teksti liittyen tähän valintaan',
-            sv: 'Yleinen teksti liittyen tähän valintaan',
-            en: 'Yleinen teksti liittyen tähän valintaan',
-          },
-        },
-        {
-          id: 'courseGradingDuring',
-          title: {
-            fi: 'Aikana',
-            sv: 'Aikana',
-            en: 'Aikana',
-          },
-          label: {
-            fi: 'Yleinen teksti liittyen tähän valintaan',
-            sv: 'Yleinen teksti liittyen tähän valintaan',
-            en: 'Yleinen teksti liittyen tähän valintaan',
-          },
-        },
-      ],
+      options: [],
     },
     visibility: {},
   },
