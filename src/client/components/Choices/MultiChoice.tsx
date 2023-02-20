@@ -1,7 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller } from 'react-hook-form'
-import { Box, FormControl, Checkbox, FormControlLabel } from '@mui/material'
+import {
+  Box,
+  FormControl,
+  Checkbox,
+  FormControlLabel,
+  IconButton,
+  Collapse,
+  Typography,
+} from '@mui/material'
+import ExpandLess from '@mui/icons-material/ExpandLess'
+import ExpandMore from '@mui/icons-material/ExpandMore'
 import { MultipleChoiceType, InputProps } from '../../types'
+
+const ShowMore = ({ text }: { text: string }) => {
+  const [expand, setExpand] = useState(false)
+
+  return (
+    <>
+      <IconButton onClick={() => setExpand(!expand)}>
+        {!expand ? <ExpandMore /> : <ExpandLess />}
+      </IconButton>
+      <Collapse in={expand} timeout="auto" unmountOnExit>
+        <Typography paragraph>{text}</Typography>
+      </Collapse>
+    </>
+  )
+}
 
 const MultiChoice = ({ control, question, children, language }: InputProps) => (
   <>
@@ -24,6 +49,7 @@ const MultiChoice = ({ control, question, children, language }: InputProps) => (
                 }
                 label={choice.label[language]}
               />
+              <ShowMore text={choice.data[language]} />
             </Box>
           </FormControl>
         )}
