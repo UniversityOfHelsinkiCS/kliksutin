@@ -65,7 +65,7 @@ const Recommendations: React.FC<{
 
   const language = localStorage.getItem('language') || 'en'
 
-  if (!survey) return null
+  if (!survey || recommendations) return null
 
   const classes = styles.cardStyles
 
