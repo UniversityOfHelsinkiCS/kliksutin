@@ -11,7 +11,7 @@ import {
   ClickAwayListener,
   Grow,
   Popper,
-  Divider,
+  Typography,
 } from '@mui/material'
 import LanguageIcon from '@mui/icons-material/Language'
 import { useTranslation } from 'react-i18next'
@@ -46,22 +46,24 @@ const NavBar = () => {
         zIndex: (theme) => theme.zIndex.drawer + 1,
         backgroundColor: 'rgba(255, 255, 255, 0)',
         borderRadius: 0,
-        marginBottom: '1em',
+        borderBottom: '1px solid black',
+        py: '1rem',
       }}
     >
       <Container maxWidth={false}>
         <Toolbar sx={classes.toolbar} disableGutters>
           <Box display="inline-flex" alignItems="end" sx={classes.link}>
             <img src={toscalogoColor} alt="Toska" width="80" />
-            <Box
-              ml="1rem"
-              pb="0.2rem"
-              textTransform="uppercase"
-              color="common.black"
-              fontWeight={700}
-              fontSize={18}
-            >
-              {t('appName')}
+            <Box ml="2rem">
+              <Typography
+                textTransform="uppercase"
+                color="black"
+                fontWeight={700}
+                fontSize={18}
+                sx={{ userSelect: 'none' }}
+              >
+                {t('appName')}
+              </Typography>
             </Box>
           </Box>
           <Box>
@@ -127,7 +129,6 @@ const NavBar = () => {
           </Box>
         </Toolbar>
       </Container>
-      <Divider />
     </AppBar>
   )
 }

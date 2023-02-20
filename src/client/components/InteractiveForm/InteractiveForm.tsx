@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
 import Results from '../ResultPage/Results'
@@ -27,24 +27,26 @@ const InteractiveForm = () => {
   if (!survey) return null
 
   return (
-    <Grid container>
-      <Grid item sm={12} md={7} xl={6}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <RenderSurvey
-            control={control}
-            watch={watch}
-            questions={survey.Questions}
-            handleSubmit={handleSubmit(onSubmit)}
-          />
-        </form>
+    <Box mt="2rem">
+      <Grid container>
+        <Grid item sm={12} md={7} xl={6}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <RenderSurvey
+              control={control}
+              watch={watch}
+              questions={survey.Questions}
+              handleSubmit={handleSubmit(onSubmit)}
+            />
+          </form>
+        </Grid>
+        <Grid item sm={12} md={5} xl={6}>
+          <Recommendations watch={watch} />
+        </Grid>
+        <Grid item sm={12}>
+          <Results formResultData={resultData} />
+        </Grid>
       </Grid>
-      <Grid item sm={12} md={5} xl={6}>
-        <Recommendations watch={watch} />
-      </Grid>
-      <Grid item sm={12}>
-        <Results formResultData={resultData} />
-      </Grid>
-    </Grid>
+    </Box>
   )
 }
 

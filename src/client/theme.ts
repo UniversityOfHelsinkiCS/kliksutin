@@ -7,7 +7,30 @@ import { useMemo } from 'react'
 import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 
 const useTheme = () => {
-  const theme = useMemo(() => responsiveFontSizes(createTheme({})), [])
+  const theme = useMemo(
+    () =>
+      responsiveFontSizes(
+        createTheme({
+          typography: {
+            fontFamily: [
+              '"Open Sans"',
+              '"Helvetica"',
+              '"Arial"',
+              '"sans-serif"',
+              '"Apple Color Emoji"',
+              '"Segoe UI Emoji"',
+              '"Segoe UI Symbol"',
+            ].join(','),
+          },
+          palette: {
+            primary: {
+              main: '#107eab',
+            },
+          },
+        })
+      ),
+    []
+  )
 
   return theme
 }
