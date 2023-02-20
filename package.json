@@ -31,6 +31,7 @@
     "react-scripts": "5.0.1",
     "sequelize": "^6.28.0",
     "umzug": "^3.2.1",
+    "unfuck-utf8-headers-middleware": "^1.0.1",
     "uuid": "^9.0.0",
     "winston": "^3.8.2"
   },
