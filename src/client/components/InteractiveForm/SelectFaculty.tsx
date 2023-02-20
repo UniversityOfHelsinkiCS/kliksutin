@@ -8,13 +8,13 @@ import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import styles from './styles'
 import { InputProps, Locales } from '../../types'
-import useFaculty from '../../hooks/useFaculty'
+import useFaculties from '../../hooks/useFaculties'
 
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   const { t } = useTranslation()
   const language = localStorage.getItem('language') || 'en'
   const [faculty, setFaculty] = useState('')
-  const faculties = useFaculty()
+  const faculties = useFaculties()
   let mockFaculty
 
   const handleChange = (event: SelectChangeEvent) => {

@@ -11,6 +11,7 @@ import logger from './util/logger'
 import errorHandler from './middeware/errorHandler'
 import facultyRouter from './routes/faculty'
 import surveyRouter from './routes/survey'
+import recommendationRouter from './routes/recommendation'
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use(SentryHandlers.tracingHandler())
 
 app.use('/api/faculties', facultyRouter)
 app.use('/api/surveys', surveyRouter)
+app.use('/api/recommendations', recommendationRouter)
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(__dirname, '../../build')
