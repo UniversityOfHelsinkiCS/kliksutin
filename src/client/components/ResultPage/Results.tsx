@@ -37,21 +37,21 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
   if (!formResultData) return null
 
   const dimensionsId = 1
-  const completionId = 4
+  const courseCompletionMethodId = 4
 
   const resultData = getResultData()
 
-  const allDimensions: boolean = Object.values(
+  const allDimensionsSelected: boolean = Object.values(
     formResultData[dimensionsId]
   ).every((dimension) => dimension)
 
   const selectedCompletionMethods = Object.keys(
-    formResultData[completionId]
-  ).filter((method) => formResultData[completionId][method])
+    formResultData[courseCompletionMethodId]
+  ).filter((method) => formResultData[courseCompletionMethodId][method])
 
-  const resultObject = {
+  const mapResultsToObject = {
     ...formResultData,
-    1: allDimensions
+    1: allDimensionsSelected
       ? ['allDimensions']
       : Object.keys(formResultData[dimensionsId]).filter(
           (dimension) => formResultData[dimensionsId][dimension]
@@ -59,12 +59,14 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     4: selectedCompletionMethods,
   }
 
-  const resultValues = Object.values(resultObject)
+  const mapResultsToList = Object.values(mapResultsToObject)
     .slice(1)
     .filter((x) => x !== '')
     .map((result: string | Array<string>) =>
       typeof result === 'string' ? [result] : result
     )
+
+  console.log(mapResultsToList)
 
   return (
     <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
@@ -74,12 +76,12 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         </Typography>
       </Container>
 
-      {resultValues.map((results) =>
+      {mapResultsToList.map((results) =>
         results.map((res) => (
           <ResultElement
             key={JSON.stringify(res)}
-            result={resultData[res]}
-            dimensions={resultObject[1]}
+            result={resultData.find((r) => r.optionLabel === res)}
+            dimensions={mapResultsToObject[dimensionsId]}
           />
         ))
       )}
