@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
-import { PUBLIC_URL } from '../../config'
+import apiClient from '../util/apiClient'
 
 const useFaculties = () => {
   const [faculties, setFaculties] = useState(null)
 
   useEffect(() => {
-    axios
-      .get(`${PUBLIC_URL}/api/faculties`)
-      .then(({ data }) => setFaculties(data))
+    apiClient.get('/faculties').then(({ data }) => setFaculties(data))
   }, [])
 
   return faculties

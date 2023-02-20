@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+
+import apiClient from '../util/apiClient'
 import { Survey } from '../types'
-import { PUBLIC_URL } from '../../config'
 
 const useSurvey = (): Survey => {
   const [survey, setSurvey] = useState(null)
 
   useEffect(() => {
-    axios.get(`${PUBLIC_URL}/api/surveys/0`).then(({ data }) => setSurvey(data))
+    apiClient.get('/surveys/0').then(({ data }) => setSurvey(data))
   }, [])
 
   return survey
