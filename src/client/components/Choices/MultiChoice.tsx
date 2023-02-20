@@ -49,7 +49,7 @@ const MultiChoice = ({ control, question, children, language }: InputProps) => (
                 }
                 label={choice.label[language]}
               />
-              <ShowMore text={choice.data[language]} />
+              {choice.data ? <ShowMore text={choice.data[language]} /> : null}
             </Box>
           </FormControl>
         )}
