@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box textAlign="center">
+      <Box>
         <NavBar />
         <InteractiveForm />
         <Footer />

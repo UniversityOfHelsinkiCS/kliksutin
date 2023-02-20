@@ -9,7 +9,8 @@ const DimensionChip: React.FC<{
 }> = ({ choice, color, compact = false }) => {
   const style = {
     backgroundColor: color,
-    margin: '1px',
+    marginX: '0.1rem',
+    fontWeight: 'normal',
   }
   const language = localStorage.getItem('language') || 'en'
 

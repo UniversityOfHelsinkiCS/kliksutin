@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
@@ -103,27 +103,34 @@ const Recommendations: React.FC<{
             recommendation.dimensions.length > 0
           ) {
             return (
-              <div key={dimensionObject.id}>
-                <Typography variant="h6" sx={classes.heading} component="div">
-                  {dimensionObject.title[language]}
-                  {recommendation.dimensions.map((dimension) => {
-                    const chipData = selectedQuestions.find(
-                      (question) => question.id === dimension
-                    )
-                    return (
-                      <DimensionChip
-                        key={chipData.id}
-                        choice={chipData}
-                        color={generateColor(chipData.id)}
-                        compact
-                      />
-                    )
-                  })}
-                </Typography>
+              <Box
+                key={dimensionObject.id}
+                sx={classes.recommendationItemContainer}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography variant="h6" sx={classes.heading} component="div">
+                    {dimensionObject.title[language]}
+                  </Typography>
+                  <Box sx={classes.recommendationChipsContainer}>
+                    {recommendation.dimensions.map((dimension) => {
+                      const chipData = selectedQuestions.find(
+                        (question) => question.id === dimension
+                      )
+                      return (
+                        <DimensionChip
+                          key={chipData.id}
+                          choice={chipData}
+                          color={generateColor(chipData.id)}
+                          compact
+                        />
+                      )
+                    })}
+                  </Box>
+                </Box>
                 <Typography variant="body2" color="text.secondary">
                   {dimensionObject.text[language]}
                 </Typography>
-              </div>
+              </Box>
             )
           }
           return null
