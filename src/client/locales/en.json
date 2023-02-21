@@ -19,7 +19,8 @@
   "results": {
     "title": "Summary of your choices",
     "resultsMessage": "We listed the summary of your choices for you below",
-    "proceedToExit": "I am done with kliksutin!",
-    "proceedToConsultation": "I want consultation"
+    "proceedTitle": "Do you need more help?",
+    "proceedToExit": "No",
+    "proceedToConsultation": "Yes"
   }
 }

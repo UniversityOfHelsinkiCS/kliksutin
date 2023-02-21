@@ -19,7 +19,8 @@
   "results": {
     "title": "Yhteenveto valinnoistasi",
     "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista",
-    "proceedToExit": "I am done with kliksutin!",
-    "proceedToConsultation": "I want consultation"
+    "proceedTitle": "Do you need more help?",
+    "proceedToExit": "No",
+    "proceedToConsultation": "Yes"
   }
 }
