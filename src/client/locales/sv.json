@@ -23,6 +23,9 @@
     "proceedToExit": "No",
     "proceedToConsultation": "Yes",
     "proceedEmailInfoText": "If you would like to have the summary send to your email, enter it below",
-    "proceedEnterMail": "Please enter your email"
+    "proceedEnterMail": "Please enter your email",
+    "emailIsRequired": "Email is required",
+    "emailIsIncorrect": "Email is incorrect, check input",
+    "sendSummaryMail": "Send"
   }
 }

@@ -21,7 +21,9 @@ const EmailForm = () => {
   const { t } = useTranslation()
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().required('Email is required').email('Email is invalid'),
+    email: Yup.string()
+      .required(t('results:emailIsRequired'))
+      .email(t('results:emailIsIncorrect')),
   })
 
   const {
@@ -61,14 +63,13 @@ const EmailForm = () => {
                 {errors.email?.message}
               </Typography>
             )}
-
             <Box mt={3}>
               <Button
                 variant="contained"
                 color="primary"
                 onClick={handleSubmit(onSubmit)}
               >
-                Lähetä
+                {t('results:sendSummaryMail')}
               </Button>
             </Box>
           </form>

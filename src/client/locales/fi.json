@@ -23,6 +23,9 @@
     "proceedToExit": "En",
     "proceedToConsultation": "Kyllä",
     "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
-    "proceedEnterMail": "Kirjoita sähköpostiosoitteesi"
+    "proceedEnterMail": "Kirjoita sähköpostiosoitteesi",
+    "emailIsRequired": "Sähköposti on pakollinen",
+    "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
+    "sendSummaryMail": "Lähetä"
   }
 }
