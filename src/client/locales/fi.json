@@ -30,6 +30,9 @@
   },
   "contact": {
     "title": "Yhteydenotto",
-    "contactMessage": "Haluatko ottaa yhteyttä sähköpostilla vai varata konsultaatioajan?"
+    "contactMessage": "Haluatko ottaa yhteyttä sähköpostilla vai varata konsultaatioajan?",
+    "contactMethodLabel": "Valitse yhteydenottotapa",
+    "contactMethodEmail": "Sähköposti",
+    "contactMethodConsultation": "Konsultaatio"
   }
 }

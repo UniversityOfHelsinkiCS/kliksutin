@@ -30,6 +30,9 @@
   },
   "contact": {
     "title": "Contact page",
-    "contactMessage": "Do you want to contact us by email or book a consultation appointment?"
+    "contactMessage": "Do you want to contact us by email or book a consultation appointment?",
+    "contactMethodLabel": "Select contact method",
+    "contactMethodEmail": "Email",
+    "contactMethodConsultation": "Consultation"
   }
 }
