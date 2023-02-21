@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   AppBar,
   Toolbar,
@@ -53,7 +54,9 @@ const NavBar = () => {
       <Container maxWidth={false}>
         <Toolbar sx={classes.toolbar} disableGutters>
           <Box display="inline-flex" alignItems="end" sx={classes.link}>
-            <img src={toskaBlack} alt="Toska" width="70" />
+            <Link to="/" style={{ marginBottom: -5 }}>
+              <img src={toskaBlack} alt="Toska" width="70" />
+            </Link>
             <Box ml="2rem">
               <Typography
                 textTransform="uppercase"
