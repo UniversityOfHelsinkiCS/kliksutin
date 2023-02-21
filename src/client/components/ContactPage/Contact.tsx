@@ -40,7 +40,7 @@ const Contact = () => {
 
         <Box sx={classes.card}>
           <FormControl>
-            <FormLabel id="contact-method-buttons">
+            <FormLabel sx={{ mt: 2 }} id="contact-method-buttons">
               {t('contact:contactMethodLabel')}
             </FormLabel>
             <RadioGroup

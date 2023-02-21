@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
@@ -39,7 +40,13 @@ const Ending = () => {
               >
                 {t('results:proceedToExit')}
               </Button>
-              <Button sx={classes.stackButton} variant="contained">
+
+              <Button
+                sx={classes.stackButton}
+                variant="contained"
+                component={Link}
+                to="/contact"
+              >
                 {t('results:proceedToConsultation')}
               </Button>
             </>

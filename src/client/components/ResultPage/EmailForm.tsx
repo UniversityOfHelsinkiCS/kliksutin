@@ -51,9 +51,7 @@ const EmailForm = () => {
               error={errors.email ? true : false} // eslint-disable-line no-unneeded-ternary
             />
             {errors.email && (
-              <Typography variant="inherit" color="textSecondary">
-                {errors.email?.message}
-              </Typography>
+              <Typography variant="body2">{errors.email?.message}</Typography>
             )}
             <Box mt={3}>
               <Button

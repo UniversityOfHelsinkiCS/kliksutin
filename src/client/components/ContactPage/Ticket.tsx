@@ -43,9 +43,7 @@ const Ticket = () => {
               error={errors.title ? true : false} // eslint-disable-line no-unneeded-ternary
             />
             {errors.title && (
-              <Typography variant="inherit" color="textSecondary">
-                {errors.title?.message}
-              </Typography>
+              <Typography variant="body2">{errors.title?.message}</Typography>
             )}
 
             <TextField
@@ -61,9 +59,7 @@ const Ticket = () => {
               error={errors.content ? true : false} // eslint-disable-line no-unneeded-ternary
             />
             {errors.content && (
-              <Typography variant="inherit" color="textSecondary">
-                {errors.content?.message}
-              </Typography>
+              <Typography variant="body2">{errors.content?.message}</Typography>
             )}
             <Box mt={3}>
               <Button
