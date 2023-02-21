@@ -27,5 +27,9 @@
     "emailIsRequired": "Sähköposti on pakollinen",
     "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
     "sendSummaryMail": "Lähetä"
+  },
+  "contact": {
+    "title": "Yhteydenotto",
+    "contactMessage": "Haluatko ottaa yhteyttä sähköpostilla vai varata konsultaatioajan?"
   }
 }

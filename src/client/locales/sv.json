@@ -27,5 +27,9 @@
     "emailIsRequired": "Email is required",
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send"
+  },
+  "contact": {
+    "title": "Contact page",
+    "contactMessage": "Do you want to contact us by email or book a consultation appointment?"
   }
 }
