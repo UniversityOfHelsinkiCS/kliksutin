@@ -33,6 +33,10 @@
     "contactMessage": "Haluatko ottaa yhteyttä sähköpostilla vai varata konsultaatioajan?",
     "contactMethodLabel": "Valitse yhteydenottotapa",
     "contactMethodEmail": "Sähköposti",
-    "contactMethodConsultation": "Konsultaatio"
+    "contactMethodConsultation": "Konsultaatio",
+    "contactTicketText": "Täytä yhteytenottolomake",
+    "contactTicketTitleLabel": "Otsikko",
+    "contactTicketContentLabel": "Sisältö",
+    "contactTicketSend": "Lähetä"
   }
 }

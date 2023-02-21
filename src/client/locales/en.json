@@ -33,6 +33,10 @@
     "contactMessage": "Do you want to contact us by email or book a consultation appointment?",
     "contactMethodLabel": "Select contact method",
     "contactMethodEmail": "Email",
-    "contactMethodConsultation": "Consultation"
+    "contactMethodConsultation": "Consultation",
+    "contactTicketText": "Fill in the form below",
+    "contactTicketTitleLabel": "Title",
+    "contactTicketContentLabel": "Content",
+    "contactTicketSend": "Send"
   }
 }
