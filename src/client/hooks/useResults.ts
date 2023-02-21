@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 
 import apiClient from '../util/apiClient'
+import { Result } from '../types'
 
-const useResults = () => {
+const useResults = (): Result[] => {
   const [results, setResults] = useState(null)
 
   useEffect(() => {
