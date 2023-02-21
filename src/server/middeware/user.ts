@@ -1,21 +1,32 @@
+import { User } from '../db/models'
+
 const userMiddleware = (req, _, next) => {
   const {
     uid: username,
     givenname: firstName,
-    sn: secondName,
-    mail,
+    sn: lastName,
+    mail: email,
     preferredlanguage: language,
-    hypersonsisuid: sisuId,
+    hypersonsisuid: id,
   } = req.headers
 
-  req.user = {
+  const user = {
     username,
     firstName,
-    secondName,
-    mail,
+    lastName,
+    email,
     language,
-    sisuId,
+    id,
   }
+
+  if (id && username) {
+    User.upsert({
+      ...user,
+      lastLoggedIn: new Date(),
+    })
+  }
+
+  req.user = user
 
   return next()
 }
