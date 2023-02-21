@@ -63,26 +63,24 @@ const Recommendations: React.FC<{
   const survey = useSurvey()
   const recommendations = useRecommendations()
 
+  const classes = styles.cardStyles
   const language = localStorage.getItem('language') || 'en'
 
   if (!survey || !recommendations) return null
 
-  const classes = styles.cardStyles
+  const dimensionQuestion = survey.Questions.find(
+    (question) => question.optionData.type === 'dimensions'
+  )
+  const selectedDimensions = watch(dimensionQuestion.id.toString())
 
-  const dimensionSelection = watch('1')
-
-  if (!dimensionSelection) return null
+  if (!selectedDimensions) return null
 
   const dimensionData: DimensionData[] =
     getDimensionData().sort(sortRecommendations)
 
-  const dimensionQuestion = survey.Questions.find(
-    (question) => question.id === 1
-  )
-
   const selectedQuestions = mapSelectedQuestions(
     dimensionQuestion,
-    dimensionSelection
+    selectedDimensions
   )
 
   const recommendationsData = mapRecommendations(
