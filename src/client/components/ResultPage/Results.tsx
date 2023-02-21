@@ -1,29 +1,36 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
+import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
 import styles from './styles'
-import { FormValues } from '../../types'
+import { FormValues, Result } from '../../types'
 
 const classes = styles.cardStyles
 
-const ResultElement = ({ result, dimensions }: any) => {
-  if (!result) return null
+const ResultElement = ({
+  resultData,
+  dimensions,
+}: {
+  resultData: Result
+  dimensions: string[]
+}) => {
+  if (!resultData || !dimensions) return null
 
   const language = localStorage.getItem('language') || 'en'
 
   return (
     <Container sx={classes.resultContainer}>
       <Typography variant="h6" sx={classes.heading} component="div">
-        {result.isSelected[language]}
+        {resultData.isSelected[language]}
       </Typography>
       <Box sx={classes.content}>
         {dimensions.map((dimension: string) => (
           <Typography
-            key={`${JSON.stringify(result)}.${dimension}`}
+            key={`${JSON.stringify(resultData)}.${dimension}`}
             variant="body2"
           >
-            {result.data[dimension][language]}
+            {resultData.data[dimension][language]}
           </Typography>
         ))}
       </Box>
@@ -33,15 +40,21 @@ const ResultElement = ({ result, dimensions }: any) => {
 
 const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const { t } = useTranslation()
-  const resultData = useResults()
+  const survey = useSurvey()
+  const results = useResults()
 
-  if (!formResultData) return null
+  if (!survey || !results || !formResultData) return null
 
-  const dimensionsId = 1
+  const dimensionQuestion = survey.Questions.find(
+    (question) => question.optionData.type === 'dimensions'
+  )
+
+  const dimensionQuestionId = dimensionQuestion.id.toString()
+
   const courseCompletionMethodId = 4
 
   const allDimensionsSelected: boolean = Object.values(
-    formResultData[dimensionsId]
+    formResultData[dimensionQuestionId]
   ).every((dimension) => dimension)
 
   const selectedCompletionMethods = Object.keys(
@@ -52,8 +65,8 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     ...formResultData,
     1: allDimensionsSelected
       ? ['allDimensions']
-      : Object.keys(formResultData[dimensionsId]).filter(
-          (dimension) => formResultData[dimensionsId][dimension]
+      : Object.keys(formResultData[dimensionQuestionId]).filter(
+          (dimension) => formResultData[dimensionQuestionId][dimension]
         ),
     4: selectedCompletionMethods,
   }
@@ -77,10 +90,11 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         resultLabels.map((resultLabel) => (
           <ResultElement
             key={JSON.stringify(resultLabel)}
-            result={resultData.find(
-              (result) => result.optionLabel === resultLabel
+            resultData={results.find(
+              (result: { optionLabel: string }) =>
+                result.optionLabel === resultLabel
             )}
-            dimensions={mapResultsToObject[dimensionsId]}
+            dimensions={mapResultsToObject[dimensionQuestionId]}
           />
         ))
       )}
