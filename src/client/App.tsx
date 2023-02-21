@@ -20,7 +20,9 @@ const App = () => {
         }}
       >
         <NavBar />
-        <Router />
+        <Box flexGrow={1}>
+          <Router />
+        </Box>
         <Footer />
       </Box>
     </ThemeProvider>
