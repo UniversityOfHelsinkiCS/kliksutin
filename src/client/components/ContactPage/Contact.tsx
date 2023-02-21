@@ -11,12 +11,22 @@ import {
   Typography,
 } from '@mui/material'
 import styles from './styles'
+import Ticket from './Ticket'
 
 const classes = styles.cardStyles
 
 const Contact = () => {
   const { t } = useTranslation()
   const [contactMethod, setContactMethod] = useState('email')
+
+  const components = {
+    email: Ticket,
+    consultation: Ticket,
+  }
+
+  const ContactComponent = components[contactMethod]
+
+  if (!ContactComponent) return null
 
   return (
     <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
@@ -27,6 +37,7 @@ const Contact = () => {
         <Typography sx={classes.content} variant="body2">
           {t('contact:contactMessage')}
         </Typography>
+
         <Box sx={classes.card}>
           <FormControl>
             <FormLabel id="contact-method-buttons">
@@ -52,6 +63,8 @@ const Contact = () => {
             </RadioGroup>
           </FormControl>
         </Box>
+
+        <ContactComponent />
       </Container>
     </Box>
   )
