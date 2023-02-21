@@ -82,3 +82,15 @@ export interface FormValues {
   [key: string]: string | [key: boolean]
   faculty: string
 }
+
+export interface Result {
+  id: number
+  surveyId: number
+  optionLabel: string
+  isSelected: string
+  createdAt: Date
+  updatedAt: Date
+  data: {
+    [key: string]: Locales
+  }
+}
