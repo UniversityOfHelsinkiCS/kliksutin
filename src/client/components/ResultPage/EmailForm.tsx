@@ -34,7 +34,7 @@ const EmailForm = () => {
 
   return (
     <Box px={3} py={2}>
-      <Typography variant="h6" sx={classes.heading} component="div">
+      <Typography variant="body2" sx={classes.heading} component="div">
         {t('results:proceedEnterMail')}
       </Typography>
       <Grid container spacing={1}>
