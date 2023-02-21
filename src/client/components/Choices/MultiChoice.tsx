@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { MultipleChoiceType, InputProps } from '../../types'
 
 const ShowMore = ({ text }: { text: string }) => {
@@ -19,10 +20,11 @@ const ShowMore = ({ text }: { text: string }) => {
   return (
     <>
       <IconButton onClick={() => setExpand(!expand)}>
+        <HelpOutlineIcon />
         {!expand ? <ExpandMore /> : <ExpandLess />}
       </IconButton>
       <Collapse in={expand} timeout="auto" unmountOnExit>
-        <Typography paragraph>{text}</Typography>
+        <Typography variant="body2">{text}</Typography>
       </Collapse>
     </>
   )
