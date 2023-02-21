@@ -53,25 +53,25 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
   const courseCompletionMethodId = 4
 
-  const allDimensionsSelected: boolean = Object.values(
+  const isAllDimensionsSelected: boolean = Object.values(
     formResultData[dimensionQuestionId]
   ).every((dimension) => dimension)
 
-  const selectedCompletionMethods = Object.keys(
+  const arrayOfSelectedCompletionMethods = Object.keys(
     formResultData[courseCompletionMethodId]
   ).filter((method) => formResultData[courseCompletionMethodId][method])
 
-  const mapResultsToObject = {
+  const mapSelectionsToObject = {
     ...formResultData,
-    1: allDimensionsSelected
+    1: isAllDimensionsSelected
       ? ['allDimensions']
       : Object.keys(formResultData[dimensionQuestionId]).filter(
           (dimension) => formResultData[dimensionQuestionId][dimension]
         ),
-    4: selectedCompletionMethods,
+    4: arrayOfSelectedCompletionMethods,
   }
 
-  const mapResultsToList = Object.values(mapResultsToObject)
+  const mapSelectionsToArray = Object.values(mapSelectionsToObject)
     .slice(1)
     .filter((x) => x !== '')
     .map((result: string | Array<string>) =>
@@ -86,7 +86,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         </Typography>
       </Container>
 
-      {mapResultsToList.map((resultLabels) =>
+      {mapSelectionsToArray.map((resultLabels) =>
         resultLabels.map((resultLabel) => (
           <ResultElement
             key={JSON.stringify(resultLabel)}
@@ -94,7 +94,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
               (result: { optionLabel: string }) =>
                 result.optionLabel === resultLabel
             )}
-            dimensions={mapResultsToObject[dimensionQuestionId]}
+            dimensions={mapSelectionsToObject[dimensionQuestionId]}
           />
         ))
       )}
