@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Container, Stack, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material'
 
 import styles from './styles'
 
 const Ending = () => {
   const { t } = useTranslation()
+  const [openMailPrompt, setOpenMailPrompt] = useState(false)
   const classes = styles.cardStyles
 
   return (
@@ -14,21 +22,45 @@ const Ending = () => {
         <Typography variant="h6" sx={classes.heading} component="div">
           {t('results:proceedTitle')}
         </Typography>
+        {openMailPrompt && (
+          <Typography variant="body2" sx={classes.content}>
+            {t('results:proceedEmailInfoText')}
+          </Typography>
+        )}
       </Container>
       <Box
         display="flex"
         justifyContent="center"
         alignItems="center"
-        marginBottom={4}
+        marginY={4}
       >
         <Stack textAlign="center" direction="row" spacing={2}>
-          <Button sx={classes.stackButton} variant="outlined">
-            {t('results:proceedToExit')}
-          </Button>
-
-          <Button sx={classes.stackButton} variant="contained">
-            {t('results:proceedToConsultation')}
-          </Button>
+          {!openMailPrompt ? (
+            <>
+              <Button
+                sx={classes.stackButton}
+                variant="outlined"
+                onClick={() => setOpenMailPrompt(true)}
+              >
+                {t('results:proceedToExit')}
+              </Button>
+              <Button sx={classes.stackButton} variant="contained">
+                {t('results:proceedToConsultation')}
+              </Button>
+            </>
+          ) : (
+            <>
+              <Typography variant="h6" sx={classes.heading} component="div">
+                {t('results:proceedEnterMail')}
+              </Typography>
+              <TextField
+                label="email"
+                defaultValue=""
+                placeholder="opettaja@helsinki.fi"
+                size="small"
+              />
+            </>
+          )}
         </Stack>
       </Box>
     </Box>

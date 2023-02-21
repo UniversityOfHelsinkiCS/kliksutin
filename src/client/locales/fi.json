@@ -21,6 +21,8 @@
     "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista",
     "proceedTitle": "Tarvitsetko lisäapua?",
     "proceedToExit": "En",
-    "proceedToConsultation": "Kyllä"
+    "proceedToConsultation": "Kyllä",
+    "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
+    "proceedEnterMail": "Kirjoita sähköpostiosoitteesi"
   }
 }

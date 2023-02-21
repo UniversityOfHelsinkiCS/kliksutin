@@ -21,6 +21,8 @@
     "resultsMessage": "We listed the summary of your choices for you below",
     "proceedTitle": "Do you need more help?",
     "proceedToExit": "No",
-    "proceedToConsultation": "Yes"
+    "proceedToConsultation": "Yes",
+    "proceedEmailInfoText": "If you would like to have the summary send to your email, enter your email below",
+    "proceedEnterMail": "Please enter your email"
   }
 }
