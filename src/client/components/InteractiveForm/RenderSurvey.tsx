@@ -21,14 +21,19 @@ const RenderSurvey = ({
   const language = localStorage.getItem('language') || 'en'
 
   const canProceed = (): boolean => {
-    const dimensionQuestionId = '1'
+    const dimensionQuestion = questions.find(
+      (question) => question.optionData.type === 'dimensions'
+    )
 
-    const facultySelected = watch('faculty') !== ''
-    const someDimensionSelected =
+    const dimensionQuestionId = dimensionQuestion.id.toString()
+
+    const isFacultySelected = watch('faculty') !== ''
+
+    const isAnyDimensionsSelected =
       watch(dimensionQuestionId) &&
       Object.values(watch(dimensionQuestionId)).some((selected) => selected)
 
-    return facultySelected && someDimensionSelected
+    return isFacultySelected && isAnyDimensionsSelected
   }
 
   return (
