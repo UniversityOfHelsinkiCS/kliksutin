@@ -5,7 +5,7 @@ const cardStyles = {
     textAlign: 'left',
   },
   questionsContainer: {
-    my: 4,
+    my: 8,
     borderLeft: 1,
     borderColor: 'grey.400',
   },
