@@ -87,7 +87,7 @@ export interface Result {
   id: number
   surveyId: number
   optionLabel: string
-  isSelected: string
+  isSelected: Locales
   createdAt: Date
   updatedAt: Date
   data: {

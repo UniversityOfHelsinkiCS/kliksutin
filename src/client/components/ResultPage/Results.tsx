@@ -5,7 +5,7 @@ import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
 import Ending from './Ending'
 import styles from './styles'
-import { FormValues, Result } from '../../types'
+import { FormValues, Locales, Result } from '../../types'
 
 const classes = styles.cardStyles
 
@@ -23,7 +23,7 @@ const ResultElement = ({
   return (
     <Container sx={classes.resultContainer}>
       <Typography variant="h6" sx={classes.heading} component="div">
-        {resultData.isSelected[language]}
+        {resultData.isSelected[language as keyof Locales]}
       </Typography>
       <Box sx={classes.content}>
         {dimensions.map((dimension: string) => (
@@ -31,7 +31,7 @@ const ResultElement = ({
             key={`${JSON.stringify(resultData)}.${dimension}`}
             variant="body2"
           >
-            {resultData.data[dimension][language]}
+            {resultData.data[dimension][language as keyof Locales]}
           </Typography>
         ))}
       </Box>
@@ -52,17 +52,17 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
   const dimensionQuestionId = dimensionQuestion.id.toString()
 
-  const courseCompletionMethodId = 4
+  const courseCompletionMethodId = '4'
 
   const isAllDimensionsSelected: boolean = Object.values(
     formResultData[dimensionQuestionId]
   ).every((dimension) => dimension)
 
-  const arrayOfSelectedCompletionMethods = Object.keys(
+  const arrayOfSelectedCompletionMethods: string[] = Object.keys(
     formResultData[courseCompletionMethodId]
   ).filter((method) => formResultData[courseCompletionMethodId][method])
 
-  const mapSelectionsToObject = {
+  const mapSelectionsToObject: { [key: number]: string | string[] } = {
     ...formResultData,
     1: isAllDimensionsSelected
       ? ['allDimensions']
@@ -72,7 +72,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     4: arrayOfSelectedCompletionMethods,
   }
 
-  const mapSelectionsToArray = Object.values(mapSelectionsToObject)
+  const mapSelectionsToArray: string[][] = Object.values(mapSelectionsToObject)
     .slice(1)
     .filter((x) => x !== '')
     .map((result: string | Array<string>) =>
