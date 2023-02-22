@@ -24,7 +24,7 @@ const SingleChoice = ({ control, watch, question, children }: InputProps) => {
               {question.optionData.options.map(
                 (singleOption: SingleChoiceType) => (
                   <FormControlLabel
-                    key={singleOption.id as any}
+                    key={singleOption.id as string}
                     value={singleOption.id}
                     label={singleOption.label.en}
                     control={<Radio />}

@@ -37,7 +37,7 @@ export interface SingleChoiceType {
 export interface MultipleChoiceType {
   id: string
   label: Locales
-  data: string[]
+  data: Locales
 }
 
 export interface OptionData {

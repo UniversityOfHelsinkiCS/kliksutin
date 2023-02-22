@@ -1,6 +1,6 @@
 import React from 'react'
 import { Chip, Tooltip } from '@mui/material'
-import { MultipleChoiceType } from '../../types'
+import { Locales, MultipleChoiceType } from '../../types'
 
 const DimensionChip: React.FC<{
   choice: MultipleChoiceType
@@ -15,15 +15,19 @@ const DimensionChip: React.FC<{
   const language = localStorage.getItem('language') || 'en'
 
   return compact ? (
-    <Tooltip title={choice.label[language]} arrow>
+    <Tooltip title={choice.label[language as keyof Locales]} arrow>
       <Chip
-        label={choice.label[language].substring(0, 3)}
+        label={choice.label[language as keyof Locales].substring(0, 3)}
         size="small"
         sx={style}
       />
     </Tooltip>
   ) : (
-    <Chip label={choice.label[language]} size="small" sx={style} />
+    <Chip
+      label={choice.label[language as keyof Locales]}
+      size="small"
+      sx={style}
+    />
   )
 }
 

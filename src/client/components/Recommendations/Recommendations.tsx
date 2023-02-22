@@ -7,7 +7,12 @@ import generateColor from '../../util/generateColor'
 import styles from './styles'
 import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
 import useRecommendations from '../../hooks/useRecommendations'
-import { DimensionData, MultipleChoiceType, Question } from '../../types'
+import {
+  DimensionData,
+  Locales,
+  MultipleChoiceType,
+  Question,
+} from '../../types'
 
 /* eslint-disable no-nested-ternary */
 const sortRecommendations = (a: DimensionData, b: DimensionData) =>
@@ -33,7 +38,7 @@ const mapRecommendations = (
   selectedQuestionsData: MultipleChoiceType[]
 ) => {
   const selectedTools = selectedQuestionsData.map(
-    (question: { id: string; data: string[] }) => ({
+    (question: { id: string; data: any }) => ({
       optionId: question.id,
       dimensions: question.data,
     })
@@ -107,7 +112,7 @@ const Recommendations: React.FC<{
               >
                 <Box display="flex" alignItems="center">
                   <Typography variant="h6" sx={classes.heading} component="div">
-                    {dimensionObject.title[language]}
+                    {dimensionObject.title[language as keyof Locales]}
                   </Typography>
                   <Box sx={classes.recommendationChipsContainer}>
                     {recommendation.dimensions.map((dimension) => {
@@ -126,7 +131,7 @@ const Recommendations: React.FC<{
                   </Box>
                 </Box>
                 <Typography variant="body2" color="text.secondary">
-                  {dimensionObject.text[language]}
+                  {dimensionObject.text[language as keyof Locales]}
                 </Typography>
               </Box>
             )

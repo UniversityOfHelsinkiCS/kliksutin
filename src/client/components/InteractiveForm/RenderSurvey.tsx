@@ -41,7 +41,7 @@ const RenderSurvey = ({
       <SelectFaculty control={control} />
       <Box sx={classes.card} justifyContent="center">
         {questions.map((question) => (
-          <div key={question.id as any}>
+          <div key={question.id as unknown as string}>
             {question.parentId === null && question.priority === 0 && (
               <RenderQuestions
                 control={control}

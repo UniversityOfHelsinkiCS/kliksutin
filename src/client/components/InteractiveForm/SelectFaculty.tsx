@@ -7,7 +7,7 @@ import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import styles from './styles'
-import { InputProps, Faculty } from '../../types'
+import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
@@ -58,7 +58,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
                     key={f.code}
                     value={f.code}
                   >
-                    {f.name[language]}
+                    {f.name[language as keyof Locales]}
                   </MenuItem>
                 ))}
               </Select>

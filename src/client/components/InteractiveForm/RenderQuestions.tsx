@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
-import { InputProps } from '../../types'
+import { InputProps, Locales } from '../../types'
 import styles from './styles'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
@@ -23,12 +23,13 @@ const RenderQuestions = ({
     if (!options.includes(parent)) return null
   }
 
-  const components = {
-    singleChoice: SingleChoice,
-    multipleChoice: MultiChoice,
-    dimensions: DimensionSelect,
-    info: SingleChoice,
-  }
+  const components: { [key: string]: (...args: InputProps[]) => JSX.Element } =
+    {
+      singleChoice: SingleChoice,
+      multipleChoice: MultiChoice,
+      dimensions: DimensionSelect,
+      info: SingleChoice,
+    }
 
   const Choice = components[question.optionData.type]
 
@@ -41,14 +42,16 @@ const RenderQuestions = ({
   return (
     <Container sx={classes.questionsContainer}>
       <Typography variant="h5" style={classes.heading} component="div">
-        {question.title[language]}
+        {question.title[language as keyof Locales]}
       </Typography>
       <Box sx={classes.content}>
-        <Typography variant="body2">{question.text[language]}</Typography>
+        <Typography variant="body2">
+          {question.text[language as keyof Locales]}
+        </Typography>
       </Box>
 
       <Choice
-        key={question.id as any}
+        key={question.id as unknown as string}
         control={control}
         watch={watch}
         question={question}

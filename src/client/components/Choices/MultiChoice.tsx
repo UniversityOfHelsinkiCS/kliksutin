@@ -12,7 +12,7 @@ import {
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
-import { MultipleChoiceType, InputProps } from '../../types'
+import { MultipleChoiceType, InputProps, Locales } from '../../types'
 
 const ShowMore = ({ text }: { text: string }) => {
   const [expand, setExpand] = useState(false)
@@ -49,9 +49,11 @@ const MultiChoice = ({ control, question, children, language }: InputProps) => (
                     checked={field.value}
                   />
                 }
-                label={choice.label[language]}
+                label={choice.label[language as keyof Locales]}
               />
-              {choice.data ? <ShowMore text={choice.data[language]} /> : null}
+              {choice.data ? (
+                <ShowMore text={choice.data[language as keyof Locales]} />
+              ) : null}
             </Box>
           </FormControl>
         )}

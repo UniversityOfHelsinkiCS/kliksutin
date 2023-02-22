@@ -19,7 +19,7 @@ const Contact = () => {
   const { t } = useTranslation()
   const [contactMethod, setContactMethod] = useState('email')
 
-  const components = {
+  const components: { [key: string]: () => JSX.Element } = {
     email: Ticket,
     consultation: Ticket,
   }
