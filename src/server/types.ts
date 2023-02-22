@@ -1,3 +1,5 @@
+import { Request } from 'express'
+
 export type Faculty = {
   fi: String
   en: String
@@ -31,4 +33,8 @@ export interface User {
   lastName?: string
   email?: string
   language?: string
+}
+
+export interface RequestWithUser extends Request {
+  user: User
 }

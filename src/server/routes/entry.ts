@@ -1,11 +1,7 @@
-import express, { Request } from 'express'
+import express from 'express'
 
-import { User } from '../types'
+import { RequestWithUser } from '../types'
 import { Entry } from '../db/models'
-
-interface RequestWithUser extends Request {
-  user: User
-}
 
 const entryRouter = express.Router()
 
