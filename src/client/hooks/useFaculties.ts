@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 
 import apiClient from '../util/apiClient'
+import { Faculty } from '../types'
 
-const useFaculties = () => {
+const useFaculties = (): Faculty[] => {
   const [faculties, setFaculties] = useState(null)
 
   useEffect(() => {

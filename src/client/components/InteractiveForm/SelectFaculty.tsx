@@ -7,7 +7,7 @@ import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import styles from './styles'
-import { InputProps, Locales } from '../../types'
+import { InputProps, Faculty } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
@@ -26,9 +26,12 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   if (!faculties) {
     mockFaculty = [
       {
-        fi: 'Matemaattis-luonnontieteellinen tiedekunta',
-        en: 'Faculty of Science',
-        sv: 'Matematisk-naturvetenskapliga fakulteten',
+        code: 'H50',
+        name: {
+          fi: 'Matemaattis-luonnontieteellinen tiedekunta',
+          en: 'Faculty of Science',
+          sv: 'Matematisk-naturvetenskapliga fakulteten',
+        },
       },
     ]
   }
@@ -61,13 +64,13 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
                 onChange={handleChange}
                 {...field}
               >
-                {(faculties || mockFaculty).map((f: Locales) => (
+                {(faculties || mockFaculty).map((f: Faculty) => (
                   <MenuItem
-                    data-cy={`faculty-option-${f.en}`}
-                    key={f.en}
-                    value={f.en}
+                    data-cy={`faculty-option-${f.code}`}
+                    key={f.code}
+                    value={f.code}
                   >
-                    {f[language]}
+                    {f.name[language]}
                   </MenuItem>
                 ))}
               </Select>

@@ -94,3 +94,8 @@ export interface Result {
     [key: string]: Locales
   }
 }
+
+export interface Faculty {
+  code: string
+  name: Locales
+}
