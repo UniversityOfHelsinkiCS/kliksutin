@@ -15,7 +15,6 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   const language = localStorage.getItem('language') || 'en'
   const [faculty, setFaculty] = useState('')
   const faculties = useFaculties()
-  let mockFaculty
 
   const handleChange = (event: SelectChangeEvent) => {
     setFaculty(event.target.value)
@@ -23,18 +22,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
 
   const classes = styles.cardStyles
 
-  if (!faculties) {
-    mockFaculty = [
-      {
-        code: 'H50',
-        name: {
-          fi: 'Matemaattis-luonnontieteellinen tiedekunta',
-          en: 'Faculty of Science',
-          sv: 'Matematisk-naturvetenskapliga fakulteten',
-        },
-      },
-    ]
-  }
+  if (!faculties) return null
 
   return (
     <Box sx={classes.card}>
@@ -64,7 +52,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
                 onChange={handleChange}
                 {...field}
               >
-                {(faculties || mockFaculty).map((f: Faculty) => (
+                {faculties.map((f: Faculty) => (
                   <MenuItem
                     data-cy={`faculty-option-${f.code}`}
                     key={f.code}
