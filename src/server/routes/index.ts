@@ -10,6 +10,7 @@ import facultyRouter from './faculty'
 import surveyRouter from './survey'
 import recommendationRouter from './recommendation'
 import resultRouter from './result'
+import summaryRouter from './summary'
 
 const router = express()
 
@@ -28,6 +29,7 @@ router.use('/faculties', facultyRouter)
 router.use('/surveys', surveyRouter)
 router.use('/recommendations', recommendationRouter)
 router.use('/results', resultRouter)
+router.use('/summary', summaryRouter)
 
 router.use(SentryHandlers.errorHandler())
 router.use(errorHandler)
