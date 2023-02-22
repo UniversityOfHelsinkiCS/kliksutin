@@ -16,7 +16,7 @@ class Entry extends Model<
 
   declare surveyId: number
 
-  declare userId: number
+  declare userId: string
 
   declare data: object
 }

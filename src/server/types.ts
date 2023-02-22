@@ -23,3 +23,12 @@ export interface TranslatedText {
   sv: string
   en: string
 }
+
+export interface User {
+  id: string
+  username: string
+  firsName?: string
+  lastName?: string
+  email?: string
+  language?: string
+}

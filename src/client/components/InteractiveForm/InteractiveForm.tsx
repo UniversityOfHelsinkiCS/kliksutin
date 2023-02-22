@@ -7,6 +7,13 @@ import Results from '../ResultPage/Results'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
+import apiClient from '../../util/apiClient'
+
+const saveResults = async (data: FormValues) => {
+  apiClient.post('/entries/0', {
+    data,
+  })
+}
 
 const InteractiveForm = () => {
   const survey = useSurvey()
@@ -22,6 +29,7 @@ const InteractiveForm = () => {
     const submittedData = data
 
     setResultData(submittedData)
+    saveResults(submittedData)
   }
 
   if (!survey) return null
