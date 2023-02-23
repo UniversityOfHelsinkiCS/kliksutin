@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import CssBaseline from '@mui/material/CssBaseline'
 
 import { PUBLIC_URL } from '../config'
@@ -21,6 +22,7 @@ root.render(
         <CssBaseline>
           <App />
         </CssBaseline>
+        <ReactQueryDevtools position="bottom-right" />
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
