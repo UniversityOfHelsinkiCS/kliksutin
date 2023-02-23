@@ -50,9 +50,9 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     (question) => question.optionData.type === 'dimensions'
   )
 
-  const dimensionQuestionId = dimensionQuestion.id.toString()
+  const dimensionQuestionId = dimensionQuestion.id
 
-  const courseCompletionMethodId = '4'
+  const courseCompletionMethodId = 4
 
   const isAllDimensionsSelected: boolean = Object.values(
     formResultData[dimensionQuestionId]
@@ -64,13 +64,15 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
   const mapSelectionsToObject: { [key: number]: string | string[] } = {
     ...formResultData,
-    1: isAllDimensionsSelected
+    [dimensionQuestionId]: isAllDimensionsSelected
       ? ['allDimensions']
       : Object.keys(formResultData[dimensionQuestionId]).filter(
           (dimension) => formResultData[dimensionQuestionId][dimension]
         ),
-    4: arrayOfSelectedCompletionMethods,
+    [courseCompletionMethodId]: arrayOfSelectedCompletionMethods,
   }
+
+  console.log(mapSelectionsToObject)
 
   const mapSelectionsToArray: string[][] = Object.values(mapSelectionsToObject)
     .slice(1)
@@ -95,7 +97,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
               (result: { optionLabel: string }) =>
                 result.optionLabel === resultLabel
             )}
-            dimensions={mapSelectionsToObject[dimensionQuestionId]}
+            dimensions={mapSelectionsToObject[dimensionQuestionId] as string[]}
           />
         ))
       )}
