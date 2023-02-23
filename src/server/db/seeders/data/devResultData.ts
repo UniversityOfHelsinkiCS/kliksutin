@@ -1,7 +1,7 @@
 const getResultData = () => [
   {
     id: 1,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseSizeSmall',
     isSelected: {
       fi: 'Olet valinnut kurssillesi osallistujamääräksi < 50 opiskelijaa.',
@@ -48,7 +48,7 @@ const getResultData = () => [
   },
   {
     id: 2,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseSizeBig',
     isSelected: {
       fi: 'Olet valinnut kurssillesi osallistujamääräksi >= 50 opiskelijaa.',
@@ -95,7 +95,7 @@ const getResultData = () => [
   },
   {
     id: 3,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseSizeUnlimited',
     isSelected: {
       fi: 'Kurssillesi ei ole määritelty maksimi opiskelijamäärää.',
@@ -142,7 +142,7 @@ const getResultData = () => [
   },
   {
     id: 4,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseIsMooc',
     isSelected: {
       fi: 'Olet valinnut kurssin MOOC-kurssiksi',
@@ -189,7 +189,7 @@ const getResultData = () => [
   },
   {
     id: 5,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseIsNotMooc',
     isSelected: {
       fi: 'Olet valinnut ettei kurssi ole MOOC-kurssi.',
@@ -236,7 +236,7 @@ const getResultData = () => [
   },
   {
     id: 6,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseAttendancePresent',
     isSelected: {
       fi: 'Olet valinnut kurssillesi opetusmuodoksi lähiopetuksen.',
@@ -283,7 +283,7 @@ const getResultData = () => [
   },
   {
     id: 7,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseAttendanceHybrid',
     isSelected: {
       fi: 'Olet valinnut kurssillesi opetusmuodoksi hybridiopetuksen.',
@@ -330,7 +330,7 @@ const getResultData = () => [
   },
   {
     id: 8,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseAttendanceRemote',
     isSelected: {
       fi: 'Olet valinnut kurssillesi opetusmuodoksi etäopetuksen.',
@@ -377,7 +377,7 @@ const getResultData = () => [
   },
   {
     id: 9,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseIsRecorded',
     isSelected: {
       fi: 'Olet valinnut nauhoittaa kurssin luennot.',
@@ -424,7 +424,7 @@ const getResultData = () => [
   },
   {
     id: 10,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseIsNotRecorded',
     isSelected: {
       fi: 'Olet valinnut ettei luentoja nauhoiteta.',
@@ -471,7 +471,7 @@ const getResultData = () => [
   },
   {
     id: 11,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseCompletionMethodExam',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi tentin.',
@@ -518,7 +518,7 @@ const getResultData = () => [
   },
   {
     id: 12,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseCompletionMethodSmallGroup',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi pienryhmätyöskentelyn.',
@@ -565,7 +565,7 @@ const getResultData = () => [
   },
   {
     id: 13,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseCompletionMethodDiary',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi välitehtävät.',
@@ -612,7 +612,7 @@ const getResultData = () => [
   },
   {
     id: 14,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseCompletionMethodLaboratory',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi laboratorio ja simulaatioharjoitukset.',
@@ -659,7 +659,7 @@ const getResultData = () => [
   },
   {
     id: 15,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseCompletionMethodAssignment',
     isSelected: {
       fi: 'Olet valinnut kurssillesi suoritusmuodoksi kirjallisen tehtävän.',
@@ -706,7 +706,7 @@ const getResultData = () => [
   },
   {
     id: 16,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseIsOpenUniversity',
     isSelected: {
       fi: 'Osallistuminen kurssillesi on avointa kaikille.',
@@ -753,7 +753,7 @@ const getResultData = () => [
   },
   {
     id: 17,
-    surveyId: 0,
+    surveyId: 1,
     optionLabel: 'courseIsNotOpenUniversity',
     isSelected: {
       fi: 'Osallistuminen kurssillesi ei ole avointa kaikille.',

@@ -1,7 +1,7 @@
 const getQuestionData = () => [
   {
     id: 1,
-    surveyId: 0,
+    surveyId: 1,
     parentId: null,
     priority: 0,
     title: {
@@ -83,7 +83,7 @@ const getQuestionData = () => [
   },
   {
     id: 2,
-    surveyId: 0,
+    surveyId: 1,
     parentId: null,
     priority: 2,
     title: {
@@ -129,7 +129,7 @@ const getQuestionData = () => [
   },
   {
     id: 3,
-    surveyId: 0,
+    surveyId: 1,
     parentId: null,
     priority: 3,
     title: {
@@ -175,7 +175,7 @@ const getQuestionData = () => [
   },
   {
     id: 4,
-    surveyId: 0,
+    surveyId: 1,
     parentId: null,
     priority: 4,
     title: {
@@ -262,7 +262,7 @@ const getQuestionData = () => [
   },
   {
     id: 5,
-    surveyId: 0,
+    surveyId: 1,
     parentId: 3,
     priority: 0,
     title: {
@@ -300,7 +300,7 @@ const getQuestionData = () => [
   },
   {
     id: 6,
-    surveyId: 0,
+    surveyId: 1,
     parentId: 4,
     priority: 0,
     title: {
@@ -321,7 +321,7 @@ const getQuestionData = () => [
   },
   {
     id: 8,
-    surveyId: 0,
+    surveyId: 1,
     parentId: 4,
     priority: 0,
     title: {
@@ -344,7 +344,7 @@ const getQuestionData = () => [
   },
   {
     id: 9,
-    surveyId: 0,
+    surveyId: 1,
     parentId: 4,
     priority: 0,
     title: {
@@ -367,7 +367,7 @@ const getQuestionData = () => [
   },
   {
     id: 7,
-    surveyId: 0,
+    surveyId: 1,
     parentId: 2,
     priority: 0,
     title: {
@@ -407,7 +407,7 @@ const getQuestionData = () => [
   },
   {
     id: 10,
-    surveyId: 0,
+    surveyId: 1,
     parentId: null,
     priority: 1,
     title: {
