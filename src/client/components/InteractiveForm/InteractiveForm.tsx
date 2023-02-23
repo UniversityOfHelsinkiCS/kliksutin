@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
-import useSurvey from '../../hooks/useSurvey'
+import { useMutation } from 'react-query'
 
+import useSurvey from '../../hooks/useSurvey'
 import Results from '../ResultPage/Results'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
@@ -18,7 +19,9 @@ const saveResults = async (data: FormValues) => {
 }
 
 const InteractiveForm = () => {
-  const survey = useSurvey()
+  const { survey, isLoading } = useSurvey()
+  const mutation = useMutation(saveResults)
+
   const [resultData, setResultData] = useState<FormValues>(null)
 
   const { handleSubmit, control, watch } = useForm({
@@ -30,10 +33,10 @@ const InteractiveForm = () => {
     const submittedData = data
 
     setResultData(submittedData)
-    saveResults(submittedData)
+    mutation.mutate(submittedData)
   }
 
-  if (!survey) return null
+  if (isLoading) return null
 
   return (
     <Box my="2rem">

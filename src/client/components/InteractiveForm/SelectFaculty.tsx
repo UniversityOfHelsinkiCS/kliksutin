@@ -14,7 +14,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   const { t } = useTranslation()
   const language = localStorage.getItem('language') || 'en'
   const [faculty, setFaculty] = useState('')
-  const faculties = useFaculties()
+  const { faculties, isLoading } = useFaculties()
 
   const handleChange = (event: SelectChangeEvent) => {
     setFaculty(event.target.value)
@@ -22,7 +22,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
 
   const classes = styles.cardStyles
 
-  if (!faculties) return null
+  if (isLoading) return null
 
   return (
     <Box sx={classes.card}>
