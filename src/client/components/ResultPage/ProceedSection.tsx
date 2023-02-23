@@ -12,8 +12,6 @@ const ProceedSection = () => {
 
   const resultHTML = document.getElementById('result-component')
 
-  console.log(resultHTML)
-
   const classes = styles.cardStyles
 
   return (
@@ -55,7 +53,7 @@ const ProceedSection = () => {
               </Button>
             </>
           ) : (
-            <EmailForm />
+            <EmailForm resultHTML={resultHTML} />
           )}
         </Stack>
       </Box>

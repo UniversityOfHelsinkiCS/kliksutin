@@ -8,7 +8,7 @@ import apiClient from '../../util/apiClient'
 
 import styles from './styles'
 
-const EmailForm = () => {
+const EmailForm = ({ resultHTML }: { resultHTML: HTMLElement }) => {
   const { t } = useTranslation()
 
   const sendResultsToEmail = async (targets: string[], text: any) => {
@@ -40,8 +40,10 @@ const EmailForm = () => {
 
   const onSubmit = async ({ email }: { email: string }) => {
     const targets = [email]
+    const text = resultHTML.outerHTML
+
     try {
-      await sendResultsToEmail(targets, 'Testi frontista')
+      await sendResultsToEmail(targets, text)
     } catch (error) {
       console.log(error)
     }
