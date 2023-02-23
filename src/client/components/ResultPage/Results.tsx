@@ -59,17 +59,20 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     formResultData[dimensionQuestionId]
   ).every((dimension) => dimension)
 
-  const arrayOfSelectedCompletionMethods: string[] = Object.keys(
-    formResultData[courseCompletionMethodId]
-  ).filter((method) => formResultData[courseCompletionMethodId][method])
+  const multipleChoiceObjectToArray = (aMultipleChoiceId: number): string[] =>
+    Object.keys(formResultData[aMultipleChoiceId]).filter(
+      (method) => formResultData[aMultipleChoiceId][method]
+    )
+
+  const arrayOfSelectedCompletionMethods = multipleChoiceObjectToArray(
+    courseCompletionMethodId
+  )
 
   const mapSelectionsToObject: { [key: number]: string | string[] } = {
     ...formResultData,
     [dimensionQuestionId]: isAllDimensionsSelected
       ? ['allDimensions']
-      : Object.keys(formResultData[dimensionQuestionId]).filter(
-          (dimension) => formResultData[dimensionQuestionId][dimension]
-        ),
+      : multipleChoiceObjectToArray(dimensionQuestionId),
     [courseCompletionMethodId]: arrayOfSelectedCompletionMethods,
   }
 
