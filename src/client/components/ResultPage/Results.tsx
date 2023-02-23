@@ -61,12 +61,12 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     formResultData[dimensionQuestionId]
   ).every((dimension) => dimension)
 
-  const multipleChoiceObjectToArray = (aMultipleChoiceId: number): string[] =>
-    Object.keys(formResultData[aMultipleChoiceId]).filter(
-      (method) => formResultData[aMultipleChoiceId][method]
+  const multipleChoiceObjectToArray = (aChoiceId: number): string[] =>
+    Object.keys(formResultData[aChoiceId]).filter(
+      (index) => formResultData[aChoiceId][index]
     )
 
-  const mapSelectionsToObject: { [key: number]: string | string[] } = {
+  const modifiedResultObject = {
     ...formResultData,
     [dimensionQuestionId]: isAllDimensionsSelected
       ? ['allDimensions']
@@ -76,7 +76,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     ),
   }
 
-  const mapSelectionsToArray: string[][] = Object.values(mapSelectionsToObject)
+  const resultArray: string[][] = Object.values(modifiedResultObject)
     .slice(1)
     .filter((x) => x !== '')
     .map((result: string | Array<string>) =>
@@ -94,7 +94,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         </Typography>
       </Container>
 
-      {mapSelectionsToArray.map((resultLabels) =>
+      {resultArray.map((resultLabels) =>
         resultLabels.map((resultLabel) => (
           <ResultElement
             key={JSON.stringify(resultLabel)}
@@ -103,7 +103,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
               (result: { optionLabel: string }) =>
                 result.optionLabel === resultLabel
             )}
-            dimensions={mapSelectionsToObject[dimensionQuestionId] as string[]}
+            dimensions={modifiedResultObject[dimensionQuestionId] as string[]}
           />
         ))
       )}

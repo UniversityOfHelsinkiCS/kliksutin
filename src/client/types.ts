@@ -41,8 +41,8 @@ export interface MultipleChoiceType {
 }
 
 export interface OptionData {
-  options: SingleChoiceType[] | MultipleChoiceType[]
   type: string
+  options: SingleChoiceType[] | MultipleChoiceType[]
 }
 
 export type Visibility = {
@@ -79,7 +79,7 @@ export interface DimensionData {
 }
 
 export interface FormValues {
-  [key: string]: string | [key: boolean]
+  [key: number]: Record<string, { [key: string]: boolean }>
   faculty: string
 }
 
