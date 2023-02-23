@@ -26,7 +26,8 @@
     "proceedEnterMail": "Please enter your email",
     "emailIsRequired": "Email is required",
     "emailIsIncorrect": "Email is incorrect, check input",
-    "sendSummaryMail": "Send"
+    "sendSummaryMail": "Send",
+    "sendSuccess": "Thank you for using Kliksutin, we've sent the summary to your email!"
   },
   "contact": {
     "title": "Contact page",

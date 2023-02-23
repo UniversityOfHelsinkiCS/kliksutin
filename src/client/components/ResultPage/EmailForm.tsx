@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
 import apiClient from '../../util/apiClient'
 
 import styles from './styles'
 
 const EmailForm = ({ resultHTML }: { resultHTML: HTMLElement }) => {
   const { t } = useTranslation()
+  const [isSent, setIsSent] = useState(false)
 
-  const sendResultsToEmail = async (targets: string[], text: any) => {
+  const sendResultsToEmail = async (targets: string[], text: string) => {
     apiClient.post('/summary', {
       targets,
       text,
@@ -44,6 +45,7 @@ const EmailForm = ({ resultHTML }: { resultHTML: HTMLElement }) => {
 
     try {
       await sendResultsToEmail(targets, text)
+      setIsSent(true)
     } catch (error) {
       console.log(error)
     }
@@ -71,13 +73,17 @@ const EmailForm = ({ resultHTML }: { resultHTML: HTMLElement }) => {
               <Typography variant="body2">{errors.email?.message}</Typography>
             )}
             <Box mt={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit(onSubmit)}
-              >
-                {t('results:sendSummaryMail')}
-              </Button>
+              {!isSent ? (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSubmit(onSubmit)}
+                >
+                  {t('results:sendSummaryMail')}
+                </Button>
+              ) : (
+                <Alert severity="success">{t('results:sendSuccess')}</Alert>
+              )}
             </Box>
           </form>
         </Grid>

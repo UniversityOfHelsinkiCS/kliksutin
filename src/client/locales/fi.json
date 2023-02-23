@@ -26,7 +26,8 @@
     "proceedEnterMail": "Kirjoita sähköpostiosoitteesi",
     "emailIsRequired": "Sähköposti on pakollinen",
     "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
-    "sendSummaryMail": "Lähetä"
+    "sendSummaryMail": "Lähetä",
+    "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme lähettäneet yhteenvetosi sähköpostiisi!"
   },
   "contact": {
     "title": "Yhteydenotto",
