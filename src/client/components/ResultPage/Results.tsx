@@ -64,16 +64,14 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
       (method) => formResultData[aMultipleChoiceId][method]
     )
 
-  const arrayOfSelectedCompletionMethods = multipleChoiceObjectToArray(
-    courseCompletionMethodId
-  )
-
   const mapSelectionsToObject: { [key: number]: string | string[] } = {
     ...formResultData,
     [dimensionQuestionId]: isAllDimensionsSelected
       ? ['allDimensions']
       : multipleChoiceObjectToArray(dimensionQuestionId),
-    [courseCompletionMethodId]: arrayOfSelectedCompletionMethods,
+    [courseCompletionMethodId]: multipleChoiceObjectToArray(
+      courseCompletionMethodId
+    ),
   }
 
   const mapSelectionsToArray: string[][] = Object.values(mapSelectionsToObject)
