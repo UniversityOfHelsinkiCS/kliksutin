@@ -6,10 +6,13 @@ const surveyRouter = express.Router()
 
 const sortByPriority = (a: Question, b: Question) => a.priority - b.priority
 
-surveyRouter.get('/:id', async (req, res) => {
-  const { id } = req.params
+surveyRouter.get('/:name', async (req, res) => {
+  const { name } = req.params
 
-  const survey = await Survey.findByPk(id, {
+  const survey = await Survey.findOne({
+    where: {
+      name,
+    },
     include: {
       model: Question,
     },

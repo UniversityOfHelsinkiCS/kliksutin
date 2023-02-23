@@ -15,7 +15,7 @@ if (inProduction || inStaging) connectionString = `${connectionString}&ssl=true`
 export const DB_CONNECTION_STRING = connectionString
 
 export const JAMI_URL = inProduction
-  ? 'https://importer.cs.helsinki.fi/api/auth'
+  ? 'https://api-toska.apps.ocp-prod-0.k8s.it.helsinki.fi/jami/'
   : 'https://api-toska.apps.ocp-test-0.k8s.it.helsinki.fi/jami'
 
 export const PATE_URL = inProduction

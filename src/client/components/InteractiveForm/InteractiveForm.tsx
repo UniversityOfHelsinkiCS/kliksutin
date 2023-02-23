@@ -1,26 +1,18 @@
 import React, { useState } from 'react'
-
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
-import { useMutation } from 'react-query'
 
 import useSurvey from '../../hooks/useSurvey'
+import useSaveEntryMutation from '../../hooks/useSaveEntryMutation'
 import Results from '../ResultPage/Results'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
-import apiClient from '../../util/apiClient'
 import ProceedSection from '../ResultPage/ProceedSection'
-
-const saveResults = async (data: FormValues) => {
-  apiClient.post('/entries/0', {
-    data,
-  })
-}
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
-  const mutation = useMutation(saveResults)
+  const mutation = useSaveEntryMutation(survey?.id)
 
   const [resultData, setResultData] = useState<FormValues>(null)
 
@@ -33,7 +25,7 @@ const InteractiveForm = () => {
     const submittedData = data
 
     setResultData(submittedData)
-    mutation.mutate(submittedData)
+    mutation.mutateAsync(submittedData)
   }
 
   if (isLoading) return null

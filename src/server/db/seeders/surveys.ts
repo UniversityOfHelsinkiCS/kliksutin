@@ -4,7 +4,7 @@ const surveyName = 'testSurvey'
 
 const seedSurveys = async () => {
   await Survey.upsert({
-    id: 0,
+    id: 1,
     name: surveyName,
   })
 }

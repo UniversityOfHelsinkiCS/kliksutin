@@ -5,13 +5,13 @@ import { Entry } from '../db/models'
 
 const entryRouter = express.Router()
 
-entryRouter.post('/:id', async (req: RequestWithUser, res) => {
-  const { id } = req.params
+entryRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
+  const { surveyId } = req.params
   const { id: userId } = req.user
   const { data } = req.body
 
   const entry = await Entry.create({
-    surveyId: Number(id),
+    surveyId: Number(surveyId),
     userId,
     data,
   })
