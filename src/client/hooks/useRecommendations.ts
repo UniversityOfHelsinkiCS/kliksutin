@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useQuery } from 'react-query'
 
 import apiClient from '../util/apiClient'
 import { DimensionData } from '../types'
 
-const useRecommendations = (): DimensionData[] => {
-  const [recommendations, setRecommendations] = useState(null)
+const useRecommendations = () => {
+  const queryKey = 'recommendations'
 
-  useEffect(() => {
-    apiClient
-      .get('/recommendations/0')
-      .then(({ data }) => setRecommendations(data))
-  }, [])
+  const query = async (): Promise<DimensionData[]> => {
+    const { data } = await apiClient.get('/recommendations/0')
 
-  return recommendations
+    return data
+  }
+
+  const { data: recommendations, ...rest } = useQuery(queryKey, query)
+
+  return { recommendations, ...rest }
 }
 
 export default useRecommendations

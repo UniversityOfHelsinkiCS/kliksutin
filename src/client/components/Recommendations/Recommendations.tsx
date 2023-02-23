@@ -65,13 +65,14 @@ const Recommendations: React.FC<{
   watch: any
 }> = ({ watch }) => {
   const { t } = useTranslation()
-  const survey = useSurvey()
-  const recommendations = useRecommendations()
+  const { survey, isLoading: surveyLoading } = useSurvey()
+  const { recommendations, isLoading: recommendationsLoading } =
+    useRecommendations()
 
   const classes = styles.cardStyles
   const language = localStorage.getItem('language') || 'en'
 
-  if (!survey || !recommendations) return null
+  if (surveyLoading || recommendationsLoading) return null
 
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'

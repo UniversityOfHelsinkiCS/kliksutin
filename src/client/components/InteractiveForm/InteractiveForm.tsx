@@ -18,7 +18,8 @@ const saveResults = async (data: FormValues) => {
 }
 
 const InteractiveForm = () => {
-  const survey = useSurvey()
+  const { survey, isLoading } = useSurvey()
+
   const [resultData, setResultData] = useState<FormValues>(null)
 
   const { handleSubmit, control, watch } = useForm({
@@ -33,7 +34,7 @@ const InteractiveForm = () => {
     saveResults(submittedData)
   }
 
-  if (!survey) return null
+  if (isLoading) return null
 
   return (
     <Box my="2rem">

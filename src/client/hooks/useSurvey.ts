@@ -1,16 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useQuery } from 'react-query'
 
 import apiClient from '../util/apiClient'
 import { Survey } from '../types'
 
-const useSurvey = (): Survey => {
-  const [survey, setSurvey] = useState(null)
+const useSurvey = () => {
+  const queryKey = 'survey'
 
-  useEffect(() => {
-    apiClient.get('/surveys/0').then(({ data }) => setSurvey(data))
-  }, [])
+  const query = async (): Promise<Survey> => {
+    const { data } = await apiClient.get('/surveys/0')
 
-  return survey
+    return data
+  }
+
+  const { data: survey, ...rest } = useQuery(queryKey, query)
+
+  return { survey, ...rest }
 }
 
 export default useSurvey
