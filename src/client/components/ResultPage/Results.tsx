@@ -48,10 +48,12 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'
   )
-
   const dimensionQuestionId = dimensionQuestion.id
 
-  const courseCompletionMethodId = 4
+  const courseCompletionMethodQuestion = survey.Questions.find(
+    (question) => question.title.fi === 'Suoritusmuoto'
+  )
+  const courseCompletionMethodId = courseCompletionMethodQuestion.id
 
   const isAllDimensionsSelected: boolean = Object.values(
     formResultData[dimensionQuestionId]
