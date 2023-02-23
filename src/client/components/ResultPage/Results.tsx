@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
-import Ending from './Ending'
+import ProceedSection from './ProceedSection'
 import styles from './styles'
 import { FormValues, Locales, Result } from '../../types'
 
@@ -72,8 +72,6 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     [courseCompletionMethodId]: arrayOfSelectedCompletionMethods,
   }
 
-  console.log(mapSelectionsToObject)
-
   const mapSelectionsToArray: string[][] = Object.values(mapSelectionsToObject)
     .slice(1)
     .filter((x) => x !== '')
@@ -101,7 +99,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
           />
         ))
       )}
-      <Ending />
+      <ProceedSection />
     </Box>
   )
 }

@@ -6,7 +6,7 @@ import { Box, Button, Container, Stack, Typography } from '@mui/material'
 import styles from './styles'
 import EmailForm from './EmailForm'
 
-const Ending = () => {
+const EndingSection = () => {
   const { t } = useTranslation()
   const [openMailPrompt, setOpenMailPrompt] = useState(false)
 
@@ -59,4 +59,4 @@ const Ending = () => {
   )
 }
 
-export default Ending
+export default EndingSection
