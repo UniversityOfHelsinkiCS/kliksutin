@@ -64,13 +64,13 @@ const mapRecommendations = (
 const Recommendations: React.FC<{
   watch: any
 }> = ({ watch }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
   const { recommendations, isSuccess: recommendationsFetched } =
     useRecommendations(survey?.id)
 
   const classes = styles.cardStyles
-  const language = localStorage.getItem('language') || 'en'
+  const { language } = i18n
 
   if (!recommendationsFetched) return null
 

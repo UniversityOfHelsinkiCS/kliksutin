@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
+
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
 import styles from './styles'
@@ -9,20 +10,20 @@ import { FormValues, Locales, Result } from '../../types'
 const classes = styles.cardStyles
 
 const ResultElement = ({
+  language,
   resultData,
   dimensions,
 }: {
+  language: keyof Locales
   resultData: Result
   dimensions: string[]
 }) => {
   if (!resultData || !dimensions) return null
 
-  const language = localStorage.getItem('language') || 'en'
-
   return (
     <Container sx={classes.resultContainer}>
       <Typography variant="h6" sx={classes.heading} component="div">
-        {resultData.isSelected[language as keyof Locales]}
+        {resultData.isSelected[language]}
       </Typography>
       <Box sx={classes.content}>
         {dimensions.map((dimension: string) => (
@@ -30,7 +31,7 @@ const ResultElement = ({
             key={`${JSON.stringify(resultData)}.${dimension}`}
             variant="body2"
           >
-            {resultData.data[dimension][language as keyof Locales]}
+            {resultData.data[dimension][language]}
           </Typography>
         ))}
       </Box>
@@ -39,9 +40,10 @@ const ResultElement = ({
 }
 
 const Results = ({ formResultData }: { formResultData: FormValues }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
+  const { language } = i18n
 
   if (!resultsFetched || !formResultData) return null
 
@@ -96,6 +98,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
         resultLabels.map((resultLabel) => (
           <ResultElement
             key={JSON.stringify(resultLabel)}
+            language={language as keyof Locales}
             resultData={results.find(
               (result: { optionLabel: string }) =>
                 result.optionLabel === resultLabel

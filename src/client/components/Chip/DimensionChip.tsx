@@ -1,5 +1,7 @@
 import React from 'react'
 import { Chip, Tooltip } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+
 import { Locales, MultipleChoiceType } from '../../types'
 
 const DimensionChip: React.FC<{
@@ -12,7 +14,8 @@ const DimensionChip: React.FC<{
     marginX: '0.1rem',
     fontWeight: 'normal',
   }
-  const language = localStorage.getItem('language') || 'en'
+  const { i18n } = useTranslation()
+  const { language } = i18n
 
   return compact ? (
     <Tooltip title={choice.label[language as keyof Locales]} arrow>

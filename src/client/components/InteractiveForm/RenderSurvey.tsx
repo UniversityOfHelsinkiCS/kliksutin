@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+
 import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
@@ -12,13 +13,13 @@ const RenderSurvey = ({
   questions,
   handleSubmit,
 }: InputProps) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const classes = styles.cardStyles
   const [showQuestions, setShowQuestions] = useState(false)
 
   if (!questions) return null
 
-  const language = localStorage.getItem('language') || 'en'
+  const { language } = i18n
 
   const canProceed = (): boolean => {
     const dimensionQuestion = questions.find(

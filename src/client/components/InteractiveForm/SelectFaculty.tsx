@@ -11,8 +11,8 @@ import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
-  const { t } = useTranslation()
-  const language = localStorage.getItem('language') || 'en'
+  const { t, i18n } = useTranslation()
+  const { language } = i18n
   const [faculty, setFaculty] = useState('')
   const { faculties, isLoading } = useFaculties()
 
