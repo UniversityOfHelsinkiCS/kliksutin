@@ -6,9 +6,13 @@ import { Box, Button, Container, Stack, Typography } from '@mui/material'
 import styles from './styles'
 import EmailForm from './EmailForm'
 
-const EndingSection = () => {
+const ProceedSection = () => {
   const { t } = useTranslation()
   const [openMailPrompt, setOpenMailPrompt] = useState(false)
+
+  const resultHTML = document.getElementById('result-component')
+
+  console.log(resultHTML)
 
   const classes = styles.cardStyles
 
@@ -59,4 +63,4 @@ const EndingSection = () => {
   )
 }
 
-export default EndingSection
+export default ProceedSection

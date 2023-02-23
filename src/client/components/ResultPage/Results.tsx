@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
-import ProceedSection from './ProceedSection'
 import styles from './styles'
 import { FormValues, Locales, Result } from '../../types'
 
@@ -80,7 +79,10 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     )
 
   return (
-    <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
+    <Box
+      id="result-component"
+      sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}
+    >
       <Container sx={{ mt: 2 }}>
         <Typography variant="h5" sx={classes.heading} component="div">
           {t('results:title')}
@@ -99,7 +101,6 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
           />
         ))
       )}
-      <ProceedSection />
     </Box>
   )
 }

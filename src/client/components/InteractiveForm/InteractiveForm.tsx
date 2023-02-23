@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
@@ -8,6 +9,7 @@ import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
 import apiClient from '../../util/apiClient'
+import ProceedSection from '../ResultPage/ProceedSection'
 
 const saveResults = async (data: FormValues) => {
   apiClient.post('/entries/0', {
@@ -17,7 +19,6 @@ const saveResults = async (data: FormValues) => {
 
 const InteractiveForm = () => {
   const survey = useSurvey()
-
   const [resultData, setResultData] = useState<FormValues>(null)
 
   const { handleSubmit, control, watch } = useForm({
@@ -52,6 +53,7 @@ const InteractiveForm = () => {
         </Grid>
         <Grid item sm={12}>
           <Results formResultData={resultData} />
+          {resultData && <ProceedSection />}
         </Grid>
       </Grid>
     </Box>
