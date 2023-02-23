@@ -3,16 +3,18 @@ import { useQuery } from 'react-query'
 import apiClient from '../util/apiClient'
 import { Result } from '../types'
 
-const useResults = () => {
-  const queryKey = 'results'
+const useResults = (surveyId: number) => {
+  const queryKey = ['results', surveyId]
 
   const query = async (): Promise<Result[]> => {
-    const { data } = await apiClient.get('/results/0')
+    const { data } = await apiClient.get(`/results/${surveyId}`)
 
     return data
   }
 
-  const { data: results, ...rest } = useQuery(queryKey, query)
+  const { data: results, ...rest } = useQuery(queryKey, query, {
+    enabled: Boolean(surveyId),
+  })
 
   return { results, ...rest }
 }

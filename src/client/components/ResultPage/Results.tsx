@@ -40,10 +40,10 @@ const ResultElement = ({
 
 const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const { t } = useTranslation()
-  const { survey, isLoading: surveyLoading } = useSurvey()
-  const { results, isLoading: resultsLoading } = useResults()
+  const { survey } = useSurvey()
+  const { results, isSuccess: resultsFetched } = useResults(survey?.id)
 
-  if (surveyLoading || resultsLoading || !formResultData) return null
+  if (!resultsFetched || !formResultData) return null
 
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'

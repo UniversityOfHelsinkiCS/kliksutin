@@ -4,12 +4,12 @@ import { Recommendation } from '../db/models'
 
 const recommendationRouter = express.Router()
 
-recommendationRouter.get('/:id', async (req, res) => {
-  const { id } = req.params
+recommendationRouter.get('/:surveyId', async (req, res) => {
+  const { surveyId } = req.params
 
   const recommendations = await Recommendation.findAll({
     where: {
-      surveyId: id,
+      surveyId,
     },
   })
 

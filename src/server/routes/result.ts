@@ -4,12 +4,12 @@ import { Result } from '../db/models'
 
 const resultRouter = express.Router()
 
-resultRouter.get('/:id', async (req, res) => {
-  const { id } = req.params
+resultRouter.get('/:surveyId', async (req, res) => {
+  const { surveyId } = req.params
 
   const results = await Result.findAll({
     where: {
-      surveyId: id,
+      surveyId,
     },
   })
 

@@ -5,12 +5,10 @@ module.exports = {
     await queryInterface.addColumn('results', 'survey_id', {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 0,
       })
     await queryInterface.addColumn('recommendations', 'survey_id', {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0,
     })
   },
   down: async ({ context: queryInterface }) => {
