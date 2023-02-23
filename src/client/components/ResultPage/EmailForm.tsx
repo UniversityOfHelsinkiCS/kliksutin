@@ -4,11 +4,19 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import apiClient from '../../util/apiClient'
 
 import styles from './styles'
 
 const EmailForm = () => {
   const { t } = useTranslation()
+
+  const sendResultsToEmail = async (targets: string[], text: any) => {
+    apiClient.post('/summary', {
+      targets,
+      text,
+    })
+  }
 
   const classes = styles.cardStyles
 
@@ -30,7 +38,14 @@ const EmailForm = () => {
     },
   })
 
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit = async ({ email }: { email: string }) => {
+    const targets = [email]
+    try {
+      await sendResultsToEmail(targets, 'Testi frontista')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Box px={3} py={2}>
