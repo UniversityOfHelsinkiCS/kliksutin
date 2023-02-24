@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
   AppBar,
@@ -28,12 +28,17 @@ const NavBar = () => {
 
   const { user, isLoading } = useLoggedInUser()
 
+  useEffect(() => {
+    if (user?.language) {
+      i18n.changeLanguage(user.language)
+    }
+  }, [user, i18n])
+
   const { language } = i18n
   const languages = ['fi', 'sv', 'en']
 
   const handleLanguageChange = (newLanguage: string) => {
     i18n.changeLanguage(newLanguage)
-    localStorage.setItem('language', newLanguage)
     setOpenLanguageSelect(false)
   }
 

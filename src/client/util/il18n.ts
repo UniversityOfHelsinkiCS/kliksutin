@@ -18,7 +18,7 @@ const initializeI18n = () =>
       fi,
       sv,
     },
-    lng: localStorage.getItem('language'),
+    lng: 'en',
     fallbackLng: 'en',
     defaultNS: 'common',
   })
