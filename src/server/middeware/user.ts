@@ -1,4 +1,17 @@
+import { inDevelopment } from '../../config'
+
+const mockHeaders = {
+  uid: 'testuser',
+  givenname: 'Testi',
+  sn: 'Kayttaja',
+  mail: 'grp-toska@helsinki.fi',
+  preferredlanguage: 'fi',
+  hypersonsisuid: 'hy-hlo-123',
+}
+
 const userMiddleware = (req, _, next) => {
+  const headers = inDevelopment ? mockHeaders : req.headers
+
   const {
     uid: username,
     givenname: firstName,
@@ -6,7 +19,7 @@ const userMiddleware = (req, _, next) => {
     mail: email,
     preferredlanguage: language,
     hypersonsisuid: id,
-  } = req.headers
+  } = headers
 
   const user = {
     username,
