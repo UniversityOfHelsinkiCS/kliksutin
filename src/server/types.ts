@@ -34,6 +34,7 @@ export interface User {
   email?: string
   language?: string
   isAdmin: boolean
+  iamGroups: string[]
 }
 
 export interface RequestWithUser extends Request {

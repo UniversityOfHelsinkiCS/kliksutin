@@ -1,11 +1,8 @@
 import express from 'express'
 
 import { inE2EMode } from '../../config'
+import { RequestWithUser } from '../types'
 import { getOrganisationData, getUserOrganisations } from '../util/jami'
-import { OrganisationData, RequestWithUser } from '../types'
-
-const parseIamGroups = (iamGroups: string) =>
-  iamGroups?.split(';').filter(Boolean) ?? []
 
 const mockFaculty = [
   {
@@ -23,7 +20,7 @@ const facultyRouter = express.Router()
 facultyRouter.get('/', async (req, res) => {
   if (inE2EMode) return res.send(mockFaculty)
 
-  const organisationData: Array<OrganisationData> = await getOrganisationData()
+  const organisationData = await getOrganisationData()
 
   const faculties = organisationData.map(({ code, name }) => ({ code, name }))
 
@@ -31,11 +28,11 @@ facultyRouter.get('/', async (req, res) => {
 })
 
 facultyRouter.get('/user', async (req: RequestWithUser, res) => {
-  const { id } = req.user
+  const { id, iamGroups } = req.user
 
-  const iamGroups = parseIamGroups(req.headers.hygroupcn as string)
+  const organisationData = await getUserOrganisations(id, iamGroups)
 
-  const faculties = await getUserOrganisations(id, iamGroups)
+  const faculties = organisationData.map(({ code, name }) => ({ code, name }))
 
   return res.send(faculties)
 })

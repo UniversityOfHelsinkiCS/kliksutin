@@ -9,12 +9,14 @@ import { useTranslation } from 'react-i18next'
 import styles from './styles'
 import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
+import useUserFaculties from '../../hooks/useUserFaculties'
 
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
   const [faculty, setFaculty] = useState('')
   const { faculties, isLoading } = useFaculties()
+  const { userFaculties = [] } = useUserFaculties()
 
   const handleChange = (event: SelectChangeEvent) => {
     setFaculty(event.target.value)
@@ -41,7 +43,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
         <Controller
           control={control}
           name="faculty"
-          defaultValue=""
+          defaultValue={userFaculties[0]?.code || ''}
           render={({ field }) => (
             <FormControl sx={{ width: '100%' }}>
               <InputLabel>{t('facultySelect:inputLabel')}</InputLabel>

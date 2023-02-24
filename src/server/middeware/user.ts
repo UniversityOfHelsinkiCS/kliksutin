@@ -1,5 +1,8 @@
 import { inDevelopment } from '../../config'
 
+const parseIamGroups = (iamGroups: string) =>
+  iamGroups?.split(';').filter(Boolean) ?? []
+
 const mockHeaders = {
   uid: 'testuser',
   givenname: 'Testi',
@@ -7,6 +10,7 @@ const mockHeaders = {
   mail: 'grp-toska@helsinki.fi',
   preferredlanguage: 'fi',
   hypersonsisuid: 'hy-hlo-123',
+  hygroupcn: 'grp-toska;hy-mltdk-employees',
 }
 
 const userMiddleware = (req, _, next) => {
@@ -19,15 +23,19 @@ const userMiddleware = (req, _, next) => {
     mail: email,
     preferredlanguage: language,
     hypersonsisuid: id,
+    hygroupcn,
   } = headers
 
+  const iamGroups = parseIamGroups(hygroupcn)
+
   const user = {
+    id,
     username,
     firstName,
     lastName,
     email,
     language,
-    id,
+    iamGroups,
   }
 
   req.user = user
