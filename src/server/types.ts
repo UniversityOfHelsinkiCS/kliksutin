@@ -33,6 +33,7 @@ export interface User {
   lastName?: string
   email?: string
   language?: string
+  isAdmin: boolean
 }
 
 export interface RequestWithUser extends Request {

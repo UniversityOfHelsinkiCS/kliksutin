@@ -14,16 +14,19 @@ import {
   Popper,
   Typography,
 } from '@mui/material'
-import LanguageIcon from '@mui/icons-material/Language'
+import { Language, AdminPanelSettingsOutlined } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
 import toskaBlack from '../../assets/toscalogo_black.svg'
 import styles from './styles'
+import useLoggedInUser from '../../hooks/useLoggedInUser'
 
 const NavBar = () => {
   const { t, i18n } = useTranslation()
   const [openLanguageSelect, setOpenLanguageSelect] = useState(false)
   const anchorRef = useRef<HTMLButtonElement>(null)
+
+  const { user, isLoading } = useLoggedInUser()
 
   const { language } = i18n
   const languages = ['fi', 'sv', 'en']
@@ -35,6 +38,8 @@ const NavBar = () => {
   }
 
   const classes = styles.navStyles
+
+  if (isLoading) return null
 
   return (
     <AppBar
@@ -55,18 +60,27 @@ const NavBar = () => {
               <img src={toskaBlack} alt="Toska" width="70" />
             </Link>
             <Box ml="2rem">
-              <Typography
-                textTransform="uppercase"
-                color="black"
-                fontWeight={700}
-                fontSize={18}
-                sx={{ userSelect: 'none' }}
-              >
-                {t('appName')}
-              </Typography>
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                <Typography
+                  textTransform="uppercase"
+                  color="black"
+                  fontWeight={700}
+                  fontSize={18}
+                  sx={{ userSelect: 'none' }}
+                >
+                  {t('appName')}
+                </Typography>
+              </Link>
             </Box>
           </Box>
           <Box>
+            {user.isAdmin && (
+              <Link to="/admin">
+                <Button>
+                  <AdminPanelSettingsOutlined sx={{ mr: 2 }} /> {t('admin')}
+                </Button>
+              </Link>
+            )}
             <Button
               ref={anchorRef}
               id="composition-button"
@@ -77,7 +91,7 @@ const NavBar = () => {
               aria-haspopup="true"
               onClick={() => setOpenLanguageSelect(!openLanguageSelect)}
             >
-              <LanguageIcon sx={{ mr: 2 }} /> {language}
+              <Language sx={{ mr: 2 }} /> {language}
             </Button>
             <Popper
               open={openLanguageSelect}

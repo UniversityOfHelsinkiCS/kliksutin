@@ -2,7 +2,8 @@
   "common": {
     "appName": "Kliksutin",
     "submit": "Proceed with these choices",
-    "openForm": "Proceed to the questions"
+    "openForm": "Proceed to the questions",
+    "admin": "admin"
   },
   "footer": {
     "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>"
