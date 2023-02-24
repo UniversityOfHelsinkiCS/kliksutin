@@ -1,5 +1,3 @@
-import { User } from '../db/models'
-
 const userMiddleware = (req, _, next) => {
   const {
     uid: username,
@@ -17,13 +15,6 @@ const userMiddleware = (req, _, next) => {
     email,
     language,
     id,
-  }
-
-  if (id && username) {
-    User.upsert({
-      ...user,
-      lastLoggedIn: new Date(),
-    })
   }
 
   req.user = user

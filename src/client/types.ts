@@ -99,3 +99,12 @@ export interface Faculty {
   code: string
   name: Locales
 }
+
+export interface User {
+  id: string
+  username: string
+  firsName?: string
+  lastName?: string
+  email?: string
+  language?: string
+}
