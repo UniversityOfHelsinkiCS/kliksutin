@@ -8,7 +8,13 @@ import apiClient from '../../util/apiClient'
 
 import styles from './styles'
 
-const EmailForm = ({ resultHTML }: { resultHTML: HTMLElement }) => {
+const EmailForm = ({
+  resultHTML,
+  primaryEmail = '',
+}: {
+  resultHTML: HTMLElement
+  primaryEmail: string
+}) => {
   const { t } = useTranslation()
   const [isSent, setIsSent] = useState(false)
 
@@ -35,7 +41,7 @@ const EmailForm = ({ resultHTML }: { resultHTML: HTMLElement }) => {
     mode: 'onBlur',
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      email: '',
+      email: primaryEmail,
     },
   })
 

@@ -5,10 +5,14 @@ import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
 import styles from './styles'
 import EmailForm from './EmailForm'
+import useLoggedInUser from '../../hooks/useLoggedInUser'
 
 const ProceedSection = () => {
   const { t } = useTranslation()
   const [openMailPrompt, setOpenMailPrompt] = useState(false)
+  const { user, isLoading } = useLoggedInUser()
+
+  if (isLoading) return null
 
   const resultHTML = document.getElementById('result-component')
 
@@ -53,7 +57,7 @@ const ProceedSection = () => {
               </Button>
             </>
           ) : (
-            <EmailForm resultHTML={resultHTML} />
+            <EmailForm resultHTML={resultHTML} primaryEmail={user?.email} />
           )}
         </Stack>
       </Box>
