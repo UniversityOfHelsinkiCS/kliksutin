@@ -30,6 +30,8 @@ facultyRouter.get('/', async (req, res) => {
 facultyRouter.get('/user', async (req: RequestWithUser, res) => {
   const { id, iamGroups } = req.user
 
+  if (!id) return res.send([])
+
   const organisationData = await getUserOrganisations(id, iamGroups)
 
   const faculties = organisationData.map(({ code, name }) => ({ code, name }))
