@@ -4,19 +4,16 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
+
 import apiClient from '../../util/apiClient'
+import useLoggedInUser from '../../hooks/useLoggedInUser'
 
-import styles from './styles'
-
-const EmailForm = ({
-  resultHTML,
-  primaryEmail = '',
-}: {
-  resultHTML: HTMLElement
-  primaryEmail: string
-}) => {
+const EmailForm = () => {
   const { t } = useTranslation()
   const [isSent, setIsSent] = useState(false)
+  const { user, isLoading } = useLoggedInUser()
+
+  const resultHTML = document.getElementById('result-component')
 
   const sendResultsToEmail = async (targets: string[], text: string) => {
     apiClient.post('/summary', {
@@ -24,8 +21,6 @@ const EmailForm = ({
       text,
     })
   }
-
-  const classes = styles.cardStyles
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -41,7 +36,7 @@ const EmailForm = ({
     mode: 'onBlur',
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      email: primaryEmail,
+      email: user?.email || '',
     },
   })
 
@@ -57,10 +52,12 @@ const EmailForm = ({
     }
   }
 
+  if (isLoading) return null
+
   return (
     <Box px={3} py={2}>
-      <Typography variant="body2" sx={classes.heading} component="div">
-        {t('results:proceedEnterMail')}
+      <Typography variant="body2">
+        {t('results:proceedEmailInfoText')}
       </Typography>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12}>
@@ -70,15 +67,15 @@ const EmailForm = ({
               size="small"
               name="email"
               label="Email"
-              fullWidth
               margin="dense"
+              sx={{ width: 300 }}
               {...register('email')}
               error={errors.email ? true : false} // eslint-disable-line no-unneeded-ternary
             />
             {errors.email && (
               <Typography variant="body2">{errors.email?.message}</Typography>
             )}
-            <Box mt={3}>
+            <Box mt={1}>
               {!isSent ? (
                 <Button
                   variant="contained"
@@ -88,7 +85,9 @@ const EmailForm = ({
                   {t('results:sendSummaryMail')}
                 </Button>
               ) : (
-                <Alert severity="success">{t('results:sendSuccess')}</Alert>
+                <Alert sx={{ width: 600 }} severity="success">
+                  {t('results:sendSuccess')}
+                </Alert>
               )}
             </Box>
           </form>

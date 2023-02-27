@@ -1,20 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
 import styles from './styles'
-import EmailForm from './EmailForm'
-import useLoggedInUser from '../../hooks/useLoggedInUser'
 
 const ProceedSection = () => {
   const { t } = useTranslation()
-  const [openMailPrompt, setOpenMailPrompt] = useState(false)
-  const { user, isLoading } = useLoggedInUser()
-
-  if (isLoading) return null
-
-  const resultHTML = document.getElementById('result-component')
 
   const classes = styles.cardStyles
 
@@ -24,11 +16,6 @@ const ProceedSection = () => {
         <Typography variant="h6" sx={classes.heading} component="div">
           {t('results:proceedTitle')}
         </Typography>
-        {openMailPrompt && (
-          <Typography variant="body2" sx={classes.content}>
-            {t('results:proceedEmailInfoText')}
-          </Typography>
-        )}
       </Container>
       <Box
         display="flex"
@@ -37,28 +24,14 @@ const ProceedSection = () => {
         marginY={4}
       >
         <Stack textAlign="center" direction="row" spacing={2}>
-          {!openMailPrompt ? (
-            <>
-              <Button
-                sx={classes.stackButton}
-                variant="outlined"
-                onClick={() => setOpenMailPrompt(true)}
-              >
-                {t('results:proceedToExit')}
-              </Button>
-
-              <Button
-                sx={classes.stackButton}
-                variant="contained"
-                component={Link}
-                to="/contact"
-              >
-                {t('results:proceedToConsultation')}
-              </Button>
-            </>
-          ) : (
-            <EmailForm resultHTML={resultHTML} primaryEmail={user?.email} />
-          )}
+          <Button
+            sx={classes.stackButton}
+            variant="contained"
+            component={Link}
+            to="/contact"
+          >
+            {t('results:proceedToConsultation')}
+          </Button>
         </Stack>
       </Box>
     </Box>

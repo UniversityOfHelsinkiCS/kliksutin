@@ -9,6 +9,7 @@ import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
 import ProceedSection from '../ResultPage/ProceedSection'
+import EmailForm from '../ResultPage/EmailForm'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
@@ -48,7 +49,12 @@ const InteractiveForm = () => {
         </Grid>
         <Grid item sm={12}>
           <Results formResultData={resultData} />
-          {resultData && <ProceedSection />}
+          {resultData && (
+            <>
+              <EmailForm />
+              <ProceedSection />
+            </>
+          )}
         </Grid>
       </Grid>
     </Box>
