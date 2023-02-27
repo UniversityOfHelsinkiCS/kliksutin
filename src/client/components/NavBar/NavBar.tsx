@@ -82,7 +82,7 @@ const NavBar = () => {
             {user.isAdmin && (
               <Link to="/admin">
                 <Button>
-                  <AdminPanelSettingsOutlined sx={{ mr: 2 }} /> {t('admin')}
+                  <AdminPanelSettingsOutlined sx={{ mr: 1 }} /> {t('admin')}
                 </Button>
               </Link>
             )}
