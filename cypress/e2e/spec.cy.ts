@@ -1,6 +1,6 @@
 import { baseUrl } from '../support/e2e'
 
-import getQuestionData from '../../src/server/db/seeders/data/devQuestionData'
+import getQuestionData from '../../src/server/data/questions'
 import { Question } from '../../src/client/types'
 
 describe('Kliksutin web page', () => {

@@ -1,5 +1,5 @@
 import { Recommendation } from '../models'
-import getDimensionData from './data/devDimensionTools'
+import getDimensionData from '../../data/dimensions'
 
 const seedRecommendations = async () => {
   const recommendations: any[] = getDimensionData()

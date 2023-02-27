@@ -1,5 +1,5 @@
 import { Question } from '../models'
-import getQuestionData from './data/devQuestionData'
+import getQuestionData from '../../data/questions'
 
 const seedQuestions = async () => {
   const questions: any[] = getQuestionData()

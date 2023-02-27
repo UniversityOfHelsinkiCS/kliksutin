@@ -5,7 +5,7 @@ import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
 import generateColor from '../../util/generateColor'
 import styles from './styles'
-import getDimensionData from '../../../server/db/seeders/data/devDimensionTools'
+import getDimensionData from '../../../server/data/dimensions'
 import useRecommendations from '../../hooks/useRecommendations'
 import {
   DimensionData,
