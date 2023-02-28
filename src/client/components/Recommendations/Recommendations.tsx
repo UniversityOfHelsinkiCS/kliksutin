@@ -10,7 +10,6 @@ import useRecommendations from '../../hooks/useRecommendations'
 import {
   DimensionData,
   Locales,
-  MultipleChoiceType,
   DimensionSelectionData,
   Question,
   InputProps,
@@ -29,7 +28,7 @@ const mapDimensionSelections = (
   ).filter((key) => dimensionSelections[key])
 
   const dimensionSelectionData: DimensionSelectionData[] =
-    question.optionData.options.map((q: MultipleChoiceType) =>
+    question.optionData.options.map((q: DimensionSelectionData) =>
       arrayOfSelectedDimensions.includes(q.id)
         ? { ...q, selected: true }
         : { ...q, selected: false }
