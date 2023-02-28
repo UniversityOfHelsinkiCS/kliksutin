@@ -5,10 +5,12 @@ import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
 import styles from './styles'
 
-const ProceedSection = () => {
+const ProceedToContact = () => {
   const { t } = useTranslation()
 
   const classes = styles.cardStyles
+
+  const resultHTML = document.getElementById('result-component')
 
   return (
     <Box>
@@ -28,6 +30,7 @@ const ProceedSection = () => {
             sx={classes.stackButton}
             variant="contained"
             component={Link}
+            state={{ resultHTML: resultHTML.outerHTML }}
             to="/contact"
           >
             {t('results:proceedToConsultation')}
@@ -38,4 +41,4 @@ const ProceedSection = () => {
   )
 }
 
-export default ProceedSection
+export default ProceedToContact
