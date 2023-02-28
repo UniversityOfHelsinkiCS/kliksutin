@@ -28,7 +28,7 @@ const getQuestionData = () => [
             'zoom',
             'unitube',
             'thinglink',
-            'moodle',
+            { name: 'moodle', tools: ['aineistot', 'h5p'] },
             'screen-cast-o-matic',
           ],
         },
@@ -39,7 +39,15 @@ const getQuestionData = () => [
             sv: 'Tuottaminen',
             en: 'Production',
           },
-          data: ['flinga', 'presemo', 'thinglink', 'moodle'],
+          data: [
+            'flinga',
+            'presemo',
+            'thinglink',
+            {
+              name: 'moodle',
+              tools: ['tehtävä', 'wiki', 'sanasto', 'tietokanta'],
+            },
+          ],
         },
         {
           id: 'collaboration',
@@ -48,7 +56,13 @@ const getQuestionData = () => [
             sv: 'Yhteistyö',
             en: 'Collaboration',
           },
-          data: ['zoom', 'flinga', 'thinglink', 'eportfolio', 'moodle'],
+          data: [
+            'zoom',
+            'flinga',
+            'thinglink',
+            'eportfolio',
+            { name: 'moodle', tools: ['keskustelualue', 'työpaja', 'wiki'] },
+          ],
         },
         {
           id: 'discussion',
@@ -57,7 +71,12 @@ const getQuestionData = () => [
             sv: 'Keskustelu',
             en: 'Discussion',
           },
-          data: ['zoom', 'presemo', 'eportfolio', 'moodle'],
+          data: [
+            'zoom',
+            'presemo',
+            'eportfolio',
+            { name: 'moodle', tools: ['keskustelualue', 'chat'] },
+          ],
         },
         {
           id: 'investication',
@@ -66,7 +85,10 @@ const getQuestionData = () => [
             sv: 'Tutkiminen',
             en: 'Investication',
           },
-          data: ['flinga', 'moodle'],
+          data: [
+            'flinga',
+            { name: 'moodle', tools: ['keskustelualue', 'wiki', 'tietokanta'] },
+          ],
         },
         {
           id: 'practice',
@@ -75,7 +97,14 @@ const getQuestionData = () => [
             sv: 'Harjoittelu',
             en: 'Practice',
           },
-          data: ['thinglink', 'eportfolio', 'moodle'],
+          data: [
+            'thinglink',
+            'eportfolio',
+            {
+              name: 'moodle',
+              tools: ['h5p', 'tentti', 'työpaja', 'oppitunti'],
+            },
+          ],
         },
       ],
     },
