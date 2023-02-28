@@ -106,64 +106,70 @@ const Recommendations = ({ watch }: InputProps) => {
       </Typography>
 
       {dimensionData.map((dimensionObject) =>
-        recommendationsData.map((recommendation) => {
-          if (
-            recommendation.name === dimensionObject.label &&
-            recommendation.dimensions.length > 0
-          ) {
-            return (
-              <Box
-                key={dimensionObject.id}
-                sx={classes.recommendationItemContainer}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography variant="h6" sx={classes.heading} component="div">
-                    {dimensionObject.title[language as keyof Locales]}
-                  </Typography>
-                  <Box sx={classes.recommendationChipsContainer}>
-                    {recommendation.dimensions.map((dimension) => {
-                      const chipData = dimensionSelectionData.find(
-                        (question) => question.id === dimension
-                      )
-                      return (
-                        <DimensionChip
-                          key={chipData.id}
-                          choice={chipData}
-                          color={generateColor(chipData.id)}
-                          compact
-                        />
-                      )
-                    })}
-                  </Box>
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  {dimensionObject.text[language as keyof Locales]}
-                </Typography>
-              </Box>
-            )
-          }
-          if (
-            recommendation.name === dimensionObject.label &&
-            recommendation.dimensions.length === 0
+        recommendationsData
+          .filter(
+            (rec) =>
+              rec.dimensions.length > 0 && rec.name === dimensionObject.label
           )
-            return (
-              <Box
-                key={`disabled-${dimensionObject.id}`}
-                sx={classes.recommendationItemContainer}
-              >
-                <Box display="flex" alignItems="center">
-                  <Typography variant="h6" sx={classes.heading} component="div">
-                    {dimensionObject.title[language as keyof Locales]}
+          .map((recommendation) => (
+            <Box
+              key={dimensionObject.id}
+              sx={classes.recommendationItemContainer}
+            >
+              <Box display="flex" alignItems="center">
+                <Typography variant="h6" sx={classes.heading} component="div">
+                  {dimensionObject.title[language as keyof Locales]}
+                </Typography>
+                <Box sx={classes.recommendationChipsContainer}>
+                  {recommendation.dimensions.map((dimension) => {
+                    const chipData = dimensionSelectionData.find(
+                      (question) => question.id === dimension
+                    )
+                    return (
+                      <DimensionChip
+                        key={chipData.id}
+                        choice={chipData}
+                        color={generateColor(chipData.id)}
+                        compact
+                      />
+                    )
+                  })}
+                </Box>
+              </Box>
+              <Typography variant="body2" color="text.secondary">
+                {dimensionObject.text[language as keyof Locales]}
+              </Typography>
+            </Box>
+          ))
+      )}
+
+      {dimensionData.map((dimensionObject) =>
+        recommendationsData
+          .filter((rec) => rec.dimensions.length === 0)
+          .map((recommendation) => {
+            if (recommendation.name === dimensionObject.label)
+              return (
+                <Box
+                  key={`disabled-${dimensionObject.id}`}
+                  sx={classes.recommendationItemContainer}
+                >
+                  <Box display="flex" alignItems="center">
+                    <Typography
+                      variant="h6"
+                      sx={classes.heading}
+                      component="div"
+                    >
+                      {dimensionObject.title[language as keyof Locales]}
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" color="text.secondary">
+                    {dimensionObject.text[language as keyof Locales]}
                   </Typography>
                 </Box>
-                <Typography variant="body2" color="text.secondary">
-                  {dimensionObject.text[language as keyof Locales]}
-                </Typography>
-              </Box>
-            )
+              )
 
-          return null
-        })
+            return null
+          })
       )}
     </Box>
   )
