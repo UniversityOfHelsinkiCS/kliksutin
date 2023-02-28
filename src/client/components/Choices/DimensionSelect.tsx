@@ -1,13 +1,13 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { Box, FormControl, Checkbox } from '@mui/material'
-import { MultipleChoiceType, InputProps } from '../../types'
+import { InputProps, DimensionSelectionData } from '../../types'
 import DimensionChip from '../Chip/DimensionChip'
 import colors from '../../util/colors'
 
 const DimensionSelect = ({ control, question }: InputProps) => (
   <>
-    {question.optionData.options.map((choice: MultipleChoiceType) => (
+    {question.optionData.options.map((choice: DimensionSelectionData) => (
       <Controller
         key={choice.id}
         name={`${question.id}.${choice.id}`}

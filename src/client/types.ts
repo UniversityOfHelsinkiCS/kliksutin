@@ -44,12 +44,12 @@ export interface DimensionSelectionData {
   id: string
   label: Locales
   data: any
-  selected: boolean
+  selected?: boolean
 }
 
 export interface OptionData {
   type: string
-  options: SingleChoiceType[] | MultipleChoiceType[]
+  options: SingleChoiceType[] | MultipleChoiceType[] | DimensionSelectionData[]
 }
 
 export type Visibility = {
