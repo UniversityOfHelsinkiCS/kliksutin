@@ -13,6 +13,7 @@ import {
   MultipleChoiceType,
   DimensionSelectionData,
   Question,
+  InputProps,
 } from '../../types'
 
 /* eslint-disable no-nested-ternary */
@@ -41,9 +42,6 @@ const mapRecommendations = (
   recommendationsData: DimensionData[],
   dimensionSelectionData: DimensionSelectionData[]
 ) => {
-  console.log(recommendationsData)
-  console.log(dimensionSelectionData)
-
   const selectedTools = dimensionSelectionData
     .filter((q) => q.selected)
     .map((question: DimensionSelectionData) => ({
@@ -67,9 +65,7 @@ const mapRecommendations = (
   return recommendations
 }
 
-const Recommendations: React.FC<{
-  watch: any
-}> = ({ watch }) => {
+const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
   const { recommendations, isSuccess: recommendationsFetched } =
@@ -146,6 +142,26 @@ const Recommendations: React.FC<{
               </Box>
             )
           }
+          if (
+            recommendation.name === dimensionObject.label &&
+            recommendation.dimensions.length === 0
+          )
+            return (
+              <Box
+                key={`disabled-${dimensionObject.id}`}
+                sx={classes.recommendationItemContainer}
+              >
+                <Box display="flex" alignItems="center">
+                  <Typography variant="h6" sx={classes.heading} component="div">
+                    {dimensionObject.title[language as keyof Locales]}
+                  </Typography>
+                </Box>
+                <Typography variant="body2" color="text.secondary">
+                  {dimensionObject.text[language as keyof Locales]}
+                </Typography>
+              </Box>
+            )
+
           return null
         })
       )}
