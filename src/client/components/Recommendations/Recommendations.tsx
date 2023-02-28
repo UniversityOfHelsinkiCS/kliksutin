@@ -56,13 +56,13 @@ const mapRecommendations = (
     dimensions: [],
   }))
 
-  selectedTools.map((tool: { dimensions: any; optionId: string }) =>
+  selectedTools.forEach((tool) => {
     recommendations.forEach((rec) => {
       if (tool.dimensions.includes(rec.name)) {
         rec.dimensions.push(tool.optionId)
       }
     })
-  )
+  })
 
   return recommendations
 }
