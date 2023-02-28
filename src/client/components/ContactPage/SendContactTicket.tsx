@@ -6,7 +6,7 @@ import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 import apiClient from '../../util/apiClient'
 
-const ticketEmail = 'henri.remonen@helsinki.fi'
+const ticketEmail = 'opetusteknologia@helsinki.fi'
 
 const SendContactTicket = () => {
   const { t } = useTranslation()
@@ -18,11 +18,9 @@ const SendContactTicket = () => {
     apiClient.post('/summary', {
       targets,
       text,
+      subject: 'Kliksutin contact ticket',
     })
   }
-
-  console.log(user)
-  console.log(state.resultHTML)
 
   const {
     register,
@@ -45,10 +43,11 @@ const SendContactTicket = () => {
     } 
 
     ${t('contact:contactTicketInfo')}
-    
+    ==============
+
     ${content}
 
-    ===========================================================
+    ==============
     
     ${state.resultHTML}
     `

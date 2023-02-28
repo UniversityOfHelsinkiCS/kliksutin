@@ -19,6 +19,7 @@ const SendSummaryEmail = () => {
     apiClient.post('/summary', {
       targets,
       text,
+      subject: 'Kliksutin summary',
     })
   }
 
