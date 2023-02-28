@@ -48,8 +48,6 @@ const mapRecommendations = (
       dimensions: question.data,
     }))
 
-  console.log(selectedTools)
-
   const recommendations = recommendationsData.map((recommendation) => ({
     name: recommendation.label,
     dimensions: [],
@@ -65,8 +63,6 @@ const mapRecommendations = (
       }
     })
   })
-
-  console.log(recommendations)
 
   return recommendations
 }
