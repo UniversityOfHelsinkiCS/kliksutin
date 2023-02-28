@@ -90,83 +90,56 @@ const Recommendations = ({ watch }: InputProps) => {
     ...recommendationsData().find((i) => i.name === item.label),
   }))
 
-  console.log(mergedDimensioData)
-
   return (
     <Box sx={classes.recommendationContainer}>
       <Typography variant="h5" sx={classes.heading} component="div">
         {t('recommendations:title')}
       </Typography>
 
-      {dimensionData.map((dimensionObject) =>
-        recommendationsData()
-          .filter(
-            (rec) =>
-              rec.dimensions.length > 0 && rec.name === dimensionObject.label
-          )
-          .map((recommendation) => (
-            <Box
-              key={dimensionObject.id}
-              sx={classes.recommendationItemContainer}
-            >
-              <Box display="flex" alignItems="center">
-                <Typography variant="h6" sx={classes.heading} component="div">
-                  {dimensionObject.title[language as keyof Locales]}
-                </Typography>
-                <Box sx={classes.recommendationChipsContainer}>
-                  {recommendation.dimensions.map((dimension) => {
-                    const chipData = dimensionSelectionData().find(
-                      (question) => question.id === dimension
-                    )
-                    return (
-                      <DimensionChip
-                        key={chipData.id}
-                        choice={chipData}
-                        color={colors[chipData.id]}
-                        compact
-                      />
-                    )
-                  })}
-                </Box>
+      {mergedDimensioData
+        .filter((recommendation) => recommendation.dimensions.length > 0)
+        .map((recommendation) => (
+          <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
+            <Box display="flex" alignItems="center">
+              <Typography variant="h6" sx={classes.heading} component="div">
+                {recommendation.title[language as keyof Locales]}
+              </Typography>
+              <Box sx={classes.recommendationChipsContainer}>
+                {recommendation.dimensions.map((dimension) => {
+                  const chipData = dimensionSelectionData().find(
+                    (question) => question.id === dimension
+                  )
+                  return (
+                    <DimensionChip
+                      key={chipData.id}
+                      choice={chipData}
+                      color={colors[chipData.id]}
+                      compact
+                    />
+                  )
+                })}
               </Box>
-              <Typography variant="body2" color="text.secondary">
-                {dimensionObject.text[language as keyof Locales]}
+            </Box>
+            <Typography variant="body2" color="text.secondary">
+              {recommendation.text[language as keyof Locales]}
+            </Typography>
+          </Box>
+        ))}
+
+      {mergedDimensioData
+        .filter((recommendation) => recommendation.dimensions.length === 0)
+        .map((recommendation) => (
+          <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
+            <Box display="flex" alignItems="center">
+              <Typography variant="h6" sx={classes.notSelected} component="div">
+                {recommendation.title[language as keyof Locales]}
               </Typography>
             </Box>
-          ))
-      )}
-
-      {dimensionData.map((dimensionObject) =>
-        recommendationsData()
-          .filter(
-            (rec) =>
-              rec.dimensions.length === 0 && rec.name === dimensionObject.label
-          )
-          .map((recommendation) => {
-            if (recommendation.name === dimensionObject.label)
-              return (
-                <Box
-                  key={`disabled-${dimensionObject.id}`}
-                  sx={classes.recommendationItemContainer}
-                >
-                  <Box display="flex" alignItems="center">
-                    <Typography
-                      variant="h6"
-                      sx={classes.notSelected}
-                      component="div"
-                    >
-                      {dimensionObject.title[language as keyof Locales]}
-                    </Typography>
-                  </Box>
-                  <Typography variant="body2" sx={classes.notSelected}>
-                    {dimensionObject.text[language as keyof Locales]}
-                  </Typography>
-                </Box>
-              )
-
-            return null
-          })
-      )}
+            <Typography variant="body2" sx={classes.notSelected}>
+              {recommendation.text[language as keyof Locales]}
+            </Typography>
+          </Box>
+        ))}
     </Box>
   )
 }
