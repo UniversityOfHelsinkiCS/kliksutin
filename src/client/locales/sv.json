@@ -3,10 +3,10 @@
     "appName": "Kliksutin",
     "submit": "Valinnat tehty",
     "openForm": "Jatka kysymyksiin",
-    "admin": "admin"
+    "admin": "ylläpito"
   },
   "footer": {
-    "contactSupport": "Kontakta stödet: <mailTo>{{supportEmail}}</mailTo>"
+    "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"
   },
   "facultySelect": {
     "welcomeMessage": "Hei, tervetuloa Kliksuttelemaan",
@@ -14,31 +14,31 @@
     "inputLabel": "Tiedekuntasi"
   },
   "recommendations": {
-    "title": "Valintojasi tukevat työkalut",
+    "title": "Käytössäsi olevat työkalut",
     "recommendationMessage": "Alla vielä listaus suosituksistamme"
   },
   "results": {
     "title": "Yhteenveto valinnoistasi",
     "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista",
-    "proceedTitle": "Do you need more help?",
-    "proceedToExit": "No",
-    "proceedToConsultation": "Yes",
-    "proceedEmailInfoText": "If you would like to have the summary send to your email, enter it below",
-    "proceedEnterMail": "Please enter your email",
-    "emailIsRequired": "Email is required",
-    "emailIsIncorrect": "Email is incorrect, check input",
-    "sendSummaryMail": "Send",
-    "sendSuccess": "Thank you for using Kliksutin, we've sent the summary to your email!"
+    "proceedTitle": "Tarvitsetko lisäapua?",
+    "proceedToExit": "En",
+    "proceedToConsultation": "Kyllä",
+    "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
+    "proceedEnterMail": "Kirjoita sähköpostiosoitteesi",
+    "emailIsRequired": "Sähköposti on pakollinen",
+    "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
+    "sendSummaryMail": "Lähetä",
+    "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme lähettäneet yhteenvetosi sähköpostiisi!"
   },
   "contact": {
-    "title": "Contact page",
-    "contactMessage": "Do you want to contact us by email or book a consultation appointment?",
-    "contactMethodLabel": "Select contact method",
-    "contactMethodEmail": "Email",
-    "contactMethodConsultation": "Consultation",
-    "contactTicketText": "Fill in the form below",
-    "contactTicketTitleLabel": "Title",
-    "contactTicketContentLabel": "Content",
-    "contactTicketSend": "Send"
+    "title": "Yhteydenotto",
+    "contactMessage": "Haluatko ottaa yhteyttä sähköpostilla vai varata konsultaatioajan?",
+    "contactMethodLabel": "Valitse yhteydenottotapa",
+    "contactMethodEmail": "Sähköposti",
+    "contactMethodConsultation": "Konsultaatio",
+    "contactTicketText": "Täytä yhteytenottolomake",
+    "contactTicketTitleLabel": "Otsikko",
+    "contactTicketContentLabel": "Sisältö",
+    "contactTicketSend": "Lähetä"
   }
 }
