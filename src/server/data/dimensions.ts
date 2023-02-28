@@ -119,21 +119,6 @@ const getDimensionData = () => [
       en: 'Esittelyteksti liittyen tähän työkaluun',
     },
   },
-  {
-    id: 9,
-    surveyId: 1,
-    label: 'H5P',
-    title: {
-      fi: 'H5P',
-      sv: 'H5P',
-      en: 'H5P',
-    },
-    text: {
-      fi: 'Esittelyteksti liittyen tähän työkaluun',
-      sv: 'Esittelyteksti liittyen tähän työkaluun',
-      en: 'Esittelyteksti liittyen tähän työkaluun',
-    },
-  },
 ]
 
 export default getDimensionData

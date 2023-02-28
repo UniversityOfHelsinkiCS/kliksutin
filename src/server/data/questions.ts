@@ -18,11 +18,11 @@ const getQuestionData = () => [
       type: 'dimensions',
       options: [
         {
-          id: 'investication',
+          id: 'acquisition',
           label: {
-            fi: 'Tutkiminen',
-            sv: 'Tutkiminen',
-            en: 'Investication',
+            fi: 'Tiedon omaksuminen',
+            sv: 'Tiedon omaksuminen',
+            en: 'Acquisition',
           },
           data: [
             'zoom',
@@ -57,16 +57,16 @@ const getQuestionData = () => [
             sv: 'Keskustelu',
             en: 'Discussion',
           },
-          data: ['zoom', 'presemo', 'eportfolio', 'moodle', 'H5P'],
+          data: ['zoom', 'presemo', 'eportfolio', 'moodle'],
         },
         {
-          id: 'acquisition',
+          id: 'investication',
           label: {
-            fi: 'Tiedon omaksuminen',
-            sv: 'Tiedon omaksuminen',
-            en: 'Acquisition',
+            fi: 'Tutkiminen',
+            sv: 'Tutkiminen',
+            en: 'Investication',
           },
-          data: ['flinga'],
+          data: ['flinga', 'moodle'],
         },
         {
           id: 'practice',
@@ -75,7 +75,7 @@ const getQuestionData = () => [
             sv: 'Harjoittelu',
             en: 'Practice',
           },
-          data: ['thinglink', 'eportfolio', 'moodle', 'H5P'],
+          data: ['thinglink', 'eportfolio', 'moodle'],
         },
       ],
     },
