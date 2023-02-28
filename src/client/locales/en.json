@@ -21,7 +21,7 @@
     "title": "Summary of your choices",
     "resultsMessage": "We listed the summary of your choices for you below",
     "proceedTitle": "Do you need more help?",
-    "proceedToConsultation": "Yes",
+    "proceedToConsultation": "No",
     "proceedEmailInfoText": "If you would like to have the summary send to your email, enter your email below",
     "emailIsRequired": "Email is required",
     "emailIsIncorrect": "Email is incorrect, check input",
@@ -35,8 +35,9 @@
     "contactMethodEmail": "Email",
     "contactMethodConsultation": "Consultation",
     "contactTicketText": "Fill in the form below",
-    "contactTicketTitleLabel": "Title",
     "contactTicketContentLabel": "Content",
-    "contactTicketSend": "Send"
+    "contactTicketInfo": "User's message:",
+    "contactTicketSend": "Send",
+    "sendSuccess": "Thank you for using Kliksutin, we'll be in touch!"
   }
 }

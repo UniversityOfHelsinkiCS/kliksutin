@@ -21,7 +21,7 @@
     "title": "Yhteenveto valinnoistasi",
     "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista",
     "proceedTitle": "Löysitkö etsimäsi?",
-    "proceedToConsultation": "Kyllä",
+    "proceedToConsultation": "En",
     "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
     "emailIsRequired": "Sähköposti on pakollinen",
     "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
@@ -35,8 +35,9 @@
     "contactMethodEmail": "Sähköposti",
     "contactMethodConsultation": "Konsultaatio",
     "contactTicketText": "Täytä yhteytenottolomake",
-    "contactTicketTitleLabel": "Otsikko",
     "contactTicketContentLabel": "Sisältö",
-    "contactTicketSend": "Lähetä"
+    "contactTicketInfo": "Käyttäjän viesti:",
+    "contactTicketSend": "Lähetä",
+    "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme yhteydessä sinuun pian!"
   }
 }

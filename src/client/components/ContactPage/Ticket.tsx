@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
+import useLoggedInUser from '../../hooks/useLoggedInUser'
+import apiClient from '../../util/apiClient'
+
+const ticketEmail = 'henri.remonen@helsinki.fi'
 
 const Ticket = () => {
   const { t } = useTranslation()
+  const { state } = useLocation()
+  const [isSent, setIsSent] = useState(false)
+  const { user, isLoading } = useLoggedInUser()
+  /* eslint-disable @typescript-eslint/no-unused-vars */
+
+  const sendResultsToEmail = async (targets: string[], text: string) => {
+    apiClient.post('/summary', {
+      targets,
+      text,
+    })
+  }
 
   const {
     register,
@@ -17,7 +33,30 @@ const Ticket = () => {
     },
   })
 
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit = async ({ content }: { content: string }) => {
+    const targets = [user.email, ticketEmail]
+    const text = `
+
+    ${t('contact:contactTicketInfo')}
+    
+    ${content}
+
+    ===========================================================
+    
+    ${state.resultHTML}
+    `
+
+    console.log(content)
+
+    try {
+      console.log(text)
+      setIsSent(true)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  if (isLoading) return null
 
   return (
     <Box px={3} py={2}>
@@ -40,13 +79,19 @@ const Ticket = () => {
               <Typography variant="body2">{errors.content?.message}</Typography>
             )}
             <Box mt={3}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit(onSubmit)}
-              >
-                {t('contact:contactTicketSend')}
-              </Button>
+              {!isSent ? (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSubmit(onSubmit)}
+                >
+                  {t('contact:contactTicketSend')}
+                </Button>
+              ) : (
+                <Alert sx={{ width: 600 }} severity="success">
+                  {t('contact:sendSuccess')}
+                </Alert>
+              )}
             </Box>
           </form>
         </Grid>
