@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
 import styles from './styles'
-import Ticket from './Ticket'
+import SendContactTicket from './SendContactTicket'
 
 const classes = styles.cardStyles
 
@@ -12,7 +12,7 @@ const Contact = () => {
   const [contactMethod, setContactMethod] = useState('email')
 
   const components: { [key: string]: () => JSX.Element } = {
-    email: Ticket,
+    email: SendContactTicket,
   }
 
   const ContactComponent = components[contactMethod]

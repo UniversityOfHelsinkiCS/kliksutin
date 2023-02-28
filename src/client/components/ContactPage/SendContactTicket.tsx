@@ -8,12 +8,11 @@ import apiClient from '../../util/apiClient'
 
 const ticketEmail = 'henri.remonen@helsinki.fi'
 
-const Ticket = () => {
+const SendContactTicket = () => {
   const { t } = useTranslation()
   const { state } = useLocation()
   const [isSent, setIsSent] = useState(false)
   const { user, isLoading } = useLoggedInUser()
-  /* eslint-disable @typescript-eslint/no-unused-vars */
 
   const sendResultsToEmail = async (targets: string[], text: string) => {
     apiClient.post('/summary', {
@@ -21,6 +20,9 @@ const Ticket = () => {
       text,
     })
   }
+
+  console.log(user)
+  console.log(state.resultHTML)
 
   const {
     register,
@@ -34,8 +36,13 @@ const Ticket = () => {
   })
 
   const onSubmit = async ({ content }: { content: string }) => {
-    const targets = [user.email, ticketEmail]
+    const targets = [ticketEmail]
     const text = `
+
+    ${t('contact:contactTicketSenderEmail')} ${user.email} 
+    ${t('contact:contactTicketSenderFullname')} ${user.firsName} ${
+      user.lastName
+    } 
 
     ${t('contact:contactTicketInfo')}
     
@@ -46,10 +53,8 @@ const Ticket = () => {
     ${state.resultHTML}
     `
 
-    console.log(content)
-
     try {
-      console.log(text)
+      await sendResultsToEmail(targets, text)
       setIsSent(true)
     } catch (error) {
       console.log(error)
@@ -100,4 +105,4 @@ const Ticket = () => {
   )
 }
 
-export default Ticket
+export default SendContactTicket

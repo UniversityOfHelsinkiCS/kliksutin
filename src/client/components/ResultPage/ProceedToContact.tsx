@@ -12,6 +12,8 @@ const ProceedToContact = () => {
 
   const resultHTML = document.getElementById('result-component')
 
+  if (!resultHTML) return null
+
   return (
     <Box>
       <Container sx={{ mt: 12 }}>

@@ -36,6 +36,8 @@
     "contactMethodConsultation": "Consultation",
     "contactTicketText": "Fill in the form below",
     "contactTicketContentLabel": "Content",
+    "contactTicketSenderEmail": "User's email:",
+    "contactTicketSenderFullname": "User's name:",
     "contactTicketInfo": "User's message:",
     "contactTicketSend": "Send",
     "sendSuccess": "Thank you for using Kliksutin, we'll be in touch!"

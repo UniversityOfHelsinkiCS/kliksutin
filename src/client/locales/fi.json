@@ -36,6 +36,8 @@
     "contactMethodConsultation": "Konsultaatio",
     "contactTicketText": "Täytä yhteytenottolomake",
     "contactTicketContentLabel": "Sisältö",
+    "contactTicketSenderEmail": "Käyttäjän sähköpostiosoite:",
+    "contactTicketSenderFullname": "Käyttäjän nimi:",
     "contactTicketInfo": "Käyttäjän viesti:",
     "contactTicketSend": "Lähetä",
     "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme yhteydessä sinuun pian!"
