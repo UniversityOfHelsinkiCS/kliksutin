@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import { Box, FormControl, Checkbox } from '@mui/material'
 import { MultipleChoiceType, InputProps } from '../../types'
 import DimensionChip from '../Chip/DimensionChip'
-import generateColor from '../../util/generateColor'
+import colors from '../../util/colors'
 
 const DimensionSelect = ({ control, question }: InputProps) => (
   <>
@@ -31,7 +31,7 @@ const DimensionSelect = ({ control, question }: InputProps) => (
                   <DimensionChip
                     key={choice.id}
                     choice={choice}
-                    color={generateColor(choice.id)}
+                    color={colors[choice.id]}
                     compact={false}
                   />
                 }

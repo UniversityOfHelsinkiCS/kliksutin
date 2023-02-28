@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
-import generateColor from '../../util/generateColor'
+import colors from '../../util/colors'
 import styles from './styles'
 import getDimensionData from '../../../server/data/dimensions'
 import useRecommendations from '../../hooks/useRecommendations'
@@ -128,7 +128,7 @@ const Recommendations = ({ watch }: InputProps) => {
                       <DimensionChip
                         key={chipData.id}
                         choice={chipData}
-                        color={generateColor(chipData.id)}
+                        color={colors[chipData.id]}
                         compact
                       />
                     )

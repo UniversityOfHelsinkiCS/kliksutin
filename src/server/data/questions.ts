@@ -20,8 +20,8 @@ const getQuestionData = () => [
         {
           id: 'investication',
           label: {
-            fi: 'Tiedon omaksuminen',
-            sv: 'Tiedon omaksuminen',
+            fi: 'Tutkiminen',
+            sv: 'Tutkiminen',
             en: 'Investication',
           },
           data: [
@@ -62,8 +62,8 @@ const getQuestionData = () => [
         {
           id: 'acquisition',
           label: {
-            fi: 'Tutkimusperustainen oppiminen',
-            sv: 'Tutkimusperustainen oppiminen',
+            fi: 'Tiedon omaksuminen',
+            sv: 'Tiedon omaksuminen',
             en: 'Acquisition',
           },
           data: ['flinga'],
