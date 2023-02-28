@@ -19,9 +19,7 @@ const pateClient = axios.create({
   },
 })
 
-const sendEmail = async (targets: string[], text: string) => {
-  const subject = 'Kliksutin yhteenveto'
-
+const sendEmail = async (targets: string[], text: string, subject: string) => {
   const emails = targets.map((to) => ({ to, subject }))
 
   const mail = {

@@ -5,10 +5,10 @@ import sendEmail from '../mailer/pate'
 const summaryRouter = express.Router()
 
 summaryRouter.post('/', async (req, res) => {
-  const { targets, text } = req.body
+  const { targets, text, subject } = req.body
 
   try {
-    await sendEmail(targets, text)
+    await sendEmail(targets, text, subject)
   } catch (error) {
     return res.status(422).json({ error: error.message })
   }
