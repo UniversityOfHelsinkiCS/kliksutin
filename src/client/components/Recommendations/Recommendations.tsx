@@ -11,61 +11,10 @@ import {
   DimensionData,
   Locales,
   DimensionSelectionData,
-  Question,
   InputProps,
 } from '../../types'
 
 /* eslint-disable no-nested-ternary */
-const sortRecommendations = (a: DimensionData, b: DimensionData) =>
-  a.label > b.label ? 1 : b.label > a.label ? -1 : 0
-
-const mapDimensionSelections = (
-  question: Question,
-  dimensionSelections: { [x: string]: boolean }
-) => {
-  const arrayOfSelectedDimensions: string[] = Object.keys(
-    dimensionSelections
-  ).filter((key) => dimensionSelections[key])
-
-  const dimensionSelectionData: DimensionSelectionData[] =
-    question.optionData.options.map((q: DimensionSelectionData) =>
-      arrayOfSelectedDimensions.includes(q.id)
-        ? { ...q, selected: true }
-        : { ...q, selected: false }
-    )
-
-  return dimensionSelectionData
-}
-
-const mapRecommendations = (
-  recommendationsData: DimensionData[],
-  dimensionSelectionData: DimensionSelectionData[]
-) => {
-  const selectedTools = dimensionSelectionData
-    .filter((q) => q.selected)
-    .map((question: DimensionSelectionData) => ({
-      optionId: question.id,
-      dimensions: question.data,
-    }))
-
-  const recommendations = recommendationsData.map((recommendation) => ({
-    name: recommendation.label,
-    dimensions: [],
-  }))
-
-  selectedTools.forEach((tool) => {
-    recommendations.forEach((rec) => {
-      if (
-        tool.dimensions.includes(rec.name) ||
-        tool.dimensions.some((t) => t.name === rec.name)
-      ) {
-        rec.dimensions.push(tool.optionId)
-      }
-    })
-  })
-
-  return recommendations
-}
 
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
@@ -88,18 +37,60 @@ const Recommendations = ({ watch }: InputProps) => {
 
   if (!dimensionSelections) return null
 
-  const dimensionSelectionData = mapDimensionSelections(
-    dimensionQuestion,
-    dimensionSelections
-  )
+  const sortRecommendations = (a: DimensionData, b: DimensionData) =>
+    a.label > b.label ? 1 : b.label > a.label ? -1 : 0
 
-  const recommendationsData = mapRecommendations(
-    recommendations,
-    dimensionSelectionData
-  )
+  const dimensionSelectionData = () => {
+    const arrayOfSelectedDimensions: string[] = Object.keys(
+      dimensionSelections
+    ).filter((key) => dimensionSelections[key])
+
+    const result: DimensionSelectionData[] =
+      dimensionQuestion.optionData.options.map((q: DimensionSelectionData) =>
+        arrayOfSelectedDimensions.includes(q.id)
+          ? { ...q, selected: true }
+          : { ...q, selected: false }
+      )
+
+    return result
+  }
+
+  const recommendationsData = () => {
+    const selectedTools = dimensionSelectionData()
+      .filter((q) => q.selected)
+      .map((question: DimensionSelectionData) => ({
+        optionId: question.id,
+        dimensions: question.data,
+      }))
+
+    const result = recommendations.map((recommendation) => ({
+      name: recommendation.label,
+      dimensions: [],
+    }))
+
+    selectedTools.forEach((tool) => {
+      result.forEach((rec) => {
+        if (
+          tool.dimensions.includes(rec.name) ||
+          tool.dimensions.some((aTool) => aTool.name === rec.name)
+        ) {
+          rec.dimensions.push(tool.optionId)
+        }
+      })
+    })
+
+    return result
+  }
 
   const dimensionData: DimensionData[] =
     getDimensionData().sort(sortRecommendations)
+
+  const mergedDimensioData = dimensionData.map((item) => ({
+    ...item,
+    ...recommendationsData().find((i) => i.name === item.label),
+  }))
+
+  console.log(mergedDimensioData)
 
   return (
     <Box sx={classes.recommendationContainer}>
@@ -108,7 +99,7 @@ const Recommendations = ({ watch }: InputProps) => {
       </Typography>
 
       {dimensionData.map((dimensionObject) =>
-        recommendationsData
+        recommendationsData()
           .filter(
             (rec) =>
               rec.dimensions.length > 0 && rec.name === dimensionObject.label
@@ -124,7 +115,7 @@ const Recommendations = ({ watch }: InputProps) => {
                 </Typography>
                 <Box sx={classes.recommendationChipsContainer}>
                   {recommendation.dimensions.map((dimension) => {
-                    const chipData = dimensionSelectionData.find(
+                    const chipData = dimensionSelectionData().find(
                       (question) => question.id === dimension
                     )
                     return (
@@ -146,7 +137,7 @@ const Recommendations = ({ watch }: InputProps) => {
       )}
 
       {dimensionData.map((dimensionObject) =>
-        recommendationsData
+        recommendationsData()
           .filter(
             (rec) =>
               rec.dimensions.length === 0 && rec.name === dimensionObject.label
