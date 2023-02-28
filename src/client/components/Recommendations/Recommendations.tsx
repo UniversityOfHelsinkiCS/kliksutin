@@ -145,7 +145,10 @@ const Recommendations = ({ watch }: InputProps) => {
 
       {dimensionData.map((dimensionObject) =>
         recommendationsData
-          .filter((rec) => rec.dimensions.length === 0)
+          .filter(
+            (rec) =>
+              rec.dimensions.length === 0 && rec.name === dimensionObject.label
+          )
           .map((recommendation) => {
             if (recommendation.name === dimensionObject.label)
               return (
@@ -156,13 +159,13 @@ const Recommendations = ({ watch }: InputProps) => {
                   <Box display="flex" alignItems="center">
                     <Typography
                       variant="h6"
-                      sx={classes.heading}
+                      sx={classes.notSelected}
                       component="div"
                     >
                       {dimensionObject.title[language as keyof Locales]}
                     </Typography>
                   </Box>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" sx={classes.notSelected}>
                     {dimensionObject.text[language as keyof Locales]}
                   </Typography>
                 </Box>

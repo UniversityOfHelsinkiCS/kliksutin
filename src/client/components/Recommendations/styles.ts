@@ -17,6 +17,10 @@ const cardStyles = {
   heading: {
     fontWeight: 'light',
   },
+  notSelected: {
+    fontWeight: 'light',
+    color: '#9e9e9e',
+  },
 }
 
 export default { cardStyles }
