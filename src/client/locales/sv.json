@@ -20,11 +20,9 @@
   "results": {
     "title": "Yhteenveto valinnoistasi",
     "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista",
-    "proceedTitle": "Tarvitsetko lisäapua?",
-    "proceedToExit": "En",
+    "proceedTitle": "Löysitkö etsimäsi?",
     "proceedToConsultation": "Kyllä",
     "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
-    "proceedEnterMail": "Kirjoita sähköpostiosoitteesi",
     "emailIsRequired": "Sähköposti on pakollinen",
     "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
     "sendSummaryMail": "Lähetä",
@@ -32,7 +30,7 @@
   },
   "contact": {
     "title": "Yhteydenotto",
-    "contactMessage": "Haluatko ottaa yhteyttä sähköpostilla vai varata konsultaatioajan?",
+    "contactMessage": "Kerro hieman miten voisimme olla avuksesi.",
     "contactMethodLabel": "Valitse yhteydenottotapa",
     "contactMethodEmail": "Sähköposti",
     "contactMethodConsultation": "Konsultaatio",

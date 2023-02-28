@@ -3,12 +3,8 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
 
-import styles from './styles'
-
 const Ticket = () => {
   const { t } = useTranslation()
-
-  const classes = styles.cardStyles
 
   const {
     register,
@@ -17,7 +13,6 @@ const Ticket = () => {
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      title: '',
       content: '',
     },
   })
@@ -26,26 +21,9 @@ const Ticket = () => {
 
   return (
     <Box px={3} py={2}>
-      <Typography variant="body2" sx={classes.heading}>
-        {t('contact:contactTicketText')}
-      </Typography>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <TextField
-              required
-              size="small"
-              name="title"
-              label={t('contact:contactTicketTitleLabel')}
-              fullWidth
-              margin="dense"
-              {...register('title')}
-              error={errors.title ? true : false} // eslint-disable-line no-unneeded-ternary
-            />
-            {errors.title && (
-              <Typography variant="body2">{errors.title?.message}</Typography>
-            )}
-
             <TextField
               required
               size="small"
