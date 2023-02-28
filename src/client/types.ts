@@ -40,6 +40,13 @@ export interface MultipleChoiceType {
   data: Locales
 }
 
+export interface DimensionSelectionData {
+  id: string
+  label: Locales
+  data: any
+  selected: boolean
+}
+
 export interface OptionData {
   type: string
   options: SingleChoiceType[] | MultipleChoiceType[]

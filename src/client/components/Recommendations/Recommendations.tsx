@@ -11,6 +11,7 @@ import {
   DimensionData,
   Locales,
   MultipleChoiceType,
+  DimensionSelectionData,
   Question,
 } from '../../types'
 
@@ -18,44 +19,49 @@ import {
 const sortRecommendations = (a: DimensionData, b: DimensionData) =>
   a.label > b.label ? 1 : b.label > a.label ? -1 : 0
 
-const mapSelectedQuestions = (
+const mapDimensionSelections = (
   question: Question,
   dimensionSelections: { [x: string]: boolean }
 ) => {
-  const selectedDimensions = Object.keys(dimensionSelections).filter(
-    (key) => dimensionSelections[key]
-  )
+  const arrayOfSelectedDimensions: string[] = Object.keys(
+    dimensionSelections
+  ).filter((key) => dimensionSelections[key])
 
-  const selectedQuestions = question.optionData.options.filter((q) =>
-    selectedDimensions.includes(q.id)
-  )
+  const dimensionSelectionData: DimensionSelectionData[] =
+    question.optionData.options.map((q: MultipleChoiceType) =>
+      arrayOfSelectedDimensions.includes(q.id)
+        ? { ...q, selected: true }
+        : { ...q, selected: false }
+    )
 
-  return selectedQuestions as MultipleChoiceType[]
+  return dimensionSelectionData
 }
 
 const mapRecommendations = (
   recommendationsData: DimensionData[],
-  selectedQuestionsData: MultipleChoiceType[]
+  dimensionSelectionData: DimensionSelectionData[]
 ) => {
-  const selectedTools = selectedQuestionsData.map(
-    (question: { id: string; data: any }) => ({
+  console.log(recommendationsData)
+  console.log(dimensionSelectionData)
+
+  const selectedTools = dimensionSelectionData
+    .filter((q) => q.selected)
+    .map((question: DimensionSelectionData) => ({
       optionId: question.id,
       dimensions: question.data,
-    })
-  )
+    }))
 
   const recommendations = recommendationsData.map((recommendation) => ({
     name: recommendation.label,
     dimensions: [],
   }))
 
-  selectedTools.map(
-    (tool: { dimensions: string | string[]; optionId: string }) =>
-      recommendations.forEach((rec) => {
-        if (tool.dimensions.includes(rec.name)) {
-          rec.dimensions.push(tool.optionId)
-        }
-      })
+  selectedTools.map((tool: { dimensions: any; optionId: string }) =>
+    recommendations.forEach((rec) => {
+      if (tool.dimensions.includes(rec.name)) {
+        rec.dimensions.push(tool.optionId)
+      }
+    })
   )
 
   return recommendations
@@ -77,22 +83,25 @@ const Recommendations: React.FC<{
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'
   )
-  const selectedDimensions = watch(dimensionQuestion.id.toString())
 
-  if (!selectedDimensions) return null
+  const dimensionSelections: { [x: string]: boolean } = watch(
+    dimensionQuestion.id.toString()
+  )
 
-  const dimensionData: DimensionData[] =
-    getDimensionData().sort(sortRecommendations)
+  if (!dimensionSelections) return null
 
-  const selectedQuestions = mapSelectedQuestions(
+  const dimensionSelectionData = mapDimensionSelections(
     dimensionQuestion,
-    selectedDimensions
+    dimensionSelections
   )
 
   const recommendationsData = mapRecommendations(
     recommendations,
-    selectedQuestions
+    dimensionSelectionData
   )
+
+  const dimensionData: DimensionData[] =
+    getDimensionData().sort(sortRecommendations)
 
   return (
     <Box sx={classes.recommendationContainer}>
@@ -117,7 +126,7 @@ const Recommendations: React.FC<{
                   </Typography>
                   <Box sx={classes.recommendationChipsContainer}>
                     {recommendation.dimensions.map((dimension) => {
-                      const chipData = selectedQuestions.find(
+                      const chipData = dimensionSelectionData.find(
                         (question) => question.id === dimension
                       )
                       return (
