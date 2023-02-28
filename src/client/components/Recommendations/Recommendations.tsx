@@ -48,6 +48,8 @@ const mapRecommendations = (
       dimensions: question.data,
     }))
 
+  console.log(selectedTools)
+
   const recommendations = recommendationsData.map((recommendation) => ({
     name: recommendation.label,
     dimensions: [],
@@ -55,11 +57,16 @@ const mapRecommendations = (
 
   selectedTools.forEach((tool) => {
     recommendations.forEach((rec) => {
-      if (tool.dimensions.includes(rec.name)) {
+      if (
+        tool.dimensions.includes(rec.name) ||
+        tool.dimensions.some((t) => t.name === rec.name)
+      ) {
         rec.dimensions.push(tool.optionId)
       }
     })
   })
+
+  console.log(recommendations)
 
   return recommendations
 }
