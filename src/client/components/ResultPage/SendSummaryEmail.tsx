@@ -8,7 +8,7 @@ import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
 import apiClient from '../../util/apiClient'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
-const EmailForm = () => {
+const SendSummaryEmail = () => {
   const { t } = useTranslation()
   const [isSent, setIsSent] = useState(false)
   const { user, isLoading } = useLoggedInUser()
@@ -97,4 +97,4 @@ const EmailForm = () => {
   )
 }
 
-export default EmailForm
+export default SendSummaryEmail
