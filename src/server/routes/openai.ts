@@ -3,7 +3,7 @@ import express from 'express'
 import { inE2EMode } from '../../config'
 import { createCompletion } from '../util/openai'
 
-const mockCompletion = {}
+const mockCompletion = 'Openai response'
 
 const openaiRouter = express.Router()
 
@@ -14,9 +14,10 @@ openaiRouter.post('/', async (req, res) => {
 
   if (inE2EMode) return res.send(mockCompletion)
 
-  const data = await createCompletion(prompt)
+  const { choices } = await createCompletion(prompt)
+  const { text } = choices[0]
 
-  return res.send(data)
+  return res.send(text)
 })
 
 export default openaiRouter

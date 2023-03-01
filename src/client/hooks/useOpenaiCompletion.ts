@@ -1,12 +1,11 @@
 import { useQuery } from 'react-query'
-import { CreateCompletionResponse } from 'openai'
 
 import apiClient from '../util/apiClient'
 
 const useOpenAiCompletion = (prompt: string) => {
   const queryKey = 'completion'
 
-  const query = async (): Promise<CreateCompletionResponse> => {
+  const query = async (): Promise<string> => {
     const { data } = await apiClient.post('/openai', {
       prompt,
     })

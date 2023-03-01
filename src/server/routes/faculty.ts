@@ -32,6 +32,8 @@ facultyRouter.get('/user', async (req: RequestWithUser, res) => {
 
   if (!id) return res.send([])
 
+  if (inE2EMode) return res.send(mockFaculty)
+
   const organisationData = await getUserOrganisations(id, iamGroups)
 
   const faculties = organisationData.map(({ code, name }) => ({ code, name }))

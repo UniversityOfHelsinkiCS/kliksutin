@@ -26,7 +26,8 @@
     "emailIsRequired": "Email is required",
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send",
-    "sendSuccess": "Thank you for using Kliksutin, we've sent the summary to your email!"
+    "sendSuccess": "Thank you for using Kliksutin, we've sent the summary to your email!",
+    "openaiButton": "Auta minua ideoimaan"
   },
   "contact": {
     "title": "Contact page",

@@ -1,6 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai'
 
 import { OPENAI_API_KEY } from './config'
+import { inProduction } from '../../config'
 import logger from './logger'
 
 const configuration = new Configuration({
@@ -9,14 +10,18 @@ const configuration = new Configuration({
 
 export const openai = new OpenAIApi(configuration)
 
+const model = inProduction ? 'text-davinci-003' : 'text-curie-001'
+
 export const createCompletion = async (prompt: string) => {
   try {
     const { data } = await openai.createCompletion({
-      model: 'text-davinci-003',
+      model,
       prompt,
       temperature: 0,
       max_tokens: 7,
     })
+
+    logger.info('OpenAI API response', { data })
 
     return data
   } catch (err) {

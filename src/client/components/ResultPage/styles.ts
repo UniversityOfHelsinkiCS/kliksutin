@@ -9,6 +9,12 @@ const cardStyles = {
     borderLeft: 1,
     borderColor: 'grey.400',
   },
+  outerBox: {
+    m: 2,
+    maxWidth: 1080,
+    border: 1,
+    borderColor: 'grey.300',
+  },
   content: {
     mt: 2,
     mb: 1,

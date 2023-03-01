@@ -84,10 +84,7 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     )
 
   return (
-    <Box
-      id="result-component"
-      sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}
-    >
+    <Box id="result-component" sx={classes.outerBox}>
       <Container sx={{ mt: 2 }}>
         <Typography variant="h5" sx={classes.heading} component="div">
           {t('results:title')}

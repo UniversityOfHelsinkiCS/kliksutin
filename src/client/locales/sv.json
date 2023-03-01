@@ -26,7 +26,8 @@
     "emailIsRequired": "Sähköposti on pakollinen",
     "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
     "sendSummaryMail": "Lähetä",
-    "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme lähettäneet yhteenvetosi sähköpostiisi!"
+    "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme lähettäneet yhteenvetosi sähköpostiisi!",
+    "openaiButton": "Auta minua ideoimaan"
   },
   "contact": {
     "title": "Yhteydenotto",

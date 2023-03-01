@@ -10,6 +10,7 @@ import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
 import ProceedToContact from '../ResultPage/ProceedToContact'
 import SendSummaryEmail from '../ResultPage/SendSummaryEmail'
+import OpenaiCompletion from '../ResultPage/OpenaiCompletion'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
@@ -52,6 +53,7 @@ const InteractiveForm = () => {
           {resultData && (
             <>
               <SendSummaryEmail />
+              <OpenaiCompletion />
               <ProceedToContact />
             </>
           )}
