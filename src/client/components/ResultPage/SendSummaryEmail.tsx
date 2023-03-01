@@ -60,7 +60,14 @@ const SendSummaryEmail = () => {
       <Typography variant="body2">
         {t('results:proceedEmailInfoText')}
       </Typography>
-      <Grid container spacing={1}>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        mt={4}
+      >
         <Grid item xs={12} sm={12}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
@@ -69,14 +76,14 @@ const SendSummaryEmail = () => {
               name="email"
               label="Email"
               margin="dense"
-              sx={{ width: 300 }}
+              sx={{ width: 400 }}
               {...register('email')}
               error={errors.email ? true : false} // eslint-disable-line no-unneeded-ternary
             />
             {errors.email && (
               <Typography variant="body2">{errors.email?.message}</Typography>
             )}
-            <Box mt={1}>
+            <Box mt={1} textAlign="center">
               {!isSent ? (
                 <Button
                   variant="contained"
@@ -86,7 +93,7 @@ const SendSummaryEmail = () => {
                   {t('results:sendSummaryMail')}
                 </Button>
               ) : (
-                <Alert sx={{ width: 600 }} severity="success">
+                <Alert sx={{ maxWidth: 600 }} severity="success">
                   {t('results:sendSuccess')}
                 </Alert>
               )}
