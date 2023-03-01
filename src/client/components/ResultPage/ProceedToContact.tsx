@@ -28,30 +28,31 @@ const ProceedToContact = () => {
         alignItems="center"
         marginY={4}
       >
-        <Stack textAlign="center" direction="row" spacing={2}>
-          <Button
-            sx={classes.stackButton}
-            variant="contained"
-            onClick={() => setShowEndMessage(true)}
-          >
-            {t('results:proceedToExit')}
-          </Button>
-          <Button
-            sx={classes.stackButton}
-            variant="outlined"
-            component={Link}
-            state={{ resultHTML: resultHTML.outerHTML }}
-            to="/contact"
-          >
-            {t('results:proceedToConsultation')}
-          </Button>
-        </Stack>
+        {showEndMessage ? (
+          <Alert sx={{ ml: 3, width: 400 }} severity="success">
+            {t('results:endMessage')}
+          </Alert>
+        ) : (
+          <Stack textAlign="center" direction="row" spacing={2}>
+            <Button
+              sx={classes.stackButton}
+              variant="contained"
+              onClick={() => setShowEndMessage(true)}
+            >
+              {t('results:proceedToExit')}
+            </Button>
+            <Button
+              sx={classes.stackButton}
+              variant="outlined"
+              component={Link}
+              state={{ resultHTML: resultHTML.outerHTML }}
+              to="/contact"
+            >
+              {t('results:proceedToConsultation')}
+            </Button>
+          </Stack>
+        )}
       </Box>
-      {showEndMessage && (
-        <Alert sx={{ ml: 3, width: 400 }} severity="success">
-          {t('results:endMessage')}
-        </Alert>
-      )}
     </Box>
   )
 }
