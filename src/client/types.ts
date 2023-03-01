@@ -40,6 +40,11 @@ export interface MultipleChoiceType {
   data: Locales
 }
 
+export interface ToolType {
+  name: string
+  tools: string[]
+}
+
 export interface DimensionSelectionData {
   id: string
   label: Locales

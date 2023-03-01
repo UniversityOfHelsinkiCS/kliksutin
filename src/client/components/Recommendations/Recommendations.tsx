@@ -12,9 +12,8 @@ import {
   Locales,
   DimensionSelectionData,
   InputProps,
+  ToolType,
 } from '../../types'
-
-/* eslint-disable no-nested-ternary */
 
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
@@ -37,6 +36,7 @@ const Recommendations = ({ watch }: InputProps) => {
 
   if (!dimensionSelections) return null
 
+  /* eslint-disable no-nested-ternary */
   const sortRecommendations = (a: DimensionData, b: DimensionData) =>
     a.label > b.label ? 1 : b.label > a.label ? -1 : 0
 
@@ -70,7 +70,9 @@ const Recommendations = ({ watch }: InputProps) => {
 
     selectedTools.forEach((tool) => {
       result.forEach((rec) => {
-        if (tool.dimensions.some((aTool) => aTool.name === rec.name)) {
+        if (
+          tool.dimensions.some((aTool: ToolType) => aTool.name === rec.name)
+        ) {
           rec.dimensions.push(tool.optionId)
         }
       })
@@ -90,7 +92,9 @@ const Recommendations = ({ watch }: InputProps) => {
   const testi = dimensionSelectionData()
     .filter((q) => q.selected)
     .map((aSelection) =>
-      aSelection.data.map((aTool) => aTool.name === 'moodle' && aTool.tools)
+      aSelection.data.map(
+        (aTool: ToolType) => aTool.name === 'moodle' && aTool.tools
+      )
     )
 
   console.log(testi)
