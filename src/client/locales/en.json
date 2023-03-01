@@ -41,7 +41,8 @@
     "contactTicketContentLabel": "Content",
     "contactTicketSenderEmail": "User's email:",
     "contactTicketSenderFullname": "User's name:",
-    "contactTicketInfo": "User's message:",
+    "contactTicketUserMessage": "User's message:",
+    "contactTicketUserSummary": "User's summary:",
     "contactTicketSend": "Send",
     "sendSuccess": "Thank you for using Kliksutin, we'll be in touch!"
   }
