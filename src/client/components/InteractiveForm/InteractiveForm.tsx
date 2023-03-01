@@ -9,7 +9,7 @@ import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
 import ProceedToContact from '../ResultPage/ProceedToContact'
-import OpenaiCompletion from '../ResultPage/OpenaiCompletion'
+import CourseCompletion from '../ResultPage/Openai/CourseCompletion'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
@@ -51,7 +51,7 @@ const InteractiveForm = () => {
           <Results formResultData={resultData} />
           {resultData && (
             <>
-              <OpenaiCompletion />
+              <CourseCompletion />
               <ProceedToContact />
             </>
           )}
