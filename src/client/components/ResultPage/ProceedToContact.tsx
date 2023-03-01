@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Container, Stack, Typography } from '@mui/material'
+import { Box, Button, Container, Stack, Typography, Alert } from '@mui/material'
 
 import styles from './styles'
 
 const ProceedToContact = () => {
   const { t } = useTranslation()
+  const [showEndMessage, setShowEndMessage] = useState(false)
 
   const classes = styles.cardStyles
 
@@ -31,6 +32,13 @@ const ProceedToContact = () => {
           <Button
             sx={classes.stackButton}
             variant="contained"
+            onClick={() => setShowEndMessage(true)}
+          >
+            {t('results:proceedToExit')}
+          </Button>
+          <Button
+            sx={classes.stackButton}
+            variant="outlined"
             component={Link}
             state={{ resultHTML: resultHTML.outerHTML }}
             to="/contact"
@@ -39,6 +47,11 @@ const ProceedToContact = () => {
           </Button>
         </Stack>
       </Box>
+      {showEndMessage && (
+        <Alert sx={{ ml: 3, width: 400 }} severity="success">
+          {t('results:endMessage')}
+        </Alert>
+      )}
     </Box>
   )
 }

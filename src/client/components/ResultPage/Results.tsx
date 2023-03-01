@@ -6,6 +6,7 @@ import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
 import styles from './styles'
 import { FormValues, Locales, Result } from '../../types'
+import SendSummaryEmail from './SendSummaryEmail'
 
 const classes = styles.cardStyles
 
@@ -104,6 +105,8 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
           />
         ))
       )}
+
+      <SendSummaryEmail />
     </Box>
   )
 }

@@ -21,13 +21,15 @@
     "title": "Yhteenveto valinnoistasi",
     "resultsMessage": "Listasimme sinulle vielä alle yhteevedon valinnoista",
     "proceedTitle": "Löysitkö etsimäsi?",
+    "proceedToExit": "Kyllä",
     "proceedToConsultation": "En",
     "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
     "emailIsRequired": "Sähköposti on pakollinen",
     "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
     "sendSummaryMail": "Lähetä",
-    "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme lähettäneet yhteenvetosi sähköpostiisi!",
-    "openaiButton": "Auta minua ideoimaan"
+    "sendSuccess": "Yhteenveto on lähetetty sähköpostiisi",
+    "openaiButton": "Auta minua ideoimaan",
+    "endMessage": "Kiitos Kliksuttimen käytöstä!"
   },
   "contact": {
     "title": "Yhteydenotto",
