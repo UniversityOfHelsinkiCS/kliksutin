@@ -17,8 +17,8 @@ export const createCompletion = async (prompt: string) => {
     const { data } = await openai.createCompletion({
       model,
       prompt,
-      temperature: 0,
-      max_tokens: 7,
+      temperature: 0.5,
+      max_tokens: 600,
     })
 
     logger.info('OpenAI API response', { data })
