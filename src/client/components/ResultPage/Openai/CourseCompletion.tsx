@@ -9,7 +9,8 @@ import styles from '../styles'
 const classes = styles.cardStyles
 
 const CompletionResult = ({ courseName }: { courseName: string }) => {
-  const prompt = `Anna 5 luentoaiheita kurssille, jonka otsikko on "${courseName}".}`
+  const { t } = useTranslation()
+  const prompt = t('openai:courseCompletionPrompt', { courseName })
 
   const { completion, isLoading } = useOpenaiCompletion(prompt)
 

@@ -48,6 +48,7 @@
   },
   "openai": {
     "giveCourseInfoText": "Jos haluat luentoideoita kurssillesi, syötä kurssin nimi alle",
+    "courseCompletionPrompt": "Anna 5 luentoaiheita kurssille, jonka otsikko on \"{{courseName}}\".",
     "selectDimensionInfoText": "",
     "send": "Send"
   }
