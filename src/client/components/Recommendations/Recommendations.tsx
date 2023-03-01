@@ -58,9 +58,9 @@ const Recommendations = ({ watch }: InputProps) => {
   const recommendationsData = () => {
     const selectedTools = dimensionSelectionData()
       .filter((q) => q.selected)
-      .map((question: DimensionSelectionData) => ({
-        optionId: question.id,
-        dimensions: question.data,
+      .map((aSelection: DimensionSelectionData) => ({
+        optionId: aSelection.id,
+        dimensions: aSelection.data,
       }))
 
     const result = recommendations.map((recommendation) => ({
@@ -70,10 +70,7 @@ const Recommendations = ({ watch }: InputProps) => {
 
     selectedTools.forEach((tool) => {
       result.forEach((rec) => {
-        if (
-          tool.dimensions.includes(rec.name) ||
-          tool.dimensions.some((aTool) => aTool.name === rec.name)
-        ) {
+        if (tool.dimensions.some((aTool) => aTool.name === rec.name)) {
           rec.dimensions.push(tool.optionId)
         }
       })
@@ -89,6 +86,14 @@ const Recommendations = ({ watch }: InputProps) => {
     ...item,
     ...recommendationsData().find((i) => i.name === item.label),
   }))
+
+  const testi = dimensionSelectionData()
+    .filter((q) => q.selected)
+    .map((aSelection) =>
+      aSelection.data.map((aTool) => aTool.name === 'moodle' && aTool.tools)
+    )
+
+  console.log(testi)
 
   return (
     <Box sx={classes.recommendationContainer}>
