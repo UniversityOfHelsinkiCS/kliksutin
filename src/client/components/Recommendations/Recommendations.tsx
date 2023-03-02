@@ -5,7 +5,6 @@ import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
 import colors from '../../util/colors'
 import styles from './styles'
-import getDimensionData from '../../../server/data/dimensions'
 import useRecommendations from '../../hooks/useRecommendations'
 import {
   DimensionData,
@@ -82,10 +81,10 @@ const Recommendations = ({ watch }: InputProps) => {
   }
 
   const rawRecommendationData: DimensionData[] =
-    getDimensionData().sort(sortRecommendations)
+    recommendations.sort(sortRecommendations)
 
   const extractSubtools = (toolName: string) => {
-    const extractedSubtools = dimensionSelectionData()
+    const extractedSubtools: string[] = dimensionSelectionData()
       .filter((q) => q.selected)
       .map((aSelection) =>
         aSelection.data.filter((aTool: ToolType) => aTool.name === toolName)
@@ -101,8 +100,6 @@ const Recommendations = ({ watch }: InputProps) => {
     ...recommendationsData().find((i) => i.name === item.label),
     subtools: item.label === 'moodle' && extractSubtools(item.label),
   }))
-
-  console.log(mergedRecommendationData)
 
   return (
     <Box sx={classes.recommendationContainer}>
@@ -134,6 +131,9 @@ const Recommendations = ({ watch }: InputProps) => {
                 })}
               </Box>
             </Box>
+            <Typography variant="body2" sx={classes.subtoolText}>
+              {recommendation.subtools && recommendation.subtools.join(', ')}
+            </Typography>
             <Typography variant="body2" color="text.secondary">
               {recommendation.text[language as keyof Locales]}
             </Typography>

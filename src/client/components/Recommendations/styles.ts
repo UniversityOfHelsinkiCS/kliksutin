@@ -21,6 +21,12 @@ const cardStyles = {
     fontWeight: 'light',
     color: '#9e9e9e',
   },
+  subtoolText: {
+    textTransform: 'capitalize',
+    paddingLeft: '1rem',
+    fontWeight: 'light',
+    color: '#757575',
+  },
 }
 
 export default { cardStyles }
