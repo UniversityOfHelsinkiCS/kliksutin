@@ -102,8 +102,6 @@ const Recommendations = ({ watch }: InputProps) => {
     subtools: item.label === 'moodle' && extractSubtools(item.label),
   }))
 
-  console.log(mergedRecommendationData)
-
   return (
     <Box sx={classes.recommendationContainer}>
       <Typography variant="h5" sx={classes.heading} component="div">
