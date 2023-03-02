@@ -48,7 +48,10 @@
   "openai": {
     "giveCourseInfoText": "If you would like lecture ideas for your course, enter the course name below",
     "courseCompletionPrompt": "Enter 5 lecture topics for a course with the title \"{{courseName}}\".",
-    "selectDimensionInfoText": "",
-    "send": "Send"
+    "selectDimensionInfoText": "For ideas on how to use the tools, select the dimension to support",
+    "dimensionSelect": "Dimension",
+    "dimensionCompletionPrompt": "How can I support the topic \"{{dimensionName}}\" in a university course? Give 3 examples using the software {{recommendations}}?",
+    "send": "Send",
+    "or": " or "
   }
 }
