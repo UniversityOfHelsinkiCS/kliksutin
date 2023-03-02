@@ -6,7 +6,7 @@ import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 import apiClient from '../../util/apiClient'
 
-const ticketEmail = 'henri.remonen@helsinki.fi'
+const ticketEmail = 'opetusteknologia@helsinki.fi'
 
 const SendContactTicket = () => {
   const { t } = useTranslation()
@@ -38,23 +38,23 @@ const SendContactTicket = () => {
     const text = `
 
 
-    ### ${t('contact:contactTicketSenderEmail')} ${user.email} 
-    ### ${t('contact:contactTicketSenderFullname')} ${user.firsName} ${
+    ${t('contact:contactTicketSenderEmail')} ${user.email} 
+    ${t('contact:contactTicketSenderFullname')} ${user.firsName} ${
       user.lastName
     } 
 
-    ##### ${t('contact:contactTicketUserMessage')}
+    ${t('contact:contactTicketUserMessage')}
     ============================
 
-      ${content}
+    ${content}
 
     ==============
 
-    ##### ${t('contact:contactTicketUserSummary')}
+    ${t('contact:contactTicketUserSummary')}
 
     ============================
     
-      ${state.resultHTML}
+    ${state.resultHTML}
 
     ==============
     `
