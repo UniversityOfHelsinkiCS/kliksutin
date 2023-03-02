@@ -1,10 +1,11 @@
 import React from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import { InputProps, Locales } from '../../types'
 import styles from './styles'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
 import DimensionSelect from '../Choices/DimensionSelect'
+import Markdown from '../Common/Markdown'
 
 const RenderQuestions = ({
   control,
@@ -41,13 +42,9 @@ const RenderQuestions = ({
 
   return (
     <Container sx={classes.questionsContainer}>
-      <Typography variant="h5" style={classes.heading} component="div">
-        {question.title[language as keyof Locales]}
-      </Typography>
+      <Markdown>{question.title[language as keyof Locales]}</Markdown>
       <Box sx={classes.content}>
-        <Typography variant="body2">
-          {question.text[language as keyof Locales]}
-        </Typography>
+        <Markdown>{question.text[language as keyof Locales]}</Markdown>
       </Box>
 
       <Choice

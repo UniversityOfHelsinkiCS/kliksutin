@@ -2,10 +2,7 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Link, Typography } from '@mui/material'
 
-const GutterTypography = ({ ...props }: any) => {
-  console.log(props)
-  return <Typography {...props} />
-}
+const GutterTypography = ({ ...props }: any) => <Typography {...props} />
 
 const H1 = ({ ...props }: any) => (
   <GutterTypography variant="h4" component="h1" {...props} />

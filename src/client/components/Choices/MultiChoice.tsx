@@ -7,12 +7,12 @@ import {
   FormControlLabel,
   IconButton,
   Collapse,
-  Typography,
 } from '@mui/material'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { MultipleChoiceType, InputProps, Locales } from '../../types'
+import Markdown from '../Common/Markdown'
 
 const ShowMore = ({ text }: { text: string }) => {
   const [expand, setExpand] = useState(false)
@@ -24,7 +24,7 @@ const ShowMore = ({ text }: { text: string }) => {
         {!expand ? <ExpandMore /> : <ExpandLess />}
       </IconButton>
       <Collapse in={expand} timeout="auto" unmountOnExit>
-        <Typography variant="body2">{text}</Typography>
+        <Markdown>{text}</Markdown>
       </Collapse>
     </>
   )
