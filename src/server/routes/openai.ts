@@ -15,9 +15,9 @@ openaiRouter.post('/', async (req, res) => {
   if (inE2EMode) return res.send(mockCompletion)
 
   const { choices } = await createCompletion(prompt)
-  const { text } = choices[0]
+  const { message } = choices[0]
 
-  return res.send(text)
+  return res.send(message.content)
 })
 
 export default openaiRouter
