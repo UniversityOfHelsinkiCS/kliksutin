@@ -146,17 +146,17 @@ const Recommendations = ({ watch }: InputProps) => {
         .map((recommendation) => (
           <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
             <Box display="flex" alignItems="center">
-              <Typography sx={classes.notSelected}>
+              <Box sx={classes.notSelected}>
                 <Markdown>
                   {recommendation.title[language as keyof Locales]}
                 </Markdown>
-              </Typography>
+              </Box>
             </Box>
-            <Typography sx={classes.notSelected}>
+            <Box sx={classes.notSelected}>
               <Markdown>
                 {recommendation.text[language as keyof Locales]}
               </Markdown>
-            </Typography>
+            </Box>
           </Box>
         ))}
     </Box>
