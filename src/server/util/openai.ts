@@ -1,7 +1,6 @@
-import { Configuration, OpenAIApi } from 'openai'
+import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from 'openai'
 
 import { OPENAI_API_KEY } from './config'
-import { inProduction } from '../../config'
 import logger from './logger'
 
 const configuration = new Configuration({
@@ -10,13 +9,27 @@ const configuration = new Configuration({
 
 export const openai = new OpenAIApi(configuration)
 
-const model = inProduction ? 'text-davinci-003' : 'text-curie-001'
+const model = 'gpt-3.5-turbo'
+
+const systemPrompt =
+  'You are a helpful course planning assistant for the University of Helsinki. You know Finnish, Swedish and English.'
 
 export const createCompletion = async (prompt: string) => {
+  const messages: ChatCompletionRequestMessage[] = [
+    {
+      role: 'system',
+      content: systemPrompt,
+    },
+    {
+      role: 'user',
+      content: prompt,
+    },
+  ]
+
   try {
-    const { data } = await openai.createCompletion({
+    const { data } = await openai.createChatCompletion({
       model,
-      prompt,
+      messages,
       temperature: 0.5,
       max_tokens: 600,
     })
