@@ -1,4 +1,4 @@
-const getDimensionData = () => [
+const getRecommendationsData = () => [
   {
     id: 1,
     surveyId: 1,
@@ -121,4 +121,4 @@ const getDimensionData = () => [
   },
 ]
 
-export default getDimensionData
+export default getRecommendationsData

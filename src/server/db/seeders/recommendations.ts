@@ -1,8 +1,8 @@
 import { Recommendation } from '../models'
-import getDimensionData from '../../data/dimensions'
+import getRecommendationsData from '../../data/recommendations'
 
 const seedRecommendations = async () => {
-  const recommendations: any[] = getDimensionData()
+  const recommendations: any[] = getRecommendationsData()
 
   recommendations.forEach(async (recommendation) => {
     await Recommendation.upsert({
