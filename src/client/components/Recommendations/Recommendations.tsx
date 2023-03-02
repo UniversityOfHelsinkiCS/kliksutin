@@ -3,6 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
+import Markdown from '../Common/Markdown'
 import colors from '../../util/colors'
 import styles from './styles'
 import useRecommendations from '../../hooks/useRecommendations'
@@ -101,7 +102,7 @@ const Recommendations = ({ watch }: InputProps) => {
     subtools: item.label === 'moodle' && extractSubtools(item.label),
   }))
 
-  console.log(recommendations)
+  console.log(mergedRecommendationData)
 
   return (
     <Box sx={classes.recommendationContainer}>
@@ -114,9 +115,9 @@ const Recommendations = ({ watch }: InputProps) => {
         .map((recommendation) => (
           <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
             <Box display="flex" alignItems="center">
-              <Typography variant="h6" sx={classes.heading} component="div">
+              <Markdown>
                 {recommendation.title[language as keyof Locales]}
-              </Typography>
+              </Markdown>
               <Box sx={classes.recommendationChipsContainer}>
                 {recommendation.dimensions.map((dimension) => {
                   const chipData = dimensionSelectionData().find(
@@ -136,9 +137,9 @@ const Recommendations = ({ watch }: InputProps) => {
             <Typography variant="body2" sx={classes.subtoolText}>
               {recommendation.subtools && recommendation.subtools.join(', ')}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Markdown>
               {recommendation.text[language as keyof Locales]}
-            </Typography>
+            </Markdown>
           </Box>
         ))}
 
@@ -147,12 +148,16 @@ const Recommendations = ({ watch }: InputProps) => {
         .map((recommendation) => (
           <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
             <Box display="flex" alignItems="center">
-              <Typography variant="h6" sx={classes.notSelected} component="div">
-                {recommendation.title[language as keyof Locales]}
+              <Typography sx={classes.notSelected}>
+                <Markdown>
+                  {recommendation.title[language as keyof Locales]}
+                </Markdown>
               </Typography>
             </Box>
-            <Typography variant="body2" sx={classes.notSelected}>
-              {recommendation.text[language as keyof Locales]}
+            <Typography sx={classes.notSelected}>
+              <Markdown>
+                {recommendation.text[language as keyof Locales]}
+              </Markdown>
             </Typography>
           </Box>
         ))}
