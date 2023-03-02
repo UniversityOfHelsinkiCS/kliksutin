@@ -13,6 +13,7 @@ const DimensionChip: React.FC<{
     backgroundColor: color,
     marginX: '0.1rem',
     fontWeight: 'normal',
+    color: 'white',
   }
   const { i18n } = useTranslation()
   const { language } = i18n
