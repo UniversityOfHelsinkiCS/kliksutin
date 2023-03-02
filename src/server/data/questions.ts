@@ -25,11 +25,11 @@ const getQuestionData = () => [
             en: 'Acquisition',
           },
           data: [
-            { name: 'zoom', tools: [] },
-            { name: 'unitube', tools: [] },
-            { name: 'thinglink', tools: [] },
-            { name: 'moodle', tools: ['aineistot', 'h5p'] },
-            { name: 'screen-cast-o-matic', tools: [] },
+            { name: 'zoom', subtools: [] },
+            { name: 'unitube', subtools: [] },
+            { name: 'thinglink', subtools: [] },
+            { name: 'moodle', subtools: ['aineistot', 'h5p'] },
+            { name: 'screen-cast-o-matic', subtools: [] },
           ],
         },
         {
@@ -40,12 +40,12 @@ const getQuestionData = () => [
             en: 'Production',
           },
           data: [
-            { name: 'flinga', tools: [] },
-            { name: 'presemo', tools: [] },
-            { name: 'thinglink', tools: [] },
+            { name: 'flinga', subtools: [] },
+            { name: 'presemo', subtools: [] },
+            { name: 'thinglink', subtools: [] },
             {
               name: 'moodle',
-              tools: ['tehtävä', 'wiki', 'sanasto', 'tietokanta'],
+              subtools: ['tehtävä', 'wiki', 'sanasto', 'tietokanta'],
             },
           ],
         },
@@ -57,11 +57,11 @@ const getQuestionData = () => [
             en: 'Collaboration',
           },
           data: [
-            { name: 'zoom', tools: [] },
-            { name: 'flinga', tools: [] },
-            { name: 'thinglink', tools: [] },
-            { name: 'eportfolio', tools: [] },
-            { name: 'moodle', tools: ['keskustelualue', 'työpaja', 'wiki'] },
+            { name: 'zoom', subtools: [] },
+            { name: 'flinga', subtools: [] },
+            { name: 'thinglink', subtools: [] },
+            { name: 'eportfolio', subtools: [] },
+            { name: 'moodle', subtools: ['keskustelualue', 'työpaja', 'wiki'] },
           ],
         },
         {
@@ -72,10 +72,10 @@ const getQuestionData = () => [
             en: 'Discussion',
           },
           data: [
-            { name: 'zoom', tools: [] },
-            { name: 'presemo', tools: [] },
-            { name: 'eportfolio', tools: [] },
-            { name: 'moodle', tools: ['keskustelualue', 'chat'] },
+            { name: 'zoom', subtools: [] },
+            { name: 'presemo', subtools: [] },
+            { name: 'eportfolio', subtools: [] },
+            { name: 'moodle', subtools: ['keskustelualue', 'chat'] },
           ],
         },
         {
@@ -86,8 +86,11 @@ const getQuestionData = () => [
             en: 'Investication',
           },
           data: [
-            { name: 'flinga', tools: [] },
-            { name: 'moodle', tools: ['keskustelualue', 'wiki', 'tietokanta'] },
+            { name: 'flinga', subtools: [] },
+            {
+              name: 'moodle',
+              subtools: ['keskustelualue', 'wiki', 'tietokanta'],
+            },
           ],
         },
         {
@@ -98,11 +101,11 @@ const getQuestionData = () => [
             en: 'Practice',
           },
           data: [
-            { name: 'thinglink', tools: [] },
-            { name: 'eportfolio', tools: [] },
+            { name: 'thinglink', subtools: [] },
+            { name: 'eportfolio', subtools: [] },
             {
               name: 'moodle',
-              tools: ['h5p', 'tentti', 'työpaja', 'oppitunti'],
+              subtools: ['h5p', 'tentti', 'työpaja', 'oppitunti'],
             },
           ],
         },

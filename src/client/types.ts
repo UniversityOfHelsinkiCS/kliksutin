@@ -42,7 +42,7 @@ export interface MultipleChoiceType {
 
 export interface ToolType {
   name: string
-  tools: string[]
+  subtools: string[]
 }
 
 export interface DimensionSelectionData {

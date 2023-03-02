@@ -81,23 +81,28 @@ const Recommendations = ({ watch }: InputProps) => {
     return result
   }
 
-  const dimensionData: DimensionData[] =
+  const rawRecommendationData: DimensionData[] =
     getDimensionData().sort(sortRecommendations)
 
-  const mergedDimensioData = dimensionData.map((item) => ({
+  const extractSubtools = (toolName: string) => {
+    const extractedSubtools = dimensionSelectionData()
+      .filter((q) => q.selected)
+      .map((aSelection) =>
+        aSelection.data.filter((aTool: ToolType) => aTool.name === toolName)
+      )
+      .map((aTool: ToolType) => aTool[0].subtools)
+      .flat(1) // flatted the arrays into one array
+
+    return Array.from(new Set(extractedSubtools))
+  }
+
+  const mergedRecommendationData = rawRecommendationData.map((item) => ({
     ...item,
     ...recommendationsData().find((i) => i.name === item.label),
+    subtools: item.label === 'moodle' && extractSubtools(item.label),
   }))
 
-  const testi = dimensionSelectionData()
-    .filter((q) => q.selected)
-    .map((aSelection) =>
-      aSelection.data.map(
-        (aTool: ToolType) => aTool.name === 'moodle' && aTool.tools
-      )
-    )
-
-  console.log(testi)
+  console.log(mergedRecommendationData)
 
   return (
     <Box sx={classes.recommendationContainer}>
@@ -105,7 +110,7 @@ const Recommendations = ({ watch }: InputProps) => {
         {t('recommendations:title')}
       </Typography>
 
-      {mergedDimensioData
+      {mergedRecommendationData
         .filter((recommendation) => recommendation.dimensions.length > 0)
         .map((recommendation) => (
           <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
@@ -135,7 +140,7 @@ const Recommendations = ({ watch }: InputProps) => {
           </Box>
         ))}
 
-      {mergedDimensioData
+      {mergedRecommendationData
         .filter((recommendation) => recommendation.dimensions.length === 0)
         .map((recommendation) => (
           <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
