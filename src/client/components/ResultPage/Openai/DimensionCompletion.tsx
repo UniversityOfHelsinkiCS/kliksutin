@@ -59,7 +59,7 @@ const CompletionResult = ({
     recommendations,
   })
 
-  const { completion, isLoading } = useOpenaiCompletion(prompt)
+  const { completion, isLoading } = useOpenaiCompletion(prompt, 'dimension')
 
   if (isLoading) return <LoadingProgress />
 

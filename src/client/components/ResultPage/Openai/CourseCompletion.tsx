@@ -12,7 +12,7 @@ const CompletionResult = ({ courseName }: { courseName: string }) => {
   const { t } = useTranslation()
   const prompt = t('openai:courseCompletionPrompt', { courseName })
 
-  const { completion, isLoading } = useOpenaiCompletion(prompt)
+  const { completion, isLoading } = useOpenaiCompletion(prompt, 'course')
 
   if (isLoading) return <LoadingProgress />
 
