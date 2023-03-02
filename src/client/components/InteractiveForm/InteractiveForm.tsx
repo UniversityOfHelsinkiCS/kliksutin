@@ -10,6 +10,7 @@ import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
 import ProceedToContact from '../ResultPage/ProceedToContact'
 import CourseCompletion from '../ResultPage/Openai/CourseCompletion'
+import DimensionCompletion from '../ResultPage/Openai/DimensionCompletion'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
@@ -52,6 +53,7 @@ const InteractiveForm = () => {
           {resultData && (
             <>
               <CourseCompletion />
+              <DimensionCompletion watch={watch} />
               <ProceedToContact />
             </>
           )}
