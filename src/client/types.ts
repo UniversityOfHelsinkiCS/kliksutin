@@ -82,7 +82,7 @@ export interface Question {
   updatedAt: Date
 }
 
-export interface DimensionData {
+export interface RecommendationData {
   id: number
   label: string
   title: Locales

@@ -8,12 +8,16 @@ import colors from '../../util/colors'
 import styles from './styles'
 import useRecommendations from '../../hooks/useRecommendations'
 import {
-  DimensionData,
+  RecommendationData,
   Locales,
   DimensionSelectionData,
   InputProps,
   ToolType,
 } from '../../types'
+
+/* eslint-disable no-nested-ternary */
+const sortRecommendations = (a: RecommendationData, b: RecommendationData) =>
+  a.label > b.label ? 1 : b.label > a.label ? -1 : 0
 
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
@@ -26,6 +30,9 @@ const Recommendations = ({ watch }: InputProps) => {
 
   if (!recommendationsFetched) return null
 
+  const rawRecommendationData: RecommendationData[] =
+    recommendations.sort(sortRecommendations)
+
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'
   )
@@ -35,10 +42,6 @@ const Recommendations = ({ watch }: InputProps) => {
   )
 
   if (!dimensionSelections) return null
-
-  /* eslint-disable no-nested-ternary */
-  const sortRecommendations = (a: DimensionData, b: DimensionData) =>
-    a.label > b.label ? 1 : b.label > a.label ? -1 : 0
 
   const dimensionSelectionData = () => {
     const arrayOfSelectedDimensions: string[] = Object.keys(
@@ -57,23 +60,25 @@ const Recommendations = ({ watch }: InputProps) => {
 
   const recommendationsData = () => {
     const selectedTools = dimensionSelectionData()
-      .filter((q) => q.selected)
+      .filter((aSelection: DimensionSelectionData) => aSelection.selected)
       .map((aSelection: DimensionSelectionData) => ({
         optionId: aSelection.id,
         dimensions: aSelection.data,
       }))
 
-    const result = recommendations.map((recommendation) => ({
-      name: recommendation.label,
+    const result = recommendations.map((aRecommendation) => ({
+      name: aRecommendation.label,
       dimensions: [],
     }))
 
     selectedTools.forEach((tool) => {
-      result.forEach((rec) => {
+      result.forEach((aRecommendation) => {
         if (
-          tool.dimensions.some((aTool: ToolType) => aTool.name === rec.name)
+          tool.dimensions.some(
+            (aTool: ToolType) => aTool.name === aRecommendation.name
+          )
         ) {
-          rec.dimensions.push(tool.optionId)
+          aRecommendation.dimensions.push(tool.optionId)
         }
       })
     })
@@ -81,13 +86,10 @@ const Recommendations = ({ watch }: InputProps) => {
     return result
   }
 
-  const rawRecommendationData: DimensionData[] =
-    recommendations.sort(sortRecommendations)
-
   const extractSubtools = (toolName: string) => {
     const extractedSubtools: string[] = dimensionSelectionData()
-      .filter((q) => q.selected)
-      .map((aSelection) =>
+      .filter((aSelection: DimensionSelectionData) => aSelection.selected)
+      .map((aSelection: DimensionSelectionData) =>
         aSelection.data.filter((aTool: ToolType) => aTool.name === toolName)
       )
       .map((aTool: ToolType) => aTool[0].subtools)
