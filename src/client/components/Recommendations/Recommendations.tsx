@@ -67,6 +67,8 @@ const Recommendations = ({ watch }: InputProps) => {
 
   const dimensionSelections = getSelectedDimensions(survey, watch)
 
+  if (!dimensionSelections) return null
+
   const recommendationsData = getRecommendationsData(
     rawRecommendationData,
     dimensionSelections

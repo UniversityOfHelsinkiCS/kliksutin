@@ -13,6 +13,8 @@ const getSelectedDimensions = (
     dimensionQuestion.id.toString()
   )
 
+  if (!dimensionSelections) return null
+
   const selectedDimensions = (
     dimensionQuestion.optionData.options as DimensionSelectionData[]
   ).filter(({ id }) => dimensionSelections[id])
