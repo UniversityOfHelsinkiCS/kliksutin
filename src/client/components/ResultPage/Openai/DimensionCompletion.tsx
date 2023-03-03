@@ -52,7 +52,7 @@ const CompletionResult = ({
   )
   const recommendations = recommendationNames.join(t('openai:or'))
 
-  const dimensionName = label[i18n.language].toLowerCase()
+  const dimensionName = label[i18n.language as keyof Locales].toLowerCase()
 
   const prompt = t('openai:dimensionCompletionPrompt', {
     dimensionName,

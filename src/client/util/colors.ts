@@ -1,4 +1,4 @@
-const colors = {
+const colors: { [key: string]: string } = {
   acquisition: '#f18235',
   collaboration: '#8261a1',
   discussion: '#23439b',

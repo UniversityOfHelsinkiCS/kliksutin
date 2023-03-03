@@ -48,13 +48,18 @@ export interface ToolType {
 export interface DimensionSelectionData {
   id: string
   label: Locales
-  data: any
+  data: ToolType[]
   selected?: boolean
 }
 
+type ChoiceType =
+  | SingleChoiceType[]
+  | MultipleChoiceType[]
+  | DimensionSelectionData[]
+
 export interface OptionData {
   type: string
-  options: SingleChoiceType[] | MultipleChoiceType[] | DimensionSelectionData[]
+  options: ChoiceType
 }
 
 export type Visibility = {

@@ -32,33 +32,35 @@ const ShowMore = ({ text }: { text: string }) => {
 
 const MultiChoice = ({ control, question, children, language }: InputProps) => (
   <>
-    {question.optionData.options.map((choice: MultipleChoiceType) => (
-      <Controller
-        key={choice.id}
-        name={`${question.id}.${choice.id}`}
-        control={control}
-        defaultValue={false}
-        render={({ field }) => (
-          <FormControl sx={{ width: '100%' }}>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    {...field}
-                    value={choice.id}
-                    checked={field.value}
-                  />
-                }
-                label={choice.label[language as keyof Locales]}
-              />
-              {choice.data ? (
-                <ShowMore text={choice.data[language as keyof Locales]} />
-              ) : null}
-            </Box>
-          </FormControl>
-        )}
-      />
-    ))}
+    {(question.optionData.options as MultipleChoiceType[]).map(
+      (choice: MultipleChoiceType) => (
+        <Controller
+          key={choice.id}
+          name={`${question.id}.${choice.id}`}
+          control={control}
+          defaultValue={false}
+          render={({ field }) => (
+            <FormControl sx={{ width: '100%' }}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      {...field}
+                      value={choice.id}
+                      checked={field.value}
+                    />
+                  }
+                  label={choice.label[language as keyof Locales]}
+                />
+                {choice.data ? (
+                  <ShowMore text={choice.data[language as keyof Locales]} />
+                ) : null}
+              </Box>
+            </FormControl>
+          )}
+        />
+      )
+    )}
 
     {children}
   </>

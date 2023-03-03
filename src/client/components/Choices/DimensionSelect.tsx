@@ -7,42 +7,44 @@ import colors from '../../util/colors'
 
 const DimensionSelect = ({ control, question }: InputProps) => (
   <>
-    {question.optionData.options.map((choice: DimensionSelectionData) => (
-      <Controller
-        key={choice.id}
-        name={`${question.id}.${choice.id}`}
-        control={control}
-        defaultValue={false}
-        render={({ field }) => (
-          <FormControl sx={{ width: '100%' }}>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
-              <Checkbox
-                {...field}
-                data-cy={`dimension-select-${choice.id}`}
-                icon={
-                  <DimensionChip
-                    key={choice.id}
-                    choice={choice}
-                    color={undefined}
-                    compact={false}
-                  />
-                }
-                checkedIcon={
-                  <DimensionChip
-                    key={choice.id}
-                    choice={choice}
-                    color={colors[choice.id]}
-                    compact={false}
-                  />
-                }
-                value={choice.id}
-                checked={field.value}
-              />
-            </Box>
-          </FormControl>
-        )}
-      />
-    ))}
+    {(question.optionData.options as DimensionSelectionData[]).map(
+      (choice: DimensionSelectionData) => (
+        <Controller
+          key={choice.id}
+          name={`${question.id}.${choice.id}`}
+          control={control}
+          defaultValue={false}
+          render={({ field }) => (
+            <FormControl sx={{ width: '100%' }}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
+                <Checkbox
+                  {...field}
+                  data-cy={`dimension-select-${choice.id}`}
+                  icon={
+                    <DimensionChip
+                      key={choice.id}
+                      choice={choice}
+                      color={undefined}
+                      compact={false}
+                    />
+                  }
+                  checkedIcon={
+                    <DimensionChip
+                      key={choice.id}
+                      choice={choice}
+                      color={colors[choice.id]}
+                      compact={false}
+                    />
+                  }
+                  value={choice.id}
+                  checked={field.value}
+                />
+              </Box>
+            </FormControl>
+          )}
+        />
+      )
+    )}
   </>
 )
 

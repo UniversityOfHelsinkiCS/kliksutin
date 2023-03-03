@@ -2,10 +2,10 @@ import React from 'react'
 import { Chip, Tooltip } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { Locales, MultipleChoiceType } from '../../types'
+import { DimensionSelectionData, Locales } from '../../types'
 
 const DimensionChip: React.FC<{
-  choice: MultipleChoiceType
+  choice: DimensionSelectionData
   color: string | undefined
   compact: boolean
 }> = ({ choice, color, compact = false }) => {

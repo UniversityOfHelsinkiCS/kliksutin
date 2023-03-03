@@ -48,12 +48,13 @@ const Recommendations = ({ watch }: InputProps) => {
       dimensionSelections
     ).filter((key) => dimensionSelections[key])
 
-    const result: DimensionSelectionData[] =
-      dimensionQuestion.optionData.options.map((q: DimensionSelectionData) =>
-        arrayOfSelectedDimensions.includes(q.id)
-          ? { ...q, selected: true }
-          : { ...q, selected: false }
-      )
+    const result: DimensionSelectionData[] = (
+      dimensionQuestion.optionData.options as DimensionSelectionData[]
+    ).map((aDimension: DimensionSelectionData) =>
+      arrayOfSelectedDimensions.includes(aDimension.id)
+        ? { ...aDimension, selected: true }
+        : { ...aDimension, selected: false }
+    )
 
     return result
   }
@@ -92,7 +93,7 @@ const Recommendations = ({ watch }: InputProps) => {
       .map((aSelection: DimensionSelectionData) =>
         aSelection.data.filter((aTool: ToolType) => aTool.name === toolName)
       )
-      .map((aTool: ToolType) => aTool[0].subtools)
+      .map((aTool: ToolType[]) => aTool[0].subtools)
       .flat(1) // flatted the arrays into one array
 
     return Array.from(new Set(extractedSubtools))
@@ -119,9 +120,9 @@ const Recommendations = ({ watch }: InputProps) => {
                 {recommendation.title[language as keyof Locales]}
               </Markdown>
               <Box sx={classes.recommendationChipsContainer}>
-                {recommendation.dimensions.map((dimension) => {
+                {recommendation.dimensions.map((aDimension) => {
                   const chipData = dimensionSelectionData().find(
-                    (question) => question.id === dimension
+                    (selectedDimension) => selectedDimension.id === aDimension
                   )
                   return (
                     <DimensionChip
