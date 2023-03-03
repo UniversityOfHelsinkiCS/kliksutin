@@ -51,6 +51,21 @@ export interface DimensionSelectionData {
   data: ToolType[]
 }
 
+export interface MergedRecommendationDataType {
+  subtools: string[]
+  name: string
+  dimensions: string[]
+  id: number
+  label: string
+  title: Locales
+  text: Locales
+}
+
+export interface SelectedToolsType {
+  mergedRecommendationData: MergedRecommendationDataType[]
+  dimensionSelections?: DimensionSelectionData[]
+}
+
 export type ChoiceType =
   | SingleChoiceType[]
   | MultipleChoiceType[]

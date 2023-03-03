@@ -3,18 +3,16 @@ import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import useRecommendations from '../../hooks/useRecommendations'
 import useSurvey from '../../hooks/useSurvey'
-import DimensionChip from '../Chip/DimensionChip'
-import Markdown from '../Common/Markdown'
-import colors from '../../util/colors'
 import getSelectedDimensions from '../../util/getSelectedDimensions'
 import styles from './styles'
 import {
   RecommendationData,
-  Locales,
   DimensionSelectionData,
   InputProps,
   ToolType,
 } from '../../types'
+import SelectedTools from './SelectedTools'
+import NonSelectedTools from './NonSelectedTools'
 
 /* eslint-disable no-nested-ternary */
 const sortRecommendations = (a: RecommendationData, b: RecommendationData) =>
@@ -52,13 +50,12 @@ const getRecommendationsData = (
 }
 
 const Recommendations = ({ watch }: InputProps) => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { survey } = useSurvey()
   const { recommendations, isSuccess: recommendationsFetched } =
     useRecommendations(survey?.id)
 
   const classes = styles.cardStyles
-  const { language } = i18n
 
   if (!recommendationsFetched) return null
 
@@ -97,57 +94,11 @@ const Recommendations = ({ watch }: InputProps) => {
         {t('recommendations:title')}
       </Typography>
 
-      {mergedRecommendationData
-        .filter((recommendation) => recommendation.dimensions.length > 0)
-        .map((recommendation) => (
-          <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
-            <Box display="flex" alignItems="center">
-              <Markdown>
-                {recommendation.title[language as keyof Locales]}
-              </Markdown>
-              <Box sx={classes.recommendationChipsContainer}>
-                {recommendation.dimensions.map((aDimension) => {
-                  const chipData = dimensionSelections.find(
-                    (selectedDimension) => selectedDimension.id === aDimension
-                  )
-                  return (
-                    <DimensionChip
-                      key={chipData.id}
-                      choice={chipData}
-                      color={colors[chipData.id]}
-                      compact
-                    />
-                  )
-                })}
-              </Box>
-            </Box>
-            <Typography variant="body2" sx={classes.subtoolText}>
-              {recommendation.subtools && recommendation.subtools.join(', ')}
-            </Typography>
-            <Markdown>
-              {recommendation.text[language as keyof Locales]}
-            </Markdown>
-          </Box>
-        ))}
-
-      {mergedRecommendationData
-        .filter((recommendation) => recommendation.dimensions.length === 0)
-        .map((recommendation) => (
-          <Box key={recommendation.id} sx={classes.recommendationItemContainer}>
-            <Box display="flex" alignItems="center">
-              <Box sx={classes.notSelected}>
-                <Markdown>
-                  {recommendation.title[language as keyof Locales]}
-                </Markdown>
-              </Box>
-            </Box>
-            <Box sx={classes.notSelected}>
-              <Markdown>
-                {recommendation.text[language as keyof Locales]}
-              </Markdown>
-            </Box>
-          </Box>
-        ))}
+      <SelectedTools
+        mergedRecommendationData={mergedRecommendationData}
+        dimensionSelections={dimensionSelections}
+      />
+      <NonSelectedTools mergedRecommendationData={mergedRecommendationData} />
     </Box>
   )
 }
