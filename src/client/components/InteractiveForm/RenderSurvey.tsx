@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { BaseSyntheticEvent, useState } from 'react'
 import { Box, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { InputProps } from '../../types'
@@ -37,9 +37,9 @@ const RenderSurvey = ({
     return isFacultySelected && isAnyDimensionsSelected
   }
 
-  const submitFormData = (data: any) => {
+  const submitFormData = (event: BaseSyntheticEvent) => {
     setDisableForm(true)
-    handleSubmit(data)
+    handleSubmit(event)
   }
 
   return (
@@ -47,7 +47,7 @@ const RenderSurvey = ({
       <SelectFaculty control={control} />
       <Box sx={classes.card} justifyContent="center">
         {questions.map((question) => (
-          <div key={question.id as unknown as string}>
+          <div key={question.id}>
             {question.parentId === null && question.priority === 0 && (
               <RenderQuestions
                 control={control}
