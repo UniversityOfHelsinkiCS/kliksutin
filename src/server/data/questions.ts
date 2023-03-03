@@ -1,4 +1,4 @@
-const getQuestionData = () => [
+const getQuestionData = (): any => [
   {
     id: 1,
     surveyId: 1,

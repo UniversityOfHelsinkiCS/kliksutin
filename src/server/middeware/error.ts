@@ -2,7 +2,7 @@ import Sentry from '@sentry/node'
 
 import logger from '../util/logger'
 
-const errorHandler = (error, _req, _res, next) => {
+const errorHandler = (error: any, _req: any, _res: any, next: any) => {
   logger.error(`${error.message} ${error.name} ${error.stack}`)
 
   Sentry.captureException(error)

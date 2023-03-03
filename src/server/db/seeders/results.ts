@@ -4,7 +4,7 @@ import getResultData from '../../data/results'
 const seedResults = async () => {
   const results: any = getResultData()
 
-  results.forEach(async (result) => {
+  results.forEach(async (result: any) => {
     await Result.upsert({
       ...result,
     })

@@ -22,7 +22,7 @@ if (!inProduction) {
     })
   )
 } else {
-  const levels = {
+  const levels: { [key: string]: number } = {
     error: 0,
     warn: 1,
     info: 2,

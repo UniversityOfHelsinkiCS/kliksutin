@@ -13,7 +13,7 @@ const mockHeaders = {
   hygroupcn: 'grp-toska;hy-mltdk-employees',
 }
 
-const userMiddleware = (req, _, next) => {
+const userMiddleware = (req: any, _res: any, next: any) => {
   const headers = inDevelopment ? mockHeaders : req.headers
 
   const {
