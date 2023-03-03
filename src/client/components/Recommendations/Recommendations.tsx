@@ -1,23 +1,44 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { UseFormWatch, FieldValues } from 'react-hook-form'
+import useRecommendations from '../../hooks/useRecommendations'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
 import Markdown from '../Common/Markdown'
 import colors from '../../util/colors'
 import styles from './styles'
-import useRecommendations from '../../hooks/useRecommendations'
 import {
   RecommendationData,
   Locales,
   DimensionSelectionData,
   InputProps,
   ToolType,
+  Survey,
 } from '../../types'
 
 /* eslint-disable no-nested-ternary */
 const sortRecommendations = (a: RecommendationData, b: RecommendationData) =>
   a.label > b.label ? 1 : b.label > a.label ? -1 : 0
+
+const getSelectedDimensions = (
+  survey: Survey,
+  watch: UseFormWatch<FieldValues>
+) => {
+  const dimensionQuestion = survey.Questions.find(
+    (question) => question.optionData.type === 'dimensions'
+  )
+
+  const dimensionSelections: { [x: string]: boolean } = watch(
+    dimensionQuestion.id.toString()
+  )
+
+  const selectedDimensions = (
+    dimensionQuestion.optionData.options as DimensionSelectionData[]
+  ).filter(({ id }) => dimensionSelections[id])
+
+  return selectedDimensions
+}
 
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
@@ -33,39 +54,15 @@ const Recommendations = ({ watch }: InputProps) => {
   const rawRecommendationData: RecommendationData[] =
     recommendations.sort(sortRecommendations)
 
-  const dimensionQuestion = survey.Questions.find(
-    (question) => question.optionData.type === 'dimensions'
-  )
-
-  const dimensionSelections: { [x: string]: boolean } = watch(
-    dimensionQuestion.id.toString()
-  )
-
-  if (!dimensionSelections) return null
-
-  const dimensionSelectionData = () => {
-    const arrayOfSelectedDimensions: string[] = Object.keys(
-      dimensionSelections
-    ).filter((key) => dimensionSelections[key])
-
-    const result: DimensionSelectionData[] = (
-      dimensionQuestion.optionData.options as DimensionSelectionData[]
-    ).map((aDimension: DimensionSelectionData) =>
-      arrayOfSelectedDimensions.includes(aDimension.id)
-        ? { ...aDimension, selected: true }
-        : { ...aDimension, selected: false }
-    )
-
-    return result
-  }
+  const dimensionSelections = getSelectedDimensions(survey, watch)
 
   const recommendationsData = () => {
-    const selectedTools = dimensionSelectionData()
-      .filter((aSelection: DimensionSelectionData) => aSelection.selected)
-      .map((aSelection: DimensionSelectionData) => ({
+    const selectedTools = dimensionSelections.map(
+      (aSelection: DimensionSelectionData) => ({
         optionId: aSelection.id,
         dimensions: aSelection.data,
-      }))
+      })
+    )
 
     const result = recommendations.map((aRecommendation) => ({
       name: aRecommendation.label,
@@ -88,8 +85,7 @@ const Recommendations = ({ watch }: InputProps) => {
   }
 
   const extractSubtools = (toolName: string) => {
-    const extractedSubtools: string[] = dimensionSelectionData()
-      .filter((aSelection: DimensionSelectionData) => aSelection.selected)
+    const extractedSubtools: string[] = dimensionSelections
       .map((aSelection: DimensionSelectionData) =>
         aSelection.data.filter((aTool: ToolType) => aTool.name === toolName)
       )
@@ -121,7 +117,7 @@ const Recommendations = ({ watch }: InputProps) => {
               </Markdown>
               <Box sx={classes.recommendationChipsContainer}>
                 {recommendation.dimensions.map((aDimension) => {
-                  const chipData = dimensionSelectionData().find(
+                  const chipData = dimensionSelections.find(
                     (selectedDimension) => selectedDimension.id === aDimension
                   )
                   return (
