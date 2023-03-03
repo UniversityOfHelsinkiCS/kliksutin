@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-
 import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
@@ -15,6 +14,7 @@ const RenderSurvey = ({
 }: InputProps) => {
   const { t, i18n } = useTranslation()
   const classes = styles.cardStyles
+  const [disableForm, setDisableForm] = useState(false)
   const [showQuestions, setShowQuestions] = useState(false)
 
   if (!questions) return null
@@ -35,6 +35,11 @@ const RenderSurvey = ({
       Object.values(watch(dimensionQuestionId)).some((selected) => selected)
 
     return isFacultySelected && isAnyDimensionsSelected
+  }
+
+  const submitFormData = (data: any) => {
+    setDisableForm(true)
+    handleSubmit(data)
   }
 
   return (
@@ -77,7 +82,11 @@ const RenderSurvey = ({
               {t('openForm')}
             </Button>
           ) : (
-            <Button data-cy="submit-form-button" onClick={handleSubmit}>
+            <Button
+              data-cy="submit-form-button"
+              disabled={disableForm}
+              onClick={submitFormData}
+            >
               {t('submit')}
             </Button>
           )}
