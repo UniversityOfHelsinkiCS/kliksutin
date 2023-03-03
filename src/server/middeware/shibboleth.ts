@@ -8,6 +8,7 @@ const headers = [
   'mail',
   'preferredlanguage',
   'hypersonsisuid',
+  'hyGroupCn',
 ]
 
 export default headersMiddleware(headers)

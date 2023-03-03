@@ -28,7 +28,7 @@ facultyRouter.get('/', async (req, res) => {
 })
 
 facultyRouter.get('/user', async (req: RequestWithUser, res) => {
-  const { id, iamGroups } = req.user
+  const { id, iamGroups = [] } = req.user
 
   if (!id) return res.send([])
 
