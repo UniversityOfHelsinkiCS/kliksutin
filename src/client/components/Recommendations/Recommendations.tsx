@@ -82,10 +82,10 @@ const Recommendations = ({ watch }: InputProps) => {
     return Array.from(new Set(extractedSubtools))
   }
 
-  const mergedRecommendationData = rawRecommendationData.map((item) => ({
-    ...item,
-    ...recommendationsData.find((i) => i.name === item.label),
-    subtools: item.label === 'moodle' && extractSubtools(item.label),
+  const mergedRecommendationData = rawRecommendationData.map((aToolData) => ({
+    ...aToolData,
+    ...recommendationsData.find((aTool) => aTool.name === aToolData.label),
+    subtools: aToolData.label === 'moodle' && extractSubtools(aToolData.label),
   }))
 
   return (
