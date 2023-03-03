@@ -1,12 +1,12 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import { UseFormWatch, FieldValues } from 'react-hook-form'
 import useRecommendations from '../../hooks/useRecommendations'
 import useSurvey from '../../hooks/useSurvey'
 import DimensionChip from '../Chip/DimensionChip'
 import Markdown from '../Common/Markdown'
 import colors from '../../util/colors'
+import getSelectedDimensions from '../../util/getSelectedDimensions'
 import styles from './styles'
 import {
   RecommendationData,
@@ -14,31 +14,11 @@ import {
   DimensionSelectionData,
   InputProps,
   ToolType,
-  Survey,
 } from '../../types'
 
 /* eslint-disable no-nested-ternary */
 const sortRecommendations = (a: RecommendationData, b: RecommendationData) =>
   a.label > b.label ? 1 : b.label > a.label ? -1 : 0
-
-const getSelectedDimensions = (
-  survey: Survey,
-  watch: UseFormWatch<FieldValues>
-) => {
-  const dimensionQuestion = survey.Questions.find(
-    (question) => question.optionData.type === 'dimensions'
-  )
-
-  const dimensionSelections: { [x: string]: boolean } = watch(
-    dimensionQuestion.id.toString()
-  )
-
-  const selectedDimensions = (
-    dimensionQuestion.optionData.options as DimensionSelectionData[]
-  ).filter(({ id }) => dimensionSelections[id])
-
-  return selectedDimensions
-}
 
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()

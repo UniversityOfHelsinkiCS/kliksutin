@@ -49,10 +49,9 @@ export interface DimensionSelectionData {
   id: string
   label: Locales
   data: ToolType[]
-  selected?: boolean
 }
 
-type ChoiceType =
+export type ChoiceType =
   | SingleChoiceType[]
   | MultipleChoiceType[]
   | DimensionSelectionData[]
