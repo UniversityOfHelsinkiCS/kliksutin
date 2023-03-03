@@ -20,6 +20,37 @@ import {
 const sortRecommendations = (a: RecommendationData, b: RecommendationData) =>
   a.label > b.label ? 1 : b.label > a.label ? -1 : 0
 
+const getRecommendationsData = (
+  rawRecommendations: RecommendationData[],
+  dimensionSelections: DimensionSelectionData[]
+) => {
+  const selectedTools = dimensionSelections.map(
+    (aSelection: DimensionSelectionData) => ({
+      optionId: aSelection.id,
+      dimensions: aSelection.data,
+    })
+  )
+
+  const result = rawRecommendations.map((aRecommendation) => ({
+    name: aRecommendation.label,
+    dimensions: [],
+  }))
+
+  selectedTools.forEach((tool) => {
+    result.forEach((aRecommendation) => {
+      if (
+        tool.dimensions.some(
+          (aTool: ToolType) => aTool.name === aRecommendation.name
+        )
+      ) {
+        aRecommendation.dimensions.push(tool.optionId)
+      }
+    })
+  })
+
+  return result
+}
+
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
@@ -36,33 +67,10 @@ const Recommendations = ({ watch }: InputProps) => {
 
   const dimensionSelections = getSelectedDimensions(survey, watch)
 
-  const recommendationsData = () => {
-    const selectedTools = dimensionSelections.map(
-      (aSelection: DimensionSelectionData) => ({
-        optionId: aSelection.id,
-        dimensions: aSelection.data,
-      })
-    )
-
-    const result = recommendations.map((aRecommendation) => ({
-      name: aRecommendation.label,
-      dimensions: [],
-    }))
-
-    selectedTools.forEach((tool) => {
-      result.forEach((aRecommendation) => {
-        if (
-          tool.dimensions.some(
-            (aTool: ToolType) => aTool.name === aRecommendation.name
-          )
-        ) {
-          aRecommendation.dimensions.push(tool.optionId)
-        }
-      })
-    })
-
-    return result
-  }
+  const recommendationsData = getRecommendationsData(
+    rawRecommendationData,
+    dimensionSelections
+  )
 
   const extractSubtools = (toolName: string) => {
     const extractedSubtools: string[] = dimensionSelections
@@ -77,7 +85,7 @@ const Recommendations = ({ watch }: InputProps) => {
 
   const mergedRecommendationData = rawRecommendationData.map((item) => ({
     ...item,
-    ...recommendationsData().find((i) => i.name === item.label),
+    ...recommendationsData.find((i) => i.name === item.label),
     subtools: item.label === 'moodle' && extractSubtools(item.label),
   }))
 
