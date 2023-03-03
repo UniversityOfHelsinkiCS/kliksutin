@@ -11,7 +11,7 @@ const cardStyles = {
   },
   outerBox: {
     m: 2,
-    maxWidth: 1080,
+    maxWidth: 1280,
     border: 1,
     borderColor: 'grey.300',
   },

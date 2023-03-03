@@ -33,7 +33,7 @@ const InteractiveForm = () => {
   if (isLoading) return null
 
   return (
-    <Box my="2rem">
+    <Box my="2rem" maxWidth={1280}>
       <Grid container>
         <Grid item sm={12} md={7} xl={6}>
           <form onSubmit={handleSubmit(onSubmit)}>
