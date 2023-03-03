@@ -10,33 +10,14 @@ import {
   MenuItem,
 } from '@mui/material'
 import { UseFormWatch, FieldValues } from 'react-hook-form'
-
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import useSurvey from '../../../hooks/useSurvey'
 import LoadingProgress from './LoadingProgress'
+import getSelectedDimensions from '../../../util/getSelectedDimensions'
 import styles from '../styles'
-import { DimensionSelectionData, Survey, Locales } from '../../../types'
+import { DimensionSelectionData, Locales } from '../../../types'
 
 const classes = styles.cardStyles
-
-const getSelectedDimensions = (
-  survey: Survey,
-  watch: UseFormWatch<FieldValues>
-) => {
-  const dimensionQuestion = survey.Questions.find(
-    (question) => question.optionData.type === 'dimensions'
-  )
-
-  const dimensionSelections: { [x: string]: boolean } = watch(
-    dimensionQuestion.id.toString()
-  )
-
-  const selectedDimensions = dimensionQuestion.optionData.options.filter(
-    ({ id }) => dimensionSelections[id]
-  )
-
-  return selectedDimensions as DimensionSelectionData[]
-}
 
 const CompletionResult = ({
   dimension,
