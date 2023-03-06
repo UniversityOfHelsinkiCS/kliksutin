@@ -1,9 +1,16 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material'
-import { InputProps, SingleChoiceType } from '../../types'
 
-const SingleChoice = ({ control, watch, question, children }: InputProps) => {
+import { InputProps, Locales, SingleChoiceType } from '../../types'
+
+const SingleChoice = ({
+  control,
+  watch,
+  question,
+  children,
+  language,
+}: InputProps) => {
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
 
@@ -26,7 +33,7 @@ const SingleChoice = ({ control, watch, question, children }: InputProps) => {
                   <FormControlLabel
                     key={singleOption.id as string}
                     value={singleOption.id}
-                    label={singleOption.label.en}
+                    label={singleOption.label[language as keyof Locales]}
                     control={<Radio />}
                   />
                 )
