@@ -3,7 +3,7 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { Box, Card, CardContent, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import styles from './styles'
@@ -61,46 +61,42 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
 
   return (
     <Box sx={classes.card}>
-      <Card>
-        <CardContent>
-          <Typography variant="h5" sx={classes.heading} component="div">
-            {t('facultySelect:welcomeMessage')}
-          </Typography>
-          <Box sx={classes.content}>
-            <Typography variant="body2">
-              {t('facultySelect:introMessage')}
-            </Typography>
-          </Box>
-        </CardContent>
+      <Typography variant="h5" sx={classes.heading} component="div">
+        {t('facultySelect:welcomeMessage')}
+      </Typography>
+      <Box sx={classes.content}>
+        <Typography variant="body2">
+          {t('facultySelect:introMessage')}
+        </Typography>
+      </Box>
 
-        <Controller
-          control={control}
-          name="faculty"
-          defaultValue={userFaculties[0]?.code || ''}
-          render={({ field }) => (
-            <FormControl sx={{ width: '100%' }}>
-              <InputLabel>{t('facultySelect:inputLabel')}</InputLabel>
-              <Select
-                data-cy="faculty-select"
-                value={faculty}
-                label={t('facultySelect:inputLabel')}
-                onChange={handleChange}
-                {...field}
-              >
-                {organisations.map((f: Faculty) => (
-                  <MenuItem
-                    data-cy={`faculty-option-${f.code}`}
-                    key={f.code}
-                    value={f.code}
-                  >
-                    {f.name[language as keyof Locales]}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
-        />
-      </Card>
+      <Controller
+        control={control}
+        name="faculty"
+        defaultValue={userFaculties[0]?.code || ''}
+        render={({ field }) => (
+          <FormControl sx={{ width: '100%' }}>
+            <InputLabel>{t('facultySelect:inputLabel')}</InputLabel>
+            <Select
+              data-cy="faculty-select"
+              value={faculty}
+              label={t('facultySelect:inputLabel')}
+              onChange={handleChange}
+              {...field}
+            >
+              {organisations.map((f: Faculty) => (
+                <MenuItem
+                  data-cy={`faculty-option-${f.code}`}
+                  key={f.code}
+                  value={f.code}
+                >
+                  {f.name[language as keyof Locales]}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        )}
+      />
     </Box>
   )
 }

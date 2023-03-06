@@ -7,11 +7,11 @@ const cardStyles = {
   questionsContainer: {
     my: 8,
     borderLeft: 1,
-    borderColor: 'grey.400',
+    borderColor: 'grey.300',
   },
   content: {
     mt: 2,
-    mb: 1,
+    mb: 2,
     pl: 2,
     textAlign: 'left',
   },
@@ -21,6 +21,7 @@ const cardStyles = {
   },
   heading: {
     fontWeight: '200',
+    pb: 1,
   },
 }
 
