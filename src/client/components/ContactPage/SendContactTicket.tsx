@@ -18,7 +18,7 @@ const SendContactTicket = () => {
     apiClient.post('/summary', {
       targets,
       text,
-      subject: 'Kliksutin contact ticket',
+      subject: 'Curre contact ticket',
     })
   }
 
