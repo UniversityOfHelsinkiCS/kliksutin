@@ -17,7 +17,7 @@ import {
 import { Language, AdminPanelSettingsOutlined } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
-import toskaBlack from '../../assets/toscalogo_black.svg'
+import hyLogo from '../../assets/hy_logo.svg'
 import styles from './styles'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
@@ -62,7 +62,7 @@ const NavBar = () => {
         <Toolbar sx={classes.toolbar} disableGutters>
           <Box display="inline-flex" alignItems="end" sx={classes.link}>
             <Link to="/" style={{ marginBottom: -5 }}>
-              <img src={toskaBlack} alt="Toska" width="70" />
+              <img src={hyLogo} alt="University of Helsinki" width="40" />
             </Link>
             <Box ml="2rem">
               <Link to="/" style={{ textDecoration: 'none' }}>
