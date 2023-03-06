@@ -11,6 +11,17 @@ import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 import useUserFaculties from '../../hooks/useUserFaculties'
 
+const sortFaculties = (faculties: Faculty[], language: keyof Locales) => {
+  const sortedFaculties = faculties.sort((a, b) => {
+    if (a.name[language] > b.name[language]) return 1
+    if (a.name[language] < b.name[language]) return -1
+
+    return 0
+  })
+
+  return sortedFaculties
+}
+
 const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
@@ -25,6 +36,8 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
   const classes = styles.cardStyles
 
   if (isLoading) return null
+
+  const sortedFaculties = sortFaculties(faculties, language as keyof Locales)
 
   return (
     <Box sx={classes.card}>
@@ -54,7 +67,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
                 onChange={handleChange}
                 {...field}
               >
-                {faculties.map((f: Faculty) => (
+                {sortedFaculties.map((f: Faculty) => (
                   <MenuItem
                     data-cy={`faculty-option-${f.code}`}
                     key={f.code}
