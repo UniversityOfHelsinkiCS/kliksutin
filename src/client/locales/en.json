@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Kliksutin",
+    "appName": "Curre",
     "submit": "Proceed with these choices",
     "openForm": "Proceed to the questions",
     "admin": "admin"
@@ -9,7 +9,7 @@
     "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>"
   },
   "facultySelect": {
-    "welcomeMessage": "Hi, welcome to Kliksutin",
+    "welcomeMessage": "Hi, welcome to Curre",
     "introMessage": "Start by selecting your faculty",
     "inputLabel": "Your Faculty"
   },
@@ -28,7 +28,7 @@
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send",
     "sendSuccess": "Summary email sent successfully",
-    "endMessage": "Thank you for using Kliksutin!"
+    "endMessage": "Thank you for using Curre!"
   },
   "contact": {
     "title": "Contact page",
@@ -43,7 +43,7 @@
     "contactTicketUserMessage": "User's message:",
     "contactTicketUserSummary": "User's summary:",
     "contactTicketSend": "Send",
-    "sendSuccess": "Thank you for using Kliksutin, we'll be in touch!"
+    "sendSuccess": "Thank you for using Curre, we'll be in touch!"
   },
   "openai": {
     "giveCourseInfoText": "If you would like lecture ideas for your course, enter the course name below",
