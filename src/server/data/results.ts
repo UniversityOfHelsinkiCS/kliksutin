@@ -15,7 +15,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: '',
+        fi: 'Tiedon omaksumista kurssilla voidaan tukea monin eri tavoin. Huolehdithan siitä, että kurssilla käytetty opiskelumateriaali on sellaista, johon opiskelijoilla on pääsy. On hyvä huomioida kurssin suunnittelussa ja opetusmateriaalissa [linjakkaan opetuksen periaatteet](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta) sekä opetukseen liittyvät [tekijänoikeudet](https://teaching.helsinki.fi/ohjeet/artikkeli/avoin-opetus-ja-tekijanoikeudet#paragraph-3918).',
         sv: '',
         en: '',
       },
@@ -62,7 +62,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: '',
+        fi: 'Tiedon omaksumista kurssilla voidaan tukea monin eri tavoin. Huolehdithan siitä, että kurssilla käytetty opiskelumateriaali on sellaista, johon opiskelijoilla on pääsy. On hyvä huomioida kurssin suunnittelussa ja opetusmateriaalissa [linjakkaan opetuksen periaatteet](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta) sekä opetukseen liittyvät [tekijänoikeudet](https://teaching.helsinki.fi/ohjeet/artikkeli/avoin-opetus-ja-tekijanoikeudet#paragraph-3918).',
         sv: '',
         en: '',
       },
@@ -109,7 +109,7 @@ const getResultData = (): any => [
         en: 'Avoimet verkkokurssit (MOOC), joiden osallistujamäärää ei ennalta tiedetä tai pystytä ennakoimaan, voidaan järjestää korkeakoulujen yhteisessä DigiCampus-oppimisympäristössä. Rajoittamaton osallistujamäärä on tärkeää huomioida kurssin pedagogisten ratkaisuiden ja arvioinnin suunnittelussa. Laajoille kursseille on tyypillistä itseopiskelupainotteisuus, sillä ohjaukseen ja vuorovaikutuksen on yleensä rajallisemmat mahdollisuudet kuin pienemmillä ryhmillä. Opettajan työmäärän on pysyttävä kohtuullisena.',
       },
       investication: {
-        fi: '',
+        fi: 'Tiedon omaksumista kurssilla voidaan tukea monin eri tavoin. Huolehdithan siitä, että kurssilla käytetty opiskelumateriaali on sellaista, johon opiskelijoilla on pääsy. On hyvä huomioida kurssin suunnittelussa ja opetusmateriaalissa [linjakkaan opetuksen periaatteet](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta) sekä opetukseen liittyvät [tekijänoikeudet](https://teaching.helsinki.fi/ohjeet/artikkeli/avoin-opetus-ja-tekijanoikeudet#paragraph-3918).',
         sv: '',
         en: '',
       },
@@ -250,7 +250,7 @@ const getResultData = (): any => [
         en: 'Lähiopetuksessa on mahdollista osallistaa opiskelijoita hyödyntämällä aktivointiin ja yhteistyöskentelyyn soveltuvia välineitä, kuten Presemoa ja Flingaa.',
       },
       investication: {
-        fi: '',
+        fi: 'Tiedon omaksumista kontaktiopetuksessa voidaan tukea monimuotoisilla opetusmateriaaleilla. Voit tarjota opiskelijoille mahdollisuuden katsoa esimerkiksi luennot uudestaan kotona, mikäli tallennat luennot esimerkiksi [UniTube -palveluun tätä tukevassa opetustilassa](https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/unitube/unitube-luentotallennustilat).',
         sv: '',
         en: '',
       },
@@ -297,7 +297,7 @@ const getResultData = (): any => [
         en: 'Hybridiopetuksessa osa kurssin opiskelijoista on opettajan kanssa samassa tilassa kampuksella ja osa samanaikaisesti etänä verkkoyhteyden päässä. Järjestely on opettajalle usein haasteellinen, koska huomion jakaminen kahteen suuntaan ja kaikkien kohtelu tasapuolisesti vaatii keskittymistä ja huolellista etukäteissuunnittelua. Opiskelijoiden aktivointi ja vuorovaikutuksen ylläpitäminen asettaa myös käytettävälle opetustilalle ja välineille teknisiä vaatimuksia, jotka on tärkeää huomioida näiden valinnassa.',
       },
       investication: {
-        fi: '',
+        fi: 'Hybridiopetuksessa on tärkeää huomioida tiedon omaksumisen tasapuoliset mahdollisuudet läsnäoleville ja etäosallistuville opiskelijoille. Huomioi esimerkiksi laadukas puheäänen välitys etäosallistujille. Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
         sv: '',
         en: '',
       },
@@ -344,7 +344,7 @@ const getResultData = (): any => [
         en: 'Etäopetus mahdollistaa suurten opiskelijamäärien osallistumisen joustavasti, mutta vaatii huolellista opetuksen ja oppimisprosessin suunnittelua. Opiskelijoiden työskentely on ohjeistettava tarkasti, aktiivisuuden ylläpitoon on panostettava, ohjauksen ja vuorovaikutuksen toteuttaminen edellyttää käytettävien välineiden hyvää tuntemusta ja oppimistehtävissä on huomioitava etäopiskelijoiden “näkymättömyys” opettajalle. Etäopiskelu voidaan järjestää ryhmän koosta riippuen itseopiskelua tai yhteisöllistä työskentelyä painottaen.',
       },
       investication: {
-        fi: '',
+        fi: 'Etäopetuksessa tiedon omaksuminen tapahtuu usein videon välityksellä, jolloin saavutettavuuden huomioiminen on erittäin tärkeää. Huomaathan että joidenkin materiaalien [etäkäyttöön on hyvä ohjeistaa opiskelijaa](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/asioi-kirjastossa/usein-kysyttyja-kysymyksia-ukk/ukk-e-kirjat-lehdet-ja-tietokannat). Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
         sv: '',
         en: '',
       },
@@ -386,37 +386,37 @@ const getResultData = (): any => [
     },
     data: {
       allDimensions: {
-        fi: '',
+        fi: 'Kiinnitäthän huomiota [opetuksen digitaaliseen saavutettavuuteen](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus).',
         sv: '',
         en: '',
       },
       investication: {
-        fi: '',
+        fi: 'Kiinnitäthän huomiota [opetuksen digitaaliseen saavutettavuuteen](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus).',
         sv: '',
         en: '',
       },
       production: {
-        fi: '',
+        fi: 'Kiinnitäthän huomiota [opetuksen digitaaliseen saavutettavuuteen](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus).',
         sv: '',
         en: '',
       },
       collaboration: {
-        fi: '',
+        fi: 'Kiinnitäthän huomiota [opetuksen digitaaliseen saavutettavuuteen](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus).',
         sv: '',
         en: '',
       },
       discussion: {
-        fi: '',
+        fi: 'Kiinnitäthän huomiota [opetuksen digitaaliseen saavutettavuuteen](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus).',
         sv: '',
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Kiinnitäthän huomiota [opetuksen digitaaliseen saavutettavuuteen](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus).',
         sv: '',
         en: '',
       },
       practice: {
-        fi: '',
+        fi: 'Kiinnitäthän huomiota [opetuksen digitaaliseen saavutettavuuteen](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus).',
         sv: '',
         en: '',
       },
@@ -683,9 +683,9 @@ const getResultData = (): any => [
         en: '',
       },
       collaboration: {
-        fi: 'Lähiopetukseen soveltuvia yhteistyövälineitä ovat mm. Presemo ja Flinga (?)',
-        sv: 'Lähiopetukseen soveltuvia yhteistyövälineitä ovat mm. Presemo ja Flinga (?)',
-        en: 'Lähiopetukseen soveltuvia yhteistyövälineitä ovat mm. Presemo ja Flinga (?)',
+        fi: 'Lähiopetukseen soveltuvia yhteistyövälineitä ovat mm. Presemo ja Flinga.',
+        sv: 'Lähiopetukseen soveltuvia yhteistyövälineitä ovat mm. Presemo ja Flinga.',
+        en: 'Lähiopetukseen soveltuvia yhteistyövälineitä ovat mm. Presemo ja Flinga.',
       },
       discussion: {
         fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää Moodlen keskustelualuetta, etäopetustapahtumissa Zoomin tai Teamsin chattia. Kaikissa tapauksissa on syytä miettiä ja tarkkaan ohjeistaa, mikä keskustelun tavoite kussakin tapauksessa on.',

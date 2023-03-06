@@ -124,7 +124,7 @@ const getQuestionData = (): any => [
       en: 'Kurssin koko',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
+      fi: 'Valitse onko kurssi osallistujamäärältään pieni, suuri vai rajoittamaton.',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -170,7 +170,7 @@ const getQuestionData = (): any => [
       en: 'Osallistuminen',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
+      fi: 'Osallistuvatko opiskelijat pääsääntöisesti opetukseen kurssilla ainoastaan paikan päällä yliopistolla, [kokonaan etänä](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) vai [hybridisti](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) niin, että osa opiskelijoista osallistuu etänä ja osa paikan päällä?',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -216,7 +216,7 @@ const getQuestionData = (): any => [
       en: 'Suoritusmuoto',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
+      fi: 'Valitse kaikki ne suoritusmuodot, jotka parhaiten kuvaavat kurssilla käytössä olevia [suoritustapoja](https://teaching.helsinki.fi/ohjeet/artikkeli/suoritustavat).',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -408,7 +408,7 @@ const getQuestionData = (): any => [
       en: 'Haluatko pitää kurssi MOOCina?',
     },
     text: {
-      fi: '',
+      fi: 'Katso [tästä](https://teaching.helsinki.fi/ohjeet/artikkeli/mooc-kurssien-kriteerit-ja-ohjeet) MOOC-kurssien kriteerit ja ohjeet.',
       sv: '',
       en: '',
     },
@@ -448,7 +448,7 @@ const getQuestionData = (): any => [
       en: 'Onko opetus avointa?',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
+      fi: 'Kenelle kurssi on suunnattu?',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -458,7 +458,7 @@ const getQuestionData = (): any => [
         {
           id: 'courseIsOpenUniversity',
           label: {
-            fi: 'Kyllä',
+            fi: 'Kurssi on kaikille avoin',
             sv: 'Kyllä',
             en: 'Kyllä',
           },
@@ -466,7 +466,7 @@ const getQuestionData = (): any => [
         {
           id: 'courseIsNotOpenUniversity',
           label: {
-            fi: 'Ei',
+            fi: 'Perustutkinto-opiskelijoille',
             sv: 'Ei',
             en: 'Ei',
           },
