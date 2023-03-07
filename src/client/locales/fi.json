@@ -10,7 +10,7 @@
   },
   "facultySelect": {
     "welcomeMessage": "Hei, tervetuloa Curreen",
-    "introMessage": "Moi tässä on otsikko  \n \n Tässä on alateksti: Aloita valitsemalla tiedekuntasi valikosta",
+    "introMessage": " ### Curre auttaa opettajaa digipedagogisissa valinnoissa. Voit käyttää Currea tukena kun haluat ideoida uusia mahdollisuuksia hyödyntää digitalisaatiota osana opetusta ja oppimista kurssillasi.  \n \nAloita valitsemalla tiedekuntasi valikosta.",
     "inputLabel": "Tiedekuntasi"
   },
   "recommendations": {
@@ -46,7 +46,7 @@
     "sendSuccess": "Kiitos Curren käytöstä, olemme yhteydessä sinuun pian!"
   },
   "openai": {
-    "giveCourseInfoText": "Jos haluat luentoideoita kurssillesi, syötä kurssin nimi alle",
+    "giveCourseInfoText": "Voit halutessasi kokeilla oman opetuksen ideointia GPT3-kielimallin avustuksella.  \n \nHuomioithan, että kielimalli ei ole älykäs eikä analysoi vastauksiaan niiden oikeellisuuden osalta. Kielimalli voi esimerkiksi tuottaa luento-otsikoita sille annetun kurssin nimen pohjalta.  \n \nJos haluat luentoideoita kurssillesi, syötä kurssin nimi alle.",
     "courseCompletionPrompt": "Anna 5 luentoaihetta kurssille, jonka otsikko on \"{{courseName}}\".",
     "selectDimensionInfoText": "Jos haluat ideoita työkalujen käyttöön, valitse tuettava oppimismuoto",
     "dimensionSelect": "Oppimismuoto",

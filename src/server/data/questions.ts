@@ -10,7 +10,7 @@ const getQuestionData = (): any => [
       en: 'Oppimismuodot',
     },
     text: {
-      fi: 'Valitse yksi tai useampi oppimismuoto, jota haluat tukea digitaalisten työvälineden avulla kurssillasi.',
+      fi: 'Valitse yksi tai useampi oppimismuoto, jota haluat tukea digitaalisten työvälineden avulla kurssillasi. Oppimismuotojen valinnassa on noudateltu [ABC-työpajoista](https://teaching.helsinki.fi/ohjeet/artikkeli/koulutus-ja-patevoityminen#paragraph-4166) tuttua [ABC-oppimismuotoilun menetelmää, joka on kehitetty University College London:n toimesta](https://blogs.ucl.ac.uk/abc-ld/).',
       sv: 'Valitse yksi tai useampi oppimismuoto, jota haluat tukea digitaalisten työvälineden avulla kurssillasi.',
       en: 'Valitse yksi tai useampi oppimismuoto, jota haluat tukea digitaalisten työvälineden avulla kurssillasi.',
     },
@@ -20,8 +20,8 @@ const getQuestionData = (): any => [
         {
           id: 'acquisition',
           label: {
-            fi: 'Tiedon omaksuminen',
-            sv: 'Tiedon omaksuminen',
+            fi: 'Tiedonhankinta',
+            sv: 'Tiedonhankinta',
             en: 'Acquisition',
           },
           data: [
@@ -86,7 +86,7 @@ const getQuestionData = (): any => [
           label: {
             fi: 'Tutkiminen',
             sv: 'Tutkiminen',
-            en: 'Investication',
+            en: 'Investigation',
           },
           data: [
             { name: 'flinga', subtools: [] },
@@ -127,7 +127,7 @@ const getQuestionData = (): any => [
       en: 'Kurssin koko',
     },
     text: {
-      fi: 'Valitse onko kurssi osallistujamäärältään pieni (<50), suuri (>50) vai rajoittamaton.',
+      fi: 'Valitse onko kurssi osallistujamäärältään pieni (<50), suuri (>=50) vai rajoittamaton.',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -234,7 +234,7 @@ const getQuestionData = (): any => [
             en: 'Tentti',
           },
           data: {
-            fi: 'Tentin voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
+            fi: '[Tentin](https://teaching.helsinki.fi/ohjeet/artikkeli/tentit-ja-niiden-jarjestaminen) voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
             sv: 'Tentin voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
             en: 'Tentin voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
           },
@@ -247,7 +247,7 @@ const getQuestionData = (): any => [
             en: 'Pienryhmätyöskentely',
           },
           data: {
-            fi: 'Ryhmätyöt perustuvat yhdessä tekemiseen ja keskusteluun. Ryhmätyöt edistävät opiskelijoiden välistä vuorovaikutusta ja opettavat yhteistyötaitoja. Opiskelijoiden väliset keskustelut ja tehtävien tekeminen yhdessä syventävät aiheen ymmärrystä.',
+            fi: '[Ryhmätyöt](https://teaching.helsinki.fi/ohjeet/artikkeli/erilaisia-arviointitapoja#paragraph-6551) perustuvat yhdessä tekemiseen ja keskusteluun. Ryhmätyöt edistävät opiskelijoiden välistä vuorovaikutusta ja opettavat yhteistyötaitoja. Opiskelijoiden väliset keskustelut ja tehtävien tekeminen yhdessä syventävät aiheen ymmärrystä.',
             sv: 'Ryhmätyöt perustuvat yhdessä tekemiseen ja keskusteluun. Ryhmätyöt edistävät opiskelijoiden välistä vuorovaikutusta ja opettavat yhteistyötaitoja. Opiskelijoiden väliset keskustelut ja tehtävien tekeminen yhdessä syventävät aiheen ymmärrystä.',
             en: 'Ryhmätyöt perustuvat yhdessä tekemiseen ja keskusteluun. Ryhmätyöt edistävät opiskelijoiden välistä vuorovaikutusta ja opettavat yhteistyötaitoja. Opiskelijoiden väliset keskustelut ja tehtävien tekeminen yhdessä syventävät aiheen ymmärrystä.',
           },
@@ -301,12 +301,12 @@ const getQuestionData = (): any => [
     parentId: 3,
     priority: 0,
     title: {
-      fi: 'Tallennus',
+      fi: 'Opetustilanteiden nauhoitus?',
       sv: 'Tallennus',
       en: 'Tallennus',
     },
     text: {
-      fi: 'Yleinen teksti liittyen tähän valintaan',
+      fi: 'Nauhoitetaanko kurssin aikana esimerkiksi luentoja, jotka tuodaan opiskelijoiden käyttöön myöhemmin? Muistathan huomioida [opetusvideoissa saavutettavuuden](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus#paragraph-5245).',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -344,7 +344,7 @@ const getQuestionData = (): any => [
       en: 'Arviointi',
     },
     text: {
-      fi: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
+      fi: '[Oppimisen arviointi](https://teaching.helsinki.fi/ohjeet/oppimisen-ja-osaamisen-arviointi) voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää [erilaisia formatiivisen arvioinnin muotoja](https://teaching.helsinki.fi/ohjeet/artikkeli/erilaisia-arviointitapoja), sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
       sv: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
       en: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
     },
@@ -406,7 +406,7 @@ const getQuestionData = (): any => [
     parentId: 2,
     priority: 0,
     title: {
-      fi: 'Haluatko pitää kurssi MOOCina?',
+      fi: 'Onko kurssi tarkoitus järjestää kaikille avoimena verkkokurssina (Massive Open Online Course, eli MOOC)?',
       sv: 'Haluatko pitää kurssi MOOCina?',
       en: 'Haluatko pitää kurssi MOOCina?',
     },
@@ -437,7 +437,7 @@ const getQuestionData = (): any => [
       ],
     },
     visibility: {
-      options: ['courseSizeBig', 'courseSizeUnlimited'],
+      options: ['courseSizeUnlimited'],
     },
   },
   {
@@ -446,12 +446,12 @@ const getQuestionData = (): any => [
     parentId: null,
     priority: 1,
     title: {
-      fi: 'Onko opetus avointa?',
+      fi: 'Kenelle kurssi on suunnattu?',
       sv: 'Onko opetus avointa?',
       en: 'Onko opetus avointa?',
     },
     text: {
-      fi: 'Kenelle kurssi on suunnattu?',
+      fi: 'Onko kurssi suunnattu vain perustutkinto-opiskelijoille vai tarjolla myös [avoimina yliopisto-opintoina](https://teaching.helsinki.fi/ohjeet/artikkeli/jatkuva-oppiminen-ja-avoin-yliopisto-opetus)?',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
