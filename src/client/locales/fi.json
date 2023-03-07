@@ -28,11 +28,11 @@
     "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
     "sendSummaryMail": "Lähetä",
     "sendSuccess": "Yhteenveto on lähetetty sähköpostiisi",
-    "endMessage": "Kiitos Kliksuttimen käytöstä!"
+    "endMessage": "Kiitos Curren käytöstä!"
   },
   "contact": {
     "title": "Yhteydenotto",
-    "contactMessage": "Kerro hieman miten voisimme olla avuksesi.",
+    "contactMessage": "Lähetä tästä tiketti jatkaaksesi keskustelua asiantuntijan kanssa.",
     "contactMethodLabel": "Valitse yhteydenottotapa",
     "contactMethodEmail": "Sähköposti",
     "contactMethodConsultation": "Konsultaatio",
@@ -43,13 +43,13 @@
     "contactTicketUserMessage": "Käyttäjän viesti:",
     "contactTicketUserSummary": "Käyttäjän yhteenveto:",
     "contactTicketSend": "Lähetä",
-    "sendSuccess": "Kiitos Kliksuttimen käytöstä, olemme yhteydessä sinuun pian!"
+    "sendSuccess": "Kiitos Curren käytöstä, olemme yhteydessä sinuun pian!"
   },
   "openai": {
     "giveCourseInfoText": "Jos haluat luentoideoita kurssillesi, syötä kurssin nimi alle",
     "courseCompletionPrompt": "Anna 5 luentoaihetta kurssille, jonka otsikko on \"{{courseName}}\".",
-    "selectDimensionInfoText": "Jos haluat ideoita työkalujen käyttöön, valitse tuettava dimensio",
-    "dimensionSelect": "Dimensio",
+    "selectDimensionInfoText": "Jos haluat ideoita työkalujen käyttöön, valitse tuettava oppimismuoto",
+    "dimensionSelect": "Oppimismuoto",
     "dimensionCompletionPrompt": "Kuinka voin tukea aihetta \"{{dimensionName}}\" yliopistokurssilla? Anna 3 esimerkkiä käyttäen ohjelmistoa {{recommendations}}?",
     "send": "Lähetä",
     "or": " tai "

@@ -5,14 +5,14 @@ const getQuestionData = (): any => [
     parentId: null,
     priority: 0,
     title: {
-      fi: 'Dimensiot',
-      sv: 'Dimensiot',
-      en: 'Dimensiot',
+      fi: 'Oppimismuodot',
+      sv: 'Oppimismuodot',
+      en: 'Oppimismuodot',
     },
     text: {
-      fi: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi? Klikkaa alla olevia tekstejä valitaksesi dimensioita',
-      sv: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi? Klikkaa alla olevia tekstejä valitaksesi dimensioita',
-      en: 'Mitä oppimisen dimensioita haluat painottaa kurssillasi? Klikkaa alla olevia tekstejä valitaksesi dimensioita',
+      fi: 'Valitse yksi tai useampi oppimismuoto, jota haluat tukea digitaalisten työvälineden avulla kurssillasi.',
+      sv: 'Valitse yksi tai useampi oppimismuoto, jota haluat tukea digitaalisten työvälineden avulla kurssillasi.',
+      en: 'Valitse yksi tai useampi oppimismuoto, jota haluat tukea digitaalisten työvälineden avulla kurssillasi.',
     },
     optionData: {
       type: 'dimensions',
@@ -27,6 +27,7 @@ const getQuestionData = (): any => [
           data: [
             { name: 'zoom', subtools: [] },
             { name: 'unitube', subtools: [] },
+            { name: 'presemo', subtools: [] },
             { name: 'thinglink', subtools: [] },
             { name: 'moodle', subtools: ['aineistot', 'h5p'] },
             { name: 'screen-cast-o-matic', subtools: [] },
@@ -40,13 +41,16 @@ const getQuestionData = (): any => [
             en: 'Production',
           },
           data: [
+            { name: 'zoom', subtools: [] },
+            { name: 'unitube', subtools: [] },
             { name: 'flinga', subtools: [] },
-            { name: 'presemo', subtools: [] },
             { name: 'thinglink', subtools: [] },
+            { name: 'eportfolio', subtools: [] },
             {
               name: 'moodle',
               subtools: ['tehtävä', 'wiki', 'sanasto', 'tietokanta'],
             },
+            { name: 'screen-cast-o-matic', subtools: [] },
           ],
         },
         {
@@ -74,7 +78,6 @@ const getQuestionData = (): any => [
           data: [
             { name: 'zoom', subtools: [] },
             { name: 'presemo', subtools: [] },
-            { name: 'eportfolio', subtools: [] },
             { name: 'moodle', subtools: ['keskustelualue', 'chat'] },
           ],
         },
@@ -87,6 +90,7 @@ const getQuestionData = (): any => [
           },
           data: [
             { name: 'flinga', subtools: [] },
+            { name: 'eportfolio', subtools: [] },
             {
               name: 'moodle',
               subtools: ['keskustelualue', 'wiki', 'tietokanta'],
@@ -102,7 +106,6 @@ const getQuestionData = (): any => [
           },
           data: [
             { name: 'thinglink', subtools: [] },
-            { name: 'eportfolio', subtools: [] },
             {
               name: 'moodle',
               subtools: ['h5p', 'tentti', 'työpaja', 'oppitunti'],
@@ -124,7 +127,7 @@ const getQuestionData = (): any => [
       en: 'Kurssin koko',
     },
     text: {
-      fi: 'Valitse onko kurssi osallistujamäärältään pieni, suuri vai rajoittamaton.',
+      fi: 'Valitse onko kurssi osallistujamäärältään pieni (<50), suuri (>50) vai rajoittamaton.',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -341,9 +344,9 @@ const getQuestionData = (): any => [
       en: 'Arviointi',
     },
     text: {
-      fi: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista.Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
-      sv: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista.Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
-      en: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista.Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
+      fi: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
+      sv: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
+      en: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
     },
     optionData: {
       type: 'info',
