@@ -10,7 +10,7 @@
   },
   "facultySelect": {
     "welcomeMessage": "Hei, tervetuloa Curreen",
-    "introMessage": "Aloita valitsemalla tiedekuntasi valikosta",
+    "introMessage": "Moi tässä on otsikko  \n \n Tässä on alateksti: Aloita valitsemalla tiedekuntasi valikosta",
     "inputLabel": "Tiedekuntasi"
   },
   "recommendations": {

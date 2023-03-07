@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkBreaks from 'remark-breaks'
 import { Link, Typography } from '@mui/material'
 
 const GutterTypography = ({ ...props }: any) => <Typography {...props} />
@@ -31,12 +32,22 @@ const defaultComponents = {
   h4: H4,
 }
 
-const Markdown = ({ ...props }: any) => (
-  <ReactMarkdown
-    components={{ ...defaultComponents } as any}
-    linkTarget="_blank"
-    {...props}
-  />
-)
+const Markdown = ({ children, ...props }: any) => {
+  // https://stackoverflow.com/questions/69026492/adding-multiple-line-break-in-react-markdown
+  const content = children.replace(/\n/gi, '&nbsp; \n')
+
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkBreaks]}
+      components={{ ...defaultComponents } as any}
+      linkTarget="_blank"
+      {...props}
+    >
+      {content}
+    </ReactMarkdown>
+  )
+}
+
+//
 
 export default Markdown
