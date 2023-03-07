@@ -10,6 +10,7 @@ import styles from './styles'
 import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 import useUserFaculties from '../../hooks/useUserFaculties'
+import Markdown from '../Common/Markdown'
 
 const extraOrganisations: Faculty[] = [
   {
@@ -65,9 +66,7 @@ const SelectFaculty: React.FC<InputProps> = ({ control }) => {
         {t('facultySelect:welcomeMessage')}
       </Typography>
       <Box sx={classes.content}>
-        <Typography variant="body2">
-          {t('facultySelect:introMessage')}
-        </Typography>
+        <Markdown>{t('facultySelect:introMessage')}</Markdown>
       </Box>
 
       <Controller
