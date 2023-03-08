@@ -20,12 +20,10 @@ const InteractiveForm = () => {
 
   const [resultData, setResultData] = useState<FormValues>(null)
 
-  const getSavedInstance = useCallback(() => {
-    const savedData = sessionStorage.getItem(FORM_DATA_KEY)
+  const savedData = sessionStorage.getItem(FORM_DATA_KEY)
 
-    if (savedData) {
-      return JSON.parse(savedData)
-    }
+  const getSavedInstance = useCallback(() => {
+    if (savedData) return JSON.parse(savedData)
 
     return {}
   }, [])
@@ -64,8 +62,8 @@ const InteractiveForm = () => {
           <Recommendations watch={watch} />
         </Grid>
         <Grid item sm={12}>
-          <Results formResultData={resultData} />
-          {resultData && (
+          <Results formResultData={resultData || JSON.parse(savedData)} />
+          {(resultData || JSON.parse(savedData)) && (
             <>
               <CourseCompletion />
               <DimensionCompletion watch={watch} />
