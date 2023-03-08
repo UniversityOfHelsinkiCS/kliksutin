@@ -15,7 +15,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: 'Tiedon omaksumista kurssilla voidaan tukea monin eri tavoin. Huolehdithan siitä, että kurssilla käytetty opiskelumateriaali on sellaista, johon opiskelijoilla on pääsy. On hyvä huomioida kurssin suunnittelussa ja opetusmateriaalissa [linjakkaan opetuksen periaatteet](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta) sekä opetukseen liittyvät [tekijänoikeudet](https://teaching.helsinki.fi/ohjeet/artikkeli/avoin-opetus-ja-tekijanoikeudet#paragraph-3918).',
+        fi: 'Voit myös tehdä kirjastolle [hanktintaehdotuksen](https://libraryguides.helsinki.fi/opetuksentuki/aineistot), mikäli haluamaasi aineistoa ei löydy valikoimista tai sitä ei ole tarpeeksi kurssin opiskelijoiden tarpeisiin.',
         sv: '',
         en: '',
       },
@@ -62,7 +62,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: 'Tiedon omaksumista kurssilla voidaan tukea monin eri tavoin. Huolehdithan siitä, että kurssilla käytetty opiskelumateriaali on sellaista, johon opiskelijoilla on pääsy. On hyvä huomioida kurssin suunnittelussa ja opetusmateriaalissa [linjakkaan opetuksen periaatteet](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta) sekä opetukseen liittyvät [tekijänoikeudet](https://teaching.helsinki.fi/ohjeet/artikkeli/avoin-opetus-ja-tekijanoikeudet#paragraph-3918).',
+        fi: 'Voit myös tehdä kirjastolle [hanktintaehdotuksen](https://libraryguides.helsinki.fi/opetuksentuki/aineistot), mikäli haluamaasi aineistoa ei löydy valikoimista tai sitä ei ole tarpeeksi kurssin opiskelijoiden tarpeisiin.',
         sv: '',
         en: '',
       },
@@ -265,7 +265,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Lähiopetuksessa voit käyttää esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää.',
+        fi: 'Lähiopetuksessa voit käyttää keskustelun tukena esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää.',
         sv: '',
         en: '',
       },
@@ -312,7 +312,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Hybridiopetuksessa voit käyttää esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää, sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
+        fi: 'Hybridiopetuksessa voit käyttää keskustelun tukena esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää, sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
         sv: '',
         en: '',
       },
@@ -359,7 +359,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Etäopetuksessa voit käyttää esimerkiksi [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
+        fi: 'Etäopetuksessa voit käyttää keskusteluun esimerkiksi [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
         sv: '',
         en: '',
       },
@@ -495,7 +495,7 @@ const getResultData = (): any => [
         en: '',
       },
       collaboration: {
-        fi: '',
+        fi: 'Tentti [sähköisen tenttimisen tiloissa](https://teaching.helsinki.fi/ohjeet/artikkeli/sahkoiset-tentit-ja-arviointi#paragraph-3908) on aina yksilösuoritus. Yhteistyötä [kotitentissä](https://teaching.helsinki.fi/ohjeet/artikkeli/sahkoiset-tentit-ja-arviointi#paragraph-3909) ei voida käytännössä valvoa tai estää, mikä kannattaa ottaa huomioon esim. kysymyksiä laadittaessa.',
         sv: '',
         en: '',
       },
@@ -762,12 +762,12 @@ const getResultData = (): any => [
     },
     data: {
       allDimensions: {
-        fi: 'Helsingin yliopiston [strategisissa valinnoissa](https://www.helsinki.fi/fi/tutustu-meihin/strategia-talous-ja-laatu/strategia-2021-2030/strategiset-valinnat) on linjattu, että tiede ja oppiminen kuuluvat kaikille. Voisiko kurssi olla jatkossa toteutettavissa myös [avoimina yliopisto-opintoina](https://teaching.helsinki.fi/ohjeet/artikkeli/jatkuva-oppiminen-ja-avoin-yliopisto-opetus)?',
-        sv: 'Helsingin yliopiston [strategisissa valinnoissa](https://www.helsinki.fi/fi/tutustu-meihin/strategia-talous-ja-laatu/strategia-2021-2030/strategiset-valinnat) on linjattu, että tiede ja oppiminen kuuluvat kaikille. Voisiko kurssi olla jatkossa toteutettavissa myös [avoimina yliopisto-opintoina](https://teaching.helsinki.fi/ohjeet/artikkeli/jatkuva-oppiminen-ja-avoin-yliopisto-opetus)?',
-        en: 'Yliopiston sisäiset kurssit toteutetaan pääsääntöisesti Moodle-oppimisympäristössä, joka on integroitu SISU-opiskelijahallintojärjestelmän kanssa. Moodlen ohessa voidaan käyttää muita yliopiston opetusteknologisia välineitä. Moodleen pääsy on rajoitettu ensisijaisesti HY:n opettajille ja opiskelijoille, mutta HAKA-kirjautumisen ja kevyttunnusten avulla mukaan voi päästä myös muita. Zoomin ja Teamsin huoneisiin opiskelijoiden toivotaan kirjautuvan.',
+        fi: 'Lähtökohtaisesti [kaikki Helsingin yliopiston sovellukset](https://teaching.helsinki.fi/ohjeet/sovelluksien-kayttoohjeita) ovat perustutkinto-opiskelijoiden käytössä ja voit hyödyntää niitä kurssillasi. Yliopiston [strategisissa valinnoissa](https://www.helsinki.fi/fi/tutustu-meihin/strategia-talous-ja-laatu/strategia-2021-2030/strategiset-valinnat) on linjattu, että tiede ja oppiminen kuuluvat kaikille. Voisiko kurssi olla jatkossa toteutettavissa myös [avoimina yliopisto-opintoina](https://teaching.helsinki.fi/ohjeet/artikkeli/jatkuva-oppiminen-ja-avoin-yliopisto-opetus)?',
+        sv: '',
+        en: '',
       },
       investication: {
-        fi: '',
+        fi: 'Voit tarjota tiedonhankinnan tueksi monipuolisesti erilaisia aineistoja, joihin [Helsingin yliopiston opiskelijoilla on pääsy](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/e-kirjat-ja-lehdet/e-aineistojen-etakaytto).',
         sv: '',
         en: '',
       },
