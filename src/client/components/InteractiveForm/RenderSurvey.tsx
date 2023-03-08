@@ -1,48 +1,40 @@
 import React, { BaseSyntheticEvent, useState } from 'react'
-import { Box, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { Box, Button } from '@mui/material'
+import useSurvey from '../../hooks/useSurvey'
 import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
-import styles from './styles'
+import getSelectedDimensions from '../../util/getSelectedDimensions'
 import { FORM_DATA_KEY } from '../../../config'
+import styles from './styles'
 
-const RenderSurvey = ({
-  control,
-  watch,
-  questions,
-  handleSubmit,
-}: InputProps) => {
+const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
   const { t, i18n } = useTranslation()
+  const { survey, isLoading } = useSurvey()
   const classes = styles.cardStyles
   const savedData = sessionStorage.getItem(FORM_DATA_KEY)
   const [showQuestions, setShowQuestions] = useState(
     savedData && savedData !== '{}'
   )
 
-  if (!questions) return null
-
   const { language } = i18n
 
-  const canProceed = (): boolean => {
-    const dimensionQuestion = questions.find(
-      (question) => question.optionData.type === 'dimensions'
-    )
+  const dimensions = getSelectedDimensions(survey, watch)
 
-    const dimensionQuestionId = dimensionQuestion.id.toString()
-
+  const isAllowedToProceed = (): boolean => {
     const isFacultySelected = watch('faculty') !== ''
 
-    const isAnyDimensionsSelected =
-      watch(dimensionQuestionId) &&
-      Object.values(watch(dimensionQuestionId)).some((selected) => selected)
-
-    return isFacultySelected && isAnyDimensionsSelected
+    return isFacultySelected && dimensions.length > 0
   }
 
   const submitFormData = (event: BaseSyntheticEvent) => {
     handleSubmit(event)
   }
+
+  if (isLoading) return null
+
+  const questions = survey.Questions
 
   return (
     <Box sx={{ mx: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
@@ -78,7 +70,7 @@ const RenderSurvey = ({
           {!showQuestions ? (
             <Button
               data-cy="open-form-button"
-              disabled={!canProceed()}
+              disabled={dimensions && !isAllowedToProceed()}
               onClick={() => setShowQuestions(true)}
             >
               {t('openForm')}

@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
-
 import useSurvey from '../../hooks/useSurvey'
 import useSaveEntryMutation from '../../hooks/useSaveEntryMutation'
 import Results from '../ResultPage/Results'
@@ -53,24 +52,23 @@ const InteractiveForm = () => {
             <RenderSurvey
               control={control}
               watch={watch}
-              questions={survey.Questions}
               handleSubmit={handleSubmit(onSubmit)}
             />
           </form>
         </Grid>
+
         <Grid item sm={12} md={5} xl={6}>
           <Recommendations watch={watch} />
         </Grid>
-        <Grid item sm={12}>
-          {resultData && (
-            <>
-              <Results formResultData={resultData} />
-              <CourseCompletion />
-              <DimensionCompletion watch={watch} />
-              <ProceedToContact />
-            </>
-          )}
-        </Grid>
+
+        {resultData && (
+          <Grid item sm={12}>
+            <Results formResultData={resultData} />
+            <CourseCompletion />
+            <DimensionCompletion watch={watch} />
+            <ProceedToContact />
+          </Grid>
+        )}
       </Grid>
     </Box>
   )
