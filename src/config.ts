@@ -12,3 +12,5 @@ export const PUBLIC_URL = process.env.PUBLIC_URL || ''
 
 export const DEFAULT_SURVEY_NAME =
   process.env.DEFAULT_SURVEY_NAME || 'testSurvey'
+
+export const FORM_DATA_KEY = 'curre_local_save'

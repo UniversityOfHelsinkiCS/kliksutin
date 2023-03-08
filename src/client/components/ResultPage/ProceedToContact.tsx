@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography, Alert } from '@mui/material'
 
 import styles from './styles'
+import { FORM_DATA_KEY } from '../../../config'
 
 const ProceedToContact = () => {
   const { t } = useTranslation()
@@ -12,6 +13,11 @@ const ProceedToContact = () => {
   const classes = styles.cardStyles
 
   const resultHTML = document.getElementById('result-component')
+
+  const endSession = () => {
+    setShowEndMessage(true)
+    sessionStorage.removeItem(FORM_DATA_KEY)
+  }
 
   if (!resultHTML) return null
 
@@ -37,7 +43,7 @@ const ProceedToContact = () => {
             <Button
               sx={classes.stackButton}
               variant="contained"
-              onClick={() => setShowEndMessage(true)}
+              onClick={endSession}
             >
               {t('results:proceedToExit')}
             </Button>

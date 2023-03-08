@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
 
@@ -11,6 +11,8 @@ import { FormValues } from '../../types'
 import ProceedToContact from '../ResultPage/ProceedToContact'
 import CourseCompletion from '../ResultPage/Openai/CourseCompletion'
 import DimensionCompletion from '../ResultPage/Openai/DimensionCompletion'
+import usePersistForm from '../../hooks/usePersistForm'
+import { FORM_DATA_KEY } from '../../../config'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
@@ -18,9 +20,20 @@ const InteractiveForm = () => {
 
   const [resultData, setResultData] = useState<FormValues>(null)
 
-  const { handleSubmit, control, watch } = useForm({
+  const getSavedInstance = useCallback(() => {
+    const savedData = sessionStorage.getItem(FORM_DATA_KEY)
+
+    if (savedData) {
+      return JSON.parse(savedData)
+    }
+
+    return {}
+  }, [])
+
+  const { handleSubmit, control, watch, getValues } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
+    defaultValues: getSavedInstance(),
   })
 
   const onSubmit = (data: FormValues) => {
@@ -29,6 +42,8 @@ const InteractiveForm = () => {
     setResultData(submittedData)
     mutation.mutateAsync(submittedData)
   }
+
+  usePersistForm({ value: getValues(), sessionStorageKey: FORM_DATA_KEY })
 
   if (isLoading) return null
 
