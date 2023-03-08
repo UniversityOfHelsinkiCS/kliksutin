@@ -62,9 +62,9 @@ const InteractiveForm = () => {
           <Recommendations watch={watch} />
         </Grid>
         <Grid item sm={12}>
-          <Results formResultData={resultData || JSON.parse(savedData)} />
-          {(resultData || JSON.parse(savedData)) && (
+          {resultData && (
             <>
+              <Results formResultData={resultData} />
               <CourseCompletion />
               <DimensionCompletion watch={watch} />
               <ProceedToContact />

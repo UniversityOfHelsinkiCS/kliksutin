@@ -5,6 +5,7 @@ import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 import styles from './styles'
+import { FORM_DATA_KEY } from '../../../config'
 
 const RenderSurvey = ({
   control,
@@ -14,7 +15,10 @@ const RenderSurvey = ({
 }: InputProps) => {
   const { t, i18n } = useTranslation()
   const classes = styles.cardStyles
-  const [showQuestions, setShowQuestions] = useState(false)
+  const savedData = sessionStorage.getItem(FORM_DATA_KEY)
+  const [showQuestions, setShowQuestions] = useState(
+    savedData && savedData !== '{}'
+  )
 
   if (!questions) return null
 
