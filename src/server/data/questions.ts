@@ -24,6 +24,11 @@ const getQuestionData = (): any => [
             sv: 'Tiedonhankinta',
             en: 'Acquisition',
           },
+          text: {
+            fi: '',
+            sv: '',
+            en: '',
+          },
           data: [
             { name: 'zoom', subtools: [] },
             { name: 'unitube', subtools: [] },
@@ -39,6 +44,11 @@ const getQuestionData = (): any => [
             fi: 'Tuottaminen',
             sv: 'Tuottaminen',
             en: 'Production',
+          },
+          text: {
+            fi: '',
+            sv: '',
+            en: '',
           },
           data: [
             { name: 'zoom', subtools: [] },
@@ -60,6 +70,11 @@ const getQuestionData = (): any => [
             sv: 'Yhteistyö',
             en: 'Collaboration',
           },
+          text: {
+            fi: '',
+            sv: '',
+            en: '',
+          },
           data: [
             { name: 'zoom', subtools: [] },
             { name: 'flinga', subtools: [] },
@@ -75,6 +90,11 @@ const getQuestionData = (): any => [
             sv: 'Keskustelu',
             en: 'Discussion',
           },
+          text: {
+            fi: '',
+            sv: '',
+            en: '',
+          },
           data: [
             { name: 'zoom', subtools: [] },
             { name: 'presemo', subtools: [] },
@@ -87,6 +107,11 @@ const getQuestionData = (): any => [
             fi: 'Tutkiminen',
             sv: 'Tutkiminen',
             en: 'Investigation',
+          },
+          text: {
+            fi: '',
+            sv: '',
+            en: '',
           },
           data: [
             { name: 'flinga', subtools: [] },
@@ -103,6 +128,11 @@ const getQuestionData = (): any => [
             fi: 'Harjoittelu',
             sv: 'Harjoittelu',
             en: 'Practice',
+          },
+          text: {
+            fi: '',
+            sv: '',
+            en: '',
           },
           data: [
             { name: 'thinglink', subtools: [] },
