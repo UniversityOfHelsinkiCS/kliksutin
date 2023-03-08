@@ -30,7 +30,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: '',
+        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi [Moodlen](https://teaching.helsinki.fi/ohjeet/node/3636) keskustelualuetta.',
         sv: '',
         en: '',
       },
@@ -77,7 +77,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: '',
+        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi [Moodlen](https://teaching.helsinki.fi/ohjeet/node/3636) keskustelualuetta. Avoimissa ja suurissa kursseissa opettajan voi olla mahdotonta seurata tai osallistua useimpiin keskusteluihin.',
         sv: '',
         en: '',
       },
@@ -124,7 +124,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: '',
+        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi Moodlen keskustelualuetta. Avoimissa ja suurissa kursseissa opettajan voi olla mahdotonta seurata tai osallistua useimpiin keskusteluihin.',
         sv: '',
         en: '',
       },
@@ -265,7 +265,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: '',
+        fi: 'Lähiopetuksessa voit käyttää esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää.',
         sv: '',
         en: '',
       },
@@ -312,7 +312,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: '',
+        fi: 'Hybridiopetuksessa voit käyttää esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää, sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
         sv: '',
         en: '',
       },
@@ -359,9 +359,9 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää Moodlen keskustelualuetta, etäopetustapahtumissa Zoomin tai Teamsin chattia. Kaikissa tapauksissa on syytä miettiä ja tarkkaan ohjeistaa, mikä keskustelun tavoite kussakin tapauksessa on.',
-        sv: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää Moodlen keskustelualuetta, etäopetustapahtumissa Zoomin tai Teamsin chattia. Kaikissa tapauksissa on syytä miettiä ja tarkkaan ohjeistaa, mikä keskustelun tavoite kussakin tapauksessa on.',
-        en: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää Moodlen keskustelualuetta, etäopetustapahtumissa Zoomin tai Teamsin chattia. Kaikissa tapauksissa on syytä miettiä ja tarkkaan ohjeistaa, mikä keskustelun tavoite kussakin tapauksessa on.',
+        fi: 'Etäopetuksessa voit käyttää esimerkiksi [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
+        sv: '',
+        en: '',
       },
       acquisition: {
         fi: '',
@@ -720,9 +720,9 @@ const getResultData = (): any => [
         en: 'Yliopistoa laajemmalle yleisölle tarkoitetut kurssit suositellaan järjestettäväksi Avoimen yliopiston kautta. Tutustu avointen verkkokurssien (MOOC) vaatimuksiin ja DigiCampus-oppimisympäristöön. Avoimella verkkokurssilla oppimateriaalien tulee olla julkisia, jolloin myös niiden saavutettavuuteen tulee kiinnittää erityistä huomiota.',
       },
       investication: {
-        fi: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja saavutettavia. Voit tarjota linkkejä esim. tutkimusartikkeleihin tai Unitubessa oleviin videoihin oppimisalustalla tai koostaa niitä esim. Thinglink-palveluun. Oppimisalustalla voit rakentaa testejä, tenttejä ja H5P-aktiviteetilla interaktiivisia aineistoja.',
-        sv: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja saavutettavia. Voit tarjota linkkejä esim. tutkimusartikkeleihin tai Unitubessa oleviin videoihin oppimisalustalla tai koostaa niitä esim. Thinglink-palveluun. Oppimisalustalla voit rakentaa testejä, tenttejä ja H5P-aktiviteetilla interaktiivisia aineistoja.',
-        en: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja saavutettavia. Voit tarjota linkkejä esim. tutkimusartikkeleihin tai Unitubessa oleviin videoihin oppimisalustalla tai koostaa niitä esim. Thinglink-palveluun. Oppimisalustalla voit rakentaa testejä, tenttejä ja H5P-aktiviteetilla interaktiivisia aineistoja.',
+        fi: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.',
+        sv: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.',
+        en: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.',
       },
       production: {
         fi: '',
