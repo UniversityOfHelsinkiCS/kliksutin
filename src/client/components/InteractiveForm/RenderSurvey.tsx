@@ -14,7 +14,6 @@ const RenderSurvey = ({
 }: InputProps) => {
   const { t, i18n } = useTranslation()
   const classes = styles.cardStyles
-  const [disableForm, setDisableForm] = useState(false)
   const [showQuestions, setShowQuestions] = useState(false)
 
   if (!questions) return null
@@ -38,7 +37,6 @@ const RenderSurvey = ({
   }
 
   const submitFormData = (event: BaseSyntheticEvent) => {
-    setDisableForm(true)
     handleSubmit(event)
   }
 
@@ -82,11 +80,7 @@ const RenderSurvey = ({
               {t('openForm')}
             </Button>
           ) : (
-            <Button
-              data-cy="submit-form-button"
-              disabled={disableForm}
-              onClick={submitFormData}
-            >
+            <Button data-cy="submit-form-button" onClick={submitFormData}>
               {t('submit')}
             </Button>
           )}
