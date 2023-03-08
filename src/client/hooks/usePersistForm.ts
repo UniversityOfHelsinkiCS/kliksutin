@@ -1,9 +1,5 @@
 import { useEffect } from 'react'
-
-interface PersistForm {
-  value: any
-  sessionStorageKey: string
-}
+import { PersistForm } from '../types'
 
 const usePersistForm = ({ value, sessionStorageKey }: PersistForm) =>
   useEffect(() => {

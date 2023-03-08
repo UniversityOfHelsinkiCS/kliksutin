@@ -114,6 +114,11 @@ export interface FormValues {
   faculty: string
 }
 
+export interface PersistForm {
+  value: FormValues
+  sessionStorageKey: string
+}
+
 export interface Result {
   id: number
   surveyId: number
