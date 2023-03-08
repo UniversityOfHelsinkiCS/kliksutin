@@ -54,10 +54,6 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
   )
   const courseCompletionMethodId = courseCompletionMethodQuestion.id
 
-  const isAllDimensionsSelected: boolean = Object.values(
-    formResultData[dimensionQuestionId]
-  ).every((dimension) => dimension)
-
   const multipleChoiceObjectToArray = (aChoiceId: number): string[] =>
     Object.keys(formResultData[aChoiceId]).filter(
       (index) => formResultData[aChoiceId][index]
@@ -65,9 +61,9 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
   const modifiedResultObject = {
     ...formResultData,
-    [dimensionQuestionId]: isAllDimensionsSelected
-      ? ['allDimensions']
-      : multipleChoiceObjectToArray(dimensionQuestionId),
+    [dimensionQuestionId]: ['allDimensions'].concat(
+      multipleChoiceObjectToArray(dimensionQuestionId)
+    ),
     [courseCompletionMethodId]: multipleChoiceObjectToArray(
       courseCompletionMethodId
     ),
