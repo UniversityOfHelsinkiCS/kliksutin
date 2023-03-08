@@ -7,6 +7,7 @@ import useResults from '../../hooks/useResults'
 import styles from './styles'
 import { FormValues, Locales, Result } from '../../types'
 import SendSummaryEmail from './SendSummaryEmail'
+import Markdown from '../Common/Markdown'
 
 const classes = styles.cardStyles
 
@@ -23,17 +24,12 @@ const ResultElement = ({
 
   return (
     <Container sx={classes.resultContainer}>
-      <Typography variant="h6" sx={classes.heading} component="div">
-        {resultData.isSelected[language]}
-      </Typography>
+      <Markdown>{resultData.isSelected[language]}</Markdown>
       <Box sx={classes.content}>
         {dimensions.map((dimension: string) => (
-          <Typography
-            key={`${JSON.stringify(resultData)}.${dimension}`}
-            variant="body2"
-          >
+          <Markdown key={`${JSON.stringify(resultData)}.${dimension}`}>
             {resultData.data[dimension][language]}
-          </Typography>
+          </Markdown>
         ))}
       </Box>
     </Container>
