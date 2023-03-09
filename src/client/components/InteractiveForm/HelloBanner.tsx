@@ -20,14 +20,13 @@ const helloMessages = {
     en: '### Curre auttaa opettajaa digipedagogisissa valinnoissa. Voit käyttää Currea tukena kun haluat ideoida uusia mahdollisuuksia hyödyntää digitalisaatiota osana opetusta ja oppimista kurssillasi.',
   },
 }
-
 const HelloBanner = () => {
   const { i18n } = useTranslation()
   const { language } = i18n
 
   return (
     <Box id="hello-component" sx={classes.outerBox}>
-      <Box sx={{ my: 1, mx: 2, display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
+      <Box sx={{ my: 2, mx: 2, display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
         <Markdown>{helloMessages.title[language as keyof Locales]}</Markdown>
         <ShowMore text={helloMessages.text[language as keyof Locales]} />
       </Box>
