@@ -1,34 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Controller } from 'react-hook-form'
-import {
-  Box,
-  FormControl,
-  Checkbox,
-  FormControlLabel,
-  IconButton,
-  Collapse,
-} from '@mui/material'
-import ExpandLess from '@mui/icons-material/ExpandLess'
-import ExpandMore from '@mui/icons-material/ExpandMore'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import { Box, FormControl, Checkbox, FormControlLabel } from '@mui/material'
+import ShowMore from '../Common/ShowMore'
 import { MultipleChoiceType, InputProps, Locales } from '../../types'
-import Markdown from '../Common/Markdown'
-
-const ShowMore = ({ text }: { text: string }) => {
-  const [expand, setExpand] = useState(false)
-
-  return (
-    <>
-      <IconButton onClick={() => setExpand(!expand)}>
-        <HelpOutlineIcon />
-        {!expand ? <ExpandMore /> : <ExpandLess />}
-      </IconButton>
-      <Collapse in={expand} timeout="auto" unmountOnExit>
-        <Markdown>{text}</Markdown>
-      </Collapse>
-    </>
-  )
-}
 
 const MultiChoice = ({ control, question, children, language }: InputProps) => (
   <>
