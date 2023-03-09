@@ -54,16 +54,28 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
   )
   const courseCompletionMethodId = courseCompletionMethodQuestion.id
 
+  const courseAttendanceQuestion = survey.Questions.find(
+    (question) => question.title.fi === 'Osallistuminen'
+  )
+  const courseAttendanceId = courseAttendanceQuestion.id
+
   const multipleChoiceObjectToArray = (aChoiceId: number): string[] =>
     Object.keys(formResultData[aChoiceId]).filter(
       (index) => formResultData[aChoiceId][index]
     )
+
+  const attendanceToArray = () => {
+    const attendances = multipleChoiceObjectToArray(courseAttendanceId)
+
+    return attendances.length === 2 ? ['courseAttendanceHybrid'] : attendances
+  }
 
   const modifiedResultObject = {
     ...formResultData,
     [dimensionQuestionId]: ['allDimensions'].concat(
       multipleChoiceObjectToArray(dimensionQuestionId)
     ),
+    [courseAttendanceId]: attendanceToArray(),
     [courseCompletionMethodId]: multipleChoiceObjectToArray(
       courseCompletionMethodId
     ),

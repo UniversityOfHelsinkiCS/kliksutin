@@ -208,7 +208,7 @@ const getQuestionData = (): any => [
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
     optionData: {
-      type: 'singleChoice',
+      type: 'multipleChoice',
       options: [
         {
           id: 'courseAttendancePresent',
@@ -216,14 +216,6 @@ const getQuestionData = (): any => [
             fi: 'Läsnä',
             sv: 'Läsnä',
             en: 'Läsnä',
-          },
-        },
-        {
-          id: 'courseAttendanceHybrid',
-          label: {
-            fi: 'Hybridi',
-            sv: 'Hybridi',
-            en: 'Hybridi',
           },
         },
         {

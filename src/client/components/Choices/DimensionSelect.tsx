@@ -10,8 +10,6 @@ const DimensionSelect = ({ control, question }: InputProps) => {
   const { i18n } = useTranslation()
   const { language } = i18n
 
-  console.log(language)
-
   return (
     <>
       {(question.optionData.options as DimensionSelectionData[]).map(
