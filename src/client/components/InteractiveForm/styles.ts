@@ -4,6 +4,12 @@ const cardStyles = {
     transition: '0.3s',
     textAlign: 'left',
   },
+  outerBox: {
+    m: 2,
+    maxWidth: 1280,
+    border: 1,
+    borderColor: 'grey.300',
+  },
   questionsContainer: {
     my: 8,
     borderLeft: 1,
