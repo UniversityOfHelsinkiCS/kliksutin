@@ -44,20 +44,24 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
   if (!resultsFetched || !formResultData) return null
 
-  const dimensionQuestion = survey.Questions.find(
-    (question) => question.optionData.type === 'dimensions'
-  )
-  const dimensionQuestionId = dimensionQuestion.id
+  const findQuestion = (param: string) => {
+    const foundByType = survey.Questions.find(
+      (question) => question.optionData.type === param
+    )
 
-  const courseCompletionMethodQuestion = survey.Questions.find(
-    (question) => question.title.fi === 'Suoritusmuoto'
-  )
-  const courseCompletionMethodId = courseCompletionMethodQuestion.id
+    const foundByFinnishTitle = survey.Questions.find(
+      (question) => question.title.fi === param
+    )
 
-  const courseAttendanceQuestion = survey.Questions.find(
-    (question) => question.title.fi === 'Osallistuminen'
-  )
-  const courseAttendanceId = courseAttendanceQuestion.id
+    if (!foundByType && !foundByFinnishTitle)
+      throw new Error('Question not found, check search params')
+
+    return foundByType ? foundByType.id : foundByFinnishTitle.id
+  }
+
+  const dimensionQuestionId = findQuestion('dimensions')
+  const courseAttendanceId = findQuestion('Osallistuminen')
+  const courseCompletionMethodId = findQuestion('Suoritusmuoto')
 
   const multipleChoiceObjectToArray = (aChoiceId: number): string[] =>
     Object.keys(formResultData[aChoiceId]).filter(
