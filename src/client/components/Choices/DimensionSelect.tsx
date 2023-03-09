@@ -22,7 +22,11 @@ const DimensionSelect = ({ control, question }: InputProps) => {
             render={({ field }) => (
               <FormControl sx={{ width: '100%' }}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
-                  <Tooltip title={choice.text[language as keyof Locales]} arrow>
+                  <Tooltip
+                    title={choice.text[language as keyof Locales]}
+                    placement="right"
+                    arrow
+                  >
                     <div>
                       <Checkbox
                         {...field}
