@@ -48,6 +48,7 @@ export interface ToolType {
 export interface DimensionSelectionData {
   id: string
   label: Locales
+  text: Locales
   data: ToolType[]
 }
 
