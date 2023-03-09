@@ -12,6 +12,7 @@ import CourseCompletion from '../ResultPage/Openai/CourseCompletion'
 import DimensionCompletion from '../ResultPage/Openai/DimensionCompletion'
 import usePersistForm from '../../hooks/usePersistForm'
 import { FORM_DATA_KEY } from '../../../config'
+import HelloBanner from './HelloBanner'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
@@ -47,6 +48,9 @@ const InteractiveForm = () => {
   return (
     <Box my="2rem" maxWidth={1280}>
       <Grid container>
+        <Grid item sm={12}>
+          <HelloBanner />
+        </Grid>
         <Grid item sm={12} md={7} xl={6}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <RenderSurvey

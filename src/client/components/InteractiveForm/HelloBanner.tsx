@@ -1,25 +1,36 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Container, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import styles from './styles'
 import ShowMore from '../Common/ShowMore'
+import Markdown from '../Common/Markdown'
+import { Locales } from '../../types'
 
 const classes = styles.cardStyles
 
-const HelloBanner = () => {
-  const { t, i18n } = useTranslation()
-  const { language } = i18n
+const helloMessages = {
+  title: {
+    fi: '## Tervetuloa Curreen',
+    sv: '## Tervetuloa Curreen',
+    en: '## Tervetuloa Curreen',
+  },
+  text: {
+    fi: '### Curre auttaa opettajaa digipedagogisissa valinnoissa. Voit käyttää Currea tukena kun haluat ideoida uusia mahdollisuuksia hyödyntää digitalisaatiota osana opetusta ja oppimista kurssillasi.',
+    sv: '### Curre auttaa opettajaa digipedagogisissa valinnoissa. Voit käyttää Currea tukena kun haluat ideoida uusia mahdollisuuksia hyödyntää digitalisaatiota osana opetusta ja oppimista kurssillasi.',
+    en: '### Curre auttaa opettajaa digipedagogisissa valinnoissa. Voit käyttää Currea tukena kun haluat ideoida uusia mahdollisuuksia hyödyntää digitalisaatiota osana opetusta ja oppimista kurssillasi.',
+  },
+}
 
-  console.log(language)
+const HelloBanner = () => {
+  const { i18n } = useTranslation()
+  const { language } = i18n
 
   return (
     <Box id="hello-component" sx={classes.outerBox}>
-      <Container sx={{ my: 1, display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
-        <Typography variant="h5" sx={classes.heading} component="div">
-          {t('info:infoTitle')}
-        </Typography>
-        <ShowMore text={t('facultySelect:introMessage')} />
-      </Container>
+      <Box sx={{ my: 1, mx: 2, display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
+        <Markdown>{helloMessages.title[language as keyof Locales]}</Markdown>
+        <ShowMore text={helloMessages.text[language as keyof Locales]} />
+      </Box>
     </Box>
   )
 }

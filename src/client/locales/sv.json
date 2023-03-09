@@ -9,7 +9,7 @@
     "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"
   },
   "facultySelect": {
-    "welcomeMessage": "Hei, tervetuloa Curreen",
+    "welcomeMessage": "",
     "introMessage": "Aloita valitsemalla tiedekuntasi valikosta",
     "inputLabel": "Tiedekuntasi"
   },

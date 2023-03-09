@@ -9,8 +9,8 @@
     "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"
   },
   "facultySelect": {
-    "welcomeMessage": "Hei, tervetuloa Curreen",
-    "introMessage": " ### Curre auttaa opettajaa digipedagogisissa valinnoissa. Voit käyttää Currea tukena kun haluat ideoida uusia mahdollisuuksia hyödyntää digitalisaatiota osana opetusta ja oppimista kurssillasi.  \n \nAloita valitsemalla tiedekuntasi valikosta.",
+    "welcomeMessage": "",
+    "introMessage": "Aloita valitsemalla tiedekuntasi valikosta.",
     "inputLabel": "Tiedekuntasi"
   },
   "recommendations": {
