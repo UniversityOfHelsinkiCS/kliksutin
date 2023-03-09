@@ -30,7 +30,7 @@ const NavBar = () => {
   const { user, isLoading } = useLoggedInUser()
 
   useEffect(() => {
-    if (user?.language) {
+    if (!inProduction && user?.language) {
       i18n.changeLanguage(user.language)
     }
   }, [user, i18n])
