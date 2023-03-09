@@ -25,7 +25,7 @@ const getQuestionData = (): any => [
             en: 'Acquisition',
           },
           text: {
-            fi: '',
+            fi: 'Tiedonhakinta',
             sv: '',
             en: '',
           },
@@ -46,7 +46,7 @@ const getQuestionData = (): any => [
             en: 'Production',
           },
           text: {
-            fi: '',
+            fi: 'Tuottaminen',
             sv: '',
             en: '',
           },
@@ -71,7 +71,7 @@ const getQuestionData = (): any => [
             en: 'Collaboration',
           },
           text: {
-            fi: '',
+            fi: 'Yhteistyö',
             sv: '',
             en: '',
           },
@@ -91,7 +91,7 @@ const getQuestionData = (): any => [
             en: 'Discussion',
           },
           text: {
-            fi: '',
+            fi: 'Keskustelu',
             sv: '',
             en: '',
           },
@@ -109,7 +109,7 @@ const getQuestionData = (): any => [
             en: 'Investigation',
           },
           text: {
-            fi: '',
+            fi: 'Tutkiminen',
             sv: '',
             en: '',
           },
@@ -130,7 +130,7 @@ const getQuestionData = (): any => [
             en: 'Practice',
           },
           text: {
-            fi: '',
+            fi: 'Harjoittelu',
             sv: '',
             en: '',
           },
