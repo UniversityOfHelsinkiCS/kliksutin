@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next'
 import hyLogo from '../../assets/hy_logo.svg'
 import styles from './styles'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
+import { inProduction } from '../../../config'
 
 const NavBar = () => {
   const { t, i18n } = useTranslation()
@@ -35,7 +36,7 @@ const NavBar = () => {
   }, [user, i18n])
 
   const { language } = i18n
-  const languages = ['fi', 'sv', 'en']
+  const languages = inProduction ? ['fi'] : ['fi', 'sv', 'en']
 
   const handleLanguageChange = (newLanguage: string) => {
     i18n.changeLanguage(newLanguage)

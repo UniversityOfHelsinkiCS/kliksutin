@@ -4,12 +4,15 @@ import { initReactI18next } from 'react-i18next'
 import en from '../locales/en.json'
 import fi from '../locales/fi.json'
 import sv from '../locales/sv.json'
+import { inProduction } from '../../config'
 
 declare global {
   interface Window {
     __i18n__: typeof i18n
   }
 }
+
+const defaultLanguage = inProduction ? 'fi' : 'en'
 
 const initializeI18n = () =>
   i18n.use(initReactI18next).init({
@@ -18,8 +21,8 @@ const initializeI18n = () =>
       fi,
       sv,
     },
-    lng: 'en',
-    fallbackLng: 'en',
+    lng: defaultLanguage,
+    fallbackLng: defaultLanguage,
     defaultNS: 'common',
   })
 
