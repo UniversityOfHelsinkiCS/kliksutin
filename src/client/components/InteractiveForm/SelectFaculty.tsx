@@ -42,7 +42,7 @@ const sortFaculties = (faculties: Faculty[], language: keyof Locales) => {
   return sortedFaculties
 }
 
-const SelectFaculty: React.FC<InputProps> = ({ control }) => {
+const SelectFaculty = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
   const [faculty, setFaculty] = useState('')
