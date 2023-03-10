@@ -4,6 +4,10 @@ const cardStyles = {
     transition: '0.3s',
     textAlign: 'left',
   },
+  helloBox: {
+    m: 2,
+    maxWidth: 1280,
+  },
   outerBox: {
     m: 2,
     maxWidth: 1280,
