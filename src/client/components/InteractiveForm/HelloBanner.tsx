@@ -10,7 +10,7 @@ const classes = styles.cardStyles
 
 const helloMessages = {
   title: {
-    fi: '## Tervetuloa Curreen',
+    fi: '## Tervetuloa Curreen  --- Curre julkaistaan virallisesti maanantaina 13.3.',
     sv: '## Tervetuloa Curreen',
     en: '## Tervetuloa Curreen',
   },
