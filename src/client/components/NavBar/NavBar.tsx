@@ -90,6 +90,7 @@ const NavBar = () => {
             <Button
               ref={anchorRef}
               id="composition-button"
+              data-cy="language-select"
               aria-controls={
                 openLanguageSelect ? 'composition-menu' : undefined
               }

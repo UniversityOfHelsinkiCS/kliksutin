@@ -1,29 +1,32 @@
 import { baseUrl } from '../support/e2e'
 
 import getQuestionData from '../../src/server/data/questions'
-import { Question } from '../../src/client/types'
+import getRecommendationsData from '../../src/server/data/recommendations'
+import { Question, RecommendationData } from '../../src/client/types'
 
-describe('Kliksutin web page', () => {
-  let questionData
+describe('Form section', () => {
+  let questionData: Question[]
 
   beforeEach(() => {
     cy.visit(baseUrl)
 
+    cy.get(`[data-cy = "language-select"]`).click().contains('fi').click()
+
     cy.get(`[data-cy = "faculty-select"]`).click()
-    cy.get(`[data-cy = "faculty-option-Faculty of Science"]`).click()
+    cy.get(`[data-cy = "faculty-option-H50"]`).click()
 
     cy.get(`[data-cy = "dimension-select-collaboration"]`).click()
   })
 
-  it.skip('loads the main page', () => {
-    cy.contains('Kliksutin')
+  it('loads the main page', () => {
+    cy.contains('Curre')
   })
 
-  it.skip('user must proceed after faculty and dimensions are selected', () => {
+  it('user must proceed after faculty and dimensions are selected', () => {
     cy.get(`[data-cy = "open-form-button"]`).should('not.be.disabled').click()
   })
 
-  it.skip('loads visible questions correctly', () => {
+  it('loads visible questions correctly', () => {
     cy.get(`[data-cy = "dimension-select-discussion"]`).click()
 
     cy.get(`[data-cy = "open-form-button"]`).click()
@@ -32,22 +35,34 @@ describe('Kliksutin web page', () => {
 
     cy.wrap(questionData).each((question: Question) => {
       if (!question.visibility.options) {
-        cy.contains(question.title.en)
+        cy.contains(question.title.fi)
       }
     })
   })
 
-  it.skip('does not load invisible questions before they have been touched', () => {
+  it('does not load invisible questions before they have been touched', () => {
     questionData = getQuestionData()
 
     cy.wrap(questionData).each((question: Question) => {
       if (question.visibility.options) {
-        cy.contains(question.title.en).should('not.exist')
+        cy.contains(question.title.fi).should('not.exist')
       }
     })
   })
+})
 
-  it.skip('has spot for recommendations', () => {
-    cy.contains('Tools that support your selections')
+describe('Recommendation section', () => {
+  let recommendationData: RecommendationData[]
+
+  beforeEach(() => {
+    cy.visit(baseUrl)
+  })
+
+  it.skip('recommendations are rendered on the side', () => {
+    recommendationData = getRecommendationsData()
+
+    cy.wrap(recommendationData).each((recommendation: RecommendationData) => {
+      cy.contains('a', recommendation.title.fi).invoke('attr', 'href')
+    })
   })
 })
