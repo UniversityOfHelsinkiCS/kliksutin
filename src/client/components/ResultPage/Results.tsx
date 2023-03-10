@@ -93,26 +93,28 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     )
 
   return (
-    <Box id="result-component" sx={classes.outerBox}>
-      <Container sx={{ mt: 2 }}>
-        <Typography variant="h5" sx={classes.heading} component="div">
-          {t('results:title')}
-        </Typography>
-      </Container>
+    <Box sx={classes.outerBox}>
+      <Box id="result-component">
+        <Container sx={{ mt: 2 }}>
+          <Typography variant="h5" sx={classes.heading} component="div">
+            {t('results:title')}
+          </Typography>
+        </Container>
 
-      {resultArray.map((resultLabels) =>
-        resultLabels.map((resultLabel) => (
-          <ResultElement
-            key={JSON.stringify(resultLabel)}
-            language={language as keyof Locales}
-            resultData={results.find(
-              (result: { optionLabel: string }) =>
-                result.optionLabel === resultLabel
-            )}
-            dimensions={modifiedResultObject[dimensionQuestionId] as string[]}
-          />
-        ))
-      )}
+        {resultArray.map((resultLabels) =>
+          resultLabels.map((resultLabel) => (
+            <ResultElement
+              key={JSON.stringify(resultLabel)}
+              language={language as keyof Locales}
+              resultData={results.find(
+                (result: { optionLabel: string }) =>
+                  result.optionLabel === resultLabel
+              )}
+              dimensions={modifiedResultObject[dimensionQuestionId] as string[]}
+            />
+          ))
+        )}
+      </Box>
 
       <SendSummaryEmail />
     </Box>
