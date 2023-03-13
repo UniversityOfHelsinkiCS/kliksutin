@@ -1,11 +1,39 @@
 import React from 'react'
-import { Box, Container } from '@mui/material'
-import { InputProps, Locales } from '../../types'
+import { Box, Container, Typography } from '@mui/material'
+import { InputProps, Locales, Question } from '../../types'
 import styles from './styles'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
 import DimensionSelect from '../Choices/DimensionSelect'
 import Markdown from '../Common/Markdown'
+import ShowMore from '../Common/ShowMore'
+
+const classes = styles.cardStyles
+
+const QuestionText = ({
+  question,
+  language,
+}: {
+  question: Question
+  language: keyof Locales
+}) => {
+  if (question.optionData.type === 'info')
+    return (
+      <Typography component="span">
+        {question.title[language]}
+        <ShowMore text={question.text[language as keyof Locales]} />
+      </Typography>
+    )
+
+  return (
+    <>
+      <Markdown>{question.title[language]}</Markdown>
+      <Box sx={classes.content}>
+        <Markdown>{question.text[language]}</Markdown>
+      </Box>
+    </>
+  )
+}
 
 const RenderQuestions = ({
   control,
@@ -14,8 +42,6 @@ const RenderQuestions = ({
   questions,
   language,
 }: InputProps) => {
-  const classes = styles.cardStyles
-
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
 
@@ -42,11 +68,7 @@ const RenderQuestions = ({
 
   return (
     <Container sx={classes.questionsContainer}>
-      <Markdown>{question.title[language as keyof Locales]}</Markdown>
-      <Box sx={classes.content}>
-        <Markdown>{question.text[language as keyof Locales]}</Markdown>
-      </Box>
-
+      <QuestionText question={question} language={language as keyof Locales} />
       <Choice
         key={question.id as unknown as string}
         control={control}
