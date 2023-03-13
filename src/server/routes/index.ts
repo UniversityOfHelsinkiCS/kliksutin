@@ -6,6 +6,7 @@ import shibbolethMiddleware from '../middeware/shibboleth'
 import userMiddleware from '../middeware/user'
 import initializeSentry from '../util/sentry'
 import errorHandler from '../middeware/error'
+import accessLogger from '../middeware/access'
 import facultyRouter from './faculty'
 import surveyRouter from './survey'
 import recommendationRouter from './recommendation'
@@ -27,6 +28,8 @@ router.use(express.json())
 
 router.use(shibbolethMiddleware)
 router.use(userMiddleware)
+
+router.use(accessLogger)
 
 router.use('/faculties', facultyRouter)
 router.use('/surveys', surveyRouter)
