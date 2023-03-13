@@ -46,7 +46,7 @@ const CompletionResult = ({
 
   return (
     <Box sx={classes.outerBox}>
-      <Typography variant="body1" p={1} whiteSpace="pre-line">
+      <Typography variant="body1" p={3} whiteSpace="pre-line">
         {completion.trim()}
       </Typography>
     </Box>
@@ -69,7 +69,7 @@ const DimensionCompletion = ({
   const dimensions = getSelectedDimensions(survey, watch)
 
   return (
-    <Box px={3} mt={2}>
+    <Box mt={2}>
       <Typography variant="body2">
         {t('openai:selectDimensionInfoText')}
       </Typography>

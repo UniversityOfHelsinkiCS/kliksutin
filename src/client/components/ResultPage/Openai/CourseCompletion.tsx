@@ -18,7 +18,7 @@ const CompletionResult = ({ courseName }: { courseName: string }) => {
 
   return (
     <Box sx={classes.outerBox}>
-      <Typography variant="body1" p={1} whiteSpace="pre-line">
+      <Typography variant="body1" p={3} whiteSpace="pre-line">
         {completion.trim()}
       </Typography>
     </Box>
@@ -31,7 +31,7 @@ const CourseCompletion = () => {
   const [showCompletion, setShowCompletion] = useState(false)
 
   return (
-    <Box px={3}>
+    <Box>
       <Typography variant="body2">{t('openai:giveCourseInfoText')}</Typography>
       <TextField
         required

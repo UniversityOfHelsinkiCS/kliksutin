@@ -8,9 +8,7 @@ import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
 import ProceedToContact from '../ResultPage/ProceedToContact'
-import InfoBox from '../ResultPage/Openai/InfoBox'
-import CourseCompletion from '../ResultPage/Openai/CourseCompletion'
-import DimensionCompletion from '../ResultPage/Openai/DimensionCompletion'
+import Openai from '../ResultPage/Openai/Openai'
 import usePersistForm from '../../hooks/usePersistForm'
 import { FORM_DATA_KEY } from '../../../config'
 import HelloBanner from './HelloBanner'
@@ -69,9 +67,7 @@ const InteractiveForm = () => {
         {resultData && (
           <Grid item sm={12}>
             <Results formResultData={resultData} />
-            <InfoBox />
-            <CourseCompletion />
-            <DimensionCompletion watch={watch} />
+            <Openai watch={watch} />
             <ProceedToContact />
           </Grid>
         )}
