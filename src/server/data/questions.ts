@@ -25,7 +25,7 @@ const getQuestionData = (): any => [
             en: 'Acquisition',
           },
           text: {
-            fi: 'Tiedonhankintaa tapahtuu, kun oppijat lukevat kirjoja ja artikkeleita, kuuntelevat luentoja ja podcasteja tai katsovat videoita. Näin oppijat omaksuvat uusia käsitteitä, malleja, sanastoa ja menetelmiä.',
+            fi: 'Opiskelija oppii omaksumalla ja hankkimalla tietoa esimerkiksi silloin, kun hän aktiivisesti seuraa luentoa, lukee kirjallisuutta tai verkkosivuja, katsoo videota tai kuuntelee podcasteja.',
             sv: '',
             en: '',
           },
@@ -109,7 +109,7 @@ const getQuestionData = (): any => [
             en: 'Investigation',
           },
           text: {
-            fi: 'Kannustaa oppijaa omaksumaan aktiivisen ja tutkivan lähestymistavan oppimiseen, etsimällä ja arvioimalla erilaista uutta tietoa ja ideoita. Opiskelijoita ohjataan analysoimaan ja vertailemaan tekstejä, tietoja, asiakirjoja ja resursseja opetettavan aiheen kontekstissa.',
+            fi: 'Ohjaa opiskelijoita etsimään ja vertailemaan tietoa sekä esittämään kritiikkiä ja soveltamaan tekstejä, dokumentteja ja muita materiaaleja, jotka liittyvät opetettavan aiheen ja kurssin sisälötihin ja käsitteisiin.',
             sv: '',
             en: '',
           },
