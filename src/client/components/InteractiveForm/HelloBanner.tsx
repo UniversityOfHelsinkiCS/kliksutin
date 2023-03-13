@@ -28,7 +28,10 @@ const HelloBanner = () => {
     <Box id="hello-component" sx={classes.helloBox}>
       <Box sx={{ my: 2, mx: 2, display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
         <Markdown>{helloMessages.title[language as keyof Locales]}</Markdown>
-        <ShowMore text={helloMessages.text[language as keyof Locales]} />
+        <ShowMore
+          text={helloMessages.text[language as keyof Locales]}
+          expanded
+        />
       </Box>
     </Box>
   )
