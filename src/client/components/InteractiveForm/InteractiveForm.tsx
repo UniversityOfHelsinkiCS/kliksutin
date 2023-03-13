@@ -8,6 +8,7 @@ import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import { FormValues } from '../../types'
 import ProceedToContact from '../ResultPage/ProceedToContact'
+import InfoBox from '../ResultPage/Openai/InfoBox'
 import CourseCompletion from '../ResultPage/Openai/CourseCompletion'
 import DimensionCompletion from '../ResultPage/Openai/DimensionCompletion'
 import usePersistForm from '../../hooks/usePersistForm'
@@ -68,6 +69,7 @@ const InteractiveForm = () => {
         {resultData && (
           <Grid item sm={12}>
             <Results formResultData={resultData} />
+            <InfoBox />
             <CourseCompletion />
             <DimensionCompletion watch={watch} />
             <ProceedToContact />
