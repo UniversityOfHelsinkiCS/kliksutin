@@ -20,7 +20,7 @@ const getResultData = (): any => [
         en: '',
       },
       production: {
-        fi: '',
+        fi: 'Ideoiden ja sisältöjen tuottamiseen soveltuu esim. [Flinga](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga), jonne opettaja voi luoda kaikille yhteisen tai ryhmäkohtaisia alueita. Opiskelija tai pieni ryhmä voi myös tuottaa yhteisen [Thinglink](https://teaching.helsinki.fi/ohjeet/artikkeli/muut-opetustyota-tukevat-valineet#paragraph-6844)-esityksen tai [Screencast-O-Maticilla](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4568) videon [Unitubeen](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-3937).',
         sv: '',
         en: '',
       },
@@ -30,7 +30,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi [Moodlen](https://teaching.helsinki.fi/ohjeet/node/3636) keskustelualuetta.',
+        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi [Moodlen keskustelualuetta.](https://docs.moodle.org/3x/fi/Keskustelualue)',
         sv: '',
         en: '',
       },
@@ -40,7 +40,7 @@ const getResultData = (): any => [
         en: '',
       },
       practice: {
-        fi: '',
+        fi: 'Opiskelija voi harjoitella ja saada palautetta osaamisestaan esimerkiksi [Moodlen tehtävien](https://docs.moodle.org/3x/fi/Teht%C3%A4v%C3%A4) avulla. Moodlesta löytyvä [työpaja-aktiviteetti](https://docs.moodle.org/3x/fi/Ty%C3%B6paja) tarjoaa mahdollisuuden vertais- ja itsearvioinnin toteuttamiseksi kurssilla.  \n \nMoodlen [H5P-työkalun](https://docs.moodle.org/3x/fi/H5P) avulla voit luoda monipuolisia tehtäviä ja liittää ne osaksi Moodle-aluetta.  \n \n[Thinglink](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4691)-skenaarioilla voidaan harjoitella simuloiduissa tilanteissa.  \n \nKaikissa digitaalisissa tehtävätyypeissä kannattaa mahdollisuuksien mukaan hyödyntää automaattinen palautteen antaminen ja tehtävien tarkastaminen omien resurssien säästämiseksi.',
         sv: '',
         en: '',
       },
@@ -67,7 +67,7 @@ const getResultData = (): any => [
         en: '',
       },
       production: {
-        fi: '',
+        fi: 'Ideoiden ja sisältöjen tuottamiseen soveltuu esim. [Flinga](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga), jonne opettaja voi luoda kaikille yhteisen tai ryhmäkohtaisia alueita. Opiskelija tai pieni ryhmä voi myös tuottaa yhteisen [Thinglink](https://teaching.helsinki.fi/ohjeet/artikkeli/muut-opetustyota-tukevat-valineet#paragraph-6844)-esityksen tai [Screencast-O-Maticilla](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4568) videon [Unitubeen](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-3937).',
         sv: '',
         en: '',
       },
@@ -77,7 +77,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi [Moodlen](https://teaching.helsinki.fi/ohjeet/node/3636) keskustelualuetta. Avoimissa ja suurissa kursseissa opettajan voi olla mahdotonta seurata tai osallistua useimpiin keskusteluihin.',
+        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi [Moodlen keskustelualuetta](https://docs.moodle.org/3x/fi/Keskustelualue). Avoimissa ja suurissa kursseissa opettajan voi olla mahdotonta seurata tai osallistua useimpiin keskusteluihin.',
         sv: '',
         en: '',
       },
@@ -87,7 +87,7 @@ const getResultData = (): any => [
         en: '',
       },
       practice: {
-        fi: '',
+        fi: 'Opiskelija voi harjoitella ja saada palautetta osaamisestaan esimerkiksi [Moodlen tehtävien](https://docs.moodle.org/3x/fi/Teht%C3%A4v%C3%A4) avulla. Moodlesta löytyvä [työpaja-aktiviteetti](https://docs.moodle.org/3x/fi/Ty%C3%B6paja) tarjoaa mahdollisuuden vertais- ja itsearvioinnin toteuttamiseksi kurssilla.  \n \nMoodlen [H5P-työkalun](https://docs.moodle.org/3x/fi/H5P) avulla voit luoda monipuolisia tehtäviä ja liittää ne osaksi Moodle-aluetta.  \n \n[Thinglink](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4691)-skenaarioilla voidaan harjoitella simuloiduissa tilanteissa.  \n \nKaikissa digitaalisissa tehtävätyypeissä kannattaa mahdollisuuksien mukaan hyödyntää automaattinen palautteen antaminen ja tehtävien tarkastaminen omien resurssien säästämiseksi.',
         sv: '',
         en: '',
       },
@@ -124,7 +124,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi Moodlen keskustelualuetta. Avoimissa ja suurissa kursseissa opettajan voi olla mahdotonta seurata tai osallistua useimpiin keskusteluihin.',
+        fi: 'Koko kurssin kestävään tai osatehtäviin liittyviin keskusteluihin voi käyttää esimerkiksi [Moodlen keskustelualuetta](https://docs.moodle.org/3x/fi/Keskustelualue). Avoimissa ja suurissa kursseissa opettajan voi olla mahdotonta seurata tai osallistua useimpiin keskusteluihin.',
         sv: '',
         en: '',
       },
@@ -134,7 +134,7 @@ const getResultData = (): any => [
         en: '',
       },
       practice: {
-        fi: '',
+        fi: 'Opiskelija voi harjoitella ja saada palautetta osaamisestaan esimerkiksi [Moodlen tehtävien](https://docs.moodle.org/3x/fi/Teht%C3%A4v%C3%A4) avulla. Moodlesta löytyvä [työpaja-aktiviteetti](https://docs.moodle.org/3x/fi/Ty%C3%B6paja) tarjoaa mahdollisuuden vertais- ja itsearvioinnin toteuttamiseksi kurssilla.  \n \nMoodlen [H5P-työkalun](https://docs.moodle.org/3x/fi/H5P) avulla voit luoda monipuolisia tehtäviä ja liittää ne osaksi Moodle-aluetta.  \n \n[Thinglink](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4691)-skenaarioilla voidaan harjoitella simuloiduissa tilanteissa.  \n \nKaikissa digitaalisissa tehtävätyypeissä kannattaa mahdollisuuksien mukaan hyödyntää automaattinen palautteen antaminen ja tehtävien tarkastaminen omien resurssien säästämiseksi.',
         sv: '',
         en: '',
       },
@@ -250,7 +250,7 @@ const getResultData = (): any => [
         en: 'Lähiopetuksessa [opetukseen käytettävät tilat](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat) voivat mahdollistaa erilaisten digitaalitsen työvälineiden käytön opetuksen ja oppimisen tukena.',
       },
       investication: {
-        fi: 'Tiedon omaksumista kontaktiopetuksessa voidaan tukea monimuotoisilla opetusmateriaaleilla. Voit tarjota opiskelijoille mahdollisuuden katsoa esimerkiksi luennot uudestaan kotona, mikäli tallennat luennot esimerkiksi [UniTube -palveluun tätä tukevassa opetustilassa](https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/unitube/unitube-luentotallennustilat).',
+        fi: 'Tiedonhankintaa kontaktiopetuksessa voidaan tukea monimuotoisilla opetusmateriaaleilla. Voit tarjota opiskelijoille mahdollisuuden katsoa esimerkiksi luennot uudestaan kotona, mikäli tallennat luennot esimerkiksi [UniTube -palveluun tätä tukevassa opetustilassa](https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/unitube/unitube-luentotallennustilat).',
         sv: '',
         en: '',
       },
@@ -260,7 +260,7 @@ const getResultData = (): any => [
         en: '',
       },
       collaboration: {
-        fi: '',
+        fi: 'Lähiopetuksessa opiskelijoiden osallistamiseen voidaan hyödyntää digitaalisia ohjelmistoja, kuten [Presemoa](https://teaching.helsinki.fi/ohjeet/artikkeli/muut-opetustyota-tukevat-valineet#paragraph-3961) tai [Flingaa](https://teaching.helsinki.fi/ohjeet/artikkeli/muut-opetustyota-tukevat-valineet#paragraph-3962).',
         sv: '',
         en: '',
       },
@@ -286,18 +286,18 @@ const getResultData = (): any => [
     surveyId: 1,
     optionLabel: 'courseAttendanceHybrid',
     isSelected: {
-      fi: 'Olet valinnut kurssillesi opetusmuodoksi hybridiopetuksen.',
-      sv: 'Olet valinnut kurssillesi opetusmuodoksi hybridiopetuksen.',
-      en: 'Olet valinnut kurssillesi opetusmuodoksi hybridiopetuksen.',
+      fi: 'Kurssilla toteutetaan lähi- ja etäopetusta.',
+      sv: '',
+      en: '',
     },
     data: {
       allDimensions: {
-        fi: '[Hybridiopetuksessa](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta#paragraph-6852) osa kurssin opiskelijoista on opettajan kanssa samassa tilassa kampuksella ja osa samanaikaisesti etänä verkkoyhteyden päässä. Järjestely on opettajalle usein haasteellinen, koska huomion jakaminen kahteen suuntaan ja kaikkien kohtelu tasapuolisesti vaatii keskittymistä ja huolellista etukäteissuunnittelua. Opiskelijoiden aktivointi ja vuorovaikutuksen ylläpitäminen [asettaa myös käytettävälle opetustilalle ja välineille teknisiä vaatimuksia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422), jotka on tärkeää huomioida näiden valinnassa.',
-        sv: '[Hybridiopetuksessa](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta#paragraph-6852) osa kurssin opiskelijoista on opettajan kanssa samassa tilassa kampuksella ja osa samanaikaisesti etänä verkkoyhteyden päässä. Järjestely on opettajalle usein haasteellinen, koska huomion jakaminen kahteen suuntaan ja kaikkien kohtelu tasapuolisesti vaatii keskittymistä ja huolellista etukäteissuunnittelua. Opiskelijoiden aktivointi ja vuorovaikutuksen ylläpitäminen [asettaa myös käytettävälle opetustilalle ja välineille teknisiä vaatimuksia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422), jotka on tärkeää huomioida näiden valinnassa.',
-        en: '[Hybridiopetuksessa](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta#paragraph-6852) osa kurssin opiskelijoista on opettajan kanssa samassa tilassa kampuksella ja osa samanaikaisesti etänä verkkoyhteyden päässä. Järjestely on opettajalle usein haasteellinen, koska huomion jakaminen kahteen suuntaan ja kaikkien kohtelu tasapuolisesti vaatii keskittymistä ja huolellista etukäteissuunnittelua. Opiskelijoiden aktivointi ja vuorovaikutuksen ylläpitäminen [asettaa myös käytettävälle opetustilalle ja välineille teknisiä vaatimuksia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422), jotka on tärkeää huomioida näiden valinnassa.',
+        fi: 'Lähi- ja etäopetusta sisältävän kurssin opetus on usein käytännössä [sulautuvaa opetusta](https://wiki.helsinki.fi/display/ZO/1.+Sulautuva+opetus).  \nMikäli kurssilla on toteutetaan opetusta, jossa osa opiskelijoista osallistuu lähiopetukseen toisten osallistuessa samanaikaisesti etäyhteyksien välityksellä, on kyse [hybridiopetuksesta](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta#paragraph-6852). Järjestely on opettajalle usein haasteellinen, koska huomion jakaminen kahteen suuntaan ja kaikkien kohtelu tasapuolisesti vaatii keskittymistä ja huolellista etukäteissuunnittelua. Opiskelijoiden aktivointi ja vuorovaikutuksen ylläpitäminen [asettaa myös käytettävälle opetustilalle ja välineille teknisiä vaatimuksia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422), jotka on tärkeää huomioida näiden valinnassa.',
+        sv: '',
+        en: '',
       },
       investication: {
-        fi: 'Hybridiopetuksessa on tärkeää huomioida tiedon omaksumisen tasapuoliset mahdollisuudet läsnäoleville ja etäosallistuville opiskelijoille. Huomioi esimerkiksi laadukas puheäänen välitys etäosallistujille. Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
+        fi: 'Sulautuvassa opetuksessa tiedonhankintaa voidaan tukea esimerkiksi tuomalla kaikki materiaali ja tallennetut luennot [Moodlen](https://teaching.helsinki.fi/ohjeet/artikkeli/moodle-ohjeet-ja-tuki) kautta opiskelijoiden saataville.  \nHybridiopetuksessa on tärkeää huomioida tiedon omaksumisen tasapuoliset mahdollisuudet läsnäoleville ja etäosallistuville opiskelijoille. Huomioi esimerkiksi laadukas puheäänen välitys etäosallistujille. Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
         sv: '',
         en: '',
       },
@@ -312,7 +312,7 @@ const getResultData = (): any => [
         en: '',
       },
       discussion: {
-        fi: 'Hybridiopetuksessa voit käyttää keskustelun tukena esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää, sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
+        fi: 'Sulautuvassa opetuksessa keskustelua voidaan lähiopetuksen jälkeen jatkaa esimerkiksi [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinällä tai [Moodlen keskustelualueella](https://docs.moodle.org/3x/fi/Keskustelualue).  \nHybridiopetuksessa voit käyttää keskustelun tukena esimerkiksi [Presemon](https://wiki.helsinki.fi/display/presemo/Keskustelu) tai [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää, sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
         sv: '',
         en: '',
       },
@@ -354,12 +354,12 @@ const getResultData = (): any => [
         en: '',
       },
       collaboration: {
-        fi: '',
+        fi: 'Ryhmäytymiseen etäopetuksen aikana voi käyttää esimerkiksi [Zoom-ryhmähuoneita](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823).',
         sv: '',
         en: '',
       },
       discussion: {
-        fi: 'Etäopetuksessa voit käyttää keskusteluun esimerkiksi [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoomin ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
+        fi: 'Etäopetuksessa voit käyttää keskusteluun esimerkiksi [Flingan](https://www.helsinki.fi/fi/unitube/video/2fcdd4fd-505c-40c7-8858-7c94d7bffa0b) keskusteluseinää sekä [Zoomin chat-työkalua](https://wiki.helsinki.fi/display/ZO/Chat). [Zoom-ryhmähuoneet](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823) mahdollistavat pienten keskusteluryhmien muodostamisen.',
         sv: '',
         en: '',
       },
@@ -720,9 +720,9 @@ const getResultData = (): any => [
         en: 'Yliopistoa laajemmalle yleisölle tarkoitetut kurssit suositellaan järjestettäväksi Avoimen yliopiston kautta. Tutustu avointen verkkokurssien (MOOC) vaatimuksiin ja DigiCampus-oppimisympäristöön. Avoimella verkkokurssilla oppimateriaalien tulee olla julkisia, jolloin myös niiden saavutettavuuteen tulee kiinnittää erityistä huomiota.',
       },
       investication: {
-        fi: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.',
-        sv: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.',
-        en: 'Voit käyttää avoimella verkkokurssilla oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.',
+        fi: 'Voit käyttää avoimella verkkokurssilla tiedonhankinnan tueksi oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.  \n[Kirjaston oppaista](https://libraryguides.helsinki.fi/) opiskelija löytää kattavat ohjeet tiedonhankintaan. Mikäli kurssin osallistujilla ei ole käytössään Helsingin yliopiston käyttäjätunnusta, eivät he välttämättä pääse käsiksi kaikkiin aineistoihin.  \nTiedonhankinnan tueksi on tarjolla myös [itseopiskelikursseja](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/kurssit-ja-tyopajat/opiskele-tiedonhankintaa-itsenaisesti).',
+        sv: '',
+        en: '',
       },
       production: {
         fi: '',
@@ -767,7 +767,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: 'Voit tarjota tiedonhankinnan tueksi monipuolisesti erilaisia aineistoja, joihin [Helsingin yliopiston opiskelijoilla on pääsy](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/e-kirjat-ja-lehdet/e-aineistojen-etakaytto).',
+        fi: 'Voit tarjota tiedonhankinnan tueksi monipuolisesti erilaisia aineistoja, joihin [Helsingin yliopiston opiskelijoilla on pääsy](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/e-kirjat-ja-lehdet/e-aineistojen-etakaytto).  \n[Kirjaston oppaista](https://libraryguides.helsinki.fi/) opiskelija löytää kattavat ohjeet tiedonhankintaan. Tiedonhankinnan tueksi on tarjolla myös [itseopiskelikursseja](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/kurssit-ja-tyopajat/opiskele-tiedonhankintaa-itsenaisesti).',
         sv: '',
         en: '',
       },

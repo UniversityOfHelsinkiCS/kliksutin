@@ -25,7 +25,7 @@ const getQuestionData = (): any => [
             en: 'Acquisition',
           },
           text: {
-            fi: 'Tiedonhakinta',
+            fi: 'Tiedonhankintaa tapahtuu, kun oppijat lukevat kirjoja ja artikkeleita, kuuntelevat luentoja ja podcasteja tai katsovat videoita. Näin oppijat omaksuvat uusia käsitteitä, malleja, sanastoa ja menetelmiä.',
             sv: '',
             en: '',
           },
@@ -46,7 +46,7 @@ const getQuestionData = (): any => [
             en: 'Production',
           },
           text: {
-            fi: 'Tuottaminen',
+            fi: 'Tuottamisen kautta tapahtuvan oppimisen avulla opiskelija käsittelee, yhdistelee ja demonstroi oppimaansa. Näin hän osoittaa sen, mitä on oppinut, miten hän sillä hetkellä ymmärtää kurssiin liittyviä käsitteitä ja kuinka hän soveltaa niitä käytäntöön.',
             sv: '',
             en: '',
           },
@@ -71,7 +71,7 @@ const getQuestionData = (): any => [
             en: 'Collaboration',
           },
           text: {
-            fi: 'Yhteistyö',
+            fi: 'Edellyttää opiskelijoiden työskentelyä pienryhmissä yhteisen tavoitteen saavuttamiseksi. Yhteistyöllä oppiminen sisältää keskustelun, harjoittelun ja tuottamisen elementtejä.',
             sv: '',
             en: '',
           },
@@ -91,7 +91,7 @@ const getQuestionData = (): any => [
             en: 'Discussion',
           },
           text: {
-            fi: 'Keskustelu',
+            fi: 'Oppija ilmaisee ajatuksensa ja kysymyksensä sekä haastaa opettajan ja/tai vertaistensa ajatukset ja kysymykset ja vastaa niihin.',
             sv: '',
             en: '',
           },
@@ -109,7 +109,7 @@ const getQuestionData = (): any => [
             en: 'Investigation',
           },
           text: {
-            fi: 'Tutkiminen',
+            fi: 'Kannustaa oppijaa omaksumaan aktiivisen ja tutkivan lähestymistavan oppimiseen, etsimällä ja arvioimalla erilaista uutta tietoa ja ideoita. Opiskelijoita ohjataan analysoimaan ja vertailemaan tekstejä, tietoja, asiakirjoja ja resursseja opetettavan aiheen kontekstissa.',
             sv: '',
             en: '',
           },
@@ -130,7 +130,7 @@ const getQuestionData = (): any => [
             en: 'Practice',
           },
           text: {
-            fi: 'Harjoittelu',
+            fi: 'Mahdollistaa tiedon soveltamisen kontekstissa. Oppija toimii tehtävän mukaan ja käyttää saamaansa palautetta oman osaamisensa kehittämisessä. Palaute voi tulla itsereflektiosta, vertaisilta, opettajalta tai toiminnan tuloksista.',
             sv: '',
             en: '',
           },
@@ -323,12 +323,12 @@ const getQuestionData = (): any => [
     parentId: 3,
     priority: 0,
     title: {
-      fi: 'Opetustilanteiden nauhoitus?',
+      fi: 'Opetustilanteiden tallennus?',
       sv: 'Tallennus',
       en: 'Tallennus',
     },
     text: {
-      fi: 'Nauhoitetaanko kurssin aikana esimerkiksi luentoja, jotka tuodaan opiskelijoiden käyttöön myöhemmin? Muistathan huomioida [opetusvideoissa saavutettavuuden](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus#paragraph-5245).',
+      fi: 'Tallennetaanko kurssin aikana esimerkiksi luentoja, jotka tuodaan opiskelijoiden käyttöön myöhemmin? Muistathan huomioida [opetusvideoissa saavutettavuuden](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus#paragraph-5245).',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
