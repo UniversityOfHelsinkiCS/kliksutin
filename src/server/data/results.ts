@@ -15,7 +15,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: 'Voit myös tehdä kirjastolle [hanktintaehdotuksen](https://libraryguides.helsinki.fi/opetuksentuki/aineistot), mikäli haluamaasi aineistoa ei löydy valikoimista tai sitä ei ole tarpeeksi kurssin opiskelijoiden tarpeisiin.',
+        fi: '[Helka-kirjastojen haun](https://helka.helsinki.fi/) kautta opiskelijat voivat etsiä vertaisarvioituja artikkeleita ja tieteellistä kirjallisuutta syventääkseen osaamistaan kurssin aiheista.',
         sv: '',
         en: '',
       },
@@ -35,7 +35,7 @@ const getResultData = (): any => [
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Voit myös tehdä kirjastolle [hanktintaehdotuksen](https://libraryguides.helsinki.fi/opetuksentuki/aineistot), mikäli haluamaasi aineistoa ei löydy valikoimista tai sitä ei ole tarpeeksi kurssin opiskelijoiden tarpeisiin.',
         sv: '',
         en: '',
       },
@@ -62,7 +62,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: 'Voit myös tehdä kirjastolle [hanktintaehdotuksen](https://libraryguides.helsinki.fi/opetuksentuki/aineistot), mikäli haluamaasi aineistoa ei löydy valikoimista tai sitä ei ole tarpeeksi kurssin opiskelijoiden tarpeisiin.',
+        fi: '[Helka-kirjastojen haun](https://helka.helsinki.fi/) kautta opiskelijat voivat etsiä vertaisarvioituja artikkeleita ja tieteellistä kirjallisuutta syventääkseen osaamistaan kurssin aiheista.',
         sv: '',
         en: '',
       },
@@ -82,7 +82,7 @@ const getResultData = (): any => [
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Voit myös tehdä kirjastolle [hanktintaehdotuksen](https://libraryguides.helsinki.fi/opetuksentuki/aineistot), mikäli haluamaasi aineistoa ei löydy valikoimista tai sitä ei ole tarpeeksi kurssin opiskelijoiden tarpeisiin.',
         sv: '',
         en: '',
       },
@@ -250,7 +250,7 @@ const getResultData = (): any => [
         en: 'Lähiopetuksessa [opetukseen käytettävät tilat](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat) voivat mahdollistaa erilaisten digitaalitsen työvälineiden käytön opetuksen ja oppimisen tukena.',
       },
       investication: {
-        fi: 'Tiedonhankintaa kontaktiopetuksessa voidaan tukea monimuotoisilla opetusmateriaaleilla. Voit tarjota opiskelijoille mahdollisuuden katsoa esimerkiksi luennot uudestaan kotona, mikäli tallennat luennot esimerkiksi [UniTube -palveluun tätä tukevassa opetustilassa](https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/unitube/unitube-luentotallennustilat).',
+        fi: '[Flingan](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga) avulla voidaan dokumentoida esimerkiksi learning café -tyylinen ryhmätyöskentely niin, että kaikki ryhmät näkevät myös toistensa tuotokset.',
         sv: '',
         en: '',
       },
@@ -270,7 +270,7 @@ const getResultData = (): any => [
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Tiedonhankintaa kontaktiopetuksessa voidaan tukea monimuotoisilla opetusmateriaaleilla. Voit tarjota opiskelijoille mahdollisuuden katsoa esimerkiksi luennot uudestaan kotona, mikäli tallennat luennot esimerkiksi [UniTube -palveluun tätä tukevassa opetustilassa](https://helpdesk.it.helsinki.fi/ohjeet/yhteydenpito-ja-julkaiseminen/unitube/unitube-luentotallennustilat).',
         sv: '',
         en: '',
       },
@@ -297,7 +297,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: 'Sulautuvassa opetuksessa tiedonhankintaa voidaan tukea esimerkiksi tuomalla kaikki materiaali ja tallennetut luennot [Moodlen](https://teaching.helsinki.fi/ohjeet/artikkeli/moodle-ohjeet-ja-tuki) kautta opiskelijoiden saataville.  \nHybridiopetuksessa on tärkeää huomioida tiedon omaksumisen tasapuoliset mahdollisuudet läsnäoleville ja etäosallistuville opiskelijoille. Huomioi esimerkiksi laadukas puheäänen välitys etäosallistujille. Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
+        fi: '[Flingan](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga) avulla voidaan dokumentoida esimerkiksi learning café -tyylinen ryhmätyöskentely niin, että kaikki ryhmät näkevät myös toistensa tuotokset. Hybridiopetuksessa [Flingan](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga) avulla tätä työskentelyä voidaan toteuttaa joustavasti lähi- ja etäryhmien kesken.',
         sv: '',
         en: '',
       },
@@ -317,7 +317,7 @@ const getResultData = (): any => [
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Sulautuvassa opetuksessa tiedonhankintaa voidaan tukea esimerkiksi tuomalla kaikki materiaali ja tallennetut luennot [Moodlen](https://teaching.helsinki.fi/ohjeet/artikkeli/moodle-ohjeet-ja-tuki) kautta opiskelijoiden saataville.  \nHybridiopetuksessa on tärkeää huomioida tiedon omaksumisen tasapuoliset mahdollisuudet läsnäoleville ja etäosallistuville opiskelijoille. Huomioi esimerkiksi laadukas puheäänen välitys etäosallistujille. Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
         sv: '',
         en: '',
       },
@@ -344,7 +344,7 @@ const getResultData = (): any => [
         en: 'Etäopetus mahdollistaa suurten opiskelijamäärien osallistumisen joustavasti, mutta vaatii [huolellista opetuksen ja oppimisprosessin suunnittelua.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) Opiskelijoiden työskentely on ohjeistettava tarkasti, aktiivisuuden ylläpitoon on panostettava, ohjauksen ja vuorovaikutuksen toteuttaminen edellyttää [käytettävien välineiden hyvää tuntemusta](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) ja oppimistehtävissä on huomioitava etäopiskelijoiden "näkymättömyys" opettajalle. Etäopiskelu voidaan järjestää ryhmän koosta riippuen itseopiskelua tai yhteisöllistä työskentelyä painottaen.',
       },
       investication: {
-        fi: 'Etäopetuksessa tiedon omaksuminen tapahtuu usein videon välityksellä, jolloin saavutettavuuden huomioiminen on erittäin tärkeää. Huomaathan että joidenkin materiaalien [etäkäyttöön on hyvä ohjeistaa opiskelijaa](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/asioi-kirjastossa/usein-kysyttyja-kysymyksia-ukk/ukk-e-kirjat-lehdet-ja-tietokannat). Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
+        fi: '[Flingan](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga) avulla voidaan dokumentoida esimerkiksi learning café -tyylinen ryhmätyöskentely etäopetuksessa niin, että kaikki ryhmät näkevät myös toistensa tuotokset. Tällaisessa tilanteessa etäosallistujat voi jakaa esimerkiksi [Zoom-ryhmähuoneisiin](https://wiki.helsinki.fi/pages/viewpage.action?pageId=367927823).',
         sv: '',
         en: '',
       },
@@ -364,7 +364,7 @@ const getResultData = (): any => [
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Etäopetuksessa tiedon omaksuminen tapahtuu usein videon välityksellä, jolloin saavutettavuuden huomioiminen on erittäin tärkeää. Huomaathan että joidenkin materiaalien [etäkäyttöön on hyvä ohjeistaa opiskelijaa](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/asioi-kirjastossa/usein-kysyttyja-kysymyksia-ukk/ukk-e-kirjat-lehdet-ja-tietokannat). Hyviä vinkkejä hybridi- ja etäopetukseen löydät [opetustyön ohjeista.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422)',
         sv: '',
         en: '',
       },
@@ -720,7 +720,7 @@ const getResultData = (): any => [
         en: 'Yliopistoa laajemmalle yleisölle tarkoitetut kurssit suositellaan järjestettäväksi Avoimen yliopiston kautta. Tutustu avointen verkkokurssien (MOOC) vaatimuksiin ja DigiCampus-oppimisympäristöön. Avoimella verkkokurssilla oppimateriaalien tulee olla julkisia, jolloin myös niiden saavutettavuuteen tulee kiinnittää erityistä huomiota.',
       },
       investication: {
-        fi: 'Voit käyttää avoimella verkkokurssilla tiedonhankinnan tueksi oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.  \n[Kirjaston oppaista](https://libraryguides.helsinki.fi/) opiskelija löytää kattavat ohjeet tiedonhankintaan. Mikäli kurssin osallistujilla ei ole käytössään Helsingin yliopiston käyttäjätunnusta, eivät he välttämättä pääse käsiksi kaikkiin aineistoihin.  \nTiedonhankinnan tueksi on tarjolla myös [itseopiskelikursseja](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/kurssit-ja-tyopajat/opiskele-tiedonhankintaa-itsenaisesti).',
+        fi: '[Flingan aktiviteettien](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga) pedagogiset käsikirjoitukset, kuten Flinga Discover ja Flinga Explore tukevat yhteisöllistä ongelmanratkaisua ja teidonrakenteltua. Flinga ei vaadi opiskelijoilta kirjautumista.',
         sv: '',
         en: '',
       },
@@ -740,7 +740,7 @@ const getResultData = (): any => [
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Voit käyttää avoimella verkkokurssilla tiedonhankinnan tueksi oppimateriaaleina aineistoja, jotka ovat julkisina verkossa ja [saavutettavia](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksen-digitaalinen-saavutettavuus). Voit tarjota linkkejä esim. tutkimusartikkeleihin tai [Unitubessa](https://www.helsinki.fi/fi/ajankohtaista/unitube) oleviin videoihin.  \n[Kirjaston oppaista](https://libraryguides.helsinki.fi/) opiskelija löytää kattavat ohjeet tiedonhankintaan. Mikäli kurssin osallistujilla ei ole käytössään Helsingin yliopiston käyttäjätunnusta, eivät he välttämättä pääse käsiksi kaikkiin aineistoihin.  \nTiedonhankinnan tueksi on tarjolla myös [itseopiskelikursseja](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/kurssit-ja-tyopajat/opiskele-tiedonhankintaa-itsenaisesti).',
         sv: '',
         en: '',
       },
@@ -767,7 +767,7 @@ const getResultData = (): any => [
         en: '',
       },
       investication: {
-        fi: 'Voit tarjota tiedonhankinnan tueksi monipuolisesti erilaisia aineistoja, joihin [Helsingin yliopiston opiskelijoilla on pääsy](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/e-kirjat-ja-lehdet/e-aineistojen-etakaytto).  \n[Kirjaston oppaista](https://libraryguides.helsinki.fi/) opiskelija löytää kattavat ohjeet tiedonhankintaan. Tiedonhankinnan tueksi on tarjolla myös [itseopiskelikursseja](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/kurssit-ja-tyopajat/opiskele-tiedonhankintaa-itsenaisesti).',
+        fi: '[Flingan aktiviteettien](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga) pedagogiset käsikirjoitukset, kuten Flinga Discover ja Flinga Explore tukevat yhteisöllistä ongelmanratkaisua ja teidonrakenteltua. Flinga ei vaadi opiskelijoilta kirjautumista.',
         sv: '',
         en: '',
       },
@@ -787,7 +787,7 @@ const getResultData = (): any => [
         en: '',
       },
       acquisition: {
-        fi: '',
+        fi: 'Voit tarjota tiedonhankinnan tueksi monipuolisesti erilaisia aineistoja, joihin [Helsingin yliopiston opiskelijoilla on pääsy](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/e-kirjat-ja-lehdet/e-aineistojen-etakaytto).  \n[Kirjaston oppaista](https://libraryguides.helsinki.fi/) opiskelija löytää kattavat ohjeet tiedonhankintaan. Tiedonhankinnan tueksi on tarjolla myös [itseopiskelikursseja](https://www.helsinki.fi/fi/helsingin-yliopiston-kirjasto/kayta-kokoelmia/kurssit-ja-tyopajat/opiskele-tiedonhankintaa-itsenaisesti).',
         sv: '',
         en: '',
       },
