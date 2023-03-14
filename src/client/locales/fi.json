@@ -59,6 +59,7 @@
     "selectDimension": "Valitse oppimismuoto",
     "selectQuestion": "Valitse kysymys",
     "selectLanguage": "Valitse kieli",
-    "save": "Tallenna"
+    "save": "Tallenna",
+    "saveSuccess": "Tallennettu onnistuneesti"
   }
 }

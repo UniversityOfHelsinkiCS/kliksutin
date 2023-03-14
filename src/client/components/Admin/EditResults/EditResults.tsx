@@ -6,6 +6,7 @@ import {
   Typography,
   Button,
 } from '@mui/material'
+import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 
 import { Locales, Result, ChoiceType } from '../../../types'
@@ -41,9 +42,15 @@ const EditResult = ({
     setValue(resultData[language])
   }, [language, resultData])
 
-  const handleSave = () => {
+  const handleSave = async () => {
     data[dimensionId][language] = value
-    mutation.mutateAsync(data)
+
+    try {
+      await mutation.mutateAsync(data)
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
   }
 
   return (
