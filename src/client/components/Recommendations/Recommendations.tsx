@@ -88,6 +88,8 @@ const Recommendations = ({ watch }: InputProps) => {
     const extractedSubtools = extractedSubtoolObjects.map((aSubtool) => {
       // if subtool has the visibility options, check if it should be rendered or not
       if (aSubtool.visibility.options) {
+        if (!courseCompletionMethodQuestion) return null
+
         const [...options] = aSubtool.visibility.options
         const selectedCompletionMethods = Object.keys(
           courseCompletionMethodQuestion
