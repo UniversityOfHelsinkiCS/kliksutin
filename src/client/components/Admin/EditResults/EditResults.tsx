@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
-import { Box, SelectChangeEvent, TextField, Typography } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import {
+  Box,
+  SelectChangeEvent,
+  TextField,
+  Typography,
+  Button,
+} from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 import { Locales, Result, ChoiceType } from '../../../types'
 import useSurvey from '../../../hooks/useSurvey'
 import useResults from '../../../hooks/useResults'
+import useEditResultMutation from '../../../hooks/useEditResultMutation'
 import { getDimensions } from '../../../util/dimensions'
 import { DimensionSelect, QuestionSelect, LanguageSelect } from './Select'
 
@@ -18,10 +26,25 @@ const EditResult = ({
   options: ChoiceType
   result: Result
 }) => {
-  const { optionLabel, data } = result
+  const { t } = useTranslation()
 
-  const dimensionData = data[dimensionId]
+  const mutation = useEditResultMutation(result.id)
+
+  const { isSelected, optionLabel, data } = result
+  const resultData = data[dimensionId]
   const optionData = options.find(({ id }) => id === optionLabel)
+
+  const [selected /* , setSelected */] = useState(isSelected[language])
+  const [value, setValue] = useState(resultData[language])
+
+  useEffect(() => {
+    setValue(resultData[language])
+  }, [language, resultData])
+
+  const handleSave = () => {
+    data[dimensionId][language] = value
+    mutation.mutateAsync(data)
+  }
 
   return (
     <Box mb={5}>
@@ -29,11 +52,19 @@ const EditResult = ({
         {optionData.label[language]}
       </Typography>
       <TextField
+        fullWidth
+        value={selected}
+        // onChange={(event) => setSelected(event.target.value)}
+      />
+      <TextField
         multiline
         minRows={8}
         fullWidth
-        value={dimensionData[language]}
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
       />
+
+      <Button onClick={handleSave}>{t('admin:save')}</Button>
     </Box>
   )
 }

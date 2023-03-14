@@ -58,6 +58,7 @@
   "admin": {
     "selectDimension": "Valitse oppimismuoto",
     "selectQuestion": "Valitse kysymys",
-    "selectLanguage": "Valitse kieli"
+    "selectLanguage": "Valitse kieli",
+    "save": "Tallenna"
   }
 }
