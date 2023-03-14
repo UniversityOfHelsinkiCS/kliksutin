@@ -80,7 +80,16 @@ const Recommendations = ({ watch }: InputProps) => {
       .map((aTool: ToolType[]) => aTool[0].subtools)
       .flat(1) // flatted the arrays into one array
 
-    return Array.from(new Set(extractedSubtools))
+    const courseCompletionMethodQuestion = watch('4')
+
+    if (courseCompletionMethodQuestion?.courseCompletionMethodExam)
+      extractedSubtools.push('tentti', 'tehtävä')
+    if (courseCompletionMethodQuestion?.courseCompletionMethodDiary)
+      extractedSubtools.push('tehtävä')
+    if (courseCompletionMethodQuestion?.courseCompletionMethodAssignment)
+      extractedSubtools.push('tehtävä')
+
+    return Array.from(new Set(extractedSubtools.sort()))
   }
 
   const mergedRecommendationData = rawRecommendationData.map((aToolData) => ({
