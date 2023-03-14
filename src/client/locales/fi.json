@@ -54,5 +54,10 @@
     "dimensionCompletionPrompt": "Kuinka voin tukea aihetta \"{{dimensionName}}\" yliopistokurssilla? Anna 3 esimerkkiä käyttäen ohjelmistoa {{recommendations}}?",
     "send": "Lähetä",
     "or": " tai "
+  },
+  "admin": {
+    "selectDimension": "Valitse oppimismuoto",
+    "selectQuestion": "Valitse kysymys",
+    "selectLanguage": "Valitse kieli"
   }
 }

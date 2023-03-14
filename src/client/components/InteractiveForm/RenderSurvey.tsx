@@ -5,7 +5,7 @@ import useSurvey from '../../hooks/useSurvey'
 import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
-import getSelectedDimensions from '../../util/getSelectedDimensions'
+import { getSelectedDimensions } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'
 import styles from './styles'
 

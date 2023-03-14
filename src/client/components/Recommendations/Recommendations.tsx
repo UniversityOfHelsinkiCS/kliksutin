@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import useRecommendations from '../../hooks/useRecommendations'
 import useSurvey from '../../hooks/useSurvey'
-import getSelectedDimensions from '../../util/getSelectedDimensions'
+import { getSelectedDimensions } from '../../util/dimensions'
 import styles from './styles'
 import {
   RecommendationData,

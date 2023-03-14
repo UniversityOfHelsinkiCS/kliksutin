@@ -1,8 +1,9 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 
-import { Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
+import EditResults from './EditResults/EditResults'
 
 const Admin = () => {
   const { user, isLoading } = useLoggedInUser()
@@ -11,6 +12,10 @@ const Admin = () => {
 
   if (!user.isAdmin) return <Navigate to="/" />
 
-  return <Typography>Admin stuff</Typography>
+  return (
+    <Box>
+      <EditResults />
+    </Box>
+  )
 }
 export default Admin
