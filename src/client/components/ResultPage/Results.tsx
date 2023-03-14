@@ -27,9 +27,9 @@ const ResultElement = ({
       <Markdown>{resultData.isSelected[language]}</Markdown>
       <Box sx={classes.content}>
         {dimensions.map((dimension: string) => (
-          <Markdown key={`${JSON.stringify(resultData)}.${dimension}`}>
-            {resultData.data[dimension][language]}
-          </Markdown>
+          <Box key={`${JSON.stringify(resultData)}.${dimension}`} sx={{ m: 2 }}>
+            <Markdown>{resultData.data[dimension][language]}</Markdown>
+          </Box>
         ))}
       </Box>
     </Container>

@@ -26,9 +26,10 @@
 
         1. Open your terminal or command prompt.
         2. Run the following command to install npm:
-        ```bash
+
+    ```bash
         npm install npm@latest -g
-        ```
+    ```
 
 ## Scripts
 
