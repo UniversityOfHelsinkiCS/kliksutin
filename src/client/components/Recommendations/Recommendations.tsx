@@ -13,6 +13,7 @@ import {
 } from '../../types'
 import SelectedTools from './SelectedTools'
 import NonSelectedTools from './NonSelectedTools'
+import ShowMore from '../Common/ShowMore'
 
 /* eslint-disable no-nested-ternary */
 const sortRecommendations = (a: RecommendationData, b: RecommendationData) =>
@@ -90,8 +91,9 @@ const Recommendations = ({ watch }: InputProps) => {
 
   return (
     <Box sx={classes.recommendationContainer}>
-      <Typography variant="h5" sx={classes.heading} component="div">
+      <Typography variant="h5" sx={classes.heading} component="span">
         {t('recommendations:title')}
+        <ShowMore text={t('recommendations:infoBoxText')} />
       </Typography>
 
       <SelectedTools

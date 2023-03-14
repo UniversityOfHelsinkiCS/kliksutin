@@ -15,7 +15,7 @@
   },
   "recommendations": {
     "title": "Käytössäsi olevat työkalut",
-    "recommendationMessage": "Alla vielä listaus suosituksistamme"
+    "infoBoxText": "Alla vielä listaus suosituksistamme"
   },
   "results": {
     "title": "Yhteenveto valinnoistasi",
