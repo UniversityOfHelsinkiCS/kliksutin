@@ -34,7 +34,29 @@ const getQuestionData = (): any => [
             { name: 'unitube', subtools: [] },
             { name: 'presemo', subtools: [] },
             { name: 'thinglink', subtools: [] },
-            { name: 'moodle', subtools: ['aineistot', 'h5p'] },
+            {
+              name: 'moodle',
+              subtools: [
+                {
+                  label: 'aineistot',
+                  title: {
+                    fi: 'Aineistot',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'h5p',
+                  title: {
+                    fi: 'H5P',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+              ],
+            },
             { name: 'screen-cast-o-matic', subtools: [] },
           ],
         },
@@ -58,7 +80,50 @@ const getQuestionData = (): any => [
             { name: 'eportfolio', subtools: [] },
             {
               name: 'moodle',
-              subtools: ['tehtävä', 'wiki', 'sanasto', 'tietokanta'],
+              subtools: [
+                {
+                  label: 'tehtävä',
+                  title: {
+                    fi: 'Tehtävä',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {
+                    options: [
+                      'courseCompletionMethodExam',
+                      'courseCompletionMethodDiary',
+                      'courseCompletionMethodAssignment',
+                    ],
+                  },
+                },
+                {
+                  label: 'wiki',
+                  title: {
+                    fi: 'Wiki',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'sanasto',
+                  title: {
+                    fi: 'Sanasto',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'tietokanta',
+                  title: {
+                    fi: 'Tietokanta',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+              ],
             },
             { name: 'screen-cast-o-matic', subtools: [] },
           ],
@@ -80,7 +145,38 @@ const getQuestionData = (): any => [
             { name: 'flinga', subtools: [] },
             { name: 'thinglink', subtools: [] },
             { name: 'eportfolio', subtools: [] },
-            { name: 'moodle', subtools: ['keskustelualue', 'työpaja', 'wiki'] },
+            {
+              name: 'moodle',
+              subtools: [
+                {
+                  label: 'keskustelualue',
+                  title: {
+                    fi: 'Keskustelualue',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'wiki',
+                  title: {
+                    fi: 'Wiki',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'työpaja',
+                  title: {
+                    fi: 'Työpaja',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+              ],
+            },
           ],
         },
         {
@@ -98,7 +194,29 @@ const getQuestionData = (): any => [
           data: [
             { name: 'zoom', subtools: [] },
             { name: 'presemo', subtools: [] },
-            { name: 'moodle', subtools: ['keskustelualue', 'chat'] },
+            {
+              name: 'moodle',
+              subtools: [
+                {
+                  label: 'keskustelualue',
+                  title: {
+                    fi: 'Keskustelualue',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'chat',
+                  title: {
+                    fi: 'Chat',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+              ],
+            },
           ],
         },
         {
@@ -118,7 +236,35 @@ const getQuestionData = (): any => [
             { name: 'eportfolio', subtools: [] },
             {
               name: 'moodle',
-              subtools: ['keskustelualue', 'wiki', 'tietokanta'],
+              subtools: [
+                {
+                  label: 'keskustelualue',
+                  title: {
+                    fi: 'Keskustelualue',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'wiki',
+                  title: {
+                    fi: 'Wiki',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'tietokanta',
+                  title: {
+                    fi: 'Tietokanta',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+              ],
             },
           ],
         },
@@ -138,7 +284,46 @@ const getQuestionData = (): any => [
             { name: 'thinglink', subtools: [] },
             {
               name: 'moodle',
-              subtools: ['h5p', 'tentti', 'työpaja', 'oppitunti'],
+              subtools: [
+                {
+                  label: 'h5p',
+                  title: {
+                    fi: 'H5P',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'tentti',
+                  title: {
+                    fi: 'Tentti',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {
+                    options: ['courseCompletionMethodExam'],
+                  },
+                },
+                {
+                  label: 'työpaja',
+                  title: {
+                    fi: 'Työpaja',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+                {
+                  label: 'oppitunti',
+                  title: {
+                    fi: 'Oppitunti',
+                    sv: '',
+                    en: '',
+                  },
+                  visibility: {},
+                },
+              ],
             },
           ],
         },
