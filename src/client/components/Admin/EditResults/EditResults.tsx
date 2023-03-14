@@ -24,14 +24,14 @@ const EditResult = ({
   const optionData = options.find(({ id }) => id === optionLabel)
 
   return (
-    <Box mb={5} mr={5}>
+    <Box mb={5}>
       <Typography mb={1} variant="h5">
         {optionData.label[language]}
       </Typography>
       <TextField
         multiline
-        rows={10}
-        sx={{ width: 800 }}
+        minRows={8}
+        fullWidth
         value={dimensionData[language]}
       />
     </Box>
@@ -89,7 +89,7 @@ const EditResults = () => {
           handleChange={handleLanguageChange}
         />
       </Box>
-      <Box display="flex" flexWrap="wrap">
+      <Box flexWrap="wrap">
         {filteredResults.map((result) => (
           <EditResult
             key={result.id}

@@ -13,7 +13,7 @@ const Admin = () => {
   if (!user.isAdmin) return <Navigate to="/" />
 
   return (
-    <Box>
+    <Box alignSelf="flex-start">
       <EditResults />
     </Box>
   )
