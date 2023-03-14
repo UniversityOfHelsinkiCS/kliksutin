@@ -44,8 +44,6 @@ const InteractiveForm = () => {
 
   if (isLoading) return null
 
-  console.log(resultData)
-
   return (
     <Box my="2rem" maxWidth={1280}>
       <Grid container>
