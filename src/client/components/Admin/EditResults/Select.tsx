@@ -154,14 +154,12 @@ export const LanguageSelect = ({
   const { t, i18n } = useTranslation()
   const language = i18n.language as keyof Locales
 
-  console.log(selectedLanguage)
-
   return (
     <Box width={300}>
       <FormControl fullWidth>
-        <InputLabel>{t('admin:selectLanguge')}</InputLabel>
+        <InputLabel>{t('admin:selectLanguage')}</InputLabel>
         <Select
-          label={t('admin:selectLanguge')}
+          label={t('admin:selectLanguage')}
           value={selectedLanguage}
           onChange={handleChange}
         >

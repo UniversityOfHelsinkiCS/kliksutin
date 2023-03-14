@@ -66,7 +66,7 @@ const EditResults = () => {
     ({ id }) => id === (questionId as unknown as number)
   )
   const options = selectedQuestion?.optionData.options || []
-  const optionIds = options.map(({ id }) => id) || []
+  const optionIds = options.map(({ id }) => id)
   const filteredResults = results.filter(({ optionLabel }) =>
     optionIds.includes(optionLabel)
   )
