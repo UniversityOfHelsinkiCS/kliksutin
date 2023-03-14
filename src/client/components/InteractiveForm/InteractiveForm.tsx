@@ -44,6 +44,8 @@ const InteractiveForm = () => {
 
   if (isLoading) return null
 
+  console.log(resultData)
+
   return (
     <Box my="2rem" maxWidth={1280}>
       <Grid container>
@@ -68,7 +70,7 @@ const InteractiveForm = () => {
           <Grid item sm={12}>
             <Results formResultData={resultData} />
             <Openai watch={watch} />
-            <ProceedToContact />
+            {resultData && <ProceedToContact />}
           </Grid>
         )}
       </Grid>
