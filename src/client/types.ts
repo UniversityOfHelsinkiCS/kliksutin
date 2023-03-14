@@ -40,9 +40,15 @@ export interface MultipleChoiceType {
   data: Locales
 }
 
+export interface Subtool {
+  label: string
+  title: Locales
+  visibility: Visibility
+}
+
 export interface ToolType {
   name: string
-  subtools: string[]
+  subtools: Subtool[]
 }
 
 export interface DimensionSelectionData {

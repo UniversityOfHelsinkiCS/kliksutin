@@ -10,6 +10,7 @@ import {
   DimensionSelectionData,
   InputProps,
   ToolType,
+  Subtool,
 } from '../../types'
 import SelectedTools from './SelectedTools'
 import NonSelectedTools from './NonSelectedTools'
@@ -73,21 +74,33 @@ const Recommendations = ({ watch }: InputProps) => {
   )
 
   const extractSubtools = (toolName: string) => {
-    const extractedSubtools: string[] = dimensionSelections
+    const extractedSubtoolObjects: Subtool[] = dimensionSelections
       .map((aSelection: DimensionSelectionData) =>
         aSelection.data.filter((aTool: ToolType) => aTool.name === toolName)
       )
       .map((aTool: ToolType[]) => aTool[0].subtools)
-      .flat(1) // flatted the arrays into one array
+      .flat(1) // flatten the arrays into one array
 
+    // at the moment only the Suoritusmuoto selections will affect
+    // visible Moodle subtools.
     const courseCompletionMethodQuestion = watch('4')
 
-    if (courseCompletionMethodQuestion?.courseCompletionMethodExam)
-      extractedSubtools.push('tentti', 'tehtävä')
-    if (courseCompletionMethodQuestion?.courseCompletionMethodDiary)
-      extractedSubtools.push('tehtävä')
-    if (courseCompletionMethodQuestion?.courseCompletionMethodAssignment)
-      extractedSubtools.push('tehtävä')
+    const extractedSubtools = extractedSubtoolObjects.map((aSubtool) => {
+      // if subtool has the visibility options, check if it should be rendered or not
+      if (aSubtool.visibility.options) {
+        const [...options] = aSubtool.visibility.options
+        const selectedCompletionMethods = Object.keys(
+          courseCompletionMethodQuestion
+        ).filter((key) => courseCompletionMethodQuestion[key])
+
+        if (
+          !options.some((option) => selectedCompletionMethods.includes(option))
+        )
+          return null
+      }
+
+      return aSubtool.title.fi
+    })
 
     return Array.from(new Set(extractedSubtools.sort()))
   }
