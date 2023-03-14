@@ -24,6 +24,7 @@
     "proceedToExit": "Yes",
     "proceedToConsultation": "No",
     "proceedEmailInfoText": "If you would like to have the summary send to your email, enter your email below",
+    "summaryEmailSubject": "Curre yhteenvetosi",
     "emailIsRequired": "Email is required",
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send",
