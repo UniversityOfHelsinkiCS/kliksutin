@@ -6,6 +6,22 @@ import {
   SubmitHandler,
 } from 'react-hook-form'
 
+export interface Faculty {
+  code: string
+  name: Locales
+}
+
+export interface User {
+  id: string
+  username: string
+  firsName?: string
+  lastName?: string
+  email?: string
+  language?: string
+  isAdmin: boolean
+  iamGroups: string[]
+}
+
 export interface InputProps {
   control?: Control<FieldValues>
   watch?: UseFormWatch<FieldValues>
@@ -15,6 +31,16 @@ export interface InputProps {
   language?: string
   questions?: Question[]
   handleSubmit?: SubmitHandler<FieldValues>
+}
+
+export interface FormValues {
+  [key: number]: Record<string, { [key: string]: boolean }>
+  faculty: string
+}
+
+export interface PersistForm {
+  value: FormValues
+  sessionStorageKey: string
 }
 
 export type Locales = {
@@ -29,15 +55,27 @@ export interface InfoType {
   label: Locales
 }
 
-export interface SingleChoiceType {
+export type SingleChoiceType = {
   id: string
   label: Locales
 }
 
-export interface MultipleChoiceType {
-  id: string
-  label: Locales
+export interface MultipleChoiceType extends SingleChoiceType {
   data: Locales
+}
+
+export type ChoiceType =
+  | SingleChoiceType[]
+  | MultipleChoiceType[]
+  | DimensionSelectionData[]
+
+export interface OptionData {
+  type: string
+  options: ChoiceType
+}
+
+export type Visibility = {
+  options: string[]
 }
 
 export interface Subtool {
@@ -68,23 +106,17 @@ export interface MergedRecommendationDataType {
   text: Locales
 }
 
+export interface RecommendationData {
+  id: number
+  label: string
+  title: Locales
+  text: Locales
+  dimensions?: string[]
+}
+
 export interface SelectedToolsType {
   mergedRecommendationData: MergedRecommendationDataType[]
   dimensionSelections?: DimensionSelectionData[]
-}
-
-export type ChoiceType =
-  | SingleChoiceType[]
-  | MultipleChoiceType[]
-  | DimensionSelectionData[]
-
-export interface OptionData {
-  type: string
-  options: ChoiceType
-}
-
-export type Visibility = {
-  options: string[]
 }
 
 export interface Survey {
@@ -108,24 +140,6 @@ export interface Question {
   updatedAt: Date
 }
 
-export interface RecommendationData {
-  id: number
-  label: string
-  title: Locales
-  text: Locales
-  dimensions?: string[]
-}
-
-export interface FormValues {
-  [key: number]: Record<string, { [key: string]: boolean }>
-  faculty: string
-}
-
-export interface PersistForm {
-  value: FormValues
-  sessionStorageKey: string
-}
-
 export interface Result {
   id: number
   surveyId: number
@@ -136,20 +150,4 @@ export interface Result {
   data: {
     [key: string]: Locales
   }
-}
-
-export interface Faculty {
-  code: string
-  name: Locales
-}
-
-export interface User {
-  id: string
-  username: string
-  firsName?: string
-  lastName?: string
-  email?: string
-  language?: string
-  isAdmin: boolean
-  iamGroups: string[]
 }
