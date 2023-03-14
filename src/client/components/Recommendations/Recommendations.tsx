@@ -11,6 +11,7 @@ import {
   InputProps,
   ToolType,
   Subtool,
+  Locales,
 } from '../../types'
 import SelectedTools from './SelectedTools'
 import NonSelectedTools from './NonSelectedTools'
@@ -52,7 +53,8 @@ const getRecommendationsData = (
 }
 
 const Recommendations = ({ watch }: InputProps) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const { language } = i18n
   const { survey } = useSurvey()
   const { recommendations, isSuccess: recommendationsFetched } =
     useRecommendations(survey?.id)
@@ -101,7 +103,7 @@ const Recommendations = ({ watch }: InputProps) => {
           return null
       }
 
-      return aSubtool.title.fi
+      return aSubtool.title[language as keyof Locales]
     })
 
     return Array.from(new Set(extractedSubtools.sort()))
