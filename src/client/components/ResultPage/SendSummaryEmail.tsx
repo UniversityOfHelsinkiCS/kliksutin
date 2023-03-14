@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import * as Yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Grid, Typography } from '@mui/material'
 
 import apiClient from '../../util/apiClient'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
@@ -19,30 +16,12 @@ const SendSummaryEmail = () => {
     apiClient.post('/summary', {
       targets,
       text,
-      subject: 'Curre summary',
+      subject: t('results:summaryEmailSubject'),
     })
   }
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .required(t('results:emailIsRequired'))
-      .email(t('results:emailIsIncorrect')),
-  })
-
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({
-    mode: 'onBlur',
-    resolver: yupResolver(validationSchema),
-    defaultValues: {
-      email: user?.email || '',
-    },
-  })
-
-  const onSubmit = async ({ email }: { email: string }) => {
-    const targets = [email]
+  const onSubmit = async () => {
+    const targets = [user?.email]
     const text = resultHTML.outerHTML
 
     try {
@@ -69,36 +48,25 @@ const SendSummaryEmail = () => {
         mt={4}
       >
         <Grid item xs={12} sm={12}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <TextField
-              required
-              size="small"
-              name="email"
-              label="Email"
-              margin="dense"
-              sx={{ width: 400 }}
-              {...register('email')}
-              error={errors.email ? true : false} // eslint-disable-line no-unneeded-ternary
-            />
-            {errors.email && (
-              <Typography variant="body2">{errors.email?.message}</Typography>
+          <Typography variant="h6">
+            {user?.email ? user.email : 'User not found'}
+          </Typography>
+          <Box mt={1} textAlign="center">
+            {!isSent ? (
+              <Button
+                variant="contained"
+                color="primary"
+                disabled={!user?.email}
+                onClick={onSubmit}
+              >
+                {t('results:sendSummaryMail')}
+              </Button>
+            ) : (
+              <Alert sx={{ maxWidth: 600 }} severity="success">
+                {t('results:sendSuccess')}
+              </Alert>
             )}
-            <Box mt={1} textAlign="center">
-              {!isSent ? (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleSubmit(onSubmit)}
-                >
-                  {t('results:sendSummaryMail')}
-                </Button>
-              ) : (
-                <Alert sx={{ maxWidth: 600 }} severity="success">
-                  {t('results:sendSuccess')}
-                </Alert>
-              )}
-            </Box>
-          </form>
+          </Box>
         </Grid>
       </Grid>
     </Box>

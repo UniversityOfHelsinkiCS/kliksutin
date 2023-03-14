@@ -23,9 +23,8 @@
     "proceedTitle": "Löysitkö etsimäsi?",
     "proceedToExit": "Kyllä",
     "proceedToConsultation": "En",
-    "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
-    "emailIsRequired": "Sähköposti on pakollinen",
-    "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
+    "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, paina lähetä painiketta alta.",
+    "summaryEmailSubject": "Curre yhteenvetosi",
     "sendSummaryMail": "Lähetä",
     "sendSuccess": "Yhteenveto on lähetetty sähköpostiisi",
     "endMessage": "Kiitos Curren käytöstä!"

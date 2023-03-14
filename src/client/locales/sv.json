@@ -10,12 +10,12 @@
   },
   "facultySelect": {
     "welcomeMessage": "",
-    "introMessage": "Aloita valitsemalla tiedekuntasi valikosta",
+    "introMessage": "Aloita valitsemalla tiedekuntasi valikosta.",
     "inputLabel": "Tiedekuntasi"
   },
   "recommendations": {
     "title": "Käytössäsi olevat työkalut",
-    "recommendationMessage": "Alla vielä listaus suosituksistamme"
+    "infoBoxText": "Alla vielä listaus suosituksistamme"
   },
   "results": {
     "title": "Yhteenveto valinnoistasi",
@@ -23,16 +23,15 @@
     "proceedTitle": "Löysitkö etsimäsi?",
     "proceedToExit": "Kyllä",
     "proceedToConsultation": "En",
-    "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, anna sähköpostiosoitteesi alle",
-    "emailIsRequired": "Sähköposti on pakollinen",
-    "emailIsIncorrect": "Sähköpostiosoite ei kelpaa",
+    "proceedEmailInfoText": "Mikäli haluat saada yhteenvedon sähköpostiisi, paina lähetä painiketta alta.",
+    "summaryEmailSubject": "Curre yhteenvetosi",
     "sendSummaryMail": "Lähetä",
     "sendSuccess": "Yhteenveto on lähetetty sähköpostiisi",
     "endMessage": "Kiitos Curren käytöstä!"
   },
   "contact": {
     "title": "Yhteydenotto",
-    "contactMessage": "Lähetä tästä tiketti jatkaaksesi keskustelua asiantuntijan kanssa.",
+    "contactMessage": "Lähetä tästä viesti jatkaaksesi keskustelua asiantuntijan kanssa.",
     "contactMethodLabel": "Valitse yhteydenottotapa",
     "contactMethodEmail": "Sähköposti",
     "contactMethodConsultation": "Konsultaatio",
@@ -48,12 +47,12 @@
   "openai": {
     "title": "Tekoäly opetuksessa",
     "infoBoxText": "[Tekoäly opetuksessa](https://teaching.helsinki.fi/ohjeet/artikkeli/tekoaly-opetuksessa) on tällä hetkellä ajankohtainen aihe. Curre antaa sinulle mahdollisuuden kokeilla, millaisia ehdotuksia [OpenAI:n](https://openai.com/) ChatGPT-kielimalli voisi tuottaa opetuksesi tueksi. On tärkeää huomioida, että nämä ehdotukset saattavat sisältää asiavirheitä ja ne ovat tuotu osaksi Currea, jotta jokaisella Helsingin yliopiston opettajalla olisi mahdollisuus kokeilun kautta tutustua tähän ajankohtaiseen aiheeseen.\n\nTarjolla on kaksi erilaista vaihtoehtoa kysyä tekoälyltä opetukseesi liittyviä kysymyksiä. Avoimen tekstikentän kautta voit antaa tekoälylle kurssin otsikon ja katsoa, millaisia luento-otsikoita tekoäly kurssillesi ehdottaa. Toisessa vaihtoehdossa voit valita jonkin Curressa valitsemistasi oppimismuodoista, jonka jälkeen tekoäly ehdottaa erilaisia tapoja hyödyntää Curren suosittelemia ohjelmistoja kyseisen oppimismuodon tukemiseksi kurssin aikana.\n\nHelsingin yliopiston opintoasiainneuvosto on julkaissut [Tekoälyn käytön linjaukset Helsingin yliopistossa](https://teaching.helsinki.fi/system/files/inline-files/tekoalylinjaukset_Helsingin_yliopiston_opetuksessa_0.pdf) 16.2.2023. [Global Campus](https://blogs.helsinki.fi/globalcampus/) tutkii ja kehittää erilaisia ChatGPT:n käyttötapoja. Mikäli aihe kiinnostaa, voit olla myös suoraan yhteydessä Global Campus -projektin asiantuntijaan Jussi Wrightiin (jussi.wright@helsinki.fi)",
-    "giveCourseInfoText": "Jos haluat luentoideoita kurssillesi, syötä kurssin nimi alle",
+    "giveCourseInfoText": "Jos haluat luentoideoita kurssillesi, syötä kurssin nimi alle.",
     "courseCompletionPrompt": "Anna 5 luentoaihetta kurssille, jonka otsikko on \"{{courseName}}\".",
-    "selectDimensionInfoText": "Jos haluat ideoita työkalujen käyttöön, valitse tuettava oppimismuoto.",
+    "selectDimensionInfoText": "Jos haluat ideoita työkalujen käyttöön, valitse tuettava oppimismuoto",
     "dimensionSelect": "Oppimismuoto",
     "dimensionCompletionPrompt": "Kuinka voin tukea aihetta \"{{dimensionName}}\" yliopistokurssilla? Anna 3 esimerkkiä käyttäen ohjelmistoa {{recommendations}}?",
-    "send": "Send",
+    "send": "Lähetä",
     "or": " tai "
   }
 }
