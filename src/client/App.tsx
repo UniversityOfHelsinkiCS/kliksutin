@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import { Box } from '@mui/material'
+import { SnackbarProvider } from 'notistack'
 
 import useTheme from './theme'
 import Footer from './components/Footer'
@@ -12,25 +13,27 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <NavBar />
+      <SnackbarProvider>
         <Box
-          flexGrow={1}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="100vh"
+          sx={{
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
         >
-          <Router />
+          <NavBar />
+          <Box
+            flexGrow={1}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="100vh"
+          >
+            <Router />
+          </Box>
+          <Footer />
         </Box>
-        <Footer />
-      </Box>
+      </SnackbarProvider>
     </ThemeProvider>
   )
 }

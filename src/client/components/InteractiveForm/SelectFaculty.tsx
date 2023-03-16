@@ -46,8 +46,8 @@ const SelectFaculty = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
   const [faculty, setFaculty] = useState('')
-  const { faculties, isLoading } = useFaculties()
-  const { userFaculties = [] } = useUserFaculties()
+  const { faculties, isLoading: facultiesLoading } = useFaculties()
+  const { userFaculties, isLoading: userFacultiesLoading } = useUserFaculties()
 
   const handleChange = (event: SelectChangeEvent) => {
     setFaculty(event.target.value)
@@ -55,7 +55,7 @@ const SelectFaculty = ({ control }: InputProps) => {
 
   const classes = styles.cardStyles
 
-  if (isLoading) return null
+  if (facultiesLoading || userFacultiesLoading) return null
 
   const sortedFaculties = sortFaculties(faculties, language as keyof Locales)
   const organisations = sortedFaculties.concat(extraOrganisations)

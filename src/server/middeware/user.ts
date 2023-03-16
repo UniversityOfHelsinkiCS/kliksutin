@@ -3,6 +3,9 @@ import { inDevelopment } from '../../config'
 const parseIamGroups = (iamGroups: string) =>
   iamGroups?.split(';').filter(Boolean) ?? []
 
+// Add dojo iam group here
+const checkAdmin = (iamGroups: string[]) => iamGroups.includes('grp-toska')
+
 const mockHeaders = {
   uid: 'testuser',
   givenname: 'Testi',
@@ -36,6 +39,7 @@ const userMiddleware = (req: any, _res: any, next: any) => {
     email,
     language,
     iamGroups,
+    isAdmin: checkAdmin(iamGroups),
   }
 
   req.user = user

@@ -1,7 +1,15 @@
 import { UseFormWatch, FieldValues } from 'react-hook-form'
-import { Survey, DimensionSelectionData } from '../types'
+import { Survey, DimensionSelectionData, InfoType } from '../types'
 
-const getSelectedDimensions = (
+export const getDimensions = (survey: Survey): InfoType[] => {
+  const dimensionQuestion = survey.Questions.find(
+    (question) => question.optionData.type === 'dimensions'
+  )
+
+  return dimensionQuestion.optionData.options
+}
+
+export const getSelectedDimensions = (
   survey: Survey,
   watch: UseFormWatch<FieldValues>
 ) => {
@@ -21,5 +29,3 @@ const getSelectedDimensions = (
 
   return selectedDimensions
 }
-
-export default getSelectedDimensions

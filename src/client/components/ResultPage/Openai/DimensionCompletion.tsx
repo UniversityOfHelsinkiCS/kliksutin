@@ -13,7 +13,7 @@ import { UseFormWatch, FieldValues } from 'react-hook-form'
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import useSurvey from '../../../hooks/useSurvey'
 import LoadingProgress from './LoadingProgress'
-import getSelectedDimensions from '../../../util/getSelectedDimensions'
+import { getSelectedDimensions } from '../../../util/dimensions'
 import styles from '../styles'
 import { DimensionSelectionData, Locales } from '../../../types'
 
