@@ -22,7 +22,7 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
 
   const dimensions = getSelectedDimensions(survey, watch)
 
-  const isAllowedToProceed = (): boolean => {
+  const isAllowedToProceed = () => {
     const isFacultySelected = watch('faculty') !== ''
 
     return isFacultySelected && dimensions.length > 0

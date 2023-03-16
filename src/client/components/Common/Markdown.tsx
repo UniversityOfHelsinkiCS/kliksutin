@@ -3,25 +3,25 @@ import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 import { Link, Typography } from '@mui/material'
 
-const GutterTypography = ({ ...props }: any) => <Typography {...props} />
+const GutterTypography = ({ ...rest }) => <Typography {...rest} />
 
-const H1 = ({ ...props }: any) => (
-  <GutterTypography variant="h4" component="h1" {...props} />
+const H1 = ({ ...rest }) => (
+  <GutterTypography variant="h4" component="h1" {...rest} />
 )
 
-const H2 = ({ ...props }: any) => (
-  <GutterTypography variant="h5" component="h2" {...props} />
+const H2 = ({ ...rest }) => (
+  <GutterTypography variant="h5" component="h2" {...rest} />
 )
 
-const H3 = ({ ...props }: any) => (
-  <GutterTypography variant="h6" component="h3" {...props} />
+const H3 = ({ ...rest }) => (
+  <GutterTypography variant="h6" component="h3" {...rest} />
 )
 
-const H4 = ({ ...props }: any) => (
-  <GutterTypography variant="body1" component="h4" {...props} />
+const H4 = ({ ...rest }) => (
+  <GutterTypography variant="body1" component="h4" {...rest} />
 )
 
-const A = ({ ...props }: any) => <Link color="inherit" {...props} />
+const A = ({ ...rest }) => <Link color="inherit" {...rest} />
 
 const defaultComponents = {
   p: GutterTypography,
@@ -39,7 +39,7 @@ const Markdown = ({ children, ...props }: any) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkBreaks]}
-      components={{ ...defaultComponents } as any}
+      components={{ ...defaultComponents }}
       linkTarget="_blank"
       {...props}
     >
