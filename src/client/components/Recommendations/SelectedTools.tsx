@@ -5,12 +5,12 @@ import DimensionChip from '../Chip/DimensionChip'
 import Markdown from '../Common/Markdown'
 import colors from '../../util/colors'
 import styles from './styles'
-import { Locales, SelectedToolsType } from '../../types'
+import { Locales, SelectedTools } from '../../types'
 
-const SelectedTools = ({
+const CurrentlySelectedTools = ({
   mergedRecommendationData,
   dimensionSelections,
-}: SelectedToolsType) => {
+}: SelectedTools) => {
   const { i18n } = useTranslation()
 
   const classes = styles.cardStyles
@@ -54,4 +54,4 @@ const SelectedTools = ({
   )
 }
 
-export default SelectedTools
+export default CurrentlySelectedTools

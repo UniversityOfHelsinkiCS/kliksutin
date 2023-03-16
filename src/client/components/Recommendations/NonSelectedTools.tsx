@@ -3,9 +3,9 @@ import { Box } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import Markdown from '../Common/Markdown'
 import styles from './styles'
-import { Locales, SelectedToolsType } from '../../types'
+import { Locales, SelectedTools } from '../../types'
 
-const NonSelectedTools = ({ mergedRecommendationData }: SelectedToolsType) => {
+const NonSelectedTools = ({ mergedRecommendationData }: SelectedTools) => {
   const { i18n } = useTranslation()
 
   const classes = styles.cardStyles

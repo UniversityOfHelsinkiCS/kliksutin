@@ -7,24 +7,28 @@ import getSelectedDimensions from '../../util/getSelectedDimensions'
 import styles from './styles'
 import {
   RecommendationData,
+  RawRecommendationData,
   DimensionSelectionData,
   InputProps,
   ToolType,
   Subtool,
   Locales,
+  MergedRecommendationData,
 } from '../../types'
 import SelectedTools from './SelectedTools'
 import NonSelectedTools from './NonSelectedTools'
 import ShowMore from '../Common/ShowMore'
 
 /* eslint-disable no-nested-ternary */
-const sortRecommendations = (a: RecommendationData, b: RecommendationData) =>
-  a.label > b.label ? 1 : b.label > a.label ? -1 : 0
+const sortRecommendations = (
+  a: RawRecommendationData,
+  b: RawRecommendationData
+) => (a.label > b.label ? 1 : b.label > a.label ? -1 : 0)
 
 const getRecommendationsData = (
-  rawRecommendations: RecommendationData[],
+  rawRecommendations: RawRecommendationData[],
   dimensionSelections: DimensionSelectionData[]
-) => {
+): RecommendationData[] => {
   const selectedTools = dimensionSelections.map(
     (aSelection: DimensionSelectionData) => ({
       optionId: aSelection.id,
@@ -63,10 +67,12 @@ const Recommendations = ({ watch }: InputProps) => {
 
   if (!recommendationsFetched) return null
 
-  const rawRecommendationData: RecommendationData[] =
+  const rawRecommendationData: RawRecommendationData[] =
     recommendations.sort(sortRecommendations)
 
   const dimensionSelections = getSelectedDimensions(survey, watch)
+
+  console.log(dimensionSelections)
 
   if (!dimensionSelections) return null
 
@@ -109,11 +115,13 @@ const Recommendations = ({ watch }: InputProps) => {
     return Array.from(new Set(extractedSubtools.sort()))
   }
 
-  const mergedRecommendationData = rawRecommendationData.map((aToolData) => ({
-    ...aToolData,
-    ...recommendationsData.find((aTool) => aTool.name === aToolData.label),
-    subtools: aToolData.label === 'moodle' && extractSubtools(aToolData.label),
-  }))
+  const mergedRecommendationData = rawRecommendationData.map(
+    (aRawTool): MergedRecommendationData => ({
+      ...aRawTool,
+      ...recommendationsData.find((aTool) => aTool.name === aRawTool.label),
+      subtools: aRawTool.label === 'moodle' && extractSubtools(aRawTool.label),
+    })
+  )
 
   return (
     <Box sx={classes.recommendationContainer}>

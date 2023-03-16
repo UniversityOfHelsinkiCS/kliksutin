@@ -1,12 +1,12 @@
 import { useQuery } from 'react-query'
 
 import apiClient from '../util/apiClient'
-import { RecommendationData } from '../types'
+import { RawRecommendationData } from '../types'
 
 const useRecommendations = (surveyId: number) => {
   const queryKey = ['recommendations', surveyId]
 
-  const query = async (): Promise<RecommendationData[]> => {
+  const query = async (): Promise<RawRecommendationData[]> => {
     const { data } = await apiClient.get(`/recommendations/${surveyId}`)
 
     return data
