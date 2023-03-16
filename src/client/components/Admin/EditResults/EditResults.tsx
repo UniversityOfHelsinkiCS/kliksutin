@@ -35,18 +35,23 @@ const EditResult = ({
   const resultData = data[dimensionId]
   const optionData = options.find(({ id }) => id === optionLabel)
 
-  const [selected /* , setSelected */] = useState(isSelected[language])
+  const [selected, setSelected] = useState(isSelected[language])
   const [value, setValue] = useState(resultData[language])
 
   useEffect(() => {
     setValue(resultData[language])
   }, [language, resultData])
 
+  useEffect(() => {
+    setSelected(isSelected[language])
+  }, [language, isSelected])
+
   const handleSave = async () => {
     data[dimensionId][language] = value
+    isSelected[language] = selected
 
     try {
-      await mutation.mutateAsync(data)
+      await mutation.mutateAsync({ data, isSelected })
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
@@ -61,7 +66,7 @@ const EditResult = ({
       <TextField
         fullWidth
         value={selected}
-        // onChange={(event) => setSelected(event.target.value)}
+        onChange={(event) => setSelected(event.target.value)}
       />
       <TextField
         multiline
@@ -98,7 +103,6 @@ const EditResults = () => {
   if (!resultsFetched) return null
 
   const dimensions = getDimensions(survey)
-  // const selectedDimension = dimensions.find(({ id }) => id === dimensionId)
 
   const selectedQuestion = survey.Questions.find(
     ({ id }) => id === (questionId as unknown as number)

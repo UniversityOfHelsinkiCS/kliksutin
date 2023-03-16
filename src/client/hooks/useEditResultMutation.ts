@@ -3,8 +3,10 @@ import { Result } from '../types'
 
 import apiClient from '../util/apiClient'
 
+type MutationData = Pick<Result, 'data' | 'isSelected'>
+
 const useEditResultMutation = (resultId: number) => {
-  const mutationFn = async (data: Result['data']) => {
+  const mutationFn = async (data: MutationData) => {
     await apiClient.put(`/results/${resultId}`, {
       data,
     })
