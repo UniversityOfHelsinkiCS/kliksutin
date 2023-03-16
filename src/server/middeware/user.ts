@@ -1,4 +1,4 @@
-import { inDevelopment } from '../../config'
+import { inDevelopment, inStaging } from '../../config'
 
 const parseIamGroups = (iamGroups: string) =>
   iamGroups?.split(';').filter(Boolean) ?? []
@@ -41,6 +41,9 @@ const userMiddleware = (req: any, _res: any, next: any) => {
     iamGroups,
     isAdmin: checkAdmin(iamGroups),
   }
+
+  // Test Shibboleth users don't have hypersonsisuid
+  if (inStaging) user.id = user.username
 
   req.user = user
 
