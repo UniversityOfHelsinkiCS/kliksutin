@@ -69,6 +69,12 @@ export type ChoiceType =
   | MultipleChoiceType[]
   | DimensionSelectionData[]
 
+export type PossibleChoiceTypes =
+  | 'singleChoice'
+  | 'multipleChoice'
+  | 'dimensions'
+  | 'info'
+
 export interface OptionData {
   type: string
   options: ChoiceType

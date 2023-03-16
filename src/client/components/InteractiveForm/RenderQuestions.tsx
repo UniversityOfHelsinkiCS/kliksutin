@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
-import { InputProps, Locales, Question } from '../../types'
+import { InputProps, Locales, PossibleChoiceTypes, Question } from '../../types'
 import styles from './styles'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
@@ -50,15 +50,16 @@ const RenderQuestions = ({
     if (!options.includes(parent)) return null
   }
 
-  const components: { [key: string]: (...args: InputProps[]) => JSX.Element } =
-    {
-      singleChoice: SingleChoice,
-      multipleChoice: MultiChoice,
-      dimensions: DimensionSelect,
-      info: SingleChoice,
-    }
+  const components: {
+    [key in PossibleChoiceTypes]: (...args: InputProps[]) => JSX.Element
+  } = {
+    singleChoice: SingleChoice,
+    multipleChoice: MultiChoice,
+    dimensions: DimensionSelect,
+    info: SingleChoice,
+  }
 
-  const Choice = components[question.optionData.type]
+  const Choice = components[question.optionData.type as PossibleChoiceTypes]
 
   if (!Choice) return null
 
@@ -70,7 +71,7 @@ const RenderQuestions = ({
     <Container sx={classes.questionsContainer}>
       <QuestionText question={question} language={language as keyof Locales} />
       <Choice
-        key={question.id as unknown as string}
+        key={question.id}
         control={control}
         watch={watch}
         question={question}
@@ -79,7 +80,7 @@ const RenderQuestions = ({
         {childQuestions &&
           childQuestions.map((children) => (
             <RenderQuestions
-              key={children.id as any}
+              key={children.id}
               control={control}
               watch={watch}
               question={children}
