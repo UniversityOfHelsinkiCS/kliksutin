@@ -1,6 +1,6 @@
 import React, { BaseSyntheticEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Button } from '@mui/material'
+import { Box, Button, Stack } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
@@ -35,6 +35,11 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
   if (isLoading) return null
 
   const questions = survey.Questions
+
+  const resetForm = () => {
+    sessionStorage.removeItem(FORM_DATA_KEY)
+    window.location.reload()
+  }
 
   return (
     <Box sx={{ mx: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
@@ -76,9 +81,30 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
               {t('openForm')}
             </Button>
           ) : (
-            <Button data-cy="submit-form-button" onClick={submitFormData}>
-              {t('submit')}
-            </Button>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              marginY={4}
+            >
+              <Stack textAlign="center" direction="row" spacing={2}>
+                <Button
+                  type="submit"
+                  data-cy="submit-form-button"
+                  onClick={submitFormData}
+                >
+                  {t('submit')}
+                </Button>
+                <Button
+                  type="button"
+                  data-cy="reset-form-button"
+                  variant="contained"
+                  onClick={resetForm}
+                >
+                  {t('reset')}
+                </Button>
+              </Stack>
+            </Box>
           )}
         </Box>
       </Box>

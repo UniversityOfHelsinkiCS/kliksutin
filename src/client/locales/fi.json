@@ -2,6 +2,7 @@
   "common": {
     "appName": "Curre",
     "submit": "Valinnat tehty",
+    "reset": "Aloita alusta",
     "openForm": "Jatka kysymyksiin",
     "admin": "ylläpito"
   },
