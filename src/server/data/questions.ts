@@ -388,7 +388,7 @@ const getQuestionData = (): any => [
       en: 'Osallistuminen',
     },
     text: {
-      fi: 'Osallistuvatko opiskelijat pääsääntöisesti opetukseen kurssilla ainoastaan paikan päällä yliopistolla, [kokonaan etänä](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) vai [hybridisti](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) niin, että osa opiskelijoista osallistuu etänä ja osa paikan päällä?',
+      fi: 'Sisältääkö kurssi vain lähiopetusta, [vain etäopetusta](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) vai molempia? Mikäli opetukseen osallistuu samanaikaisesti oppijoita paikan päällä opetustilassa ja etänä, on kyse [hybridiopetuksesta.](https://teaching.helsinki.fi/ohjeet/artikkeli/opetuksessa-kaytettavat-tilat#paragraph-5422) Valitse tällöin molemmat vaihtoehdot.',
       sv: 'Yleinen teksti liittyen tähän valintaan',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
@@ -546,7 +546,7 @@ const getQuestionData = (): any => [
     parentId: 4,
     priority: 0,
     title: {
-      fi: 'Arviointi',
+      fi: 'Katso tästä ideoita arviointiin liittyen',
       sv: 'Arviointi',
       en: 'Arviointi',
     },
