@@ -24,6 +24,10 @@ jobs:
           tags: staging ${{ github.sha }}
           containerfiles: |
             ./Dockerfile
+          build-args: |
+            BASE_PATH=/kliksutin
+            GIT_SHA=${{ github.sha }}
+            STAGING=true
 
       - name: Push to quay.io
         uses: redhat-actions/push-to-registry@v2
