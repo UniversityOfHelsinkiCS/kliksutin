@@ -18,7 +18,7 @@ import { Language, AdminPanelSettingsOutlined } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
 import hyLogo from '../../assets/hy_logo.svg'
-import styles from './styles'
+import styles from '../../styles'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 import { inProduction } from '../../../config'
 
@@ -43,47 +43,30 @@ const NavBar = () => {
     setOpenLanguageSelect(false)
   }
 
-  const classes = styles.navStyles
+  const { navStyles } = styles
 
   if (isLoading) return null
 
   return (
-    <AppBar
-      elevation={0}
-      position="relative"
-      sx={{
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-        backgroundColor: 'rgba(255, 255, 255, 0)',
-        borderRadius: 0,
-        borderBottom: '1px solid black',
-        py: '1rem',
-      }}
-    >
+    <AppBar elevation={0} position="relative" sx={navStyles.appbar}>
       <Container maxWidth={false}>
-        <Toolbar sx={classes.toolbar} disableGutters>
-          <Box display="inline-flex" alignItems="end" sx={classes.link}>
+        <Toolbar sx={navStyles.toolbar} disableGutters>
+          <Box sx={navStyles.navBox}>
             <Link to="/" style={{ marginBottom: -5 }}>
               <img src={hyLogo} alt="University of Helsinki" width="40" />
             </Link>
             <Box ml="2rem">
               <Link to="/" style={{ textDecoration: 'none' }}>
-                <Typography
-                  textTransform="uppercase"
-                  color="black"
-                  fontWeight={700}
-                  fontSize={18}
-                  sx={{ userSelect: 'none' }}
-                >
-                  {t('appName')}
-                </Typography>
+                <Typography sx={navStyles.appName}>{t('appName')}</Typography>
               </Link>
             </Box>
           </Box>
           <Box>
             {user.isAdmin && (
-              <Link to="/admin">
+              <Link to="/admin" style={{ textDecoration: 'none' }}>
                 <Button>
-                  <AdminPanelSettingsOutlined sx={{ mr: 1 }} /> {t('admin')}
+                  <AdminPanelSettingsOutlined sx={navStyles.icon} />{' '}
+                  {t('admin')}
                 </Button>
               </Link>
             )}
@@ -98,7 +81,7 @@ const NavBar = () => {
               aria-haspopup="true"
               onClick={() => setOpenLanguageSelect(!openLanguageSelect)}
             >
-              <Language sx={{ mr: 2 }} /> {language}
+              <Language sx={navStyles.language} /> {language}
             </Button>
             <Popper
               open={openLanguageSelect}
@@ -131,8 +114,8 @@ const NavBar = () => {
                           <MenuItem
                             key={l}
                             sx={[
-                              classes.item,
-                              language === l && classes.activeItem,
+                              navStyles.item,
+                              language === l && navStyles.activeItem,
                             ]}
                             onClick={() => {
                               handleLanguageChange(l)
