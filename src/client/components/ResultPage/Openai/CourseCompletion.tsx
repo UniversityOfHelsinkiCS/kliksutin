@@ -40,6 +40,7 @@ const CourseCompletion = () => {
         value={courseName}
         onChange={({ target }) => setCourseName(target.value)}
         sx={{ width: 400 }}
+        disabled={showCompletion}
       />
       <Box mt={1}>
         <Button

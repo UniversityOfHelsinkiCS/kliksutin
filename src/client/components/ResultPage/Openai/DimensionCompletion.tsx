@@ -81,6 +81,7 @@ const DimensionCompletion = ({
           label={t('openai:dimensionSelect')}
           onChange={({ target }) => setdimensionId(target.value)}
           sx={{ width: 400 }}
+          disabled={showCompletion}
         >
           {dimensions.map((d) => (
             <MenuItem
