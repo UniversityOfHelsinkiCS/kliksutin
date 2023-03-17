@@ -9,25 +9,26 @@ jobs:
   test:
     uses: ./.github/workflows/test.yml
 
-  dockerhub-release:
+  build-and-push:
     runs-on: ubuntu-latest
     needs: test
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
+      - name: Build image
+        uses: redhat-actions/buildah-build@v2
         with:
-          username: ${{ secrets.DOCKER_HUB_USER }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          image: kliksutin
+          tags: staging ${{ github.sha }}
+          containerfiles: |
+            ./Dockerfile
 
-      - name: Build and push
-        uses: docker/build-push-action@v2
+      - name: Push to quay.io
+        uses: redhat-actions/push-to-registry@v2
         with:
-          push: true
-          tags: toska/kliksutin:staging
-          build-args: |
-            BASE_PATH=/kliksutin
-            GIT_SHA=${{ github.sha }}
-            STAGING=true
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: quay.io/toska
+          username: github+toska
+          password: ${{ secrets.QUAY_IO_TOKEN }}
