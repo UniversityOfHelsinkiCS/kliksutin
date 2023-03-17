@@ -8,6 +8,13 @@ const cardStyles = {
     m: 2,
     maxWidth: 1280,
   },
+  expendableBox: {
+    my: 2,
+    mx: 2,
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 0.3,
+  },
   outerBox: {
     m: 2,
     maxWidth: 1280,
@@ -43,12 +50,37 @@ const cardStyles = {
 }
 
 const formStyles = {
-  formControl: { width: '100%' },
-  choiceBox: { display: 'flex', flexWrap: 'wrap', gap: 0.3 },
+  formWrapper: {
+    my: 2,
+    maxWidth: 1280,
+  },
+  formControl: {
+    width: '100%',
+  },
+  choiceBox: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 0.3,
+  },
+  stackBox: { textAlign: 'center' },
+  stackBoxWrapper: {
+    my: 2,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  stack: {
+    textAlign: 'center',
+  },
+  stackButton: {
+    mx: 2,
+  },
 }
 
 const common = {
-  alertStyle: { width: 600 },
+  alertStyle: {
+    width: 600,
+  },
 }
 
 export default { cardStyles, formStyles, common }

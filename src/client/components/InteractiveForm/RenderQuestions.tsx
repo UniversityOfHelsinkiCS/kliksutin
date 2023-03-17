@@ -1,14 +1,14 @@
 import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 import { InputProps, Locales, PossibleChoiceTypes, Question } from '../../types'
-import styles from './styles'
+import styles from '../../styles'
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
 import DimensionSelect from '../Choices/DimensionSelect'
 import Markdown from '../Common/Markdown'
 import ShowMore from '../Common/ShowMore'
 
-const classes = styles.cardStyles
+const { cardStyles } = styles
 
 const QuestionText = ({
   question,
@@ -28,7 +28,7 @@ const QuestionText = ({
   return (
     <>
       <Markdown>{question.title[language]}</Markdown>
-      <Box sx={classes.content}>
+      <Box sx={cardStyles.content}>
         <Markdown>{question.text[language]}</Markdown>
       </Box>
     </>
@@ -68,7 +68,7 @@ const RenderQuestions = ({
   )
 
   return (
-    <Container sx={classes.questionsContainer}>
+    <Container sx={cardStyles.questionsContainer}>
       <QuestionText question={question} language={language as keyof Locales} />
       <Choice
         key={question.id}

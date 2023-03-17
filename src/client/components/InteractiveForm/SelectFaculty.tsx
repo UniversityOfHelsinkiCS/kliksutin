@@ -6,7 +6,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { Box, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import styles from './styles'
+import styles from '../../styles'
 import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 import useUserFaculties from '../../hooks/useUserFaculties'
@@ -53,7 +53,7 @@ const SelectFaculty = ({ control }: InputProps) => {
     setFaculty(event.target.value)
   }
 
-  const classes = styles.cardStyles
+  const { cardStyles, formStyles } = styles
 
   if (facultiesLoading || userFacultiesLoading) return null
 
@@ -61,11 +61,11 @@ const SelectFaculty = ({ control }: InputProps) => {
   const organisations = sortedFaculties.concat(extraOrganisations)
 
   return (
-    <Box sx={classes.card}>
-      <Typography variant="h5" sx={classes.heading} component="div">
+    <Box sx={cardStyles.card}>
+      <Typography variant="h5" sx={cardStyles.heading} component="div">
         {t('facultySelect:welcomeMessage')}
       </Typography>
-      <Box sx={classes.content}>
+      <Box sx={cardStyles.content}>
         <Markdown>{t('facultySelect:introMessage')}</Markdown>
       </Box>
 
@@ -74,7 +74,7 @@ const SelectFaculty = ({ control }: InputProps) => {
         name="faculty"
         defaultValue={userFaculties[0]?.code || ''}
         render={({ field }) => (
-          <FormControl sx={{ width: '100%' }}>
+          <FormControl sx={formStyles.formControl}>
             <InputLabel>{t('facultySelect:inputLabel')}</InputLabel>
             <Select
               data-cy="faculty-select"

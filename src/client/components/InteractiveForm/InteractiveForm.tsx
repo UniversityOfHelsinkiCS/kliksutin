@@ -12,12 +12,15 @@ import Openai from '../ResultPage/Openai/Openai'
 import usePersistForm from '../../hooks/usePersistForm'
 import { FORM_DATA_KEY } from '../../../config'
 import HelloBanner from './HelloBanner'
+import styles from '../../styles'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
   const mutation = useSaveEntryMutation(survey?.id)
 
   const [resultData, setResultData] = useState<FormValues>(null)
+
+  const { formStyles } = styles
 
   const savedData = sessionStorage.getItem(FORM_DATA_KEY)
 
@@ -45,7 +48,7 @@ const InteractiveForm = () => {
   if (isLoading) return null
 
   return (
-    <Box my="2rem" maxWidth={1280}>
+    <Box sx={formStyles.formWrapper}>
       <Grid container>
         <Grid item sm={12}>
           <HelloBanner />

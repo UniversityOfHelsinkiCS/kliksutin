@@ -1,12 +1,10 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box } from '@mui/material'
-import styles from './styles'
+import styles from '../../styles'
 import ShowMore from '../Common/ShowMore'
 import Markdown from '../Common/Markdown'
 import { Locales } from '../../types'
-
-const classes = styles.cardStyles
 
 const helloMessages = {
   title: {
@@ -24,9 +22,11 @@ const HelloBanner = () => {
   const { i18n } = useTranslation()
   const { language } = i18n
 
+  const { cardStyles } = styles
+
   return (
-    <Box id="hello-component" sx={classes.helloBox}>
-      <Box sx={{ my: 2, mx: 2, display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
+    <Box id="hello-component" sx={cardStyles.helloBox}>
+      <Box sx={cardStyles.expendableBox}>
         <Markdown>{helloMessages.title[language as keyof Locales]}</Markdown>
         <ShowMore
           text={helloMessages.text[language as keyof Locales]}

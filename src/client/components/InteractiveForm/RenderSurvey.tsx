@@ -7,12 +7,12 @@ import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 import { getSelectedDimensions } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'
-import styles from './styles'
+import styles from '../../styles'
 
 const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { survey, isLoading } = useSurvey()
-  const classes = styles.cardStyles
+  const { cardStyles, formStyles } = styles
   const savedData = sessionStorage.getItem(FORM_DATA_KEY)
   const [showQuestions, setShowQuestions] = useState(
     savedData && savedData !== '{}'
@@ -42,9 +42,9 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
   }
 
   return (
-    <Box sx={{ mx: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
+    <Box sx={cardStyles.outerBox}>
       <SelectFaculty control={control} />
-      <Box sx={classes.card} justifyContent="center">
+      <Box sx={cardStyles.card}>
         {questions.map((question) => (
           <div key={question.id}>
             {question.parentId === null && question.priority === 0 && (
@@ -71,7 +71,7 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
           </div>
         ))}
 
-        <Box textAlign="center">
+        <Box sx={formStyles.stackBox}>
           {!showQuestions ? (
             <Button
               data-cy="open-form-button"
@@ -81,14 +81,10 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
               {t('openForm')}
             </Button>
           ) : (
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              marginY={4}
-            >
-              <Stack textAlign="center" direction="row" spacing={2}>
+            <Box sx={formStyles.stackBoxWrapper}>
+              <Stack sx={formStyles.stack} direction="row">
                 <Button
+                  sx={formStyles.stackButton}
                   type="submit"
                   data-cy="submit-form-button"
                   variant="contained"
@@ -97,8 +93,10 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
                   {t('submit')}
                 </Button>
                 <Button
+                  sx={formStyles.stackButton}
                   type="button"
                   data-cy="reset-form-button"
+                  variant="outlined"
                   onClick={resetForm}
                 >
                   {t('reset')}
