@@ -5,10 +5,13 @@ import { Box, FormControl, Checkbox, Tooltip } from '@mui/material'
 import { InputProps, DimensionSelectionData, Locales } from '../../types'
 import DimensionChip from '../Chip/DimensionChip'
 import colors from '../../util/colors'
+import styles from '../../styles'
 
 const DimensionSelect = ({ control, question }: InputProps) => {
   const { i18n } = useTranslation()
   const { language } = i18n
+
+  const { formStyles } = styles
 
   return (
     <>
@@ -20,8 +23,8 @@ const DimensionSelect = ({ control, question }: InputProps) => {
             control={control}
             defaultValue={false}
             render={({ field }) => (
-              <FormControl sx={{ width: '100%' }}>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.3 }}>
+              <FormControl sx={formStyles.formControl}>
+                <Box sx={formStyles.choiceBox}>
                   <Tooltip
                     title={choice.text[language as keyof Locales]}
                     placement="right"
