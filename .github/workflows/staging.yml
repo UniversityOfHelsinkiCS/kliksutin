@@ -27,8 +27,8 @@ jobs:
       - name: Push to quay.io
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.build-image.outputs.tags }}
+          image: ${{ steps.build-and-push.outputs.image }}
+          tags: ${{ steps.build-and-push.outputs.tags }}
           registry: quay.io/toska
-          username: github+toska
+          username: toska+github
           password: ${{ secrets.QUAY_IO_TOKEN }}
