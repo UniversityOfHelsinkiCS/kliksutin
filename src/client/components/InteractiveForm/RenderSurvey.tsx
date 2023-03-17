@@ -91,6 +91,7 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
                 <Button
                   type="submit"
                   data-cy="submit-form-button"
+                  variant="contained"
                   onClick={submitFormData}
                 >
                   {t('submit')}
@@ -98,7 +99,6 @@ const RenderSurvey = ({ control, watch, handleSubmit }: InputProps) => {
                 <Button
                   type="button"
                   data-cy="reset-form-button"
-                  variant="contained"
                   onClick={resetForm}
                 >
                   {t('reset')}
