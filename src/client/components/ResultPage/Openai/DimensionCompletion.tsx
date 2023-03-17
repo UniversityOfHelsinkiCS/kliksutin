@@ -32,12 +32,15 @@ const CompletionResult = ({
 
   const { label, data } = dimension
 
+  const dimensionName = label[i18n.language as keyof Locales].toLowerCase()
+
   const recommendationNames = data.map(
     ({ name }) => name.charAt(0).toUpperCase() + name.slice(1)
   )
-  const recommendations = recommendationNames.join(t('openai:or'))
-
-  const dimensionName = label[i18n.language as keyof Locales].toLowerCase()
+  const recommendations =
+    recommendationNames.slice(0, -1).join(', ') +
+    t('openai:or') +
+    recommendationNames.slice(-1)
 
   const prompt = t('openai:dimensionCompletionPrompt', {
     dimensionName,
