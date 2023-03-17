@@ -49,13 +49,13 @@ npm run test
 Open cypress, then run the container (set the port [here](https://github.com/UniversityOfHelsinkiCS/kliksutin/blob/ffe33eee1f187f260cd27c587825fbe4771430ba/cypress/support/e2e.ts#LL19))
 
 ```bash
-`npm run test:cypress`
+npm run test:cypress
 ```
 
 Run eslint
 
 ```bash
-`npm run lint`
+npm run lint
 ```
 
 ## Development
