@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <SnackbarProvider>
+      <SnackbarProvider preventDuplicate>
         <Box
           sx={{
             minHeight: '100vh',

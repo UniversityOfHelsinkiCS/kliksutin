@@ -55,7 +55,8 @@
     "dimensionSelect": "Dimension",
     "dimensionCompletionPrompt": "How can I support the topic \"{{dimensionName}}\" in a university course? Give 3 examples using the software {{recommendations}}?",
     "send": "Send",
-    "or": " or "
+    "or": " or ",
+    "apiErrorMessage": "No response from the server"
   },
   "admin": {
     "selectDimension": "Valitse oppimismuoto",

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Typography, TextField } from '@mui/material'
+import { enqueueSnackbar } from 'notistack'
 
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import LoadingProgress from './LoadingProgress'
@@ -8,13 +9,26 @@ import styles from '../styles'
 
 const classes = styles.cardStyles
 
-const CompletionResult = ({ courseName }: { courseName: string }) => {
+const CompletionResult = ({
+  courseName,
+  setShowCompletion,
+}: {
+  courseName: string
+  setShowCompletion: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
   const { t } = useTranslation()
   const prompt = t('openai:courseCompletionPrompt', { courseName })
 
   const { completion, isLoading } = useOpenaiCompletion(prompt, 'course')
 
   if (isLoading) return <LoadingProgress />
+
+  if (!completion) {
+    enqueueSnackbar(t('openai:apiErrorMessage'), { variant: 'error' })
+    setShowCompletion(false)
+
+    return null
+  }
 
   return (
     <Box sx={classes.outerBox}>
@@ -52,7 +66,12 @@ const CourseCompletion = () => {
           {t('openai:send')}
         </Button>
       </Box>
-      {showCompletion && <CompletionResult courseName={courseName} />}
+      {showCompletion && (
+        <CompletionResult
+          courseName={courseName}
+          setShowCompletion={setShowCompletion}
+        />
+      )}
     </Box>
   )
 }

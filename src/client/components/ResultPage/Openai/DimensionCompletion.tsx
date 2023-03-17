@@ -10,6 +10,8 @@ import {
   MenuItem,
 } from '@mui/material'
 import { UseFormWatch, FieldValues } from 'react-hook-form'
+import { enqueueSnackbar } from 'notistack'
+
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import useSurvey from '../../../hooks/useSurvey'
 import LoadingProgress from './LoadingProgress'
@@ -21,8 +23,10 @@ const classes = styles.cardStyles
 
 const CompletionResult = ({
   dimension,
+  setShowCompletion,
 }: {
   dimension: DimensionSelectionData
+  setShowCompletion: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const { t, i18n } = useTranslation()
 
@@ -43,6 +47,13 @@ const CompletionResult = ({
   const { completion, isLoading } = useOpenaiCompletion(prompt, 'dimension')
 
   if (isLoading) return <LoadingProgress />
+
+  if (!completion) {
+    enqueueSnackbar(t('openai:apiErrorMessage'), { variant: 'error' })
+    setShowCompletion(false)
+
+    return null
+  }
 
   return (
     <Box sx={classes.outerBox}>
@@ -107,6 +118,7 @@ const DimensionCompletion = ({
       {showCompletion && (
         <CompletionResult
           dimension={dimensions.find(({ id }) => id === dimensionId)}
+          setShowCompletion={setShowCompletion}
         />
       )}
     </Box>

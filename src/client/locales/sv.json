@@ -53,7 +53,8 @@
     "dimensionSelect": "Oppimismuoto",
     "dimensionCompletionPrompt": "Kuinka voin tukea aihetta \"{{dimensionName}}\" yliopistokurssilla? Anna 3 esimerkkiä käyttäen ohjelmistoa {{recommendations}}?",
     "send": "Lähetä",
-    "or": " tai "
+    "or": " tai ",
+    "apiErrorMessage": "Palvelimeen ei saatu yhteyttä"
   },
   "admin": {
     "selectDimension": "Valitse oppimismuoto",
