@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
-import styles from './styles'
+import styles from '../../styles'
 import SendContactTicket from './SendContactTicket'
-
-const classes = styles.cardStyles
 
 const Contact = () => {
   const { t } = useTranslation()
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const [contactMethod, setContactMethod] = useState('email')
+
+  const { cardStyles } = styles
 
   const components: { [key: string]: () => JSX.Element } = {
     email: SendContactTicket,
@@ -20,12 +20,12 @@ const Contact = () => {
   if (!ContactComponent) return null
 
   return (
-    <Box sx={{ m: 2, maxWidth: 1080, border: 1, borderColor: 'grey.300' }}>
+    <Box sx={cardStyles.outerBox}>
       <Container sx={{ mt: 2 }}>
-        <Typography variant="h5" sx={classes.heading} component="div">
+        <Typography variant="h5" sx={cardStyles.heading} component="div">
           {t('contact:title')}
         </Typography>
-        <Typography sx={classes.content} variant="body2">
+        <Typography sx={cardStyles.content} variant="body2">
           {t('contact:contactMessage')}
         </Typography>
 

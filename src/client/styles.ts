@@ -14,6 +14,13 @@ const cardStyles = {
     border: 1,
     borderColor: 'grey.300',
   },
+  gridBox: {
+    px: 3,
+    py: 2,
+  },
+  gridContainer: {
+    spacing: 1,
+  },
   questionsContainer: {
     my: 8,
     borderLeft: 1,
@@ -40,4 +47,8 @@ const formStyles = {
   choiceBox: { display: 'flex', flexWrap: 'wrap', gap: 0.3 },
 }
 
-export default { cardStyles, formStyles }
+const common = {
+  alertStyle: { width: 600 },
+}
+
+export default { cardStyles, formStyles, common }

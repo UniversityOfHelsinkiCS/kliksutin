@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 import apiClient from '../../util/apiClient'
+import styles from '../../styles'
 
 const ticketEmail = 'opetusteknologia@helsinki.fi'
 
@@ -13,6 +14,8 @@ const SendContactTicket = () => {
   const { state } = useLocation()
   const [isSent, setIsSent] = useState(false)
   const { user, isLoading } = useLoggedInUser()
+
+  const { cardStyles, common } = styles
 
   const sendResultsToEmail = async (targets: string[], text: string) => {
     apiClient.post('/summary', {
@@ -70,8 +73,8 @@ const SendContactTicket = () => {
   if (isLoading) return null
 
   return (
-    <Box px={3} py={2}>
-      <Grid container spacing={1}>
+    <Box sx={cardStyles.gridBox}>
+      <Grid container sx={cardStyles.gridContainer}>
         <Grid item xs={12} sm={12}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
@@ -99,7 +102,7 @@ const SendContactTicket = () => {
                   {t('contact:contactTicketSend')}
                 </Button>
               ) : (
-                <Alert sx={{ width: 600 }} severity="success">
+                <Alert sx={common.alertStyle} severity="success">
                   {t('contact:sendSuccess')}
                 </Alert>
               )}
