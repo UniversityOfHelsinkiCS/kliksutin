@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import useRecommendations from '../../hooks/useRecommendations'
 import useSurvey from '../../hooks/useSurvey'
 import { getSelectedDimensions } from '../../util/dimensions'
-import styles from './styles'
+import styles from '../../styles'
 import {
   RecommendationData,
   RawRecommendationData,
@@ -63,7 +63,7 @@ const Recommendations = ({ watch }: InputProps) => {
   const { recommendations, isSuccess: recommendationsFetched } =
     useRecommendations(survey?.id)
 
-  const classes = styles.cardStyles
+  const { recommendationStyles, cardStyles } = styles
 
   if (!recommendationsFetched) return null
 
@@ -122,8 +122,8 @@ const Recommendations = ({ watch }: InputProps) => {
   )
 
   return (
-    <Box sx={classes.recommendationContainer}>
-      <Typography variant="h5" sx={classes.heading} component="span">
+    <Box sx={recommendationStyles.recommendationContainer}>
+      <Typography variant="h5" sx={cardStyles.heading} component="span">
         {t('recommendations:title')}
         <ShowMore text={t('recommendations:infoBoxText')} />
       </Typography>

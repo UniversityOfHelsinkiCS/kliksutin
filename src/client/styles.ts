@@ -130,10 +130,48 @@ const navStyles = {
   },
 }
 
+const recommendationStyles = {
+  recommendationContainer: {
+    position: 'sticky',
+    top: '1rem',
+    borderLeft: 1,
+    paddingLeft: '1rem',
+    marginLeft: '0.5rem',
+    borderColor: 'grey.300',
+    textAlign: 'left',
+  },
+  recommendationBox: {
+    marginTop: '1.8rem',
+  },
+  recommendationChipWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  recommendationChipsContainer: {
+    marginX: '0.6rem',
+  },
+  notSelected: {
+    fontWeight: 'light',
+    color: '#9e9e9e',
+  },
+  subtoolText: {
+    textTransform: 'capitalize',
+    paddingLeft: '1rem',
+    fontWeight: 'light',
+    color: '#757575',
+  },
+}
+
 const common = {
   alertStyle: {
     width: 600,
   },
 }
 
-export default { cardStyles, formStyles, common, navStyles }
+export default {
+  cardStyles,
+  formStyles,
+  common,
+  navStyles,
+  recommendationStyles,
+}
