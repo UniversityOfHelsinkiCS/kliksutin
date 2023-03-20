@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography, Alert } from '@mui/material'
 
-import styles from './styles'
+import styles from '../../styles'
 import { FORM_DATA_KEY } from '../../../config'
 
 const ProceedToContact = () => {
   const { t } = useTranslation()
   const [showEndMessage, setShowEndMessage] = useState(false)
 
-  const classes = styles.cardStyles
+  const { cardStyles, formStyles, common } = styles
 
   const resultHTML = document.getElementById('result-component')
 
@@ -24,31 +24,26 @@ const ProceedToContact = () => {
   return (
     <Box>
       <Container sx={{ mt: 12 }}>
-        <Typography variant="h6" sx={classes.heading} component="div">
+        <Typography variant="h6" sx={cardStyles.heading} component="div">
           {t('results:proceedTitle')}
         </Typography>
       </Container>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        marginY={4}
-      >
+      <Box sx={formStyles.stackBoxWrapper}>
         {showEndMessage ? (
-          <Alert sx={{ ml: 3, width: 400 }} severity="success">
+          <Alert sx={common.alertStyle} severity="success">
             {t('results:endMessage')}
           </Alert>
         ) : (
-          <Stack textAlign="center" direction="row" spacing={2}>
+          <Stack sx={formStyles.stack} direction="row" spacing={2}>
             <Button
-              sx={classes.stackButton}
+              sx={formStyles.stackButton}
               variant="contained"
               onClick={endSession}
             >
               {t('results:proceedToExit')}
             </Button>
             <Button
-              sx={classes.stackButton}
+              sx={formStyles.stackButton}
               variant="outlined"
               component={Link}
               state={{ resultHTML: resultHTML.outerHTML }}

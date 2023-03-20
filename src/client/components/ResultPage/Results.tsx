@@ -4,12 +4,12 @@ import { Box, Container, Typography } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
-import styles from './styles'
+import styles from '../../styles'
 import { FormValues, Locales, Result } from '../../types'
 import SendSummaryEmail from './SendSummaryEmail'
 import Markdown from '../Common/Markdown'
 
-const classes = styles.cardStyles
+const { resultStyles } = styles
 
 const ResultElement = ({
   language,
@@ -23,9 +23,9 @@ const ResultElement = ({
   if (!resultData || !dimensions) return null
 
   return (
-    <Container sx={classes.resultContainer}>
+    <Container sx={resultStyles.resultElementWrapper}>
       <Markdown>{resultData.isSelected[language]}</Markdown>
-      <Box sx={classes.content}>
+      <Box sx={resultStyles.resultElementContent}>
         {dimensions.map((dimension: string) => (
           <Box key={`${JSON.stringify(resultData)}.${dimension}`} sx={{ m: 2 }}>
             <Markdown>{resultData.data[dimension][language]}</Markdown>
@@ -93,10 +93,10 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     )
 
   return (
-    <Box sx={classes.outerBox}>
+    <Box sx={resultStyles.resultWrapper}>
       <Box id="result-component">
         <Container sx={{ mt: 2 }}>
-          <Typography variant="h5" sx={classes.heading} component="div">
+          <Typography variant="h5" sx={resultStyles.heading} component="div">
             {t('results:title')}
           </Typography>
         </Container>

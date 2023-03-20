@@ -49,6 +49,14 @@ const cardStyles = {
     fontWeight: '200',
     pb: 1,
   },
+  subHeading: {
+    fontWeight: '200',
+    mt: 8,
+    mx: 4,
+    mb: 2,
+    pl: 2,
+    textAlign: 'left',
+  },
 }
 
 const formStyles = {
@@ -162,6 +170,35 @@ const recommendationStyles = {
   },
 }
 
+const resultStyles = {
+  card: {
+    m: 2,
+    transition: '0.3s',
+    textAlign: 'left',
+  },
+  resultElementWrapper: {
+    my: 4,
+    borderLeft: 1,
+    borderColor: 'grey.400',
+  },
+  resultElementContent: {
+    mt: 2,
+    mb: 1,
+    pl: 2,
+    textAlign: 'left',
+  },
+  resultWrapper: {
+    m: 2,
+    maxWidth: 1280,
+    border: 1,
+    borderColor: 'grey.300',
+  },
+  heading: {
+    fontWeight: '200',
+    textAlign: 'left',
+  },
+}
+
 const footerStyles = {
   supportBox: {
     py: '2rem',
@@ -180,7 +217,7 @@ const footerStyles = {
 
 const common = {
   alertStyle: {
-    width: 600,
+    width: 'auto',
   },
 }
 
@@ -191,4 +228,5 @@ export default {
   navStyles,
   recommendationStyles,
   footerStyles,
+  resultStyles,
 }
