@@ -3,8 +3,10 @@ import { inDevelopment } from '../../config'
 const parseIamGroups = (iamGroups: string) =>
   iamGroups?.split(';').filter(Boolean) ?? []
 
-// Add dojo iam group here
-const checkAdmin = (iamGroups: string[]) => iamGroups.includes('grp-toska')
+const checkAdmin = (iamGroups: string[]) =>
+  iamGroups.some((iamGroup) =>
+    ['hy-ypa-opa-ote', 'grp-toska'].includes(iamGroup)
+  )
 
 const mockHeaders = {
   uid: 'testuser',
