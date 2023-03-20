@@ -8,7 +8,7 @@ const InfoBox = () => {
   const { t } = useTranslation()
 
   return (
-    <Box mx={4}>
+    <Box sx={{ m: 4 }}>
       <Markdown>{t('openai:infoBoxText')}</Markdown>
     </Box>
   )

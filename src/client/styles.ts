@@ -68,9 +68,6 @@ const cardStyles = {
     mt: 2,
     width: 400,
   },
-  selectField: {
-    width: 400,
-  },
   answerBox: {
     my: 4,
     maxWidth: 1280,
@@ -169,14 +166,14 @@ const recommendationStyles = {
     textAlign: 'left',
   },
   recommendationBox: {
-    marginTop: '1.8rem',
+    mt: '1.8rem',
   },
   recommendationChipWrapper: {
     display: 'flex',
     alignItems: 'center',
   },
   recommendationChipsContainer: {
-    marginX: '0.6rem',
+    mx: '0.6rem',
   },
   notSelected: {
     fontWeight: 'light',
