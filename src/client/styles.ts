@@ -162,6 +162,22 @@ const recommendationStyles = {
   },
 }
 
+const footerStyles = {
+  supportBox: {
+    py: '2rem',
+    px: '3rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  imageBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    rowGap: '1rem',
+  },
+}
+
 const common = {
   alertStyle: {
     width: 600,
@@ -174,4 +190,5 @@ export default {
   common,
   navStyles,
   recommendationStyles,
+  footerStyles,
 }
