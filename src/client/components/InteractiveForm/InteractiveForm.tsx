@@ -68,10 +68,12 @@ const InteractiveForm = () => {
         <Grid item sm={12} md={5} xl={6}>
           <Recommendations watch={watch} />
         </Grid>
-        <Grid item sm={12}>
-          <Openai watch={watch} />
-          {resultData && <ProceedToContact />}
-        </Grid>
+        {resultData && (
+          <Grid item sm={12}>
+            <Openai watch={watch} />
+            {resultData && <ProceedToContact />}
+          </Grid>
+        )}
       </Grid>
     </Box>
   )
