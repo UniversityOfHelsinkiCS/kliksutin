@@ -52,7 +52,7 @@ const InteractiveForm = () => {
         <Grid item sm={12}>
           <HelloBanner />
         </Grid>
-        <Grid item sm={12} md={7} xl={6}>
+        <Grid item sm={12} md={7} xl={8}>
           {!resultData ? (
             <form onSubmit={handleSubmit(onSubmit)}>
               <RenderSurvey
@@ -65,7 +65,7 @@ const InteractiveForm = () => {
             <Results formResultData={resultData} />
           )}
         </Grid>
-        <Grid item sm={12} md={5} xl={6}>
+        <Grid item sm={12} md={5} xl={4}>
           <Recommendations watch={watch} />
         </Grid>
         {resultData && (
