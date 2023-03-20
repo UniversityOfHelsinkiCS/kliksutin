@@ -5,9 +5,9 @@ import { enqueueSnackbar } from 'notistack'
 
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import LoadingProgress from './LoadingProgress'
-import styles from '../styles'
+import styles from '../../../styles'
 
-const classes = styles.cardStyles
+const { cardStyles } = styles
 
 const CompletionResult = ({
   courseName,
@@ -31,8 +31,8 @@ const CompletionResult = ({
   }
 
   return (
-    <Box sx={classes.outerBox}>
-      <Typography variant="body1" p={3} whiteSpace="pre-line">
+    <Box sx={cardStyles.answerBox}>
+      <Typography variant="body1" sx={cardStyles.content} whiteSpace="pre-line">
         {completion.trim()}
       </Typography>
     </Box>
@@ -45,33 +45,34 @@ const CourseCompletion = () => {
   const [showCompletion, setShowCompletion] = useState(false)
 
   return (
-    <Box>
+    <Box sx={cardStyles.nestedSubSection}>
       <Typography variant="body2">{t('openai:giveCourseInfoText')}</Typography>
-      <TextField
-        required
-        size="small"
-        margin="dense"
-        value={courseName}
-        onChange={({ target }) => setCourseName(target.value)}
-        sx={{ width: 400 }}
-        disabled={showCompletion}
-      />
-      <Box mt={1}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setShowCompletion(true)}
-          disabled={showCompletion || courseName.length < 5}
-        >
-          {t('openai:send')}
-        </Button>
-      </Box>
-      {showCompletion && (
-        <CompletionResult
-          courseName={courseName}
-          setShowCompletion={setShowCompletion}
+      <Box sx={cardStyles.content}>
+        <TextField
+          sx={cardStyles.inputField}
+          required
+          size="small"
+          value={courseName}
+          onChange={({ target }) => setCourseName(target.value)}
+          disabled={showCompletion}
         />
-      )}
+        <Box sx={{ my: 2 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setShowCompletion(true)}
+            disabled={showCompletion || courseName.length < 5}
+          >
+            {t('openai:send')}
+          </Button>
+        </Box>
+        {showCompletion && (
+          <CompletionResult
+            courseName={courseName}
+            setShowCompletion={setShowCompletion}
+          />
+        )}
+      </Box>
     </Box>
   )
 }

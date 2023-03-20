@@ -57,6 +57,26 @@ const cardStyles = {
     pl: 2,
     textAlign: 'left',
   },
+  nestedSubSection: {
+    fontWeight: '200',
+    mt: 8,
+    mx: 4,
+    mb: 2,
+    textAlign: 'left',
+  },
+  inputField: {
+    mt: 2,
+    width: 400,
+  },
+  selectField: {
+    width: 400,
+  },
+  answerBox: {
+    my: 4,
+    maxWidth: 1280,
+    border: 1,
+    borderColor: 'grey.300',
+  },
 }
 
 const formStyles = {

@@ -16,10 +16,10 @@ import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import useSurvey from '../../../hooks/useSurvey'
 import LoadingProgress from './LoadingProgress'
 import { getSelectedDimensions } from '../../../util/dimensions'
-import styles from '../styles'
+import styles from '../../../styles'
 import { DimensionSelectionData, Locales } from '../../../types'
 
-const classes = styles.cardStyles
+const { cardStyles } = styles
 
 const CompletionResult = ({
   dimension,
@@ -59,8 +59,8 @@ const CompletionResult = ({
   }
 
   return (
-    <Box sx={classes.outerBox}>
-      <Typography variant="body1" p={3} whiteSpace="pre-line">
+    <Box sx={cardStyles.answerBox}>
+      <Typography variant="body1" sx={cardStyles.content} whiteSpace="pre-line">
         {completion.trim()}
       </Typography>
     </Box>
@@ -83,47 +83,48 @@ const DimensionCompletion = ({
   const dimensions = getSelectedDimensions(survey, watch)
 
   return (
-    <Box mt={2}>
+    <Box sx={cardStyles.nestedSubSection}>
       <Typography variant="body2">
         {t('openai:selectDimensionInfoText')}
       </Typography>
-      <FormControl sx={{ mt: 1 }}>
-        <InputLabel>{t('openai:dimensionSelect')}</InputLabel>
-        <Select
-          data-cy="dimension-completion-select"
-          value={dimensionId}
-          label={t('openai:dimensionSelect')}
-          onChange={({ target }) => setdimensionId(target.value)}
-          sx={{ width: 400 }}
-          disabled={showCompletion}
-        >
-          {dimensions.map((d) => (
-            <MenuItem
-              data-cy={`dimension-option-${d.id}`}
-              key={d.id}
-              value={d.id}
-            >
-              {d.label[language as keyof Locales]}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Box mt={1}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setShowCompletion(true)}
-          disabled={showCompletion || dimensionId.length === 0}
-        >
-          {t('openai:send')}
-        </Button>
+      <Box sx={cardStyles.content}>
+        <FormControl size="small" sx={cardStyles.inputField}>
+          <InputLabel>{t('openai:dimensionSelect')}</InputLabel>
+          <Select
+            data-cy="dimension-completion-select"
+            value={dimensionId}
+            label={t('openai:dimensionSelect')}
+            onChange={({ target }) => setdimensionId(target.value)}
+            disabled={showCompletion}
+          >
+            {dimensions.map((d) => (
+              <MenuItem
+                data-cy={`dimension-option-${d.id}`}
+                key={d.id}
+                value={d.id}
+              >
+                {d.label[language as keyof Locales]}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Box sx={{ my: 2 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setShowCompletion(true)}
+            disabled={showCompletion || dimensionId.length === 0}
+          >
+            {t('openai:send')}
+          </Button>
+        </Box>
+        {showCompletion && (
+          <CompletionResult
+            dimension={dimensions.find(({ id }) => id === dimensionId)}
+            setShowCompletion={setShowCompletion}
+          />
+        )}
       </Box>
-      {showCompletion && (
-        <CompletionResult
-          dimension={dimensions.find(({ id }) => id === dimensionId)}
-          setShowCompletion={setShowCompletion}
-        />
-      )}
     </Box>
   )
 }

@@ -49,6 +49,7 @@ const SendSummaryEmail = () => {
         </Typography>
         {!isSent ? (
           <Button
+            sx={{ mt: 2 }}
             variant="contained"
             color="primary"
             disabled={!user?.email}
