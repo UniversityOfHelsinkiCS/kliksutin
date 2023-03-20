@@ -8,7 +8,7 @@ const cardStyles = {
   },
   helloBox: {
     m: 2,
-    maxWidth: 1280,
+    maxWidth: 1560,
   },
   expendableBox: {
     my: 2,
@@ -19,7 +19,7 @@ const cardStyles = {
   },
   outerBox: {
     m: 2,
-    maxWidth: 1280,
+    maxWidth: 1560,
     border: 1,
     borderColor: 'grey.300',
   },
@@ -70,7 +70,7 @@ const cardStyles = {
   },
   answerBox: {
     my: 4,
-    maxWidth: 1280,
+    maxWidth: 1560,
     border: 1,
     borderColor: 'grey.300',
   },
@@ -79,7 +79,7 @@ const cardStyles = {
 const formStyles = {
   formWrapper: {
     my: 2,
-    maxWidth: 1280,
+    maxWidth: 1560,
   },
   formControl: {
     width: '100%',
@@ -206,7 +206,7 @@ const resultStyles = {
   },
   resultWrapper: {
     m: 2,
-    maxWidth: 1280,
+    maxWidth: 1560,
     border: 1,
     borderColor: 'grey.300',
   },

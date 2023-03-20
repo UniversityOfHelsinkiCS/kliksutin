@@ -17,7 +17,6 @@ import styles from '../../styles'
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
   const mutation = useSaveEntryMutation(survey?.id)
-
   const [resultData, setResultData] = useState<FormValues>(null)
 
   const { formStyles } = styles
@@ -32,7 +31,7 @@ const InteractiveForm = () => {
 
   const { handleSubmit, control, watch, getValues } = useForm({
     mode: 'onBlur',
-    shouldUnregister: true,
+    shouldUnregister: false,
     defaultValues: getSavedInstance(),
   })
 
@@ -54,26 +53,25 @@ const InteractiveForm = () => {
           <HelloBanner />
         </Grid>
         <Grid item sm={12} md={7} xl={6}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <RenderSurvey
-              control={control}
-              watch={watch}
-              handleSubmit={handleSubmit(onSubmit)}
-            />
-          </form>
+          {!resultData ? (
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <RenderSurvey
+                control={control}
+                watch={watch}
+                handleSubmit={handleSubmit(onSubmit)}
+              />
+            </form>
+          ) : (
+            <Results formResultData={resultData} />
+          )}
         </Grid>
-
         <Grid item sm={12} md={5} xl={6}>
           <Recommendations watch={watch} />
         </Grid>
-
-        {resultData && (
-          <Grid item sm={12}>
-            <Results formResultData={resultData} />
-            <Openai watch={watch} />
-            {resultData && <ProceedToContact />}
-          </Grid>
-        )}
+        <Grid item sm={12}>
+          <Openai watch={watch} />
+          {resultData && <ProceedToContact />}
+        </Grid>
       </Grid>
     </Box>
   )
