@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import usePersistForm from '../../hooks/usePersistForm'
@@ -82,7 +82,13 @@ const InteractiveForm = () => {
             />
             <Route
               path="results"
-              element={<Results formResultData={resultData} />}
+              element={
+                resultData ? (
+                  <Results formResultData={resultData} />
+                ) : (
+                  <Navigate replace to="/" />
+                )
+              }
             />
           </Routes>
         </Grid>

@@ -101,8 +101,6 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
       typeof result === 'string' ? [result] : result
     )
 
-  console.log(modifiedResultObject)
-
   return (
     <Box sx={cardStyles.outerBox}>
       <Box sx={resultStyles.resultWrapper}>
