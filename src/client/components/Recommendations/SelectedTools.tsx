@@ -1,9 +1,8 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import DimensionChip from '../Chip/DimensionChip'
 import Markdown from '../Common/Markdown'
-import colors from '../../util/colors'
+import CompactDimensionChips from '../Common/CompactDImensionChips'
 import styles from '../../styles'
 import { Locales, SelectedTools } from '../../types'
 
@@ -29,21 +28,11 @@ const CurrentlySelectedTools = ({
               <Markdown>
                 {recommendation.title[language as keyof Locales]}
               </Markdown>
-              <Box sx={recommendationStyles.recommendationChipsContainer}>
-                {recommendation.dimensions.map((aDimension) => {
-                  const chipData = dimensionSelections.find(
-                    (selectedDimension) => selectedDimension.id === aDimension
-                  )
-                  return (
-                    <DimensionChip
-                      key={chipData.id}
-                      choice={chipData}
-                      color={colors[chipData.id]}
-                      compact
-                    />
-                  )
-                })}
-              </Box>
+
+              <CompactDimensionChips
+                dimensions={recommendation.dimensions}
+                dimensionSelections={dimensionSelections}
+              />
             </Box>
             <Typography variant="body2" sx={recommendationStyles.subtoolText}>
               {recommendation.subtools && recommendation.subtools.join(', ')}

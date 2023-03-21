@@ -5,45 +5,16 @@ import { Box, Button, Container, Typography } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
+import useFindQuestion from '../../hooks/useFindQuestion'
 import styles from '../../styles'
 import SendSummaryEmail from './SendSummaryEmail'
 import Markdown from '../Common/Markdown'
+import CompactDimensionChips from '../Common/CompactDImensionChips'
 import colors from '../../util/colors'
-import {
-  DimensionSelectionData,
-  InputProps,
-  Locales,
-  Result,
-} from '../../types'
 import { getSelectedDimensions } from '../../util/dimensions'
-import DimensionChip from '../Chip/DimensionChip'
-import useFindQuestion from '../../hooks/useFindQuestion'
+import { InputProps, Locales, Result } from '../../types'
 
-const { cardStyles, resultStyles, recommendationStyles } = styles
-
-const CompactDimensionChips = ({
-  dimensions,
-  dimensionSelections,
-}: {
-  dimensions: string[]
-  dimensionSelections: DimensionSelectionData[]
-}) => (
-  <Box sx={recommendationStyles.recommendationChipsContainer}>
-    {dimensions.map((aDimension) => {
-      const chipData = dimensionSelections.find(
-        (selectedDimension) => selectedDimension.id === aDimension
-      )
-      return (
-        <DimensionChip
-          key={chipData.id}
-          choice={chipData}
-          color={colors[chipData.id]}
-          compact
-        />
-      )
-    })}
-  </Box>
-)
+const { cardStyles, resultStyles } = styles
 
 const ResultElement = ({
   language,
