@@ -118,7 +118,7 @@ const DimensionCompletion = ({
             {t('openai:send')}
           </Button>
         </Box>
-        {showCompletion && (
+        {showCompletion && dimensions.find(({ id }) => id === dimensionId) && (
           <CompletionResult
             dimension={dimensions.find(({ id }) => id === dimensionId)}
             setShowCompletion={setShowCompletion}
