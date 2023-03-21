@@ -36,7 +36,7 @@ const SendSummaryEmail = () => {
     }
   }
 
-  if (isLoading) return null
+  if (isLoading || !user?.email) return null
 
   return (
     <Box sx={cardStyles.subHeading}>
@@ -44,9 +44,6 @@ const SendSummaryEmail = () => {
         {t('results:proceedEmailInfoText')}
       </Typography>
       <Box sx={cardStyles.content}>
-        <Typography variant="h6">
-          {user?.email ? user.email : 'User not found'}
-        </Typography>
         {!isSent ? (
           <Button
             sx={{ mt: 2 }}
