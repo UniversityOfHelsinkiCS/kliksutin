@@ -4,6 +4,7 @@ import { Trans, useTranslation } from 'react-i18next'
 import styles from '../styles'
 
 import toskaColor from '../assets/toscalogo_color.svg'
+import Markdown from './Common/Markdown'
 
 const supportEmail = 'opetusteknologia@helsinki.fi'
 
@@ -36,6 +37,12 @@ const Footer = () => {
             }}
           />
         </Typography>
+
+        <Markdown>
+          [Kerrothan mielipiteesi Curresta lyhyen palautelomakkeen
+          muodossa.](https://forms.office.com/e/TWvNdLb48z)
+        </Markdown>
+
         <Box sx={footerStyles.imageBox}>
           <Link
             href="https://toska.dev"
