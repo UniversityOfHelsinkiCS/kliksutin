@@ -1,18 +1,18 @@
 import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Box, Grid } from '@mui/material'
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
+import usePersistForm from '../../hooks/usePersistForm'
 import useSaveEntryMutation from '../../hooks/useSaveEntryMutation'
-import Results from '../ResultPage/Results'
+import HelloBanner from './HelloBanner'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
-import { FormValues } from '../../types'
-import ProceedToContact from '../ResultPage/ProceedToContact'
+import Results from '../ResultPage/Results'
 import Openai from '../ResultPage/Openai/Openai'
-import usePersistForm from '../../hooks/usePersistForm'
+import ProceedToContact from '../ResultPage/ProceedToContact'
+import { FormValues } from '../../types'
 import { FORM_DATA_KEY } from '../../../config'
-import HelloBanner from './HelloBanner'
 import styles from '../../styles'
 
 const InteractiveForm = () => {
@@ -23,9 +23,8 @@ const InteractiveForm = () => {
 
   const { formStyles } = styles
 
-  const savedData = sessionStorage.getItem(FORM_DATA_KEY)
-
   const getSavedInstance = useCallback(() => {
+    const savedData = sessionStorage.getItem(FORM_DATA_KEY)
     if (savedData) return JSON.parse(savedData)
 
     return {}
@@ -48,6 +47,11 @@ const InteractiveForm = () => {
 
     setResultData(submittedData)
     mutation.mutateAsync(submittedData)
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    }) // Scroll to top
     navigate('/results')
   }
 
