@@ -31,7 +31,13 @@ const InteractiveForm = () => {
     return {}
   }, [])
 
-  const { handleSubmit, control, watch, getValues } = useForm({
+  const {
+    formState: { isSubmitted },
+    handleSubmit,
+    control,
+    watch,
+    getValues,
+  } = useForm({
     mode: 'onBlur',
     shouldUnregister: false,
     defaultValues: getSavedInstance(),
@@ -65,6 +71,7 @@ const InteractiveForm = () => {
                     control={control}
                     watch={watch}
                     handleSubmit={handleSubmit(onSubmit)}
+                    isSubmitted={isSubmitted}
                   />
                 </form>
               }

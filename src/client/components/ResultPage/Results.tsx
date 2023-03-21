@@ -120,7 +120,9 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
 
       <SendSummaryEmail />
 
-      <Button onClick={() => navigate('/')}>{'<'} Previous</Button>
+      <Button sx={{ m: 4 }} onClick={() => navigate('/')}>
+        {'<'} {t('results:backToMessage')}
+      </Button>
     </Box>
   )
 }

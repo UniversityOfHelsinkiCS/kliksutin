@@ -31,6 +31,7 @@ export interface InputProps {
   language?: string
   questions?: Question[]
   handleSubmit?: SubmitHandler<FieldValues>
+  isSubmitted?: boolean
 }
 
 export interface FormValues {

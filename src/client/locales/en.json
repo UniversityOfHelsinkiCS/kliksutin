@@ -2,6 +2,7 @@
   "common": {
     "appName": "Curre",
     "submit": "Proceed with these choices",
+    "updateSubmit": "Update choices",
     "openForm": "Proceed to the questions",
     "admin": "admin"
   },
@@ -29,7 +30,8 @@
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send",
     "sendSuccess": "Summary email sent successfully",
-    "endMessage": "Thank you for using Curre!"
+    "endMessage": "Thank you for using Curre!",
+    "backToMessage": "Back to the questions"
   },
   "contact": {
     "title": "Contact page",
