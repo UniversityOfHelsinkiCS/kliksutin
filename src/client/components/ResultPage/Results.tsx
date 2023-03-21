@@ -9,7 +9,7 @@ import useFindQuestion from '../../hooks/useFindQuestion'
 import styles from '../../styles'
 import SendSummaryEmail from './SendSummaryEmail'
 import Markdown from '../Common/Markdown'
-import CompactDimensionChips from '../Common/CompactDImensionChips'
+import CompactDimensionChips from '../Common/CompactDimensionChips'
 import colors from '../../util/colors'
 import { getSelectedDimensions } from '../../util/dimensions'
 import { InputProps, Locales, Result } from '../../types'
@@ -58,9 +58,9 @@ const Results = ({ formResultData, watch }: InputProps) => {
   const courseAttendanceId = useFindQuestion('Osallistuminen')
   const courseCompletionMethodId = useFindQuestion('Suoritusmuoto')
 
-  if (!resultsFetched || !formResultData) return null
-
   const dimensionSelections = getSelectedDimensions(survey, watch)
+
+  if (!resultsFetched || !formResultData) return null
 
   const multipleChoiceObjectToArray = (aChoiceId: number): string[] =>
     Object.keys(formResultData[aChoiceId]).filter(
@@ -69,7 +69,6 @@ const Results = ({ formResultData, watch }: InputProps) => {
 
   const attendanceToArray = () => {
     const attendances = multipleChoiceObjectToArray(courseAttendanceId)
-
     return attendances.length === 2 ? ['courseAttendanceHybrid'] : attendances
   }
 

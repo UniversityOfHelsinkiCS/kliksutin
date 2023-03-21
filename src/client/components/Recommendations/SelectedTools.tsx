@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import Markdown from '../Common/Markdown'
-import CompactDimensionChips from '../Common/CompactDImensionChips'
+import CompactDimensionChips from '../Common/CompactDimensionChips'
 import styles from '../../styles'
 import { Locales, SelectedTools } from '../../types'
 
