@@ -10,7 +10,7 @@ import { FormValues, Locales, Result } from '../../types'
 import SendSummaryEmail from './SendSummaryEmail'
 import Markdown from '../Common/Markdown'
 
-const { resultStyles } = styles
+const { cardStyles, resultStyles } = styles
 
 const ResultElement = ({
   language,
@@ -95,34 +95,38 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
     )
 
   return (
-    <Box sx={resultStyles.resultWrapper}>
-      <Box id="result-component">
-        <Container sx={{ mt: 2 }}>
-          <Typography variant="h5" sx={resultStyles.heading} component="div">
-            {t('results:title')}
-          </Typography>
-        </Container>
+    <Box sx={cardStyles.outerBox}>
+      <Box sx={resultStyles.resultWrapper}>
+        <Box id="result-component">
+          <Container sx={{ mt: 2 }}>
+            <Typography variant="h5" sx={resultStyles.heading} component="div">
+              {t('results:title')}
+            </Typography>
+          </Container>
 
-        {resultArray.map((resultLabels) =>
-          resultLabels.map((resultLabel) => (
-            <ResultElement
-              key={JSON.stringify(resultLabel)}
-              language={language as keyof Locales}
-              resultData={results.find(
-                (result: { optionLabel: string }) =>
-                  result.optionLabel === resultLabel
-              )}
-              dimensions={modifiedResultObject[dimensionQuestionId] as string[]}
-            />
-          ))
-        )}
+          {resultArray.map((resultLabels) =>
+            resultLabels.map((resultLabel) => (
+              <ResultElement
+                key={JSON.stringify(resultLabel)}
+                language={language as keyof Locales}
+                resultData={results.find(
+                  (result: { optionLabel: string }) =>
+                    result.optionLabel === resultLabel
+                )}
+                dimensions={
+                  modifiedResultObject[dimensionQuestionId] as string[]
+                }
+              />
+            ))
+          )}
+        </Box>
+
+        <SendSummaryEmail />
+
+        <Button sx={{ m: 4 }} onClick={() => navigate('/')}>
+          {'<'} {t('results:backToMessage')}
+        </Button>
       </Box>
-
-      <SendSummaryEmail />
-
-      <Button sx={{ m: 4 }} onClick={() => navigate('/')}>
-        {'<'} {t('results:backToMessage')}
-      </Button>
     </Box>
   )
 }

@@ -206,9 +206,6 @@ const resultStyles = {
   },
   resultWrapper: {
     m: 2,
-    maxWidth: 1560,
-    border: 1,
-    borderColor: 'grey.300',
   },
   heading: {
     fontWeight: '200',
