@@ -48,9 +48,9 @@ const ResultElement = ({
 }
 
 const Results = ({ formResultData, watch }: InputProps) => {
+  const navigate = useNavigate()
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
-  const navigate = useNavigate()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
   const { language } = i18n
 
