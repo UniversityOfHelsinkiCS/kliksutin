@@ -84,7 +84,7 @@ const InteractiveForm = () => {
               path="results"
               element={
                 resultData ? (
-                  <Results formResultData={resultData} />
+                  <Results formResultData={resultData} watch={watch} />
                 ) : (
                   <Navigate replace to="/" />
                 )

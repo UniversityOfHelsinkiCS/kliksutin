@@ -9,9 +9,41 @@ import styles from '../../styles'
 import SendSummaryEmail from './SendSummaryEmail'
 import Markdown from '../Common/Markdown'
 import colors from '../../util/colors'
-import { FormValues, Locales, Result } from '../../types'
+import {
+  DimensionSelectionData,
+  InputProps,
+  Locales,
+  Result,
+} from '../../types'
+import { getSelectedDimensions } from '../../util/dimensions'
+import DimensionChip from '../Chip/DimensionChip'
+import useFindQuestion from '../../hooks/useFindQuestion'
 
-const { cardStyles, resultStyles } = styles
+const { cardStyles, resultStyles, recommendationStyles } = styles
+
+const CompactDimensionChips = ({
+  dimensions,
+  dimensionSelections,
+}: {
+  dimensions: string[]
+  dimensionSelections: DimensionSelectionData[]
+}) => (
+  <Box sx={recommendationStyles.recommendationChipsContainer}>
+    {dimensions.map((aDimension) => {
+      const chipData = dimensionSelections.find(
+        (selectedDimension) => selectedDimension.id === aDimension
+      )
+      return (
+        <DimensionChip
+          key={chipData.id}
+          choice={chipData}
+          color={colors[chipData.id]}
+          compact
+        />
+      )
+    })}
+  </Box>
+)
 
 const ResultElement = ({
   language,
@@ -44,33 +76,20 @@ const ResultElement = ({
   )
 }
 
-const Results = ({ formResultData }: { formResultData: FormValues }) => {
+const Results = ({ formResultData, watch }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
   const navigate = useNavigate()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
   const { language } = i18n
 
+  const dimensionQuestionId = useFindQuestion('dimensions')
+  const courseAttendanceId = useFindQuestion('Osallistuminen')
+  const courseCompletionMethodId = useFindQuestion('Suoritusmuoto')
+
   if (!resultsFetched || !formResultData) return null
 
-  const findQuestion = (param: string) => {
-    const foundByType = survey.Questions.find(
-      (question) => question.optionData.type === param
-    )
-
-    const foundByFinnishTitle = survey.Questions.find(
-      (question) => question.title.fi === param
-    )
-
-    if (!foundByType && !foundByFinnishTitle)
-      throw new Error('Question not found, check search params')
-
-    return foundByType ? foundByType.id : foundByFinnishTitle.id
-  }
-
-  const dimensionQuestionId = findQuestion('dimensions')
-  const courseAttendanceId = findQuestion('Osallistuminen')
-  const courseCompletionMethodId = findQuestion('Suoritusmuoto')
+  const dimensionSelections = getSelectedDimensions(survey, watch)
 
   const multipleChoiceObjectToArray = (aChoiceId: number): string[] =>
     Object.keys(formResultData[aChoiceId]).filter(
@@ -109,6 +128,10 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
             <Typography variant="h5" sx={resultStyles.heading} component="div">
               {t('results:title')}
             </Typography>
+            <CompactDimensionChips
+              dimensions={multipleChoiceObjectToArray(dimensionQuestionId)}
+              dimensionSelections={dimensionSelections}
+            />
           </Container>
 
           {resultArray.map((resultLabels) =>
