@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Container, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { Box, Button, Container, Typography } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
@@ -39,6 +40,7 @@ const ResultElement = ({
 const Results = ({ formResultData }: { formResultData: FormValues }) => {
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
+  const navigate = useNavigate()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
   const { language } = i18n
 
@@ -117,6 +119,8 @@ const Results = ({ formResultData }: { formResultData: FormValues }) => {
       </Box>
 
       <SendSummaryEmail />
+
+      <Button onClick={() => navigate('/')}>{'<'} Previous</Button>
     </Box>
   )
 }

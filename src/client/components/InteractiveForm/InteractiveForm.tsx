@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import useSurvey from '../../hooks/useSurvey'
 import useSaveEntryMutation from '../../hooks/useSaveEntryMutation'
 import Results from '../ResultPage/Results'
@@ -17,6 +18,7 @@ import styles from '../../styles'
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
   const mutation = useSaveEntryMutation(survey?.id)
+  const navigate = useNavigate()
   const [resultData, setResultData] = useState<FormValues>(null)
 
   const { formStyles } = styles
@@ -40,6 +42,7 @@ const InteractiveForm = () => {
 
     setResultData(submittedData)
     mutation.mutateAsync(submittedData)
+    navigate('/results')
   }
 
   usePersistForm({ value: getValues(), sessionStorageKey: FORM_DATA_KEY })
@@ -53,17 +56,24 @@ const InteractiveForm = () => {
           <HelloBanner />
         </Grid>
         <Grid item sm={12} md={7} xl={8}>
-          {!resultData ? (
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <RenderSurvey
-                control={control}
-                watch={watch}
-                handleSubmit={handleSubmit(onSubmit)}
-              />
-            </form>
-          ) : (
-            <Results formResultData={resultData} />
-          )}
+          <Routes>
+            <Route
+              path=""
+              element={
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <RenderSurvey
+                    control={control}
+                    watch={watch}
+                    handleSubmit={handleSubmit(onSubmit)}
+                  />
+                </form>
+              }
+            />
+            <Route
+              path="results"
+              element={<Results formResultData={resultData} />}
+            />
+          </Routes>
         </Grid>
         <Grid item sm={12} md={5} xl={4}>
           <Recommendations watch={watch} />
@@ -71,7 +81,7 @@ const InteractiveForm = () => {
         {resultData && (
           <Grid item sm={12}>
             <Openai watch={watch} />
-            {resultData && <ProceedToContact />}
+            <ProceedToContact />
           </Grid>
         )}
       </Grid>

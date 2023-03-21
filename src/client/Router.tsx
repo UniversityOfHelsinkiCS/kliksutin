@@ -7,7 +7,7 @@ import InteractiveForm from './components/InteractiveForm/InteractiveForm'
 
 const Router = () => (
   <Routes>
-    <Route path="/" element={<InteractiveForm />} />
+    <Route path="/*" element={<InteractiveForm />} />
     <Route path="/admin" element={<Admin />} />
     <Route path="/contact" element={<Contact />} />
   </Routes>
