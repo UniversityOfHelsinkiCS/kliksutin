@@ -6,9 +6,10 @@ import { Box, Button, Container, Typography } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
 import styles from '../../styles'
-import { FormValues, Locales, Result } from '../../types'
 import SendSummaryEmail from './SendSummaryEmail'
 import Markdown from '../Common/Markdown'
+import colors from '../../util/colors'
+import { FormValues, Locales, Result } from '../../types'
 
 const { cardStyles, resultStyles } = styles
 
@@ -27,11 +28,17 @@ const ResultElement = ({
     <Container sx={resultStyles.resultElementWrapper}>
       <Markdown>{resultData.isSelected[language]}</Markdown>
       <Box sx={resultStyles.resultElementContent}>
-        {dimensions.map((dimension: string) => (
-          <Box key={`${JSON.stringify(resultData)}.${dimension}`} sx={{ m: 2 }}>
-            <Markdown>{resultData.data[dimension][language]}</Markdown>
-          </Box>
-        ))}
+        {dimensions.map((dimension: string) => {
+          const color = colors[dimension] || null
+          return (
+            <Box
+              key={`${JSON.stringify(resultData)}.${dimension}`}
+              sx={{ m: 2, px: 2, borderLeft: 6, borderColor: color }}
+            >
+              <Markdown>{resultData.data[dimension][language]}</Markdown>
+            </Box>
+          )
+        })}
       </Box>
     </Container>
   )
