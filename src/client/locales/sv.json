@@ -8,7 +8,9 @@
     "admin": "ylläpito"
   },
   "footer": {
-    "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>"
+    "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>",
+    "licenseText": "Tämä teos on lisensoitu",
+    "licenseLinkText": "CC BY-NC-SA 4.0 -lisenssillä"
   },
   "facultySelect": {
     "welcomeMessage": "",

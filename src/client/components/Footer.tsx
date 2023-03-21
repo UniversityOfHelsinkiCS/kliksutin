@@ -9,7 +9,7 @@ import Markdown from './Common/Markdown'
 const supportEmail = 'opetusteknologia@helsinki.fi'
 
 const Footer = () => {
-  useTranslation()
+  const { t } = useTranslation()
 
   const { footerStyles } = styles
 
@@ -22,21 +22,41 @@ const Footer = () => {
       })}
     >
       <Box sx={footerStyles.supportBox}>
-        <Typography>
-          <Trans
-            i18nKey="footer:contactSupport"
-            values={{ supportEmail }}
-            components={{
-              mailTo: (
-                <Link
-                  href={`mailto:${supportEmail}`}
-                  underline="hover"
-                  color="toskaPrimary.main"
-                />
-              ),
-            }}
-          />
-        </Typography>
+        <Box>
+          <Typography>
+            <Trans
+              i18nKey="footer:contactSupport"
+              values={{ supportEmail }}
+              components={{
+                mailTo: (
+                  <Link
+                    href={`mailto:${supportEmail}`}
+                    underline="hover"
+                    color="toskaPrimary.main"
+                  />
+                ),
+              }}
+            />
+          </Typography>
+          <Link
+            rel="license"
+            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          >
+            <img
+              alt="Creative Commons license"
+              src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+            />
+          </Link>
+          <br />
+          {t('footer:licenseText')}
+          <Link
+            sx={{ ml: 1 }}
+            rel="license"
+            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          >
+            {t('footer:licenseLinkText')}
+          </Link>
+        </Box>
 
         <Markdown>
           [Kerrothan mielipiteesi Curresta lyhyen palautelomakkeen

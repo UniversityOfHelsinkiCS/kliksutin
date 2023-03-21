@@ -7,7 +7,9 @@
     "admin": "admin"
   },
   "footer": {
-    "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>"
+    "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>",
+    "licenseText": "Tämä teos on lisensoitu",
+    "licenseLinkText": "CC BY-NC-SA 4.0 -lisenssillä"
   },
   "facultySelect": {
     "welcomeMessage": "",
