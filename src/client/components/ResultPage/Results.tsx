@@ -90,17 +90,20 @@ const Results = ({ formResultData, watch }: InputProps) => {
     .map((result: string | Array<string>) =>
       typeof result === 'string' ? [result] : result
     )
-    .filter((x) =>
-      (modifiedResultObject[2] as any) !== 'courseSizeUnlimited'
-        ? x[0] !== 'courseIsMooc' && x[0] !== 'courseIsNotMooc'
-        : x[0]
+    .filter(
+      (
+        x // This is a temporary fix for the #90 unmount issue
+      ) =>
+        (modifiedResultObject[2] as any) !== 'courseSizeUnlimited'
+          ? x[0] !== 'courseIsMooc' && x[0] !== 'courseIsNotMooc'
+          : x[0]
     )
 
   return (
     <Box sx={cardStyles.outerBox}>
       <Box sx={resultStyles.resultWrapper}>
         <Box id="result-component">
-          <Container sx={{ mt: 2 }}>
+          <Container sx={{ mt: 4 }}>
             <Typography variant="h5" sx={resultStyles.heading} component="div">
               {t('results:title')}
             </Typography>
@@ -131,11 +134,7 @@ const Results = ({ formResultData, watch }: InputProps) => {
 
         <Box sx={formStyles.stackBoxWrapper}>
           <Stack sx={formStyles.stack} direction="row">
-            <Button
-              variant="contained"
-              sx={{ m: 4 }}
-              onClick={() => navigate('/')}
-            >
+            <Button sx={{ m: 4 }} onClick={() => navigate('/')}>
               {'<'} {t('results:backToMessage')}
             </Button>
 
