@@ -5,6 +5,7 @@ import useSurvey from '../../hooks/useSurvey'
 import { InputProps } from '../../types'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
+import ResetForm from '../Common/ResetForm'
 import { getSelectedDimensions } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'
 import styles from '../../styles'
@@ -40,11 +41,6 @@ const RenderSurvey = ({
   if (isLoading) return null
 
   const questions = survey.Questions
-
-  const resetForm = () => {
-    sessionStorage.removeItem(FORM_DATA_KEY)
-    window.location.reload()
-  }
 
   return (
     <Box sx={cardStyles.outerBox}>
@@ -97,15 +93,7 @@ const RenderSurvey = ({
                 >
                   {isSubmitted ? t('updateSubmit') : t('submit')}
                 </Button>
-                <Button
-                  sx={formStyles.stackButton}
-                  type="button"
-                  data-cy="reset-form-button"
-                  variant="outlined"
-                  onClick={resetForm}
-                >
-                  {t('reset')}
-                </Button>
+                <ResetForm />
               </Stack>
             </Box>
           )}

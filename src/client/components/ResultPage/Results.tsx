@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import { Box, Button, Container, Typography } from '@mui/material'
+import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
@@ -9,12 +9,13 @@ import useFindQuestion from '../../hooks/useFindQuestion'
 import styles from '../../styles'
 import SendSummaryEmail from './SendSummaryEmail'
 import Markdown from '../Common/Markdown'
+import ResetForm from '../Common/ResetForm'
 import CompactDimensionChips from '../Common/CompactDimensionChips'
 import colors from '../../util/colors'
 import { getSelectedDimensions } from '../../util/dimensions'
 import { InputProps, Locales, Result } from '../../types'
 
-const { cardStyles, resultStyles } = styles
+const { cardStyles, resultStyles, formStyles } = styles
 
 const ResultElement = ({
   language,
@@ -128,9 +129,19 @@ const Results = ({ formResultData, watch }: InputProps) => {
 
         <SendSummaryEmail />
 
-        <Button sx={{ m: 4 }} onClick={() => navigate('/')}>
-          {'<'} {t('results:backToMessage')}
-        </Button>
+        <Box sx={formStyles.stackBoxWrapper}>
+          <Stack sx={formStyles.stack} direction="row">
+            <Button
+              variant="contained"
+              sx={{ m: 4 }}
+              onClick={() => navigate('/')}
+            >
+              {'<'} {t('results:backToMessage')}
+            </Button>
+
+            <ResetForm />
+          </Stack>
+        </Box>
       </Box>
     </Box>
   )
