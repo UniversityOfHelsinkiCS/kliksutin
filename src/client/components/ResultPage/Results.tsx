@@ -89,6 +89,11 @@ const Results = ({ formResultData, watch }: InputProps) => {
     .map((result: string | Array<string>) =>
       typeof result === 'string' ? [result] : result
     )
+    .filter((x) =>
+      (modifiedResultObject[2] as any) !== 'courseSizeUnlimited'
+        ? x[0] !== 'courseIsMooc' && x[0] !== 'courseIsNotMooc'
+        : x[0]
+    )
 
   return (
     <Box sx={cardStyles.outerBox}>
