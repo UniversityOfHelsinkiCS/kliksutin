@@ -92,7 +92,7 @@ const EditResults = () => {
     setQuestionId(event.target.value)
   }
 
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('fi')
+  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
   const handleLanguageChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
@@ -116,6 +116,10 @@ const EditResults = () => {
   return (
     <Box my={5} mx={10}>
       <Box mb={3} display="flex">
+        <LanguageSelect
+          selectedLanguage={selectedLanguage}
+          handleChange={handleLanguageChange}
+        />
         <DimensionSelect
           dimensionId={dimensionId}
           dimensions={dimensions}
@@ -125,10 +129,6 @@ const EditResults = () => {
           questionId={questionId}
           questions={survey.Questions}
           handleChange={handleQuestionChange}
-        />
-        <LanguageSelect
-          selectedLanguage={selectedLanguage}
-          handleChange={handleLanguageChange}
         />
       </Box>
       <Box flexWrap="wrap">
