@@ -84,18 +84,18 @@ const InteractiveForm = () => {
               path="results"
               element={
                 resultData ? (
-                  <Results formResultData={resultData} watch={watch} />
+                  <>
+                    <Results formResultData={resultData} watch={watch} />
+                    <Grid item sm={12}>
+                      <Openai watch={watch} />
+                    </Grid>
+                  </>
                 ) : (
                   <Navigate replace to="/" />
                 )
               }
             />
           </Routes>
-          {resultData && (
-            <Grid item sm={12}>
-              <Openai watch={watch} />
-            </Grid>
-          )}
         </Grid>
         <Grid item sm={12} md={5} xl={4}>
           <Recommendations watch={watch} />
