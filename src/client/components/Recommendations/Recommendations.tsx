@@ -4,9 +4,12 @@ import { useTranslation } from 'react-i18next'
 import useRecommendations from '../../hooks/useRecommendations'
 import useSurvey from '../../hooks/useSurvey'
 import { getSelectedDimensions } from '../../util/dimensions'
+import {
+  sortRecommendations,
+  getRecommendationsData,
+} from '../../util/recommendations'
 import styles from '../../styles'
 import {
-  RecommendationData,
   DimensionSelectionData,
   InputProps,
   ToolType,
@@ -18,43 +21,6 @@ import {
 import SelectedTools from './SelectedTools'
 import NonSelectedTools from './NonSelectedTools'
 import ShowMore from '../Common/ShowMore'
-
-/* eslint-disable no-nested-ternary */
-const sortRecommendations = (a: Recommendation, b: Recommendation) =>
-  a.label > b.label ? 1 : b.label > a.label ? -1 : 0
-
-const getRecommendationsData = (
-  rawRecommendations: Recommendation[],
-  dimensionSelections: DimensionSelectionData[]
-): RecommendationData[] => {
-  const selectedTools = dimensionSelections.map(
-    (aSelection: DimensionSelectionData) => ({
-      optionId: aSelection.id,
-      dimensions: aSelection.data,
-    })
-  )
-
-  const result: RecommendationData[] = rawRecommendations.map(
-    (aRecommendation) => ({
-      name: aRecommendation.label,
-      dimensions: [],
-    })
-  )
-
-  selectedTools.forEach((tool) => {
-    result.forEach((aRecommendation) => {
-      if (
-        tool.dimensions.some(
-          (aTool: ToolType) => aTool.name === aRecommendation.name
-        )
-      ) {
-        aRecommendation.dimensions.push(tool.optionId)
-      }
-    })
-  })
-
-  return result
-}
 
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
