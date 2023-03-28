@@ -104,7 +104,12 @@ const Results = ({ formResultData, watch }: InputProps) => {
       <Box sx={resultStyles.resultWrapper}>
         <Box id="result-component">
           <Container sx={{ mt: 4 }}>
-            <Typography variant="h5" sx={resultStyles.heading} component="div">
+            <Typography
+              data-cy="result-section-title"
+              variant="h5"
+              sx={resultStyles.heading}
+              component="div"
+            >
               {t('results:title')}
             </Typography>
             <CompactDimensionChips
@@ -134,7 +139,11 @@ const Results = ({ formResultData, watch }: InputProps) => {
 
         <Box sx={formStyles.stackBoxWrapper}>
           <Stack sx={formStyles.stack} direction="row">
-            <Button sx={{ m: 4 }} onClick={() => navigate('/')}>
+            <Button
+              data-cy="back-to-selections"
+              sx={{ m: 4 }}
+              onClick={() => navigate('/')}
+            >
               {'<'} {t('results:backToMessage')}
             </Button>
 

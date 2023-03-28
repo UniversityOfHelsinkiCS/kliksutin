@@ -123,7 +123,12 @@ const Recommendations = ({ watch }: InputProps) => {
 
   return (
     <Box sx={recommendationStyles.recommendationContainer}>
-      <Typography variant="h5" sx={cardStyles.heading} component="span">
+      <Typography
+        data-cy="recommendation-section-title"
+        variant="h5"
+        sx={cardStyles.heading}
+        component="span"
+      >
         {t('recommendations:title')}
         <ShowMore text={t('recommendations:infoBoxText')} />
       </Typography>
