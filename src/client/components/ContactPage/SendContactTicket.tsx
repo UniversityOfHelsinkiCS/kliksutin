@@ -78,6 +78,7 @@ const SendContactTicket = () => {
         <Grid item xs={12} sm={12}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextField
+              data-cy="contact-ticket-textfield"
               required
               size="small"
               name="content"
@@ -95,6 +96,7 @@ const SendContactTicket = () => {
             <Box mt={3}>
               {!isSent ? (
                 <Button
+                  data-cy="send-contact-ticket-button"
                   variant="contained"
                   color="primary"
                   onClick={handleSubmit(onSubmit)}
@@ -102,7 +104,11 @@ const SendContactTicket = () => {
                   {t('contact:contactTicketSend')}
                 </Button>
               ) : (
-                <Alert sx={common.alertStyle} severity="success">
+                <Alert
+                  data-cy="contact-ticket-success-alert"
+                  sx={common.alertStyle}
+                  severity="success"
+                >
                   {t('contact:sendSuccess')}
                 </Alert>
               )}

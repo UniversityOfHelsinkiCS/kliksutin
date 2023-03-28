@@ -71,7 +71,7 @@ describe('Form section', () => {
     cy.get(`[data-cy = "back-to-selections"]`).should('exist')
   })
 
-  it('users can make choices based on the questions', () => {
+  it('user can make choices based on the questions', () => {
     questionData = getQuestionData()
 
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
@@ -97,7 +97,7 @@ describe('Form section', () => {
     cy.get(`[data-cy = "back-to-selections"]`).should('exist')
   })
 
-  it('users can reset the form before entering the results page', () => {
+  it('user can reset the form before entering the results page', () => {
     questionData = getQuestionData()
 
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
@@ -119,7 +119,7 @@ describe('Form section', () => {
     cy.get(`[data-cy = "open-form-button"]`).should('be.disabled')
   })
 
-  it('users can reset the form in the results page', () => {
+  it('user can reset the form in the results page', () => {
     questionData = getQuestionData()
 
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
@@ -173,5 +173,34 @@ describe('Form section', () => {
     cy.contains(
       'Olet valinnut kurssillesi suoritusmuodoksi välitehtävät.'
     ).should('exist')
+  })
+
+  it('user is happy and wants to press the button of happiness', () => {
+    cy.get(`[data-cy = "open-form-button"]`).click()
+
+    cy.get(`[data-cy = "submit-form-button"]`).click()
+
+    cy.get(`[data-cy = "form-close-success-alert"]`).should('not.exist')
+
+    cy.get(`[data-cy = "button-of-happiness"]`).click()
+
+    cy.get(`[data-cy = "form-close-success-alert"]`).should('exist')
+  })
+
+  it('user is confused and wants to make a support ticket', () => {
+    cy.get(`[data-cy = "open-form-button"]`).click()
+    cy.get(`[data-cy = "submit-form-button"]`).click()
+    cy.get(`[data-cy = "form-close-success-alert"]`).should('not.exist')
+
+    cy.get(`[data-cy = "button-of-confusion"]`).click()
+    cy.get(`[data-cy = "form-close-success-alert"]`).should('not.exist')
+
+    cy.location().should((loc) => expect(loc.pathname).to.eq('/contact'))
+
+    cy.contains('Yhteydenotto')
+
+    cy.get(`[data-cy = "contact-ticket-textfield"]`).type('I am so confused!')
+    cy.get(`[data-cy = "send-contact-ticket-button"]`).click()
+    cy.get(`[data-cy = "contact-ticket-success-alert"]`).should('exist')
   })
 })
