@@ -6,6 +6,10 @@ import {
   Select,
   SelectChangeEvent,
   MenuItem,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
@@ -24,27 +28,19 @@ const allSelection: InfoType = {
 
 const languages = [
   {
-    id: 'fi',
+    id: 'en',
     label: {
-      fi: 'suomi',
-      sv: 'Finska',
-      en: 'Finnish',
+      fi: 'englanti',
+      sv: 'engelska',
+      en: 'English',
     },
   },
   {
     id: 'sv',
     label: {
       fi: 'ruotsi',
-      sv: 'Svenska',
+      sv: 'svenska',
       en: 'Swedish',
-    },
-  },
-  {
-    id: 'en',
-    label: {
-      fi: 'englanti',
-      sv: 'Engelska',
-      en: 'English',
     },
   },
 ]
@@ -155,20 +151,20 @@ export const LanguageSelect = ({
   const language = i18n.language as keyof Locales
 
   return (
-    <Box width={300}>
+    <Box width={150}>
       <FormControl fullWidth>
-        <InputLabel>{t('admin:selectLanguage')}</InputLabel>
-        <Select
-          label={t('admin:selectLanguage')}
-          value={selectedLanguage}
-          onChange={handleChange}
-        >
+        <FormLabel>{t('admin:selectLanguage')}</FormLabel>
+        <RadioGroup defaultValue="en" onChange={handleChange}>
           {languages.map(({ id, label }) => (
-            <MenuItem key={id} value={id}>
-              {label[language]}
-            </MenuItem>
+            <FormControlLabel
+              key={id}
+              value={id}
+              control={<Radio />}
+              label={label[language]}
+              checked={selectedLanguage === id}
+            />
           ))}
-        </Select>
+        </RadioGroup>
       </FormControl>
     </Box>
   )

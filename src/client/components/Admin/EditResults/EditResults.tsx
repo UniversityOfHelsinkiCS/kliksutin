@@ -16,7 +16,7 @@ import useEditResultMutation from '../../../hooks/useEditResultMutation'
 import { getDimensions } from '../../../util/dimensions'
 import { DimensionSelect, QuestionSelect, LanguageSelect } from './Select'
 
-const EditResult = ({
+const ResultItem = ({
   dimensionId,
   language,
   options,
@@ -28,7 +28,6 @@ const EditResult = ({
   result: Result
 }) => {
   const { t } = useTranslation()
-
   const mutation = useEditResultMutation(result.id)
 
   const { isSelected, optionLabel, data } = result
@@ -59,7 +58,7 @@ const EditResult = ({
   }
 
   return (
-    <Box mb={5}>
+    <Box m={1} width="50%">
       <Typography mb={1} variant="h5">
         {optionData.label[language]}
       </Typography>
@@ -75,11 +74,37 @@ const EditResult = ({
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
-
       <Button onClick={handleSave}>{t('admin:save')}</Button>
     </Box>
   )
 }
+
+const EditResult = ({
+  dimensionId,
+  language,
+  options,
+  result,
+}: {
+  dimensionId: string
+  language: keyof Locales
+  options: ChoiceType
+  result: Result
+}) => (
+  <Box mb={5} display="flex">
+    <ResultItem
+      dimensionId={dimensionId}
+      language={'fi' as keyof Locales}
+      options={options}
+      result={result}
+    />
+    <ResultItem
+      dimensionId={dimensionId}
+      language={language}
+      options={options}
+      result={result}
+    />
+  </Box>
+)
 
 const EditResults = () => {
   const [dimensionId, setDimensionId] = useState('allDimensions')
@@ -92,7 +117,7 @@ const EditResults = () => {
     setQuestionId(event.target.value)
   }
 
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('fi')
+  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
   const handleLanguageChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
@@ -115,7 +140,7 @@ const EditResults = () => {
 
   return (
     <Box my={5} mx={10}>
-      <Box mb={3} display="flex">
+      <Box mb={3} width="90vw" display="flex">
         <DimensionSelect
           dimensionId={dimensionId}
           dimensions={dimensions}
@@ -131,7 +156,7 @@ const EditResults = () => {
           handleChange={handleLanguageChange}
         />
       </Box>
-      <Box flexWrap="wrap">
+      <Box width="100%" flexWrap="wrap">
         {filteredResults.map((result) => (
           <EditResult
             key={result.id}
