@@ -1,9 +1,17 @@
 import { baseUrl } from '../support/e2e'
 
+import getQuestionData from '../../src/server/data/questions'
 import getRecommendationsData from '../../src/server/data/recommendations'
-import { Recommendation } from '../../src/client/types'
+import {
+  DimensionSelectionData,
+  Question,
+  Recommendation,
+  Subtool,
+  ToolType,
+} from '../../src/client/types'
 
 describe('Recommendation section', () => {
+  let questionData: Question[]
   let recommendationData: Recommendation[]
 
   beforeEach(() => {
@@ -58,6 +66,39 @@ describe('Recommendation section', () => {
     cy.get(`[data-cy = "dimension-select-discussion"]`).click()
     cy.get(`[data-cy = "dimension-chip-compact-discussion"]`).should(
       'not.exist'
+    )
+  })
+
+  it('subtools are rendered if there are any', () => {
+    questionData = getQuestionData()
+
+    cy.get(`[data-cy = "dimension-select-acquisition"]`).click()
+    cy.get(`[data-cy = "dimension-select-production"]`).click()
+    cy.get(`[data-cy = "dimension-select-collaboration"]`).click()
+    cy.get(`[data-cy = "dimension-select-discussion"]`).click()
+    cy.get(`[data-cy = "dimension-select-investication"]`).click()
+    cy.get(`[data-cy = "dimension-select-practice"]`).click()
+
+    const dimensionQuestion = questionData.find((q) => q.priority === 0)
+
+    if (!dimensionQuestion) return
+
+    cy.wrap(dimensionQuestion.optionData.options).each(
+      (option: DimensionSelectionData) => {
+        if (
+          cy.get(`[data-cy = "dimension-select-${option.id}"]`).should('exist')
+        ) {
+          cy.wrap(option.data).each((tool: ToolType) => {
+            if (tool.subtools) {
+              cy.wrap(tool.subtools).each((subtool: Subtool) => {
+                if (!subtool.visibility.options) {
+                  cy.contains(subtool.title.fi)
+                }
+              })
+            }
+          })
+        }
+      }
     )
   })
 })
