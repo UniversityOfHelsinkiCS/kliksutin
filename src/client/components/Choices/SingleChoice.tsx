@@ -31,6 +31,7 @@ const SingleChoice = ({
               {question.optionData.options.map(
                 (singleOption: SingleChoiceType) => (
                   <FormControlLabel
+                    data-cy={`choice-select-${singleOption.id}`}
                     key={singleOption.id as string}
                     value={singleOption.id}
                     label={singleOption.label[language as keyof Locales]}

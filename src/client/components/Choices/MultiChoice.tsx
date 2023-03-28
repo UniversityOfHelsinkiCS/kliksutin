@@ -28,6 +28,7 @@ const MultiChoice = ({ control, question, children, language }: InputProps) => {
                         checked={field.value}
                       />
                     }
+                    data-cy={`choice-select-${choice.id}`}
                     label={choice.label[language as keyof Locales]}
                   />
                   {choice.data ? (
