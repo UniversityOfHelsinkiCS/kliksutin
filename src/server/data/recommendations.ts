@@ -107,7 +107,7 @@ const getRecommendationsData = (): any => [
   {
     id: 8,
     surveyId: 1,
-    label: 'screen-cast-o-matic',
+    label: 'screencast-o-matic',
     title: {
       fi: '[Screencast-o-Matic](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4568)',
       sv: '[Screencast-o-Matic](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4568)',

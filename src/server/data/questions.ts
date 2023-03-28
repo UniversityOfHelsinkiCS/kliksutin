@@ -57,7 +57,7 @@ const getQuestionData = (): any => [
                 },
               ],
             },
-            { name: 'screen-cast-o-matic', subtools: [] },
+            { name: 'screencast-o-matic', subtools: [] },
           ],
         },
         {
