@@ -18,9 +18,12 @@ const DimensionChip: React.FC<{
   const { i18n } = useTranslation()
   const { language } = i18n
 
+  console.log(`dimension-chip-compact-${choice.id}`)
+
   return compact ? (
     <Tooltip title={choice.label[language as keyof Locales]} arrow>
       <Chip
+        data-cy={`dimension-chip-compact-${choice.id}`}
         label={choice.label[language as keyof Locales].substring(0, 3)}
         size="small"
         sx={style}
