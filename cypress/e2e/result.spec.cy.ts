@@ -3,14 +3,18 @@ import {
   SingleChoiceType,
   MultipleChoiceType,
   DimensionSelectionData,
+  Result,
+  Locales,
 } from '../../src/client/types'
 
 import { baseUrl } from '../support/e2e'
 
 import getQuestionData from '../../src/server/data/questions'
+import getResultData from '../../src/server/data/results'
 
 describe('Results section', () => {
   let questionData: Question[]
+  let resultData: Result[]
   let selectedChoices: string[]
 
   beforeEach(() => {
@@ -53,7 +57,7 @@ describe('Results section', () => {
           force: true,
         })
 
-        selectedChoices.concat(randomOption.id)
+        selectedChoices.push(randomOption.id)
       }
 
       if (question.optionData.type === 'multipleChoice') {
@@ -72,7 +76,7 @@ describe('Results section', () => {
           cy.get(`[data-cy = "choice-select-${randomOption.id}"]`).click({
             force: true,
           })
-          selectedChoices.concat(randomOption.id)
+          selectedChoices.push(randomOption.id)
         })
       }
     })
@@ -80,9 +84,52 @@ describe('Results section', () => {
     cy.get(`[data-cy = "submit-form-button"]`).click()
   })
 
-  it('results section is rendered correctly', () => {
-    cy.get(`[data-cy = "result-section-title"]`).should('exist')
+  it('results section headings are rendered correctly', () => {
+    resultData = getResultData()
 
+    cy.get(`[data-cy = "result-section-title"]`).should('exist')
     cy.get(`[data-cy = "recommendation-section-title"]`).should('exist')
+
+    // Loop through the results
+    cy.wrap(selectedChoices).each((choiceID: string) => {
+      const resultObject = resultData.find(
+        (result) => result.optionLabel === choiceID
+      )
+      if (!resultObject) return
+
+      cy.contains(resultObject.isSelected.fi)
+    })
+  })
+
+  it('results section result dimension texts are rendered correctly', () => {
+    resultData = getResultData()
+
+    cy.get(`[data-cy = "result-section-title"]`).should('exist')
+    cy.get(`[data-cy = "recommendation-section-title"]`).should('exist')
+
+    // Loop through the results
+    cy.wrap(selectedChoices).each((choiceID: string) => {
+      const resultObject = resultData.find(
+        (result) => result.optionLabel === choiceID
+      )
+      if (!resultObject) return
+
+      for (const key in resultObject.data) {
+        cy.get(`[data-cy = "result-wrapper-${choiceID}-${key}"]`).should(
+          'exist'
+        )
+      }
+    })
+  })
+
+  it('user can send a summary email', () => {
+    resultData = getResultData()
+
+    cy.get(`[data-cy = "result-section-title"]`).should('exist')
+    cy.get(`[data-cy = "recommendation-section-title"]`).should('exist')
+    cy.get(`[data-cy = "summary-email-success-alert"]`).should('not.exist')
+
+    cy.get(`[data-cy = "summary-email-button"]`).should('exist').click()
+    cy.get(`[data-cy = "summary-email-success-alert"]`).should('exist')
   })
 })

@@ -46,6 +46,7 @@ const SendSummaryEmail = () => {
       <Box sx={cardStyles.content}>
         {!isSent ? (
           <Button
+            data-cy="summary-email-button"
             sx={{ mt: 2 }}
             variant="contained"
             color="primary"
@@ -55,7 +56,11 @@ const SendSummaryEmail = () => {
             {t('results:sendSummaryMail')}
           </Button>
         ) : (
-          <Alert sx={common.alertStyle} severity="success">
+          <Alert
+            data-cy="summary-email-success-alert"
+            sx={common.alertStyle}
+            severity="success"
+          >
             {t('results:sendSuccess')}
           </Alert>
         )}

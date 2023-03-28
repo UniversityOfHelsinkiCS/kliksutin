@@ -36,6 +36,7 @@ const ResultElement = ({
           const color = colors[dimension] || null
           return (
             <Box
+              data-cy={`result-wrapper-${resultData.optionLabel}-${dimension}`}
               key={`${JSON.stringify(resultData)}.${dimension}`}
               sx={{ m: 2, px: 2, borderLeft: 6, borderColor: color }}
             >
