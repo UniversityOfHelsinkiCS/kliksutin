@@ -30,12 +30,17 @@ const ProceedToContact = () => {
       </Container>
       <Box sx={formStyles.stackBoxWrapper}>
         {showEndMessage ? (
-          <Alert sx={common.alertStyle} severity="success">
+          <Alert
+            data-cy="form-close-success-alert"
+            sx={common.alertStyle}
+            severity="success"
+          >
             {t('results:endMessage')}
           </Alert>
         ) : (
           <Stack sx={formStyles.stack} direction="row" spacing={2}>
             <Button
+              data-cy="button-of-happiness"
               sx={formStyles.stackButton}
               variant="contained"
               onClick={endSession}
@@ -43,6 +48,7 @@ const ProceedToContact = () => {
               {t('results:proceedToExit')}
             </Button>
             <Button
+              data-cy="button-of-confusion"
               sx={formStyles.stackButton}
               variant="outlined"
               component={Link}
