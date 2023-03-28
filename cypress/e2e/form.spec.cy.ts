@@ -1,8 +1,7 @@
 import { baseUrl } from '../support/e2e'
 
 import getQuestionData from '../../src/server/data/questions'
-import getRecommendationsData from '../../src/server/data/recommendations'
-import { Question, RecommendationData } from '../../src/client/types'
+import { Question } from '../../src/client/types'
 
 describe('Form section', () => {
   let questionData: Question[]
@@ -47,22 +46,6 @@ describe('Form section', () => {
       if (question.visibility.options) {
         cy.contains(question.title.fi).should('not.exist')
       }
-    })
-  })
-})
-
-describe('Recommendation section', () => {
-  let recommendationData: RecommendationData[]
-
-  beforeEach(() => {
-    cy.visit(baseUrl)
-  })
-
-  it.skip('recommendations are rendered on the side', () => {
-    recommendationData = getRecommendationsData()
-
-    cy.wrap(recommendationData).each((recommendation: RecommendationData) => {
-      cy.contains('a', recommendation.title.fi).invoke('attr', 'href')
     })
   })
 })
