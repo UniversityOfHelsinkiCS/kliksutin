@@ -126,7 +126,7 @@ export interface RecommendationData {
 }
 
 /** Represents the recommendation data that is fetched form database API /recommendations/{surveyID} */
-export interface RawRecommendationData {
+export interface Recommendation {
   id: number
   label: string
   title: Locales
@@ -171,12 +171,4 @@ export interface Result {
   data: {
     [key: string]: Locales
   }
-}
-
-export interface Recommendation {
-  id: number
-  surveyId: number
-  label: string
-  title: Locales
-  text: Locales
 }

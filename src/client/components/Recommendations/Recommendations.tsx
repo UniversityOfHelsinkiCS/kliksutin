@@ -7,26 +7,24 @@ import { getSelectedDimensions } from '../../util/dimensions'
 import styles from '../../styles'
 import {
   RecommendationData,
-  RawRecommendationData,
   DimensionSelectionData,
   InputProps,
   ToolType,
   Subtool,
   Locales,
   MergedRecommendationData,
+  Recommendation,
 } from '../../types'
 import SelectedTools from './SelectedTools'
 import NonSelectedTools from './NonSelectedTools'
 import ShowMore from '../Common/ShowMore'
 
 /* eslint-disable no-nested-ternary */
-const sortRecommendations = (
-  a: RawRecommendationData,
-  b: RawRecommendationData
-) => (a.label > b.label ? 1 : b.label > a.label ? -1 : 0)
+const sortRecommendations = (a: Recommendation, b: Recommendation) =>
+  a.label > b.label ? 1 : b.label > a.label ? -1 : 0
 
 const getRecommendationsData = (
-  rawRecommendations: RawRecommendationData[],
+  rawRecommendations: Recommendation[],
   dimensionSelections: DimensionSelectionData[]
 ): RecommendationData[] => {
   const selectedTools = dimensionSelections.map(
@@ -36,10 +34,12 @@ const getRecommendationsData = (
     })
   )
 
-  const result = rawRecommendations.map((aRecommendation) => ({
-    name: aRecommendation.label,
-    dimensions: [],
-  }))
+  const result: RecommendationData[] = rawRecommendations.map(
+    (aRecommendation) => ({
+      name: aRecommendation.label,
+      dimensions: [],
+    })
+  )
 
   selectedTools.forEach((tool) => {
     result.forEach((aRecommendation) => {
@@ -67,7 +67,7 @@ const Recommendations = ({ watch }: InputProps) => {
 
   if (!recommendationsFetched) return null
 
-  const rawRecommendationData: RawRecommendationData[] =
+  const rawRecommendationData: Recommendation[] =
     recommendations.sort(sortRecommendations)
 
   const dimensionSelections = getSelectedDimensions(survey, watch)
