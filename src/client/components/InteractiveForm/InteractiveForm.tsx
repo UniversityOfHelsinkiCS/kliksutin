@@ -89,6 +89,9 @@ const InteractiveForm = () => {
                     <Grid item sm={12}>
                       <Openai watch={watch} />
                     </Grid>
+                    <Grid item sm={12}>
+                      <ProceedToContact />
+                    </Grid>
                   </>
                 ) : (
                   <Navigate replace to="/" />
@@ -100,12 +103,6 @@ const InteractiveForm = () => {
         <Grid item sm={12} md={5} xl={4}>
           <Recommendations watch={watch} />
         </Grid>
-
-        {resultData && (
-          <Grid item sm={12}>
-            <ProceedToContact />
-          </Grid>
-        )}
       </Grid>
     </Box>
   )
