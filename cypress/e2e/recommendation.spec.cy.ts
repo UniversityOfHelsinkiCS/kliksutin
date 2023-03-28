@@ -72,16 +72,16 @@ describe('Recommendation section', () => {
   it('subtools are rendered if there are any', () => {
     questionData = getQuestionData()
 
-    cy.get(`[data-cy = "dimension-select-acquisition"]`).click()
-    cy.get(`[data-cy = "dimension-select-production"]`).click()
-    cy.get(`[data-cy = "dimension-select-collaboration"]`).click()
-    cy.get(`[data-cy = "dimension-select-discussion"]`).click()
-    cy.get(`[data-cy = "dimension-select-investication"]`).click()
-    cy.get(`[data-cy = "dimension-select-practice"]`).click()
-
     const dimensionQuestion = questionData.find((q) => q.priority === 0)
 
     if (!dimensionQuestion) return
+
+    // Select all the dimensions
+    cy.wrap(dimensionQuestion.optionData.options).each(
+      (option: DimensionSelectionData) => {
+        cy.get(`[data-cy = "dimension-select-${option.id}"]`).click()
+      }
+    )
 
     cy.wrap(dimensionQuestion.optionData.options).each(
       (option: DimensionSelectionData) => {

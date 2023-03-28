@@ -72,6 +72,8 @@ describe('Form section', () => {
   })
 
   it('users can make choices based on the questions', () => {
+    questionData = getQuestionData()
+
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
 
     cy.get(`[data-cy = "open-form-button"]`).click()
@@ -96,6 +98,8 @@ describe('Form section', () => {
   })
 
   it('users can reset the form before entering the results page', () => {
+    questionData = getQuestionData()
+
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
 
     cy.get(`[data-cy = "open-form-button"]`).click()
@@ -116,6 +120,8 @@ describe('Form section', () => {
   })
 
   it('users can reset the form in the results page', () => {
+    questionData = getQuestionData()
+
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
 
     cy.get(`[data-cy = "open-form-button"]`).click()
