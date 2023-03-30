@@ -15,6 +15,7 @@ import summaryRouter from './summary'
 import entryRouter from './entry'
 import userRouter from './user'
 import openaiRouter from './openai'
+import courseRouter from './course'
 
 const router = express()
 
@@ -39,6 +40,7 @@ router.use('/summary', summaryRouter)
 router.use('/entries', entryRouter)
 router.use('/users', userRouter)
 router.use('/openai', openaiRouter)
+router.use('/courses', courseRouter)
 
 router.use(SentryHandlers.errorHandler())
 router.use(errorHandler)
