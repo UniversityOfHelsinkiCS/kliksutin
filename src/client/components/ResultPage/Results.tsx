@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
@@ -49,8 +48,11 @@ const ResultElement = ({
   )
 }
 
-const Results = ({ formResultData, watch }: InputProps) => {
-  const navigate = useNavigate()
+const Results = ({
+  formResultData,
+  watch,
+  setShowResults,
+}: InputProps & { setShowResults: any }) => {
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
@@ -90,14 +92,6 @@ const Results = ({ formResultData, watch }: InputProps) => {
     .filter((x) => x !== '')
     .map((result: string | Array<string>) =>
       typeof result === 'string' ? [result] : result
-    )
-    .filter(
-      (
-        x // This is a temporary fix for the #90 unmount issue
-      ) =>
-        (modifiedResultObject[2] as any) !== 'courseSizeUnlimited'
-          ? x[0] !== 'courseIsMooc' && x[0] !== 'courseIsNotMooc'
-          : x[0]
     )
 
   return (
@@ -143,7 +137,7 @@ const Results = ({ formResultData, watch }: InputProps) => {
             <Button
               data-cy="back-to-selections"
               sx={{ m: 4 }}
-              onClick={() => navigate('/')}
+              onClick={() => setShowResults(false)}
             >
               {'<'} {t('results:backToMessage')}
             </Button>

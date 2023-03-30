@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import usePersistForm from '../../hooks/usePersistForm'
@@ -18,7 +17,7 @@ import styles from '../../styles'
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
   const mutation = useSaveEntryMutation(survey?.id)
-  const navigate = useNavigate()
+  const [showResults, setShowResults] = useState(false)
   const [resultData, setResultData] = useState<FormValues>(null)
 
   const { formStyles } = styles
@@ -38,7 +37,7 @@ const InteractiveForm = () => {
     getValues,
   } = useForm({
     mode: 'onBlur',
-    shouldUnregister: false,
+    shouldUnregister: true,
     defaultValues: getSavedInstance(),
   })
 
@@ -48,13 +47,12 @@ const InteractiveForm = () => {
     setResultData(submittedData)
     mutation.mutateAsync(submittedData)
 
-    console.log(data)
+    setShowResults(true)
 
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     }) // Scroll to top
-    navigate('/results')
   }
 
   usePersistForm({ value: getValues(), sessionStorageKey: FORM_DATA_KEY })
@@ -68,39 +66,33 @@ const InteractiveForm = () => {
           <HelloBanner />
         </Grid>
         <Grid item sm={12} md={7} xl={8}>
-          <Routes>
-            <Route
-              path=""
-              element={
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <RenderSurvey
-                    control={control}
-                    watch={watch}
-                    handleSubmit={handleSubmit(onSubmit)}
-                    isSubmitted={isSubmitted}
-                  />
-                </form>
-              }
+          <form
+            style={{ display: showResults ? 'none' : 'block' }}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <RenderSurvey
+              control={control}
+              watch={watch}
+              handleSubmit={handleSubmit(onSubmit)}
+              isSubmitted={isSubmitted}
             />
-            <Route
-              path="results"
-              element={
-                resultData ? (
-                  <>
-                    <Results formResultData={resultData} watch={watch} />
-                    <Grid item sm={12}>
-                      <Openai watch={watch} />
-                    </Grid>
-                    <Grid item sm={12}>
-                      <ProceedToContact />
-                    </Grid>
-                  </>
-                ) : (
-                  <Navigate replace to="/" />
-                )
-              }
-            />
-          </Routes>
+          </form>
+
+          {resultData && showResults && (
+            <>
+              <Results
+                formResultData={resultData}
+                watch={watch}
+                setShowResults={setShowResults}
+              />
+              <Grid item sm={12}>
+                <Openai watch={watch} />
+              </Grid>
+              <Grid item sm={12}>
+                <ProceedToContact />
+              </Grid>
+            </>
+          )}
         </Grid>
         <Grid item sm={12} md={5} xl={4}>
           <Recommendations watch={watch} />
