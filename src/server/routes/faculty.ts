@@ -20,7 +20,7 @@ const facultyRouter = express.Router()
 facultyRouter.get('/', async (req, res) => {
   if (inE2EMode) return res.send(mockFaculty)
 
-  const organisationData = await getOrganisationData()
+  const organisationData = (await getOrganisationData()) || []
 
   const faculties = organisationData.map(({ code, name }) => ({ code, name }))
 
