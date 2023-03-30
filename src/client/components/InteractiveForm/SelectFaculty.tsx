@@ -11,7 +11,6 @@ import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 import useUserFaculties from '../../hooks/useUserFaculties'
 import Markdown from '../Common/Markdown'
-import useUserCourses from '../../hooks/useUserCourses'
 
 const extraOrganisations: Faculty[] = [
   {
@@ -48,7 +47,6 @@ const SelectFaculty = ({ control }: InputProps) => {
   const { language } = i18n
   const [faculty, setFaculty] = useState('')
   const { faculties, isLoading: facultiesLoading } = useFaculties()
-  const { userCourses, isLoading: userCoursesLoading } = useUserCourses()
   const { userFaculties, isLoading: userFacultiesLoading } = useUserFaculties()
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -57,13 +55,10 @@ const SelectFaculty = ({ control }: InputProps) => {
 
   const { cardStyles, formStyles } = styles
 
-  if (facultiesLoading || userFacultiesLoading || userCoursesLoading)
-    return null
+  if (facultiesLoading || userFacultiesLoading) return null
 
   const sortedFaculties = sortFaculties(faculties, language as keyof Locales)
   const organisations = sortedFaculties.concat(extraOrganisations)
-
-  console.log(userCourses)
 
   return (
     <Box sx={cardStyles.card}>

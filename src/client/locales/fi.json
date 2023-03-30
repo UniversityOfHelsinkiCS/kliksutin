@@ -17,6 +17,10 @@
     "introMessage": "Aloita valitsemalla valikosta se tiedekunta, jossa kurssi toteutetaan.",
     "inputLabel": "Tiedekunta"
   },
+  "courseSelect": {
+    "introMessage": "Mitä kurssia olet järjestämässä?",
+    "inputLabel": "Kurssi"
+  },
   "recommendations": {
     "title": "Käytössäsi olevat työkalut",
     "infoBoxText": "Alla listaus työkaluista, joille Digitaalisen opetuksen ja jatkuvan oppimisen palvelut (DOJO) tarjoaa virallista digipedagogista tukea. Lista täydentyy myöhemmin muillakin yliopiston opettajille tarjolla olevilla ohjelmistoilla. (mm. Office 365 -tuoteperhe)"

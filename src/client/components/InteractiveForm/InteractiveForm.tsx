@@ -48,6 +48,8 @@ const InteractiveForm = () => {
     setResultData(submittedData)
     mutation.mutateAsync(submittedData)
 
+    console.log(data)
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

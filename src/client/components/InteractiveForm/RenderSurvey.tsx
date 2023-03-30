@@ -9,6 +9,7 @@ import ResetForm from '../Common/ResetForm'
 import { getSelectedDimensions } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'
 import styles from '../../styles'
+import SelectCourse from './SelectCourse'
 
 const RenderSurvey = ({
   control,
@@ -45,6 +46,7 @@ const RenderSurvey = ({
   return (
     <Box sx={cardStyles.outerBox}>
       <SelectFaculty control={control} />
+      <SelectCourse control={control} />
       <Box sx={cardStyles.card}>
         {questions.map((question) => (
           <div key={question.id}>

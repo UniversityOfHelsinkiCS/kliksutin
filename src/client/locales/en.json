@@ -16,6 +16,10 @@
     "introMessage": "Start by selecting your faculty",
     "inputLabel": "Your Faculty"
   },
+  "courseSelect": {
+    "introMessage": "Mitä kurssia olet järjestämässä?",
+    "inputLabel": "Kurssi"
+  },
   "recommendations": {
     "title": "Tools that you could use",
     "recommendationMessage": "Below our recommendations on tools to use"
