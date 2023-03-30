@@ -8,15 +8,17 @@ const DB_CONNECTION_RETRY_LIMIT = 10
 
 export const sequelize = new Sequelize(DB_CONNECTION_STRING, { logging: false })
 
-const runMigrations = async () => {
-  const migrator = new Umzug({
-    migrations: { glob: 'src/server/db/migrations/*.cjs' },
-    context: sequelize.getQueryInterface(),
-    storage: new SequelizeStorage({ sequelize }),
-    logger: console,
-  })
+const umzug = new Umzug({
+  migrations: { glob: 'src/server/db/migrations/*.ts' },
+  context: sequelize.getQueryInterface(),
+  storage: new SequelizeStorage({ sequelize }),
+  logger: console,
+})
 
-  const migrations = await migrator.up()
+export type Migration = typeof umzug._types.migration
+
+const runMigrations = async () => {
+  const migrations = await umzug.up()
 
   logger.info('Migrations up to date', {
     migrations,
