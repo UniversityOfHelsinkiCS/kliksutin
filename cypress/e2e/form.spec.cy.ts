@@ -113,7 +113,7 @@ describe('Form section', () => {
       )
     })
 
-    cy.get(`[data-cy = "reset-form-button"]`).click()
+    cy.get(`[data-cy = "reset-form-button"]:visible`).click()
 
     cy.get(`[data-cy = "open-form-button"]`).should('be.disabled')
   })
@@ -141,7 +141,7 @@ describe('Form section', () => {
 
     cy.get(`[data-cy = "recommendation-section-title"]`).should('exist')
 
-    cy.get(`[data-cy = "reset-form-button"]`).click()
+    cy.get(`[data-cy = "reset-form-button"]:visible`).click()
 
     cy.get(`[data-cy = "open-form-button"]`).should('be.disabled')
   })
