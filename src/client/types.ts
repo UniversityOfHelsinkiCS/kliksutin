@@ -172,3 +172,28 @@ export interface Result {
     [key: string]: Locales
   }
 }
+
+export interface Course {
+  activityPeriod: {
+    endDate: Date
+    startDate: Date
+  }
+  assessmentItemIds: string[]
+  courseUnitRealisationTypeUrn: string
+  createdAt: Date
+  customCodeUrns: string
+  enrolmentPeriod: {
+    endDateTime: Date
+    startDateTime: Date
+  }
+  flowState: string
+  id: string
+  name: Locales
+  nameSpecifier: Locales
+  organisations: any[]
+  responsibilityInfos: any[]
+  studyGroupSets: any[]
+  teachingLanguageUrn: string
+  universityOrgIds: string[]
+  updatedAt: Date
+}

@@ -7,7 +7,7 @@ import { Box } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import styles from '../../styles'
-import { InputProps, Locales } from '../../types'
+import { Course, InputProps, Locales } from '../../types'
 import Markdown from '../Common/Markdown'
 import useUserCourses from '../../hooks/useUserCourses'
 
@@ -22,6 +22,18 @@ const SelectCourse = ({ control }: InputProps) => {
   }
 
   const { cardStyles, formStyles } = styles
+
+  const courseName = ({
+    nameSpecifier,
+    name,
+  }: {
+    nameSpecifier: Locales
+    name: Locales
+  }) =>
+    nameSpecifier[language as keyof Locales].length >
+    name[language as keyof Locales].length
+      ? nameSpecifier[language as keyof Locales]
+      : name[language as keyof Locales]
 
   return (
     <Box sx={cardStyles.card}>
@@ -43,13 +55,13 @@ const SelectCourse = ({ control }: InputProps) => {
               onChange={handleChange}
               {...field}
             >
-              {(userCourses || []).map((c: any) => (
+              {(userCourses || []).map((c: Course) => (
                 <MenuItem
                   data-cy={`course-option-${c.id}`}
                   key={c.id}
                   value={c.id}
                 >
-                  {c.nameSpecifier[language as keyof Locales]}
+                  {courseName(c)}
                 </MenuItem>
               ))}
             </Select>
