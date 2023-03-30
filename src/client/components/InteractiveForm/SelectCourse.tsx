@@ -15,15 +15,13 @@ const SelectCourse = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
   const [course, setCourse] = useState('')
-  const { userCourses, isLoading: userCoursesLoading } = useUserCourses()
+  const { userCourses } = useUserCourses()
 
   const handleChange = (event: SelectChangeEvent) => {
     setCourse(event.target.value)
   }
 
   const { cardStyles, formStyles } = styles
-
-  if (userCoursesLoading) return null
 
   return (
     <Box sx={cardStyles.card}>
@@ -45,7 +43,7 @@ const SelectCourse = ({ control }: InputProps) => {
               onChange={handleChange}
               {...field}
             >
-              {userCourses.map((c: any) => (
+              {(userCourses || []).map((c: any) => (
                 <MenuItem
                   data-cy={`course-option-${c.id}`}
                   key={c.id}
