@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import Markdown from '../Common/Markdown'
 import CompactDimensionChips from '../Common/CompactDimensionChips'
@@ -34,9 +34,9 @@ const CurrentlySelectedTools = ({
                 dimensionSelections={dimensionSelections}
               />
             </Box>
-            <Typography variant="body2" sx={recommendationStyles.subtoolText}>
-              {recommendation.subtools && recommendation.subtools.join(', ')}
-            </Typography>
+            {recommendation.subtools && (
+              <Markdown>{recommendation.subtools.join(', ')}</Markdown>
+            )}
             <Markdown>
               {recommendation.text[language as keyof Locales]}
             </Markdown>
