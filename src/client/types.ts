@@ -175,12 +175,6 @@ export interface Result {
 
 export interface Course {
   id: string
-  validityPeriod: {
-    endDate: Date
-    startDate: Date
-  }
-  createdAt: Date
+  code: string
   name: Locales
-  responsibilityInfos: any[]
-  updatedAt: Date
 }

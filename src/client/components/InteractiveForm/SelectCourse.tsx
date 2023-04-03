@@ -11,6 +11,27 @@ import { Course, InputProps, Locales } from '../../types'
 import Markdown from '../Common/Markdown'
 import useUserCourses from '../../hooks/useUserCourses'
 
+const otherCourse = {
+  id: 'OTHER',
+  code: '',
+  name: {
+    fi: 'Muu kurssi',
+    sv: 'Other course',
+    en: 'Other course',
+  },
+}
+
+const sortCourses = (courses: Course[] = []) => {
+  const sortedCourses = courses.sort((a, b) => {
+    if (a.code > b.code) return 1
+    if (a.code < b.code) return -1
+
+    return 0
+  })
+
+  return sortedCourses
+}
+
 const SelectCourse = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
@@ -22,6 +43,8 @@ const SelectCourse = ({ control }: InputProps) => {
   }
 
   const { cardStyles, formStyles } = styles
+
+  const sortedCourses = sortCourses(userCourses).concat(otherCourse)
 
   return (
     <Box sx={cardStyles.card}>
@@ -43,13 +66,13 @@ const SelectCourse = ({ control }: InputProps) => {
               onChange={handleChange}
               {...field}
             >
-              {(userCourses || []).map((c: Course) => (
+              {sortedCourses.map((c: Course) => (
                 <MenuItem
                   data-cy={`course-option-${c.id}`}
                   key={c.id}
                   value={c.id}
                 >
-                  {c.name[language as keyof Locales]}
+                  {c.code} {c.name[language as keyof Locales]}
                 </MenuItem>
               ))}
             </Select>
