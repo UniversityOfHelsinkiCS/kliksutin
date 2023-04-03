@@ -23,18 +23,6 @@ const SelectCourse = ({ control }: InputProps) => {
 
   const { cardStyles, formStyles } = styles
 
-  const courseName = ({
-    nameSpecifier,
-    name,
-  }: {
-    nameSpecifier: Locales
-    name: Locales
-  }) =>
-    nameSpecifier[language as keyof Locales].length >
-    name[language as keyof Locales].length
-      ? nameSpecifier[language as keyof Locales]
-      : name[language as keyof Locales]
-
   return (
     <Box sx={cardStyles.card}>
       <Box sx={cardStyles.content}>
@@ -61,7 +49,7 @@ const SelectCourse = ({ control }: InputProps) => {
                   key={c.id}
                   value={c.id}
                 >
-                  {courseName(c)}
+                  {c.name[language as keyof Locales]}
                 </MenuItem>
               ))}
             </Select>
