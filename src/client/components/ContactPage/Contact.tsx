@@ -9,7 +9,7 @@ const Contact = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const [contactMethod, setContactMethod] = useState('email')
 
-  const { cardStyles } = styles
+  const { cardStyles, formStyles } = styles
 
   const components: { [key: string]: () => JSX.Element } = {
     email: SendContactTicket,

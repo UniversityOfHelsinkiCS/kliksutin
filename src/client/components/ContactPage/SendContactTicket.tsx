@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { Alert, Box, Button, Grid, TextField, Typography } from '@mui/material'
+import {
+  Alert,
+  Box,
+  Button,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 import apiClient from '../../util/apiClient'
 import styles from '../../styles'
@@ -15,7 +23,7 @@ const SendContactTicket = () => {
   const [isSent, setIsSent] = useState(false)
   const { user, isLoading } = useLoggedInUser()
 
-  const { cardStyles, common } = styles
+  const { formStyles, cardStyles, common } = styles
 
   const sendResultsToEmail = async (targets: string[], text: string) => {
     apiClient.post('/summary', {
@@ -93,16 +101,25 @@ const SendContactTicket = () => {
             {errors.content && (
               <Typography variant="body2">{errors.content?.message}</Typography>
             )}
-            <Box mt={3}>
+            <Box sx={formStyles.stackBoxWrapper}>
               {!isSent ? (
-                <Button
-                  data-cy="send-contact-ticket-button"
-                  variant="contained"
-                  color="primary"
-                  onClick={handleSubmit(onSubmit)}
-                >
-                  {t('contact:contactTicketSend')}
-                </Button>
+                <Stack sx={formStyles.stack} direction="row">
+                  <Button
+                    data-cy="back-to-questions"
+                    sx={formStyles.stackButton}
+                    component={Link}
+                    to="/"
+                  >
+                    {'<'} {t('results:backToMessage')}
+                  </Button>
+                  <Button
+                    data-cy="send-contact-ticket-button"
+                    sx={formStyles.stackButton}
+                    onClick={handleSubmit(onSubmit)}
+                  >
+                    {t('contact:contactTicketSend')}
+                  </Button>
+                </Stack>
               ) : (
                 <Alert
                   data-cy="contact-ticket-success-alert"
