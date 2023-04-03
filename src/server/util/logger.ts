@@ -1,3 +1,5 @@
+import os from 'os'
+
 import winston from 'winston'
 import WinstonGelfTransporter from 'winston-gelf-transporter'
 
@@ -30,9 +32,9 @@ if (!inProduction) {
         host: 'toska-tmp.cs.helsinki.fi',
         port: 12201,
         protocol: 'udp',
-        hostName: 'test',
+        hostName: os.hostname(),
         additional: {
-          app: 'kliksutin',
+          app: 'curre',
           environment: 'staging',
         },
       })
@@ -55,8 +57,21 @@ if (!inProduction) {
       ...rest,
     })
   )
-
   transports.push(new winston.transports.Console({ format: prodFormat }))
+
+  transports.push(
+    new WinstonGelfTransporter({
+      handleExceptions: true,
+      host: 'toska-tmp.cs.helsinki.fi',
+      port: 12201,
+      protocol: 'udp',
+      hostName: os.hostname(),
+      additional: {
+        app: 'curre',
+        environment: 'production',
+      },
+    })
+  )
 }
 
 const logger = winston.createLogger({ transports })
