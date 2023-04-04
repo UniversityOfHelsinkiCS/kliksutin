@@ -36,11 +36,13 @@ const SelectCourse = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
   const [course, setCourse] = useState('')
-  const { userCourses } = useUserCourses()
+  const { userCourses, isLoading } = useUserCourses()
 
   const handleChange = (event: SelectChangeEvent) => {
     setCourse(event.target.value)
   }
+
+  if (isLoading || userCourses.length === 0) return null
 
   const { cardStyles, formStyles } = styles
 
