@@ -1,7 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@mui/material'
-import { FORM_DATA_KEY } from '../../../config'
 import styles from '../../styles'
 
 const ResetForm = () => {
@@ -9,7 +8,7 @@ const ResetForm = () => {
   const { formStyles } = styles
 
   const resetForm = () => {
-    sessionStorage.removeItem(FORM_DATA_KEY)
+    sessionStorage.clear()
     window.location.reload()
   }
 

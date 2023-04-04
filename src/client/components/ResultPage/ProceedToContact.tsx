@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography, Alert } from '@mui/material'
 
 import styles from '../../styles'
-import { FORM_DATA_KEY } from '../../../config'
 
 const ProceedToContact = () => {
   const { t } = useTranslation()
@@ -16,7 +15,7 @@ const ProceedToContact = () => {
 
   const endSession = () => {
     setShowEndMessage(true)
-    sessionStorage.removeItem(FORM_DATA_KEY)
+    sessionStorage.clear()
   }
 
   if (!resultHTML) return null
