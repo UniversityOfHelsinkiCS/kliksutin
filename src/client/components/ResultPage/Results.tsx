@@ -95,7 +95,9 @@ const Results = ({
     )
 
   const onNavigateBack = () => {
+    sessionStorage.setItem('curre-session-location', 'form')
     setShowResults(false)
+
     document
       .getElementById('curre-main-section')
       .scrollIntoView({ behavior: 'smooth' })

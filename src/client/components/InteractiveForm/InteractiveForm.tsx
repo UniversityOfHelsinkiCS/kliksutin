@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
@@ -17,7 +17,9 @@ import styles from '../../styles'
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
   const mutation = useSaveEntryMutation(survey?.id)
-  const [showResults, setShowResults] = useState(false)
+
+  const sessionLocation = sessionStorage.getItem('curre-session-location')
+  const [showResults, setShowResults] = useState(sessionLocation === 'results')
   const [resultData, setResultData] = useState<FormValues>(null)
 
   const { formStyles } = styles
@@ -29,6 +31,12 @@ const InteractiveForm = () => {
     return {}
   }, [])
 
+  const savedFormData = getSavedInstance()
+
+  useEffect(() => {
+    if (savedFormData !== '{}') setResultData(savedFormData)
+  }, [])
+
   const {
     formState: { isSubmitted },
     handleSubmit,
@@ -38,7 +46,7 @@ const InteractiveForm = () => {
   } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
-    defaultValues: getSavedInstance(),
+    defaultValues: savedFormData,
   })
 
   const onSubmit = (data: FormValues) => {
@@ -47,6 +55,7 @@ const InteractiveForm = () => {
     setResultData(submittedData)
     mutation.mutateAsync(submittedData)
 
+    sessionStorage.setItem('curre-session-location', 'results')
     setShowResults(true)
 
     document
