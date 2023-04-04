@@ -5,17 +5,10 @@ import { enqueueSnackbar } from 'notistack'
 
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import LoadingProgress from './LoadingProgress'
+import CompletionResultBox from './CompletionResultBox'
 import styles from '../../../styles'
 
 const { cardStyles } = styles
-
-const CompletionResultBox = ({ result }: { result: string }) => (
-  <Box sx={cardStyles.answerBox}>
-    <Typography variant="body1" sx={cardStyles.content} whiteSpace="pre-line">
-      {result.trim()}
-    </Typography>
-  </Box>
-)
 
 const CompletionResult = ({
   courseName,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   Box,
@@ -15,6 +15,7 @@ import { enqueueSnackbar } from 'notistack'
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import useSurvey from '../../../hooks/useSurvey'
 import LoadingProgress from './LoadingProgress'
+import CompletionResultBox from './CompletionResultBox'
 import { getSelectedDimensions } from '../../../util/dimensions'
 import styles from '../../../styles'
 import { DimensionSelectionData, Locales } from '../../../types'
@@ -58,13 +59,7 @@ const CompletionResult = ({
     return null
   }
 
-  return (
-    <Box sx={cardStyles.answerBox}>
-      <Typography variant="body1" sx={cardStyles.content} whiteSpace="pre-line">
-        {completion.trim()}
-      </Typography>
-    </Box>
-  )
+  return <CompletionResultBox result={completion} />
 }
 
 const DimensionCompletion = ({
@@ -77,6 +72,12 @@ const DimensionCompletion = ({
   const [dimensionId, setdimensionId] = useState('')
   const [showCompletion, setShowCompletion] = useState(false)
   const { survey, isLoading } = useSurvey()
+  const [savedCompletion, setSavedCompletion] = useState<string>('')
+
+  useEffect(() => {
+    const save = sessionStorage.getItem(`curre_openAI_dimension`)
+    if (save) setSavedCompletion(save)
+  }, [])
 
   if (isLoading) return null
 
@@ -123,6 +124,9 @@ const DimensionCompletion = ({
             dimension={dimensions.find(({ id }) => id === dimensionId)}
             setShowCompletion={setShowCompletion}
           />
+        )}
+        {!showCompletion && savedCompletion && (
+          <CompletionResultBox result={savedCompletion} />
         )}
       </Box>
     </Box>
