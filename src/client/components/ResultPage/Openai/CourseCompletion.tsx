@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Typography, TextField } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
@@ -8,6 +8,14 @@ import LoadingProgress from './LoadingProgress'
 import styles from '../../../styles'
 
 const { cardStyles } = styles
+
+const CompletionResultBox = ({ result }: { result: string }) => (
+  <Box sx={cardStyles.answerBox}>
+    <Typography variant="body1" sx={cardStyles.content} whiteSpace="pre-line">
+      {result.trim()}
+    </Typography>
+  </Box>
+)
 
 const CompletionResult = ({
   courseName,
@@ -30,19 +38,19 @@ const CompletionResult = ({
     return null
   }
 
-  return (
-    <Box sx={cardStyles.answerBox}>
-      <Typography variant="body1" sx={cardStyles.content} whiteSpace="pre-line">
-        {completion.trim()}
-      </Typography>
-    </Box>
-  )
+  return <CompletionResultBox result={completion} />
 }
 
 const CourseCompletion = () => {
   const { t } = useTranslation()
   const [courseName, setCourseName] = useState('')
   const [showCompletion, setShowCompletion] = useState(false)
+  const [savedCompletion, setSavedCompletion] = useState<string>('')
+
+  useEffect(() => {
+    const save = sessionStorage.getItem('curre_openAI_course')
+    if (save) setSavedCompletion(save)
+  }, [])
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
@@ -66,11 +74,15 @@ const CourseCompletion = () => {
             {t('openai:send')}
           </Button>
         </Box>
+
         {showCompletion && (
           <CompletionResult
             courseName={courseName}
             setShowCompletion={setShowCompletion}
           />
+        )}
+        {!showCompletion && savedCompletion && (
+          <CompletionResultBox result={savedCompletion} />
         )}
       </Box>
     </Box>

@@ -15,6 +15,8 @@ const useOpenAiCompletion = (prompt: string, key: string) => {
 
   const { data: completion, ...rest } = useQuery(queryKey, query)
 
+  if (completion) sessionStorage.setItem('curre_openAI_course', completion)
+
   return { completion, ...rest }
 }
 
