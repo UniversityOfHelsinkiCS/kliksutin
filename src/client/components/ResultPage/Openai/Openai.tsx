@@ -23,7 +23,7 @@ const Openai = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
           <InfoBox />
         </Container>
         <Box>
-          <CourseCompletion />
+          <CourseCompletion watch={watch} />
           <DimensionCompletion watch={watch} />
         </Box>
       </Box>
