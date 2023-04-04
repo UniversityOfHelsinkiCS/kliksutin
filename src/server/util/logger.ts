@@ -3,7 +3,7 @@ import os from 'os'
 import winston from 'winston'
 import WinstonGelfTransporter from 'winston-gelf-transporter'
 
-import { inProduction, inStaging } from '../../config'
+import { inProduction } from '../../config'
 
 const { combine, timestamp, printf, splat } = winston.format
 
@@ -24,22 +24,6 @@ if (!inProduction) {
       format: combine(splat(), timestamp(), devFormat),
     })
   )
-
-  if (inStaging) {
-    transports.push(
-      new WinstonGelfTransporter({
-        handleExceptions: true,
-        host: 'toska-tmp.cs.helsinki.fi',
-        port: 12201,
-        protocol: 'udp',
-        hostName: os.hostname(),
-        additional: {
-          app: 'curre',
-          environment: 'staging',
-        },
-      })
-    )
-  }
 } else {
   const levels: { [key: string]: number } = {
     error: 0,
