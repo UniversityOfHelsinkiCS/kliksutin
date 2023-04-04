@@ -94,6 +94,13 @@ const Results = ({
       typeof result === 'string' ? [result] : result
     )
 
+  const onNavigateBack = () => {
+    setShowResults(false)
+    document
+      .getElementById('curre-main-section')
+      .scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <Box sx={cardStyles.outerBox}>
       <Box sx={resultStyles.resultWrapper}>
@@ -137,7 +144,7 @@ const Results = ({
             <Button
               data-cy="back-to-selections"
               sx={{ m: 4 }}
-              onClick={() => setShowResults(false)}
+              onClick={onNavigateBack}
             >
               {'<'} {t('results:backToMessage')}
             </Button>

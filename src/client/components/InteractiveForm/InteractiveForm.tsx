@@ -49,10 +49,9 @@ const InteractiveForm = () => {
 
     setShowResults(true)
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    }) // Scroll to top
+    document
+      .getElementById('curre-main-section')
+      .scrollIntoView({ behavior: 'smooth' })
   }
 
   usePersistForm({ value: getValues(), sessionStorageKey: FORM_DATA_KEY })
@@ -65,7 +64,7 @@ const InteractiveForm = () => {
         <Grid item sm={12}>
           <HelloBanner />
         </Grid>
-        <Grid item sm={12} md={7} xl={8}>
+        <Grid id="curre-main-section" item sm={12} md={7} xl={8}>
           <form
             style={{ display: showResults ? 'none' : 'block' }}
             onSubmit={handleSubmit(onSubmit)}
