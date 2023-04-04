@@ -6,8 +6,8 @@ import { UseFormWatch, FieldValues } from 'react-hook-form'
 
 import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
 import useUserCourses from '../../../hooks/useUserCourses'
-import LoadingProgress from './LoadingProgress'
 import CompletionResultBox from './CompletionResultBox'
+import LoadingProgress from '../../Common/LoadingProgress'
 import styles from '../../../styles'
 import { Locales } from '../../../types'
 
