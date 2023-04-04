@@ -11,7 +11,7 @@ import styles from '../../styles'
 import { Course, InputProps, Locales } from '../../types'
 import Markdown from '../Common/Markdown'
 import useUserCourses from '../../hooks/useUserCourses'
-import LoadingProgress from '../Common/LoadingProgress'
+// import LoadingProgress from '../Common/LoadingProgress'
 
 const otherCourse = {
   id: 'OTHER',
@@ -44,8 +44,8 @@ const SelectCourse = ({ control }: InputProps) => {
     setCourse(event.target.value)
   }
 
-  if (isLoading) return <LoadingProgress />
-  if (userCourses.length === 0) return null
+  // if (isLoading) return <LoadingProgress />
+  if (isLoading || userCourses.length === 0) return null
 
   const { cardStyles, formStyles } = styles
 
