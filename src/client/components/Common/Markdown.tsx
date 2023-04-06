@@ -33,6 +33,8 @@ const defaultComponents = {
 }
 
 const Markdown = ({ children, ...props }: any) => {
+  if (!children) return null
+
   // https://stackoverflow.com/questions/69026492/adding-multiple-line-break-in-react-markdown
   const content = children.replace(/\n/gi, '&nbsp; \n')
 
@@ -47,7 +49,5 @@ const Markdown = ({ children, ...props }: any) => {
     </ReactMarkdown>
   )
 }
-
-//
 
 export default Markdown
