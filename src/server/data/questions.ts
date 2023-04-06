@@ -297,7 +297,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'tentti',
                   title: {
-                    fi: 'Tentti',
+                    fi: '[Tentti](https://docs.moodle.org/4x/fi/Tentti)',
                     sv: '',
                     en: '',
                   },
@@ -308,7 +308,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'työpaja',
                   title: {
-                    fi: 'Työpaja',
+                    fi: '[Työpaja](https://docs.moodle.org/4x/fi/Ty%C3%B6paja)',
                     sv: '',
                     en: '',
                   },
@@ -317,7 +317,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'oppitunti',
                   title: {
-                    fi: 'Oppitunti',
+                    fi: '[Oppitunti](https://docs.moodle.org/4x/fi/Oppitunti)',
                     sv: '',
                     en: '',
                   },
