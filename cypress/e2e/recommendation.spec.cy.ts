@@ -92,7 +92,15 @@ describe('Recommendation section', () => {
             if (tool.subtools) {
               cy.wrap(tool.subtools).each((subtool: Subtool) => {
                 if (!subtool.visibility.options) {
-                  cy.contains(subtool.title.fi)
+                  cy.contains('a', subtool.label, { matchCase: false }).should(
+                    'not.have.attr',
+                    'href',
+                    '#undefined'
+                  )
+                  cy.contains('a', subtool.label, { matchCase: false }).invoke(
+                    'attr',
+                    'href'
+                  )
                 }
               })
             }
