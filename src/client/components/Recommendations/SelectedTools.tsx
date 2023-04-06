@@ -34,9 +34,14 @@ const CurrentlySelectedTools = ({
                 dimensionSelections={dimensionSelections}
               />
             </Box>
-            {recommendation.subtools && (
-              <Markdown>{recommendation.subtools.join(', ')}</Markdown>
-            )}
+            <Box sx={recommendationStyles.subtoolWrapper}>
+              {recommendation.subtools &&
+                recommendation.subtools.map((subtool) => (
+                  <Box key={subtool} sx={recommendationStyles.subtoolItem}>
+                    <Markdown>{subtool}</Markdown>
+                  </Box>
+                ))}
+            </Box>
             <Markdown>
               {recommendation.text[language as keyof Locales]}
             </Markdown>

@@ -172,6 +172,15 @@ const recommendationStyles = {
     display: 'flex',
     alignItems: 'center',
   },
+  subtoolWrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    maxWidth: 300,
+  },
+  subtoolItem: {
+    ml: 1,
+  },
   recommendationChipsContainer: {
     mx: '0.6rem',
   },
