@@ -40,7 +40,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'aineistot',
                   title: {
-                    fi: 'Aineistot',
+                    fi: '[Aineistot](https://docs.moodle.org/4x/fi/Aineistot)',
                     sv: '',
                     en: '',
                   },
@@ -49,7 +49,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'h5p',
                   title: {
-                    fi: 'H5P',
+                    fi: '[H5P](https://docs.moodle.org/4x/fi/H5P)',
                     sv: '',
                     en: '',
                   },
@@ -84,7 +84,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'tehtävä',
                   title: {
-                    fi: 'Tehtävä',
+                    fi: '[Tehtävä](https://docs.moodle.org/4x/fi/Teht%C3%A4v%C3%A4)',
                     sv: '',
                     en: '',
                   },
@@ -99,7 +99,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'wiki',
                   title: {
-                    fi: 'Wiki',
+                    fi: '[Wiki](https://docs.moodle.org/4x/fi/Wiki)',
                     sv: '',
                     en: '',
                   },
@@ -108,7 +108,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'sanasto',
                   title: {
-                    fi: 'Sanasto',
+                    fi: '[Sanasto](https://docs.moodle.org/4x/fi/Sanasto)',
                     sv: '',
                     en: '',
                   },
@@ -117,7 +117,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'tietokanta',
                   title: {
-                    fi: 'Tietokanta',
+                    fi: '[Tietokanta](https://docs.moodle.org/4x/fi/Tietokanta)',
                     sv: '',
                     en: '',
                   },
@@ -151,7 +151,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'keskustelualue',
                   title: {
-                    fi: 'Keskustelualue',
+                    fi: '[Keskustelualue](https://docs.moodle.org/4x/fi/Keskustelualue)',
                     sv: '',
                     en: '',
                   },
@@ -160,7 +160,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'wiki',
                   title: {
-                    fi: 'Wiki',
+                    fi: '[Wiki](https://docs.moodle.org/4x/fi/Wiki)',
                     sv: '',
                     en: '',
                   },
@@ -169,7 +169,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'työpaja',
                   title: {
-                    fi: 'Työpaja',
+                    fi: '[Työpaja](https://docs.moodle.org/4x/fi/Ty%C3%B6paja)',
                     sv: '',
                     en: '',
                   },
@@ -200,7 +200,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'keskustelualue',
                   title: {
-                    fi: 'Keskustelualue',
+                    fi: '[Keskustelualue](https://docs.moodle.org/4x/fi/Keskustelualue)',
                     sv: '',
                     en: '',
                   },
@@ -209,7 +209,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'chat',
                   title: {
-                    fi: 'Chat',
+                    fi: '[Chat](https://docs.moodle.org/4x/fi/Chat-aktiviteetti)',
                     sv: '',
                     en: '',
                   },
@@ -240,7 +240,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'keskustelualue',
                   title: {
-                    fi: 'Keskustelualue',
+                    fi: '[Keskustelualue](https://docs.moodle.org/4x/fi/Keskustelualue)',
                     sv: '',
                     en: '',
                   },
@@ -249,7 +249,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'wiki',
                   title: {
-                    fi: 'Wiki',
+                    fi: '[Wiki](https://docs.moodle.org/4x/fi/Wiki)',
                     sv: '',
                     en: '',
                   },
@@ -258,7 +258,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'tietokanta',
                   title: {
-                    fi: 'Tietokanta',
+                    fi: '[Tietokanta](https://docs.moodle.org/4x/fi/Tietokanta)',
                     sv: '',
                     en: '',
                   },
@@ -288,7 +288,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'h5p',
                   title: {
-                    fi: 'H5P',
+                    fi: '[H5P](https://docs.moodle.org/4x/fi/H5P)',
                     sv: '',
                     en: '',
                   },
@@ -297,7 +297,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'tentti',
                   title: {
-                    fi: 'Tentti',
+                    fi: '[Tentti](https://docs.moodle.org/4x/fi/Tentti)',
                     sv: '',
                     en: '',
                   },
@@ -308,7 +308,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'työpaja',
                   title: {
-                    fi: 'Työpaja',
+                    fi: '[Työpaja](https://docs.moodle.org/4x/fi/Ty%C3%B6paja)',
                     sv: '',
                     en: '',
                   },
@@ -317,7 +317,7 @@ const getQuestionData = (): any => [
                 {
                   label: 'oppitunti',
                   title: {
-                    fi: 'Oppitunti',
+                    fi: '[Oppitunti](https://docs.moodle.org/4x/fi/Oppitunti)',
                     sv: '',
                     en: '',
                   },
