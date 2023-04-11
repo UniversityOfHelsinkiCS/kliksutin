@@ -442,7 +442,7 @@ const getQuestionData = (): any => [
           },
           data: {
             fi: '[Tentin](https://teaching.helsinki.fi/ohjeet/artikkeli/tentit-ja-niiden-jarjestaminen) voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
-            sv: '[Tentamen]( https://teaching.helsinki.fi/instruktioner/artikel/tentamina-och-ordnande-av-dem) kan anordnas antingen en viss dag eller under en längre tentamensperiod, i universitets elektroniska tentamensutrymmen, som distans – eller saltentamen. Tentamen är ett sätt att bedöma studentens kunnande och hur kursens inlärningsmål har uppnåtts. Deltentamen och förhör är också bra sätt att stödja studerandes inlärning under kursens gång.', 
+            sv: '[Tentamen]( https://teaching.helsinki.fi/instruktioner/artikel/tentamina-och-ordnande-av-dem) kan anordnas antingen en viss dag eller under en längre tentamensperiod, i universitets elektroniska tentamensutrymmen, som distans – eller saltentamen. Tentamen är ett sätt att bedöma studentens kunnande och hur kursens inlärningsmål har uppnåtts. Deltentamen och förhör är också bra sätt att stödja studerandes inlärning under kursens gång.',
             en: 'Tentin voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
           },
         },
@@ -659,7 +659,7 @@ const getQuestionData = (): any => [
     },
     text: {
       fi: 'Onko kurssi suunnattu vain perustutkinto-opiskelijoille vai tarjolla myös [avoimina yliopisto-opintoina](https://teaching.helsinki.fi/ohjeet/artikkeli/jatkuva-oppiminen-ja-avoin-yliopisto-opetus)?',
-      sv: 'Riktar sig kursen enbart till studeranden på grundnivå eller erbjuds den även som studier på [öppna universitet](https://teaching.helsinki.fi/instruktioner/artikel/kontinuerligt-larande-och-oppen-universitetsundervisning)?,
+      sv: 'Riktar sig kursen enbart till studeranden på grundnivå eller erbjuds den även som studier på [öppna universitet](https://teaching.helsinki.fi/instruktioner/artikel/kontinuerligt-larande-och-oppen-universitetsundervisning)?',
       en: 'Yleinen teksti liittyen tähän valintaan',
     },
     optionData: {
