@@ -47,7 +47,16 @@ const RenderQuestions = ({
 
     const parent = watch(question.parentId.toString())
 
-    if (!options.includes(parent)) return null
+    if (typeof parent === 'object') {
+      const questionSelectionToArray = Object.keys(parent).filter(
+        (k) => parent[k]
+      )
+      const hasAllValuesSelected = question.visibility.options.every((x) =>
+        questionSelectionToArray.includes(x)
+      )
+
+      if (!hasAllValuesSelected) return null
+    } else if (!options.includes(parent)) return null
   }
 
   const components: {

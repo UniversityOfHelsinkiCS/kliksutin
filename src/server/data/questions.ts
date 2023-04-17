@@ -506,7 +506,7 @@ const getQuestionData = (): any => [
     id: 5,
     surveyId: 1,
     parentId: 3,
-    priority: 0,
+    priority: 1,
     title: {
       fi: 'Opetustilanteiden tallennus?',
       sv: 'Bandning av undervisningssituationer?',
@@ -562,52 +562,6 @@ const getQuestionData = (): any => [
     visibility: {},
   },
   {
-    id: 8,
-    surveyId: 1,
-    parentId: 4,
-    priority: 0,
-    title: {
-      fi: 'This question is not in use as of 16.2.2023',
-      sv: 'This question is not in use as of 16.2.2023',
-      en: 'This question is not in use as of 16.2.2023',
-    },
-    text: {
-      fi: '',
-      sv: '',
-      en: '',
-    },
-    optionData: {
-      type: 'info',
-      options: [],
-    },
-    visibility: {
-      options: ['out-of-use'],
-    },
-  },
-  {
-    id: 9,
-    surveyId: 1,
-    parentId: 4,
-    priority: 0,
-    title: {
-      fi: 'This question is not in use as of 16.2.2023',
-      sv: 'This question is not in use as of 16.2.2023',
-      en: 'This question is not in use as of 16.2.2023',
-    },
-    text: {
-      fi: '',
-      sv: '',
-      en: '',
-    },
-    optionData: {
-      type: 'info',
-      options: [],
-    },
-    visibility: {
-      options: ['out-of-use'],
-    },
-  },
-  {
     id: 7,
     surveyId: 1,
     parentId: 2,
@@ -645,6 +599,52 @@ const getQuestionData = (): any => [
     },
     visibility: {
       options: ['courseSizeUnlimited'],
+    },
+  },
+  {
+    id: 8,
+    surveyId: 1,
+    parentId: 3,
+    priority: 0,
+    title: {
+      fi: 'Hybridiopetus',
+      sv: '',
+      en: '',
+    },
+    text: {
+      fi: '',
+      sv: '',
+      en: '',
+    },
+    optionData: {
+      type: 'singleChoice',
+      options: [],
+    },
+    visibility: {
+      options: ['courseAttendancePresent', 'courseAttendanceRemote'],
+    },
+  },
+  {
+    id: 9,
+    surveyId: 1,
+    parentId: 4,
+    priority: 0,
+    title: {
+      fi: 'This question is not in use as of 16.2.2023',
+      sv: 'This question is not in use as of 16.2.2023',
+      en: 'This question is not in use as of 16.2.2023',
+    },
+    text: {
+      fi: '',
+      sv: '',
+      en: '',
+    },
+    optionData: {
+      type: 'info',
+      options: [],
+    },
+    visibility: {
+      options: ['out-of-use'],
     },
   },
   {

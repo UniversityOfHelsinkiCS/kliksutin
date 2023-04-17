@@ -86,7 +86,7 @@ const formStyles = {
   },
   contactForm: {
     width: '70vw',
-    height: '80vh',
+    height: '100vh',
   },
   choiceBox: {
     display: 'flex',
