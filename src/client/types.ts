@@ -20,6 +20,7 @@ export interface User {
   language?: string
   isAdmin: boolean
   iamGroups: string[]
+  newUser: boolean
 }
 
 export interface InputProps {
