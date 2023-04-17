@@ -21,12 +21,12 @@ const helloMessages = {
 }
 const HelloBanner = () => {
   const { i18n } = useTranslation()
-  const { user } = useLoggedInUser()
+  const { user, isLoading } = useLoggedInUser()
   const { language } = i18n
 
   const { cardStyles } = styles
 
-  console.log(user)
+  if (isLoading) return null
 
   return (
     <Box id="hello-component" sx={cardStyles.helloBox}>
