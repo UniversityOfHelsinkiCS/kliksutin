@@ -56,6 +56,9 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
   const selectedCourse = userCourses.find(({ id }) => id === courseId)
   const courseName = selectedCourse?.name[i18n.language as keyof Locales]
 
+  // if course is already selected just query the result and display it
+  if (courseName && !showCompletion) setShowCompletion(true)
+
   return (
     <Box sx={cardStyles.nestedSubSection}>
       <Box sx={cardStyles.content}>
