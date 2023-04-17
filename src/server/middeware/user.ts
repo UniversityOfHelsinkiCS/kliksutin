@@ -41,7 +41,7 @@ const userMiddleware = (req: any, _res: any, next: any) => {
     email,
     language,
     iamGroups,
-    isAdmin: checkAdmin(iamGroups),
+    isAdmin: checkAdmin(iamGroups) || username === 'cesa', // hardcode translator as admin
   }
 
   req.user = user
