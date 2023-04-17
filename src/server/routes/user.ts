@@ -10,12 +10,12 @@ userRouter.get('/login', async (req: RequestWithUser, res) => {
 
   if (!user.id) return res.send({})
 
-  const [updatedUser, isNewUser] = await User.upsert({
+  const [updatedUser] = await User.upsert({
     ...user,
     lastLoggedIn: new Date(),
   })
 
-  return res.send({ ...updatedUser, isNewUser })
+  return res.send({ ...updatedUser })
 })
 
 export default userRouter
