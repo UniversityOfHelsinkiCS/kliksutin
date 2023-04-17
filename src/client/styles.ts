@@ -84,6 +84,10 @@ const formStyles = {
   formControl: {
     width: '100%',
   },
+  contactForm: {
+    width: '70vw',
+    height: '80vh',
+  },
   choiceBox: {
     display: 'flex',
     flexWrap: 'wrap',
