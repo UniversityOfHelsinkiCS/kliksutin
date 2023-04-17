@@ -84,7 +84,7 @@ const RenderQuestions = ({
               control={control}
               watch={watch}
               question={children}
-              questions={childQuestions}
+              questions={questions}
               language={language}
             />
           ))}
