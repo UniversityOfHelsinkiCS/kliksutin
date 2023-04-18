@@ -607,12 +607,12 @@ const getQuestionData = (): any => [
     parentId: 3,
     priority: 0,
     title: {
-      fi: 'Hybridiopetus',
+      fi: 'Monimuoto-opetus',
       sv: '',
       en: '',
     },
     text: {
-      fi: '',
+      fi: 'Lähi- ja etäopetusta sisältävän kurssin opetus on usein käytännössä [sulautuvaa opetusta](https://wiki.helsinki.fi/display/ZO/1.+Sulautuva+opetus). Mikäli kurssilla on toteutetaan opetusta, jossa osa opiskelijoista osallistuu lähiopetukseen toisten osallistuessa samanaikaisesti etäyhteyksien välityksellä, on kyse [hybridiopetuksesta](https://teaching.helsinki.fi/ohjeet/artikkeli/linjakas-opetus-ja-opetuksen-suunnittelun-10-vaihetta#paragraph-6852).',
       sv: '',
       en: '',
     },
