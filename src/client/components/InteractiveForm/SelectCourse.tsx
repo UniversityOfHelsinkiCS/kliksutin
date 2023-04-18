@@ -44,7 +44,6 @@ const SelectCourse = ({ control }: InputProps) => {
     setCourse(event.target.value)
   }
 
-  // if (isLoading) return <LoadingProgress />
   if (isLoading || userCourses.length === 0) return null
 
   const { cardStyles, formStyles } = styles

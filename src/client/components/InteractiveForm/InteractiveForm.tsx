@@ -97,12 +97,8 @@ const InteractiveForm = () => {
               />
               {location.pathname !== '/public' && (
                 <>
-                  <Grid item sm={12}>
-                    <Openai watch={watch} />
-                  </Grid>
-                  <Grid item sm={12}>
-                    <ProceedToContact />
-                  </Grid>
+                  <Openai watch={watch} />
+                  <ProceedToContact />
                 </>
               )}
             </>
