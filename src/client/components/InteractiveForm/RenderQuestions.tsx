@@ -82,7 +82,6 @@ const RenderQuestions = ({
       <Choice
         key={question.id}
         control={control}
-        watch={watch}
         question={question}
         language={language}
       >
