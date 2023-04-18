@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import { Controller } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { Box } from '@mui/material'
-import { Controller } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
+
+import useUserCourses from '../../hooks/useUserCourses'
 
 import styles from '../../styles'
 import { Course, InputProps, Locales } from '../../types'
 import Markdown from '../Common/Markdown'
-import useUserCourses from '../../hooks/useUserCourses'
-// import LoadingProgress from '../Common/LoadingProgress'
 
 const otherCourse = {
   id: 'OTHER',
@@ -36,15 +37,18 @@ const sortCourses = (courses: Course[] = []) => {
 
 const SelectCourse = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
-  const { language } = i18n
+  const location = useLocation()
   const [course, setCourse] = useState('')
   const { userCourses, isLoading } = useUserCourses()
+
+  const { language } = i18n
 
   const handleChange = (event: SelectChangeEvent) => {
     setCourse(event.target.value)
   }
 
-  if (isLoading || userCourses.length === 0) return null
+  if (isLoading || userCourses.length === 0 || location.pathname === '/public')
+    return null
 
   const { cardStyles, formStyles } = styles
 
