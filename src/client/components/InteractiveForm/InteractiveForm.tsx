@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useLocation } from 'react-router-dom'
 import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import usePersistForm from '../../hooks/usePersistForm'
@@ -16,6 +17,7 @@ import styles from '../../styles'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
+  const location = useLocation()
   const mutation = useSaveEntryMutation(survey?.id)
 
   const sessionLocation = sessionStorage.getItem('curre-session-location')
@@ -93,12 +95,16 @@ const InteractiveForm = () => {
                 watch={watch}
                 setShowResults={setShowResults}
               />
-              <Grid item sm={12}>
-                <Openai watch={watch} />
-              </Grid>
-              <Grid item sm={12}>
-                <ProceedToContact />
-              </Grid>
+              {location.pathname !== '/public' && (
+                <>
+                  <Grid item sm={12}>
+                    <Openai watch={watch} />
+                  </Grid>
+                  <Grid item sm={12}>
+                    <ProceedToContact />
+                  </Grid>
+                </>
+              )}
             </>
           )}
         </Grid>
