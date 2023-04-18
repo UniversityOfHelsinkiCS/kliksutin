@@ -7,22 +7,11 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { Box } from '@mui/material'
-
 import useUserCourses from '../../hooks/useUserCourses'
-
+import Markdown from '../Common/Markdown'
+import otherCourse from '../../util/courses'
 import styles from '../../styles'
 import { Course, InputProps, Locales } from '../../types'
-import Markdown from '../Common/Markdown'
-
-const otherCourse = {
-  id: 'OTHER',
-  code: '',
-  name: {
-    fi: 'Muu kurssi',
-    sv: 'Other course',
-    en: 'Other course',
-  },
-}
 
 const sortCourses = (courses: Course[] = []) => {
   const sortedCourses = courses.sort((a, b) => {
