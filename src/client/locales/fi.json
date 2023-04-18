@@ -5,7 +5,8 @@
     "updateSubmit": "Päivitä valinnat",
     "reset": "Aloita alusta",
     "openForm": "Jatka kysymyksiin",
-    "admin": "ylläpito"
+    "admin": "ylläpito",
+    "login": "Kirjaudu sisään"
   },
   "footer": {
     "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>",

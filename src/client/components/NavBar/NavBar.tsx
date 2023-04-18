@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {
   AppBar,
   Toolbar,
@@ -14,7 +14,11 @@ import {
   Popper,
   Typography,
 } from '@mui/material'
-import { Language, AdminPanelSettingsOutlined } from '@mui/icons-material'
+import {
+  Language,
+  AdminPanelSettingsOutlined,
+  LoginOutlined,
+} from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
 import hyLogo from '../../assets/hy_logo.svg'
@@ -24,10 +28,10 @@ import { inProduction } from '../../../config'
 
 const NavBar = () => {
   const { t, i18n } = useTranslation()
+  const location = useLocation()
+  const { user, isLoading } = useLoggedInUser()
   const [openLanguageSelect, setOpenLanguageSelect] = useState(false)
   const anchorRef = useRef<HTMLButtonElement>(null)
-
-  const { user, isLoading } = useLoggedInUser()
 
   useEffect(() => {
     if (!inProduction && user?.language) {
@@ -58,11 +62,18 @@ const NavBar = () => {
             </Box>
           </Box>
           <Box>
-            {user.isAdmin && (
+            {location.pathname !== '/public' && user.isAdmin && (
               <Link to="/admin" style={{ textDecoration: 'none' }}>
                 <Button>
                   <AdminPanelSettingsOutlined sx={navStyles.icon} />{' '}
                   {t('admin')}
+                </Button>
+              </Link>
+            )}
+            {location.pathname === '/public' && (
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                <Button>
+                  <LoginOutlined sx={navStyles.icon} /> {t('login')}
                 </Button>
               </Link>
             )}

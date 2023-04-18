@@ -5,7 +5,8 @@
     "updateSubmit": "Uppdatera val",
     "reset": "Börja om från början",
     "openForm": "Fortsätt till frågorna",
-    "admin": "administration"
+    "admin": "administration",
+    "login": "Login"
   },
   "footer": {
     "contactSupport": "Kontakta supporten: <mailTo>{{supportEmail}}</mailTo>",

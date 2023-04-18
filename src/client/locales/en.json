@@ -4,7 +4,8 @@
     "submit": "Proceed with these choices",
     "updateSubmit": "Update choices",
     "openForm": "Proceed to the questions",
-    "admin": "admin"
+    "admin": "Admin",
+    "login": "Login"
   },
   "footer": {
     "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>",
