@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box } from '@mui/material'
 import styles from '../../styles'
@@ -21,12 +22,13 @@ const helloMessages = {
 }
 const HelloBanner = () => {
   const { i18n } = useTranslation()
+  const location = useLocation()
   const { user, isLoading } = useLoggedInUser()
   const { language } = i18n
 
   const { cardStyles } = styles
 
-  if (isLoading) return null
+  if (location.pathname !== '/public' && isLoading) return null
 
   return (
     <Box id="hello-component" sx={cardStyles.helloBox}>
@@ -34,7 +36,7 @@ const HelloBanner = () => {
         <Markdown>{helloMessages.title[language as keyof Locales]}</Markdown>
         <ShowMore
           text={helloMessages.text[language as keyof Locales]}
-          expanded={user.newUser}
+          expanded={location.pathname === '/public' || user.newUser}
         />
       </Box>
     </Box>
