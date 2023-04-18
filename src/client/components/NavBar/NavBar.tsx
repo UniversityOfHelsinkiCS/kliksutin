@@ -52,13 +52,9 @@ const NavBar = () => {
       <Container maxWidth={false}>
         <Toolbar sx={navStyles.toolbar} disableGutters>
           <Box sx={navStyles.navBox}>
-            <Link to="/" style={{ marginBottom: -5 }}>
-              <img src={hyLogo} alt="University of Helsinki" width="40" />
-            </Link>
+            <img src={hyLogo} alt="University of Helsinki" width="40" />
             <Box ml="2rem">
-              <Link to="/" style={{ textDecoration: 'none' }}>
-                <Typography sx={navStyles.appName}>{t('appName')}</Typography>
-              </Link>
+              <Typography sx={navStyles.appName}>{t('appName')}</Typography>
             </Box>
           </Box>
           <Box>
