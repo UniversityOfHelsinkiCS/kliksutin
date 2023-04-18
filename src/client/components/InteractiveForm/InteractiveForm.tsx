@@ -92,8 +92,8 @@ const InteractiveForm = () => {
             <>
               <Results
                 formResultData={resultData}
-                watch={watch}
                 setShowResults={setShowResults}
+                watch={watch}
               />
               {location.pathname !== '/public' && (
                 <>

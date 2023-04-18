@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Alert, Box, Button, Typography } from '@mui/material'
 
@@ -9,8 +10,9 @@ import styles from '../../styles'
 
 const SendSummaryEmail = () => {
   const { t } = useTranslation()
-  const [isSent, setIsSent] = useState(false)
+  const location = useLocation()
   const { user, isLoading } = useLoggedInUser()
+  const [isSent, setIsSent] = useState(false)
 
   const { cardStyles, common } = styles
 
@@ -36,7 +38,7 @@ const SendSummaryEmail = () => {
     }
   }
 
-  if (isLoading || !user?.email) return null
+  if (isLoading || !user?.email || location.pathname === '/public') return null
 
   return (
     <Box sx={cardStyles.subHeading}>
