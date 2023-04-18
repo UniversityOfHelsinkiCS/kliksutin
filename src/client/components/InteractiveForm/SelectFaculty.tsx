@@ -11,25 +11,7 @@ import { InputProps, Faculty, Locales } from '../../types'
 import useFaculties from '../../hooks/useFaculties'
 import useUserFaculties from '../../hooks/useUserFaculties'
 import Markdown from '../Common/Markdown'
-
-const extraOrganisations: Faculty[] = [
-  {
-    code: 'H906',
-    name: {
-      fi: 'Kielikeskus',
-      sv: 'Språkcentrum',
-      en: 'Language Centre',
-    },
-  },
-  {
-    code: 'OTHER',
-    name: {
-      fi: 'Muu',
-      sv: 'Other',
-      en: 'Other',
-    },
-  },
-]
+import extraOrganisations from '../../util/organisations'
 
 const sortFaculties = (faculties: Faculty[], language: keyof Locales) => {
   const sortedFaculties = faculties.sort((a, b) => {
