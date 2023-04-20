@@ -144,6 +144,8 @@ export interface SelectedTools {
 export interface Survey {
   id: number
   name: string
+  title: Locales
+  text: Locales
   createdAt: Date
   updatedAt: Date
   Questions: Question[]
