@@ -20,7 +20,7 @@ const Contact = () => {
   if (!ContactComponent) return null
 
   return (
-    <Box sx={cardStyles.outerBox}>
+    <Box sx={formStyles.contactForm}>
       <Container sx={{ mt: 2 }}>
         <Typography variant="h5" sx={cardStyles.heading} component="div">
           {t('contact:title')}

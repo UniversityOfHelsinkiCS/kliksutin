@@ -85,7 +85,7 @@ const formStyles = {
     width: '100%',
   },
   contactForm: {
-    width: '70vw',
+    width: '100%',
     height: '100vh',
   },
   choiceBox: {
