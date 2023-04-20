@@ -9,6 +9,7 @@ import {
 
 import { sequelize } from '../connection'
 import Question from './Question'
+import { TranslatedText } from '../../types'
 
 class Survey extends Model<
   InferAttributes<Survey>,
@@ -17,6 +18,10 @@ class Survey extends Model<
   declare id: CreationOptional<number>
 
   declare name: string
+
+  declare title: TranslatedText
+
+  declare text: TranslatedText
 
   declare Questions: NonAttribute<Question[]>
 }
@@ -32,6 +37,16 @@ Survey.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    title: {
+      type: DataTypes.JSONB,
+      allowNull: false,
+      defaultValue: {},
+    },
+    text: {
+      type: DataTypes.JSONB,
+      allowNull: false,
+      defaultValue: {},
     },
   },
   {
