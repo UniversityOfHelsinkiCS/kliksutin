@@ -18,8 +18,7 @@ const HelloBanner = () => {
 
   const { cardStyles } = styles
 
-  if (location.pathname !== '/public' && surveyIsLoading && userIsLoading)
-    return null
+  if (surveyIsLoading && userIsLoading) return null
 
   return (
     <Box id="hello-component" sx={cardStyles.helloBox}>
@@ -27,7 +26,7 @@ const HelloBanner = () => {
         <Markdown>{survey.title[language as keyof Locales]}</Markdown>
         <ShowMore
           text={survey.text[language as keyof Locales]}
-          expanded={location.pathname === '/public' || user.newUser}
+          expanded={location.pathname === '/public' || user?.newUser}
         />
       </Box>
     </Box>
