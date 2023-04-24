@@ -58,10 +58,12 @@ const Footer = () => {
           </Link>
         </Box>
 
-        <Markdown>
-          [Kerrothan mielipiteesi Curresta lyhyen palautelomakkeen
-          muodossa.](https://forms.office.com/e/TWvNdLb48z)
-        </Markdown>
+        <Box style={{ overflow: 'hidden' }}>
+          <Markdown>
+            [Kerrothan mielipiteesi Curresta lyhyen palautelomakkeen
+            muodossa.](https://forms.office.com/e/TWvNdLb48z)
+          </Markdown>
+        </Box>
 
         <Box sx={footerStyles.imageBox}>
           <Link

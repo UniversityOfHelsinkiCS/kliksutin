@@ -161,13 +161,10 @@ const navStyles = {
 
 const recommendationStyles = {
   recommendationContainer: {
-    position: 'sticky',
-    top: '1rem',
-    borderLeft: 1,
-    paddingLeft: '1rem',
-    marginLeft: '0.5rem',
-    borderColor: 'grey.300',
+    m: 2,
+    top: '4rem',
     textAlign: 'left',
+    position: 'sticky',
   },
   recommendationBox: {
     mt: '1.8rem',
