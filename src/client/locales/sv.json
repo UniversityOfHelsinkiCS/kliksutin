@@ -63,9 +63,10 @@
     "selectDimensionInfoText": "Om du vill ha idéer för användningen av verktygen, välj en inlärningsmetod som stöds",
     "dimensionSelect": "Inlärningsmetod",
     "dimensionCompletionPrompt": "Hur kan jag stödja ämnet \"{{dimensionName}}\" på universitetskursen? Ange 3 exempel med hjälp av programvaran {{recommendations}}?",
-    "send": "Skicka",
+    "send": "Kysy tekoälyltä",
     "or": " eller ",
-    "apiErrorMessage": "Det gick inte att få kontakt med servern"
+    "apiErrorMessage": "Det gick inte att få kontakt med servern",
+    "spinnerMessage": "Tekoäly miettii..."
   },
   "admin": {
     "selectDimension": "Välj inlärningsform",

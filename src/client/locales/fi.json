@@ -63,9 +63,10 @@
     "selectDimensionInfoText": "Jos haluat ideoita työkalujen käyttöön, valitse tuettava oppimismuoto",
     "dimensionSelect": "Oppimismuoto",
     "dimensionCompletionPrompt": "Kuinka voin tukea aihetta \"{{dimensionName}}\" yliopistokurssilla? Anna 3 esimerkkiä käyttäen ohjelmistoa {{recommendations}}?",
-    "send": "Lähetä",
+    "send": "Kysy tekoälyltä",
     "or": " tai ",
-    "apiErrorMessage": "Palvelimeen ei saatu yhteyttä"
+    "apiErrorMessage": "Palvelimeen ei saatu yhteyttä",
+    "spinnerMessage": "Tekoäly miettii..."
   },
   "admin": {
     "selectDimension": "Valitse oppimismuoto",

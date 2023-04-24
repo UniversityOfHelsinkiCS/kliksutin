@@ -82,7 +82,6 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
               size="small"
               value={name}
               onChange={({ target }) => setName(target.value)}
-              disabled={showCompletion}
             />
           </>
         )}
