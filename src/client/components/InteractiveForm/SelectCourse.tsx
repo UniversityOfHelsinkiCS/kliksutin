@@ -41,7 +41,16 @@ const SelectCourse = ({ control }: InputProps) => {
 
   const { cardStyles, formStyles } = styles
 
-  const sortedCourses = sortCourses(userCourses).concat(otherCourse)
+  const filteredCourses: Course[] = userCourses.map((c: Course) =>
+    c.name[language as keyof Locales].length >
+    c.nameSpecifier[language as keyof Locales].length
+      ? { id: c.id, code: c.code, name: c.name }
+      : { id: c.id, code: c.code, name: c.nameSpecifier }
+  )
+
+  const sortedCourses = sortCourses(filteredCourses).concat(otherCourse)
+
+  console.log(sortedCourses)
 
   return (
     <Box sx={cardStyles.card}>

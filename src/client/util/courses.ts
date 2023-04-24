@@ -6,6 +6,11 @@ const otherCourse = {
     sv: 'Other course',
     en: 'Other course',
   },
+  nameSpecifier: {
+    fi: 'Muu kurssi',
+    sv: 'Other course',
+    en: 'Other course',
+  },
 }
 
 export default otherCourse

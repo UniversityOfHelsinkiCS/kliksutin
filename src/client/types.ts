@@ -180,4 +180,5 @@ export interface Course {
   id: string
   code: string
   name: Locales
+  nameSpecifier?: Locales
 }
