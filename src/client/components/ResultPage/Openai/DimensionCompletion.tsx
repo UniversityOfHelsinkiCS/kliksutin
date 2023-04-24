@@ -92,7 +92,7 @@ const DimensionCompletion = ({
         <FormControl size="small" sx={cardStyles.inputField}>
           <InputLabel>{t('openai:dimensionSelect')}</InputLabel>
           <Select
-            sx={{ width: '70%' }}
+            sx={cardStyles.inputField}
             data-cy="dimension-completion-select"
             value={dimensionId}
             label={t('openai:dimensionSelect')}
