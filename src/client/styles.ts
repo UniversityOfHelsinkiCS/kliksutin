@@ -66,7 +66,7 @@ const cardStyles = {
   },
   inputField: {
     mt: 2,
-    width: 400,
+    width: 300,
   },
   answerBox: {
     my: 4,
@@ -162,6 +162,7 @@ const navStyles = {
 const recommendationStyles = {
   recommendationContainer: {
     m: 2,
+    px: 2,
     top: '4rem',
     textAlign: 'left',
     position: 'sticky',

@@ -75,7 +75,14 @@ const InteractiveForm = () => {
         <Grid item sm={12}>
           <HelloBanner />
         </Grid>
-        <Grid id="curre-main-section" item sm={12} md={7} xl={8}>
+        <Grid
+          id="curre-main-section"
+          sx={{ px: 2, maxWidth: '100vw' }}
+          item
+          sm={12}
+          md={7}
+          xl={8}
+        >
           <form
             style={{ display: showResults ? 'none' : 'block' }}
             onSubmit={handleSubmit(onSubmit)}
