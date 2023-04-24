@@ -59,7 +59,7 @@ const SelectFaculty = ({ control }: InputProps) => {
           <FormControl sx={formStyles.formControl}>
             <InputLabel>{t('facultySelect:inputLabel')}</InputLabel>
             <Select
-              sx={{ width: '70%' }}
+              sx={cardStyles.inputField}
               data-cy="faculty-select"
               value={faculty}
               label={t('facultySelect:inputLabel')}
