@@ -13,10 +13,10 @@ import otherCourse from '../../util/courses'
 import styles from '../../styles'
 import { Course, InputProps, Locales } from '../../types'
 
-const sortCourses = (courses: Course[] = []) => {
+const sortCourses = (language: keyof Locales, courses: Course[]) => {
   const sortedCourses = courses.sort((a, b) => {
-    if (a.code > b.code) return 1
-    if (a.code < b.code) return -1
+    if (a.name[language] > b.name[language]) return 1
+    if (a.name[language] < b.name[language]) return -1
 
     return 0
   })
@@ -41,16 +41,20 @@ const SelectCourse = ({ control }: InputProps) => {
 
   const { cardStyles, formStyles } = styles
 
-  const filteredCourses: Course[] = userCourses.map((c: Course) =>
-    c.name[language as keyof Locales].length >
-    c.nameSpecifier[language as keyof Locales].length
-      ? { id: c.id, code: c.code, name: c.name }
-      : { id: c.id, code: c.code, name: c.nameSpecifier }
-  )
+  const filteredCourses: Course[] = userCourses.map((c: Course) => {
+    const name =
+      c.name[language as keyof Locales].length >
+      c.nameSpecifier[language as keyof Locales].length
+        ? c.name
+        : c.nameSpecifier
 
-  const sortedCourses = sortCourses(filteredCourses).concat(otherCourse)
+    return { ...c, name }
+  })
 
-  console.log(sortedCourses)
+  const sortedCourses = sortCourses(
+    language as keyof Locales,
+    filteredCourses
+  ).concat(otherCourse)
 
   return (
     <Box sx={cardStyles.card}>
