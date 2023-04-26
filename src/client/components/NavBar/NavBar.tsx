@@ -13,6 +13,7 @@ import {
   Grow,
   Popper,
   Typography,
+  Link as ExternalLink,
 } from '@mui/material'
 import {
   Language,
@@ -71,11 +72,11 @@ const NavBar = () => {
               </Link>
             )}
             {location.pathname === '/public' && (
-              <Link to="/" style={{ textDecoration: 'none' }}>
+              <ExternalLink href="/" style={{ textDecoration: 'none' }}>
                 <Button>
                   <LoginOutlined sx={navStyles.icon} /> {t('login')}
                 </Button>
-              </Link>
+              </ExternalLink>
             )}
             <Button
               ref={anchorRef}
