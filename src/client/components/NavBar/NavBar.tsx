@@ -25,7 +25,7 @@ import { useTranslation } from 'react-i18next'
 import hyLogo from '../../assets/hy_logo.svg'
 import styles from '../../styles'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
-import { inProduction } from '../../../config'
+import { inProduction, PUBLIC_URL } from '../../../config'
 
 const NavBar = () => {
   const { t, i18n } = useTranslation()
@@ -72,7 +72,10 @@ const NavBar = () => {
               </Link>
             )}
             {location.pathname === '/public' && (
-              <ExternalLink href="/" style={{ textDecoration: 'none' }}>
+              <ExternalLink
+                href={PUBLIC_URL}
+                style={{ textDecoration: 'none' }}
+              >
                 <Button>
                   <LoginOutlined sx={navStyles.icon} /> {t('login')}
                 </Button>
