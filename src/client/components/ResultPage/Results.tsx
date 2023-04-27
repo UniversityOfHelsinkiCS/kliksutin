@@ -106,22 +106,22 @@ const Results = ({
   return (
     <Box sx={cardStyles.outerBox}>
       <Box sx={resultStyles.resultWrapper}>
-        <Box id="result-component">
-          <Container sx={{ mt: 4 }}>
-            <Typography
-              data-cy="result-section-title"
-              variant="h5"
-              sx={resultStyles.heading}
-              component="div"
-            >
-              {t('results:title')}
-            </Typography>
-            <CompactDimensionChips
-              dimensions={multipleChoiceObjectToArray(dimensionQuestionId)}
-              dimensionSelections={dimensionSelections}
-            />
-          </Container>
+        <Container sx={{ mt: 4 }}>
+          <Typography
+            data-cy="result-section-title"
+            variant="h5"
+            sx={resultStyles.heading}
+            component="div"
+          >
+            {t('results:title')}
+          </Typography>
+          <CompactDimensionChips
+            dimensions={multipleChoiceObjectToArray(dimensionQuestionId)}
+            dimensionSelections={dimensionSelections}
+          />
+        </Container>
 
+        <Box id="result-component">
           {resultArray.map((resultLabels) =>
             resultLabels.map((resultLabel) => (
               <ResultElement
