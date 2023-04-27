@@ -14,3 +14,10 @@ export const DEFAULT_SURVEY_NAME =
   process.env.DEFAULT_SURVEY_NAME || 'testSurvey'
 
 export const FORM_DATA_KEY = 'curre_local_save'
+
+// eslint-disable-next-line no-nested-ternary
+export const FULL_URL = inProduction
+  ? 'https://curre.helsinki.fi'
+  : inStaging
+  ? 'https://toska-staging.cs.helsinki.fi/kliksutin'
+  : 'http://localhost:3000'
