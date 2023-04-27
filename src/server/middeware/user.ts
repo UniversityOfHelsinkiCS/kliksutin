@@ -34,7 +34,7 @@ const userMiddleware = (req: any, _res: any, next: any) => {
   const iamGroups = parseIamGroups(hygroupcn)
 
   const user = {
-    id: id || username, // Username if no account in Sisu
+    id: id || username || 'guest', // Username if no account in Sisu
     username,
     firstName,
     lastName,
