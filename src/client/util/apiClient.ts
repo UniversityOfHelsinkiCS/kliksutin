@@ -2,16 +2,12 @@ import axios from 'axios'
 
 import { PUBLIC_URL } from '../../config'
 
-const getApiClient = () => {
-  const isPublicVersion = window.location.href.includes('/public')
+const isPublicVersion = window.location.href.includes('/public')
 
-  const baseURL = isPublicVersion
-    ? `${PUBLIC_URL}/api`
-    : `${PUBLIC_URL}/public/api`
+const baseURL = isPublicVersion
+  ? `${PUBLIC_URL}/public/api`
+  : `${PUBLIC_URL}/api`
 
-  const apiClient = axios.create({ baseURL })
+const apiClient = axios.create({ baseURL })
 
-  return apiClient
-}
-
-export default getApiClient()
+export default apiClient
