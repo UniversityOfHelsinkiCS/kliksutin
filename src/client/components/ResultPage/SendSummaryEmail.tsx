@@ -6,6 +6,8 @@ import { Alert, Box, Button, Typography } from '@mui/material'
 import apiClient from '../../util/apiClient'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
+import summaryEmailHTML from '../../templates/summaryEmail'
+
 import styles from '../../styles'
 
 const SendSummaryEmail = () => {
@@ -28,7 +30,10 @@ const SendSummaryEmail = () => {
 
   const onSubmit = async () => {
     const targets = [user?.email]
-    const text = resultHTML.outerHTML
+    const text = `
+        ${summaryEmailHTML}
+        ${resultHTML.outerHTML}
+    `
 
     try {
       await sendResultsToEmail(targets, text)
