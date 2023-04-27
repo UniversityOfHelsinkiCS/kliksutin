@@ -18,7 +18,7 @@ const SendSummaryEmail = () => {
 
   const { cardStyles, common } = styles
 
-  const resultHTML = document.getElementById('result-component')
+  const resultHTML = sessionStorage.getItem('curre-session-resultHTML')
 
   const sendResultsToEmail = async (targets: string[], text: string) => {
     apiClient.post('/summary', {
@@ -32,7 +32,7 @@ const SendSummaryEmail = () => {
     const targets = [user?.email]
     const text = `
         ${summaryEmailHTML}
-        ${resultHTML.outerHTML}
+        ${resultHTML}
     `
 
     try {
