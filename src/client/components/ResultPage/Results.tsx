@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
@@ -7,6 +8,8 @@ import useResults from '../../hooks/useResults'
 import useFindQuestion from '../../hooks/useFindQuestion'
 import styles from '../../styles'
 import SendSummaryEmail from './SendSummaryEmail'
+import ProceedToContact from './ProceedToContact'
+import Openai from './Openai/Openai'
 import Markdown from '../Common/Markdown'
 import ResetForm from '../Common/ResetForm'
 import CompactDimensionChips from '../Common/CompactDimensionChips'
@@ -53,8 +56,10 @@ const Results = ({
   watch,
   setShowResults,
 }: InputProps & { setShowResults: any }) => {
+  const location = useLocation()
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
+  const resultRef = useRef(null)
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
   const { language } = i18n
 
@@ -103,58 +108,72 @@ const Results = ({
       .scrollIntoView({ behavior: 'smooth' })
   }
 
+  sessionStorage.setItem(
+    'curre-session-resultHTML',
+    resultRef.current?.innerHTML
+  )
+
   return (
-    <Box sx={cardStyles.outerBox}>
-      <Box sx={resultStyles.resultWrapper}>
-        <Container sx={{ mt: 4 }}>
-          <Typography
-            data-cy="result-section-title"
-            variant="h5"
-            sx={resultStyles.heading}
-            component="div"
-          >
-            {t('results:title')}
-          </Typography>
-          <CompactDimensionChips
-            dimensions={multipleChoiceObjectToArray(dimensionQuestionId)}
-            dimensionSelections={dimensionSelections}
-          />
-        </Container>
-
-        <Box id="result-component">
-          {resultArray.map((resultLabels) =>
-            resultLabels.map((resultLabel) => (
-              <ResultElement
-                key={JSON.stringify(resultLabel)}
-                language={language as keyof Locales}
-                resultData={results.find(
-                  (result: { optionLabel: string }) =>
-                    result.optionLabel === resultLabel
-                )}
-                dimensions={
-                  modifiedResultObject[dimensionQuestionId] as string[]
-                }
-              />
-            ))
-          )}
-        </Box>
-
-        <SendSummaryEmail />
-
-        <Box sx={formStyles.stackBoxWrapper}>
-          <Stack sx={formStyles.stack} direction="row">
-            <Button
-              data-cy="back-to-selections"
-              sx={{ m: 4 }}
-              onClick={onNavigateBack}
+    <Box>
+      <Box sx={cardStyles.outerBox}>
+        <Box sx={resultStyles.resultWrapper}>
+          <Container sx={{ mt: 4 }}>
+            <Typography
+              data-cy="result-section-title"
+              variant="h5"
+              sx={resultStyles.heading}
+              component="div"
             >
-              {'<'} {t('results:backToMessage')}
-            </Button>
+              {t('results:title')}
+            </Typography>
+            <CompactDimensionChips
+              dimensions={multipleChoiceObjectToArray(dimensionQuestionId)}
+              dimensionSelections={dimensionSelections}
+            />
+          </Container>
 
-            <ResetForm />
-          </Stack>
+          <Box ref={resultRef}>
+            {resultArray.map((resultLabels) =>
+              resultLabels.map((resultLabel) => (
+                <ResultElement
+                  key={JSON.stringify(resultLabel)}
+                  language={language as keyof Locales}
+                  resultData={results.find(
+                    (result: { optionLabel: string }) =>
+                      result.optionLabel === resultLabel
+                  )}
+                  dimensions={
+                    modifiedResultObject[dimensionQuestionId] as string[]
+                  }
+                />
+              ))
+            )}
+          </Box>
+
+          <SendSummaryEmail />
+
+          <Box sx={formStyles.stackBoxWrapper}>
+            <Stack sx={formStyles.stack} direction="row">
+              <Button
+                data-cy="back-to-selections"
+                sx={{ m: 4 }}
+                onClick={onNavigateBack}
+              >
+                {'<'} {t('results:backToMessage')}
+              </Button>
+
+              <ResetForm />
+            </Stack>
+          </Box>
         </Box>
       </Box>
+
+      {location.pathname !== '/public' && (
+        <Box>
+          <Openai watch={watch} />
+          <ProceedToContact />
+        </Box>
+      )}
     </Box>
   )
 }

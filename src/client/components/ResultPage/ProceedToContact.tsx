@@ -11,14 +11,10 @@ const ProceedToContact = () => {
 
   const { cardStyles, formStyles, common } = styles
 
-  const resultHTML = document.getElementById('result-component')
-
   const endSession = () => {
     setShowEndMessage(true)
     sessionStorage.clear()
   }
-
-  if (!resultHTML) return null
 
   return (
     <Box>
@@ -51,7 +47,6 @@ const ProceedToContact = () => {
               sx={formStyles.stackButton}
               variant="outlined"
               component={Link}
-              state={{ resultHTML: resultHTML.outerHTML }}
               to="/contact"
             >
               {t('results:proceedToConsultation')}

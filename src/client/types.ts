@@ -14,7 +14,7 @@ export interface Faculty {
 export interface User {
   id: string
   username: string
-  firsName?: string
+  firstName?: string
   lastName?: string
   email?: string
   language?: string

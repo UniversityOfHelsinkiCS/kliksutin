@@ -1,18 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import {
-  Alert,
-  Box,
-  Button,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material'
+import { Alert, Box, Button, Stack, TextField, Typography } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 import apiClient from '../../util/apiClient'
 import styles from '../../styles'
@@ -21,11 +13,12 @@ const ticketEmail = 'opetusteknologia@helsinki.fi'
 
 const SendContactTicket = () => {
   const { t } = useTranslation()
-  const { state } = useLocation()
   const [isSent, setIsSent] = useState(false)
   const { user, isLoading } = useLoggedInUser()
 
   const { formStyles, common } = styles
+
+  const resultHTML = sessionStorage.getItem('curre-session-resultHTML')
 
   const sendResultsToEmail = async (targets: string[], text: string) => {
     apiClient.post('/summary', {
@@ -51,9 +44,9 @@ const SendContactTicket = () => {
     const text = `
 
 
-    ${t('contact:contactTicketSenderEmail')} ${user.email} 
-    ${t('contact:contactTicketSenderFullname')} ${user.firsName} ${
-      user.lastName
+    ${t('contact:contactTicketSenderEmail')} ${user?.email} 
+    ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
+      user?.lastName
     } 
 
     ${t('contact:contactTicketUserMessage')}
@@ -67,7 +60,7 @@ const SendContactTicket = () => {
 
     ============================
     
-    ${state.resultHTML}
+    ${resultHTML}
 
     ==============
     `

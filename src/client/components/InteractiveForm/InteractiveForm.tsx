@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useLocation } from 'react-router-dom'
 import { Box, Grid } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 import usePersistForm from '../../hooks/usePersistForm'
@@ -9,15 +8,12 @@ import HelloBanner from './HelloBanner'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import Results from '../ResultPage/Results'
-import Openai from '../ResultPage/Openai/Openai'
-import ProceedToContact from '../ResultPage/ProceedToContact'
 import { FormValues } from '../../types'
 import { FORM_DATA_KEY } from '../../../config'
 import styles from '../../styles'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
-  const location = useLocation()
   const mutation = useSaveEntryMutation(survey?.id)
 
   const sessionLocation = sessionStorage.getItem('curre-session-location')
@@ -96,19 +92,11 @@ const InteractiveForm = () => {
           </form>
 
           {resultData && showResults && (
-            <>
-              <Results
-                formResultData={resultData}
-                setShowResults={setShowResults}
-                watch={watch}
-              />
-              {location.pathname !== '/public' && (
-                <>
-                  <Openai watch={watch} />
-                  <ProceedToContact />
-                </>
-              )}
-            </>
+            <Results
+              formResultData={resultData}
+              setShowResults={setShowResults}
+              watch={watch}
+            />
           )}
         </Grid>
         <Grid item sm={12} md={5} xl={4}>
