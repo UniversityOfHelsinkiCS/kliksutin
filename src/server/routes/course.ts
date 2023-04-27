@@ -8,7 +8,7 @@ const courseRouter = express.Router()
 courseRouter.get('/', async (req: RequestWithUser, res) => {
   const { id } = req.user
 
-  if (!id) res.send([])
+  if (!id || id === 'guest') res.send([])
 
   const courses = (await getCourses(id)) || []
 
