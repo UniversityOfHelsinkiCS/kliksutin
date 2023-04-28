@@ -3,7 +3,7 @@ const otherCourse = {
   code: '',
   name: {
     fi: 'Muu kurssi',
-    sv: 'Other course',
+    sv: 'Annan kurs',
     en: 'Other course',
   },
 }

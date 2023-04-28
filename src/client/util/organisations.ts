@@ -13,7 +13,7 @@ const extraOrganisations: Faculty[] = [
     code: 'OTHER',
     name: {
       fi: 'Muu',
-      sv: 'Other',
+      sv: 'Annan',
       en: 'Other',
     },
   },
