@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Typography, TextField } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
@@ -23,7 +23,10 @@ const CompletionResult = ({
   const { t } = useTranslation()
   const prompt = t('openai:courseCompletionPrompt', { courseName })
 
-  const { completion, isLoading } = useOpenaiCompletion(prompt, 'course')
+  const { completion, isLoading } = useOpenaiCompletion(
+    prompt,
+    `course-${courseName}`
+  )
 
   if (isLoading) return <LoadingProgress />
 
@@ -41,12 +44,6 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
   const { t, i18n } = useTranslation()
   const [name, setName] = useState('')
   const [showCompletion, setShowCompletion] = useState(false)
-  const [savedCompletion, setSavedCompletion] = useState<string>('')
-
-  useEffect(() => {
-    const save = sessionStorage.getItem('curre_openAI_course')
-    if (save) setSavedCompletion(save)
-  }, [])
 
   const { userCourses, isLoading } = useUserCourses()
 
@@ -56,8 +53,9 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
   const selectedCourse = userCourses.find(({ id }) => id === courseId)
   const courseName = selectedCourse?.name[i18n.language as keyof Locales]
 
-  // if course is already selected just query the result and display it
-  /* if (courseName && !showCompletion) setShowCompletion(true) */
+  const save = sessionStorage.getItem(
+    `curre-openAI-course-${courseName || name}`
+  )
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
@@ -82,28 +80,47 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
               size="small"
               value={name}
               onChange={({ target }) => setName(target.value)}
+              disabled={showCompletion}
             />
           </>
         )}
-        <Box sx={{ my: 2 }}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setShowCompletion(true)}
-            disabled={showCompletion || (!courseName && name.length < 5)}
-          >
-            {t('openai:send')}
-          </Button>
-        </Box>
 
-        {showCompletion && (
-          <CompletionResult
-            courseName={courseName || name}
-            setShowCompletion={setShowCompletion}
-          />
-        )}
-        {!showCompletion && savedCompletion && (
-          <CompletionResultBox result={savedCompletion} />
+        {!save ? (
+          <>
+            <Box sx={{ my: 2 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => setShowCompletion(true)}
+                disabled={showCompletion || (!courseName && name.length < 5)}
+              >
+                {t('openai:send')}
+              </Button>
+
+              {courseId === 'OTHER' && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    setName('')
+                    setShowCompletion(false)
+                  }}
+                  disabled={name.length === 0}
+                >
+                  Nollaa
+                </Button>
+              )}
+            </Box>
+
+            {showCompletion && (
+              <CompletionResult
+                courseName={name || courseName}
+                setShowCompletion={setShowCompletion}
+              />
+            )}
+          </>
+        ) : (
+          <CompletionResultBox result={save} />
         )}
       </Box>
     </Box>
