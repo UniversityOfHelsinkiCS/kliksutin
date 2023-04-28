@@ -65,6 +65,7 @@
     "dimensionCompletionPrompt": "Hur kan jag stödja ämnet \"{{dimensionName}}\" på universitetskursen? Ange 3 exempel med hjälp av programvaran {{recommendations}}?",
     "send": "Kysy tekoälyltä",
     "or": " eller ",
+    "zero": "Nollaa",
     "apiErrorMessage": "Det gick inte att få kontakt med servern",
     "spinnerMessage": "Tekoäly miettii..."
   },

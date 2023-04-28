@@ -100,6 +100,7 @@ const formStyles = {
     alignItems: 'center',
   },
   stack: {
+    my: 2,
     textAlign: 'center',
   },
   stackButton: {

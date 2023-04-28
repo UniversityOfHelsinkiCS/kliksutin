@@ -65,6 +65,7 @@
     "dimensionCompletionPrompt": "Kuinka voin tukea aihetta \"{{dimensionName}}\" yliopistokurssilla? Anna 3 esimerkkiä käyttäen ohjelmistoa {{recommendations}}?",
     "send": "Kysy tekoälyltä",
     "or": " tai ",
+    "zero": "Nollaa",
     "apiErrorMessage": "Palvelimeen ei saatu yhteyttä",
     "spinnerMessage": "Tekoäly miettii..."
   },

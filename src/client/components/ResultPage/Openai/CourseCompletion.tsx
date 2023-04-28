@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Typography, TextField } from '@mui/material'
+import { Box, Button, Typography, TextField, Stack } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { UseFormWatch, FieldValues } from 'react-hook-form'
 
@@ -11,7 +11,7 @@ import LoadingProgress from '../../Common/LoadingProgress'
 import styles from '../../../styles'
 import { Locales } from '../../../types'
 
-const { cardStyles } = styles
+const { cardStyles, formStyles } = styles
 
 const CompletionResult = ({
   courseName,
@@ -87,7 +87,7 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
 
         {!save ? (
           <>
-            <Box sx={{ my: 2 }}>
+            <Stack sx={formStyles.stack} direction="row" spacing={2}>
               <Button
                 variant="contained"
                 color="primary"
@@ -107,10 +107,10 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
                   }}
                   disabled={name.length === 0}
                 >
-                  Nollaa
+                  {t('openai:zero')}
                 </Button>
               )}
-            </Box>
+            </Stack>
 
             {showCompletion && (
               <CompletionResult

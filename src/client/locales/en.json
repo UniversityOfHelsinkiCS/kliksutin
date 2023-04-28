@@ -66,6 +66,7 @@
     "dimensionCompletionPrompt": "How can I support the topic \"{{dimensionName}}\" in a university course? Give 3 examples using the software {{recommendations}}?",
     "send": "Kysy tekoälyltä",
     "or": " or ",
+    "zero": "Nollaa",
     "apiErrorMessage": "No response from the server",
     "spinnerMessage": "AI is thinking..."
   },
