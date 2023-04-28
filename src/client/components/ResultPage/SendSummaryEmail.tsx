@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Alert, Box, Button, TextField, Typography } from '@mui/material'
+import {
+  Alert,
+  Box,
+  Button,
+  FormControlLabel,
+  Switch,
+  TextField,
+  Typography,
+} from '@mui/material'
 
 import apiClient from '../../util/apiClient'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
@@ -14,6 +22,7 @@ const SendSummaryEmail = () => {
   const { t } = useTranslation()
   const location = useLocation()
   const { user, isLoading } = useLoggedInUser()
+  const [showNotes, setShowNotes] = useState(false)
   const [notes, setNotes] = useState('')
   const [isSent, setIsSent] = useState(false)
 
@@ -70,17 +79,25 @@ const SendSummaryEmail = () => {
       <Box sx={cardStyles.content}>
         {!isSent ? (
           <Box>
-            <TextField
-              sx={cardStyles.inputField}
-              required
-              size="small"
-              value={notes}
-              fullWidth
-              multiline
-              rows={10}
-              placeholder={t('results:summaryMailPlaceholder')}
-              onChange={({ target }) => setNotes(target.value)}
-            />
+            <Box>
+              <FormControlLabel
+                control={<Switch onChange={() => setShowNotes(!showNotes)} />}
+                label={t('results:showSummaryNotes')}
+              />
+            </Box>
+            {showNotes && (
+              <TextField
+                sx={cardStyles.inputField}
+                required
+                size="small"
+                value={notes}
+                fullWidth
+                multiline
+                rows={10}
+                placeholder={t('results:summaryMailPlaceholder')}
+                onChange={({ target }) => setNotes(target.value)}
+              />
+            )}
             <Button
               data-cy="summary-email-button"
               sx={{ mt: 2 }}
