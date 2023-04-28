@@ -36,6 +36,7 @@
     "emailIsRequired": "Email is required",
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send",
+    "summaryMailPlaceholder": "Lisää muistiinpanoja tähän tarvittaessa",
     "sendSuccess": "Summary email sent successfully",
     "endMessage": "Thank you for using Curre!",
     "backToMessage": "Back to the questions"

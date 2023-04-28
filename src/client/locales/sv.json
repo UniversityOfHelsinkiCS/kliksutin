@@ -35,6 +35,7 @@
     "proceedEmailInfoText": "Om du vill få en sammanfattning skickad per e-post, tryck då på skicka knappen nedan.",
     "summaryEmailSubject": "Din Curre sammanfattning",
     "sendSummaryMail": "Skicka",
+    "summaryMailPlaceholder": "Lisää muistiinpanoja tähän tarvittaessa",
     "sendSuccess": "Ett sammandrag har skickats till din e-post",
     "endMessage": "Tack för att du har använt Curre!",
     "backToMessage": "Tillbaka till valmenyn"

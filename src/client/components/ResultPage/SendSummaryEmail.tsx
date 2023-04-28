@@ -78,7 +78,7 @@ const SendSummaryEmail = () => {
               fullWidth
               multiline
               rows={10}
-              placeholder="Lisää muistiinpanoja tähän tarvittaessa"
+              placeholder={t('results:summaryMailPlaceholder')}
               onChange={({ target }) => setNotes(target.value)}
             />
             <Button
