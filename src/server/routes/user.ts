@@ -8,7 +8,7 @@ const userRouter = express.Router()
 userRouter.get('/login', async (req: RequestWithUser, res) => {
   const { user } = req
 
-  if (!user.id || user.id === 'guest') return res.send({})
+  if (!user.id) return res.send({})
 
   const userFound = await User.findByPk(user.id)
 
