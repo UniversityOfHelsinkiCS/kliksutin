@@ -40,11 +40,6 @@ const summaryEmailHTML = `
     </a>
     **********
   </p>
-  <p>
-    <strong>
-      Kooste Curressa tekemist&auml;si valinnoista ja k&auml;ytett&auml;viss&auml; olevista sovelluksista:
-    </strong>
-  </p>
 </div>
 `
 
