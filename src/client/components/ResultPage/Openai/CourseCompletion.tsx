@@ -99,7 +99,6 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
 
               {(courseId === 'OTHER' || !courseId) && (
                 <Button
-                  variant="contained"
                   color="primary"
                   onClick={() => {
                     setName('')
