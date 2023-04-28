@@ -97,7 +97,7 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
                 {t('openai:send')}
               </Button>
 
-              {courseId === 'OTHER' && (
+              {(courseId === 'OTHER' || !courseId) && (
                 <Button
                   variant="contained"
                   color="primary"
