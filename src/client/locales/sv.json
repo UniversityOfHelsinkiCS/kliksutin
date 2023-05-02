@@ -35,8 +35,8 @@
     "proceedEmailInfoText": "Om du vill få en sammanfattning skickad per e-post, tryck då på skicka knappen nedan.",
     "summaryEmailSubject": "Din Curre sammanfattning",
     "sendSummaryMail": "Skicka",
-    "showSummaryNotes": "Haluaisin lisätä muistiinpanoja",
-    "summaryMailPlaceholder": "Lisää muistiinpanoja tähän tarvittaessa",
+    "showSummaryNotes": "Jag skulle vilja lägga till anteckningar",
+    "summaryMailPlaceholder": "Lägg till anteckningar här om det behövs",
     "sendSuccess": "Ett sammandrag har skickats till din e-post",
     "endMessage": "Tack för att du har använt Curre!",
     "backToMessage": "Tillbaka till valmenyn"
@@ -65,11 +65,11 @@
     "selectDimensionInfoText": "Om du vill ha idéer för användningen av verktygen, välj en inlärningsmetod som stöds",
     "dimensionSelect": "Inlärningsmetod",
     "dimensionCompletionPrompt": "Hur kan jag stödja ämnet \"{{dimensionName}}\" på universitetskursen? Ange 3 exempel med hjälp av programvaran {{recommendations}}?",
-    "send": "Kysy tekoälyltä",
+    "send": "Fråga AI",
     "or": " eller ",
-    "zero": "Nollaa",
+    "zero": "Nolla",
     "apiErrorMessage": "Det gick inte att få kontakt med servern",
-    "spinnerMessage": "Tekoäly miettii..."
+    "spinnerMessage": "AI tänker..."
   },
   "admin": {
     "selectDimension": "Välj inlärningsform",
