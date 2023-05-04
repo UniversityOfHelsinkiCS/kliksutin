@@ -15,9 +15,13 @@ const useOpenAiCompletion = (prompt: string, key: string) => {
 
   const { data: completion, ...rest } = useQuery(queryKey, query)
 
-  if (completion) sessionStorage.setItem(`curre-openAI-${key}`, completion)
+  const completionMessage = `${prompt}\n\n${completion}`
 
-  return { completion, ...rest }
+  if (completion) {
+    sessionStorage.setItem(`curre-openAI-${key}`, completionMessage)
+  }
+
+  return { completion: completionMessage, ...rest }
 }
 
 export default useOpenAiCompletion
