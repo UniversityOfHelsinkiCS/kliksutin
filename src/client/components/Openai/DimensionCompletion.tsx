@@ -101,7 +101,10 @@ const DimensionCompletion = ({
             data-cy="dimension-completion-select"
             value={dimensionId}
             label={t('openai:dimensionSelect')}
-            onChange={({ target }) => setdimensionId(target.value)}
+            onChange={({ target }) => {
+              setdimensionId(target.value)
+              setShowCompletion(false)
+            }}
           >
             {dimensions.map((d) => (
               <MenuItem
