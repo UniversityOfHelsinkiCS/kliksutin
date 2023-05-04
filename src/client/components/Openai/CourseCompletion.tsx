@@ -4,12 +4,12 @@ import { Box, Button, Typography, TextField, Stack } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { UseFormWatch, FieldValues } from 'react-hook-form'
 
-import useOpenaiCompletion from '../../../hooks/useOpenaiCompletion'
-import useUserCourses from '../../../hooks/useUserCourses'
+import useOpenaiCompletion from '../../hooks/useOpenaiCompletion'
+import useUserCourses from '../../hooks/useUserCourses'
 import CompletionResultBox from './CompletionResultBox'
-import LoadingProgress from '../../Common/LoadingProgress'
-import styles from '../../../styles'
-import { Locales } from '../../../types'
+import LoadingProgress from '../Common/LoadingProgress'
+import styles from '../../styles'
+import { Locales } from '../../types'
 
 const { cardStyles, formStyles } = styles
 

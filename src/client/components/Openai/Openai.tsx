@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
 import { UseFormWatch, FieldValues } from 'react-hook-form'
 
-import styles from '../../../styles'
+import styles from '../../styles'
 import InfoBox from './InfoBox'
 import CourseCompletion from './CourseCompletion'
 import DimensionCompletion from './DimensionCompletion'
