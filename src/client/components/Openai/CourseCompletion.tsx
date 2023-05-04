@@ -85,42 +85,40 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
           </>
         )}
 
-        {!save ? (
-          <>
-            <Stack sx={formStyles.stack} direction="row" spacing={2}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => setShowCompletion(true)}
-                disabled={showCompletion || (!courseName && name.length < 5)}
-              >
-                {t('openai:send')}
-              </Button>
+        <Stack sx={formStyles.stack} direction="row" spacing={2}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setShowCompletion(true)}
+            disabled={
+              !!save || showCompletion || (!courseName && name.length < 5)
+            }
+          >
+            {t('openai:send')}
+          </Button>
 
-              {(courseId === 'OTHER' || !courseId) && (
-                <Button
-                  color="primary"
-                  onClick={() => {
-                    setName('')
-                    setShowCompletion(false)
-                  }}
-                  disabled={name.length === 0}
-                >
-                  {t('openai:zero')}
-                </Button>
-              )}
-            </Stack>
+          {(courseId === 'OTHER' || !courseId) && (
+            <Button
+              color="primary"
+              onClick={() => {
+                setName('')
+                setShowCompletion(false)
+              }}
+              disabled={name.length === 0}
+            >
+              {t('openai:zero')}
+            </Button>
+          )}
+        </Stack>
 
-            {showCompletion && (
-              <CompletionResult
-                courseName={name || courseName}
-                setShowCompletion={setShowCompletion}
-              />
-            )}
-          </>
-        ) : (
-          <CompletionResultBox result={save} />
+        {showCompletion && (
+          <CompletionResult
+            courseName={name || courseName}
+            setShowCompletion={setShowCompletion}
+          />
         )}
+
+        {save && <CompletionResultBox result={save} />}
       </Box>
     </Box>
   )
