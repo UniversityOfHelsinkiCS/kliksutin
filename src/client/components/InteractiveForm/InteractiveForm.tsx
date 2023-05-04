@@ -33,7 +33,7 @@ const InteractiveForm = () => {
 
   useEffect(() => {
     if (savedFormData !== '{}') setResultData(savedFormData)
-  }, [])
+  }, [savedFormData])
 
   const {
     formState: { isSubmitted },
