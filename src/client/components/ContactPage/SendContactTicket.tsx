@@ -45,37 +45,37 @@ const SendContactTicket = () => {
 
     const text = `
     <div>
-    </div>
-    <h3>
-      <strong>
-        Curre Contact Ticket
-      </strong>
-    </h3>
-    <p>
-      **********
-      <strong>
-        ${t('contact:contactTicketSenderEmail')} ${user?.email} 
-      </strong>
-      <strong>
-      ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
+      <h3>
+        <strong>
+          Curre Contact Ticket
+        </strong>
+      </h3>
+      <p>
+        **********
+        <strong>
+          ${t('contact:contactTicketSenderEmail')} ${user?.email} 
+        </strong>
+        <strong>
+        ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
       user?.lastName
     }
-      </strong>
-    </p>
-    <p>
-      **********
-      <strong>
-        ${t('contact:contactTicketUserMessage')}
-      </strong>
-      ${content}
-    </p>
-    <p>
-      **********
-      <strong>
-        ${t('contact:contactTicketUserSummary')}
-      </strong>
-      ${resultHTML}
-    </p>
+        </strong>
+      </p>
+      <p>
+        **********
+        <strong>
+          ${t('contact:contactTicketUserMessage')}
+        </strong>
+        ${content}
+      </p>
+      <p>
+        **********
+        <strong>
+          ${t('contact:contactTicketUserSummary')}
+        </strong>
+        ${resultHTML}
+      </p>
+    </div>
     `
 
     await sendResultsToEmail(targets, text)
