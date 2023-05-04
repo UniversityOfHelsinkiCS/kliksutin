@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   Box,
@@ -48,7 +48,10 @@ const CompletionResult = ({
     recommendations,
   })
 
-  const { completion, isLoading } = useOpenaiCompletion(prompt, 'dimension')
+  const { completion, isLoading } = useOpenaiCompletion(
+    prompt,
+    `dimension-${dimensionName}`
+  )
 
   if (isLoading) return <LoadingProgress />
 
@@ -68,20 +71,22 @@ const DimensionCompletion = ({
   watch: UseFormWatch<FieldValues>
 }) => {
   const { t, i18n } = useTranslation()
-  const { language } = i18n
+  const { survey, isLoading } = useSurvey()
   const [dimensionId, setdimensionId] = useState('')
   const [showCompletion, setShowCompletion] = useState(false)
-  const { survey, isLoading } = useSurvey()
-  const [savedCompletion, setSavedCompletion] = useState<string>('')
 
-  useEffect(() => {
-    const save = sessionStorage.getItem(`curre_openAI_dimension`)
-    if (save) setSavedCompletion(save)
-  }, [])
+  const { language } = i18n
 
   if (isLoading) return null
 
   const dimensions = getSelectedDimensions(survey, watch)
+  const dimension = dimensions.find(({ id }) => id === dimensionId)
+  const dimensionName =
+    dimension?.label[i18n.language as keyof Locales].toLowerCase()
+
+  const save = sessionStorage.getItem(
+    `curre-openAI-dimension-${dimensionName || ''}`
+  )
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
@@ -97,7 +102,6 @@ const DimensionCompletion = ({
             value={dimensionId}
             label={t('openai:dimensionSelect')}
             onChange={({ target }) => setdimensionId(target.value)}
-            disabled={showCompletion}
           >
             {dimensions.map((d) => (
               <MenuItem
@@ -115,20 +119,18 @@ const DimensionCompletion = ({
             variant="contained"
             color="primary"
             onClick={() => setShowCompletion(true)}
-            disabled={showCompletion || dimensionId.length === 0}
+            disabled={!!save || showCompletion || dimensionId.length === 0}
           >
             {t('openai:send')}
           </Button>
         </Box>
-        {showCompletion && dimensions.find(({ id }) => id === dimensionId) && (
+        {!save && showCompletion && dimension && (
           <CompletionResult
-            dimension={dimensions.find(({ id }) => id === dimensionId)}
+            dimension={dimension}
             setShowCompletion={setShowCompletion}
           />
         )}
-        {!showCompletion && savedCompletion && (
-          <CompletionResultBox result={savedCompletion} />
-        )}
+        {save && <CompletionResultBox result={save} />}
       </Box>
     </Box>
   )
