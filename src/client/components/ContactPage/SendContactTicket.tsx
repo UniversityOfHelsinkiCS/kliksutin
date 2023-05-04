@@ -44,32 +44,46 @@ const SendContactTicket = () => {
     const targets = [ticketEmail]
 
     const text = `
-    ${t('contact:contactTicketSenderEmail')} ${user?.email} 
-    ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
+    <div>
+    </div>
+    <h3>
+      <strong>
+        Curre Contact Ticket
+      </strong>
+    </h3>
+    <p>
+      **********
+      <strong>
+        ${t('contact:contactTicketSenderEmail')} ${user?.email} 
+      </strong>
+      <strong>
+      ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
       user?.lastName
-    } 
-
-    ${t('contact:contactTicketUserMessage')}
-    ============================
-
-    ${content}
-
-    ==============
-
-    ${t('contact:contactTicketUserSummary')}
-
-    ============================
-    
-    ${resultHTML}
-
-    ==============
+    }
+      </strong>
+    </p>
+    <p>
+      **********
+      <strong>
+        ${t('contact:contactTicketUserMessage')}
+      </strong>
+      ${content}
+    </p>
+    <p>
+      **********
+      <strong>
+        ${t('contact:contactTicketUserSummary')}
+      </strong>
+      ${resultHTML}
+    </p>
     `
 
     await sendResultsToEmail(targets, text)
       .then(() => setIsSent(true))
-      .catch((err) =>
+      .catch((err) => {
+        console.log(err)
         enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
-      )
+      })
   }
 
   if (isLoading) return null

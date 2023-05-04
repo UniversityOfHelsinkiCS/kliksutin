@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 import {
   Alert,
@@ -61,12 +62,12 @@ const SendSummaryEmail = () => {
         ${resultHTML}
     `
 
-    try {
-      await sendResultsToEmail(targets, text)
-      setIsSent(true)
-    } catch (error) {
-      console.log(error)
-    }
+    await sendResultsToEmail(targets, text)
+      .then(() => setIsSent(true))
+      .catch((err) => {
+        console.log(err)
+        enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
+      })
   }
 
   if (isLoading || !user?.email || location.pathname === '/public') return null
