@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 import { Alert, Box, Button, Stack, TextField, Typography } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
@@ -41,9 +42,8 @@ const SendContactTicket = () => {
 
   const onSubmit = async ({ content }: { content: string }) => {
     const targets = [ticketEmail]
+
     const text = `
-
-
     ${t('contact:contactTicketSenderEmail')} ${user?.email} 
     ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
       user?.lastName
@@ -65,12 +65,11 @@ const SendContactTicket = () => {
     ==============
     `
 
-    try {
-      await sendResultsToEmail(targets, text)
-      setIsSent(true)
-    } catch (error) {
-      console.log(error)
-    }
+    await sendResultsToEmail(targets, text)
+      .then(() => setIsSent(true))
+      .catch((err) =>
+        enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
+      )
   }
 
   if (isLoading) return null

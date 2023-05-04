@@ -55,7 +55,8 @@
     "contactTicketUserMessage": "User's message:",
     "contactTicketUserSummary": "User's summary:",
     "contactTicketSend": "Send",
-    "sendSuccess": "Thank you for using Curre, we'll be in touch!"
+    "sendSuccess": "Thank you for using Curre, we'll be in touch!",
+    "pateErrorMessage": "No response from the server"
   },
   "openai": {
     "title": "Tekoäly opetuksessa",

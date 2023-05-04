@@ -54,7 +54,8 @@
     "contactTicketUserMessage": "Användarens meddelande:",
     "contactTicketUserSummary": "Användarens sammandrag:",
     "contactTicketSend": "Skicka",
-    "sendSuccess": "Tack för att du har använt Curre, vi kommer att vara i kontakt med dig snarast möjligt!"
+    "sendSuccess": "Tack för att du har använt Curre, vi kommer att vara i kontakt med dig snarast möjligt!",
+    "pateErrorMessage": "Det gick inte att få kontakt med servern"
   },
   "openai": {
     "title": "Artificiell intelligens i undervisningen",

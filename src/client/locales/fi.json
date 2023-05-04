@@ -54,7 +54,8 @@
     "contactTicketUserMessage": "Käyttäjän viesti:",
     "contactTicketUserSummary": "Käyttäjän yhteenveto:",
     "contactTicketSend": "Lähetä",
-    "sendSuccess": "Kiitos Curren käytöstä, olemme yhteydessä sinuun pian!"
+    "sendSuccess": "Kiitos Curren käytöstä, olemme yhteydessä sinuun pian!",
+    "pateErrorMessage": "Palvelimeen ei saatu yhteyttä"
   },
   "openai": {
     "title": "Tekoäly opetuksessa",
