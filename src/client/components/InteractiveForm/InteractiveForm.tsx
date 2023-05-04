@@ -86,7 +86,6 @@ const InteractiveForm = () => {
             <RenderSurvey
               control={control}
               watch={watch}
-              handleSubmit={handleSubmit(onSubmit)}
               isSubmitted={isSubmitted}
             />
           </form>

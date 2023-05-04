@@ -3,7 +3,6 @@ import {
   UseFormWatch,
   FieldValues,
   UseFormRegister,
-  SubmitHandler,
 } from 'react-hook-form'
 
 export interface Faculty {
@@ -31,7 +30,6 @@ export interface InputProps {
   children?: React.ReactNode
   language?: string
   questions?: Question[]
-  handleSubmit?: SubmitHandler<FieldValues>
   isSubmitted?: boolean
   formResultData?: FormValues
 }

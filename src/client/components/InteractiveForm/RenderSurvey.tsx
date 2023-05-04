@@ -1,4 +1,4 @@
-import React, { BaseSyntheticEvent, useState } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Stack } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
@@ -11,12 +11,7 @@ import { FORM_DATA_KEY } from '../../../config'
 import styles from '../../styles'
 import SelectCourse from './SelectCourse'
 
-const RenderSurvey = ({
-  control,
-  watch,
-  handleSubmit,
-  isSubmitted,
-}: InputProps) => {
+const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
   const { t, i18n } = useTranslation()
   const { survey, isLoading } = useSurvey()
   const { cardStyles, formStyles } = styles
@@ -33,10 +28,6 @@ const RenderSurvey = ({
     const isFacultySelected = watch('faculty') !== ''
 
     return isFacultySelected && dimensions.length > 0
-  }
-
-  const submitFormData = (event: BaseSyntheticEvent) => {
-    handleSubmit(event)
   }
 
   if (isLoading) return null
@@ -91,7 +82,6 @@ const RenderSurvey = ({
                   type="submit"
                   data-cy="submit-form-button"
                   variant="contained"
-                  onClick={submitFormData}
                 >
                   {isSubmitted ? t('updateSubmit') : t('submit')}
                 </Button>
