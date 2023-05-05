@@ -43,39 +43,39 @@ const SendContactTicket = () => {
   const onSubmit = async ({ content }: { content: string }) => {
     const targets = [ticketEmail]
 
-    const text = `
-    <div>
-      <h3>
-        <strong>
+    const text = ` \
+    <div> \
+      <h3> \
+        <strong> \
           Curre Contact Ticket
-        </strong>
-      </h3>
-      <p>
+        </strong> \
+      </h3> \
+      <p> \
         **********
         <strong>
-          ${t('contact:contactTicketSenderEmail')} ${user?.email} 
-        </strong>
+          ${t('contact:contactTicketSenderEmail')} ${user?.email} \
+        </strong> \
         <strong>
-        ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
+          ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
       user?.lastName
-    }
-        </strong>
-      </p>
-      <p>
+    } \
+        </strong> \
+      </p> \
+      <p> \
         **********
         <strong>
-          ${t('contact:contactTicketUserMessage')}
-        </strong>
-        ${content}
-      </p>
-      <p>
+          ${t('contact:contactTicketUserMessage')} \
+        </strong> \
+        ${content} \
+      </p> \
+      <p> \
         **********
         <strong>
-          ${t('contact:contactTicketUserSummary')}
-        </strong>
-        ${resultHTML}
-      </p>
-    </div>
+          ${t('contact:contactTicketUserSummary')} \
+        </strong> \
+        ${resultHTML} \
+      </p> \
+    </div> \
     `
 
     await sendResultsToEmail(targets, text)
