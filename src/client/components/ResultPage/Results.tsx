@@ -31,16 +31,36 @@ const ResultElement = ({
   if (!resultData || !dimensions) return null
 
   return (
-    <Container sx={resultStyles.resultElementWrapper}>
-      <Markdown>{resultData.isSelected[language]}</Markdown>
-      <Box sx={resultStyles.resultElementContent}>
+    <Container
+      style={{
+        margin: '2rem 0 2rem 0',
+        borderLeft: 'solid',
+        borderColor: '#9ca3af',
+        borderWidth: '1px',
+      }} /* sx={resultStyles.resultElementWrapper} */
+    >
+      <Box style={{ margin: '2rem 0 2rem 1rem' }}>
+        <Markdown>{resultData.isSelected[language]}</Markdown>
+      </Box>
+      <Box
+        style={{
+          margin: '2rem 0 2rem 0',
+        }} /* sx={resultStyles.resultElementContent} */
+      >
         {dimensions.map((dimension: string) => {
           const color = colors[dimension] || null
           return (
             <Box
               data-cy={`result-wrapper-${resultData.optionLabel}-${dimension}`}
               key={`${JSON.stringify(resultData)}.${dimension}`}
-              sx={{ m: 2, px: 2, borderLeft: 6, borderColor: color }}
+              style={{
+                margin: '1rem',
+                padding: '0 2rem 0 2rem ',
+                borderLeft: 'solid',
+                borderColor: color,
+                borderWidth: '6px',
+              }}
+              /* sx={{ m: 2, px: 2, borderLeft: 6, borderColor: color }} */
             >
               <Markdown>{resultData.data[dimension][language]}</Markdown>
             </Box>
