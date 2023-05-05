@@ -41,26 +41,26 @@ const SendSummaryEmail = () => {
 
   const onSubmit = async () => {
     const targets = [user?.email]
-    const text = `
-        ${summaryEmailHTML}
-        ${
-          notes &&
-          `<p>
-          <strong>
+    const text = `\
+      ${summaryEmailHTML} \
+      ${
+        notes &&
+        `<p>
+          <strong> \
             Muistiinpanosi Curressa tekemist&auml;si valinnoista:
-          </strong>
-        </p>
+          </strong> \
+        </p> \
         <i>
           ${notes}
         </i>`
-        }
-        <p>
-          <strong>
-            Kooste Curressa tekemist&auml;si valinnoista ja k&auml;ytett&auml;viss&auml; olevista sovelluksista:
-          </strong>
-        </p>
-        ${resultHTML}
-    `
+      }
+      <p>
+        <strong> \
+          Kooste Curressa tekemist&auml;si valinnoista ja k&auml;ytett&auml;viss&auml; olevista sovelluksista:
+        </strong> \
+      </p> \
+      ${resultHTML} \
+      `
 
     await sendResultsToEmail(targets, text)
       .then(() => setIsSent(true))
