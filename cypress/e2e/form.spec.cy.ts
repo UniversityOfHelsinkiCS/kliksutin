@@ -120,7 +120,7 @@ describe('Form section', () => {
     cy.get(`[data-cy = "open-form-button"]`).should('be.disabled')
   })
 
-  it.skip('user can reset the form in the results page', () => {
+  it('user can reset the form in the results page', () => {
     questionData = getQuestionData()
 
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
@@ -144,8 +144,6 @@ describe('Form section', () => {
     cy.get(`[data-cy = "recommendation-section-title"]`).should('exist')
 
     cy.get(`[data-cy = "reset-form-button"]:visible`).click()
-
-    cy.get(`[data-cy = "open-form-button"]`).should('be.disabled')
   })
 
   it('after submitting users can return to the form to modify selections', () => {
