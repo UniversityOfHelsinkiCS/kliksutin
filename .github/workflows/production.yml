@@ -44,7 +44,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Pull image and create a container
-        run: docker create --name kliksutin toska/kliksutin:latest
+        run: docker create --name kliksutin quay.io/toska/kliksutin:production
 
       - name: Copy assets from the container
         run: docker cp kliksutin:/opt/app-root/src ./app
