@@ -37,6 +37,7 @@ describe('Results section', () => {
     cy.wrap(dimensionQuestion.optionData.options).each(
       (option: DimensionSelectionData) => {
         cy.get(`[data-cy = "dimension-select-${option.id}"]`).click()
+        cy.log(`Clicked dimension with label of [${option.label.fi}]`)
       }
     )
 
@@ -56,6 +57,9 @@ describe('Results section', () => {
         cy.get(`[data-cy = "choice-select-${randomOption.id}"]`).click({
           force: true,
         })
+        cy.log(
+          `'Clicked single choice [Question title: ${question.title.fi}, Option label: ${randomOption.label.fi}]`
+        )
 
         selectedChoices.push(randomOption.id)
       }
@@ -76,6 +80,9 @@ describe('Results section', () => {
           cy.get(`[data-cy = "choice-select-${randomOption.id}"]`).click({
             force: true,
           })
+          cy.log(
+            `'Clicked multiple choice [Question title: ${question.title.fi}, Option label: ${randomOption.label.fi}]`
+          )
           selectedChoices.push(randomOption.id)
         })
       }
@@ -96,6 +103,10 @@ describe('Results section', () => {
         (result) => result.optionLabel === choiceID
       )
       if (!resultObject) return
+
+      cy.log(
+        `'Checking result object [Choice ID: ${choiceID}, Result isSelected: ${resultObject.isSelected.fi}]`
+      )
 
       cy.contains(resultObject.isSelected.fi)
     })

@@ -42,6 +42,9 @@ describe('Form section', () => {
     cy.wrap(questionData).each((question: Question) => {
       if (!question.visibility.options) {
         cy.contains(question.title.fi)
+        cy.log(
+          `'Check if question is visible with title of [${question.title.fi}]`
+        )
       }
     })
   })
@@ -85,6 +88,9 @@ describe('Form section', () => {
           option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
         ) => {
           cy.contains(option.label.fi).click({ force: true })
+          cy.log(
+            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.label.fi}]`
+          )
         }
       )
     })
@@ -111,6 +117,9 @@ describe('Form section', () => {
           option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
         ) => {
           cy.contains(option.label.fi).click({ force: true })
+          cy.log(
+            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.label.fi}]`
+          )
         }
       )
     })
@@ -133,6 +142,9 @@ describe('Form section', () => {
           option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
         ) => {
           cy.contains(option.label.fi).click({ force: true })
+          cy.log(
+            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.label.fi}]`
+          )
         }
       )
     })
