@@ -119,9 +119,9 @@ const SendContactTicket = () => {
             </Button>
             <Button
               data-cy="send-contact-ticket-button"
+              type="submit"
               sx={formStyles.stackButton}
               variant="contained"
-              onClick={handleSubmit(onSubmit)}
             >
               {t('contact:contactTicketSend')}
             </Button>
