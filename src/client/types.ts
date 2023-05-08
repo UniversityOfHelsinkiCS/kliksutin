@@ -183,7 +183,6 @@ export interface CourseUnit {
     personId: string
     validityPeriod: {}
   }[]
-
   name: Locales
   validityPeriod: {
     startDate: Date
@@ -195,11 +194,12 @@ export interface Course {
   code: string
   name: Locales
   nameSpecifier?: Locales
-  assessmentItemIds: string[]
-  activityPeriod: {
+  assessmentItemIds?: string[]
+  activityPeriod?: {
     endDate: Date
     startDate: Date
   }
-  courseUnitRealisationTypeUrn: string
-  responsibilityInfos: any[]
+  courseUnitRealisationTypeUrn?: string
+  responsibilityInfos?: any[]
+  courseUnits?: CourseUnit[]
 }

@@ -13,10 +13,12 @@ import otherCourse from '../../util/courses'
 import styles from '../../styles'
 import { Course, InputProps, Locales } from '../../types'
 
-const sortCourses = (language: keyof Locales, courses: Course[]) => {
+const sortCourses = (courses: Course[]) => {
   const sortedCourses = courses.sort((a, b) => {
-    if (a.name[language] > b.name[language]) return 1
-    if (a.name[language] < b.name[language]) return -1
+    const aCode = a.courseUnits ? a.courseUnits[0].code : ''
+    const bCode = b.courseUnits ? b.courseUnits[0].code : ''
+    if (aCode > bCode) return 1
+    if (aCode < bCode) return -1
 
     return 0
   })
@@ -51,10 +53,7 @@ const SelectCourse = ({ control }: InputProps) => {
     return { ...c, name }
   })
 
-  const sortedCourses = sortCourses(
-    language as keyof Locales,
-    filteredCourses
-  ).concat(otherCourse)
+  const sortedCourses = sortCourses(filteredCourses).concat(otherCourse)
 
   return (
     <Box sx={cardStyles.card}>
@@ -77,15 +76,18 @@ const SelectCourse = ({ control }: InputProps) => {
               onChange={handleChange}
               {...field}
             >
-              {sortedCourses.map((c: Course) => (
-                <MenuItem
-                  data-cy={`course-option-${c.id}`}
-                  key={c.id}
-                  value={c.id}
-                >
-                  {c.code} {c.name[language as keyof Locales]}
-                </MenuItem>
-              ))}
+              {sortedCourses.map((c: Course) => {
+                const courseCode = c.courseUnits ? c.courseUnits[0].code : ''
+                return (
+                  <MenuItem
+                    data-cy={`course-option-${c.id}`}
+                    key={c.id}
+                    value={c.id}
+                  >
+                    {courseCode} {c.name[language as keyof Locales]}
+                  </MenuItem>
+                )
+              })}
             </Select>
           </FormControl>
         )}
