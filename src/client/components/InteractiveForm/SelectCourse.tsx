@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Select from '@mui/material/Select'
 import { Box } from '@mui/material'
 import useUserCourses from '../../hooks/useUserCourses'
 import Markdown from '../Common/Markdown'
@@ -29,14 +29,9 @@ const sortCourses = (courses: Course[]) => {
 const SelectCourse = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
   const location = useLocation()
-  const [course, setCourse] = useState('')
   const { userCourses, isLoading } = useUserCourses()
 
   const { language } = i18n
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setCourse(event.target.value)
-  }
 
   if (isLoading || userCourses.length === 0 || location.pathname === '/public')
     return null
@@ -71,9 +66,7 @@ const SelectCourse = ({ control }: InputProps) => {
             <Select
               sx={cardStyles.inputField}
               data-cy="course-select"
-              value={course}
               label={t('courseSelect:inputLabel')}
-              onChange={handleChange}
               {...field}
             >
               {sortedCourses.map((c: Course) => {
