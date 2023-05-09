@@ -25,7 +25,7 @@ import { useTranslation } from 'react-i18next'
 import hyLogo from '../../assets/hy_logo.svg'
 import styles from '../../styles'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
-import { inProduction, FULL_URL } from '../../../config'
+import { FULL_URL } from '../../../config'
 
 const NavBar = () => {
   const { t, i18n } = useTranslation()
@@ -35,13 +35,11 @@ const NavBar = () => {
   const anchorRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    if (!inProduction && user?.language) {
-      i18n.changeLanguage(user.language)
-    }
+    if (user?.language) i18n.changeLanguage(user.language)
   }, [user, i18n])
 
   const { language } = i18n
-  const languages = inProduction ? ['fi', 'sv'] : ['fi', 'sv', 'en']
+  const languages = ['fi', 'sv', 'en']
 
   const handleLanguageChange = (newLanguage: string) => {
     i18n.changeLanguage(newLanguage)
