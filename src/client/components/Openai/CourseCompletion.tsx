@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Typography, TextField, Stack } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
@@ -47,73 +47,60 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
 
   const { userCourses, isLoading } = useUserCourses()
 
+  const courseId = watch('course')
+
+  useEffect(() => {
+    if (isLoading) return
+
+    const selectedCourse = userCourses.find(({ id }) => id === courseId)
+    const courseName =
+      selectedCourse?.name[i18n.language as keyof Locales] || ''
+
+    setName(courseName)
+  }, [userCourses])
+
   if (isLoading) return null
 
-  const courseId = watch('course')
-  const selectedCourse = userCourses.find(({ id }) => id === courseId)
-  const courseName = selectedCourse?.name[i18n.language as keyof Locales]
-
-  const save = sessionStorage.getItem(
-    `curre-openAI-course-${courseName || name}`
-  )
+  const save = sessionStorage.getItem(`curre-openAI-course-${name}`)
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
+      <Typography variant="body2">{t('openai:giveCourseInfoText')}</Typography>
       <Box sx={cardStyles.content}>
-        {courseName ? (
-          <>
-            <Typography variant="body2">
-              {t('openai:courseInfoText')}
-            </Typography>
-            <Typography variant="body1" sx={cardStyles.content}>
-              {courseName}
-            </Typography>
-          </>
-        ) : (
-          <>
-            <Typography variant="body2">
-              {t('openai:giveCourseInfoText')}
-            </Typography>
-            <TextField
-              sx={cardStyles.inputField}
-              required
-              size="small"
-              value={name}
-              onChange={({ target }) => setName(target.value)}
-              disabled={showCompletion}
-            />
-          </>
-        )}
+        <TextField
+          sx={cardStyles.inputField}
+          required
+          size="small"
+          value={name}
+          onChange={({ target }) => setName(target.value)}
+          disabled={showCompletion}
+        />
 
         <Stack sx={formStyles.stack} direction="row" spacing={2}>
           <Button
             variant="contained"
             color="primary"
             onClick={() => setShowCompletion(true)}
-            disabled={
-              !!save || showCompletion || (!courseName && name.length < 5)
-            }
+            disabled={!!save || showCompletion || name?.length < 5}
           >
             {t('openai:send')}
           </Button>
 
-          {(courseId === 'OTHER' || !courseId) && (
-            <Button
-              color="primary"
-              onClick={() => {
-                setName('')
-                setShowCompletion(false)
-              }}
-              disabled={name.length === 0}
-            >
-              {t('openai:zero')}
-            </Button>
-          )}
+          <Button
+            color="primary"
+            onClick={() => {
+              setName('')
+              setShowCompletion(false)
+            }}
+            disabled={name?.length === 0}
+          >
+            {t('openai:zero')}
+          </Button>
         </Stack>
 
-        {showCompletion && (
+        {!save && showCompletion && (
           <CompletionResult
-            courseName={name || courseName}
+            courseName={name}
             setShowCompletion={setShowCompletion}
           />
         )}
