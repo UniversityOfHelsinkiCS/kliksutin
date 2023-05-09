@@ -16,7 +16,8 @@
   "facultySelect": {
     "welcomeMessage": "",
     "introMessage": "Aloita valitsemalla valikosta se tiedekunta, jossa kurssi toteutetaan.",
-    "inputLabel": "Tiedekunta"
+    "inputLabel": "Tiedekunta",
+    "infoMessage": "Tietoa tiedekuntasi ohjeistuksesta"
   },
   "courseSelect": {
     "introMessage": "Mitä kurssia olet järjestämässä?",
