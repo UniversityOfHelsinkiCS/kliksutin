@@ -128,6 +128,7 @@ export interface RecommendationData {
 export interface Recommendation {
   id: number
   label: string
+  type: string
   title: Locales
   text: Locales
   dimensions?: string[]
