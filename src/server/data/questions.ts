@@ -546,20 +546,22 @@ const getQuestionData = (): any => [
     parentId: 4,
     priority: 0,
     title: {
-      fi: 'Katso tästä ideoita arviointiin liittyen',
-      sv: 'Idéer för bedömningen, kan ses här.',
-      en: 'Arviointi',
+      fi: 'This question is not in use as of 10.5.2023',
+      sv: 'This question is not in use as of 10.5.2023',
+      en: 'This question is not in use as of 10.5.2023',
     },
     text: {
-      fi: '[Oppimisen arviointi](https://teaching.helsinki.fi/ohjeet/oppimisen-ja-osaamisen-arviointi) voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää [erilaisia formatiivisen arvioinnin muotoja](https://teaching.helsinki.fi/ohjeet/artikkeli/erilaisia-arviointitapoja), sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
-      sv: '[Bedömning av inlärning]( https://teaching.helsinki.fi/instruktioner/bedomning-av-larande-och-kunskap) kan vara formativt d.v.s. ske under kursen och syfta till att stödja lärandet (t.ex. feedback under kursen) eller den kan det vara summativt, d.v.s. ske i slutet av kursen (t.ex. sluttentamen). I högklassig undervisning är det bra att använda [olika typer av formativ bedömning](https://teaching.helsinki.fi/instruktioner/node/3142), för då kan man bäst leda och styra studerandens inlärning. Även diagnostisk bedömning, d.v.s. bedömning av förhandsinformation innan – eller i början av kursen är viktig. Detta för att elevernas förhandskunskap har stor inverkan på hur eleverna lär sig. Diagnostisk bedömning kan användas som utgångspunkt för planeringen av undervisningen. Eftersom mha. den kan en lärare identifiera möjliga brister eller missuppfattningar i en studerandes kunskaper.',
-      en: 'Oppimisen arviointi voi olla formatiivista eli kurssin aikana tapahtuvaa ja oppimisen tukemiseen tähtäävää (esim. palaute kurssin aikana) tai summatiivista eli opintojakson päätteeksi tapahtuvaa (esim. lopputentti). Laadukkaassa opetuksessa on hyvä käyttää erilaisia formatiivisen arvioinnin muotoja, sillä silloin voidaan parhaiten ohjata ja suunnata opiskelijoiden oppimista. Myös diagnostinen arviointi eli ennakkotietojen arviointi ennen kurssia tai kurssin alussa on tärkeää, koska opiskelijoiden ennakko-osaaminen vaikuttavaa paljon siihen, miten opiskelijat oppivat. Diagnostista arviointia voidaan käyttää opetuksen suunnittelun lähtökohtana, sillä sen avulla opettaja voi tunnistaa mahdollisia puutteita tai virhekäsityksiä opiskelijoiden tiedoissa.',
+      fi: '',
+      sv: '',
+      en: '',
     },
     optionData: {
       type: 'info',
       options: [],
     },
-    visibility: {},
+    visibility: {
+      options: ['out-of-use'],
+    },
   },
   {
     id: 7,
