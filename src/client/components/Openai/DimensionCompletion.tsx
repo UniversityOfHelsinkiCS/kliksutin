@@ -36,7 +36,7 @@ const CompletionResult = ({
   const dimensionName = title[i18n.language as keyof Locales].toLowerCase()
 
   const recommendationLabels = data.map(
-    ({ label: recommendationLabel }) =>
+    ({ recommendationLabel }) =>
       recommendationLabel.charAt(0).toUpperCase() + recommendationLabel.slice(1)
   )
   const recommendations =

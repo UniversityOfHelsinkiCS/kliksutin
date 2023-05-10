@@ -31,7 +31,8 @@ export const getRecommendationsData = (
     result.forEach((aRecommendation) => {
       if (
         tool.dimensions.some(
-          (aTool: ToolType) => aTool.label === aRecommendation.label
+          (aTool: ToolType) =>
+            aTool.recommendationLabel === aRecommendation.label
         )
       ) {
         aRecommendation.dimensions.push(tool.optionId)

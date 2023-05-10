@@ -45,10 +45,12 @@ const Recommendations = ({ watch }: InputProps) => {
     dimensionSelections
   )
 
-  const extractSubtools = (toolName: string) => {
+  const extractSubtools = (toolLabel: string) => {
     const extractedSubtoolObjects: Subtool[] = dimensionSelections
       .map((aSelection: DimensionSelectionData) =>
-        aSelection.data.filter((aTool: ToolType) => aTool.label === toolName)
+        aSelection.data.filter(
+          (aTool: ToolType) => aTool.recommendationLabel === toolLabel
+        )
       )
       .map((aTool: ToolType[]) => aTool[0]?.subtools)
       .flat(1) // flatten the arrays into one array

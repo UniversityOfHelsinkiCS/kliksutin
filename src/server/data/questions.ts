@@ -33,12 +33,12 @@ const getQuestionData = (): Question[] => [
             en: '',
           },
           data: [
-            { label: 'zoom', subtools: [] },
-            { label: 'unitube', subtools: [] },
-            { label: 'presemo', subtools: [] },
-            { label: 'thinglink', subtools: [] },
+            { recommendationLabel: 'zoom', subtools: [] },
+            { recommendationLabel: 'unitube', subtools: [] },
+            { recommendationLabel: 'presemo', subtools: [] },
+            { recommendationLabel: 'thinglink', subtools: [] },
             {
-              label: 'moodle',
+              recommendationLabel: 'moodle',
               subtools: [
                 {
                   label: 'aineistot',
@@ -60,7 +60,7 @@ const getQuestionData = (): Question[] => [
                 },
               ],
             },
-            { label: 'screencast-o-matic', subtools: [] },
+            { recommendationLabel: 'screencast-o-matic', subtools: [] },
           ],
         },
         {
@@ -77,13 +77,13 @@ const getQuestionData = (): Question[] => [
             en: '',
           },
           data: [
-            { label: 'zoom', subtools: [] },
-            { label: 'unitube', subtools: [] },
-            { label: 'flinga', subtools: [] },
-            { label: 'thinglink', subtools: [] },
-            { label: 'eportfolio', subtools: [] },
+            { recommendationLabel: 'zoom', subtools: [] },
+            { recommendationLabel: 'unitube', subtools: [] },
+            { recommendationLabel: 'flinga', subtools: [] },
+            { recommendationLabel: 'thinglink', subtools: [] },
+            { recommendationLabel: 'eportfolio', subtools: [] },
             {
-              label: 'moodle',
+              recommendationLabel: 'moodle',
               subtools: [
                 {
                   label: 'tehtävä',
@@ -129,7 +129,7 @@ const getQuestionData = (): Question[] => [
                 },
               ],
             },
-            { label: 'screen-cast-o-matic', subtools: [] },
+            { recommendationLabel: 'screen-cast-o-matic', subtools: [] },
           ],
         },
         {
@@ -146,12 +146,12 @@ const getQuestionData = (): Question[] => [
             en: '',
           },
           data: [
-            { label: 'zoom', subtools: [] },
-            { label: 'flinga', subtools: [] },
-            { label: 'thinglink', subtools: [] },
-            { label: 'eportfolio', subtools: [] },
+            { recommendationLabel: 'zoom', subtools: [] },
+            { recommendationLabel: 'flinga', subtools: [] },
+            { recommendationLabel: 'thinglink', subtools: [] },
+            { recommendationLabel: 'eportfolio', subtools: [] },
             {
-              label: 'moodle',
+              recommendationLabel: 'moodle',
               subtools: [
                 {
                   label: 'keskustelualue',
@@ -198,10 +198,10 @@ const getQuestionData = (): Question[] => [
             en: '',
           },
           data: [
-            { label: 'zoom', subtools: [] },
-            { label: 'presemo', subtools: [] },
+            { recommendationLabel: 'zoom', subtools: [] },
+            { recommendationLabel: 'presemo', subtools: [] },
             {
-              label: 'moodle',
+              recommendationLabel: 'moodle',
               subtools: [
                 {
                   label: 'keskustelualue',
@@ -239,10 +239,10 @@ const getQuestionData = (): Question[] => [
             en: '',
           },
           data: [
-            { label: 'flinga', subtools: [] },
-            { label: 'eportfolio', subtools: [] },
+            { recommendationLabel: 'flinga', subtools: [] },
+            { recommendationLabel: 'eportfolio', subtools: [] },
             {
-              label: 'moodle',
+              recommendationLabel: 'moodle',
               subtools: [
                 {
                   label: 'keskustelualue',
@@ -289,9 +289,9 @@ const getQuestionData = (): Question[] => [
             en: '',
           },
           data: [
-            { label: 'thinglink', subtools: [] },
+            { recommendationLabel: 'thinglink', subtools: [] },
             {
-              label: 'moodle',
+              recommendationLabel: 'moodle',
               subtools: [
                 {
                   label: 'h5p',

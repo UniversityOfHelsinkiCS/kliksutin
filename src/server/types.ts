@@ -98,7 +98,7 @@ export interface Subtool {
 }
 
 export interface ToolType {
-  label: string
+  recommendationLabel: string
   subtools: Subtool[]
 }
 
