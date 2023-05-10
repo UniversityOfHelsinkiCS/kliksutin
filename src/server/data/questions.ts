@@ -1,4 +1,6 @@
-const getQuestionData = (): any => [
+import { Question } from '../types'
+
+const getQuestionData = (): Question[] => [
   {
     id: 1,
     surveyId: 1,

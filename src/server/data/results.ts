@@ -1,4 +1,6 @@
-const getResultData = (): any => [
+import { Result } from '../types'
+
+const getResultData = (): Result[] => [
   {
     id: 1,
     surveyId: 1,

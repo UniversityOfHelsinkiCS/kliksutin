@@ -1,4 +1,6 @@
-const getRecommendationsData = (): any => [
+import { Recommendation } from '../types'
+
+const getRecommendationsData = (): Recommendation[] => [
   {
     id: 1,
     surveyId: 1,
