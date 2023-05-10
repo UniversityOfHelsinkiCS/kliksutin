@@ -31,9 +31,9 @@ const CompletionResult = ({
 }) => {
   const { t, i18n } = useTranslation()
 
-  const { label, data } = dimension
+  const { title, data } = dimension
 
-  const dimensionName = label[i18n.language as keyof Locales].toLowerCase()
+  const dimensionName = title[i18n.language as keyof Locales].toLowerCase()
 
   const recommendationLabels = data.map(
     ({ label: recommendationLabel }) =>
@@ -83,7 +83,7 @@ const DimensionCompletion = ({
   const dimensions = getSelectedDimensions(survey, watch)
   const dimension = dimensions.find(({ id }) => id === dimensionId)
   const dimensionName =
-    dimension?.label[i18n.language as keyof Locales].toLowerCase()
+    dimension?.title[i18n.language as keyof Locales].toLowerCase()
 
   const save = sessionStorage.getItem(
     `curre-openAI-dimension-${dimensionName || ''}`
@@ -113,7 +113,7 @@ const DimensionCompletion = ({
                 key={d.id}
                 value={d.id}
               >
-                {d.label[language as keyof Locales]}
+                {d.title[language as keyof Locales]}
               </MenuItem>
             ))}
           </Select>

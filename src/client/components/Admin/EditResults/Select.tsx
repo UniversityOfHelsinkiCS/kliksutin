@@ -19,7 +19,7 @@ type HandleChange = (event: SelectChangeEvent) => void
 
 const allSelection: InfoType = {
   id: 'allDimensions',
-  label: {
+  title: {
     fi: 'Kaikki',
     sv: 'All',
     en: 'All',
@@ -29,7 +29,7 @@ const allSelection: InfoType = {
 const languages = [
   {
     id: 'en',
-    label: {
+    title: {
       fi: 'englanti',
       sv: 'engelska',
       en: 'English',
@@ -37,7 +37,7 @@ const languages = [
   },
   {
     id: 'sv',
-    label: {
+    title: {
       fi: 'ruotsi',
       sv: 'svenska',
       en: 'Swedish',
@@ -47,8 +47,8 @@ const languages = [
 
 const sortDimensions = (dimensions: InfoType[], language: keyof Locales) => {
   const sortedDimensions = dimensions.sort((a, b) => {
-    if (a.label[language] > b.label[language]) return 1
-    if (a.label[language] < b.label[language]) return -1
+    if (a.title[language] > b.title[language]) return 1
+    if (a.title[language] < b.title[language]) return -1
 
     return 0
   })
@@ -80,9 +80,9 @@ export const DimensionSelect = ({
           value={dimensionId}
           onChange={handleChange}
         >
-          {dimensionSelections.map(({ id, label }) => (
+          {dimensionSelections.map(({ id, title }) => (
             <MenuItem key={id} value={id}>
-              {label[language]}
+              {title[language]}
             </MenuItem>
           ))}
         </Select>
@@ -155,12 +155,12 @@ export const LanguageSelect = ({
       <FormControl fullWidth>
         <FormLabel>{t('admin:selectLanguage')}</FormLabel>
         <RadioGroup defaultValue="en" onChange={handleChange}>
-          {languages.map(({ id, label }) => (
+          {languages.map(({ id, title }) => (
             <FormControlLabel
               key={id}
               value={id}
               control={<Radio />}
-              label={label[language]}
+              label={title[language]}
               checked={selectedLanguage === id}
             />
           ))}

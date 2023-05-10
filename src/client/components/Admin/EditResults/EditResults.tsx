@@ -32,7 +32,7 @@ const ResultItem = ({
 
   const { isSelected, optionLabel, data } = result
   const resultData = data[dimensionId]
-  const optionData = options.find(({ id }) => id === optionLabel)
+  const optionData = options.find(({ label }) => label === optionLabel)
 
   const [selected, setSelected] = useState(isSelected[language])
   const [value, setValue] = useState(resultData[language])
@@ -60,7 +60,7 @@ const ResultItem = ({
   return (
     <Box m={1} width="50%">
       <Typography display="inline" mb={1} variant="h5">
-        {optionData.label[language]}
+        {optionData.title[language]}
       </Typography>
       <Typography display="inline" ml={1}>
         {language}

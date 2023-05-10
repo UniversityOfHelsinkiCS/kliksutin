@@ -52,13 +52,12 @@ export type Locales = {
 
 export interface InfoType {
   id: string
-  title?: Locales
-  label: Locales
+  title: Locales
 }
 
 export type SingleChoiceType = {
   id: string
-  label: Locales
+  label: string
   title: Locales
 }
 
@@ -103,8 +102,8 @@ export interface ToolType {
 /** Represents the dimension data that has the dimensions common name as id, label and texts are for visible rendering as Locales and data includes tools eg. "moodle" and their respective subtools */
 export interface DimensionSelectionData {
   id: string
+  label: string
   title: Locales
-  label: Locales
   text: Locales
   data: ToolType[]
 }
