@@ -87,9 +87,9 @@ describe('Form section', () => {
         (
           option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
         ) => {
-          cy.contains(option.label.fi).click({ force: true })
+          cy.contains(option.title.fi).click({ force: true })
           cy.log(
-            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.label.fi}]`
+            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
           )
         }
       )
@@ -116,9 +116,9 @@ describe('Form section', () => {
         (
           option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
         ) => {
-          cy.contains(option.label.fi).click({ force: true })
+          cy.contains(option.title.fi).click({ force: true })
           cy.log(
-            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.label.fi}]`
+            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
           )
         }
       )
@@ -141,9 +141,9 @@ describe('Form section', () => {
         (
           option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
         ) => {
-          cy.contains(option.label.fi).click({ force: true })
+          cy.contains(option.title.fi).click({ force: true })
           cy.log(
-            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.label.fi}]`
+            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
           )
         }
       )
