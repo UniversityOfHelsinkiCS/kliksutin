@@ -31,12 +31,12 @@ const getQuestionData = (): any => [
             en: '',
           },
           data: [
-            { name: 'zoom', subtools: [] },
-            { name: 'unitube', subtools: [] },
-            { name: 'presemo', subtools: [] },
-            { name: 'thinglink', subtools: [] },
+            { label: 'zoom', subtools: [] },
+            { label: 'unitube', subtools: [] },
+            { label: 'presemo', subtools: [] },
+            { label: 'thinglink', subtools: [] },
             {
-              name: 'moodle',
+              label: 'moodle',
               subtools: [
                 {
                   label: 'aineistot',
@@ -58,7 +58,7 @@ const getQuestionData = (): any => [
                 },
               ],
             },
-            { name: 'screencast-o-matic', subtools: [] },
+            { label: 'screencast-o-matic', subtools: [] },
           ],
         },
         {
@@ -75,13 +75,13 @@ const getQuestionData = (): any => [
             en: '',
           },
           data: [
-            { name: 'zoom', subtools: [] },
-            { name: 'unitube', subtools: [] },
-            { name: 'flinga', subtools: [] },
-            { name: 'thinglink', subtools: [] },
-            { name: 'eportfolio', subtools: [] },
+            { label: 'zoom', subtools: [] },
+            { label: 'unitube', subtools: [] },
+            { label: 'flinga', subtools: [] },
+            { label: 'thinglink', subtools: [] },
+            { label: 'eportfolio', subtools: [] },
             {
-              name: 'moodle',
+              label: 'moodle',
               subtools: [
                 {
                   label: 'tehtävä',
@@ -127,7 +127,7 @@ const getQuestionData = (): any => [
                 },
               ],
             },
-            { name: 'screen-cast-o-matic', subtools: [] },
+            { label: 'screen-cast-o-matic', subtools: [] },
           ],
         },
         {
@@ -144,12 +144,12 @@ const getQuestionData = (): any => [
             en: '',
           },
           data: [
-            { name: 'zoom', subtools: [] },
-            { name: 'flinga', subtools: [] },
-            { name: 'thinglink', subtools: [] },
-            { name: 'eportfolio', subtools: [] },
+            { label: 'zoom', subtools: [] },
+            { label: 'flinga', subtools: [] },
+            { label: 'thinglink', subtools: [] },
+            { label: 'eportfolio', subtools: [] },
             {
-              name: 'moodle',
+              label: 'moodle',
               subtools: [
                 {
                   label: 'keskustelualue',
@@ -196,10 +196,10 @@ const getQuestionData = (): any => [
             en: '',
           },
           data: [
-            { name: 'zoom', subtools: [] },
-            { name: 'presemo', subtools: [] },
+            { label: 'zoom', subtools: [] },
+            { label: 'presemo', subtools: [] },
             {
-              name: 'moodle',
+              label: 'moodle',
               subtools: [
                 {
                   label: 'keskustelualue',
@@ -237,10 +237,10 @@ const getQuestionData = (): any => [
             en: '',
           },
           data: [
-            { name: 'flinga', subtools: [] },
-            { name: 'eportfolio', subtools: [] },
+            { label: 'flinga', subtools: [] },
+            { label: 'eportfolio', subtools: [] },
             {
-              name: 'moodle',
+              label: 'moodle',
               subtools: [
                 {
                   label: 'keskustelualue',
@@ -287,9 +287,9 @@ const getQuestionData = (): any => [
             en: '',
           },
           data: [
-            { name: 'thinglink', subtools: [] },
+            { label: 'thinglink', subtools: [] },
             {
-              name: 'moodle',
+              label: 'moodle',
               subtools: [
                 {
                   label: 'h5p',

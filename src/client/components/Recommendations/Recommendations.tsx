@@ -48,7 +48,7 @@ const Recommendations = ({ watch }: InputProps) => {
   const extractSubtools = (toolName: string) => {
     const extractedSubtoolObjects: Subtool[] = dimensionSelections
       .map((aSelection: DimensionSelectionData) =>
-        aSelection.data.filter((aTool: ToolType) => aTool.name === toolName)
+        aSelection.data.filter((aTool: ToolType) => aTool.label === toolName)
       )
       .map((aTool: ToolType[]) => aTool[0].subtools)
       .flat(1) // flatten the arrays into one array
@@ -82,10 +82,12 @@ const Recommendations = ({ watch }: InputProps) => {
   const mergedRecommendationData = rawRecommendationData.map(
     (aRawTool): MergedRecommendationData => ({
       ...aRawTool,
-      ...recommendationsData.find((aTool) => aTool.name === aRawTool.label),
+      ...recommendationsData.find((aTool) => aTool.label === aRawTool.label),
       subtools: aRawTool.label === 'moodle' && extractSubtools(aRawTool.label),
     })
   )
+
+  console.log(mergedRecommendationData)
 
   return (
     <Box sx={recommendationStyles.recommendationContainer}>

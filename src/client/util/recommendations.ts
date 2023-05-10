@@ -22,7 +22,7 @@ export const getRecommendationsData = (
 
   const result: RecommendationData[] = rawRecommendations.map(
     (aRecommendation) => ({
-      name: aRecommendation.label,
+      label: aRecommendation.label,
       dimensions: [],
     })
   )
@@ -31,7 +31,7 @@ export const getRecommendationsData = (
     result.forEach((aRecommendation) => {
       if (
         tool.dimensions.some(
-          (aTool: ToolType) => aTool.name === aRecommendation.name
+          (aTool: ToolType) => aTool.label === aRecommendation.label
         )
       ) {
         aRecommendation.dimensions.push(tool.optionId)

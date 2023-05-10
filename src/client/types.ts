@@ -96,7 +96,7 @@ export interface Subtool {
 
 /** Represents a tool that has a common name eg. "moodle" and alse subtools that link to this type of tool. Subtools may be empty and they are rendered based on the visibility field */
 export interface ToolType {
-  name: string
+  label: string
   subtools: Subtool[]
 }
 
@@ -112,7 +112,6 @@ export interface DimensionSelectionData {
 /** Represents the recommendation data that has rawRecommendationdata and Recommendationdata by tool names eg. "moodle" into one bigger entity that has all the subtools, dimensions and texts needed */
 export interface MergedRecommendationData {
   subtools: string[]
-  name: string
   dimensions: string[]
   id: number
   label: string
@@ -122,7 +121,7 @@ export interface MergedRecommendationData {
 
 /** Represents the recommendation data that is processed and ready to be used */
 export interface RecommendationData {
-  name: string
+  label: string
   dimensions: string[]
 }
 
