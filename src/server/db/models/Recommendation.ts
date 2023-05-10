@@ -19,6 +19,8 @@ class Recommendation extends Model<
 
   declare label: String
 
+  declare type: String
+
   declare title: TranslatedText
 
   declare text: TranslatedText
@@ -38,6 +40,11 @@ Recommendation.init(
     label: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
     },
     title: {
       type: DataTypes.JSONB,

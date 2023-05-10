@@ -3,6 +3,7 @@ const getRecommendationsData = (): any => [
     id: 1,
     surveyId: 1,
     label: 'zoom',
+    type: 'teaching',
     title: {
       fi: '[Zoom](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4533)',
       sv: '[Zoom](https://teaching.helsinki.fi/instruktioner/artikel/undervisningsvideor-och-direktuppspelning-av-forelasningar#paragraph-4533)',
@@ -18,6 +19,7 @@ const getRecommendationsData = (): any => [
     id: 2,
     surveyId: 1,
     label: 'unitube',
+    type: 'teaching',
     title: {
       fi: '[Unitube](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-3937)',
       sv: '[Unitube](https://teaching.helsinki.fi/instruktioner/artikel/undervisningsvideor-och-direktuppspelning-av-forelasningar#paragraph-3937)',
@@ -33,6 +35,7 @@ const getRecommendationsData = (): any => [
     id: 3,
     surveyId: 1,
     label: 'flinga',
+    type: 'teaching',
     title: {
       fi: '[Flinga](https://teaching.helsinki.fi/ohjeet/artikkeli/flinga)',
       sv: '[Flinga](https://teaching.helsinki.fi/instruktioner/artikel/flinga)',
@@ -48,6 +51,7 @@ const getRecommendationsData = (): any => [
     id: 4,
     surveyId: 1,
     label: 'presemo',
+    type: 'teaching',
     title: {
       fi: '[Presemo](https://teaching.helsinki.fi/ohjeet/artikkeli/presemo)',
       sv: '[Presemo](https://teaching.helsinki.fi/instruktioner/artikel/presemo)',
@@ -63,6 +67,7 @@ const getRecommendationsData = (): any => [
     id: 5,
     surveyId: 1,
     label: 'thinglink',
+    type: 'teaching',
     title: {
       fi: '[Thinglink](https://teaching.helsinki.fi/ohjeet/artikkeli/muut-opetustyota-tukevat-valineet#paragraph-6844)',
       sv: '[Thinglink]( https://teaching.helsinki.fi/instruktioner/artikel/andra-verktyg-som-stoder-undervisningsarbetet#paragraph-6844)',
@@ -78,6 +83,7 @@ const getRecommendationsData = (): any => [
     id: 6,
     surveyId: 1,
     label: 'eportfolio',
+    type: 'teaching',
     title: {
       fi: '[Eportfolio](https://teaching.helsinki.fi/ohjeet/artikkeli/muut-opetustyota-tukevat-valineet#paragraph-6489)',
       sv: '[Eportfolio]( https://teaching.helsinki.fi/instruktioner/artikel/andra-verktyg-som-stoder-undervisningsarbetet#paragraph-6489)',
@@ -93,6 +99,7 @@ const getRecommendationsData = (): any => [
     id: 7,
     surveyId: 1,
     label: 'moodle',
+    type: 'teaching',
     title: {
       fi: '[Moodle](https://teaching.helsinki.fi/ohjeet/artikkeli/moodle-ohjeet-ja-tuki)',
       sv: '[Moodle](https://teaching.helsinki.fi/instruktioner/artikel/instruktioner-och-stod-till-moodle)',
@@ -108,6 +115,7 @@ const getRecommendationsData = (): any => [
     id: 8,
     surveyId: 1,
     label: 'screencast-o-matic',
+    type: 'teaching',
     title: {
       fi: '[Screencast-o-Matic](https://teaching.helsinki.fi/ohjeet/artikkeli/zoom-suoratoisto-ja-opetusvideot#paragraph-4568)',
       sv: '[Screencast-o-Matic](https://teaching.helsinki.fi/instruktioner/artikel/undervisningsvideor-och-direktuppspelning-av-forelasningar#paragraph-4568)',
