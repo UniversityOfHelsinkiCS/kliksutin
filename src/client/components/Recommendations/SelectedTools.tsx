@@ -36,11 +36,14 @@ const CurrentlySelectedTools = ({
             </Box>
             <Box sx={recommendationStyles.subtoolWrapper}>
               {recommendation.subtools &&
-                recommendation.subtools.map((subtool) => (
-                  <Box key={subtool} sx={recommendationStyles.subtoolItem}>
-                    <Markdown>{subtool}</Markdown>
-                  </Box>
-                ))}
+                recommendation.subtools.map((subtool) => {
+                  if (!subtool) return null
+                  return (
+                    <Box key={subtool} sx={recommendationStyles.subtoolItem}>
+                      <Markdown>{subtool}</Markdown>
+                    </Box>
+                  )
+                })}
             </Box>
             <Markdown>
               {recommendation.text[language as keyof Locales]}
