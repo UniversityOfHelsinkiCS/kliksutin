@@ -39,7 +39,7 @@ const FacultyInfo = ({ faculty }: { faculty: Faculty }) => {
     (info) => info.code === faculty?.code
   )
 
-  if (!facultyInfo.info[language as keyof Locales]) return null
+  if (!facultyInfo?.info[language as keyof Locales]) return null
 
   return (
     <Box sx={cardStyles.content}>
