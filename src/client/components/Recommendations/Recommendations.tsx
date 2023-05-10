@@ -87,8 +87,6 @@ const Recommendations = ({ watch }: InputProps) => {
     })
   )
 
-  console.log(mergedRecommendationData)
-
   return (
     <Box sx={recommendationStyles.recommendationContainer}>
       <Typography

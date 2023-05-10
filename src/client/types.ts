@@ -94,7 +94,7 @@ export interface Subtool {
   visibility: Visibility
 }
 
-/** Represents a tool that has a common name eg. "moodle" and alse subtools that link to this type of tool. Subtools may be empty and they are rendered based on the visibility field */
+/** Represents a tool that has a common label eg. "moodle" and alse subtools that link to this type of tool. Subtools may be empty and they are rendered based on the visibility field */
 export interface ToolType {
   label: string
   subtools: Subtool[]
