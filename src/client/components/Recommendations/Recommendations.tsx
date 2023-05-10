@@ -50,7 +50,7 @@ const Recommendations = ({ watch }: InputProps) => {
       .map((aSelection: DimensionSelectionData) =>
         aSelection.data.filter((aTool: ToolType) => aTool.label === toolName)
       )
-      .map((aTool: ToolType[]) => aTool[0].subtools)
+      .map((aTool: ToolType[]) => aTool[0]?.subtools)
       .flat(1) // flatten the arrays into one array
 
     // at the moment only the Suoritusmuoto selections will affect
@@ -59,7 +59,7 @@ const Recommendations = ({ watch }: InputProps) => {
 
     const extractedSubtools = extractedSubtoolObjects.map((aSubtool) => {
       // if subtool has the visibility options, check if it should be rendered or not
-      if (aSubtool.visibility.options) {
+      if (aSubtool?.visibility.options) {
         if (!courseCompletionMethodQuestion) return null
 
         const [...options] = aSubtool.visibility.options
@@ -73,7 +73,7 @@ const Recommendations = ({ watch }: InputProps) => {
           return null
       }
 
-      return aSubtool.title[language as keyof Locales]
+      return aSubtool?.title[language as keyof Locales]
     })
 
     return Array.from(new Set(extractedSubtools.sort()))
@@ -83,7 +83,7 @@ const Recommendations = ({ watch }: InputProps) => {
     (aRawTool): MergedRecommendationData => ({
       ...aRawTool,
       ...recommendationsData.find((aTool) => aTool.label === aRawTool.label),
-      subtools: aRawTool.label === 'moodle' && extractSubtools(aRawTool.label),
+      subtools: extractSubtools(aRawTool.label),
     })
   )
 
