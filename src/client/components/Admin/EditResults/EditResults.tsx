@@ -73,7 +73,7 @@ const ResultItem = ({
       />
       <TextField
         multiline
-        minRows={8}
+        rows={20}
         fullWidth
         value={value}
         onChange={(event) => setValue(event.target.value)}
