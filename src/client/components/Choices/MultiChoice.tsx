@@ -29,7 +29,7 @@ const MultiChoice = ({ control, question, children, language }: InputProps) => {
                       />
                     }
                     data-cy={`choice-select-${choice.id}`}
-                    label={choice.label[language as keyof Locales]}
+                    label={choice.title[language as keyof Locales]}
                   />
                   {choice.data ? (
                     <ShowMore text={choice.data[language as keyof Locales]} />

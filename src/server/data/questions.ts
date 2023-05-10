@@ -19,7 +19,8 @@ const getQuestionData = (): any => [
       options: [
         {
           id: 'acquisition',
-          label: {
+          label: 'acquisition',
+          title: {
             fi: 'Tiedonhankinta',
             sv: 'Informationssökning',
             en: 'Acquisition',
@@ -62,7 +63,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'production',
-          label: {
+          label: 'production',
+          title: {
             fi: 'Tuottaminen',
             sv: 'Producera',
             en: 'Production',
@@ -130,7 +132,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'collaboration',
-          label: {
+          label: 'collaboration',
+          title: {
             fi: 'Yhteistyö',
             sv: 'Samarbete',
             en: 'Collaboration',
@@ -181,7 +184,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'discussion',
-          label: {
+          label: 'discussion',
+          title: {
             fi: 'Keskustelu',
             sv: 'Diskussion',
             en: 'Discussion',
@@ -221,7 +225,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'investication',
-          label: {
+          label: 'investication',
+          title: {
             fi: 'Tutkiminen',
             sv: 'Att forska',
             en: 'Investigation',
@@ -270,7 +275,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'practice',
-          label: {
+          label: 'practice',
+          title: {
             fi: 'Harjoittelu',
             sv: 'Harjoittelu',
             en: 'Practice',
@@ -351,7 +357,8 @@ const getQuestionData = (): any => [
       options: [
         {
           id: 'courseSizeSmall',
-          label: {
+          label: 'courseSizeSmall',
+          title: {
             fi: '< 50',
             sv: '< 50',
             en: '< 50',
@@ -359,7 +366,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseSizeBig',
-          label: {
+          label: 'courseSizeBig',
+          title: {
             fi: '>= 50',
             sv: '>= 50',
             en: '>= 50',
@@ -367,7 +375,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseSizeUnlimited',
-          label: {
+          label: 'courseSizeUnlimited',
+          title: {
             fi: 'rajoittamaton',
             sv: 'obegränsad',
             en: 'rajoittamaton',
@@ -397,7 +406,8 @@ const getQuestionData = (): any => [
       options: [
         {
           id: 'courseAttendancePresent',
-          label: {
+          label: 'courseAttendancePresent',
+          title: {
             fi: 'Läsnä',
             sv: 'Närvarande',
             en: 'Läsnä',
@@ -405,7 +415,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseAttendanceRemote',
-          label: {
+          label: 'courseAttendanceRemote',
+          title: {
             fi: 'Etä',
             sv: 'Distans',
             en: 'Etä',
@@ -435,7 +446,8 @@ const getQuestionData = (): any => [
       options: [
         {
           id: 'courseCompletionMethodExam',
-          label: {
+          label: 'courseCompletionMethodExam',
+          title: {
             fi: 'Tentti',
             sv: 'Tentamen',
             en: 'Tentti',
@@ -448,7 +460,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseCompletionMethodSmallGroup',
-          label: {
+          label: 'courseCompletionMethodSmallGroup',
+          title: {
             fi: 'Pienryhmätyöskentely',
             sv: 'Smågruppsarbete',
             en: 'Pienryhmätyöskentely',
@@ -461,7 +474,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseCompletionMethodDiary',
-          label: {
+          label: 'courseCompletionMethodDiary',
+          title: {
             fi: 'Välitehtävät',
             sv: 'Deluppgifter',
             en: 'Välitehtävät',
@@ -474,7 +488,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseCompletionMethodLaboratory',
-          label: {
+          label: 'courseCompletionMethodLaboratory',
+          title: {
             fi: 'Laboratoriotyöt ja simulaatioharjoitukset',
             sv: 'Arbete i laboratorium och simuleringsövningar.',
             en: 'Laboratoriotyöt ja simulaatioharjoitukset',
@@ -487,7 +502,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseCompletionMethodAssignment',
-          label: {
+          label: 'courseCompletionMethodAssignment',
+          title: {
             fi: 'Kirjallinen tehtävä',
             sv: 'Skriftlig uppgift',
             en: 'Kirjallinen tehtävä',
@@ -522,7 +538,8 @@ const getQuestionData = (): any => [
       options: [
         {
           id: 'courseIsRecorded',
-          label: {
+          label: 'courseIsRecorded',
+          title: {
             fi: 'Kyllä',
             sv: 'Ja',
             en: 'Kyllä',
@@ -530,7 +547,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseIsNotRecorded',
-          label: {
+          label: 'courseIsNotRecorded',
+          title: {
             fi: 'Ei',
             sv: 'Nej',
             en: 'Ei',
@@ -583,7 +601,8 @@ const getQuestionData = (): any => [
       options: [
         {
           id: 'courseIsMooc',
-          label: {
+          label: 'courseIsMooc',
+          title: {
             fi: 'Kyllä',
             sv: 'Ja',
             en: 'Kyllä',
@@ -591,7 +610,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseIsNotMooc',
-          label: {
+          label: 'courseIsNotMooc',
+          title: {
             fi: 'Ei',
             sv: 'Nej',
             en: 'Ei',
@@ -669,7 +689,8 @@ const getQuestionData = (): any => [
       options: [
         {
           id: 'courseIsOpenUniversity',
-          label: {
+          label: 'courseIsOpenUniversity',
+          title: {
             fi: 'Kurssi on kaikille avoin',
             sv: 'Kursen är tillgänglig för alla.',
             en: 'Kyllä',
@@ -677,7 +698,8 @@ const getQuestionData = (): any => [
         },
         {
           id: 'courseIsNotOpenUniversity',
-          label: {
+          label: 'courseIsNotOpenUniversity',
+          title: {
             fi: 'Perustutkinto-opiskelijoille',
             sv: 'För studerande på grundnivå',
             en: 'Ei',

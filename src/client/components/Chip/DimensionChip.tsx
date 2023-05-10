@@ -19,17 +19,17 @@ const DimensionChip: React.FC<{
   const { language } = i18n
 
   return compact ? (
-    <Tooltip title={choice.label[language as keyof Locales]} arrow>
+    <Tooltip title={choice.title[language as keyof Locales]} arrow>
       <Chip
         data-cy={`dimension-chip-compact-${choice.id}`}
-        label={choice.label[language as keyof Locales].substring(0, 3)}
+        label={choice.title[language as keyof Locales].substring(0, 3)}
         size="small"
         sx={style}
       />
     </Tooltip>
   ) : (
     <Chip
-      label={choice.label[language as keyof Locales]}
+      label={choice.title[language as keyof Locales]}
       size="small"
       sx={style}
     />

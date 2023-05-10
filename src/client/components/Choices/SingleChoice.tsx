@@ -24,7 +24,7 @@ const SingleChoice = ({
                   data-cy={`choice-select-${singleOption.id}`}
                   key={singleOption.id as string}
                   value={singleOption.id}
-                  label={singleOption.label[language as keyof Locales]}
+                  label={singleOption.title[language as keyof Locales]}
                   control={<Radio />}
                 />
               )
