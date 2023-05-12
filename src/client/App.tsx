@@ -3,7 +3,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import { Box } from '@mui/material'
 import { SnackbarProvider } from 'notistack'
 
-import useTheme from './theme'
+import { useTheme } from './theme'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar/NavBar'
 import Router from './Router'

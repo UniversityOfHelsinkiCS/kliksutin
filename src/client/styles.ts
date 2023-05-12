@@ -1,24 +1,40 @@
 import { Theme } from '@mui/material/styles'
 
+import { BreakPointTheme } from './theme'
+
 const cardStyles = {
   card: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     transition: '0.3s',
     textAlign: 'left',
   },
   helloBox: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     maxWidth: 1560,
   },
   expendableBox: {
     my: 2,
     mx: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     display: 'flex',
     flexWrap: 'wrap',
     gap: 0.3,
   },
   outerBox: {
-    m: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      m: 1,
+    },
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      mt: 2,
+    },
     maxWidth: 1560,
     border: 1,
     borderColor: 'grey.300',
@@ -32,13 +48,20 @@ const cardStyles = {
   },
   questionsContainer: {
     my: 8,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      my: 4,
+    },
     borderLeft: 1,
     borderColor: 'grey.300',
   },
   content: {
     mt: 2,
     mb: 2,
-    pl: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 2,
+      mb: 2,
+      pl: 2,
+    },
     textAlign: 'left',
   },
   question: {
@@ -51,18 +74,29 @@ const cardStyles = {
   },
   subHeading: {
     fontWeight: '200',
-    mt: 8,
-    mx: 4,
-    mb: 2,
-    pl: 2,
+    mt: 2,
+    mx: 1,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 8,
+      mx: 4,
+      mb: 2,
+      pl: 2,
+      textAlign: 'center',
+    },
+
     textAlign: 'left',
   },
   nestedSubSection: {
     fontWeight: '200',
-    mt: 8,
-    mx: 4,
-    mb: 2,
+    mt: 4,
+    mx: 1,
     textAlign: 'left',
+
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 8,
+      mx: 4,
+      mb: 2,
+    },
   },
   inputField: {
     width: '100%',
@@ -94,17 +128,22 @@ const formStyles = {
   },
   stackBox: { textAlign: 'center' },
   stackBoxWrapper: {
-    my: 2,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    my: 2,
   },
   stack: {
-    my: 2,
     textAlign: 'center',
+    mt: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      my: 2,
+    },
   },
   stackButton: {
-    mx: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mx: 2,
+    },
   },
 }
 
@@ -157,11 +196,19 @@ const navStyles = {
     color: (theme: Theme) => theme.palette.primary.main,
     fontWeight: (theme: Theme) => theme.typography.fontWeightMedium,
   },
+  itemText: {
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
 }
 
 const recommendationStyles = {
   recommendationContainer: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     px: 2,
     top: '4rem',
     textAlign: 'left',
@@ -169,6 +216,9 @@ const recommendationStyles = {
   },
   recommendationBox: {
     mt: '1.8rem',
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      mt: '1rem',
+    },
   },
   recommendationChipWrapper: {
     display: 'flex',
@@ -217,6 +267,21 @@ const resultStyles = {
   },
   resultWrapper: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
+  },
+  infoWrapper: {
+    mt: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      m: 4,
+    },
+  },
+  contactStackWrapper: {
+    mt: 4,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 12,
+    },
   },
   heading: {
     fontWeight: '200',
@@ -226,8 +291,11 @@ const resultStyles = {
 
 const footerStyles = {
   supportBox: {
-    py: '2rem',
-    px: '3rem',
+    p: '1rem',
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      py: '2rem',
+      px: '3rem',
+    },
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',

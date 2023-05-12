@@ -9,7 +9,7 @@ const ProceedToContact = () => {
   const { t } = useTranslation()
   const [showEndMessage, setShowEndMessage] = useState(false)
 
-  const { cardStyles, formStyles, common } = styles
+  const { cardStyles, formStyles, resultStyles, common } = styles
 
   const endSession = () => {
     setShowEndMessage(true)
@@ -18,7 +18,7 @@ const ProceedToContact = () => {
 
   return (
     <Box>
-      <Container sx={{ mt: 12 }}>
+      <Container sx={resultStyles.contactStackWrapper}>
         <Typography variant="h6" sx={cardStyles.heading} component="div">
           {t('results:proceedTitle')}
         </Typography>
