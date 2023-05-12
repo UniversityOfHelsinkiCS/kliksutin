@@ -32,6 +32,9 @@ const cardStyles = {
     [BreakPointTheme.breakpoints.up('sm')]: {
       m: 1,
     },
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      mt: 2,
+    },
     maxWidth: 1560,
     border: 1,
     borderColor: 'grey.300',
@@ -120,17 +123,15 @@ const formStyles = {
   },
   stackBox: { textAlign: 'center' },
   stackBoxWrapper: {
-    [BreakPointTheme.breakpoints.up('sm')]: {
-      my: 2,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    my: 2,
   },
   stack: {
+    textAlign: 'center',
     [BreakPointTheme.breakpoints.up('sm')]: {
       my: 2,
-      textAlign: 'center',
     },
   },
   stackButton: {
@@ -262,6 +263,12 @@ const resultStyles = {
     m: 2,
     [BreakPointTheme.breakpoints.down('sm')]: {
       m: 1,
+    },
+  },
+  infoWrapper: {
+    mt: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      m: 4,
     },
   },
   heading: {
