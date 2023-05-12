@@ -176,7 +176,7 @@ const getQuestionData = (): Question[] => [
                   title: {
                     fi: '[Työpaja](https://docs.moodle.org/4x/fi/Ty%C3%B6paja)',
                     sv: '[Workshop](https://docs.moodle.org/4x/fi/Ty%C3%B6paja)',
-                    en: '[Workshop](https://docs.moodle.org/4x/fi/Ty%C3%B6paja),
+                    en: '[Workshop](https://docs.moodle.org/4x/fi/Ty%C3%B6paja)',
                   },
                   visibility: {},
                 },
@@ -457,7 +457,7 @@ const getQuestionData = (): Question[] => [
           data: {
             fi: '[Tentin](https://teaching.helsinki.fi/ohjeet/artikkeli/tentit-ja-niiden-jarjestaminen) voi järjestää joko tiettynä päivänä tai pidemmän tenttiperiodin aikana, yliopiston sähköisen tenttimisen tiloissa, etä- tai salitenttinä. Tentti on yksi tapa arvioida opiskelijan osaamista ja miten kurssin oppimistavoitteet on saavutettu. Välitentit ja -testit ovat myös hyvä keino tukea opiskelijan oppimista kurssin aikana.',
             sv: '[Tentamen]( https://teaching.helsinki.fi/instruktioner/artikel/tentamina-och-ordnande-av-dem) kan anordnas antingen en viss dag eller under en längre tentamensperiod, i universitets elektroniska tentamensutrymmen, som distans – eller saltentamen. Tentamen är ett sätt att bedöma studentens kunnande och hur kursens inlärningsmål har uppnåtts. Deltentamen och förhör är också bra sätt att stödja studerandes inlärning under kursens gång.',
-            en: ''[Examination](https://teaching.helsinki.fi/instructions/article/exams-and-related-arrangements) can be organized either on a specific day or during a longer examination period, in the university's electronic exam facilities, as a remote - or classroom exam. Examination is one way to assess the student's skills and how the learning goals of the course have been achieved. Mid-term exams and tests are also a good way to support the student's learning during the course.',
+            en: '[Examination](https://teaching.helsinki.fi/instructions/article/exams-and-related-arrangements) can be organized either on a specific day or during a longer examination period, in the university&lsquo;s electronic exam facilities, as a remote - or classroom exam. Examination is one way to assess the student&lsquo;s skills and how the learning goals of the course have been achieved. Mid-term exams and tests are also a good way to support the student&lsquo;s learning during the course.',
           },
         },
         {
@@ -494,7 +494,7 @@ const getQuestionData = (): Question[] => [
           title: {
             fi: 'Laboratoriotyöt ja simulaatioharjoitukset',
             sv: 'Arbete i laboratorium och simuleringsövningar.',
-            en: 'Laboratory work and simulation exercises'',
+            en: 'Laboratory work and simulation exercises',
           },
           data: {
             fi: 'Laboratoriotyöt ja simulaatioharjoitukset tukevat autenttista oppimista, opettavat käytännön taitoja ja edistävät konkreettisia asiantuntija- ja ongelmaratkaisutaitojen kehittymistä.',
@@ -508,7 +508,7 @@ const getQuestionData = (): Question[] => [
           title: {
             fi: 'Kirjallinen tehtävä',
             sv: 'Skriftlig uppgift',
-            en: 'Written assignment'',
+            en: 'Written assignment',
           },
           data: {
             fi: 'Kaikki oppimisen eri vaiheessa (ennen, aikana tai lopuksi) laadittavat kirjalliset tehtävät, kuten esseet, oppimispäiväkirjat, ja erilaiset raportit edistävät tiedon soveltamista, analysointia ja uuden tiedon luomista ja tukevat täten oppimistavoitteiden saavuttamista.',
@@ -695,7 +695,7 @@ const getQuestionData = (): Question[] => [
           title: {
             fi: 'Kurssi on kaikille avoin',
             sv: 'Kursen är tillgänglig för alla.',
-            en: 'This course is open to everyone'',
+            en: 'This course is open to everyone',
           },
         },
         {
