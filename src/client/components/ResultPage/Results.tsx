@@ -176,7 +176,7 @@ const Results = ({
             <Stack sx={formStyles.stack} direction="row">
               <Button
                 data-cy="back-to-selections"
-                sx={{ m: 4 }}
+                sx={{ m: 1 }}
                 onClick={onNavigateBack}
               >
                 {'<'} {t('results:backToMessage')}

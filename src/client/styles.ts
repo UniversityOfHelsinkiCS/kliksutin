@@ -71,10 +71,16 @@ const cardStyles = {
   },
   subHeading: {
     fontWeight: '200',
-    mt: 8,
-    mx: 4,
-    mb: 2,
-    pl: 2,
+    mt: 2,
+    mx: 1,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 8,
+      mx: 4,
+      mb: 2,
+      pl: 2,
+      textAlign: 'center',
+    },
+
     textAlign: 'left',
   },
   nestedSubSection: {
@@ -114,17 +120,23 @@ const formStyles = {
   },
   stackBox: { textAlign: 'center' },
   stackBoxWrapper: {
-    my: 2,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      my: 2,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   },
   stack: {
-    my: 2,
-    textAlign: 'center',
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      my: 2,
+      textAlign: 'center',
+    },
   },
   stackButton: {
-    mx: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mx: 2,
+    },
   },
 }
 
@@ -248,6 +260,9 @@ const resultStyles = {
   },
   resultWrapper: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
   },
   heading: {
     fontWeight: '200',
