@@ -58,7 +58,7 @@ const Footer = () => {
           </Link>
         </Box>
 
-        <Box style={{ overflow: 'hidden' }}>
+        <Box sx={footerStyles.surveyText}>
           <Markdown>
             [Kerrothan mielipiteesi Curresta lyhyen palautelomakkeen
             muodossa.](https://forms.office.com/e/TWvNdLb48z)

@@ -306,6 +306,11 @@ const footerStyles = {
     alignItems: 'center',
     rowGap: '1rem',
   },
+  surveyText: {
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
 }
 
 const common = {
