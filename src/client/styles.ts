@@ -88,10 +88,15 @@ const cardStyles = {
   },
   nestedSubSection: {
     fontWeight: '200',
-    mt: 8,
-    mx: 4,
-    mb: 2,
+    mt: 4,
+    mx: 1,
     textAlign: 'left',
+
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 8,
+      mx: 4,
+      mb: 2,
+    },
   },
   inputField: {
     width: '100%',
@@ -130,6 +135,7 @@ const formStyles = {
   },
   stack: {
     textAlign: 'center',
+    mt: 2,
     [BreakPointTheme.breakpoints.up('sm')]: {
       my: 2,
     },
