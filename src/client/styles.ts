@@ -1,24 +1,37 @@
 import { Theme } from '@mui/material/styles'
 
+import { BreakPointTheme } from './theme'
+
 const cardStyles = {
   card: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     transition: '0.3s',
     textAlign: 'left',
   },
   helloBox: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     maxWidth: 1560,
   },
   expendableBox: {
     my: 2,
     mx: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     display: 'flex',
     flexWrap: 'wrap',
     gap: 0.3,
   },
   outerBox: {
-    m: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      m: 1,
+    },
     maxWidth: 1560,
     border: 1,
     borderColor: 'grey.300',
@@ -32,13 +45,20 @@ const cardStyles = {
   },
   questionsContainer: {
     my: 8,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      my: 4,
+    },
     borderLeft: 1,
     borderColor: 'grey.300',
   },
   content: {
     mt: 2,
     mb: 2,
-    pl: 2,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 2,
+      mb: 2,
+      pl: 2,
+    },
     textAlign: 'left',
   },
   question: {
