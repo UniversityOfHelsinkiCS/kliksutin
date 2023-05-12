@@ -14,7 +14,7 @@ const mockHeaders = {
   sn: 'Kayttaja',
   mail: 'grp-toska@helsinki.fi',
   preferredlanguage: 'fi',
-  hypersonsisuid: 'hy-hlo-1500531',
+  hypersonsisuid: 'hy-hlo-1441871',
   hygroupcn: 'grp-toska;hy-mltdk-employees',
 }
 
