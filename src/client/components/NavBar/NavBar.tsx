@@ -72,7 +72,10 @@ const NavBar = () => {
             {location.pathname === '/public' && (
               <ExternalLink href={FULL_URL} style={{ textDecoration: 'none' }}>
                 <Button>
-                  <LoginOutlined sx={navStyles.icon} /> {t('login')}
+                  <LoginOutlined sx={navStyles.icon} />
+                  <Typography variant="body2" sx={navStyles.itemText}>
+                    {t('login')}
+                  </Typography>
                 </Button>
               </ExternalLink>
             )}

@@ -177,6 +177,11 @@ const navStyles = {
     color: (theme: Theme) => theme.palette.primary.main,
     fontWeight: (theme: Theme) => theme.typography.fontWeightMedium,
   },
+  itemText: {
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
 }
 
 const recommendationStyles = {
