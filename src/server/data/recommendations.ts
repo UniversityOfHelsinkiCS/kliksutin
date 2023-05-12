@@ -110,7 +110,7 @@ const getRecommendationsData = (): Recommendation[] => [
     text: {
       fi: 'Moodle on Helsingin yliopiston monipuolisin verkko-oppimisympäristö.',
       sv: 'Moodle är Helsingfors universitets mångsidigaste inlärningsplattform på nätet.',
-      en: 'Moodle is the University of Helsinki's most versatile online learning environment.',
+      en: 'Moodle is the University of Helsinki&lsquo;s most versatile online learning environment.',
     },
   },
   {
