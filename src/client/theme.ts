@@ -81,7 +81,7 @@ const themeOptions: ThemeOptions = {
   },
 }
 
-const useTheme = () => {
+export const useTheme = () => {
   const theme = useMemo(
     () => responsiveFontSizes(createTheme(themeOptions)),
     []
@@ -90,4 +90,24 @@ const useTheme = () => {
   return theme
 }
 
-export default useTheme
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: true
+    sm: true
+    md: true
+    lg: true
+    xl: true
+  }
+}
+
+export const BreakPointTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 640,
+      sm: 768,
+      md: 1024,
+      lg: 1280,
+      xl: 1536,
+    },
+  },
+})
