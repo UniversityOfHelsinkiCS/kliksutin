@@ -9,18 +9,18 @@
   },
   "footer": {
     "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>",
-    "licenseText": "Tämä teos on lisensoitu",
-    "licenseLinkText": "CC BY-NC-SA 4.0 -lisenssillä"
+    "licenseText": "This work is licensed",
+    "licenseLinkText": "with CC BY-NC-SA 4.0 -license"
   },
   "facultySelect": {
     "welcomeMessage": "",
     "introMessage": "Start by selecting your faculty",
     "inputLabel": "Your Faculty",
-    "infoMessage": "Tietoa tiedekuntasi ohjeistuksesta"
+    "infoMessage": "Information about your faculty's guidelines"
   },
   "courseSelect": {
-    "introMessage": "Mitä kurssia olet järjestämässä?",
-    "inputLabel": "Kurssi"
+    "introMessage": "What course are you organizing?",
+    "inputLabel": "Course"
   },
   "recommendations": {
     "title": "Tools that you could use",
@@ -29,16 +29,16 @@
   "results": {
     "title": "Summary of your choices",
     "resultsMessage": "We listed the summary of your choices for you below",
-    "proceedTitle": "Löysitkö etsimäsi?",
+    "proceedTitle": "Did you find what you were looking for?”,
     "proceedToExit": "Yes",
     "proceedToConsultation": "No",
     "proceedEmailInfoText": "If you would like to have the summary send to your email, enter your email below",
-    "summaryEmailSubject": "Curre yhteenvetosi",
+    "summaryEmailSubject": "Your Curre summary",
     "emailIsRequired": "Email is required",
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send",
-    "showSummaryNotes": "Haluaisin lisätä muistiinpanoja",
-    "summaryMailPlaceholder": "Lisää muistiinpanoja tähän tarvittaessa",
+    "showSummaryNotes": "Do you want to add notes?",
+    "summaryMailPlaceholder": "Add notes here, if needed",
     "sendSuccess": "Summary email sent successfully",
     "endMessage": "Thank you for using Curre!",
     "backToMessage": "Back to the questions"
@@ -60,24 +60,24 @@
     "pateErrorMessage": "No response from the server"
   },
   "openai": {
-    "title": "Tekoäly opetuksessa",
-    "infoBoxText": "[Tekoäly opetuksessa](https://teaching.helsinki.fi/ohjeet/artikkeli/tekoaly-opetuksessa) on tällä hetkellä ajankohtainen aihe. Curre antaa sinulle mahdollisuuden kokeilla, millaisia ehdotuksia [OpenAI:n](https://openai.com/) ChatGPT-kielimalli voisi tuottaa opetuksesi tueksi. On tärkeää huomioida, että nämä ehdotukset saattavat sisältää asiavirheitä ja ne ovat tuotu osaksi Currea, jotta jokaisella Helsingin yliopiston opettajalla olisi mahdollisuus kokeilun kautta tutustua tähän ajankohtaiseen aiheeseen.\n\nTarjolla on kaksi erilaista vaihtoehtoa kysyä tekoälyltä opetukseesi liittyviä kysymyksiä. Avoimen tekstikentän kautta voit antaa tekoälylle kurssin otsikon ja katsoa, millaisia luento-otsikoita tekoäly kurssillesi ehdottaa. Toisessa vaihtoehdossa voit valita jonkin Curressa valitsemistasi oppimismuodoista, jonka jälkeen tekoäly ehdottaa erilaisia tapoja hyödyntää Curren suosittelemia ohjelmistoja kyseisen oppimismuodon tukemiseksi kurssin aikana.\n\nHelsingin yliopiston opintoasiainneuvosto on julkaissut [Tekoälyn käytön linjaukset Helsingin yliopistossa](https://teaching.helsinki.fi/system/files/inline-files/tekoalylinjaukset_Helsingin_yliopiston_opetuksessa_0.pdf) 16.2.2023. [Global Campus](https://blogs.helsinki.fi/globalcampus/) tutkii ja kehittää erilaisia ChatGPT:n käyttötapoja. Mikäli aihe kiinnostaa, voit olla myös suoraan yhteydessä [Global Campus -projektiin](https://blogs.helsinki.fi/globalcampus/contact-us/).",
+    "title": "Artificial intelligence in teaching",
+    "infoBoxText": "[Artificial intelligence in teaching]( https://teaching.helsinki.fi/instructions/article/artificial-intelligence-teaching) is currently a relevant topic. Curre provides you with the opportunity to try out [OpenAIs](https://openai.com/) ChatGPT language model and explore ways it could support your teaching. It is important to note that these suggestions may contain factual errors and that they are part of Curre, namely so that every teacher at the University of Helsinki would have the opportunity to familiarize themselves with the current topic through experimentation.\n\nThere are two methods available to ask the artificial intelligence questions related to your teaching. Either through the open text field, providing the course title and see what kind of lecture titles the artificial intelligence suggests for your course. Or by choosing one of the learning modes, you have selected in Curre, the artificial intelligence will then suggest different ways to use the software in order to support the given learning mode throughout the course. \n\nThe Study Affairs Council at the University of Helsinki has published [Guidelines for the use of artificial intelligence at the University of Helsinki] https://teaching.helsinki.fi/system/files/inline-files/tekoalylinjaukset_Helsingin_yliopiston_opetuksessa_0.pdf) on 16 February 2023. [Global Campus](https://blogs.helsinki.fi/globalcampus/) researches and develops different ways of using ChatGPT. If the topic interests you, you can also directly contact (the Global Campus project)[https://blogs.helsinki.fi/globalcampus/contact-us/].",
     "giveCourseInfoText": "If you would like lecture ideas for your course, enter the course name below",
-    "courseInfoText": "Jos haluat luentoideoita kurssillesi, paina lähetä-nappia.",
+    "courseInfoText": "If you want lecture ideas for your course, press the send-button.",
     "courseCompletionPrompt": "Enter 5 lecture topics for a course with the title \"{{courseName}}\".",
     "selectDimensionInfoText": "For ideas on how to use the tools, select the dimension to support",
     "dimensionSelect": "Dimension",
     "dimensionCompletionPrompt": "How can I support the topic \"{{dimensionName}}\" in a university course? Give 3 examples using the software {{recommendations}}?",
-    "send": "Kysy tekoälyltä",
+    "send": "Ask the artificial intelligence",
     "or": " or ",
-    "zero": "Nollaa",
+    "zero": "Zero",
     "apiErrorMessage": "No response from the server",
     "spinnerMessage": "AI is thinking..."
   },
   "admin": {
-    "selectDimension": "Valitse oppimismuoto",
-    "selectQuestion": "Valitse kysymys",
-    "selectLanguage": "Valitse kieli",
+    "selectDimension": "Select form of learning",
+    "selectQuestion": "Select question",
+    "selectLanguage": "Select language",
     "save": "Save",
     "saveSuccess": "Saved successfully"
   }
