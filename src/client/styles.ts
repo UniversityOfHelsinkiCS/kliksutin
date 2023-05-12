@@ -277,6 +277,12 @@ const resultStyles = {
       m: 4,
     },
   },
+  contactStackWrapper: {
+    mt: 4,
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      mt: 12,
+    },
+  },
   heading: {
     fontWeight: '200',
     textAlign: 'left',
