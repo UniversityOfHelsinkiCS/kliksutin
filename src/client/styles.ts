@@ -182,6 +182,9 @@ const navStyles = {
 const recommendationStyles = {
   recommendationContainer: {
     m: 2,
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      m: 1,
+    },
     px: 2,
     top: '4rem',
     textAlign: 'left',
@@ -189,6 +192,9 @@ const recommendationStyles = {
   },
   recommendationBox: {
     mt: '1.8rem',
+    [BreakPointTheme.breakpoints.down('sm')]: {
+      mt: '1rem',
+    },
   },
   recommendationChipWrapper: {
     display: 'flex',
@@ -246,8 +252,11 @@ const resultStyles = {
 
 const footerStyles = {
   supportBox: {
-    py: '2rem',
-    px: '3rem',
+    p: '1rem',
+    [BreakPointTheme.breakpoints.up('sm')]: {
+      py: '2rem',
+      px: '3rem',
+    },
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
