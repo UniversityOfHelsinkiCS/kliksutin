@@ -61,7 +61,7 @@ const ResultItem = ({
     <Box sx={{ m: 2, width: '50%' }}>
       <Box sx={{ display: 'flex', mb: 2 }}>
         <Typography variant="h5">
-          Valinta: {optionData.title[language]}
+          {t('admin:option')} {optionData.title[language]}
         </Typography>
         <Typography display="inline" ml={1}>
           {language}

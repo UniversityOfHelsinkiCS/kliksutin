@@ -36,7 +36,9 @@ const OptionItem = ({
   return (
     <Box sx={{ m: 2, width: '50%' }}>
       <Box sx={{ display: 'flex', mb: 2 }}>
-        <Typography variant="h5">Valinta: {option.title[language]}</Typography>
+        <Typography variant="h5">
+          {t('admin:option')} {option.title[language]}
+        </Typography>
         <Typography ml={1}>{language}</Typography>
       </Box>
       <TextField
@@ -88,7 +90,7 @@ const QuestionItem = ({
     <Box sx={{ m: 2, width: '50%' }}>
       <Box sx={{ display: 'flex', mb: 2 }}>
         <Typography variant="h5">
-          Kysymys: {question.title[language]}
+          {t('admin:question')} {question.title[language]}
         </Typography>
         <Typography ml={1}>{language}</Typography>
       </Box>

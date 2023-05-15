@@ -81,6 +81,8 @@
     "saveSuccess": "Tallennettu onnistuneesti",
     "resultViewInfo": "Tuloksien muokkaus",
     "questionViewInfo": "Kysymyksen muokkaus",
-    "questionOptionViewInfo": "Valintojen muokkaus"
+    "questionOptionViewInfo": "Valintojen muokkaus",
+    "question": "Kysymys:",
+    "option": "Valinta:"
   }
 }

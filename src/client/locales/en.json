@@ -82,6 +82,8 @@
     "saveSuccess": "Saved successfully",
     "resultViewInfo": "Edit Results",
     "questionViewInfo": "Edit Question",
-    "questionOptionViewInfo": "Edit Question Options"
+    "questionOptionViewInfo": "Edit Question Options",
+    "question": "Question:",
+    "option": "Choice:"
   }
 }

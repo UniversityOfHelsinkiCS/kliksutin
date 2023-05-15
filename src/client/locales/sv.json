@@ -81,6 +81,8 @@
     "saveSuccess": "Sparad",
     "resultViewInfo": "Tuloksien muokkaus",
     "questionViewInfo": "Kysymyksen muokkaus",
-    "questionOptionViewInfo": "Valintojen muokkaus"
+    "questionOptionViewInfo": "Valintojen muokkaus",
+    "question": "Question:",
+    "option": "Choice:"
   }
 }
