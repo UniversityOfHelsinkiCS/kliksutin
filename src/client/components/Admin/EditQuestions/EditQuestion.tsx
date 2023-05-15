@@ -36,9 +36,9 @@ const QuestionItem = ({
   }
 
   return (
-    <Box sx={{ m: 2, width: '50%' }}>
+    <Box sx={{ my: 2, mx: 4, width: '50%' }}>
       <Box sx={{ display: 'flex', mb: 2 }}>
-        <Typography variant="h5">
+        <Typography variant="h6">
           {t('admin:question')} {question.title[language]}
         </Typography>
         <Typography ml={1}>{language}</Typography>
