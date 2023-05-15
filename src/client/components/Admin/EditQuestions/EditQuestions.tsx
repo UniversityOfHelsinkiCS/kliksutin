@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { ChoiceType, Locales } from '../../../types'
+import { ChoiceType, Locales, Question } from '../../../types'
 import useSurvey from '../../../hooks/useSurvey'
 import { LanguageSelect, QuestionSelect } from '../EditResults/Select'
 
@@ -31,6 +31,8 @@ const OptionItem = ({
       setOptionData(option.data[language]) // Type narrow the multichoice type
     }
   }, [language])
+
+  const handleSave = async () => console.log('saved')
 
   return (
     <Box m={1} width="50%">
@@ -54,6 +56,7 @@ const OptionItem = ({
           onChange={(event) => setOptionData(event.target.value)}
         />
       )}
+      <Button onClick={handleSave}>{t('admin:save')}</Button>
     </Box>
   )
 }
@@ -68,6 +71,58 @@ const EditOptions = ({
   <Box mb={5} display="flex">
     <OptionItem language={'fi' as keyof Locales} option={option} />
     <OptionItem language={language} option={option} />
+  </Box>
+)
+
+const QuestionItem = ({
+  language,
+  question,
+}: {
+  language: keyof Locales
+  question: Question
+}) => {
+  const { t } = useTranslation()
+  const [questionTitle, setQuestionTitle] = useState(question.title[language])
+  const [questionText, setQuestionText] = useState(question.text[language])
+
+  const handleSave = async () => console.log('saved')
+
+  return (
+    <Box m={1} width="50%">
+      <Typography display="inline" mb={1} variant="h5">
+        {question.title[language]}
+      </Typography>
+      <Typography display="inline" ml={1}>
+        {language}
+      </Typography>
+      <TextField
+        fullWidth
+        value={questionTitle}
+        onChange={(event) => setQuestionTitle(event.target.value)}
+      />
+
+      <TextField
+        multiline
+        rows={20}
+        fullWidth
+        value={questionText}
+        onChange={(event) => setQuestionText(event.target.value)}
+      />
+      <Button onClick={handleSave}>{t('admin:save')}</Button>
+    </Box>
+  )
+}
+
+const EditQuestion = ({
+  language,
+  question,
+}: {
+  language: keyof Locales
+  question: Question
+}) => (
+  <Box mb={5} display="flex">
+    <QuestionItem language={'fi' as keyof Locales} question={question} />
+    <QuestionItem language={language} question={question} />
   </Box>
 )
 
@@ -104,15 +159,31 @@ const EditQuestions = () => {
           handleChange={handleLanguageChange}
         />
       </Box>
-      <Box width="100%" flexWrap="wrap">
-        {options.map((option) => (
-          <EditOptions
-            key={option.id}
-            language={selectedLanguage}
-            option={option}
-          />
-        ))}
-      </Box>
+      {selectedQuestion && (
+        <Box width="100%" flexWrap="wrap">
+          <Box sx={{ my: 2 }}>
+            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+              Kysymyksen muokkaus
+            </Typography>
+            <EditQuestion
+              language={selectedLanguage}
+              question={selectedQuestion}
+            />
+          </Box>
+          <Box sx={{ my: 2 }}>
+            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+              Valintojen muokkaus
+            </Typography>
+            {options.map((option) => (
+              <EditOptions
+                key={option.id}
+                language={selectedLanguage}
+                option={option}
+              />
+            ))}
+          </Box>
+        </Box>
+      )}
     </Box>
   )
 }
