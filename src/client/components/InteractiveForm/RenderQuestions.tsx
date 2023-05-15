@@ -45,6 +45,8 @@ const RenderQuestions = ({
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
 
+    if (!question.parentId) return null
+
     const parent = watch(question.parentId.toString())
 
     if (typeof parent === 'object') {
