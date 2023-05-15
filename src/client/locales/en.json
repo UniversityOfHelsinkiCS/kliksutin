@@ -79,6 +79,9 @@
     "selectQuestion": "Select question",
     "selectLanguage": "Select language",
     "save": "Save",
-    "saveSuccess": "Saved successfully"
+    "saveSuccess": "Saved successfully",
+    "resultViewInfo": "Edit Results",
+    "questionViewInfo": "Edit Question",
+    "questionOptionViewInfo": "Edit Question Options"
   }
 }

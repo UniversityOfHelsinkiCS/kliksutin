@@ -135,6 +135,7 @@ const EditQuestions = () => {
   }
 
   const { survey, isLoading } = useSurvey()
+  const { t } = useTranslation()
 
   if (isLoading) return null
 
@@ -160,7 +161,7 @@ const EditQuestions = () => {
         <Box width="100%" flexWrap="wrap">
           <Box sx={{ my: 8 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              Kysymyksen muokkaus
+              {t('admin:questionViewInfo')}
             </Typography>
             <EditQuestion
               language={selectedLanguage}
@@ -169,7 +170,7 @@ const EditQuestions = () => {
           </Box>
           <Box sx={{ my: 8 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              Valintojen muokkaus
+              {t('admin:questionOptionViewInfo')}
             </Typography>
             {options.map((option) => (
               <EditOptions

@@ -78,6 +78,9 @@
     "selectQuestion": "Välj fråga",
     "selectLanguage": "Välj språk",
     "save": "Spara",
-    "saveSuccess": "Sparad"
+    "saveSuccess": "Sparad",
+    "resultViewInfo": "Tuloksien muokkaus",
+    "questionViewInfo": "Kysymyksen muokkaus",
+    "questionOptionViewInfo": "Valintojen muokkaus"
   }
 }

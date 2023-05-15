@@ -129,6 +129,7 @@ const EditResults = () => {
   }
 
   const { survey } = useSurvey()
+  const { t } = useTranslation()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
 
   if (!resultsFetched) return null
@@ -164,7 +165,7 @@ const EditResults = () => {
       </Box>
       <Box sx={{ my: 8 }}>
         <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-          Tulosnäkymän muokkaus
+          {t('admin:resultViewInfo')}
         </Typography>
         {filteredResults.map((result) => (
           <EditResult

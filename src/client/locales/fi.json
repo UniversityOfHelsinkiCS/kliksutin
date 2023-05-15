@@ -78,6 +78,9 @@
     "selectQuestion": "Valitse kysymys",
     "selectLanguage": "Valitse kieli",
     "save": "Tallenna",
-    "saveSuccess": "Tallennettu onnistuneesti"
+    "saveSuccess": "Tallennettu onnistuneesti",
+    "resultViewInfo": "Tuloksien muokkaus",
+    "questionViewInfo": "Kysymyksen muokkaus",
+    "questionOptionViewInfo": "Valintojen muokkaus"
   }
 }
