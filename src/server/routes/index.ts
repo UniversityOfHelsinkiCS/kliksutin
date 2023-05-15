@@ -16,6 +16,7 @@ import entryRouter from './entry'
 import userRouter from './user'
 import openaiRouter from './openai'
 import courseRouter from './course'
+import questionRouter from './question'
 
 const router = express()
 
@@ -34,6 +35,7 @@ router.use(accessLogger)
 
 router.use('/faculties', facultyRouter)
 router.use('/surveys', surveyRouter)
+router.use('/questions', questionRouter)
 router.use('/recommendations', recommendationRouter)
 router.use('/results', resultRouter)
 router.use('/summary', summaryRouter)

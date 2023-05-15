@@ -1,43 +1,40 @@
 import express from 'express'
 
-import { RequestWithUser, ResultUpdates } from '../types'
-import { Result } from '../db/models'
+import { RequestWithUser } from '../types'
+import { Question } from '../db/models'
 
-const parseUpdates = (body: ResultUpdates): ResultUpdates => ({
-  data: body?.data,
-  isSelected: body?.isSelected,
-})
+const questionRouter = express.Router()
 
-const resultRouter = express.Router()
-
-resultRouter.get('/:surveyId', async (req, res) => {
+questionRouter.get('/:surveyId', async (req, res) => {
   const { surveyId } = req.params
 
-  const results = await Result.findAll({
+  const questions = await Question.findAll({
     where: {
       surveyId,
     },
   })
 
-  return res.send(results)
+  return res.send(questions)
 })
 
-export default resultRouter
-
-resultRouter.put('/:id', async (req: RequestWithUser, res) => {
+questionRouter.put('/:id', async (req: RequestWithUser, res) => {
   const { id } = req.params
   const { isAdmin } = req.user
 
   if (!isAdmin) throw new Error('Unauthorized')
 
-  const result = await Result.findByPk(id)
+  const question = await Question.findByPk(id)
 
-  if (!result) throw new Error('Result not found')
+  if (!question) throw new Error('Question not found')
 
-  const updates = parseUpdates(req.body.data)
+  const updates = req.body
 
-  Object.assign(result, updates)
-  await result.save()
+  console.log(updates)
 
-  return res.send(result)
+  /* Object.assign(result, updates)
+  await result.save() */
+
+  return res.send(updates)
 })
+
+export default questionRouter
