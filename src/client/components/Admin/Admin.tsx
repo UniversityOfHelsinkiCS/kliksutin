@@ -18,8 +18,11 @@ const Admin = () => {
 
   return (
     <Box
-      alignSelf="flex-start"
-      sx={{ width: '100%', bgcolor: 'background.paper' }}
+      sx={{
+        alignSelf: 'flex-start',
+        width: '100%',
+        bgcolor: 'background.paper',
+      }}
     >
       <Tabs
         value={value}
