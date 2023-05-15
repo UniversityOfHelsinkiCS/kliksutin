@@ -83,16 +83,21 @@ describe('Form section', () => {
     cy.get(`[data-cy = "open-form-button"]`).click()
 
     cy.wrap(questionData).each((question: Question) => {
-      cy.wrap(question.optionData.options).each(
-        (
-          option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
-        ) => {
-          cy.contains(option.title.fi).click({ force: true })
-          cy.log(
-            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
-          )
-        }
-      )
+      if (!question.visibility.options) {
+        cy.wrap(question.optionData.options).each(
+          (
+            option:
+              | SingleChoiceType
+              | MultipleChoiceType
+              | DimensionSelectionData
+          ) => {
+            cy.contains(option.title.fi).click({ force: true })
+            cy.log(
+              `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
+            )
+          }
+        )
+      }
     })
 
     cy.get(`[data-cy = "submit-form-button"]`).click()
@@ -112,16 +117,21 @@ describe('Form section', () => {
     cy.get(`[data-cy = "open-form-button"]`).click()
 
     cy.wrap(questionData).each((question: Question) => {
-      cy.wrap(question.optionData.options).each(
-        (
-          option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
-        ) => {
-          cy.contains(option.title.fi).click({ force: true })
-          cy.log(
-            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
-          )
-        }
-      )
+      if (!question.visibility.options) {
+        cy.wrap(question.optionData.options).each(
+          (
+            option:
+              | SingleChoiceType
+              | MultipleChoiceType
+              | DimensionSelectionData
+          ) => {
+            cy.contains(option.title.fi).click({ force: true })
+            cy.log(
+              `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
+            )
+          }
+        )
+      }
     })
 
     cy.get(`[data-cy = "reset-form-button"]:visible`).click()
@@ -137,16 +147,21 @@ describe('Form section', () => {
     cy.get(`[data-cy = "open-form-button"]`).click()
 
     cy.wrap(questionData).each((question: Question) => {
-      cy.wrap(question.optionData.options).each(
-        (
-          option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
-        ) => {
-          cy.contains(option.title.fi).click({ force: true })
-          cy.log(
-            `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
-          )
-        }
-      )
+      if (!question.visibility.options) {
+        cy.wrap(question.optionData.options).each(
+          (
+            option:
+              | SingleChoiceType
+              | MultipleChoiceType
+              | DimensionSelectionData
+          ) => {
+            cy.contains(option.title.fi).click({ force: true })
+            cy.log(
+              `'Clicked [Question title: ${question.title.fi}, Option label: ${option.title.fi}]`
+            )
+          }
+        )
+      }
     })
 
     cy.get(`[data-cy = "submit-form-button"]`).click()
