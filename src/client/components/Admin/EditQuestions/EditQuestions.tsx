@@ -35,7 +35,7 @@ const OptionItem = ({
 
   return (
     <Box sx={{ m: 2, width: '50%' }}>
-      <Box sx={{ display: 'flex', mb: 4 }}>
+      <Box sx={{ display: 'flex', mb: 2 }}>
         <Typography variant="h5">Valinta: {option.title[language]}</Typography>
         <Typography ml={1}>{language}</Typography>
       </Box>
@@ -86,7 +86,7 @@ const QuestionItem = ({
 
   return (
     <Box sx={{ m: 2, width: '50%' }}>
-      <Box sx={{ display: 'flex', mb: 4 }}>
+      <Box sx={{ display: 'flex', mb: 2 }}>
         <Typography variant="h5">
           Kysymys: {question.title[language]}
         </Typography>
@@ -158,7 +158,7 @@ const EditQuestions = () => {
       </Box>
       {selectedQuestion && (
         <Box width="100%" flexWrap="wrap">
-          <Box sx={{ my: 2 }}>
+          <Box sx={{ my: 8 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               Kysymyksen muokkaus
             </Typography>
@@ -167,7 +167,7 @@ const EditQuestions = () => {
               question={selectedQuestion}
             />
           </Box>
-          <Box sx={{ my: 2 }}>
+          <Box sx={{ my: 8 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               Valintojen muokkaus
             </Typography>

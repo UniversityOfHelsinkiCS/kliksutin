@@ -59,7 +59,7 @@ const ResultItem = ({
 
   return (
     <Box sx={{ m: 2, width: '50%' }}>
-      <Box sx={{ display: 'flex', mb: 4 }}>
+      <Box sx={{ display: 'flex', mb: 2 }}>
         <Typography variant="h5">
           Valinta: {optionData.title[language]}
         </Typography>
@@ -162,7 +162,10 @@ const EditResults = () => {
           handleChange={handleLanguageChange}
         />
       </Box>
-      <Box width="100%" flexWrap="wrap">
+      <Box sx={{ my: 8 }}>
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          Tulosnäkymän muokkaus
+        </Typography>
         {filteredResults.map((result) => (
           <EditResult
             key={result.id}
