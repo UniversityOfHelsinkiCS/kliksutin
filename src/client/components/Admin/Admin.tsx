@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import { Box, Tab, Tabs } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
 const Admin = () => {
+  const { t } = useTranslation()
   const location = useLocation()
   const { user, isLoading } = useLoggedInUser()
 
@@ -26,17 +28,22 @@ const Admin = () => {
         scrollButtons
         allowScrollButtonsMobile
       >
-        <Tab component={Link} to="." label="Admin" value="/admin" />
+        <Tab
+          component={Link}
+          to="."
+          label={t('admin:indexTab')}
+          value="/admin"
+        />
         <Tab
           component={Link}
           to="./edit-questions"
-          label="Edit Questions"
+          label={t('admin:questionTab')}
           value="/admin/edit-questions"
         />
         <Tab
           component={Link}
           to="./edit-results"
-          label="Edit Results"
+          label={t('admin:resultTab')}
           value="/admin/edit-results"
         />
       </Tabs>
