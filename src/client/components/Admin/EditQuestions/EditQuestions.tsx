@@ -30,7 +30,7 @@ const OptionItem = ({
       setOptionData(option.data[language]) // Type narrow the multichoice type
     }
     setOptionTitle(option.title[language])
-  }, [language])
+  }, [language, option])
 
   const handleSave = async () => console.log('saved')
 
@@ -88,7 +88,7 @@ const QuestionItem = ({
   useEffect(() => {
     setQuestionTitle(question.title[language])
     setQuestionText(question.text[language])
-  }, [language])
+  }, [language, question])
 
   const handleSave = async () => console.log('saved')
 
