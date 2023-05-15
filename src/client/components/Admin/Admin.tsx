@@ -1,16 +1,12 @@
 import React from 'react'
-import { Link, Navigate, Outlet } from 'react-router-dom'
+import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
 
 import { Box, Tab, Tabs } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
 const Admin = () => {
+  const location = useLocation()
   const { user, isLoading } = useLoggedInUser()
-  const [value, setValue] = React.useState(0)
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
-  }
 
   if (isLoading) return null
 
@@ -25,14 +21,24 @@ const Admin = () => {
       }}
     >
       <Tabs
-        value={value}
-        onChange={handleChange}
+        value={location.pathname}
         variant="scrollable"
         scrollButtons
         allowScrollButtonsMobile
       >
-        <Tab component={Link} to="./edit-questions" label="Edit Questions" />
-        <Tab component={Link} to="./edit-results" label="Edit Results" />
+        <Tab component={Link} to="." label="Admin" value="/admin" />
+        <Tab
+          component={Link}
+          to="./edit-questions"
+          label="Edit Questions"
+          value="/admin/edit-questions"
+        />
+        <Tab
+          component={Link}
+          to="./edit-results"
+          label="Edit Results"
+          value="/admin/edit-results"
+        />
       </Tabs>
       <Outlet />
     </Box>
