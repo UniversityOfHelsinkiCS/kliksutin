@@ -9,9 +9,9 @@ import {
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { ChoiceType, Locales, Question } from '../../../types'
+import { ChoiceType, Locales } from '../../../types'
 import useSurvey from '../../../hooks/useSurvey'
-import { QuestionSelect, LanguageSelect } from './Select'
+import { LanguageSelect, QuestionSelect } from '../EditResults/Select'
 
 type Option<A> = A extends readonly (infer T)[] ? T : never
 
