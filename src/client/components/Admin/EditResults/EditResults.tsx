@@ -146,8 +146,8 @@ const EditResults = () => {
   )
 
   return (
-    <Box my={5} mx={10}>
-      <Box mb={3} width="90vw" display="flex">
+    <Box sx={{ mt: 8 }}>
+      <Box sx={{ display: 'flex', my: 4, justifyContent: 'space-evenly' }}>
         <DimensionSelect
           dimensionId={dimensionId}
           dimensions={dimensions}
