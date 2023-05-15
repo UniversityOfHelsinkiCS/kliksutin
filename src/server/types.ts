@@ -52,6 +52,11 @@ export interface ResultUpdates {
   isSelected?: string
 }
 
+export interface QuestionsUpdates {
+  data?: Object
+  isSelected?: string
+}
+
 export interface Recommendation {
   id: number
   surveyId: number
