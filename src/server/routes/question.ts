@@ -29,12 +29,11 @@ questionRouter.put('/:id', async (req: RequestWithUser, res) => {
 
   const updates = req.body
 
-  console.log(updates)
+  Object.assign(question, updates)
 
-  /* Object.assign(result, updates)
-  await result.save() */
+  await question.save()
 
-  return res.send(updates)
+  return res.send(question)
 })
 
 export default questionRouter
