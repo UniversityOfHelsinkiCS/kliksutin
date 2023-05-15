@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import {
   Box,
@@ -37,7 +36,7 @@ const OptionItem = ({
   return (
     <Box m={1} width="50%">
       <Typography display="inline" mb={1} variant="h5">
-        {option.title[language]}
+        Valinta: {option.title[language]}
       </Typography>
       <Typography display="inline" ml={1}>
         {language}
@@ -90,7 +89,7 @@ const QuestionItem = ({
   return (
     <Box m={1} width="50%">
       <Typography display="inline" mb={1} variant="h5">
-        {question.title[language]}
+        Kysymys: {question.title[language]}
       </Typography>
       <Typography display="inline" ml={1}>
         {language}
