@@ -83,7 +83,7 @@ export interface OptionData {
 
 /** List of question selection id's that controls the visibility of a tool */
 export type Visibility = {
-  options: string[]
+  options?: string[]
 }
 
 /** Represents a subtool of a tool. Visibility controls when to render a subtool based on a question selection id eg. "isCourseMooc" */
@@ -145,9 +145,9 @@ export interface Survey {
   name: string
   title: Locales
   text: Locales
-  createdAt: Date
-  updatedAt: Date
   Questions: Question[]
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export interface Question {
@@ -159,8 +159,8 @@ export interface Question {
   text: Locales
   optionData: OptionData
   visibility: Visibility
-  createdAt: Date
-  updatedAt: Date
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export interface Result {
@@ -168,11 +168,11 @@ export interface Result {
   surveyId: number
   optionLabel: string
   isSelected: Locales
-  createdAt: Date
-  updatedAt: Date
   data: {
     [key: string]: Locales
   }
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 export interface CourseUnit {

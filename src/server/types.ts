@@ -1,27 +1,27 @@
 import { Request } from 'express'
 
 export type Faculty = {
-  fi: String
-  en: String
-  se: String
+  fi: string
+  en: string
+  se: string
 }
 
 export type Locales = {
-  fi: String
-  en: String
-  sv: String
+  fi: string
+  en: string
+  sv: string
 }
 
 export type Programme = {
-  key: String
+  key: string
   name: Faculty
-  level: String
-  companionFaculties: Array<String>
+  level: string
+  companionFaculties: Array<string>
   international: Boolean
 }
 
 export interface OrganisationData {
-  code: String
+  code: string
   name: Faculty
   programmes: Array<Programme>
 }
