@@ -29,6 +29,7 @@ const OptionItem = ({
     if ('data' in option && !('text' in option)) {
       setOptionData(option.data[language]) // Type narrow the multichoice type
     }
+    setOptionTitle(option.title[language])
   }, [language])
 
   const handleSave = async () => console.log('saved')
@@ -83,6 +84,11 @@ const QuestionItem = ({
   const { t } = useTranslation()
   const [questionTitle, setQuestionTitle] = useState(question.title[language])
   const [questionText, setQuestionText] = useState(question.text[language])
+
+  useEffect(() => {
+    setQuestionTitle(question.title[language])
+    setQuestionText(question.text[language])
+  }, [language])
 
   const handleSave = async () => console.log('saved')
 
