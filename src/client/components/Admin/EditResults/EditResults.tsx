@@ -58,13 +58,15 @@ const ResultItem = ({
   }
 
   return (
-    <Box m={1} width="50%">
-      <Typography display="inline" mb={1} variant="h5">
-        {optionData.title[language]}
-      </Typography>
-      <Typography display="inline" ml={1}>
-        {language}
-      </Typography>
+    <Box sx={{ m: 2, width: '50%' }}>
+      <Box sx={{ display: 'flex', mb: 4 }}>
+        <Typography variant="h5">
+          Valinta: {optionData.title[language]}
+        </Typography>
+        <Typography display="inline" ml={1}>
+          {language}
+        </Typography>
+      </Box>
 
       <TextField
         fullWidth
