@@ -72,7 +72,7 @@ export const DimensionSelect = ({
   const dimensionSelections = [allSelection].concat(sortedDimensions)
 
   return (
-    <Box mr={2} width={300}>
+    <Box sx={{ width: '20vw' }}>
       <FormControl fullWidth>
         <InputLabel>{t('admin:selectDimension')}</InputLabel>
         <Select
@@ -121,7 +121,7 @@ export const QuestionSelect = ({
   const sortedQuestions = sortQuestions(filteredQuestions, language)
 
   return (
-    <Box mr={2} width={300}>
+    <Box sx={{ width: '20vw' }}>
       <FormControl fullWidth>
         <InputLabel>{t('admin:selectQuestion')}</InputLabel>
         <Select
@@ -151,10 +151,10 @@ export const LanguageSelect = ({
   const language = i18n.language as keyof Locales
 
   return (
-    <Box width={150}>
+    <Box sx={{ width: '20vw' }}>
       <FormControl fullWidth>
         <FormLabel>{t('admin:selectLanguage')}</FormLabel>
-        <RadioGroup defaultValue="en" onChange={handleChange}>
+        <RadioGroup defaultValue="en" onChange={handleChange} row>
           {languages.map(({ id, title }) => (
             <FormControlLabel
               key={id}
