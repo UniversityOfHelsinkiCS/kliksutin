@@ -563,12 +563,12 @@ const getQuestionData = (): Question[] => [
   {
     id: 6,
     surveyId: 1,
-    parentId: 4,
-    priority: 0,
+    parentId: null,
+    priority: 5,
     title: {
-      fi: 'This question is not in use as of 10.5.2023',
-      sv: 'This question is not in use as of 10.5.2023',
-      en: 'This question is not in use as of 10.5.2023',
+      en: 'Miten kurssi arvioidaan?',
+      fi: 'Miten kurssi arvioidaan?',
+      sv: 'Miten kurssi arvioidaan?',
     },
     text: {
       fi: '',
@@ -576,8 +576,27 @@ const getQuestionData = (): Question[] => [
       en: '',
     },
     optionData: {
-      type: 'info',
-      options: [],
+      type: 'singleChoice',
+      options: [
+        {
+          id: 'courseGradingPassFail',
+          label: 'courseGradingPassFail',
+          title: {
+            fi: 'Hyväksytty-Hylätty',
+            sv: 'Underkänd-Godkänd',
+            en: 'Pass-Fail',
+          },
+        },
+        {
+          id: 'courseGradingGeneralScale',
+          label: 'courseGradingGeneralScale',
+          title: {
+            fi: 'Yleinen asteikko, 0-5',
+            sv: 'Allmän skala, 0-5',
+            en: 'General scale, 0-5',
+          },
+        },
+      ],
     },
     visibility: {
       options: ['out-of-use'],
