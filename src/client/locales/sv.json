@@ -83,6 +83,9 @@
     "questionViewInfo": "Kysymyksen muokkaus",
     "questionOptionViewInfo": "Valintojen muokkaus",
     "question": "Question:",
-    "option": "Choice:"
+    "option": "Choice:",
+    "indexTab": "Admin",
+    "questionTab": "Kysymyksien muokkaus",
+    "resultTab": "Tuloksien muokkaus"
   }
 }

@@ -80,10 +80,13 @@
     "selectLanguage": "Select language",
     "save": "Save",
     "saveSuccess": "Saved successfully",
-    "resultViewInfo": "Edit Results",
-    "questionViewInfo": "Edit Question",
-    "questionOptionViewInfo": "Edit Question Options",
+    "resultViewInfo": "Edit results",
+    "questionViewInfo": "Edit question",
+    "questionOptionViewInfo": "Edit question options",
     "question": "Question:",
-    "option": "Choice:"
+    "option": "Choice:",
+    "indexTab": "Admin",
+    "questionTab": "Edit questions",
+    "resultTab": "Edit results"
   }
 }
