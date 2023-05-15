@@ -52,9 +52,14 @@ export interface ResultUpdates {
   isSelected?: string
 }
 
+export interface OptionUpdates {
+  title: Locales
+  data?: Locales
+}
+
 export interface QuestionsUpdates {
-  data?: Object
-  isSelected?: string
+  title: Locales
+  text: Locales
 }
 
 export interface Recommendation {

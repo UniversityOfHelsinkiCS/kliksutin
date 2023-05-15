@@ -3,6 +3,7 @@ import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import { ChoiceType, Locales } from '../../../types'
+import { OptionUpdates } from '../../../../server/types'
 
 type Option<A> = A extends readonly (infer T)[] ? T : never
 
@@ -24,7 +25,25 @@ const OptionItem = ({
     setOptionTitle(option.title[language])
   }, [language, option])
 
-  const handleSave = async () => console.log('saved')
+  const handleSave = async () => {
+    let updatedOption: OptionUpdates = {
+      title: {
+        ...option.title,
+        [language]: optionTitle,
+      },
+    }
+    if ('data' in option && !('text' in option)) {
+      updatedOption = {
+        data: {
+          ...option.data,
+          [language]: optionData,
+        },
+        ...updatedOption,
+      }
+    }
+
+    console.log(updatedOption)
+  }
 
   return (
     <Box sx={{ my: 2, mx: 4, width: '50%' }}>

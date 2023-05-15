@@ -3,6 +3,7 @@ import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import { Locales, Question } from '../../../types'
+import { QuestionsUpdates } from '../../../../server/types'
 
 const QuestionItem = ({
   language,
@@ -21,7 +22,7 @@ const QuestionItem = ({
   }, [language, question])
 
   const handleSave = async () => {
-    const updatedQuestion = {
+    const updatedQuestion: QuestionsUpdates = {
       title: {
         ...question.title,
         [language]: questionTitle,
