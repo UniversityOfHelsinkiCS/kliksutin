@@ -12,7 +12,7 @@ const seed = async () => {
 
   try {
     await seedSurveys()
-    await seedQuestions()
+    if (!inProduction) await seedQuestions()
     await seedRecommendations()
     if (!inProduction) await seedResults()
     await seedUsers()
