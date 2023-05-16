@@ -89,6 +89,7 @@
     "indexTab": "Admin",
     "questionTab": "Kysymysten muokkaus",
     "resultTab": "Tulosten muokkaus",
+    "recommendationTab": "Suositusten muokkaus",
     "markdown": "Muokattavat kentät tukevat <0>Markdown</0>-sisältöä"
   }
 }

@@ -90,6 +90,7 @@
     "indexTab": "Admin",
     "questionTab": "Edit questions",
     "resultTab": "Edit results",
+    "recommendationTab": "Edit recommendations",
     "markdown": "Muokattavat kentät tukevat <0>Markdown</0>-sisältöä"
   }
 }
