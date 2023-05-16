@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import useSurvey from '../../../hooks/useSurvey'
+// import useSurvey from '../../../hooks/useSurvey'
 
 import { LanguageSelect, QuestionSelect } from '../EditResults/Select'
 import EditOptions from './EditOptions'
@@ -13,8 +13,7 @@ import useQuestions from '../../../hooks/useQuestions'
 
 const EditQuestions = () => {
   const { t } = useTranslation()
-  const { survey } = useSurvey()
-  const { questions, isLoading } = useQuestions(survey?.id)
+  const { questions, isLoading } = useQuestions(1)
 
   const [questionId, setQuestionId] = useState('')
   const handleQuestionChange = (event: SelectChangeEvent) => {
@@ -31,6 +30,7 @@ const EditQuestions = () => {
   const selectedQuestion = questions.find(
     ({ id }) => id === (questionId as unknown as number)
   )
+
   const options = selectedQuestion?.optionData.options || []
 
   return (
