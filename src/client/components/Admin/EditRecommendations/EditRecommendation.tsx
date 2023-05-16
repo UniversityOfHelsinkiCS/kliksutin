@@ -3,6 +3,8 @@ import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
+import useEditRecommendationMutation from '../../../hooks/useEditRecommendationMutation'
+
 import { Locales, Recommendation } from '../../../types'
 import { RecommendationUpdates } from '../../../../server/types'
 
@@ -14,7 +16,7 @@ const RecommendationItem = ({
   recommendation: Recommendation
 }) => {
   const { t } = useTranslation()
-  // const mutation = useEditQuestionMutation(recommendation.id)
+  const mutation = useEditRecommendationMutation(recommendation.id)
   const [recommendationTitle, setRecommendationTitle] = useState(
     recommendation.title[language]
   )
@@ -40,7 +42,7 @@ const RecommendationItem = ({
     }
 
     try {
-      console.log(updatedRecommendation)
+      await mutation.mutateAsync(updatedRecommendation)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
