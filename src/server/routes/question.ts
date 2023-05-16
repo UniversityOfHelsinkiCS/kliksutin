@@ -60,6 +60,8 @@ questionRouter.put(
 
     Object.assign(question, updates)
 
+    question.changed('optionData', true) // Sequelize things only https://stackoverflow.com/questions/45287514/sequelize-update-nested-property-in-jsonb
+
     await question.save()
 
     return res.send(question)
