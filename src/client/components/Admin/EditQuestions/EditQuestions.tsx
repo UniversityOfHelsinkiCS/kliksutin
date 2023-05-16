@@ -37,7 +37,14 @@ const EditQuestions = () => {
 
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
-      <Box sx={{ display: 'flex', my: 4, justifyContent: 'space-evenly' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          my: 4,
+          justifyContent: 'space-around',
+        }}
+      >
         <QuestionSelect
           questionId={questionId}
           questions={questions}
@@ -60,18 +67,23 @@ const EditQuestions = () => {
             />
           </Box>
           <Box sx={{ my: 8 }}>
-            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              {t('admin:questionOptionViewInfo')}
-            </Typography>
-            {options.map((option, index) => (
-              <EditOptions
-                key={option.id}
-                option={option}
-                optionNumber={index + 1}
-                question={selectedQuestion}
-                language={selectedLanguage}
-              />
-            ))}
+            {options.length > 0 && (
+              <>
+                <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+                  {t('admin:questionOptionViewInfo')}
+                </Typography>
+
+                {options.map((option, index) => (
+                  <EditOptions
+                    key={option.id}
+                    option={option}
+                    optionNumber={index + 1}
+                    question={selectedQuestion}
+                    language={selectedLanguage}
+                  />
+                ))}
+              </>
+            )}
           </Box>
         </Box>
       )}
