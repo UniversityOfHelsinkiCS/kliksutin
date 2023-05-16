@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { enqueueSnackbar } from 'notistack'
 
 import { Locales, Question } from '../../../types'
 import { QuestionsUpdates } from '../../../../server/types'
+import useEditQuestionMutation from '../../../hooks/useEditQuestionMutation'
 
 const QuestionItem = ({
   language,
@@ -13,6 +15,7 @@ const QuestionItem = ({
   question: Question
 }) => {
   const { t } = useTranslation()
+  const mutation = useEditQuestionMutation(question.id)
   const [questionTitle, setQuestionTitle] = useState(question.title[language])
   const [questionText, setQuestionText] = useState(question.text[language])
 
@@ -33,7 +36,12 @@ const QuestionItem = ({
       },
     }
 
-    console.log(updatedQuestion)
+    try {
+      await mutation.mutateAsync(updatedQuestion)
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
   }
 
   return (
