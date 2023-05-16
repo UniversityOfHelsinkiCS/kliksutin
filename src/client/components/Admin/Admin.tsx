@@ -50,6 +50,12 @@ const Admin = () => {
           label={t('admin:resultTab')}
           value="/admin/edit-results"
         />
+        <Tab
+          component={Link}
+          to="./edit-recommendations"
+          label={t('admin:recommendationTab')}
+          value="/admin/edit-recommendations"
+        />
       </Tabs>
       <Alert sx={{ ...common.alertStyle, m: 4 }} severity="info">
         <Trans i18nKey="admin:markdown">
