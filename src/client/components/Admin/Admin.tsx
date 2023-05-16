@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 
-import { Box, Tab, Tabs } from '@mui/material'
+import { Alert, Box, Tab, Tabs } from '@mui/material'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
+
+import styles from '../../styles'
 
 const Admin = () => {
   const { t } = useTranslation()
   const location = useLocation()
   const { user, isLoading } = useLoggedInUser()
+
+  const { common } = styles
 
   if (isLoading) return null
 
@@ -47,6 +51,17 @@ const Admin = () => {
           value="/admin/edit-results"
         />
       </Tabs>
+      <Alert sx={{ ...common.alertStyle, m: 4 }} severity="info">
+        <Trans i18nKey="admin:markdown">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://commonmark.org/help/"
+          >
+            Markdown
+          </a>
+        </Trans>
+      </Alert>
       <Outlet />
     </Box>
   )

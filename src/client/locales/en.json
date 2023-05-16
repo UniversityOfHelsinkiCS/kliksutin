@@ -87,6 +87,7 @@
     "option": "Choice ",
     "indexTab": "Admin",
     "questionTab": "Edit questions",
-    "resultTab": "Edit results"
+    "resultTab": "Edit results",
+    "markdown": "Muokattavat kentät tukevat <0>Markdown</0>-sisältöä"
   }
 }

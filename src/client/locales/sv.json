@@ -86,6 +86,7 @@
     "option": "Valinta ",
     "indexTab": "Admin",
     "questionTab": "Kysymysten muokkaus",
-    "resultTab": "Tulosten muokkaus"
+    "resultTab": "Tulosten muokkaus",
+    "markdown": "Muokattavat kentät tukevat <0>Markdown</0>-sisältöä"
   }
 }

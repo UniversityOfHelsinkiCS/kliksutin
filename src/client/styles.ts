@@ -316,6 +316,8 @@ const footerStyles = {
 const common = {
   alertStyle: {
     width: 'auto',
+    borderRadius: '10px',
+    fontSize: '1rem',
   },
 }
 
