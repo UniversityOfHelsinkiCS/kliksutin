@@ -59,11 +59,12 @@ const EditQuestions = () => {
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               {t('admin:questionOptionViewInfo')}
             </Typography>
-            {options.map((option) => (
+            {options.map((option, index) => (
               <EditOptions
                 key={option.id}
                 language={selectedLanguage}
                 option={option}
+                optionNumber={index + 1}
               />
             ))}
           </Box>

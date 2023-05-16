@@ -10,9 +10,11 @@ type Option<A> = A extends readonly (infer T)[] ? T : never
 const OptionItem = ({
   language,
   option,
+  optionNumber,
 }: {
   language: keyof Locales
   option: Option<ChoiceType>
+  optionNumber: number
 }) => {
   const { t } = useTranslation()
   const [optionTitle, setOptionTitle] = useState(option.title[language])
@@ -49,7 +51,7 @@ const OptionItem = ({
     <Box sx={{ my: 2, mx: 4, width: '50%' }}>
       <Box sx={{ display: 'flex', mb: 2 }}>
         <Typography variant="h6">
-          {t('admin:option')} {option.title[language]}
+          {t('admin:option')} {optionNumber}
         </Typography>
         <Typography ml={1}>{language}</Typography>
       </Box>
@@ -75,13 +77,23 @@ const OptionItem = ({
 const EditOptions = ({
   language,
   option,
+  optionNumber,
 }: {
   language: keyof Locales
   option: Option<ChoiceType>
+  optionNumber: number
 }) => (
   <Box mb={5} display="flex">
-    <OptionItem language={'fi' as keyof Locales} option={option} />
-    <OptionItem language={language} option={option} />
+    <OptionItem
+      language={'fi' as keyof Locales}
+      option={option}
+      optionNumber={optionNumber}
+    />
+    <OptionItem
+      language={language}
+      option={option}
+      optionNumber={optionNumber}
+    />
   </Box>
 )
 

@@ -82,8 +82,8 @@
     "resultViewInfo": "Tuloksien muokkaus",
     "questionViewInfo": "Kysymyksen muokkaus",
     "questionOptionViewInfo": "Valintojen muokkaus",
-    "question": "Kysymys:",
-    "option": "Valinta:",
+    "question": "Kysymyksen otsikko ja lisäteksti",
+    "option": "Valinta ",
     "indexTab": "Admin",
     "questionTab": "Kysymysten muokkaus",
     "resultTab": "Tulosten muokkaus"

@@ -83,8 +83,8 @@
     "resultViewInfo": "Edit results",
     "questionViewInfo": "Edit question",
     "questionOptionViewInfo": "Edit question options",
-    "question": "Question:",
-    "option": "Choice:",
+    "question": "Question Title and Text ",
+    "option": "Choice ",
     "indexTab": "Admin",
     "questionTab": "Edit questions",
     "resultTab": "Edit results"
