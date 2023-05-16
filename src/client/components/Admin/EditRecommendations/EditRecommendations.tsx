@@ -16,6 +16,7 @@ import { LanguageSelect } from '../EditResults/Select'
 
 import { Locales, Recommendation } from '../../../types'
 import useRecommendations from '../../../hooks/useRecommendations'
+import EditRecommendation from './EditRecommendation'
 
 type HandleChange = (event: SelectChangeEvent) => void
 
@@ -69,6 +70,10 @@ const EditRecommendations = () => {
 
   if (!isSuccess) return null
 
+  const selectedRecommendation = recommendations.find(
+    ({ id }) => id === (recommendationId as unknown as number)
+  )
+
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
       <Box
@@ -95,6 +100,10 @@ const EditRecommendations = () => {
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               {t('admin:recommendationViewInfo')}
             </Typography>
+            <EditRecommendation
+              language={selectedLanguage}
+              recommendation={selectedRecommendation}
+            />
           </Box>
         </Box>
       )}

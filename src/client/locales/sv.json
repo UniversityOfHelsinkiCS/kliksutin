@@ -86,6 +86,7 @@
     "recommendationViewInfo": "Suositusten muokkaus",
     "question": "Kysymyksen otsikko ja lisäteksti",
     "option": "Valinta ",
+    "recommendation": "Suosituksen otsikko ja lisäteksti",
     "indexTab": "Admin",
     "questionTab": "Kysymysten muokkaus",
     "resultTab": "Tulosten muokkaus",

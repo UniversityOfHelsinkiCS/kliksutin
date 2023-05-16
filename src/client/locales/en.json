@@ -87,6 +87,7 @@
     "recommendationViewInfo": "Edit recommendation",
     "question": "Question Title and Text ",
     "option": "Choice ",
+    "recommendation": "Recommendation Title and Text ",
     "indexTab": "Admin",
     "questionTab": "Edit questions",
     "resultTab": "Edit results",

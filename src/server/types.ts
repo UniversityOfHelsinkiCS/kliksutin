@@ -62,6 +62,11 @@ export interface QuestionsUpdates {
   text: Locales
 }
 
+export interface RecommendationUpdates {
+  title: Locales
+  text: Locales
+}
+
 export interface Recommendation {
   id: number
   surveyId: number
