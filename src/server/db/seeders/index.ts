@@ -13,7 +13,7 @@ const seed = async () => {
   try {
     await seedSurveys()
     if (!inProduction) await seedQuestions()
-    await seedRecommendations()
+    if (!inProduction) await seedRecommendations()
     if (!inProduction) await seedResults()
     await seedUsers()
     logger.info('Seeding successful')
