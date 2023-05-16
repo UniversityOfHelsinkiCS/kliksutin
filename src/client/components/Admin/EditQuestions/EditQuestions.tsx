@@ -62,9 +62,10 @@ const EditQuestions = () => {
             {options.map((option, index) => (
               <EditOptions
                 key={option.id}
-                language={selectedLanguage}
                 option={option}
                 optionNumber={index + 1}
+                question={selectedQuestion}
+                language={selectedLanguage}
               />
             ))}
           </Box>

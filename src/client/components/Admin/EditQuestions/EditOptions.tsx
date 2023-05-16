@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { enqueueSnackbar } from 'notistack'
 
-import { ChoiceType, Locales } from '../../../types'
+import useEditOptionMutation from '../../../hooks/useEditChoiceMutation'
+
+import { ChoiceType, Locales, Question } from '../../../types'
 import { OptionUpdates } from '../../../../server/types'
 
 type Option<A> = A extends readonly (infer T)[] ? T : never
 
 const OptionItem = ({
-  language,
   option,
   optionNumber,
+  question,
+  language,
 }: {
-  language: keyof Locales
   option: Option<ChoiceType>
   optionNumber: number
+  question: Question
+  language: keyof Locales
 }) => {
   const { t } = useTranslation()
+  const mutation = useEditOptionMutation(question.id, option.id)
   const [optionTitle, setOptionTitle] = useState(option.title[language])
   const [optionData, setOptionData] = useState('')
 
@@ -44,7 +50,12 @@ const OptionItem = ({
       }
     }
 
-    console.log(updatedOption)
+    try {
+      await mutation.mutateAsync(updatedOption)
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
   }
 
   return (
@@ -75,24 +86,28 @@ const OptionItem = ({
 }
 
 const EditOptions = ({
-  language,
   option,
   optionNumber,
+  question,
+  language,
 }: {
-  language: keyof Locales
   option: Option<ChoiceType>
   optionNumber: number
+  question: Question
+  language: keyof Locales
 }) => (
   <Box mb={5} display="flex">
     <OptionItem
-      language={'fi' as keyof Locales}
       option={option}
       optionNumber={optionNumber}
+      question={question}
+      language={'fi' as keyof Locales}
     />
     <OptionItem
-      language={language}
       option={option}
       optionNumber={optionNumber}
+      question={question}
+      language={language}
     />
   </Box>
 )
