@@ -9,8 +9,13 @@ import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
 
 import { Locales } from '../../../types'
+import useQuestions from '../../../hooks/useQuestions'
 
 const EditQuestions = () => {
+  const { t } = useTranslation()
+  const { survey } = useSurvey()
+  const { questions, isLoading } = useQuestions(survey?.id)
+
   const [questionId, setQuestionId] = useState('')
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setQuestionId(event.target.value)
@@ -21,12 +26,9 @@ const EditQuestions = () => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
 
-  const { survey, isLoading } = useSurvey()
-  const { t } = useTranslation()
-
   if (isLoading) return null
 
-  const selectedQuestion = survey.Questions.find(
+  const selectedQuestion = questions.find(
     ({ id }) => id === (questionId as unknown as number)
   )
   const options = selectedQuestion?.optionData.options || []
@@ -36,7 +38,7 @@ const EditQuestions = () => {
       <Box sx={{ display: 'flex', my: 4, justifyContent: 'space-evenly' }}>
         <QuestionSelect
           questionId={questionId}
-          questions={survey.Questions}
+          questions={questions}
           handleChange={handleQuestionChange}
         />
         <LanguageSelect
