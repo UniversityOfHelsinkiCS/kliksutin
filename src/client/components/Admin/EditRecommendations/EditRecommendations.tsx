@@ -34,9 +34,9 @@ const RecommendationSelect = ({
   return (
     <Box sx={{ width: '20vw' }}>
       <FormControl fullWidth>
-        <InputLabel>{t('admin:selectQuestion')}</InputLabel>
+        <InputLabel>{t('admin:selectRecommendation')}</InputLabel>
         <Select
-          label={t('admin:selectQuestion')}
+          label={t('admin:selectRecommendation')}
           value={recommendationId}
           onChange={handleChange}
         >
@@ -93,7 +93,7 @@ const EditRecommendations = () => {
         <Box width="100%" flexWrap="wrap">
           <Box sx={{ my: 8 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              {t('admin:questionViewInfo')}
+              {t('admin:recommendationViewInfo')}
             </Typography>
           </Box>
         </Box>
