@@ -24,7 +24,7 @@ const EditRecommendations = () => {
   const [recommendationId, setRecommendationId] = useState('')
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
   const [showModal, setShowModal] = useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [newTypeId, setNewTypeId] = useState('')
   const [newRecommendationTitle, setNewRecommendationTitle] = useState({
     fi: '',
