@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next'
 import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
 
-import NewItemDialog from './NewItemDialog'
+import NewItemDialog from '../NewItemDialog'
 import EditRecommendation from './EditRecommendation'
 import { DialogLocalesField } from '../TextField'
 import { DialogSelect, LanguageSelect, RecommendationSelect } from '../Select'
