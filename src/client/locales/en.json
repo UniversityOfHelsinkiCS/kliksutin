@@ -82,6 +82,7 @@
     "save": "Save",
     "saveSuccess": "Saved successfully",
     "resultViewInfo": "Edit results",
+    "resultViewResultsNotFound": "This question does not have any results associated",
     "questionViewInfo": "Edit question",
     "questionOptionViewInfo": "Edit question options",
     "recommendationViewInfo": "Edit recommendation",

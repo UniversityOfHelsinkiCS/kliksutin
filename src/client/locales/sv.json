@@ -82,6 +82,7 @@
     "saveSuccess": "Sparad",
     "resultViewInfo": "Tuloksien muokkaus",
     "questionViewInfo": "Kysymyksen muokkaus",
+    "resultViewResultsNotFound": "Tähän kysymykseen ei liity yhtään tulosta",
     "questionOptionViewInfo": "Valintojen muokkaus",
     "recommendationViewInfo": "Suositusten muokkaus",
     "question": "Kysymyksen otsikko ja lisäteksti",

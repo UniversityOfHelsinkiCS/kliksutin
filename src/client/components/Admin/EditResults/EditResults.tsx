@@ -171,9 +171,13 @@ const EditResults = () => {
         />
       </Box>
       <Box sx={{ my: 8 }}>
-        {filteredResults.length > 0 && (
+        {filteredResults.length > 0 ? (
           <Typography sx={{ my: 4, pl: 1 }} variant="h4">
             {t('admin:resultViewInfo')}
+          </Typography>
+        ) : (
+          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+            {t('admin:resultViewResultsNotFound')}
           </Typography>
         )}
         {filteredResults.map((result) => (
