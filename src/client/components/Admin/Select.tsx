@@ -56,7 +56,7 @@ const SelectWrapper = ({
   handleChange: HandleChange
   children: React.ReactNode
 }) => (
-  <Box sx={{ width: '20vw' }}>
+  <Box sx={{ width: '20vw', mx: 4 }}>
     <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
       <Select label={label} value={value} onChange={handleChange}>

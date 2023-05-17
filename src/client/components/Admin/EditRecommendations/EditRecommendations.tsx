@@ -39,7 +39,7 @@ const EditRecommendations = () => {
           display: 'flex',
           flexWrap: 'wrap',
           my: 4,
-          justifyContent: 'space-around',
+          justifyContent: 'flex-start',
         }}
       >
         <RecommendationSelect
