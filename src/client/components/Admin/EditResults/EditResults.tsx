@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react'
 import {
   Box,
@@ -173,11 +174,15 @@ const EditResults = () => {
       <Box sx={{ my: 8 }}>
         {filteredResults.length > 0 ? (
           <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-            {t('admin:resultViewInfo')}
+            {t('admin:resultViewResultEdit')}
+          </Typography>
+        ) : selectedQuestion ? (
+          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+            {t('admin:resultViewResultsNotFound')}
           </Typography>
         ) : (
           <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-            {t('admin:resultViewResultsNotFound')}
+            {t('admin:resultViewInfo')}
           </Typography>
         )}
         {filteredResults.map((result) => (
