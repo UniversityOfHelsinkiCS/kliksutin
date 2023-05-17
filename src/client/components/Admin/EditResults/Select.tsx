@@ -45,6 +45,27 @@ const languages = [
   },
 ]
 
+const SelectWrapper = ({
+  label,
+  value,
+  handleChange,
+  children,
+}: {
+  label: string
+  value: string
+  handleChange: HandleChange
+  children: React.ReactNode
+}) => (
+  <Box sx={{ width: '20vw' }}>
+    <FormControl fullWidth>
+      <InputLabel>{label}</InputLabel>
+      <Select label={label} value={value} onChange={handleChange}>
+        {children}
+      </Select>
+    </FormControl>
+  </Box>
+)
+
 const sortDimensions = (dimensions: InfoType[], language: keyof Locales) => {
   const sortedDimensions = dimensions.sort((a, b) => {
     if (a.title[language] > b.title[language]) return 1
@@ -72,22 +93,17 @@ export const DimensionSelect = ({
   const dimensionSelections = [allSelection].concat(sortedDimensions)
 
   return (
-    <Box sx={{ width: '20vw' }}>
-      <FormControl fullWidth>
-        <InputLabel>{t('admin:selectDimension')}</InputLabel>
-        <Select
-          label={t('admin:selectDimension')}
-          value={dimensionId}
-          onChange={handleChange}
-        >
-          {dimensionSelections.map(({ id, title }) => (
-            <MenuItem key={id} value={id}>
-              {title[language]}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Box>
+    <SelectWrapper
+      label={t('admin:selectDimension')}
+      value={dimensionId}
+      handleChange={handleChange}
+    >
+      {dimensionSelections.map(({ id, title }) => (
+        <MenuItem key={id} value={id}>
+          {title[language]}
+        </MenuItem>
+      ))}
+    </SelectWrapper>
   )
 }
 
@@ -120,22 +136,17 @@ export const QuestionSelect = ({
   const sortedQuestions = sortQuestions(filteredQuestions, language)
 
   return (
-    <Box sx={{ width: '20vw' }}>
-      <FormControl fullWidth>
-        <InputLabel>{t('admin:selectQuestion')}</InputLabel>
-        <Select
-          label={t('admin:selectQuestion')}
-          value={questionId}
-          onChange={handleChange}
-        >
-          {sortedQuestions.map(({ id, title }) => (
-            <MenuItem key={id} value={id}>
-              {title[language]}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Box>
+    <SelectWrapper
+      label={t('admin:selectQuestion')}
+      value={questionId}
+      handleChange={handleChange}
+    >
+      {sortedQuestions.map(({ id, title }) => (
+        <MenuItem key={id} value={id}>
+          {title[language]}
+        </MenuItem>
+      ))}
+    </SelectWrapper>
   )
 }
 
