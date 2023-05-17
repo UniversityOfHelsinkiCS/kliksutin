@@ -9,7 +9,14 @@ import {
   DialogTitle,
 } from '@mui/material'
 
-const NewItemDialog = ({ open, title, content, onClose, children }: any) => {
+const NewItemDialog = ({
+  open,
+  title,
+  content,
+  onSubmit,
+  onClose,
+  children,
+}: any) => {
   const { t } = useTranslation()
 
   return (
@@ -20,7 +27,7 @@ const NewItemDialog = ({ open, title, content, onClose, children }: any) => {
         {children}
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" type="submit">
+        <Button variant="contained" onClick={onSubmit}>
           {t('admin:save')}
         </Button>
         <Button variant="outlined" onClick={onClose}>

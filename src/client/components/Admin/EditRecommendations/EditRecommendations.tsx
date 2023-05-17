@@ -28,14 +28,14 @@ const EditRecommendations = () => {
     defaultValues: {
       type: 'teaching',
       title: {
-        fi: '1',
-        sv: '2',
-        en: '3',
+        fi: '',
+        sv: '',
+        en: '',
       },
       text: {
-        fi: '4',
-        sv: '5',
-        en: '6',
+        fi: '',
+        sv: '',
+        en: '',
       },
     },
   })
@@ -88,11 +88,12 @@ const EditRecommendations = () => {
           {t('admin:recommendationAddNew')}
         </Button>
       </Box>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <NewItemDialog
           open={showModal}
           title={t('admin:recommendationNewRecommendationInfo')}
           content={t('admin:recommendationNewRecommendationContent')}
+          onSubmit={handleSubmit(onSubmit)}
           onClose={() => setShowModal(!showModal)}
         >
           <LocalesTextField
