@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { InfoType, Locales, Question } from '../../../types'
+import { InfoType, Locales, Question, Recommendation } from '../../../types'
 
 type HandleChange = (event: SelectChangeEvent) => void
 
@@ -142,6 +142,33 @@ export const QuestionSelect = ({
       handleChange={handleChange}
     >
       {sortedQuestions.map(({ id, title }) => (
+        <MenuItem key={id} value={id}>
+          {title[language]}
+        </MenuItem>
+      ))}
+    </SelectWrapper>
+  )
+}
+
+export const RecommendationSelect = ({
+  recommendationId,
+  recommendations,
+  handleChange,
+}: {
+  recommendationId: string
+  recommendations: Recommendation[]
+  handleChange: HandleChange
+}) => {
+  const { t, i18n } = useTranslation()
+  const language = i18n.language as keyof Locales
+
+  return (
+    <SelectWrapper
+      label={t('admin:selectRecommendation')}
+      value={recommendationId}
+      handleChange={handleChange}
+    >
+      {recommendations.map(({ id, title }) => (
         <MenuItem key={id} value={id}>
           {title[language]}
         </MenuItem>

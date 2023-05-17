@@ -1,56 +1,14 @@
 import React, { useState } from 'react'
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  Typography,
-} from '@mui/material'
+import { Box, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
 
-import { LanguageSelect } from '../EditResults/Select'
+import { LanguageSelect, RecommendationSelect } from '../EditResults/Select'
 
-import { Locales, Recommendation } from '../../../types'
+import { Locales } from '../../../types'
 import useRecommendations from '../../../hooks/useRecommendations'
 import EditRecommendation from './EditRecommendation'
-
-type HandleChange = (event: SelectChangeEvent) => void
-
-const RecommendationSelect = ({
-  recommendationId,
-  recommendations,
-  handleChange,
-}: {
-  recommendationId: string
-  recommendations: Recommendation[]
-  handleChange: HandleChange
-}) => {
-  const { t, i18n } = useTranslation()
-  const language = i18n.language as keyof Locales
-
-  return (
-    <Box sx={{ width: '20vw' }}>
-      <FormControl fullWidth>
-        <InputLabel>{t('admin:selectRecommendation')}</InputLabel>
-        <Select
-          label={t('admin:selectRecommendation')}
-          value={recommendationId}
-          onChange={handleChange}
-        >
-          {recommendations.map(({ id, title }) => (
-            <MenuItem key={id} value={id}>
-              {title[language]}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Box>
-  )
-}
 
 const EditRecommendations = () => {
   const { t } = useTranslation()
