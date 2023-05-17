@@ -53,7 +53,7 @@ export const DialogSelect = ({
 }) => (
   <Controller
     control={control}
-    name="type"
+    name={value}
     defaultValue=""
     render={({ field }) => (
       <FormControl fullWidth sx={{ mt: 4 }}>

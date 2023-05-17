@@ -1,20 +1,29 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  MenuItem,
+  SelectChangeEvent,
+  Typography,
+} from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
 
-import EditRecommendation from './EditRecommendation'
-import { LanguageSelect, RecommendationSelect } from '../Select'
 import NewItemDialog from './NewItemDialog'
+import EditRecommendation from './EditRecommendation'
+import { DialogLocalesField } from '../TextField'
+import { DialogSelect, LanguageSelect, RecommendationSelect } from '../Select'
 
 import { Locales, NewRecommendation } from '../../../types'
-import { LocalesTextField } from '../TextField'
+import { recommendationTypes } from '../config'
 
 const EditRecommendations = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const language = i18n.language as keyof Locales
+
   const { survey } = useSurvey()
   const { recommendations, isSuccess } = useRecommendations(survey?.id)
 
@@ -88,26 +97,7 @@ const EditRecommendations = () => {
           {t('admin:recommendationAddNew')}
         </Button>
       </Box>
-      <form>
-        <NewItemDialog
-          open={showModal}
-          title={t('admin:recommendationNewRecommendationInfo')}
-          content={t('admin:recommendationNewRecommendationContent')}
-          onSubmit={handleSubmit(onSubmit)}
-          onClose={() => setShowModal(!showModal)}
-        >
-          <LocalesTextField
-            value="title"
-            inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}
-            control={control}
-          />
-          <LocalesTextField
-            value="text"
-            inputlabel={t('admin:recommendationNewRecommendationContentLabel')}
-            control={control}
-          />
-        </NewItemDialog>
-      </form>
+
       <Box width="100%" flexWrap="wrap">
         {recommendationId ? (
           <Box sx={{ my: 4 }}>
@@ -125,6 +115,39 @@ const EditRecommendations = () => {
           </Typography>
         )}
       </Box>
+
+      <form>
+        <NewItemDialog
+          open={showModal}
+          title={t('admin:recommendationNewRecommendationInfo')}
+          content={t('admin:recommendationNewRecommendationContent')}
+          onSubmit={handleSubmit(onSubmit)}
+          onClose={() => setShowModal(!showModal)}
+        >
+          <DialogSelect
+            label={t('admin:selectRecommendationType')}
+            value="type"
+            control={control}
+          >
+            {recommendationTypes.map(({ id, title }) => (
+              <MenuItem key={id} value={id}>
+                {title[language]}
+              </MenuItem>
+            ))}
+          </DialogSelect>
+
+          <DialogLocalesField
+            value="title"
+            inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}
+            control={control}
+          />
+          <DialogLocalesField
+            value="text"
+            inputlabel={t('admin:recommendationNewRecommendationContentLabel')}
+            control={control}
+          />
+        </NewItemDialog>
+      </form>
     </Box>
   )
 }

@@ -26,7 +26,8 @@ export const ContentTextField = ({
   <TextField multiline rows={20} fullWidth value={value} onChange={onChange} />
 )
 
-export const LocalesTextField = ({
+// This component is used inside RHF form element
+export const DialogLocalesField = ({
   value,
   inputlabel,
   control,
