@@ -79,6 +79,7 @@
     "selectQuestion": "Select question",
     "selectLanguage": "Select language",
     "selectRecommendation": "Select recommendation",
+    "selectRecommendationType": "Select type of the recommendation",
     "save": "Save",
     "cancel": "Cancel",
     "saveSuccess": "Saved successfully",

@@ -78,6 +78,7 @@
     "selectQuestion": "Valitse kysymys",
     "selectLanguage": "Valitse kieli",
     "selectRecommendation": "Valitse suositus",
+    "selectRecommendationType": "Valitse suosituksen tyyppi",
     "save": "Tallenna",
     "cancel": "Eiku",
     "saveSuccess": "Tallennettu onnistuneesti",

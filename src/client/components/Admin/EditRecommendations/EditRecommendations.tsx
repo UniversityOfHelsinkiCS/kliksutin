@@ -6,7 +6,11 @@ import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
 
 import EditRecommendation from './EditRecommendation'
-import { LanguageSelect, RecommendationSelect } from '../Select'
+import {
+  LanguageSelect,
+  RecommendationSelect,
+  RecommendationTypeSelect,
+} from '../Select'
 import NewItemDialog from './NewItemDialog'
 
 import { Locales } from '../../../types'
@@ -21,6 +25,7 @@ const EditRecommendations = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
   const [showModal, setShowModal] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [newTypeId, setNewTypeId] = useState('')
   const [newRecommendationTitle, setNewRecommendationTitle] = useState({
     fi: '',
     en: '',
@@ -38,6 +43,10 @@ const EditRecommendations = () => {
 
   const handleLanguageChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as keyof Locales)
+  }
+
+  const handleTypeChange = (event: SelectChangeEvent) => {
+    setNewTypeId(event.target.value)
   }
 
   if (!isSuccess) return null
@@ -80,6 +89,10 @@ const EditRecommendations = () => {
         content={t('admin:recommendationNewRecommendationContent')}
         onClose={() => setShowModal(!showModal)}
       >
+        <RecommendationTypeSelect
+          typeId={newTypeId}
+          handleChange={handleTypeChange}
+        />
         <LocalesTextField
           value={newRecommendationTitle}
           inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}

@@ -33,7 +33,7 @@ export const LocalesTextField = ({
 }: {
   value: Locales
   inputlabel: string
-  onChange: any
+  onChange: React.Dispatch<React.SetStateAction<Locales>>
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
