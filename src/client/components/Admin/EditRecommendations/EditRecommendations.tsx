@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
@@ -6,14 +7,10 @@ import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
 
 import EditRecommendation from './EditRecommendation'
-import {
-  LanguageSelect,
-  RecommendationSelect,
-  RecommendationTypeSelect,
-} from '../Select'
+import { LanguageSelect, RecommendationSelect } from '../Select'
 import NewItemDialog from './NewItemDialog'
 
-import { Locales } from '../../../types'
+import { Locales, NewRecommendation } from '../../../types'
 import { LocalesTextField } from '../TextField'
 
 const EditRecommendations = () => {
@@ -25,16 +22,22 @@ const EditRecommendations = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
   const [showModal, setShowModal] = useState(false)
 
-  const [newTypeId, setNewTypeId] = useState('')
-  const [newRecommendationTitle, setNewRecommendationTitle] = useState({
-    fi: '',
-    en: '',
-    sv: '',
-  })
-  const [newRecommendationContent, setNewRecommendationContent] = useState({
-    fi: '',
-    en: '',
-    sv: '',
+  const { handleSubmit, control } = useForm<NewRecommendation>({
+    mode: 'onBlur',
+    shouldUnregister: true,
+    defaultValues: {
+      type: 'teaching',
+      title: {
+        fi: '1',
+        sv: '2',
+        en: '3',
+      },
+      text: {
+        fi: '4',
+        sv: '5',
+        en: '6',
+      },
+    },
   })
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
@@ -45,8 +48,10 @@ const EditRecommendations = () => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
 
-  const handleTypeChange = (event: SelectChangeEvent) => {
-    setNewTypeId(event.target.value)
+  const onSubmit = (data: any) => {
+    console.log(data)
+
+    setShowModal(false)
   }
 
   if (!isSuccess) return null
@@ -83,27 +88,25 @@ const EditRecommendations = () => {
           {t('admin:recommendationAddNew')}
         </Button>
       </Box>
-      <NewItemDialog
-        open={showModal}
-        title={t('admin:recommendationNewRecommendationInfo')}
-        content={t('admin:recommendationNewRecommendationContent')}
-        onClose={() => setShowModal(!showModal)}
-      >
-        <RecommendationTypeSelect
-          typeId={newTypeId}
-          handleChange={handleTypeChange}
-        />
-        <LocalesTextField
-          value={newRecommendationTitle}
-          inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}
-          onChange={setNewRecommendationTitle}
-        />
-        <LocalesTextField
-          value={newRecommendationContent}
-          inputlabel={t('admin:recommendationNewRecommendationContentLabel')}
-          onChange={setNewRecommendationContent}
-        />
-      </NewItemDialog>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <NewItemDialog
+          open={showModal}
+          title={t('admin:recommendationNewRecommendationInfo')}
+          content={t('admin:recommendationNewRecommendationContent')}
+          onClose={() => setShowModal(!showModal)}
+        >
+          <LocalesTextField
+            value="title"
+            inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}
+            control={control}
+          />
+          <LocalesTextField
+            value="text"
+            inputlabel={t('admin:recommendationNewRecommendationContentLabel')}
+            control={control}
+          />
+        </NewItemDialog>
+      </form>
       <Box width="100%" flexWrap="wrap">
         {recommendationId ? (
           <Box sx={{ my: 4 }}>

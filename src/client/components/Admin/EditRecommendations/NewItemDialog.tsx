@@ -20,7 +20,7 @@ const NewItemDialog = ({ open, title, content, onClose, children }: any) => {
         {children}
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" onClick={onClose}>
+        <Button variant="contained" type="submit">
           {t('admin:save')}
         </Button>
         <Button variant="outlined" onClick={onClose}>

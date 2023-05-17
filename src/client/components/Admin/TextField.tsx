@@ -1,6 +1,6 @@
 import React from 'react'
+import { Control, Controller } from 'react-hook-form'
 import { Box, InputLabel, TextField } from '@mui/material'
-import { Locales } from '../../types'
 
 type OnChange = (
   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,37 +29,55 @@ export const ContentTextField = ({
 export const LocalesTextField = ({
   value,
   inputlabel,
-  onChange,
+  control,
 }: {
-  value: Locales
+  value: string
   inputlabel: string
-  onChange: React.Dispatch<React.SetStateAction<Locales>>
+  control: Control<any>
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
-    <TextField
-      sx={{ mt: 2 }}
-      multiline
-      label="FI"
-      fullWidth
-      value={value.fi}
-      onChange={(event) => onChange({ ...value, fi: event.target.value })}
+    <Controller
+      name={`${value}.fi`}
+      control={control}
+      render={({ field }) => (
+        <TextField
+          sx={{ mt: 2 }}
+          multiline
+          label="FI"
+          fullWidth
+          value={field.value.fi}
+          {...field}
+        />
+      )}
     />
-    <TextField
-      sx={{ mt: 2 }}
-      multiline
-      label="SV"
-      fullWidth
-      value={value.sv}
-      onChange={(event) => onChange({ ...value, sv: event.target.value })}
+    <Controller
+      name={`${value}.sv`}
+      control={control}
+      render={({ field }) => (
+        <TextField
+          sx={{ mt: 2 }}
+          multiline
+          label="SV"
+          fullWidth
+          value={field.value.sv}
+          {...field}
+        />
+      )}
     />
-    <TextField
-      sx={{ mt: 2 }}
-      multiline
-      label="EN"
-      fullWidth
-      value={value.en}
-      onChange={(event) => onChange({ ...value, en: event.target.value })}
+    <Controller
+      name={`${value}.en`}
+      control={control}
+      render={({ field }) => (
+        <TextField
+          sx={{ mt: 2 }}
+          multiline
+          label="EN"
+          fullWidth
+          value={field.value.en}
+          {...field}
+        />
+      )}
     />
   </Box>
 )
