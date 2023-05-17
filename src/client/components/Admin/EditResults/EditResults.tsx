@@ -171,7 +171,7 @@ const EditResults = () => {
         />
       </Box>
       <Box sx={{ my: 8 }}>
-        {selectedQuestion && (
+        {filteredResults.length > 0 && (
           <Typography sx={{ my: 4, pl: 1 }} variant="h4">
             {t('admin:resultViewInfo')}
           </Typography>
