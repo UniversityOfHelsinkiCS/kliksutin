@@ -71,25 +71,23 @@ const EditQuestions = () => {
             {t('admin:questionViewInfo')}
           </Typography>
         )}
-        <Box sx={{ my: 8 }}>
-          {options.length > 0 && (
-            <>
-              <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-                {t('admin:questionOptionViewInfo')}
-              </Typography>
+        {options.length > 0 && (
+          <Box sx={{ my: 8 }}>
+            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+              {t('admin:questionOptionViewInfo')}
+            </Typography>
 
-              {options.map((option, index) => (
-                <EditOptions
-                  key={option.id}
-                  option={option}
-                  optionNumber={index + 1}
-                  question={selectedQuestion}
-                  language={selectedLanguage}
-                />
-              ))}
-            </>
-          )}
-        </Box>
+            {options.map((option, index) => (
+              <EditOptions
+                key={option.id}
+                option={option}
+                optionNumber={index + 1}
+                question={selectedQuestion}
+                language={selectedLanguage}
+              />
+            ))}
+          </Box>
+        )}
       </Box>
     </Box>
   )

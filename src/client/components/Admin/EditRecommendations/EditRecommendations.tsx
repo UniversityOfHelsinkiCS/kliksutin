@@ -94,19 +94,23 @@ const EditRecommendations = () => {
           handleChange={handleLanguageChange}
         />
       </Box>
-      {recommendationId && (
-        <Box width="100%" flexWrap="wrap">
+      <Box width="100%" flexWrap="wrap">
+        {recommendationId ? (
           <Box sx={{ my: 8 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              {t('admin:recommendationViewInfo')}
+              {t('admin:recommendationViewRecommendationEdit')}
             </Typography>
             <EditRecommendation
               language={selectedLanguage}
               recommendation={selectedRecommendation}
             />
           </Box>
-        </Box>
-      )}
+        ) : (
+          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+            {t('admin:recommendationViewInfo')}
+          </Typography>
+        )}
+      </Box>
     </Box>
   )
 }

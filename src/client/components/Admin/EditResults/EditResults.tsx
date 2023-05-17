@@ -171,30 +171,30 @@ const EditResults = () => {
           handleChange={handleLanguageChange}
         />
       </Box>
-      <Box sx={{ my: 8 }}>
-        {filteredResults.length > 0 ? (
+      {filteredResults.length > 0 ? (
+        <Box sx={{ my: 8 }}>
           <Typography sx={{ my: 4, pl: 1 }} variant="h4">
             {t('admin:resultViewResultEdit')}
           </Typography>
-        ) : selectedQuestion ? (
-          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-            {t('admin:resultViewResultsNotFound')}
-          </Typography>
-        ) : (
-          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-            {t('admin:resultViewInfo')}
-          </Typography>
-        )}
-        {filteredResults.map((result) => (
-          <EditResult
-            key={result.id}
-            dimensionId={dimensionId}
-            language={selectedLanguage}
-            options={options}
-            result={result}
-          />
-        ))}
-      </Box>
+          {filteredResults.map((result) => (
+            <EditResult
+              key={result.id}
+              dimensionId={dimensionId}
+              language={selectedLanguage}
+              options={options}
+              result={result}
+            />
+          ))}
+        </Box>
+      ) : selectedQuestion ? (
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          {t('admin:resultViewResultsNotFound')}
+        </Typography>
+      ) : (
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          {t('admin:resultViewInfo')}
+        </Typography>
+      )}
     </Box>
   )
 }
