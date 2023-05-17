@@ -1,53 +1,25 @@
 import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import {
-  Box,
-  Button,
-  MenuItem,
-  SelectChangeEvent,
-  Typography,
-} from '@mui/material'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
 
-import NewItemDialog from '../NewItemDialog'
 import EditRecommendation from './EditRecommendation'
-import { DialogLocalesField } from '../TextField'
-import { DialogSelect, LanguageSelect, RecommendationSelect } from '../Select'
+import NewRecommendationForm from './NewRecommendationForm'
+import { LanguageSelect, RecommendationSelect } from '../Select'
 
-import { Locales, NewRecommendation } from '../../../types'
-import { recommendationTypes } from '../config'
+import { Locales } from '../../../types'
 
 const EditRecommendations = () => {
-  const { t, i18n } = useTranslation()
-  const language = i18n.language as keyof Locales
+  const { t } = useTranslation()
 
   const { survey } = useSurvey()
   const { recommendations, isSuccess } = useRecommendations(survey?.id)
 
   const [recommendationId, setRecommendationId] = useState('')
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
-  const [showModal, setShowModal] = useState(false)
-
-  const { handleSubmit, control } = useForm<NewRecommendation>({
-    mode: 'onBlur',
-    shouldUnregister: true,
-    defaultValues: {
-      type: 'teaching',
-      title: {
-        fi: '',
-        sv: '',
-        en: '',
-      },
-      text: {
-        fi: '',
-        sv: '',
-        en: '',
-      },
-    },
-  })
+  const [openForm, setOpenForm] = useState(false)
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setRecommendationId(event.target.value)
@@ -55,12 +27,6 @@ const EditRecommendations = () => {
 
   const handleLanguageChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as keyof Locales)
-  }
-
-  const onSubmit = (data: any) => {
-    console.log(data)
-
-    setShowModal(false)
   }
 
   if (!isSuccess) return null
@@ -92,7 +58,7 @@ const EditRecommendations = () => {
         <Button
           sx={{ position: 'absolute', right: 0, mr: 2, alignSelf: 'center' }}
           variant="contained"
-          onClick={() => setShowModal(!showModal)}
+          onClick={() => setOpenForm(!openForm)}
         >
           {t('admin:recommendationAddNew')}
         </Button>
@@ -116,38 +82,7 @@ const EditRecommendations = () => {
         )}
       </Box>
 
-      <form>
-        <NewItemDialog
-          open={showModal}
-          title={t('admin:recommendationNewRecommendationInfo')}
-          content={t('admin:recommendationNewRecommendationContent')}
-          onSubmit={handleSubmit(onSubmit)}
-          onClose={() => setShowModal(!showModal)}
-        >
-          <DialogSelect
-            label={t('admin:selectRecommendationType')}
-            value="type"
-            control={control}
-          >
-            {recommendationTypes.map(({ id, title }) => (
-              <MenuItem key={id} value={id}>
-                {title[language]}
-              </MenuItem>
-            ))}
-          </DialogSelect>
-
-          <DialogLocalesField
-            value="title"
-            inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}
-            control={control}
-          />
-          <DialogLocalesField
-            value="text"
-            inputlabel={t('admin:recommendationNewRecommendationContentLabel')}
-            control={control}
-          />
-        </NewItemDialog>
-      </form>
+      <NewRecommendationForm open={openForm} setOpen={setOpenForm} />
     </Box>
   )
 }
