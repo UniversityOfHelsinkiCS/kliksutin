@@ -13,6 +13,8 @@ export const TitleTextField = ({
   onChange: OnChange
 }) => <TextField fullWidth multiline value={value} onChange={onChange} />
 
+// ContentTextField causes MUI rendering issue if rows are not defined
+// more information: https://github.com/mui/material-ui/issues/33081
 export const ContentTextField = ({
   value,
   onChange,
