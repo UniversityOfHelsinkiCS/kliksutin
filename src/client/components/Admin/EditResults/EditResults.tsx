@@ -1,21 +1,18 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react'
-import {
-  Box,
-  SelectChangeEvent,
-  TextField,
-  Typography,
-  Button,
-} from '@mui/material'
+import { Box, SelectChangeEvent, Typography, Button } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 
-import { Locales, Result, ChoiceType } from '../../../types'
 import useSurvey from '../../../hooks/useSurvey'
 import useResults from '../../../hooks/useResults'
 import useEditResultMutation from '../../../hooks/useEditResultMutation'
-import { getDimensions } from '../../../util/dimensions'
+
 import { DimensionSelect, QuestionSelect, LanguageSelect } from '../Select'
+import { ContentTextField, TitleTextField } from '../TextField'
+
+import { getDimensions } from '../../../util/dimensions'
+import { Locales, Result, ChoiceType } from '../../../types'
 
 const ResultItem = ({
   dimensionId,
@@ -69,15 +66,11 @@ const ResultItem = ({
         </Typography>
       </Box>
 
-      <TextField
-        fullWidth
+      <TitleTextField
         value={selected}
         onChange={(event) => setSelected(event.target.value)}
       />
-      <TextField
-        multiline
-        rows={20}
-        fullWidth
+      <ContentTextField
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />

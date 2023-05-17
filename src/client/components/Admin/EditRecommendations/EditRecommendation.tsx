@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Box, TextField, Typography, Button } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
 import useEditRecommendationMutation from '../../../hooks/useEditRecommendationMutation'
+
+import { ContentTextField, TitleTextField } from '../TextField'
 
 import { Locales, Recommendation } from '../../../types'
 import { RecommendationUpdates } from '../../../../server/types'
@@ -55,16 +57,12 @@ const RecommendationItem = ({
         <Typography variant="h6">{t('admin:recommendation')}</Typography>
         <Typography ml={1}>{language}</Typography>
       </Box>
-      <TextField
-        fullWidth
+      <TitleTextField
         value={recommendationTitle}
         onChange={(event) => setRecommendationTitle(event.target.value)}
       />
 
-      <TextField
-        multiline
-        rows={20}
-        fullWidth
+      <ContentTextField
         value={recommendationText}
         onChange={(event) => setRecommendationText(event.target.value)}
       />

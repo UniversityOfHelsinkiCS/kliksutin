@@ -3,12 +3,12 @@ import { Box, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
+import useRecommendations from '../../../hooks/useRecommendations'
 
+import EditRecommendation from './EditRecommendation'
 import { LanguageSelect, RecommendationSelect } from '../Select'
 
 import { Locales } from '../../../types'
-import useRecommendations from '../../../hooks/useRecommendations'
-import EditRecommendation from './EditRecommendation'
 
 const EditRecommendations = () => {
   const { t } = useTranslation()

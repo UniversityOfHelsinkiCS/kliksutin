@@ -3,9 +3,10 @@ import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
+import useEditQuestionMutation from '../../../hooks/useEditQuestionMutation'
+
 import { Locales, Question } from '../../../types'
 import { QuestionsUpdates } from '../../../../server/types'
-import useEditQuestionMutation from '../../../hooks/useEditQuestionMutation'
 
 const QuestionItem = ({
   language,

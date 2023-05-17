@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Box, TextField, Typography, Button } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
 import useEditOptionMutation from '../../../hooks/useEditChoiceMutation'
+
+import { ContentTextField, TitleTextField } from '../TextField'
 
 import { ChoiceType, Locales, Question } from '../../../types'
 import { OptionUpdates } from '../../../../server/types'
@@ -66,16 +68,12 @@ const OptionItem = ({
         </Typography>
         <Typography ml={1}>{language}</Typography>
       </Box>
-      <TextField
-        fullWidth
+      <TitleTextField
         value={optionTitle}
         onChange={(event) => setOptionTitle(event.target.value)}
       />
       {optionData && (
-        <TextField
-          multiline
-          rows={20}
-          fullWidth
+        <ContentTextField
           value={optionData}
           onChange={(event) => setOptionData(event.target.value)}
         />

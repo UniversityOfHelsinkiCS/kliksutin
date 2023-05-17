@@ -3,13 +3,13 @@ import { Box, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
+import useQuestions from '../../../hooks/useQuestions'
 
 import { LanguageSelect, QuestionSelect } from '../Select'
 import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
 
 import { Locales } from '../../../types'
-import useQuestions from '../../../hooks/useQuestions'
 
 const EditQuestions = () => {
   const { t } = useTranslation()
