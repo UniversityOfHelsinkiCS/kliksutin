@@ -93,6 +93,8 @@
     "recommendationRemove": "Poista tämä suositus",
     "recommendationNewRecommendationInfo": "Uusi suositus",
     "recommendationNewRecommendationContent": "Täällä voit lisätä uuden suosituksen Curreen",
+    "recommendationNewRecommendationTitleLabel": "Suosituksen otsikko",
+    "recommendationNewRecommendationContentLabel": "Suosituksen sisältö",
     "question": "Kysymyksen otsikko ja lisäteksti",
     "option": "Valinta ",
     "recommendation": "Suosituksen otsikko ja lisäteksti",

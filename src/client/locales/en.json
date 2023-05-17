@@ -94,6 +94,8 @@
     "recommendationRemove": "Remove this recommendation",
     "recommendationNewRecommendationInfo": "New recommendation",
     "recommendationNewRecommendationContent": "Here you can create a new recommendation to Curre",
+    "recommendationNewRecommendationTitleLabel": "Recommendation Title",
+    "recommendationNewRecommendationContentLabel": "Recommendation Content",
     "question": "Question Title and Text ",
     "option": "Choice ",
     "recommendation": "Recommendation Title and Text ",
