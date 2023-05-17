@@ -16,7 +16,14 @@ const NewItemDialog = ({
   onSubmit,
   onClose,
   children,
-}: any) => {
+}: {
+  open: boolean
+  title: string
+  content: string
+  onSubmit: (data: Object, e?: Event) => Promise<void>
+  onClose: () => void
+  children: React.ReactNode
+}) => {
   const { t } = useTranslation()
 
   return (
