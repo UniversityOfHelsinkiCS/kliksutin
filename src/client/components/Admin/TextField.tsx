@@ -43,7 +43,7 @@ export const LocalesTextField = ({
       label="FI"
       fullWidth
       value={value.fi}
-      onChange={(event) => onChange({ ...onChange, fi: event.target.value })}
+      onChange={(event) => onChange({ ...value, fi: event.target.value })}
     />
     <TextField
       sx={{ mt: 2 }}
@@ -51,7 +51,7 @@ export const LocalesTextField = ({
       label="SV"
       fullWidth
       value={value.sv}
-      onChange={(event) => onChange({ ...onChange, sv: event.target.value })}
+      onChange={(event) => onChange({ ...value, sv: event.target.value })}
     />
     <TextField
       sx={{ mt: 2 }}
@@ -59,7 +59,7 @@ export const LocalesTextField = ({
       label="EN"
       fullWidth
       value={value.en}
-      onChange={(event) => onChange({ ...onChange, en: event.target.value })}
+      onChange={(event) => onChange({ ...value, en: event.target.value })}
     />
   </Box>
 )
