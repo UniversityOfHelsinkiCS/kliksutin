@@ -1,4 +1,6 @@
 import React from 'react'
+import { Control, Controller } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import {
   Box,
   FormControl,
@@ -11,58 +13,11 @@ import {
   FormControlLabel,
   Radio,
 } from '@mui/material'
-import { useTranslation } from 'react-i18next'
 
+import { allSelection, languages } from './config'
 import { InfoType, Locales, Question, Recommendation } from '../../types'
 
 type HandleChange = (event: SelectChangeEvent) => void
-
-const recommendationTypes: InfoType[] = [
-  {
-    id: 'teaching',
-    title: {
-      fi: 'Opetus',
-      sv: 'Opetus',
-      en: 'Teaching',
-    },
-  },
-  {
-    id: 'administration',
-    title: {
-      fi: 'Hallinto',
-      sv: 'Hallinto',
-      en: 'Adminisitration',
-    },
-  },
-]
-
-const allSelection: InfoType = {
-  id: 'allDimensions',
-  title: {
-    fi: 'Kaikki',
-    sv: 'All',
-    en: 'All',
-  },
-}
-
-const languages = [
-  {
-    id: 'en',
-    title: {
-      fi: 'englanti',
-      sv: 'engelska',
-      en: 'English',
-    },
-  },
-  {
-    id: 'sv',
-    title: {
-      fi: 'ruotsi',
-      sv: 'svenska',
-      en: 'Swedish',
-    },
-  },
-]
 
 const SelectWrapper = ({
   label,
@@ -85,23 +40,30 @@ const SelectWrapper = ({
   </Box>
 )
 
-const DialogSelectWrapper = ({
+export const DialogSelect = ({
   label,
   value,
-  handleChange,
+  control,
   children,
 }: {
   label: string
   value: string
-  handleChange: HandleChange
+  control: Control<any>
   children: React.ReactNode
 }) => (
-  <FormControl fullWidth sx={{ mt: 4 }}>
-    <InputLabel>{label}</InputLabel>
-    <Select size="medium" label={label} value={value} onChange={handleChange}>
-      {children}
-    </Select>
-  </FormControl>
+  <Controller
+    control={control}
+    name="type"
+    defaultValue=""
+    render={({ field }) => (
+      <FormControl fullWidth sx={{ mt: 4 }}>
+        <InputLabel>{label}</InputLabel>
+        <Select size="medium" label={label} value={value} {...field}>
+          {children}
+        </Select>
+      </FormControl>
+    )}
+  />
 )
 
 const sortDimensions = (dimensions: InfoType[], language: keyof Locales) => {
@@ -212,31 +174,6 @@ export const RecommendationSelect = ({
         </MenuItem>
       ))}
     </SelectWrapper>
-  )
-}
-
-export const RecommendationTypeSelect = ({
-  typeId,
-  handleChange,
-}: {
-  typeId: string
-  handleChange: HandleChange
-}) => {
-  const { t, i18n } = useTranslation()
-  const language = i18n.language as keyof Locales
-
-  return (
-    <DialogSelectWrapper
-      label={t('admin:selectRecommendationType')}
-      value={typeId}
-      handleChange={handleChange}
-    >
-      {recommendationTypes.map(({ id, title }) => (
-        <MenuItem key={id} value={id}>
-          {title[language]}
-        </MenuItem>
-      ))}
-    </DialogSelectWrapper>
   )
 }
 
