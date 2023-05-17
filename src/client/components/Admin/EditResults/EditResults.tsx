@@ -15,7 +15,7 @@ import useSurvey from '../../../hooks/useSurvey'
 import useResults from '../../../hooks/useResults'
 import useEditResultMutation from '../../../hooks/useEditResultMutation'
 import { getDimensions } from '../../../util/dimensions'
-import { DimensionSelect, QuestionSelect, LanguageSelect } from './Select'
+import { DimensionSelect, QuestionSelect, LanguageSelect } from '../Select'
 
 const ResultItem = ({
   dimensionId,

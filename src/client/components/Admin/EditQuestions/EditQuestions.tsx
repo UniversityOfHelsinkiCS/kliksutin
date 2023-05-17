@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
 
-import { LanguageSelect, QuestionSelect } from '../EditResults/Select'
+import { LanguageSelect, QuestionSelect } from '../Select'
 import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
 

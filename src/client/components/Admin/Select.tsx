@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { InfoType, Locales, Question, Recommendation } from '../../../types'
+import { InfoType, Locales, Question, Recommendation } from '../../types'
 
 type HandleChange = (event: SelectChangeEvent) => void
 
