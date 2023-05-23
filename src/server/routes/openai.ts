@@ -14,10 +14,17 @@ openaiRouter.post('/', async (req, res) => {
 
   if (inE2EMode) return res.send(mockCompletion)
 
-  const { choices } = await createCompletion(prompt)
-  const { message } = choices[0]
+  try {
+    const openAIRes = await createCompletion(prompt)
 
-  return res.send(message.content)
+    const { message } = openAIRes.choices[0]
+
+    return res.send(message.content)
+  } catch (error) {
+    return res
+      .status(503)
+      .send('Open AI service unavailable, try again shortly')
+  }
 })
 
 export default openaiRouter
