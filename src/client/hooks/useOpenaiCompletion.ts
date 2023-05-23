@@ -22,8 +22,6 @@ const useOpenAiCompletion = (prompt: string, key: string) => {
     },
   })
 
-  console.log(completion)
-
   const completionMessage = completion
     ? `${prompt}\n\n${completion}`
     : t('openai:apiErrorMessage')
