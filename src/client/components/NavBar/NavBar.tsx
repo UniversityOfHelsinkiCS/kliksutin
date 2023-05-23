@@ -61,7 +61,7 @@ const NavBar = () => {
             </Box>
           </Box>
           <Box>
-            {location.pathname !== '/public' && user.isAdmin && (
+            {location.pathname !== '/public' && user?.isAdmin && (
               <Link to="/admin" style={{ textDecoration: 'none' }}>
                 <Button>
                   <AdminPanelSettingsOutlined sx={navStyles.icon} />{' '}
