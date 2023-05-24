@@ -40,7 +40,7 @@ recommendationRouter.put('/:id', async (req: RequestWithUser, res) => {
 recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
   const { surveyId } = req.params
   const { isAdmin } = req.user
-  const { data } = req.body
+  const data = req.body
 
   if (!isAdmin) throw new Error('Unauthorized')
 
