@@ -9,13 +9,22 @@ const recommendationRouter = express.Router()
 recommendationRouter.get('/:surveyId', async (req, res) => {
   const { surveyId } = req.params
 
-  const recommendations = await Recommendation.findAll({
-    where: {
-      surveyId,
-    },
-  })
+  try {
+    const recommendations = await Recommendation.findAll({
+      where: {
+        surveyId,
+      },
+    })
 
-  return res.send(recommendations)
+    if (!recommendations.length)
+      return res
+        .status(404)
+        .send('Did not find recommendations for this survey')
+
+    return res.status(200).send(recommendations)
+  } catch (error) {
+    return res.status(400).send('Could not fetch recommendations')
+  }
 })
 
 recommendationRouter.put('/:id', async (req: RequestWithUser, res) => {
@@ -24,17 +33,21 @@ recommendationRouter.put('/:id', async (req: RequestWithUser, res) => {
 
   if (!isAdmin) throw new Error('Unauthorized')
 
-  const recommendation = await Recommendation.findByPk(id)
+  try {
+    const recommendation = await Recommendation.findByPk(id)
+    if (!recommendation)
+      return res.status(404).send('Invalid recommendation id')
 
-  if (!recommendation) throw new Error('Recommendation not found')
+    const updates: RecommendationUpdates = req.body
 
-  const updates: RecommendationUpdates = req.body
+    Object.assign(recommendation, updates)
 
-  Object.assign(recommendation, updates)
+    await recommendation.save()
 
-  await recommendation.save()
-
-  return res.send(recommendation)
+    return res.status(200).send(recommendation)
+  } catch (error) {
+    return res.status(400).send('Could not update recommendation')
+  }
 })
 
 recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
@@ -44,11 +57,11 @@ recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
 
   if (!isAdmin) throw new Error('Unauthorized')
 
-  const survey = await Survey.findByPk(surveyId)
-
-  if (!survey) throw new Error('Survey not found')
-
   try {
+    const survey = await Survey.findByPk(surveyId)
+
+    if (!survey) return res.status(404).send('Invalid survey id')
+
     const recommendation = await Recommendation.create({
       surveyId: Number(surveyId),
       ...data,
@@ -56,7 +69,7 @@ recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
 
     return res.status(201).send(recommendation)
   } catch (error) {
-    return res.sendStatus(400)
+    return res.status(400).send('Could not create new recommendation')
   }
 })
 
@@ -66,15 +79,16 @@ recommendationRouter.delete('/:id', async (req: RequestWithUser, res) => {
 
   if (!isAdmin) throw new Error('Unauthorized')
 
-  const recommendation = await Recommendation.findByPk(id)
-
-  if (!recommendation) throw new Error('Recommendation not found')
-
   try {
+    const recommendation = await Recommendation.findByPk(id)
+    if (!recommendation)
+      return res.status(404).send('Invalid recommendation id')
+
     await recommendation.destroy()
+
     return res.sendStatus(204)
   } catch (error) {
-    return res.sendStatus(400)
+    return res.status(400).send('Could not delete recommendation')
   }
 })
 
