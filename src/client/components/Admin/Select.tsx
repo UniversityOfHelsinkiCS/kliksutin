@@ -56,7 +56,7 @@ export const DialogSelect = ({
     name={value}
     defaultValue=""
     render={({ field }) => (
-      <FormControl fullWidth sx={{ mt: 4 }}>
+      <FormControl fullWidth>
         <InputLabel>{label}</InputLabel>
         <Select size="medium" label={label} value={value} {...field}>
           {children}

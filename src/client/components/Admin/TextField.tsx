@@ -82,7 +82,7 @@ export const DialogTextField = ({
   value: string
   inputlabel: string
   control: Control<any>
-  error: any
+  error: FieldError
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
