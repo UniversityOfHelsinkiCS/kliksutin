@@ -40,6 +40,7 @@ Recommendation.init(
     label: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     type: {
       type: DataTypes.STRING,
