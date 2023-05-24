@@ -68,7 +68,7 @@ export interface RecommendationUpdates {
 }
 
 export interface Recommendation {
-  id: number
+  id?: number
   surveyId: number
   label: string
   type: 'teaching' | 'administration'

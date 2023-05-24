@@ -2,7 +2,6 @@ import { Recommendation } from '../types'
 
 const getRecommendationsData = (): Recommendation[] => [
   {
-    id: 1,
     surveyId: 1,
     label: 'zoom',
     type: 'teaching',
@@ -18,7 +17,6 @@ const getRecommendationsData = (): Recommendation[] => [
     },
   },
   {
-    id: 2,
     surveyId: 1,
     label: 'unitube',
     type: 'teaching',
@@ -34,7 +32,6 @@ const getRecommendationsData = (): Recommendation[] => [
     },
   },
   {
-    id: 3,
     surveyId: 1,
     label: 'flinga',
     type: 'teaching',
@@ -50,7 +47,6 @@ const getRecommendationsData = (): Recommendation[] => [
     },
   },
   {
-    id: 4,
     surveyId: 1,
     label: 'presemo',
     type: 'teaching',
@@ -66,7 +62,6 @@ const getRecommendationsData = (): Recommendation[] => [
     },
   },
   {
-    id: 5,
     surveyId: 1,
     label: 'thinglink',
     type: 'teaching',
@@ -82,7 +77,6 @@ const getRecommendationsData = (): Recommendation[] => [
     },
   },
   {
-    id: 6,
     surveyId: 1,
     label: 'eportfolio',
     type: 'teaching',
@@ -98,7 +92,6 @@ const getRecommendationsData = (): Recommendation[] => [
     },
   },
   {
-    id: 7,
     surveyId: 1,
     label: 'moodle',
     type: 'teaching',
@@ -114,7 +107,6 @@ const getRecommendationsData = (): Recommendation[] => [
     },
   },
   {
-    id: 8,
     surveyId: 1,
     label: 'screencast-o-matic',
     type: 'teaching',
