@@ -8,7 +8,7 @@ const survey = {
   title: {
     fi: '## Tervetuloa Curreen',
     sv: '## Välkommen till Curre',
-    en: '## Tervetuloa Curreen',
+    en: '## Welcome to Curre',
   },
   text: {
     fi: '### Curre auttaa sinua digipedagogisissa valinnoissa. Voit käyttää Currea tukena kun haluat ideoida uusia mahdollisuuksia hyödyntää digitalisaatiota osana opetusta ja oppimista kurssillasi. Sinun ei tarvitse etukäteen tietää millaista ohjelmistoa tai digitaalista alustaa on etsimässä, täytä muutama ennakkotieto kurssiisi liittyen ja anna Curren hoitaa loput!  \n \nCurre kuratoi Helsingin yliopiston digipedagogisen palvelutarjonnan opetuksesi tueksi. Curre on Digitaalisen opetuksen ja jatkuvan oppimisen palveluiden (DOJO) lahja opettajille [opetuksen juhlavuonna 2023.](https://www.helsinki.fi/fi/hakeminen-ja-opetus/opetus/opetuksen-juhlavuosi-2022-2023) Curren sisältöjä kehitetään jatkuvasti käyttäjäpalautteen pohjalta.  \n \nCurren ohella [tarjoamme edelleen koulutusta](https://flamma.helsinki.fi/fi/group/opetuksen-tuki/opetusteknologiakoulutus) opettajille Helsingin yliopiston virallisesti tuetuista digiopetuksen välineistä.  \nTorstaisin järjestämme [Digipedakahvilan](https://flamma.helsinki.fi/fi/group/ajankohtaista/uutinen/-/uutinen/digipedakahvila-torstaisin-zoomissa---tule-kysymaan-kuulemaanvinkkejaja-vaihtamaan-kuulumisia-opetukseen-liittyen/24122898) Zoomin välityksellä, tervetuloa mukaan!  \n \n[Kerrothan mielipiteesi Curresta lyhyen palautelomakkeen muodossa.](https://forms.office.com/e/TWvNdLb48z)',
