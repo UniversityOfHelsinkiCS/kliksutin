@@ -1,6 +1,13 @@
 import React from 'react'
-import { Control, Controller } from 'react-hook-form'
+import {
+  Control,
+  Controller,
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+} from 'react-hook-form'
 import { Box, InputLabel, TextField } from '@mui/material'
+import { Locales } from '../../types'
 
 type OnChange = (
   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,7 +43,7 @@ export const DialogLocalesField = ({
   value: string
   inputlabel: string
   control: Control<any>
-  error: any
+  error: Merge<FieldError, FieldErrorsImpl<Locales>>
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
@@ -49,7 +56,9 @@ export const DialogLocalesField = ({
           <TextField
             error={error && language in error}
             helperText={
-              error && language in error ? error[language].message : ''
+              error && language in error
+                ? error[language as keyof Locales].message
+                : ''
             }
             sx={{ mt: 2 }}
             multiline
