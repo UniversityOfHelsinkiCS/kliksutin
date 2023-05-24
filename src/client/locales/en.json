@@ -94,6 +94,7 @@
     "recommendationAddNew": "Add new recommendation",
     "recommendationRemove": "Remove this recommendation",
     "recommendationNewRecommendationInfo": "New recommendation",
+    "recommendationNewRecommendationLabel": "Common name of the recommendation such as Zoom or Flinga",
     "recommendationNewRecommendationContent": "Here you can create a new recommendation to Curre",
     "recommendationNewRecommendationTitleLabel": "Recommendation Title",
     "recommendationNewRecommendationContentLabel": "Recommendation Content",

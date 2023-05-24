@@ -4,7 +4,7 @@ import { MenuItem } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import NewItemDialog from '../NewItemDialog'
-import { DialogLocalesField } from '../TextField'
+import { DialogLocalesField, DialogTextField } from '../TextField'
 import { DialogSelect } from '../Select'
 
 import { Locales, NewRecommendation } from '../../../types'
@@ -24,6 +24,7 @@ const NewRecommendationForm = ({
     mode: 'onBlur',
     shouldUnregister: true,
     defaultValues: {
+      label: '',
       type: 'teaching',
       title: {
         fi: '',
@@ -53,6 +54,11 @@ const NewRecommendationForm = ({
         onSubmit={handleSubmit(onSubmit)}
         onClose={() => setOpen(!open)}
       >
+        <DialogTextField
+          value="label"
+          inputlabel={t('admin:recommendationNewRecommendationLabel')}
+          control={control}
+        />
         <DialogSelect
           label={t('admin:selectRecommendationType')}
           value="type"

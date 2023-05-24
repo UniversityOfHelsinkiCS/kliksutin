@@ -93,6 +93,7 @@
     "recommendationAddNew": "Lisää uusi suositus",
     "recommendationRemove": "Poista tämä suositus",
     "recommendationNewRecommendationInfo": "Uusi suositus",
+    "recommendationNewRecommendationLabel": "Suosituksen yleinen nimi, kuten Zoom tai Flinga",
     "recommendationNewRecommendationContent": "Täällä voit lisätä uuden suosituksen Curreen",
     "recommendationNewRecommendationTitleLabel": "Suosituksen otsikko",
     "recommendationNewRecommendationContentLabel": "Suosituksen sisältö",

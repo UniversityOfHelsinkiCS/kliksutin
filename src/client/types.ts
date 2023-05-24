@@ -135,6 +135,7 @@ export interface Recommendation {
 }
 
 export interface NewRecommendation {
+  label: string
   type: string
   title: Locales
   text: Locales

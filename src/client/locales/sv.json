@@ -94,6 +94,7 @@
     "recommendationRemove": "Poista tämä suositus",
     "recommendationNewRecommendationInfo": "Uusi suositus",
     "recommendationNewRecommendationContent": "Täällä voit lisätä uuden suosituksen Curreen",
+    "recommendationNewRecommendationLabel": "Suosituksen yleinen nimi, kuten Zoom tai Flinga",
     "recommendationNewRecommendationTitleLabel": "Suosituksen otsikko",
     "recommendationNewRecommendationContentLabel": "Suosituksen sisältö",
     "question": "Kysymyksen otsikko ja lisäteksti",
