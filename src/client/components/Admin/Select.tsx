@@ -159,8 +159,7 @@ export const RecommendationSelect = ({
   recommendations: Recommendation[]
   handleChange: HandleChange
 }) => {
-  const { t, i18n } = useTranslation()
-  const language = i18n.language as keyof Locales
+  const { t } = useTranslation()
 
   return (
     <SelectWrapper
@@ -168,9 +167,9 @@ export const RecommendationSelect = ({
       value={recommendationId}
       handleChange={handleChange}
     >
-      {recommendations.map(({ id, title }) => (
+      {recommendations.map(({ id, label }) => (
         <MenuItem key={id} value={id}>
-          {title[language]}
+          {label}
         </MenuItem>
       ))}
     </SelectWrapper>

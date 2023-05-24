@@ -43,7 +43,8 @@
     "uuid": "^9.0.0",
     "winston": "^3.8.2",
     "winston-gelf-transporter": "^1.0.2",
-    "yup": "^1.0.0"
+    "yup": "^1.0.0",
+    "zod": "^3.21.4"
   },
   "scripts": {
     "start": "docker compose up",

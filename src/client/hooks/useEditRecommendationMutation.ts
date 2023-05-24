@@ -5,7 +5,8 @@ import useSurvey from './useSurvey'
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 
-import { Locales, NewRecommendation } from '../types'
+import { Locales } from '../types'
+import { NewRecommendation } from '../validators/recommendations'
 
 type RecommendationUpdates = {
   title: Locales

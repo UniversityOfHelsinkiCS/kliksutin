@@ -134,13 +134,6 @@ export interface Recommendation {
   dimensions?: string[]
 }
 
-export interface NewRecommendation {
-  label: string
-  type: string
-  title: Locales
-  text: Locales
-}
-
 /** List of selected tools or non selected tools if no dimensionSelection is provided */
 export interface SelectedTools {
   mergedRecommendationData: MergedRecommendationData[]
