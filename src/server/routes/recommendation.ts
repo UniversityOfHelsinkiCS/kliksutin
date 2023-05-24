@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { Recommendation } from '../db/models'
+import { Recommendation, Survey } from '../db/models'
 
 import { RecommendationUpdates, RequestWithUser } from '../types'
 
@@ -35,6 +35,25 @@ recommendationRouter.put('/:id', async (req: RequestWithUser, res) => {
   await recommendation.save()
 
   return res.send(recommendation)
+})
+
+recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
+  const { surveyId } = req.params
+  const { isAdmin } = req.user
+  const { data } = req.body
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const survey = await Survey.findByPk(surveyId)
+
+  if (!survey) throw new Error('Survey not found')
+
+  const recommendation = await Recommendation.create({
+    surveyId: Number(surveyId),
+    ...data,
+  })
+
+  return res.status(201).send(recommendation)
 })
 
 export default recommendationRouter
