@@ -1,16 +1,18 @@
 import { useMutation } from 'react-query'
-import { Locales } from '../types'
+
+import useSurvey from './useSurvey'
 
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
-import useSurvey from './useSurvey'
+
+import { Locales, NewRecommendation } from '../types'
 
 type RecommendationUpdates = {
   title: Locales
   text: Locales
 }
 
-const useEditRecommendationMutation = (recommendationId: number) => {
+export const useEditRecommendationMutation = (recommendationId: number) => {
   const { survey } = useSurvey()
 
   const mutationFn = async (data: RecommendationUpdates) => {
@@ -27,4 +29,19 @@ const useEditRecommendationMutation = (recommendationId: number) => {
   return mutation
 }
 
-export default useEditRecommendationMutation
+export const useCreateRecommendationMutation = () => {
+  const { survey } = useSurvey()
+
+  const mutationFn = async (data: NewRecommendation) => {
+    await apiClient.post(`/recommendations/${survey.id}`, data)
+  }
+
+  const mutation = useMutation(mutationFn, {
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ['recommendations', survey.id],
+      }),
+  })
+
+  return mutation
+}

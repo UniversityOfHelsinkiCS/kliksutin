@@ -1,7 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { MenuItem } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { enqueueSnackbar } from 'notistack'
+import { MenuItem } from '@mui/material'
+
+import { useCreateRecommendationMutation } from '../../../hooks/useEditRecommendationMutation'
 
 import NewItemDialog from '../NewItemDialog'
 import { DialogLocalesField, DialogTextField } from '../TextField'
@@ -18,6 +21,7 @@ const NewRecommendationForm = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const { t, i18n } = useTranslation()
+  const mutation = useCreateRecommendationMutation()
   const language = i18n.language as keyof Locales
 
   const { handleSubmit, control } = useForm<NewRecommendation>({
@@ -39,10 +43,16 @@ const NewRecommendationForm = ({
     },
   })
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: NewRecommendation) => {
     console.log(data)
 
-    setOpen(false)
+    try {
+      await mutation.mutateAsync(data)
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+      setOpen(false)
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
   }
 
   return (
