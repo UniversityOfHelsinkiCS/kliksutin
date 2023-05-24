@@ -83,6 +83,7 @@
     "confirm": "Vahvista",
     "cancel": "Eiku",
     "saveSuccess": "Tallennettu onnistuneesti",
+    "deleteSuccess": "Poistettu onnistuneesti",
     "resultViewInfo": "Aloita valitsemalla oppimismuoto ja kysymys valikoista",
     "resultViewResultEdit": "Tuloksien muokkaus",
     "resultViewResultsNotFound": "Tähän kysymykseen ei liity yhtään tulosta",

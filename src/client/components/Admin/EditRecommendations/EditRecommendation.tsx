@@ -76,11 +76,11 @@ const RecommendationItem = ({
 }
 
 const EditRecommendation = ({
-  language,
+  selectedLanguage,
   recommendation,
   onDelete,
 }: {
-  language: keyof Locales
+  selectedLanguage: keyof Locales
   recommendation: Recommendation
   onDelete: React.Dispatch<React.SetStateAction<string>>
 }) => {
@@ -91,9 +91,9 @@ const EditRecommendation = ({
   const handleDelete = async () => {
     try {
       await mutation.mutateAsync()
-      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+      enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
-      onDelete('')
+      onDelete('') // callback to reset the selected recommendation ID
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
@@ -125,7 +125,7 @@ const EditRecommendation = ({
           recommendation={recommendation}
         />
         <RecommendationItem
-          language={language}
+          language={selectedLanguage}
           recommendation={recommendation}
         />
       </Box>

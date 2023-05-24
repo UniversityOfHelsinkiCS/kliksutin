@@ -70,7 +70,7 @@ const EditRecommendations = () => {
               {t('admin:recommendationViewRecommendationEdit')}
             </Typography>
             <EditRecommendation
-              language={selectedLanguage}
+              selectedLanguage={selectedLanguage}
               recommendation={selectedRecommendation}
               onDelete={setRecommendationId}
             />

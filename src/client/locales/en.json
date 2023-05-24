@@ -84,6 +84,7 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "saveSuccess": "Saved successfully",
+    "deleteSuccess": "Deleted successfully",
     "resultViewInfo": "Start by selecting form of learning and a question from the dropdowns",
     "resultViewResultEdit": "Edit results",
     "resultViewResultsNotFound": "This question does not have any results associated",
