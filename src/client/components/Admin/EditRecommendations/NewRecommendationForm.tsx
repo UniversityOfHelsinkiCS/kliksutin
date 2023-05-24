@@ -73,6 +73,7 @@ const NewRecommendationForm = ({
         onClose={() => setOpen(!open)}
       >
         <DialogTextField
+          error={errors.label}
           value="label"
           inputlabel={t('admin:recommendationNewRecommendationLabel')}
           control={control}

@@ -77,10 +77,12 @@ export const DialogTextField = ({
   value,
   inputlabel,
   control,
+  error,
 }: {
   value: string
   inputlabel: string
   control: Control<any>
+  error: any
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
@@ -89,6 +91,8 @@ export const DialogTextField = ({
       control={control}
       render={({ field }) => (
         <TextField
+          error={!!error}
+          helperText={error ? error.message : ''}
           sx={{ mt: 2 }}
           multiline
           label={value.toUpperCase()}
