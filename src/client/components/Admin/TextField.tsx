@@ -82,3 +82,31 @@ export const DialogLocalesField = ({
     />
   </Box>
 )
+
+export const DialogTextField = ({
+  value,
+  inputlabel,
+  control,
+}: {
+  value: string
+  inputlabel: string
+  control: Control<any>
+}) => (
+  <Box sx={{ my: 4 }}>
+    <InputLabel>{inputlabel}</InputLabel>
+    <Controller
+      name={`${value}`}
+      control={control}
+      render={({ field }) => (
+        <TextField
+          sx={{ mt: 2 }}
+          multiline
+          label={value.toUpperCase()}
+          fullWidth
+          value={field.value}
+          {...field}
+        />
+      )}
+    />
+  </Box>
+)
