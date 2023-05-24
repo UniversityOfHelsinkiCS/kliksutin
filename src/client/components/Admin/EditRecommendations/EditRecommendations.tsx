@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import { enqueueSnackbar } from 'notistack'
 
 import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
@@ -11,7 +10,6 @@ import NewRecommendationForm from './NewRecommendationForm'
 import { LanguageSelect, RecommendationSelect } from '../Select'
 
 import { Locales } from '../../../types'
-import DeleteDialog from './DeleteDialog'
 
 const EditRecommendations = () => {
   const { t } = useTranslation()
@@ -21,7 +19,6 @@ const EditRecommendations = () => {
   const [recommendationId, setRecommendationId] = useState('')
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
   const [openForm, setOpenForm] = useState(false)
-  const [openAlert, setOpenAlert] = useState(false)
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setRecommendationId(event.target.value)
@@ -29,15 +26,6 @@ const EditRecommendations = () => {
 
   const handleLanguageChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as keyof Locales)
-  }
-
-  const handleDelete = async () => {
-    try {
-      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-      setOpenAlert(false)
-    } catch (error) {
-      enqueueSnackbar(error.message, { variant: 'error' })
-    }
   }
 
   if (!isSuccess) return null
@@ -78,25 +66,13 @@ const EditRecommendations = () => {
       <Box width="100%" flexWrap="wrap">
         {recommendationId ? (
           <Box sx={{ my: 4 }}>
-            <Button
-              sx={{
-                position: 'absolute',
-                right: 0,
-                mr: 4,
-                alignSelf: 'center',
-              }}
-              variant="outlined"
-              color="error"
-              onClick={() => setOpenAlert(!openAlert)}
-            >
-              {t('admin:recommendationRemove')}
-            </Button>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               {t('admin:recommendationViewRecommendationEdit')}
             </Typography>
             <EditRecommendation
               language={selectedLanguage}
               recommendation={selectedRecommendation}
+              onDelete={setRecommendationId}
             />
           </Box>
         ) : (
@@ -107,13 +83,6 @@ const EditRecommendations = () => {
       </Box>
 
       <NewRecommendationForm open={openForm} setOpen={setOpenForm} />
-      <DeleteDialog
-        open={openAlert}
-        title={t('admin:recommendationRemoveRecommendationInfo')}
-        content={t('admin:recommendationRemoveRecommendationContent')}
-        setOpen={setOpenAlert}
-        onSubmit={handleDelete}
-      />
     </Box>
   )
 }

@@ -3,8 +3,12 @@ import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
-import { useEditRecommendationMutation } from '../../../hooks/useRecommendationMutation'
+import {
+  useDeleteRecommendationMutation,
+  useEditRecommendationMutation,
+} from '../../../hooks/useRecommendationMutation'
 
+import DeleteDialog from './DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
 
 import { Locales, Recommendation } from '../../../types'
@@ -74,17 +78,59 @@ const RecommendationItem = ({
 const EditRecommendation = ({
   language,
   recommendation,
+  onDelete,
 }: {
   language: keyof Locales
   recommendation: Recommendation
-}) => (
-  <Box mb={5} display="flex">
-    <RecommendationItem
-      language={'fi' as keyof Locales}
-      recommendation={recommendation}
-    />
-    <RecommendationItem language={language} recommendation={recommendation} />
-  </Box>
-)
+  onDelete: React.Dispatch<React.SetStateAction<string>>
+}) => {
+  const { t } = useTranslation()
+  const mutation = useDeleteRecommendationMutation(recommendation.id)
+  const [openAlert, setOpenAlert] = useState(false)
+
+  const handleDelete = async () => {
+    try {
+      await mutation.mutateAsync()
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+      setOpenAlert(false)
+      onDelete('')
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
+  }
+
+  return (
+    <>
+      <Button
+        sx={{
+          ml: 4,
+          alignSelf: 'center',
+        }}
+        variant="outlined"
+        color="error"
+        onClick={() => setOpenAlert(!openAlert)}
+      >
+        {t('admin:recommendationRemove')}
+      </Button>
+      <DeleteDialog
+        open={openAlert}
+        title={t('admin:recommendationRemoveRecommendationInfo')}
+        content={t('admin:recommendationRemoveRecommendationContent')}
+        setOpen={setOpenAlert}
+        onSubmit={handleDelete}
+      />
+      <Box mb={5} display="flex">
+        <RecommendationItem
+          language={'fi' as keyof Locales}
+          recommendation={recommendation}
+        />
+        <RecommendationItem
+          language={language}
+          recommendation={recommendation}
+        />
+      </Box>
+    </>
+  )
+}
 
 export default EditRecommendation
