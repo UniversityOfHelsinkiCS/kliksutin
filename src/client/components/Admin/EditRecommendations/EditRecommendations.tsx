@@ -15,7 +15,6 @@ import DeleteDialog from './DeleteDialog'
 
 const EditRecommendations = () => {
   const { t } = useTranslation()
-
   const { survey } = useSurvey()
   const { recommendations, isSuccess } = useRecommendations(survey?.id)
 

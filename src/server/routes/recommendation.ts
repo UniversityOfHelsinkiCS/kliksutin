@@ -60,4 +60,22 @@ recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
   }
 })
 
+recommendationRouter.delete('/:id', async (req: RequestWithUser, res) => {
+  const { id } = req.params
+  const { isAdmin } = req.user
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const recommendation = await Recommendation.findByPk(id)
+
+  if (!recommendation) throw new Error('Recommendation not found')
+
+  try {
+    await recommendation.destroy()
+    return res.sendStatus(204)
+  } catch (error) {
+    return res.sendStatus(400)
+  }
+})
+
 export default recommendationRouter
