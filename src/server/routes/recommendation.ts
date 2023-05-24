@@ -48,12 +48,16 @@ recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
 
   if (!survey) throw new Error('Survey not found')
 
-  const recommendation = await Recommendation.create({
-    surveyId: Number(surveyId),
-    ...data,
-  })
+  try {
+    const recommendation = await Recommendation.create({
+      surveyId: Number(surveyId),
+      ...data,
+    })
 
-  return res.status(201).send(recommendation)
+    return res.status(201).send(recommendation)
+  } catch (error) {
+    return res.sendStatus(400)
+  }
 })
 
 export default recommendationRouter
