@@ -29,7 +29,11 @@ const NewRecommendationForm = ({
   const mutation = useCreateRecommendationMutation()
   const language = i18n.language as keyof Locales
 
-  const { handleSubmit, control } = useForm<NewRecommendation>({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<NewRecommendation>({
     mode: 'onBlur',
     shouldUnregister: true,
     resolver: zodResolver(RecommendationZod),
@@ -86,11 +90,13 @@ const NewRecommendationForm = ({
         </DialogSelect>
 
         <DialogLocalesField
+          error={errors.title}
           value="title"
           inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}
           control={control}
         />
         <DialogLocalesField
+          error={errors.text}
           value="text"
           inputlabel={t('admin:recommendationNewRecommendationContentLabel')}
           control={control}

@@ -31,55 +31,36 @@ export const DialogLocalesField = ({
   value,
   inputlabel,
   control,
+  error,
 }: {
   value: string
   inputlabel: string
   control: Control<any>
+  error: any
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
-    <Controller
-      name={`${value}.fi`}
-      control={control}
-      render={({ field }) => (
-        <TextField
-          sx={{ mt: 2 }}
-          multiline
-          label="FI"
-          fullWidth
-          value={field.value.fi}
-          {...field}
-        />
-      )}
-    />
-    <Controller
-      name={`${value}.sv`}
-      control={control}
-      render={({ field }) => (
-        <TextField
-          sx={{ mt: 2 }}
-          multiline
-          label="SV"
-          fullWidth
-          value={field.value.sv}
-          {...field}
-        />
-      )}
-    />
-    <Controller
-      name={`${value}.en`}
-      control={control}
-      render={({ field }) => (
-        <TextField
-          sx={{ mt: 2 }}
-          multiline
-          label="EN"
-          fullWidth
-          value={field.value.en}
-          {...field}
-        />
-      )}
-    />
+    {['fi', 'sv', 'en'].map((language) => (
+      <Controller
+        key={`${value}.${language}`}
+        name={`${value}.${language}`}
+        control={control}
+        render={({ field }) => (
+          <TextField
+            error={error && language in error}
+            helperText={
+              error && language in error ? error[language].message : ''
+            }
+            sx={{ mt: 2 }}
+            multiline
+            label={language.toUpperCase()}
+            fullWidth
+            value={field.value.language}
+            {...field}
+          />
+        )}
+      />
+    ))}
   </Box>
 )
 
