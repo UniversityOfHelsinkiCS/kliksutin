@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { MenuItem } from '@mui/material'
 
-import { useCreateRecommendationMutation } from '../../../hooks/useEditRecommendationMutation'
+import { useCreateRecommendationMutation } from '../../../hooks/useRecommendationMutation'
 
 import NewItemDialog from '../NewItemDialog'
 import { DialogSelect } from '../Select'

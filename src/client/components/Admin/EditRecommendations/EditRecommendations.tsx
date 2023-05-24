@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { enqueueSnackbar } from 'notistack'
 
 import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
@@ -32,7 +33,12 @@ const EditRecommendations = () => {
   }
 
   const handleDelete = async () => {
-    setOpenAlert(false)
+    try {
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+      setOpenAlert(false)
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
   }
 
   if (!isSuccess) return null
