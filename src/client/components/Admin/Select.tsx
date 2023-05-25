@@ -15,7 +15,12 @@ import {
 } from '@mui/material'
 
 import { allSelection, languages } from './config'
-import { InfoType, Locales, Question, Recommendation } from '../../types'
+import {
+  DimensionSelectionData,
+  Locales,
+  Question,
+  Recommendation,
+} from '../../types'
 
 type HandleChange = (event: SelectChangeEvent) => void
 
@@ -66,7 +71,10 @@ export const DialogSelect = ({
   />
 )
 
-const sortDimensions = (dimensions: InfoType[], language: keyof Locales) => {
+const sortDimensions = (
+  dimensions: DimensionSelectionData[],
+  language: keyof Locales
+) => {
   const sortedDimensions = dimensions.sort((a, b) => {
     if (a.title[language] > b.title[language]) return 1
     if (a.title[language] < b.title[language]) return -1
@@ -83,7 +91,7 @@ export const DimensionSelect = ({
   handleChange,
 }: {
   dimensionId: string
-  dimensions: InfoType[]
+  dimensions: DimensionSelectionData[]
   handleChange: HandleChange
 }) => {
   const { t, i18n } = useTranslation()

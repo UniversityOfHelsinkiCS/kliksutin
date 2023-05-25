@@ -10,15 +10,17 @@ import { DialogLocalesField } from '../TextField'
 
 import { NewResult, ResultZod } from '../../../validators/results'
 
-import { Locales, Question } from '../../../types'
+import { DimensionSelectionData, Locales, Question } from '../../../types'
 
 const NewResultForm = ({
   open,
   setOpen,
+  dimensions,
   selectedQuestion,
 }: {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  dimensions: DimensionSelectionData[]
   selectedQuestion: Question
 }) => {
   const { t, i18n } = useTranslation()
@@ -55,7 +57,7 @@ const NewResultForm = ({
     }
   }
 
-  console.log(errors)
+  console.log(dimensions)
 
   return (
     <form>

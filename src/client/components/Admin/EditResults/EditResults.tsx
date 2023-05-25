@@ -109,6 +109,7 @@ const EditResults = () => {
         <NewResultForm
           open={openForm}
           setOpen={setOpenForm}
+          dimensions={dimensions}
           selectedQuestion={selectedQuestion}
         />
       )}
