@@ -60,9 +60,7 @@ recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
 
 recommendationRouter.delete('/:id', async (req: RequestWithUser, res) => {
   const { id } = req.params
-  // const { isAdmin } = req.user
-
-  const isAdmin: null = null
+  const { isAdmin } = req.user
 
   if (!isAdmin) throw new Error('Unauthorized')
 
