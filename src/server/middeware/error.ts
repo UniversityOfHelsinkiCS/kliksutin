@@ -13,8 +13,6 @@ const errorHandler = (
 ) => {
   logger.error(`${error.message} ${error.name} ${error.stack}`)
 
-  console.log('ERROR', error)
-
   if (inProduction) Sentry.captureException(error)
 
   if (error.message === 'Unauthorized') {
