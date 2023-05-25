@@ -10,6 +10,7 @@ import { DimensionSelect, QuestionSelect, LanguageSelect } from '../Select'
 import EditResult from './EditResult'
 import NewResultForm from './NewResultForm'
 
+import { sortDimensions, allSelection } from '../config'
 import { getDimensions } from '../../../util/dimensions'
 import { Locales } from '../../../types'
 
@@ -31,8 +32,10 @@ const EditResults = () => {
   }
 
   const { survey } = useSurvey()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
+
+  const language = i18n.language as keyof Locales
 
   if (!resultsFetched) return null
 
@@ -47,6 +50,9 @@ const EditResults = () => {
     optionIds.includes(optionLabel)
   )
 
+  const sortedDimensions = sortDimensions(dimensions, language)
+  const dimensionSelections = [allSelection].concat(sortedDimensions)
+
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
       <Box
@@ -59,7 +65,7 @@ const EditResults = () => {
       >
         <DimensionSelect
           dimensionId={dimensionId}
-          dimensions={dimensions}
+          dimensions={dimensionSelections}
           handleChange={handleDimensionChange}
         />
         <QuestionSelect
@@ -109,7 +115,7 @@ const EditResults = () => {
         <NewResultForm
           open={openForm}
           setOpen={setOpenForm}
-          dimensions={dimensions}
+          dimensions={dimensionSelections}
           selectedQuestion={selectedQuestion}
         />
       )}

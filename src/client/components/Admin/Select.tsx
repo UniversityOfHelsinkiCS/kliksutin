@@ -14,7 +14,7 @@ import {
   Radio,
 } from '@mui/material'
 
-import { allSelection, languages } from './config'
+import { languages } from './config'
 import {
   DimensionSelectionData,
   Locales,
@@ -71,20 +71,6 @@ export const DialogSelect = ({
   />
 )
 
-const sortDimensions = (
-  dimensions: DimensionSelectionData[],
-  language: keyof Locales
-) => {
-  const sortedDimensions = dimensions.sort((a, b) => {
-    if (a.title[language] > b.title[language]) return 1
-    if (a.title[language] < b.title[language]) return -1
-
-    return 0
-  })
-
-  return sortedDimensions
-}
-
 export const DimensionSelect = ({
   dimensionId,
   dimensions,
@@ -97,16 +83,13 @@ export const DimensionSelect = ({
   const { t, i18n } = useTranslation()
   const language = i18n.language as keyof Locales
 
-  const sortedDimensions = sortDimensions(dimensions, language)
-  const dimensionSelections = [allSelection].concat(sortedDimensions)
-
   return (
     <SelectWrapper
       label={t('admin:selectDimension')}
       value={dimensionId}
       handleChange={handleChange}
     >
-      {dimensionSelections.map(({ id, title }) => (
+      {dimensions.map(({ id, title }) => (
         <MenuItem key={id} value={id}>
           {title[language]}
         </MenuItem>

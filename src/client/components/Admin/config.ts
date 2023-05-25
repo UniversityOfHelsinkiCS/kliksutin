@@ -1,4 +1,4 @@
-import { InfoType } from '../../types'
+import { DimensionSelectionData, InfoType, Locales } from '../../types'
 
 export const recommendationTypes: InfoType[] = [
   {
@@ -19,9 +19,15 @@ export const recommendationTypes: InfoType[] = [
   },
 ]
 
-export const allSelection: InfoType = {
+export const allSelection: DimensionSelectionData = {
   id: 'allDimensions',
+  label: 'allDimensions',
   title: {
+    fi: 'Kaikki',
+    sv: 'All',
+    en: 'All',
+  },
+  text: {
     fi: 'Kaikki',
     sv: 'All',
     en: 'All',
@@ -46,3 +52,17 @@ export const languages: InfoType[] = [
     },
   },
 ]
+
+export const sortDimensions = (
+  dimensions: DimensionSelectionData[],
+  language: keyof Locales
+) => {
+  const sortedDimensions = dimensions.sort((a, b) => {
+    if (a.title[language] > b.title[language]) return 1
+    if (a.title[language] < b.title[language]) return -1
+
+    return 0
+  })
+
+  return sortedDimensions
+}

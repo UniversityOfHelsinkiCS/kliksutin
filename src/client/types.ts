@@ -105,7 +105,7 @@ export interface DimensionSelectionData {
   label: string
   title: Locales
   text: Locales
-  data: ToolType[]
+  data?: ToolType[]
 }
 
 /** Represents the recommendation data that has rawRecommendationdata and Recommendationdata by tool names eg. "moodle" into one bigger entity that has all the subtools, dimensions and texts needed */
