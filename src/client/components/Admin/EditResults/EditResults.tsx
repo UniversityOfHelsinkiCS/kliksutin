@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react'
-import { Box, SelectChangeEvent, Typography } from '@mui/material'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
@@ -8,11 +8,13 @@ import useResults from '../../../hooks/useResults'
 
 import { DimensionSelect, QuestionSelect, LanguageSelect } from '../Select'
 import EditResult from './EditResult'
+import NewResultForm from './NewResultForm'
 
 import { getDimensions } from '../../../util/dimensions'
 import { Locales } from '../../../types'
 
 const EditResults = () => {
+  const [openForm, setOpenForm] = useState(false)
   const [dimensionId, setDimensionId] = useState('allDimensions')
   const handleDimensionChange = (event: SelectChangeEvent) => {
     setDimensionId(event.target.value)
@@ -45,8 +47,6 @@ const EditResults = () => {
     optionIds.includes(optionLabel)
   )
 
-  console.log(selectedQuestion)
-
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
       <Box
@@ -71,6 +71,15 @@ const EditResults = () => {
           selectedLanguage={selectedLanguage}
           handleChange={handleLanguageChange}
         />
+        {!filteredResults.length && selectedQuestion && (
+          <Button
+            sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
+            variant="contained"
+            onClick={() => setOpenForm(!openForm)}
+          >
+            {t('admin:resultAddNew')}
+          </Button>
+        )}
       </Box>
       {filteredResults.length > 0 ? (
         <Box sx={{ my: 4 }}>
@@ -95,6 +104,13 @@ const EditResults = () => {
         <Typography sx={{ my: 4, pl: 1 }} variant="h4">
           {t('admin:resultViewInfo')}
         </Typography>
+      )}
+      {openForm && (
+        <NewResultForm
+          open={openForm}
+          setOpen={setOpenForm}
+          selectedQuestion={selectedQuestion}
+        />
       )}
     </Box>
   )
