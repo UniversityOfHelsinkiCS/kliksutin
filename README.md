@@ -1,4 +1,4 @@
-# Kliksutin ![Release](https://github.com/UniversityOfHelsinkiCS/kliksutin/actions/workflows/production.yml/badge.svg) ![Release](https://github.com/UniversityOfHelsinkiCS/kliksutin/actions/workflows/test.yml/badge.svg)
+# <img src=./public/pirated_curre.gif width=100px /> Kliksutin ![Release](https://github.com/UniversityOfHelsinkiCS/kliksutin/actions/workflows/production.yml/badge.svg) ![Release](https://github.com/UniversityOfHelsinkiCS/kliksutin/actions/workflows/test.yml/badge.svg)
 
 ## Requirements
 
