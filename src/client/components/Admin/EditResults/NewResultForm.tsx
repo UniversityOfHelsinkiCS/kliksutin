@@ -27,11 +27,9 @@ const NewResultForm = ({
   const language = i18n.language as keyof Locales
 
   const defaultValue = {
-    isSelected: {
-      fi: '',
-      sv: '',
-      en: '',
-    },
+    fi: '',
+    sv: '',
+    en: '',
   }
 
   const {
@@ -43,21 +41,30 @@ const NewResultForm = ({
     shouldUnregister: true,
     resolver: zodResolver(ResultZod),
     defaultValues: Object.fromEntries(
-      selectedQuestion.optionData.options.map((k) => [k.label, defaultValue])
+      selectedQuestion.optionData.options.map((k) => [
+        k.label,
+        { isSelected: defaultValue },
+      ])
     ),
   })
 
   const onSubmit = async (data: NewResult) => {
+    const resultDataField = Object.fromEntries(
+      dimensions.map((k) => [k.id, defaultValue])
+    )
+    const newResults = Object.entries(data).map((result) => ({
+      optionLabel: result[0],
+      ...result[1],
+      data: resultDataField,
+    }))
     try {
-      console.log(data)
+      console.log(newResults)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-      setOpen(false)
+      // setOpen(false)
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
-
-  console.log(dimensions)
 
   return (
     <form>
