@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { RequestWithUser, ResultUpdates } from '../types'
-import { Result } from '../db/models'
+import { Result, Survey } from '../db/models'
 
 const parseUpdates = (body: ResultUpdates): ResultUpdates => ({
   data: body?.data,
@@ -40,4 +40,22 @@ resultRouter.put('/:id', async (req: RequestWithUser, res) => {
   await result.save()
 
   return res.send(result)
+})
+
+resultRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
+  const { surveyId } = req.params
+  const { isAdmin } = req.user
+  const data = req.body
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const survey = await Survey.findByPk(surveyId)
+  if (!survey) throw new Error('Survey not found')
+
+  const recommendation = await Result.create({
+    surveyId: Number(surveyId),
+    ...data,
+  })
+
+  return res.status(201).send(recommendation)
 })

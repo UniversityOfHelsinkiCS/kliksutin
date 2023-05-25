@@ -45,6 +45,8 @@ const EditResults = () => {
     optionIds.includes(optionLabel)
   )
 
+  console.log(selectedQuestion)
+
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
       <Box

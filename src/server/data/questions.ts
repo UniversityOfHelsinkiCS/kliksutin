@@ -599,7 +599,7 @@ const getQuestionData = (): Question[] => [
       ],
     },
     visibility: {
-      options: ['out-of-use'],
+      // options: ['out-of-use'],
     },
   },
   {
