@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'express-async-errors'
 import express from 'express'
 import path from 'path'
 

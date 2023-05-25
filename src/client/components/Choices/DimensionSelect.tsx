@@ -13,8 +13,6 @@ const DimensionSelect = ({ control, question }: InputProps) => {
 
   const { formStyles } = styles
 
-  console.log(question.optionData.options)
-
   return (
     <>
       {(question.optionData.options as DimensionSelectionData[]).map(

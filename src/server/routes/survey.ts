@@ -18,6 +18,8 @@ surveyRouter.get('/:name', async (req, res) => {
     },
   })
 
+  if (!survey) throw new Error('Survey not found')
+
   survey.Questions = survey.Questions.sort(sortByPriority)
 
   return res.send(survey)
