@@ -1,8 +1,10 @@
 import express from 'express'
 
-import { Recommendation, Survey } from '../db/models'
+import { Op } from 'sequelize'
 
-import { RecommendationUpdates, RequestWithUser } from '../types'
+import { Question, Recommendation, Survey } from '../db/models'
+
+import { RecommendationUpdates, RequestWithUser, ToolType } from '../types'
 
 const recommendationRouter = express.Router()
 
@@ -83,6 +85,35 @@ recommendationRouter.delete('/:id', async (req: RequestWithUser, res) => {
     const recommendation = await Recommendation.findByPk(id)
     if (!recommendation)
       return res.status(404).send('Invalid recommendation id')
+
+    const dimensionQuestion = await Question.findOne({
+      where: {
+        optionData: {
+          type: {
+            [Op.eq]: 'dimensions',
+          },
+        },
+      },
+    })
+
+    // Delete the recommendation association from the dimension question
+    // recommendation associations are in the question.optionData.options.data array
+
+    if (dimensionQuestion) {
+      const updatedDimensionQuestion = dimensionQuestion.optionData.options.map(
+        (option) =>
+          option.data.filter(
+            (aRecommendation: ToolType) =>
+              aRecommendation.recommendationLabel !== recommendation.label
+          )
+      )
+      Object.assign(dimensionQuestion.optionData.options, {
+        data: updatedDimensionQuestion,
+      })
+      dimensionQuestion.changed('optionData', true)
+
+      await dimensionQuestion.save()
+    }
 
     await recommendation.destroy()
 

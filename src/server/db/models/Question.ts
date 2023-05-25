@@ -8,11 +8,14 @@ import {
 
 import { sequelize } from '../connection'
 
-import { TranslatedText } from '../../types'
+import { ToolType, TranslatedText } from '../../types'
 
 interface Option {
   id: string
-  label: TranslatedText
+  label: string
+  title: TranslatedText
+  text?: TranslatedText
+  data?: ToolType[]
 }
 
 interface OptionData {
