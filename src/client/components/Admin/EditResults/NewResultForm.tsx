@@ -7,6 +7,8 @@ import { enqueueSnackbar } from 'notistack'
 
 import { MenuItem } from '@mui/material'
 
+import { useCreateResultMutation } from '../../../hooks/useResultMutation'
+
 import { DialogSelect } from '../Select'
 import { DialogLocalesField } from '../TextField'
 import NewItemDialog from '../NewItemDialog'
@@ -32,6 +34,7 @@ const NewResultForm = ({
   selectedQuestion: Question
 }) => {
   const { t, i18n } = useTranslation()
+  const mutation = useCreateResultMutation()
   const language = i18n.language as keyof Locales
 
   const [selectedOption, setSelectedOption] =
@@ -67,9 +70,9 @@ const NewResultForm = ({
     }
 
     try {
-      console.log(newResult)
+      await mutation.mutateAsync(newResult)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-      // setOpen(false)
+      setOpen(false)
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
