@@ -101,7 +101,7 @@
     "questionAddNew": "Add new question",
     "questionRemove": "Remove this question",
     "questionAddNewOption": "Lisää uusi valinta",
-    "questionRemoveOption": "Poista tämä valinta",
+    "questionRemoveOption": "Poista valinta {{number}}",
     "questionNewOptionTitleLabel": "Valinnan numero {{number}} otsikko",
     "questionNewOptionDataLabel": "Valinnan numero {{number}} sisältö",
     "questionRemoveQuestionInfo": "Remove question",

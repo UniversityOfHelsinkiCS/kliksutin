@@ -132,7 +132,17 @@ const NewQuestionForm = ({
           control={control}
         />
         {fields.map((item, index) => (
-          <Box key={item.id} sx={{ display: 'inline-flex' }}>
+          <Box key={item.id} sx={{ mb: 8 }}>
+            <Box sx={{ position: 'relative' }}>
+              <Button
+                sx={{ zIndex: 20, position: 'absolute', right: 0, top: -4 }}
+                variant="outlined"
+                color="error"
+                onClick={handleAppend}
+              >
+                {t('admin:questionRemoveOption', { number: index + 1 })}
+              </Button>
+            </Box>
             <DialogLocalesField
               value={`optionData.options.${index}.title`}
               inputlabel={t('admin:questionNewOptionTitleLabel', {
@@ -153,9 +163,11 @@ const NewQuestionForm = ({
             )}
           </Box>
         ))}
-        <Button variant="outlined" fullWidth onClick={handleAppend}>
-          {t('admin:questionAddNewOption')}
-        </Button>
+        {selectedQuestionType !== 'info' && (
+          <Button variant="outlined" fullWidth onClick={handleAppend}>
+            {t('admin:questionAddNewOption')}
+          </Button>
+        )}
       </NewItemDialog>
     </form>
   )

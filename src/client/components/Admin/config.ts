@@ -71,14 +71,6 @@ export const questionTypes: InfoType[] = [
     },
   },
   {
-    id: 'dimensions',
-    title: {
-      fi: 'Oppimismuoto',
-      sv: 'Oppimismuoto',
-      en: 'Oppimismuoto',
-    },
-  },
-  {
     id: 'info',
     title: {
       fi: 'Infokenttä',
