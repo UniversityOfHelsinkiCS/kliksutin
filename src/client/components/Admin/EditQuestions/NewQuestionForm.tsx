@@ -138,7 +138,7 @@ const NewQuestionForm = ({
                 sx={{ zIndex: 20, position: 'absolute', right: 0, top: -4 }}
                 variant="outlined"
                 color="error"
-                onClick={handleAppend}
+                onClick={() => remove(index)}
               >
                 {t('admin:questionRemoveOption', { number: index + 1 })}
               </Button>
