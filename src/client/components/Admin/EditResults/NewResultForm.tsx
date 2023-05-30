@@ -59,7 +59,7 @@ const NewResultForm = ({
 
   const onSubmit = async (data: NewResult) => {
     const resultDataField = Object.fromEntries(
-      dimensions.map((k) => [k.id, defaultValue])
+      dimensions.map((dimension) => [dimension.id, defaultValue])
     )
     const newResult = {
       ...data,

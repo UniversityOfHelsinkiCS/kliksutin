@@ -77,15 +77,22 @@ const EditResults = () => {
           selectedLanguage={selectedLanguage}
           handleChange={handleLanguageChange}
         />
-        {!filteredResults.length && selectedQuestion && (
-          <Button
-            sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
-            variant="contained"
-            onClick={() => setOpenForm(!openForm)}
-          >
-            {t('admin:resultAddNew')}
-          </Button>
-        )}
+        {!filteredResults.length &&
+          selectedQuestion &&
+          !!selectedQuestion.optionData.options.length && (
+            <Button
+              sx={{
+                position: 'absolute',
+                right: 0,
+                mr: 4,
+                alignSelf: 'center',
+              }}
+              variant="contained"
+              onClick={() => setOpenForm(!openForm)}
+            >
+              {t('admin:resultAddNew')}
+            </Button>
+          )}
       </Box>
       {filteredResults.length > 0 ? (
         <Box sx={{ my: 4 }}>

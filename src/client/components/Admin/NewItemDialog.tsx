@@ -30,7 +30,7 @@ const NewItemDialog = ({
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText>{content}</DialogContentText>
+        <DialogContentText sx={{ mb: 4 }}>{content}</DialogContentText>
         {children}
       </DialogContent>
       <DialogActions>
