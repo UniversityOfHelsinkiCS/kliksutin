@@ -46,12 +46,18 @@ const EditResults = () => {
   )
   const options = selectedQuestion?.optionData.options || []
   const optionIds = options.map(({ id }) => id)
+
   const filteredResults = results.filter(({ optionLabel }) =>
     optionIds.includes(optionLabel)
   )
 
   const sortedDimensions = sortDimensions(dimensions, language)
   const dimensionSelections = [allSelection].concat(sortedDimensions)
+
+  const nonSelectedOptions = options.filter((option) => {
+    const filteredOptionLabels = filteredResults.map((res) => res.optionLabel)
+    return !filteredOptionLabels.includes(option.label)
+  })
 
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
@@ -77,22 +83,20 @@ const EditResults = () => {
           selectedLanguage={selectedLanguage}
           handleChange={handleLanguageChange}
         />
-        {!filteredResults.length &&
-          selectedQuestion &&
-          !!selectedQuestion.optionData.options.length && (
-            <Button
-              sx={{
-                position: 'absolute',
-                right: 0,
-                mr: 4,
-                alignSelf: 'center',
-              }}
-              variant="contained"
-              onClick={() => setOpenForm(!openForm)}
-            >
-              {t('admin:resultAddNew')}
-            </Button>
-          )}
+        {!!nonSelectedOptions.length && (
+          <Button
+            sx={{
+              position: 'absolute',
+              right: 0,
+              mr: 4,
+              alignSelf: 'center',
+            }}
+            variant="contained"
+            onClick={() => setOpenForm(!openForm)}
+          >
+            {t('admin:resultAddNew')}
+          </Button>
+        )}
       </Box>
       {filteredResults.length > 0 ? (
         <Box sx={{ my: 4 }}>
@@ -123,7 +127,7 @@ const EditResults = () => {
           open={openForm}
           setOpen={setOpenForm}
           dimensions={dimensionSelections}
-          selectedQuestion={selectedQuestion}
+          options={nonSelectedOptions}
         />
       )}
     </Box>

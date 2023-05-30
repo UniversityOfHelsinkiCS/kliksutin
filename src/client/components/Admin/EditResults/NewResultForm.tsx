@@ -15,23 +15,18 @@ import NewItemDialog from '../NewItemDialog'
 
 import { NewResult, ResultZod } from '../../../validators/results'
 
-import {
-  ChoiceType,
-  DimensionSelectionData,
-  Locales,
-  Question,
-} from '../../../types'
+import { DimensionSelectionData, Locales, ChoiceType } from '../../../types'
 
 const NewResultForm = ({
   open,
   setOpen,
   dimensions,
-  selectedQuestion,
+  options,
 }: {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   dimensions: DimensionSelectionData[]
-  selectedQuestion: Question
+  options: ChoiceType
 }) => {
   const { t, i18n } = useTranslation()
   const mutation = useCreateResultMutation()
@@ -92,7 +87,7 @@ const NewResultForm = ({
           value="optionLabel"
           control={control}
         >
-          {selectedQuestion.optionData.options.map((aOption) => (
+          {options.map((aOption) => (
             <MenuItem
               onClick={() => setSelectedOption(aOption)}
               key={aOption.id}
