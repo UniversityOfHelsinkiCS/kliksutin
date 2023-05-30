@@ -10,6 +10,7 @@ import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
 
 import { Locales } from '../../../types'
+import NewQuestionForm from './NewQuestionForm'
 
 const EditQuestions = () => {
   const { t } = useTranslation()
@@ -57,11 +58,11 @@ const EditQuestions = () => {
           handleChange={handleLanguageChange}
         />
         <Button
-          sx={{ position: 'absolute', right: 0, mr: 2, alignSelf: 'center' }}
+          sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
           variant="contained"
           onClick={() => setOpenForm(!openForm)}
         >
-          {t('admin:recommendationAddNew')}
+          {t('admin:questionAddNew')}
         </Button>
       </Box>
       <Box width="100%" flexWrap="wrap">
@@ -98,6 +99,8 @@ const EditQuestions = () => {
           </Box>
         )}
       </Box>
+
+      <NewQuestionForm open={openForm} setOpen={setOpenForm} />
     </Box>
   )
 }
