@@ -64,7 +64,7 @@ export const DialogLocalesField = ({
             multiline
             label={language.toUpperCase()}
             fullWidth
-            value={field.value.language}
+            value={field.value?.language || ''}
             {...field}
           />
         )}

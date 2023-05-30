@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -31,7 +31,9 @@ const NewQuestionForm = ({
   const {
     handleSubmit,
     control,
+    watch,
     formState: { errors },
+    reset,
   } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
@@ -59,7 +61,12 @@ const NewQuestionForm = ({
   const { fields, append, remove } = useFieldArray({
     name: 'optionData.options',
     control,
+    shouldUnregister: true,
   })
+
+  useEffect(() => {
+    reset()
+  }, [reset])
 
   const handleAppend = () => {
     const optionId = uuidv4()
