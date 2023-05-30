@@ -122,14 +122,13 @@ const EditResults = () => {
           {t('admin:resultViewInfo')}
         </Typography>
       )}
-      {openForm && (
-        <NewResultForm
-          open={openForm}
-          setOpen={setOpenForm}
-          dimensions={dimensionSelections}
-          options={nonSelectedOptions}
-        />
-      )}
+
+      <NewResultForm
+        open={openForm}
+        setOpen={setOpenForm}
+        dimensions={dimensionSelections}
+        options={nonSelectedOptions}
+      />
     </Box>
   )
 }

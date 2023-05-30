@@ -8,7 +8,7 @@ import {
   useEditRecommendationMutation,
 } from '../../../hooks/useRecommendationMutation'
 
-import DeleteDialog from './DeleteDialog'
+import DeleteDialog from '../DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
 
 import { Locales, Recommendation } from '../../../types'
