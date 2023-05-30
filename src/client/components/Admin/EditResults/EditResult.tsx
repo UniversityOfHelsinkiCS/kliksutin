@@ -3,7 +3,10 @@ import { Box, Typography, Button } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 
-import { useEditResultMutation } from '../../../hooks/useResultMutation'
+import {
+  useDeleteResultMutation,
+  useEditResultMutation,
+} from '../../../hooks/useResultMutation'
 
 import DeleteDialog from '../DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
@@ -87,12 +90,12 @@ const EditResult = ({
   result: Result
 }) => {
   const { t } = useTranslation()
-  // const mutation = useDeleteRecommendationMutation(recommendation.id)
+  const mutation = useDeleteResultMutation(result.id)
   const [openAlert, setOpenAlert] = useState(false)
 
   const handleDelete = async () => {
     try {
-      console.log('del')
+      await mutation.mutateAsync()
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
     } catch (error) {
