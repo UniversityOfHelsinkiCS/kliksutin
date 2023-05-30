@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, SelectChangeEvent, Typography } from '@mui/material'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
@@ -18,6 +18,8 @@ const EditQuestions = () => {
 
   const [questionId, setQuestionId] = useState('')
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
+
+  const [openForm, setOpenForm] = useState(false)
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setQuestionId(event.target.value)
@@ -54,6 +56,13 @@ const EditQuestions = () => {
           selectedLanguage={selectedLanguage}
           handleChange={handleLanguageChange}
         />
+        <Button
+          sx={{ position: 'absolute', right: 0, mr: 2, alignSelf: 'center' }}
+          variant="contained"
+          onClick={() => setOpenForm(!openForm)}
+        >
+          {t('admin:recommendationAddNew')}
+        </Button>
       </Box>
       <Box width="100%" flexWrap="wrap">
         {selectedQuestion ? (
