@@ -104,6 +104,7 @@
     "questionNewQuestionInfo": "New question",
     "questionNewQuestionContent": "Here you can create a new question to Curre",
     "questionNewQuestionTitleLabel": "Question title",
+    "questionNewQuestionContentLabel": "Question content",
     "questionOptionViewInfo": "Edit question options",
     "recommendationViewInfo": "Start by selecting recommendation from the dropdown",
     "recommendationViewRecommendationEdit": "Edit recommendation",
