@@ -71,6 +71,36 @@ export const DialogSelect = ({
   />
 )
 
+export const LanguageSelect = ({
+  selectedLanguage,
+  handleChange,
+}: {
+  selectedLanguage: keyof Locales
+  handleChange: HandleChange
+}) => {
+  const { t, i18n } = useTranslation()
+  const language = i18n.language as keyof Locales
+
+  return (
+    <Box sx={{ width: '20vw' }}>
+      <FormControl fullWidth>
+        <FormLabel>{t('admin:selectLanguage')}</FormLabel>
+        <RadioGroup defaultValue="en" onChange={handleChange} row>
+          {languages.map(({ id, title }) => (
+            <FormControlLabel
+              key={id}
+              value={id}
+              control={<Radio />}
+              label={title[language]}
+              checked={selectedLanguage === id}
+            />
+          ))}
+        </RadioGroup>
+      </FormControl>
+    </Box>
+  )
+}
+
 export const DimensionSelect = ({
   dimensionId,
   dimensions,
@@ -164,35 +194,5 @@ export const RecommendationSelect = ({
         </MenuItem>
       ))}
     </SelectWrapper>
-  )
-}
-
-export const LanguageSelect = ({
-  selectedLanguage,
-  handleChange,
-}: {
-  selectedLanguage: keyof Locales
-  handleChange: HandleChange
-}) => {
-  const { t, i18n } = useTranslation()
-  const language = i18n.language as keyof Locales
-
-  return (
-    <Box sx={{ width: '20vw' }}>
-      <FormControl fullWidth>
-        <FormLabel>{t('admin:selectLanguage')}</FormLabel>
-        <RadioGroup defaultValue="en" onChange={handleChange} row>
-          {languages.map(({ id, title }) => (
-            <FormControlLabel
-              key={id}
-              value={id}
-              control={<Radio />}
-              label={title[language]}
-              checked={selectedLanguage === id}
-            />
-          ))}
-        </RadioGroup>
-      </FormControl>
-    </Box>
   )
 }
