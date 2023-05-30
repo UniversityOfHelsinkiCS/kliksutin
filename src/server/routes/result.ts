@@ -59,3 +59,17 @@ resultRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
 
   return res.status(201).send(recommendation)
 })
+
+resultRouter.delete('/:id', async (req: RequestWithUser, res) => {
+  const { id } = req.params
+  const { isAdmin } = req.user
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const result = await Result.findByPk(id)
+  if (!result) throw new Error('Result not found')
+
+  await result.destroy()
+
+  return res.sendStatus(204)
+})
