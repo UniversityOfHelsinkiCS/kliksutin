@@ -27,7 +27,7 @@ export const useCreateResultMutation = () => {
   return mutation
 }
 
-const useEditResultMutation = (resultId: number) => {
+export const useEditResultMutation = (resultId: number) => {
   const mutationFn = async (data: MutationData) => {
     await apiClient.put(`/results/${resultId}`, {
       data,
@@ -39,4 +39,19 @@ const useEditResultMutation = (resultId: number) => {
   return mutation
 }
 
-export default useEditResultMutation
+export const useDeleteResultMutation = (resultId: number) => {
+  const { survey } = useSurvey()
+
+  const mutationFn = async () => {
+    await apiClient.delete(`/results/${resultId}`)
+  }
+
+  const mutation = useMutation(mutationFn, {
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ['results', survey.id],
+      }),
+  })
+
+  return mutation
+}
