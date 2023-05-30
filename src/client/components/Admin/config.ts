@@ -53,6 +53,41 @@ export const languages: InfoType[] = [
   },
 ]
 
+export const questionTypes: InfoType[] = [
+  {
+    id: 'singleChoice',
+    title: {
+      fi: 'Yksivalinta',
+      sv: 'Yksivalinta',
+      en: 'Yksivalinta',
+    },
+  },
+  {
+    id: 'multiChoice',
+    title: {
+      fi: 'Monivalinta',
+      sv: 'Monivalinta',
+      en: 'Monivalinta',
+    },
+  },
+  {
+    id: 'dimensions',
+    title: {
+      fi: 'Oppimismuoto',
+      sv: 'Oppimismuoto',
+      en: 'Oppimismuoto',
+    },
+  },
+  {
+    id: 'info',
+    title: {
+      fi: 'Infokenttä',
+      sv: 'Infokenttä',
+      en: 'Infokenttä',
+    },
+  },
+]
+
 export const sortDimensions = (
   dimensions: DimensionSelectionData[],
   language: keyof Locales
