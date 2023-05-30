@@ -3,7 +3,7 @@ import { Box, Typography, Button } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 
-import useEditResultMutation from '../../../hooks/useEditResultMutation'
+import useEditResultMutation from '../../../hooks/useResultMutation'
 
 import { ContentTextField, TitleTextField } from '../TextField'
 
