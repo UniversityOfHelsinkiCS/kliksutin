@@ -1,20 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import { useFieldArray, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
-import { MenuItem } from '@mui/material'
+import { Box, Button, MenuItem } from '@mui/material'
 
 import { useCreateRecommendationMutation } from '../../../hooks/useRecommendationMutation'
 
 import NewItemDialog from '../NewItemDialog'
 import { DialogSelect } from '../Select'
-import { DialogLocalesField, DialogTextField } from '../TextField'
-import {
-  NewRecommendation,
-  RecommendationZod,
-} from '../../../validators/recommendations'
+import { DialogLocalesField } from '../TextField'
 
 import { Locales } from '../../../types'
 import { questionTypes } from '../config'
@@ -27,8 +23,10 @@ const NewQuestionForm = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const { t, i18n } = useTranslation()
-  const mutation = useCreateRecommendationMutation()
+  // const mutation = useCreateRecommendationMutation()
   const language = i18n.language as keyof Locales
+
+  const [selectedQuestionType, setSelectedQuestionType] = useState('')
 
   const {
     handleSubmit,
@@ -38,7 +36,8 @@ const NewQuestionForm = ({
     mode: 'onBlur',
     shouldUnregister: true,
     defaultValues: {
-      type: 'singleChoice',
+      parentId: null,
+      priority: 0,
       title: {
         fi: '',
         sv: '',
@@ -49,10 +48,42 @@ const NewQuestionForm = ({
         sv: '',
         en: '',
       },
+      optionData: {
+        type: 'singleChoice',
+        options: [],
+      },
+      visibility: {},
     },
   })
 
-  const onSubmit = async (data: NewRecommendation) => {
+  const { fields, append, remove } = useFieldArray({
+    name: 'optionData.options',
+    control,
+  })
+
+  const handleAppend = () => {
+    const optionId = uuidv4()
+    const newOption = {
+      id: optionId,
+      label: optionId,
+      title: {
+        fi: '',
+        sv: '',
+        en: '',
+      },
+      ...(selectedQuestionType === 'multiChoice' && {
+        data: {
+          fi: '',
+          sv: '',
+          en: '',
+        },
+      }),
+    }
+
+    append(newOption)
+  }
+
+  const onSubmit = async (data: any) => {
     console.log(data)
     try {
       // await mutation.mutateAsync(data)
@@ -62,8 +93,6 @@ const NewQuestionForm = ({
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
-
-  console.log(language)
 
   return (
     <form>
@@ -75,12 +104,16 @@ const NewQuestionForm = ({
         onClose={() => setOpen(!open)}
       >
         <DialogSelect
-          label={t('admin:selectRecommendationType')}
-          value="type"
+          label={t('admin:selectQuestionType')}
+          value="optionData.type"
           control={control}
         >
           {questionTypes.map(({ id, title }) => (
-            <MenuItem key={id} value={id}>
+            <MenuItem
+              key={id}
+              value={id}
+              onClick={() => setSelectedQuestionType(id)}
+            >
               {title[language]}
             </MenuItem>
           ))}
@@ -98,6 +131,31 @@ const NewQuestionForm = ({
           inputlabel={t('admin:questionNewQuestionContentLabel')}
           control={control}
         />
+        {fields.map((item, index) => (
+          <Box key={item.id} sx={{ display: 'inline-flex' }}>
+            <DialogLocalesField
+              value={`optionData.options.${index}.title`}
+              inputlabel={t('admin:questionNewOptionTitleLabel', {
+                number: index + 1,
+              })}
+              control={control}
+              error={errors.title}
+            />
+            {item.data && (
+              <DialogLocalesField
+                value={`optionData.options.${index}.data`}
+                inputlabel={t('admin:questionNewOptionDataLabel', {
+                  number: index + 1,
+                })}
+                control={control}
+                error={errors.title}
+              />
+            )}
+          </Box>
+        ))}
+        <Button variant="outlined" fullWidth onClick={handleAppend}>
+          {t('admin:questionAddNewOption')}
+        </Button>
       </NewItemDialog>
     </form>
   )

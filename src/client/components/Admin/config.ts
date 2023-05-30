@@ -57,9 +57,9 @@ export const questionTypes: InfoType[] = [
   {
     id: 'singleChoice',
     title: {
-      fi: 'Yksivalinta',
-      sv: 'Yksivalinta',
-      en: 'Yksivalinta',
+      fi: 'Yksittäis valinta',
+      sv: 'Yksittäis valinta',
+      en: 'Yksittäis valinta',
     },
   },
   {
