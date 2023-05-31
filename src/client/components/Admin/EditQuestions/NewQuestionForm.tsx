@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { Box, Button, MenuItem } from '@mui/material'
@@ -10,8 +11,10 @@ import NewItemDialog from '../NewItemDialog'
 import { DialogSelect } from '../Select'
 import { DialogLocalesField } from '../TextField'
 
-import { Locales } from '../../../types'
+import { NewQuestion, QuestionZod } from '../../../validators/questions'
+
 import { questionTypes } from '../config'
+import { Locales } from '../../../types'
 
 const NewQuestionForm = ({
   open,
@@ -31,8 +34,9 @@ const NewQuestionForm = ({
     control,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<NewQuestion>({
     mode: 'onBlur',
+    resolver: zodResolver(QuestionZod),
     defaultValues: {
       parentId: null,
       title: {

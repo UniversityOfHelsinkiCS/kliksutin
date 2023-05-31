@@ -19,7 +19,24 @@ export const QuestionZod = z.object({
   optionData: z
     .object({
       type: z.string().nonempty(),
-      options: z.array(z.unknown()).optional(),
+      options: z
+        .array(
+          z.object({
+            title: z.object({
+              fi: z.string().nonempty(),
+              sv: z.string().nonempty(),
+              en: z.string().nonempty(),
+            }),
+            data: z
+              .object({
+                fi: z.string().nonempty(),
+                sv: z.string().nonempty(),
+                en: z.string().nonempty(),
+              })
+              .optional(),
+          })
+        )
+        .optional(),
     })
     .optional(),
   visibility: z
