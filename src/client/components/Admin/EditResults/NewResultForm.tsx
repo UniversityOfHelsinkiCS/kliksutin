@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
@@ -33,7 +33,7 @@ const NewResultForm = ({
   const language = i18n.language as keyof Locales
 
   const [selectedOption, setSelectedOption] =
-    useState<ChoiceType extends (infer U)[] ? U : never>()
+    useState<ChoiceType extends (infer U)[] ? U : never>(null)
 
   const defaultValue = {
     fi: '',
@@ -54,6 +54,11 @@ const NewResultForm = ({
       isSelected: defaultValue,
     },
   })
+
+  const onClose = () => {
+    setSelectedOption(null)
+    setOpen(!open)
+  }
 
   const onSubmit = async (data: NewResult) => {
     const resultDataField = Object.fromEntries(
@@ -80,10 +85,10 @@ const NewResultForm = ({
         title={t('admin:resultNewResultInfo')}
         content={t('admin:resultNewResultContent')}
         onSubmit={handleSubmit(onSubmit)}
-        onClose={() => setOpen(!open)}
+        onClose={onClose}
       >
         <DialogSelect
-          label={t('admin:selectRecommendationType')}
+          label={t('admin:selectResultType')}
           value="optionLabel"
           control={control}
         >
