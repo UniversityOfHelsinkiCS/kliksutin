@@ -88,7 +88,7 @@ const NewResultForm = ({
         onClose={onClose}
       >
         <DialogSelect
-          label={t('admin:selectResultType')}
+          label={t('admin:selectResultOption')}
           value="optionLabel"
           control={control}
         >
