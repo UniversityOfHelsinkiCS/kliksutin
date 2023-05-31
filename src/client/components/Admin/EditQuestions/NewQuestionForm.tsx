@@ -31,12 +31,10 @@ const NewQuestionForm = ({
   const {
     handleSubmit,
     control,
-    watch,
     formState: { errors },
-    reset,
+    watch,
   } = useForm({
     mode: 'onBlur',
-    shouldUnregister: true,
     defaultValues: {
       parentId: null,
       priority: 0,
@@ -61,12 +59,13 @@ const NewQuestionForm = ({
   const { fields, append, remove } = useFieldArray({
     name: 'optionData.options',
     control,
-    shouldUnregister: true,
   })
 
-  useEffect(() => {
-    reset()
-  }, [reset])
+  const watchOptions = watch('optionData.options')
+  const controlledFields = fields.map((field, index) => ({
+    ...field,
+    ...watchOptions[index],
+  }))
 
   const handleAppend = () => {
     const optionId = uuidv4()
@@ -138,7 +137,7 @@ const NewQuestionForm = ({
           inputlabel={t('admin:questionNewQuestionContentLabel')}
           control={control}
         />
-        {fields.map((item, index) => (
+        {controlledFields.map((item, index) => (
           <Box key={item.id} sx={{ mb: 8 }}>
             <Box sx={{ position: 'relative' }}>
               <Button
