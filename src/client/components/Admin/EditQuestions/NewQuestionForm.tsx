@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { Box, Button, MenuItem } from '@mui/material'
 
-import { useCreateRecommendationMutation } from '../../../hooks/useRecommendationMutation'
+import { useCreateQuestionMutation } from '../../../hooks/useQuestionMutation'
 
 import NewItemDialog from '../NewItemDialog'
 import { DialogSelect } from '../Select'
@@ -22,7 +21,7 @@ const NewQuestionForm = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const { t, i18n } = useTranslation()
-  // const mutation = useCreateRecommendationMutation()
+  const mutation = useCreateQuestionMutation()
   const language = i18n.language as keyof Locales
 
   const [selectedQuestionType, setSelectedQuestionType] = useState('')
@@ -31,7 +30,7 @@ const NewQuestionForm = ({
     handleSubmit,
     control,
     formState: { errors },
-    watch,
+    reset,
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
@@ -60,12 +59,6 @@ const NewQuestionForm = ({
     control,
   })
 
-  const watchOptions = watch('optionData.options')
-  const controlledFields = fields.map((field, index) => ({
-    ...field,
-    ...watchOptions[index],
-  }))
-
   const handleAppend = () => {
     const newOption = {
       title: {
@@ -86,11 +79,11 @@ const NewQuestionForm = ({
   }
 
   const onSubmit = async (data: any) => {
-    console.log(data)
     try {
-      // await mutation.mutateAsync(data)
+      await mutation.mutateAsync(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
+      reset()
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
@@ -133,7 +126,7 @@ const NewQuestionForm = ({
           inputlabel={t('admin:questionNewQuestionContentLabel')}
           control={control}
         />
-        {controlledFields.map((item, index) => (
+        {fields.map((item, index) => (
           <Box key={item.id} sx={{ mb: 8 }}>
             <Box sx={{ position: 'relative' }}>
               <Button
