@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React, { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
@@ -68,10 +67,7 @@ const NewQuestionForm = ({
   }))
 
   const handleAppend = () => {
-    const optionId = uuidv4()
     const newOption = {
-      id: optionId,
-      label: optionId,
       title: {
         fi: '',
         sv: '',
