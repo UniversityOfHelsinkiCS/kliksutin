@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -82,8 +81,8 @@ const NewQuestionForm = ({
     try {
       await mutation.mutateAsync(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-      // setOpen(false)
-      // reset()
+      setOpen(false)
+      reset()
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
