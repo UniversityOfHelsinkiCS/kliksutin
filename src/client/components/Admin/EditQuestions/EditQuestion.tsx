@@ -3,7 +3,7 @@ import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
-import useEditQuestionMutation from '../../../hooks/useQuestionMutation'
+import { useEditQuestionMutation } from '../../../hooks/useQuestionMutation'
 
 import { Locales, Question } from '../../../types'
 import { QuestionsUpdates } from '../../../../server/types'

@@ -90,7 +90,7 @@ const NewQuestionForm = ({
     try {
       // await mutation.mutateAsync(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-      // setOpen(false)
+      setOpen(false)
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
