@@ -1,7 +1,10 @@
 import express from 'express'
 
+import { v4 as uuidv4 } from 'uuid'
+
+import { Question, Survey } from '../db/models'
+
 import { QuestionsUpdates, RequestWithUser } from '../types'
-import { Question } from '../db/models'
 
 const questionRouter = express.Router()
 
@@ -67,5 +70,46 @@ questionRouter.put(
     return res.send(question)
   }
 )
+
+questionRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
+  const { surveyId } = req.params
+  const { isAdmin } = req.user
+  const data: Question = req.body
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const survey = await Survey.findByPk(surveyId)
+  if (!survey) throw new Error('Survey not found')
+
+  const { options } = data.optionData
+
+  // inject the options with id and label of random uuid
+  const injectedOptions = options.map((opt) => {
+    const id = uuidv4()
+    return {
+      id,
+      label: id,
+      ...opt,
+    }
+  })
+
+  Object.assign(data.optionData.options, injectedOptions)
+
+  const nextAvailablePriority = async (parentId: number | null) => {
+    const result: number = await Question.max('priority', {
+      where: { parentId },
+    })
+
+    return result + 1
+  }
+
+  const question = await Question.create({
+    surveyId: Number(surveyId),
+    priority: await nextAvailablePriority(data.parentId),
+    ...data,
+  })
+
+  return res.status(201).send(question)
+})
 
 export default questionRouter
