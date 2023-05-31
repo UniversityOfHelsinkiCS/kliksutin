@@ -147,7 +147,7 @@ const NewQuestionForm = ({
                 number: index + 1,
               })}
               control={control}
-              error={errors.title}
+              error={errors.optionData?.options[index]?.title}
             />
             {item.data && (
               <DialogLocalesField
@@ -156,7 +156,7 @@ const NewQuestionForm = ({
                   number: index + 1,
                 })}
                 control={control}
-                error={errors.title}
+                error={errors.optionData?.options[index]?.data}
               />
             )}
           </Box>

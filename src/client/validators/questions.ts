@@ -3,7 +3,6 @@ import { z } from 'zod'
 
 export const QuestionZod = z.object({
   parentId: z.number().nullable().optional(),
-  priority: z.number().min(0).nonnegative(),
   title: z.object({
     fi: z.string().nonempty(),
     sv: z.string().nonempty(),
