@@ -4,7 +4,7 @@ import colors from '../../util/colors'
 import styles from '../../styles'
 import { DimensionSelectionData } from '../../types'
 
-import DimensionChip from '../Chip/DimensionChip'
+import DimensionChip from './DimensionChip'
 
 const { recommendationStyles } = styles
 
