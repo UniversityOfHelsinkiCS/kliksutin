@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -83,41 +84,40 @@ const Results = ({
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
   const { language } = i18n
 
-  const dimensionQuestionId = useFindQuestion('dimensions')
-  const courseAttendanceId = useFindQuestion('Osallistuminen')
-  const courseCompletionMethodId = useFindQuestion('Suoritusmuoto')
-
   const dimensionSelections = getSelectedDimensions(survey, watch)
 
   if (!resultsFetched || !formResultData) return null
 
-  const multipleChoiceObjectToArray = (aChoiceId: number): string[] =>
+  const objectToArray = (aChoiceId: number): string[] =>
     Object.keys(formResultData[aChoiceId]).filter(
       (index) => formResultData[aChoiceId][index]
     )
 
-  const attendanceToArray = () => {
-    const attendances = multipleChoiceObjectToArray(courseAttendanceId)
-    return attendances.length === 2 ? ['courseAttendanceHybrid'] : attendances
+  const multipleChoiceObjectsToArrays = (): string[][] => {
+    const entries = Object.entries(formResultData)
+    return entries.map(([key, value]) => {
+      if (typeof value === 'object') {
+        const selections = objectToArray(Number(key))
+
+        // Hacky way: if the courseattendance is considered to be hybrid
+        // eg. the courseAttendancePresent and courseAttendanceRemote are both selected
+        if (
+          selections.includes('courseAttendancePresent') &&
+          selections.length === 2
+        ) {
+          return ['courseAttendanceHybrid']
+        }
+        return objectToArray(Number(key))
+      }
+      return [value]
+    })
   }
 
-  const modifiedResultObject = {
-    ...formResultData,
-    [dimensionQuestionId]: ['allDimensions'].concat(
-      multipleChoiceObjectToArray(dimensionQuestionId)
-    ),
-    [courseAttendanceId]: attendanceToArray(),
-    [courseCompletionMethodId]: multipleChoiceObjectToArray(
-      courseCompletionMethodId
-    ),
-  }
+  const dimensions = multipleChoiceObjectsToArrays()[0]
 
-  const resultArray: string[][] = Object.values(modifiedResultObject)
+  const resultArray = multipleChoiceObjectsToArrays()
     .slice(1)
-    .filter((x) => x !== '')
-    .map((result: string | Array<string>) =>
-      typeof result === 'string' ? [result] : result
-    )
+    .filter(([x]) => x !== '')
 
   const onNavigateBack = () => {
     sessionStorage.setItem('curre-session-location', 'form')
@@ -147,7 +147,7 @@ const Results = ({
               {t('results:title')}
             </Typography>
             <CompactDimensionChips
-              dimensions={multipleChoiceObjectToArray(dimensionQuestionId)}
+              dimensions={dimensions}
               dimensionSelections={dimensionSelections}
             />
           </Container>
@@ -162,9 +162,7 @@ const Results = ({
                     (result: { optionLabel: string }) =>
                       result.optionLabel === resultLabel
                   )}
-                  dimensions={
-                    modifiedResultObject[dimensionQuestionId] as string[]
-                  }
+                  dimensions={['allDimensions'].concat(dimensions)}
                 />
               ))
             )}
