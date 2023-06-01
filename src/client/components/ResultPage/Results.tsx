@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
@@ -14,7 +14,7 @@ import ResetForm from '../Common/ResetForm'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
 
 import colors from '../../util/colors'
-import { getDimensions, getSelectedDimensions } from '../../util/dimensions'
+import { getSelectedDimensions } from '../../util/dimensions'
 
 import styles from '../../styles'
 import { InputProps, Locales, Result } from '../../types'
@@ -30,17 +30,9 @@ const ResultElement = ({
   resultData: Result
   dimensions: string[]
 }) => {
-  const { survey } = useSurvey()
-  const [selectedDimensions, setSelectedDimensions] = useState(dimensions)
+  if (!resultData) return null
 
-  // Check if all dimensions are selected and concat allDimenions for the Results
-  useEffect(() => {
-    const surveyDimensions = getDimensions(survey)
-    if (surveyDimensions.length === dimensions.length)
-      setSelectedDimensions(['allDimensions', ...dimensions])
-  }, [survey, dimensions])
-
-  if (!resultData || !dimensions) return null
+  const selectedDimensions = ['allDimensions', ...dimensions]
 
   return (
     <Container
