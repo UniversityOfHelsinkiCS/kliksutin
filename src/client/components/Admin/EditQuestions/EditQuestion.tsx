@@ -3,7 +3,12 @@ import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
-import { useEditQuestionMutation } from '../../../hooks/useQuestionMutation'
+import {
+  useDeleteQuestionMutation,
+  useEditQuestionMutation,
+} from '../../../hooks/useQuestionMutation'
+
+import DeleteDialog from '../DeleteDialog'
 
 import { Locales, Question } from '../../../types'
 import { QuestionsUpdates } from '../../../../server/types'
@@ -72,14 +77,53 @@ const QuestionItem = ({
 const EditQuestion = ({
   language,
   question,
+  onDelete,
 }: {
   language: keyof Locales
   question: Question
-}) => (
-  <Box mb={5} display="flex">
-    <QuestionItem language={'fi' as keyof Locales} question={question} />
-    <QuestionItem language={language} question={question} />
-  </Box>
-)
+  onDelete: React.Dispatch<React.SetStateAction<string>>
+}) => {
+  const { t } = useTranslation()
+  const mutation = useDeleteQuestionMutation(question.id)
+  const [openAlert, setOpenAlert] = useState(false)
+
+  const handleDelete = async () => {
+    try {
+      await mutation.mutateAsync()
+      enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
+      setOpenAlert(false)
+      onDelete('') // callback to reset the selected question ID
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
+  }
+
+  return (
+    <>
+      <Button
+        sx={{
+          ml: 4,
+          alignSelf: 'center',
+        }}
+        variant="outlined"
+        color="error"
+        onClick={() => setOpenAlert(!openAlert)}
+      >
+        {t('admin:questionRemove')}
+      </Button>
+      <DeleteDialog
+        open={openAlert}
+        title={t('admin:questionRemoveQuestionInfo')}
+        content={t('admin:questionRemoveQuestionContent')}
+        setOpen={setOpenAlert}
+        onSubmit={handleDelete}
+      />
+      <Box mb={5} display="flex">
+        <QuestionItem language={'fi' as keyof Locales} question={question} />
+        <QuestionItem language={language} question={question} />
+      </Box>
+    </>
+  )
+}
 
 export default EditQuestion

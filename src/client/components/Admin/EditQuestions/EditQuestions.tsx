@@ -74,6 +74,7 @@ const EditQuestions = () => {
             <EditQuestion
               language={selectedLanguage}
               question={selectedQuestion}
+              onDelete={setQuestionId}
             />
           </Box>
         ) : (
