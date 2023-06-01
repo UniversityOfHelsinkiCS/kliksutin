@@ -63,7 +63,7 @@ export const questionTypes: InfoType[] = [
     },
   },
   {
-    id: 'multiChoice',
+    id: 'multipleChoice',
     title: {
       fi: 'Monivalinta',
       sv: 'Monivalinta',

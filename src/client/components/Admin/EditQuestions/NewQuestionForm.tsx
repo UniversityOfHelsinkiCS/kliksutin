@@ -69,7 +69,7 @@ const NewQuestionForm = ({
         sv: '',
         en: '',
       },
-      ...(selectedQuestionType === 'multiChoice' && {
+      ...(selectedQuestionType === 'multipleChoice' && {
         data: {
           fi: '',
           sv: '',
