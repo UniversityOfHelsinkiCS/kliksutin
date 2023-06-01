@@ -1,21 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
-import useFindQuestion from '../../hooks/useFindQuestion'
-import styles from '../../styles'
+
 import SendSummaryEmail from './SendSummaryEmail'
 import ProceedToContact from './ProceedToContact'
 import Openai from '../Openai/Openai'
 import Markdown from '../Common/Markdown'
 import ResetForm from '../Common/ResetForm'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
+
 import colors from '../../util/colors'
-import { getSelectedDimensions } from '../../util/dimensions'
+import { getDimensions, getSelectedDimensions } from '../../util/dimensions'
+
+import styles from '../../styles'
 import { InputProps, Locales, Result } from '../../types'
 
 const { cardStyles, resultStyles, formStyles } = styles
@@ -29,6 +30,16 @@ const ResultElement = ({
   resultData: Result
   dimensions: string[]
 }) => {
+  const { survey } = useSurvey()
+  const [selectedDimensions, setSelectedDimensions] = useState(dimensions)
+
+  // Check if all dimensions are selected and concat allDimenions for the Results
+  useEffect(() => {
+    const surveyDimensions = getDimensions(survey)
+    if (surveyDimensions.length === dimensions.length)
+      setSelectedDimensions(['allDimensions', ...dimensions])
+  }, [survey, dimensions])
+
   if (!resultData || !dimensions) return null
 
   return (
@@ -48,7 +59,7 @@ const ResultElement = ({
           margin: '2rem 0 2rem 0',
         }} /* sx={resultStyles.resultElementContent} */
       >
-        {dimensions.map((dimension: string) => {
+        {selectedDimensions.map((dimension: string) => {
           const color = colors[dimension] || null
           return (
             <Box
@@ -162,7 +173,7 @@ const Results = ({
                     (result: { optionLabel: string }) =>
                       result.optionLabel === resultLabel
                   )}
-                  dimensions={['allDimensions'].concat(dimensions)}
+                  dimensions={dimensions}
                 />
               ))
             )}
