@@ -112,4 +112,18 @@ questionRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
   return res.status(201).send(question)
 })
 
+questionRouter.delete('/:id', async (req: RequestWithUser, res) => {
+  const { id } = req.params
+  const { isAdmin } = req.user
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const question = await Question.findByPk(id)
+  if (!question) throw new Error('Question not found')
+
+  await question.destroy()
+
+  return res.sendStatus(204)
+})
+
 export default questionRouter
