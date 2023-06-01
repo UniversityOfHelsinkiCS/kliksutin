@@ -44,3 +44,20 @@ export const useEditQuestionMutation = (questionId: number) => {
 
   return mutation
 }
+
+export const useDeleteQuestionMutation = (questionId: number) => {
+  const { survey } = useSurvey()
+
+  const mutationFn = async () => {
+    await apiClient.delete(`/questions/${questionId}`)
+  }
+
+  const mutation = useMutation(mutationFn, {
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ['questions', survey.id],
+      }),
+  })
+
+  return mutation
+}
