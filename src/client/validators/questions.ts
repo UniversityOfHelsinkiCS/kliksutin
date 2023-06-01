@@ -10,9 +10,9 @@ export const QuestionZod = z.object({
   }),
   text: z
     .object({
-      fi: z.string().nonempty(),
-      sv: z.string().nonempty(),
-      en: z.string().nonempty(),
+      fi: z.string(),
+      sv: z.string(),
+      en: z.string(),
     })
     .optional(),
   optionData: z
