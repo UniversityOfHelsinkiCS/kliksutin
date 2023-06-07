@@ -3,7 +3,10 @@ import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
-import useEditOptionMutation from '../../../hooks/useEditChoiceMutation'
+import {
+  useDeleteOptionMutation,
+  useEditOptionMutation,
+} from '../../../hooks/useChoiceMutation'
 
 import DeleteDialog from '../DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
@@ -96,12 +99,12 @@ const EditOptions = ({
   language: keyof Locales
 }) => {
   const { t } = useTranslation()
-  // const mutation = useDeleteResultMutation(result.id)
+  const mutation = useDeleteOptionMutation(question.id, option.id)
   const [openAlert, setOpenAlert] = useState(false)
 
   const handleDelete = async () => {
     try {
-      // await mutation.mutateAsync()
+      await mutation.mutateAsync()
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
     } catch (error) {
