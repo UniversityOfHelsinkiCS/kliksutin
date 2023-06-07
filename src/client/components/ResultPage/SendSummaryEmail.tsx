@@ -64,8 +64,7 @@ const SendSummaryEmail = () => {
 
     sendResultsToEmail(targets, text)
       .then(() => setIsSent(true))
-      .catch((err) => {
-        console.log(err)
+      .catch(() => {
         enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
       })
   }

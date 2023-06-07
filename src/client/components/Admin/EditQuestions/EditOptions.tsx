@@ -5,6 +5,7 @@ import { enqueueSnackbar } from 'notistack'
 
 import useEditOptionMutation from '../../../hooks/useEditChoiceMutation'
 
+import DeleteDialog from '../DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
 
 import { ChoiceType, Locales, Question } from '../../../types'
@@ -93,21 +94,57 @@ const EditOptions = ({
   optionNumber: number
   question: Question
   language: keyof Locales
-}) => (
-  <Box mb={5} display="flex">
-    <OptionItem
-      option={option}
-      optionNumber={optionNumber}
-      question={question}
-      language={'fi' as keyof Locales}
-    />
-    <OptionItem
-      option={option}
-      optionNumber={optionNumber}
-      question={question}
-      language={language}
-    />
-  </Box>
-)
+}) => {
+  const { t } = useTranslation()
+  // const mutation = useDeleteResultMutation(result.id)
+  const [openAlert, setOpenAlert] = useState(false)
+
+  const handleDelete = async () => {
+    try {
+      // await mutation.mutateAsync()
+      enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
+      setOpenAlert(false)
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
+  }
+
+  return (
+    <>
+      <Button
+        sx={{
+          ml: 4,
+          alignSelf: 'center',
+        }}
+        variant="outlined"
+        color="error"
+        onClick={() => setOpenAlert(!openAlert)}
+      >
+        {t('admin:optionRemove')}
+      </Button>
+      <DeleteDialog
+        open={openAlert}
+        title={t('admin:optionRemoveOptionInfo')}
+        content={t('admin:optionRemoveOptionContent')}
+        setOpen={setOpenAlert}
+        onSubmit={handleDelete}
+      />
+      <Box mb={5} display="flex">
+        <OptionItem
+          option={option}
+          optionNumber={optionNumber}
+          question={question}
+          language={'fi' as keyof Locales}
+        />
+        <OptionItem
+          option={option}
+          optionNumber={optionNumber}
+          question={question}
+          language={language}
+        />
+      </Box>
+    </>
+  )
+}
 
 export default EditOptions
