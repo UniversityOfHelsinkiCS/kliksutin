@@ -39,7 +39,7 @@ const SendSummaryEmail = () => {
     })
   }
 
-  const onSubmit = async () => {
+  const onSubmit = () => {
     const targets = [user?.email]
     const text = `\
       ${summaryEmailHTML} \
@@ -62,7 +62,7 @@ const SendSummaryEmail = () => {
       ${resultHTML} \
       `
 
-    await sendResultsToEmail(targets, text)
+    sendResultsToEmail(targets, text)
       .then(() => setIsSent(true))
       .catch((err) => {
         console.log(err)
