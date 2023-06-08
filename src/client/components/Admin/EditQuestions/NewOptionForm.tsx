@@ -46,6 +46,7 @@ const NewOptionForm = ({
     mode: 'onBlur',
     resolver: zodResolver(OptionZod),
     defaultValues: defaultValue,
+    shouldUnregister: true,
   })
 
   const onSubmit = async (data: NewOption) => {
@@ -64,22 +65,22 @@ const NewOptionForm = ({
     <form>
       <NewItemDialog
         open={open}
-        title={t('admin:questionNewQuestionInfo')}
-        content={t('admin:questionNewQuestionContent')}
+        title={t('admin:optionNewOptionInfo')}
+        content={t('admin:optionNewOptionContent')}
         onSubmit={handleSubmit(onSubmit)}
         onClose={() => setOpen(!open)}
       >
         <DialogLocalesField
           error={errors.title}
           value="title"
-          inputlabel={t('admin:questionNewQuestionTitleLabel')}
+          inputlabel={t('admin:optionNewOptionTitleLabel')}
           control={control}
         />
         {defaultValue.data && (
           <DialogLocalesField
-            error={errors.title}
-            value="title"
-            inputlabel={t('admin:questionNewQuestionTitleLabel')}
+            error={errors.data}
+            value="data"
+            inputlabel={t('admin:optionNewOptionDataLabel')}
             control={control}
           />
         )}
