@@ -39,38 +39,6 @@ questionRouter.put('/:id', async (req: RequestWithUser, res) => {
   return res.send(question)
 })
 
-questionRouter.put(
-  '/:id/option/:optionId',
-  async (req: RequestWithUser, res) => {
-    const { id, optionId } = req.params
-    const { isAdmin } = req.user
-
-    if (!isAdmin) throw new Error('Unauthorized')
-
-    const question = await Question.findByPk(id)
-
-    if (!question) throw new Error('Question not found')
-
-    const option = question.optionData.options.find(
-      (aOption) => aOption.id === optionId
-    )
-
-    if (!option) throw new Error('Option not found')
-
-    const updates = question.optionData.options.map((aOption) =>
-      aOption.id === optionId ? Object.assign(option, req.body) : aOption
-    )
-
-    Object.assign(question, updates)
-
-    question.changed('optionData', true) // Sequelize things only https://stackoverflow.com/questions/45287514/sequelize-update-nested-property-in-jsonb
-
-    await question.save()
-
-    return res.send(question)
-  }
-)
-
 questionRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
   const { surveyId } = req.params
   const { isAdmin } = req.user
@@ -125,5 +93,69 @@ questionRouter.delete('/:id', async (req: RequestWithUser, res) => {
 
   return res.sendStatus(204)
 })
+
+questionRouter.put(
+  '/:id/option/:optionId',
+  async (req: RequestWithUser, res) => {
+    const { id, optionId } = req.params
+    const { isAdmin } = req.user
+
+    if (!isAdmin) throw new Error('Unauthorized')
+
+    const question = await Question.findByPk(id)
+
+    if (!question) throw new Error('Question not found')
+
+    const option = question.optionData.options.find(
+      (aOption) => aOption.id === optionId
+    )
+
+    if (!option) throw new Error('Option not found')
+
+    const updates = question.optionData.options.map((aOption) =>
+      aOption.id === optionId ? Object.assign(option, req.body) : aOption
+    )
+
+    Object.assign(question, updates)
+
+    question.changed('optionData', true)
+
+    await question.save()
+
+    return res.send(question)
+  }
+)
+
+questionRouter.delete(
+  '/:id/option/:optionId',
+  async (req: RequestWithUser, res) => {
+    const { id, optionId } = req.params
+    const { isAdmin } = req.user
+
+    if (!isAdmin) throw new Error('Unauthorized')
+
+    const question = await Question.findByPk(id)
+
+    if (!question) throw new Error('Question not found')
+
+    const option = question.optionData.options.find(
+      (aOption) => aOption.id === optionId
+    )
+
+    if (!option) throw new Error('Option not found')
+
+    const updates = question.optionData.options.filter(
+      (aOption) => aOption.id !== optionId
+    )
+
+    question.optionData.options = updates
+
+    question.changed('optionData', true)
+
+    await question.save()
+
+    return res.send(question)
+  }
+)
 
 export default questionRouter
