@@ -17,7 +17,7 @@ const AdministativeTools = ({
 
   const { recommendationStyles, cardStyles } = styles
 
-  if (!administrativeRecommendations) return null
+  if (administrativeRecommendations.length === 0) return null
 
   return (
     <Box sx={{ mt: 4 }}>
