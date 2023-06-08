@@ -152,7 +152,7 @@ export const QuestionSelect = ({
   const language = i18n.language as keyof Locales
 
   const filteredQuestions = questions.filter(
-    ({ optionData }) => !['dimensions', 'info'].includes(optionData.type)
+    ({ optionData }) => !['dimensions'].includes(optionData.type)
   )
   const sortedQuestions = sortQuestions(filteredQuestions, language)
 
