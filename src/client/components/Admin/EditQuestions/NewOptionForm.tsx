@@ -22,7 +22,7 @@ const NewOptionForm = ({
   question: Question
 }) => {
   const { t } = useTranslation()
-  const mutation = useCreateOptionMutation(question.id)
+  const mutation = useCreateOptionMutation(question?.id)
 
   const { type } = question.optionData
 

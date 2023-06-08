@@ -23,9 +23,10 @@ const OptionSection = ({
   const { t } = useTranslation()
   const [openNewOption, setOpenNewOption] = useState(false)
 
-  const options = selectedQuestion?.optionData.options || []
+  if (!selectedQuestion || selectedQuestion.optionData.type === 'info')
+    return null
 
-  if (options.length === 0) return null
+  const options = selectedQuestion?.optionData.options || []
 
   return (
     <Box sx={{ mt: 8 }}>
