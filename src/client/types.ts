@@ -77,7 +77,7 @@ export type PossibleChoiceTypes =
   | 'info'
 
 export interface OptionData {
-  type: string
+  type: PossibleChoiceTypes
   options: ChoiceType
 }
 

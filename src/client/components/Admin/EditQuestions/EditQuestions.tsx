@@ -59,7 +59,11 @@ const OptionSection = ({
         />
       ))}
 
-      <NewOptionForm open={openNewOption} setOpen={setOpenNewOption} />
+      <NewOptionForm
+        open={openNewOption}
+        setOpen={setOpenNewOption}
+        type={selectedQuestion.optionData.type}
+      />
     </Box>
   )
 }

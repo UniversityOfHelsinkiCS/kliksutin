@@ -8,16 +8,34 @@ import NewItemDialog from '../NewItemDialog'
 import { DialogLocalesField } from '../TextField'
 
 import { NewOption, OptionZod } from '../../../validators/options'
+import { PossibleChoiceTypes } from '../../../types'
 
 const NewOptionForm = ({
   open,
   setOpen,
+  type,
 }: {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  type: PossibleChoiceTypes
 }) => {
   const { t } = useTranslation()
   // const mutation = useCreateQuestionMutation()
+
+  const defaultValue = {
+    title: {
+      fi: '',
+      sv: '',
+      en: '',
+    },
+    ...(type === 'multipleChoice' && {
+      data: {
+        fi: '',
+        sv: '',
+        en: '',
+      },
+    }),
+  }
 
   const {
     handleSubmit,
@@ -27,16 +45,10 @@ const NewOptionForm = ({
   } = useForm<NewOption>({
     mode: 'onBlur',
     resolver: zodResolver(OptionZod),
-    defaultValues: {
-      title: {
-        fi: '',
-        sv: '',
-        en: '',
-      },
-    },
+    defaultValues: defaultValue,
   })
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: NewOption) => {
     try {
       // await mutation.mutateAsync(data)
       console.log(data)
@@ -63,6 +75,14 @@ const NewOptionForm = ({
           inputlabel={t('admin:questionNewQuestionTitleLabel')}
           control={control}
         />
+        {defaultValue.data && (
+          <DialogLocalesField
+            error={errors.title}
+            value="title"
+            inputlabel={t('admin:questionNewQuestionTitleLabel')}
+            control={control}
+          />
+        )}
       </NewItemDialog>
     </form>
   )
