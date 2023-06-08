@@ -11,6 +11,7 @@ import EditQuestion from './EditQuestion'
 
 import { Question, Locales } from '../../../types'
 import NewQuestionForm from './NewQuestionForm'
+import NewOptionForm from './NewOptionForm'
 
 const OptionSection = ({
   selectedQuestion,
@@ -57,6 +58,8 @@ const OptionSection = ({
           language={selectedLanguage}
         />
       ))}
+
+      <NewOptionForm open={openNewOption} setOpen={setOpenNewOption} />
     </Box>
   )
 }
