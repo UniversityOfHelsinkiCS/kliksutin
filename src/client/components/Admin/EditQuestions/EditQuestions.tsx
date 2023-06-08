@@ -9,9 +9,57 @@ import { LanguageSelect, QuestionSelect } from '../Select'
 import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
 
-import { Locales } from '../../../types'
+import { Question, Locales } from '../../../types'
 import NewQuestionForm from './NewQuestionForm'
 
+const OptionSection = ({
+  selectedQuestion,
+  selectedLanguage,
+}: {
+  selectedQuestion: Question
+  selectedLanguage: keyof Locales
+}) => {
+  const { t } = useTranslation()
+  const [openNewOption, setOpenNewOption] = useState(false)
+
+  const options = selectedQuestion?.optionData.options || []
+
+  if (options.length === 0) return null
+
+  return (
+    <Box sx={{ mt: 8 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          my: 4,
+          justifyContent: 'flex-start',
+        }}
+      >
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          {t('admin:questionOptionViewInfo')}
+        </Typography>
+        <Button
+          sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
+          variant="contained"
+          onClick={() => setOpenNewOption(!openNewOption)}
+        >
+          {t('admin:optionAddNew')}
+        </Button>
+      </Box>
+
+      {options.map((option, index) => (
+        <EditOptions
+          key={option.id}
+          option={option}
+          optionNumber={index + 1}
+          question={selectedQuestion}
+          language={selectedLanguage}
+        />
+      ))}
+    </Box>
+  )
+}
 const EditQuestions = () => {
   const { t } = useTranslation()
   const { survey } = useSurvey()
@@ -20,7 +68,7 @@ const EditQuestions = () => {
   const [questionId, setQuestionId] = useState('')
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
 
-  const [openForm, setOpenForm] = useState(false)
+  const [openNewQuestion, setOpenNewQuestion] = useState(false)
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setQuestionId(event.target.value)
@@ -35,8 +83,6 @@ const EditQuestions = () => {
   const selectedQuestion = questions.find(
     ({ id }) => id === (questionId as unknown as number)
   )
-
-  const options = selectedQuestion?.optionData.options || []
 
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
@@ -60,7 +106,7 @@ const EditQuestions = () => {
         <Button
           sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
           variant="contained"
-          onClick={() => setOpenForm(!openForm)}
+          onClick={() => setOpenNewQuestion(!openNewQuestion)}
         >
           {t('admin:questionAddNew')}
         </Button>
@@ -82,26 +128,13 @@ const EditQuestions = () => {
             {t('admin:questionViewInfo')}
           </Typography>
         )}
-        {options.length > 0 && (
-          <Box sx={{ my: 8 }}>
-            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              {t('admin:questionOptionViewInfo')}
-            </Typography>
-
-            {options.map((option, index) => (
-              <EditOptions
-                key={option.id}
-                option={option}
-                optionNumber={index + 1}
-                question={selectedQuestion}
-                language={selectedLanguage}
-              />
-            ))}
-          </Box>
-        )}
+        <OptionSection
+          selectedQuestion={selectedQuestion}
+          selectedLanguage={selectedLanguage}
+        />
       </Box>
 
-      <NewQuestionForm open={openForm} setOpen={setOpenForm} />
+      <NewQuestionForm open={openNewQuestion} setOpen={setOpenNewQuestion} />
     </Box>
   )
 }
