@@ -62,7 +62,7 @@ const OptionSection = ({
       <NewOptionForm
         open={openNewOption}
         setOpen={setOpenNewOption}
-        type={selectedQuestion.optionData.type}
+        question={selectedQuestion}
       />
     </Box>
   )

@@ -4,23 +4,27 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
+import { useCreateOptionMutation } from '../../../hooks/useOptionMutation'
+
 import NewItemDialog from '../NewItemDialog'
 import { DialogLocalesField } from '../TextField'
 
 import { NewOption, OptionZod } from '../../../validators/options'
-import { PossibleChoiceTypes } from '../../../types'
+import { Question } from '../../../types'
 
 const NewOptionForm = ({
   open,
   setOpen,
-  type,
+  question,
 }: {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
-  type: PossibleChoiceTypes
+  question: Question
 }) => {
   const { t } = useTranslation()
-  // const mutation = useCreateQuestionMutation()
+  const mutation = useCreateOptionMutation(question.id)
+
+  const { type } = question.optionData
 
   const defaultValue = {
     title: {
@@ -51,8 +55,7 @@ const NewOptionForm = ({
 
   const onSubmit = async (data: NewOption) => {
     try {
-      // await mutation.mutateAsync(data)
-      console.log(data)
+      await mutation.mutateAsync(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
       reset()
