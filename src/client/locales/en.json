@@ -24,7 +24,9 @@
   },
   "recommendations": {
     "title": "Tools that you could use",
-    "recommendationMessage": "Below our recommendations on tools to use"
+    "infoBoxText": "Below our recommendations on tools to use",
+    "administrationTitle": "Käytössäsi olevat hallinnolliset työkalut",
+    "administrationInfoBoxText": ""
   },
   "results": {
     "title": "Summary of your choices",

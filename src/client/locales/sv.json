@@ -25,7 +25,9 @@
   },
   "recommendations": {
     "title": "Verktyg som är till ditt förfogande",
-    "infoBoxText": "Nedan finns en lista över verktyg som Tjänster för digital undervisning och kontinuerligt lärande (DOJO) erbjuder officiellt digipedagogiskt stöd för. Listan kommer senare att kompletteras med andra program som är tillgängliga för universitetets lärare (t.ex. Office 365-produktfamiljen)"
+    "infoBoxText": "Nedan finns en lista över verktyg som Tjänster för digital undervisning och kontinuerligt lärande (DOJO) erbjuder officiellt digipedagogiskt stöd för. Listan kommer senare att kompletteras med andra program som är tillgängliga för universitetets lärare (t.ex. Office 365-produktfamiljen)",
+    "administrationTitle": "Käytössäsi olevat hallinnolliset työkalut",
+    "administrationInfoBoxText": ""
   },
   "results": {
     "title": "En sammanfattning av dina val",

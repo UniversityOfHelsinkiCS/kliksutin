@@ -1,14 +1,23 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+
 import useRecommendations from '../../hooks/useRecommendations'
 import useSurvey from '../../hooks/useSurvey'
+
+import SelectedTools from './SelectedTools'
+import NonSelectedTools from './NonSelectedTools'
+import AdministativeTools from './AdministrativeTools'
+import ShowMore from '../Common/ShowMore'
+
 import { getSelectedDimensions } from '../../util/dimensions'
 import {
   sortRecommendations,
   getRecommendationsData,
 } from '../../util/recommendations'
+
 import styles from '../../styles'
+
 import {
   DimensionSelectionData,
   InputProps,
@@ -18,9 +27,6 @@ import {
   MergedRecommendationData,
   Recommendation,
 } from '../../types'
-import SelectedTools from './SelectedTools'
-import NonSelectedTools from './NonSelectedTools'
-import ShowMore from '../Common/ShowMore'
 
 const Recommendations = ({ watch }: InputProps) => {
   const { t, i18n } = useTranslation()
@@ -33,8 +39,15 @@ const Recommendations = ({ watch }: InputProps) => {
 
   if (!recommendationsFetched) return null
 
+  const teachingRecommendations = recommendations.filter(
+    (rec) => rec.type === 'teaching'
+  )
+  const administrativeRecommendations = recommendations.filter(
+    (rec) => rec.type === 'administration'
+  )
+
   const rawRecommendationData: Recommendation[] =
-    recommendations.sort(sortRecommendations)
+    teachingRecommendations.sort(sortRecommendations)
 
   const dimensionSelections = getSelectedDimensions(survey, watch)
 
@@ -106,6 +119,9 @@ const Recommendations = ({ watch }: InputProps) => {
         dimensionSelections={dimensionSelections}
       />
       <NonSelectedTools mergedRecommendationData={mergedRecommendationData} />
+      <AdministativeTools
+        administrativeRecommendations={administrativeRecommendations}
+      />
     </Box>
   )
 }

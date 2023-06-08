@@ -25,7 +25,9 @@
   },
   "recommendations": {
     "title": "Käytössäsi olevat työkalut",
-    "infoBoxText": "Alla listaus työkaluista, joille Digitaalisen opetuksen ja jatkuvan oppimisen palvelut (DOJO) tarjoaa virallista digipedagogista tukea. Lista täydentyy myöhemmin muillakin yliopiston opettajille tarjolla olevilla ohjelmistoilla. (mm. Office 365 -tuoteperhe)"
+    "infoBoxText": "Alla listaus työkaluista, joille Digitaalisen opetuksen ja jatkuvan oppimisen palvelut (DOJO) tarjoaa virallista digipedagogista tukea. Lista täydentyy myöhemmin muillakin yliopiston opettajille tarjolla olevilla ohjelmistoilla. (mm. Office 365 -tuoteperhe)",
+    "administrationTitle": "Käytössäsi olevat hallinnolliset työkalut",
+    "administrationInfoBoxText": ""
   },
   "results": {
     "title": "Yhteenveto valinnoistasi",
