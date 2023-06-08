@@ -6,7 +6,7 @@ import { enqueueSnackbar } from 'notistack'
 import {
   useDeleteOptionMutation,
   useEditOptionMutation,
-} from '../../../hooks/useChoiceMutation'
+} from '../../../hooks/useOptionMutation'
 
 import DeleteDialog from '../DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
