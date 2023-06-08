@@ -94,6 +94,32 @@ questionRouter.delete('/:id', async (req: RequestWithUser, res) => {
   return res.sendStatus(204)
 })
 
+questionRouter.post('/:id/option/', async (req: RequestWithUser, res) => {
+  const { id } = req.params
+  const { isAdmin } = req.user
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const question = await Question.findByPk(id)
+
+  if (!question) throw new Error('Question not found')
+
+  const optionId = uuidv4()
+  const newOption = {
+    id: optionId,
+    label: optionId,
+    ...req.body,
+  }
+
+  question.optionData.options = [...question.optionData.options, newOption]
+
+  question.changed('optionData', true)
+
+  await question.save()
+
+  return res.send(question)
+})
+
 questionRouter.put(
   '/:id/option/:optionId',
   async (req: RequestWithUser, res) => {
