@@ -1,5 +1,4 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import InputLabel from '@mui/material/InputLabel'
@@ -28,13 +27,11 @@ const sortCourses = (courses: Course[]) => {
 
 const SelectCourse = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
-  const location = useLocation()
   const { userCourses, isLoading } = useUserCourses()
 
   const { language } = i18n
 
-  if (isLoading || userCourses.length === 0 || location.pathname === '/public')
-    return null
+  if (isLoading || userCourses.length === 0) return null
 
   const { cardStyles, formStyles } = styles
 
