@@ -15,8 +15,8 @@ import { Course, InputProps, Locales } from '../../types'
 
 const sortCourses = (courses: Course[]) => {
   const sortedCourses = courses.sort((a, b) => {
-    const aCode = a.courseUnits ? a.courseUnits[0].code : ''
-    const bCode = b.courseUnits ? b.courseUnits[0].code : ''
+    const aCode = a.courseUnits ? a.courseUnits[0]?.code : ''
+    const bCode = b.courseUnits ? b.courseUnits[0]?.code : ''
     if (aCode > bCode) return 1
     if (aCode < bCode) return -1
 
