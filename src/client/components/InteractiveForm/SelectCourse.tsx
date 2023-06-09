@@ -67,7 +67,7 @@ const SelectCourse = ({ control }: InputProps) => {
               {...field}
             >
               {sortedCourses.map((c: Course) => {
-                const courseCode = c.courseUnits ? c.courseUnits[0].code : ''
+                const courseCode = c.courseUnits ? c.courseUnits[0]?.code : ''
                 return (
                   <MenuItem
                     data-cy={`course-option-${c.id}`}
