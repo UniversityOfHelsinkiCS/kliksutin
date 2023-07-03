@@ -13,6 +13,7 @@ const Router = () => (
     <Route path="/*" element={<InteractiveForm />} />
     <Route path="/public" element={<InteractiveForm />} />
     <Route path="/admin" element={<Admin />}>
+      <Route path="edit-dimensions" element={<> </>} />
       <Route path="edit-questions" element={<EditQuestions />} />
       <Route path="edit-results" element={<EditResults />} />
       <Route path="edit-recommendations" element={<EditRecommendations />} />

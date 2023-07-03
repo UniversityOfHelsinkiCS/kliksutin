@@ -137,6 +137,7 @@
     "option": "Choice ",
     "recommendation": "Recommendation title and text ",
     "indexTab": "Admin",
+    "dimensionTab": "Edit dimensions",
     "questionTab": "Edit questions",
     "resultTab": "Edit results",
     "recommendationTab": "Edit recommendations",
