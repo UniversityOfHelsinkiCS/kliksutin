@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import { Box, TextField, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
+
+import {
+  useDeleteDimensionMutation,
+  useEditDimensionMutation,
+} from '../../../hooks/useDimensionMutation'
 
 import DeleteDialog from '../DeleteDialog'
 
@@ -15,7 +21,7 @@ const DimensionItem = ({
   dimension: DimensionSelectionData
 }) => {
   const { t } = useTranslation()
-  // const mutation = useEditQuestionMutation(question.id)
+  const mutation = useEditDimensionMutation(dimension.id)
   const [dimensionTitle, setDimensionTitle] = useState(
     dimension.title[language]
   )
@@ -39,8 +45,7 @@ const DimensionItem = ({
     }
 
     try {
-      // await mutation.mutateAsync(updatedQuestion)
-      console.log(updatedDimension)
+      await mutation.mutateAsync(updatedDimension)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
@@ -81,12 +86,12 @@ const EditDimension = ({
   onDelete: React.Dispatch<React.SetStateAction<string>>
 }) => {
   const { t } = useTranslation()
-  // const mutation = useDeleteQuestionMutation(question.id)
+  const mutation = useDeleteDimensionMutation(dimension.id)
   const [openAlert, setOpenAlert] = useState(false)
 
   const handleDelete = async () => {
     try {
-      // await mutation.mutateAsync()
+      await mutation.mutateAsync()
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
       onDelete('') // callback to reset the selected dimension ID
