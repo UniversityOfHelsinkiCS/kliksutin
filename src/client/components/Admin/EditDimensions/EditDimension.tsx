@@ -50,7 +50,7 @@ const DimensionItem = ({
   return (
     <Box sx={{ my: 2, mx: 4, width: '50%' }}>
       <Box sx={{ display: 'flex', mb: 2 }}>
-        <Typography variant="h6">{t('admin:question')}</Typography>
+        <Typography variant="h6">{t('admin:dimension')}</Typography>
         <Typography ml={1}>{language}</Typography>
       </Box>
       <TextField
@@ -89,7 +89,7 @@ const EditDimension = ({
       // await mutation.mutateAsync()
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
-      onDelete('') // callback to reset the selected question ID
+      onDelete('') // callback to reset the selected dimension ID
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
@@ -106,12 +106,12 @@ const EditDimension = ({
         color="error"
         onClick={() => setOpenAlert(!openAlert)}
       >
-        {t('admin:questionRemove')}
+        {t('admin:dimensionRemove')}
       </Button>
       <DeleteDialog
         open={openAlert}
-        title={t('admin:questionRemoveQuestionInfo')}
-        content={t('admin:questionRemoveQuestionContent')}
+        title={t('admin:dimensionRemoveDimensionInfo')}
+        content={t('admin:dimensionRemoveDimensionContent')}
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
