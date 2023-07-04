@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -5,11 +6,13 @@ import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { MenuItem } from '@mui/material'
 
+import useSurvey from '../../../hooks/useSurvey'
 import { useCreateRecommendationMutation } from '../../../hooks/useRecommendationMutation'
 
 import NewItemDialog from '../NewItemDialog'
-import { DialogSelect } from '../Select'
+import { DialogDimensionSelect, DialogSelect } from '../Select'
 import { DialogLocalesField, DialogTextField } from '../TextField'
+
 import {
   NewRecommendation,
   RecommendationZod,
@@ -25,6 +28,7 @@ const NewRecommendationForm = ({
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
+  const { survey, isLoading } = useSurvey()
   const { t, i18n } = useTranslation()
   const mutation = useCreateRecommendationMutation()
   const language = i18n.language as keyof Locales
@@ -33,6 +37,7 @@ const NewRecommendationForm = ({
     handleSubmit,
     control,
     formState: { errors },
+    watch,
   } = useForm<NewRecommendation>({
     mode: 'onBlur',
     shouldUnregister: true,
@@ -40,6 +45,7 @@ const NewRecommendationForm = ({
     defaultValues: {
       label: '',
       type: 'teaching',
+      dimensions: {},
       title: {
         fi: '',
         sv: '',
@@ -53,15 +59,24 @@ const NewRecommendationForm = ({
     },
   })
 
+  if (isLoading) return null
+
+  const dimensionQuestion = survey.Questions.find(
+    (question) => question.optionData.type === 'dimensions'
+  )
+
   const onSubmit = async (data: NewRecommendation) => {
     try {
-      await mutation.mutateAsync(data)
+      // await mutation.mutateAsync(data)
+      console.log(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
+
+  console.log(errors)
 
   return (
     <form>
@@ -89,6 +104,12 @@ const NewRecommendationForm = ({
             </MenuItem>
           ))}
         </DialogSelect>
+
+        <DialogDimensionSelect
+          label="Dimension"
+          control={control}
+          dimensionQuestion={dimensionQuestion}
+        />
 
         <DialogLocalesField
           error={errors.title}
