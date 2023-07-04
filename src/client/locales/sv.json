@@ -114,6 +114,7 @@
     "dimensionRemoveDimensionContent": "Vahvista, että haluaisit poistaa tämän oppimismuodon",
     "dimensionNewDimensionInfo": "Uusi oppimismuoto",
     "dimensionNewDimensionContent": "Täällä voit lisätä uuden oppimismuodon Curreen",
+    "dimensionNewDimensionColorLabel": "Oppimismuodon väri",
     "dimensionNewDimensionTitleLabel": "Oppimismuodon otsikko",
     "dimensionNewDimensionContentLabel": "Oppimismuodon sisältö",
     "questionViewInfo": "Aloita valitsemalla kysymys valikosta",

@@ -74,7 +74,11 @@ const NewDimensionForm = ({
         onSubmit={handleSubmit(onSubmit)}
         onClose={() => setOpen(!open)}
       >
-        <ColorSelect label="Color" value={color} setValue={handleColorChange} />
+        <ColorSelect
+          label={t('admin:dimensionNewDimensionColorLabel')}
+          value={color}
+          setValue={handleColorChange}
+        />
         <DialogLocalesField
           error={errors.title}
           value="title"

@@ -115,6 +115,7 @@
     "dimensionRemoveDimensionContent": "Confirm deletion of this dimension",
     "dimensionNewDimensionInfo": "New dimension",
     "dimensionNewDimensionContent": "Here you can create a new dimension to Curre",
+    "dimensionNewDimensionColorLabel": "Dimension color",
     "dimensionNewDimensionTitleLabel": "Dimension title",
     "dimensionNewDimensionContentLabel": "Dimension content",
     "questionViewInfo": "Start by selecting question from the dropdown",
