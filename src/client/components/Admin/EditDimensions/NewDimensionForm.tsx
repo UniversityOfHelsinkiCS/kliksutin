@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
@@ -11,6 +11,7 @@ import NewItemDialog from '../NewItemDialog'
 import { DialogLocalesField } from '../TextField'
 
 import { NewDimension, DimensionZod } from '../../../validators/options'
+import { ColorSelect } from '../Select'
 
 const NewDimensionForm = ({
   open,
@@ -21,16 +22,19 @@ const NewDimensionForm = ({
 }) => {
   const { t } = useTranslation()
   const mutation = useCreateDimensionMutation()
+  const [color, setColor] = useState('#000000')
 
   const {
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
     reset,
   } = useForm<NewDimension>({
     mode: 'onBlur',
     resolver: zodResolver(DimensionZod),
     defaultValues: {
+      color,
       title: {
         fi: '',
         sv: '',
@@ -44,6 +48,11 @@ const NewDimensionForm = ({
       data: [],
     },
   })
+
+  const handleColorChange = (newColor: string) => {
+    setValue('color', newColor)
+    setColor(newColor)
+  }
 
   const onSubmit = async (data: NewDimension) => {
     try {
@@ -65,6 +74,7 @@ const NewDimensionForm = ({
         onSubmit={handleSubmit(onSubmit)}
         onClose={() => setOpen(!open)}
       >
+        <ColorSelect label="Color" value={color} setValue={handleColorChange} />
         <DialogLocalesField
           error={errors.title}
           value="title"

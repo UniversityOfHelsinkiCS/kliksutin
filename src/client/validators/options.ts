@@ -29,6 +29,7 @@ export const OptionZod = z.object({
 export type NewOption = z.infer<typeof OptionZod>
 
 export const DimensionZod = z.object({
+  color: z.string(),
   title: Locales,
   text: Locales,
   data: ToolType.optional(),
