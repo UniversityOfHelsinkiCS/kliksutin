@@ -1,6 +1,7 @@
 import React from 'react'
 import { Control, Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { HexColorInput, HexColorPicker } from 'react-colorful'
 import {
   Box,
   FormControl,
@@ -196,3 +197,21 @@ export const RecommendationSelect = ({
     </SelectWrapper>
   )
 }
+
+export const ColorSelect = ({
+  label,
+  value,
+  setValue,
+}: {
+  label: string
+  value: string
+  setValue: (newColor: string) => void
+}) => (
+  <Box sx={{ my: 4 }}>
+    <InputLabel>{label}</InputLabel>
+    <Box sx={{ mt: 2 }}>
+      <HexColorPicker color={value} onChange={setValue} />
+      <HexColorInput color={value} onChange={setValue} />
+    </Box>
+  </Box>
+)
