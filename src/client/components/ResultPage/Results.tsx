@@ -16,22 +16,43 @@ import CompactDimensionChips from '../Chip/CompactDimensionChips'
 import { getSelectedDimensions } from '../../util/dimensions'
 
 import styles from '../../styles'
-import { InputProps, Locales, Result } from '../../types'
+import {
+  DimensionSelectionData,
+  InputProps,
+  Locales,
+  Result,
+} from '../../types'
 
 const { cardStyles, resultStyles, formStyles } = styles
 
 const ResultElement = ({
   language,
   resultData,
-  dimensions,
+  dimensionSelections,
 }: {
   language: keyof Locales
   resultData: Result
-  dimensions: string[]
+  dimensionSelections: DimensionSelectionData[]
 }) => {
   if (!resultData) return null
 
-  const selectedDimensions = ['allDimensions', ...dimensions]
+  const allDimensions: DimensionSelectionData = {
+    id: 'allDimensions',
+    label: 'allDimensions',
+    color: '#000000',
+    title: {
+      fi: 'Kaikki',
+      sv: 'All',
+      en: 'All',
+    },
+    text: {
+      fi: 'Kaikki',
+      sv: 'All',
+      en: 'All',
+    },
+  }
+
+  const dimensions = [allDimensions, ...dimensionSelections]
 
   return (
     <Container
@@ -40,7 +61,7 @@ const ResultElement = ({
         borderLeft: 'solid',
         borderColor: '#9ca3af',
         borderWidth: '1px',
-      }} /* sx={resultStyles.resultElementWrapper} */
+      }}
     >
       <Box style={{ margin: '2rem 0 2rem 1rem' }}>
         <Markdown>{resultData.isSelected[language]}</Markdown>
@@ -48,14 +69,14 @@ const ResultElement = ({
       <Box
         style={{
           margin: '2rem 0 2rem 0',
-        }} /* sx={resultStyles.resultElementContent} */
+        }}
       >
-        {selectedDimensions.map((dimension: string) => {
-          const color: any = null
+        {dimensions.map((dimension) => {
+          const color = dimension.color ?? null
           return (
             <Box
-              data-cy={`result-wrapper-${resultData.optionLabel}-${dimension}`}
-              key={`${JSON.stringify(resultData)}.${dimension}`}
+              data-cy={`result-wrapper-${resultData.optionLabel}-${dimension.id}`}
+              key={`${JSON.stringify(resultData)}.${dimension.id}`}
               style={{
                 margin: '1rem',
                 padding: '0 2rem 0 2rem ',
@@ -63,9 +84,8 @@ const ResultElement = ({
                 borderColor: color,
                 borderWidth: '6px',
               }}
-              /* sx={{ m: 2, px: 2, borderLeft: 6, borderColor: color }} */
             >
-              <Markdown>{resultData.data[dimension][language]}</Markdown>
+              <Markdown>{resultData.data[dimension.id][language]}</Markdown>
             </Box>
           )
         })}
@@ -164,7 +184,7 @@ const Results = ({
                     (result: { optionLabel: string }) =>
                       result.optionLabel === resultLabel
                   )}
-                  dimensions={dimensions}
+                  dimensionSelections={dimensionSelections}
                 />
               ))
             )}
