@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import colors from '../../util/colors'
 import styles from '../../styles'
 import { DimensionSelectionData } from '../../types'
 
@@ -24,7 +23,7 @@ const CompactDimensionChips = ({
         <DimensionChip
           key={chipData.id}
           choice={chipData}
-          color={colors[chipData.id]}
+          color={chipData.color}
           compact
         />
       )

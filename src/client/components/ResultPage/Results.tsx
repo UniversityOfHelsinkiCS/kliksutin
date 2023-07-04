@@ -13,7 +13,6 @@ import Markdown from '../Common/Markdown'
 import ResetForm from '../Common/ResetForm'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
 
-import colors from '../../util/colors'
 import { getSelectedDimensions } from '../../util/dimensions'
 
 import styles from '../../styles'
@@ -52,7 +51,7 @@ const ResultElement = ({
         }} /* sx={resultStyles.resultElementContent} */
       >
         {selectedDimensions.map((dimension: string) => {
-          const color = colors[dimension] || null
+          const color: any = null
           return (
             <Box
               data-cy={`result-wrapper-${resultData.optionLabel}-${dimension}`}

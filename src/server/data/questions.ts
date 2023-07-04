@@ -22,6 +22,7 @@ const getQuestionData = (): Question[] => [
         {
           id: 'acquisition',
           label: 'acquisition',
+          color: '#f18235',
           title: {
             fi: 'Tiedonhankinta',
             sv: 'Informationssökning',
@@ -66,6 +67,7 @@ const getQuestionData = (): Question[] => [
         {
           id: 'production',
           label: 'production',
+          color: '#afd255',
           title: {
             fi: 'Tuottaminen',
             sv: 'Producera',
@@ -135,6 +137,7 @@ const getQuestionData = (): Question[] => [
         {
           id: 'collaboration',
           label: 'collaboration',
+          color: '#8261a1',
           title: {
             fi: 'Yhteistyö',
             sv: 'Samarbete',
@@ -187,6 +190,7 @@ const getQuestionData = (): Question[] => [
         {
           id: 'discussion',
           label: 'discussion',
+          color: '#23439b',
           title: {
             fi: 'Keskustelu',
             sv: 'Diskussion',
@@ -228,6 +232,7 @@ const getQuestionData = (): Question[] => [
         {
           id: 'investication',
           label: 'investication',
+          color: '#199995',
           title: {
             fi: 'Tutkiminen',
             sv: 'Att forska',
@@ -278,6 +283,7 @@ const getQuestionData = (): Question[] => [
         {
           id: 'practice',
           label: 'practice',
+          color: '#ed1975',
           title: {
             fi: 'Harjoittelu',
             sv: 'Harjoittelu',

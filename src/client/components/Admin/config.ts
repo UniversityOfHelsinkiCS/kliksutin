@@ -22,6 +22,7 @@ export const recommendationTypes: InfoType[] = [
 export const allSelection: DimensionSelectionData = {
   id: 'allDimensions',
   label: 'allDimensions',
+  color: '#000000',
   title: {
     fi: 'Kaikki',
     sv: 'All',

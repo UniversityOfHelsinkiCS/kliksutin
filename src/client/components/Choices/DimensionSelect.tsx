@@ -2,9 +2,11 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Box, FormControl, Checkbox, Tooltip } from '@mui/material'
-import { InputProps, DimensionSelectionData, Locales } from '../../types'
+
 import DimensionChip from '../Chip/DimensionChip'
-import colors from '../../util/colors'
+
+import { InputProps, DimensionSelectionData, Locales } from '../../types'
+
 import styles from '../../styles'
 
 const DimensionSelect = ({ control, question }: InputProps) => {
@@ -46,7 +48,7 @@ const DimensionSelect = ({ control, question }: InputProps) => {
                           <DimensionChip
                             key={choice.id}
                             choice={choice}
-                            color={colors[choice.id]}
+                            color={choice.color}
                             compact={false}
                           />
                         }
