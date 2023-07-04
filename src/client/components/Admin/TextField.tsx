@@ -65,7 +65,6 @@ export const DialogLocalesField = ({
             multiline
             label={language.toUpperCase()}
             fullWidth
-            value={field.value?.language || ''}
           />
         )}
       />
@@ -91,14 +90,13 @@ export const DialogTextField = ({
       control={control}
       render={({ field }) => (
         <TextField
-          {...field}
           error={!!error}
           helperText={error ? error.message : ''}
           sx={{ mt: 2 }}
           multiline
           label={value.toUpperCase()}
           fullWidth
-          value={field.value}
+          {...field}
         />
       )}
     />

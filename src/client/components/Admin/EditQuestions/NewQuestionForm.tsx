@@ -147,7 +147,11 @@ const NewQuestionForm = ({
                 number: index + 1,
               })}
               control={control}
-              error={(errors.optionData?.options as any)[index]?.title}
+              error={
+                errors.optionData?.options
+                  ? errors.optionData?.options[index]?.title
+                  : undefined
+              }
             />
             {item.data && (
               <DialogLocalesField
@@ -156,7 +160,11 @@ const NewQuestionForm = ({
                   number: index + 1,
                 })}
                 control={control}
-                error={(errors.optionData?.options as any)[index]?.data}
+                error={
+                  errors.optionData?.options
+                    ? errors.optionData?.options[index]?.title
+                    : undefined
+                }
               />
             )}
           </Box>

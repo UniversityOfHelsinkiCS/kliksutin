@@ -70,7 +70,7 @@ export const DialogSelect = ({
     render={({ field }) => (
       <FormControl fullWidth>
         <InputLabel>{label}</InputLabel>
-        <Select {...field} size="medium" label={label} value={value}>
+        <Select {...field} size="medium" label={label}>
           {children}
         </Select>
       </FormControl>
