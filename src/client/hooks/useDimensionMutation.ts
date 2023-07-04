@@ -26,10 +26,7 @@ export const useCreateDimensionMutation = () => {
   }
 
   const mutation = useMutation(mutationFn, {
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
-      }),
+    onSuccess: () => queryClient.invalidateQueries('survey'),
   })
 
   return mutation
@@ -50,10 +47,7 @@ export const useEditDimensionMutation = (dimensionId: string) => {
   }
 
   const mutation = useMutation(mutationFn, {
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
-      }),
+    onSuccess: () => queryClient.invalidateQueries('survey'),
   })
 
   return mutation
@@ -73,10 +67,7 @@ export const useDeleteDimensionMutation = (dimensionId: string) => {
   }
 
   const mutation = useMutation(mutationFn, {
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
-      }),
+    onSuccess: () => queryClient.invalidateQueries('survey'),
   })
 
   return mutation
