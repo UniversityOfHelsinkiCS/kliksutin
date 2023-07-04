@@ -14,6 +14,27 @@ type DimensionUpdates = {
   text: Locales
 }
 
+export const useCreateDimensionMutation = () => {
+  const { survey } = useSurvey()
+
+  const dimensionquestion = survey.Questions.find(
+    (question) => question.optionData.type === 'dimensions'
+  )
+
+  const mutationFn = async (data: NewDimension) => {
+    await apiClient.post(`/questions/${dimensionquestion.id}/option/`, data)
+  }
+
+  const mutation = useMutation(mutationFn, {
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ['questions', survey.id],
+      }),
+  })
+
+  return mutation
+}
+
 export const useEditDimensionMutation = (dimensionId: string) => {
   const { survey } = useSurvey()
 

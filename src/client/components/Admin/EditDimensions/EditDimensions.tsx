@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next'
 
 import useSurvey from '../../../hooks/useSurvey'
 
-import { DimensionSelect, LanguageSelect } from '../Select'
 import EditDimension from './EditDimension'
+import NewDimensionForm from './NewDimensionForm'
+import { DimensionSelect, LanguageSelect } from '../Select'
 
 import { getDimensions } from '../../../util/dimensions'
 
@@ -81,6 +82,8 @@ const EditDimensions = () => {
           </Typography>
         )}
       </Box>
+
+      <NewDimensionForm open={openNewDimension} setOpen={setOpenNewDimension} />
     </Box>
   )
 }
