@@ -5,7 +5,7 @@ import { User } from '../db/models'
 
 const userRouter = express.Router()
 
-userRouter.get('/login', async (req: RequestWithUser, res) => {
+userRouter.get('/login', async (req: RequestWithUser, res: any) => {
   const { user } = req
 
   if (!user.id) return res.send({})

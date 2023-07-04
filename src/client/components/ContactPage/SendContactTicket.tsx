@@ -94,7 +94,6 @@ const SendContactTicket = () => {
         data-cy="contact-ticket-textfield"
         required
         size="small"
-        name="content"
         label={t('contact:contactTicketContentLabel')}
         fullWidth
         multiline

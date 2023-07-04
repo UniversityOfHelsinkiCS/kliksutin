@@ -28,7 +28,7 @@ const EditRecommendations = () => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
 
-  if (!isSuccess) return null
+  if (!isSuccess || !recommendations) return null
 
   const selectedRecommendation = recommendations.find(
     ({ id }) => id === (recommendationId as unknown as number)
@@ -64,7 +64,7 @@ const EditRecommendations = () => {
       </Box>
 
       <Box width="100%" flexWrap="wrap">
-        {recommendationId ? (
+        {recommendationId && selectedRecommendation ? (
           <Box sx={{ my: 4 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               {t('admin:recommendationViewRecommendationEdit')}

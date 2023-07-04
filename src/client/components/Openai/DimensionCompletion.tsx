@@ -18,7 +18,7 @@ import CompletionResultBox from './CompletionResultBox'
 import LoadingProgress from '../Common/LoadingProgress'
 import { getSelectedDimensions } from '../../util/dimensions'
 import styles from '../../styles'
-import { DimensionSelectionData, Locales } from '../../types'
+import { DimensionSelectionData, Locales, ToolType } from '../../types'
 
 const { cardStyles } = styles
 
@@ -35,7 +35,7 @@ const CompletionResult = ({
 
   const dimensionName = title[i18n.language as keyof Locales].toLowerCase()
 
-  const recommendationLabels = data.map(
+  const recommendationLabels = (data as ToolType[]).map(
     ({ recommendationLabel }) =>
       recommendationLabel.charAt(0).toUpperCase() + recommendationLabel.slice(1)
   )
@@ -78,9 +78,12 @@ const DimensionCompletion = ({
 
   const { language } = i18n
 
-  if (isLoading) return null
+  if (isLoading || !survey) return null
 
   const dimensions = getSelectedDimensions(survey, watch)
+
+  if (!dimensions) return null
+
   const dimension = dimensions.find(({ id }) => id === dimensionId)
   const dimensionName =
     dimension?.title[i18n.language as keyof Locales].toLowerCase()

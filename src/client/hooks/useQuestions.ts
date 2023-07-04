@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import apiClient from '../util/apiClient'
 import { Question } from '../types'
 
-const useQuestions = (surveyId: number) => {
+const useQuestions = (surveyId: number | undefined) => {
   const queryKey = ['questions', surveyId]
 
   const query = async (): Promise<Question[]> => {

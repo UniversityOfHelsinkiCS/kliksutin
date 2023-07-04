@@ -6,7 +6,7 @@ export const getDimensions = (survey: Survey): DimensionSelectionData[] => {
     (question) => question.optionData.type === 'dimensions'
   )
 
-  return dimensionQuestion.optionData.options as DimensionSelectionData[]
+  return dimensionQuestion?.optionData.options as DimensionSelectionData[]
 }
 
 export const getSelectedDimensions = (
@@ -16,6 +16,8 @@ export const getSelectedDimensions = (
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'
   )
+
+  if (!dimensionQuestion) return null
 
   const dimensionSelections: { [x: string]: boolean } = watch(
     dimensionQuestion.id.toString()

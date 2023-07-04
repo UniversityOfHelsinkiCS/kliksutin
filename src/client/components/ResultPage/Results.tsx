@@ -31,10 +31,10 @@ const ResultElement = ({
   dimensionSelections,
 }: {
   language: keyof Locales
-  resultData: Result
-  dimensionSelections: DimensionSelectionData[]
+  resultData: Result | undefined
+  dimensionSelections: DimensionSelectionData[] | undefined | null
 }) => {
-  if (!resultData) return null
+  if (!resultData || !dimensionSelections) return null
 
   const allDimensions: DimensionSelectionData = {
     id: 'allDimensions',
@@ -100,15 +100,16 @@ const Results = ({
   setShowResults,
 }: InputProps & { setShowResults: any }) => {
   const location = useLocation()
+  const resultRef = useRef(null)
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
-  const resultRef = useRef(null)
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
+
   const { language } = i18n
 
-  const dimensionSelections = getSelectedDimensions(survey, watch)
+  if (!survey || !watch || !resultsFetched || !formResultData) return null
 
-  if (!resultsFetched || !formResultData) return null
+  const dimensionSelections = getSelectedDimensions(survey, watch)
 
   const objectToArray = (aChoiceId: number): string[] =>
     Object.keys(formResultData[aChoiceId]).filter(
@@ -146,13 +147,13 @@ const Results = ({
     setShowResults(false)
 
     document
-      .getElementById('curre-main-section')
-      .scrollIntoView({ behavior: 'smooth' })
+      ?.getElementById('curre-main-section')
+      ?.scrollIntoView({ behavior: 'smooth' })
   }
 
   sessionStorage.setItem(
     'curre-session-resultHTML',
-    resultRef.current?.innerHTML
+    (resultRef.current as any)?.innerHTML
   )
 
   return (
@@ -180,7 +181,7 @@ const Results = ({
                 <ResultElement
                   key={JSON.stringify(resultLabel)}
                   language={language as keyof Locales}
-                  resultData={results.find(
+                  resultData={results?.find(
                     (result: { optionLabel: string }) =>
                       result.optionLabel === resultLabel
                   )}

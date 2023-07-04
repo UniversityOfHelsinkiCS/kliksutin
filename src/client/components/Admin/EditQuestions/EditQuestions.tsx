@@ -17,7 +17,7 @@ const OptionSection = ({
   selectedQuestion,
   selectedLanguage,
 }: {
-  selectedQuestion: Question
+  selectedQuestion: Question | undefined
   selectedLanguage: keyof Locales
 }) => {
   const { t } = useTranslation()
@@ -86,7 +86,7 @@ const EditQuestions = () => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
 
-  if (!isSuccess) return null
+  if (!isSuccess || !questions) return null
 
   const selectedQuestion = questions.find(
     ({ id }) => id === (questionId as unknown as number)

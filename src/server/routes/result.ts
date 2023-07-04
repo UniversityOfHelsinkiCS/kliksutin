@@ -24,7 +24,7 @@ resultRouter.get('/:surveyId', async (req, res) => {
 
 export default resultRouter
 
-resultRouter.put('/:id', async (req: RequestWithUser, res) => {
+resultRouter.put('/:id', async (req: RequestWithUser, res: any) => {
   const { id } = req.params
   const { isAdmin } = req.user
 
@@ -42,7 +42,7 @@ resultRouter.put('/:id', async (req: RequestWithUser, res) => {
   return res.send(result)
 })
 
-resultRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
+resultRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { surveyId } = req.params
   const { isAdmin } = req.user
   const data = req.body
@@ -60,7 +60,7 @@ resultRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
   return res.status(201).send(recommendation)
 })
 
-resultRouter.delete('/:id', async (req: RequestWithUser, res) => {
+resultRouter.delete('/:id', async (req: RequestWithUser, res: any) => {
   const { id } = req.params
   const { isAdmin } = req.user
 

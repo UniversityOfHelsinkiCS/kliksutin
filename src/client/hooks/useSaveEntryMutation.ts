@@ -3,7 +3,7 @@ import { FormValues } from '../types'
 
 import apiClient from '../util/apiClient'
 
-const useSaveEntryMutation = (surveyId: number) => {
+const useSaveEntryMutation = (surveyId: number | undefined) => {
   const mutationFn = async (data: FormValues) => {
     await apiClient.post(`/entries/${surveyId}`, {
       data,

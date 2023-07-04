@@ -5,7 +5,7 @@ import { RequestWithUser } from '../types'
 
 const courseRouter = express.Router()
 
-courseRouter.get('/', async (req: RequestWithUser, res) => {
+courseRouter.get('/', async (req: RequestWithUser, res: any) => {
   const { id } = req.user
 
   if (!id) return res.send([])

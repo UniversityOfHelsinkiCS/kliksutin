@@ -18,7 +18,7 @@ const InteractiveForm = () => {
 
   const sessionLocation = sessionStorage.getItem('curre-session-location')
   const [showResults, setShowResults] = useState(sessionLocation === 'results')
-  const [resultData, setResultData] = useState<FormValues>(null)
+  const [resultData, setResultData] = useState<FormValues | null>(null)
 
   const { formStyles } = styles
 
@@ -57,8 +57,8 @@ const InteractiveForm = () => {
     setShowResults(true)
 
     document
-      .getElementById('curre-main-section')
-      .scrollIntoView({ behavior: 'smooth' })
+      ?.getElementById('curre-main-section')
+      ?.scrollIntoView({ behavior: 'smooth' })
   }
 
   usePersistForm({ value: getValues(), sessionStorageKey: FORM_DATA_KEY })

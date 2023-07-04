@@ -31,9 +31,11 @@ const sortFaculties = (faculties: Faculty[], language: keyof Locales) => {
 
 const { cardStyles, formStyles } = styles
 
-const FacultyInfo = ({ faculty }: { faculty: Faculty }) => {
+const FacultyInfo = ({ faculty }: { faculty: Faculty | undefined }) => {
   const { t, i18n } = useTranslation()
   const { language } = i18n
+
+  if (!faculty) return null
 
   const facultyInfo = organisationInfos.find(
     (info) => info.code === faculty?.code
@@ -59,12 +61,13 @@ const SelectFaculty = ({ control }: InputProps) => {
   const { userFaculties, isLoading: userFacultiesLoading } = useUserFaculties()
 
   useEffect(() => {
-    if (userFacultiesLoading) return
+    if (userFacultiesLoading || !userFaculties) return
 
     setFaculty(userFaculties[0])
   }, [userFaculties, userFacultiesLoading])
 
-  if (facultiesLoading || userFacultiesLoading) return null
+  if (facultiesLoading || !faculties || userFacultiesLoading || !userFaculties)
+    return null
 
   const sortedFaculties = sortFaculties(faculties, language as keyof Locales)
   const organisations = sortedFaculties.concat(extraOrganisations)

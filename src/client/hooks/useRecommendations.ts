@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import apiClient from '../util/apiClient'
 import { Recommendation } from '../types'
 
-const useRecommendations = (surveyId: number) => {
+const useRecommendations = (surveyId: number | undefined) => {
   const queryKey = ['recommendations', surveyId]
 
   const query = async (): Promise<Recommendation[]> => {

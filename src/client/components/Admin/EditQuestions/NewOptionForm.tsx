@@ -9,7 +9,7 @@ import { useCreateOptionMutation } from '../../../hooks/useOptionMutation'
 import NewItemDialog from '../NewItemDialog'
 import { DialogLocalesField } from '../TextField'
 
-import { NewOption, OptionZod } from '../../../validators/options'
+import { NewOption, OptionZod } from '../../../../validators/options'
 import { Question } from '../../../types'
 
 const NewOptionForm = ({
@@ -59,7 +59,7 @@ const NewOptionForm = ({
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
       reset()
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }

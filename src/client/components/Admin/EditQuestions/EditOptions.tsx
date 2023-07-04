@@ -59,7 +59,7 @@ const OptionItem = ({
     try {
       await mutation.mutateAsync(updatedOption)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
@@ -107,7 +107,7 @@ const EditOptions = ({
       await mutation.mutateAsync()
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }

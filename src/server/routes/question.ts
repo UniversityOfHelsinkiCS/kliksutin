@@ -20,7 +20,7 @@ questionRouter.get('/:surveyId', async (req, res) => {
   return res.send(questions)
 })
 
-questionRouter.put('/:id', async (req: RequestWithUser, res) => {
+questionRouter.put('/:id', async (req: RequestWithUser, res: any) => {
   const { id } = req.params
   const { isAdmin } = req.user
 
@@ -39,7 +39,7 @@ questionRouter.put('/:id', async (req: RequestWithUser, res) => {
   return res.send(question)
 })
 
-questionRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
+questionRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { surveyId } = req.params
   const { isAdmin } = req.user
   const data: Question = req.body
@@ -55,15 +55,15 @@ questionRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
   const injectedOptions = options.map((opt) => {
     const id = uuidv4()
     return {
+      ...opt,
       id,
       label: id,
-      ...opt,
     }
   })
 
   Object.assign(data.optionData.options, injectedOptions)
 
-  const nextAvailablePriority = async (parentId: number | null) => {
+  const nextAvailablePriority = async (parentId: number) => {
     const result: number = await Question.max('priority', {
       where: { parentId },
     })
@@ -72,15 +72,15 @@ questionRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
   }
 
   const question = await Question.create({
+    ...data,
     surveyId: Number(surveyId),
     priority: await nextAvailablePriority(data.parentId),
-    ...data,
   })
 
   return res.status(201).send(question)
 })
 
-questionRouter.delete('/:id', async (req: RequestWithUser, res) => {
+questionRouter.delete('/:id', async (req: RequestWithUser, res: any) => {
   const { id } = req.params
   const { isAdmin } = req.user
 
@@ -94,7 +94,7 @@ questionRouter.delete('/:id', async (req: RequestWithUser, res) => {
   return res.sendStatus(204)
 })
 
-questionRouter.post('/:id/option/', async (req: RequestWithUser, res) => {
+questionRouter.post('/:id/option/', async (req: RequestWithUser, res: any) => {
   const { id } = req.params
   const { isAdmin } = req.user
 
@@ -106,9 +106,9 @@ questionRouter.post('/:id/option/', async (req: RequestWithUser, res) => {
 
   const optionId = uuidv4()
   const newOption = {
+    ...req.body,
     id: optionId,
     label: optionId,
-    ...req.body,
   }
 
   question.optionData.options = [...question.optionData.options, newOption]
@@ -122,7 +122,7 @@ questionRouter.post('/:id/option/', async (req: RequestWithUser, res) => {
 
 questionRouter.put(
   '/:id/option/:optionId',
-  async (req: RequestWithUser, res) => {
+  async (req: RequestWithUser, res: any) => {
     const { id, optionId } = req.params
     const { isAdmin } = req.user
 
@@ -154,7 +154,7 @@ questionRouter.put(
 
 questionRouter.delete(
   '/:id/option/:optionId',
-  async (req: RequestWithUser, res) => {
+  async (req: RequestWithUser, res: any) => {
     const { id, optionId } = req.params
     const { isAdmin } = req.user
 

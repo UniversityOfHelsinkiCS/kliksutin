@@ -30,7 +30,7 @@ export const getRecommendationsData = (
   selectedTools.forEach((tool) => {
     result.forEach((aRecommendation) => {
       if (
-        tool.dimensions.some(
+        tool.dimensions?.some(
           (aTool: ToolType) =>
             aTool.recommendationLabel === aRecommendation.label
         )

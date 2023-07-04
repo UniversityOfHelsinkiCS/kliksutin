@@ -31,7 +31,12 @@ const SendSummaryEmail = () => {
 
   const resultHTML = sessionStorage.getItem('curre-session-resultHTML')
 
-  const sendResultsToEmail = async (targets: string[], text: string) => {
+  const sendResultsToEmail = async (
+    targets: (string | undefined)[],
+    text: string
+  ) => {
+    if (!targets) return
+
     apiClient.post('/summary', {
       targets,
       text,
@@ -94,7 +99,7 @@ const SendSummaryEmail = () => {
                 fullWidth
                 multiline
                 rows={10}
-                placeholder={t('results:summaryMailPlaceholder')}
+                placeholder={t('results:summaryMailPlaceholder') ?? ''}
                 onChange={({ target }) => setNotes(target.value)}
               />
             )}

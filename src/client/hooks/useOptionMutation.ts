@@ -3,7 +3,7 @@ import { useMutation } from 'react-query'
 import useSurvey from './useSurvey'
 
 import { Locales } from '../types'
-import { NewOption } from '../validators/options'
+import { NewOption } from '../../validators/options'
 
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
@@ -23,7 +23,7 @@ export const useCreateOptionMutation = (questionId: number) => {
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
+        queryKey: ['questions', survey?.id],
       }),
   })
 
@@ -40,7 +40,7 @@ export const useEditOptionMutation = (questionId: number, optionId: string) => {
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
+        queryKey: ['questions', survey?.id],
       }),
   })
 
@@ -60,7 +60,7 @@ export const useDeleteOptionMutation = (
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
+        queryKey: ['questions', survey?.id],
       }),
   })
 

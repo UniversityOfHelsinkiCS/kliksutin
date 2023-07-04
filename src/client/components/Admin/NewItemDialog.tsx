@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { BaseSyntheticEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   Button,
@@ -20,7 +20,9 @@ const NewItemDialog = ({
   open: boolean
   title: string
   content: string
-  onSubmit: (data: Object, e?: Event) => Promise<void>
+  onSubmit: (
+    e?: BaseSyntheticEvent<object, any, any> | undefined
+  ) => Promise<void>
   onClose: () => void
   children: React.ReactNode
 }) => {

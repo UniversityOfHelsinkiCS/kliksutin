@@ -132,7 +132,7 @@ export interface Recommendation {
   type: string
   title: Locales
   text: Locales
-  dimensions?: string[]
+  dimensions: string[]
 }
 
 /** List of selected tools or non selected tools if no dimensionSelection is provided */
@@ -195,7 +195,7 @@ export interface Course {
   id: string
   code: string
   name: Locales
-  nameSpecifier?: Locales
+  nameSpecifier: Locales
   assessmentItemIds?: string[]
   activityPeriod?: {
     endDate: Date

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
 import { Control, Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -70,7 +70,7 @@ export const DialogSelect = ({
     render={({ field }) => (
       <FormControl fullWidth>
         <InputLabel>{label}</InputLabel>
-        <Select size="medium" label={label} value={value} {...field}>
+        <Select {...field} size="medium" label={label} value={value}>
           {children}
         </Select>
       </FormControl>
@@ -115,10 +115,12 @@ export const DialogDimensionSelect = ({
 }: {
   label: string
   control: Control<any>
-  dimensionQuestion: Question
+  dimensionQuestion: Question | undefined
 }) => {
   const { i18n } = useTranslation()
   const { language } = i18n
+
+  if (!dimensionQuestion) return null
 
   return (
     <Box sx={{ my: 4 }}>

@@ -39,7 +39,7 @@ const SelectCourse = ({ control }: InputProps) => {
 
   const { language } = i18n
 
-  if (isLoading || userCourses.length === 0) return null
+  if (isLoading || !userCourses || userCourses.length === 0) return null
 
   const { cardStyles, formStyles } = styles
 

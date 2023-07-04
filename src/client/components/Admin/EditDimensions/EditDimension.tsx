@@ -46,7 +46,7 @@ const DimensionItem = ({
     try {
       await mutation.mutateAsync(updatedDimension)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
@@ -94,7 +94,7 @@ const EditDimension = ({
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
       onDelete('') // callback to reset the selected dimension ID
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }

@@ -37,7 +37,7 @@ const EditResults = () => {
 
   const language = i18n.language as keyof Locales
 
-  if (!resultsFetched) return null
+  if (!resultsFetched || !results || !survey) return null
 
   const dimensions = getDimensions(survey)
 

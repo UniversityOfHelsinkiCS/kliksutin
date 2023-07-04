@@ -50,7 +50,7 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
   const courseId = watch('course')
 
   useEffect(() => {
-    if (isLoading) return
+    if (isLoading || !userCourses) return
 
     const selectedCourse = userCourses.find(({ id }) => id === courseId)
     const courseName =

@@ -42,6 +42,8 @@ const RenderQuestions = ({
   questions,
   language,
 }: InputProps) => {
+  if (!question || !questions || !watch) return null
+
   if (question.visibility?.options) {
     const [...options] = question.visibility.options
 
@@ -62,7 +64,7 @@ const RenderQuestions = ({
   }
 
   const components: {
-    [key in PossibleChoiceTypes]: (...args: InputProps[]) => JSX.Element
+    [key in PossibleChoiceTypes]: (...args: InputProps[]) => JSX.Element | null
   } = {
     singleChoice: SingleChoice,
     multipleChoice: MultiChoice,

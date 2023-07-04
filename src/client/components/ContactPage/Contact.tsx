@@ -11,7 +11,7 @@ const Contact = () => {
 
   const { cardStyles, formStyles } = styles
 
-  const components: { [key: string]: () => JSX.Element } = {
+  const components: { [key: string]: () => JSX.Element | null } = {
     email: SendContactTicket,
   }
 

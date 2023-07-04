@@ -12,13 +12,13 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
 
   declare username: string
 
-  declare firstName: String
+  declare firstName: string
 
-  declare lastName: String
+  declare lastName: string
 
-  declare email: String
+  declare email: string
 
-  declare language: String
+  declare language: string
 
   declare lastLoggedIn: Date
 

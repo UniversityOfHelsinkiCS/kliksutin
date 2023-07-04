@@ -8,6 +8,8 @@ import styles from '../../styles'
 const MultiChoice = ({ control, question, children, language }: InputProps) => {
   const { formStyles } = styles
 
+  if (!question) return null
+
   return (
     <>
       {(question.optionData.options as MultipleChoiceType[]).map(

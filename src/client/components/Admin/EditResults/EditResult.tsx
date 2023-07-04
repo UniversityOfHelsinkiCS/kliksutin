@@ -49,10 +49,12 @@ const ResultItem = ({
     try {
       await mutation.mutateAsync({ data, isSelected })
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
+
+  if (!optionData) return null
 
   return (
     <Box sx={{ my: 2, mx: 4, width: '50%' }}>
@@ -98,7 +100,7 @@ const EditResult = ({
       await mutation.mutateAsync()
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }

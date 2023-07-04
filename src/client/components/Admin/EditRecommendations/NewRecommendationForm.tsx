@@ -16,7 +16,7 @@ import { DialogLocalesField, DialogTextField } from '../TextField'
 import {
   NewRecommendation,
   RecommendationZod,
-} from '../../../validators/recommendations'
+} from '../../../../validators/recommendations'
 
 import { Locales } from '../../../types'
 import { recommendationTypes } from '../config'
@@ -37,7 +37,6 @@ const NewRecommendationForm = ({
     handleSubmit,
     control,
     formState: { errors },
-    watch,
   } = useForm<NewRecommendation>({
     mode: 'onBlur',
     shouldUnregister: true,
@@ -59,7 +58,7 @@ const NewRecommendationForm = ({
     },
   })
 
-  if (isLoading) return null
+  if (isLoading || !survey) return null
 
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'
@@ -71,12 +70,10 @@ const NewRecommendationForm = ({
       console.log(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
-
-  console.log(errors)
 
   return (
     <form>

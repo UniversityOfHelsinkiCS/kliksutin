@@ -50,7 +50,7 @@ const RecommendationItem = ({
     try {
       await mutation.mutateAsync(updatedRecommendation)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
@@ -94,7 +94,7 @@ const EditRecommendation = ({
       enqueueSnackbar(t('admin:deleteSuccess'), { variant: 'success' })
       setOpenAlert(false)
       onDelete('') // callback to reset the selected recommendation ID
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }

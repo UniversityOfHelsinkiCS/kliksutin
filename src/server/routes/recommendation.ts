@@ -4,6 +4,7 @@ import { Op } from 'sequelize'
 
 import { Question, Recommendation, Survey } from '../db/models'
 
+import { RecommendationZod } from '../../validators/recommendations'
 import { RecommendationUpdates, RequestWithUser, ToolType } from '../types'
 
 const recommendationRouter = express.Router()
@@ -22,7 +23,7 @@ recommendationRouter.get('/:surveyId', async (req, res) => {
   return res.status(200).send(recommendations)
 })
 
-recommendationRouter.put('/:id', async (req: RequestWithUser, res) => {
+recommendationRouter.put('/:id', async (req: RequestWithUser, res: any) => {
   const { id } = req.params
   const { isAdmin } = req.user
 
@@ -40,25 +41,34 @@ recommendationRouter.put('/:id', async (req: RequestWithUser, res) => {
   return res.status(200).send(recommendation)
 })
 
-recommendationRouter.post('/:surveyId', async (req: RequestWithUser, res) => {
-  const { surveyId } = req.params
-  const { isAdmin } = req.user
-  const data = req.body
+recommendationRouter.post(
+  '/:surveyId',
+  async (req: RequestWithUser, res: any) => {
+    const { surveyId } = req.params
+    const { isAdmin } = req.user
+    const request = RecommendationZod.safeParse(req.body)
 
-  if (!isAdmin) throw new Error('Unauthorized')
+    if (!request.success) throw new Error('Validation failed')
+    const body = request.data
 
-  const survey = await Survey.findByPk(surveyId)
-  if (!survey) throw new Error('Survey not found')
+    if (!isAdmin) throw new Error('Unauthorized')
 
-  const recommendation = await Recommendation.create({
-    surveyId: Number(surveyId),
-    ...data,
-  })
+    const survey = await Survey.findByPk(surveyId)
+    if (!survey) throw new Error('Survey not found')
 
-  return res.status(201).send(recommendation)
-})
+    const recommendation = await Recommendation.create({
+      surveyId: Number(surveyId),
+      label: body.label,
+      type: body.type,
+      title: body.title,
+      text: body.text,
+    })
 
-recommendationRouter.delete('/:id', async (req: RequestWithUser, res) => {
+    return res.status(201).send(recommendation)
+  }
+)
+
+recommendationRouter.delete('/:id', async (req: RequestWithUser, res: any) => {
   const { id } = req.params
   const { isAdmin } = req.user
 
@@ -83,7 +93,7 @@ recommendationRouter.delete('/:id', async (req: RequestWithUser, res) => {
   if (dimensionQuestion) {
     const updatedDimensionQuestion = dimensionQuestion.optionData.options.map(
       (option) =>
-        option.data.filter(
+        option.data?.filter(
           (aRecommendation: ToolType) =>
             aRecommendation.recommendationLabel !== recommendation.label
         )

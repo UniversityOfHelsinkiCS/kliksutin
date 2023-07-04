@@ -6,7 +6,7 @@ import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 
 import { Locales } from '../types'
-import { NewRecommendation } from '../validators/recommendations'
+import { NewRecommendation } from '../../validators/recommendations'
 
 type RecommendationUpdates = {
   title: Locales
@@ -17,13 +17,13 @@ export const useCreateRecommendationMutation = () => {
   const { survey } = useSurvey()
 
   const mutationFn = async (data: NewRecommendation) => {
-    await apiClient.post(`/recommendations/${survey.id}`, data)
+    await apiClient.post(`/recommendations/${survey?.id}`, data)
   }
 
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['recommendations', survey.id],
+        queryKey: ['recommendations', survey?.id],
       }),
   })
 
@@ -40,7 +40,7 @@ export const useEditRecommendationMutation = (recommendationId: number) => {
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['recommendations', survey.id],
+        queryKey: ['recommendations', survey?.id],
       }),
   })
 
@@ -57,7 +57,7 @@ export const useDeleteRecommendationMutation = (recommendationId: number) => {
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['recommendations', survey.id],
+        queryKey: ['recommendations', survey?.id],
       }),
   })
 

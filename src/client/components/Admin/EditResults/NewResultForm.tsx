@@ -12,9 +12,15 @@ import { DialogSelect } from '../Select'
 import { DialogLocalesField } from '../TextField'
 import NewItemDialog from '../NewItemDialog'
 
-import { NewResult, ResultZod } from '../../../validators/results'
+import { NewResult, ResultZod } from '../../../../validators/results'
 
-import { DimensionSelectionData, Locales, ChoiceType } from '../../../types'
+import {
+  DimensionSelectionData,
+  Locales,
+  ChoiceType,
+  MultipleChoiceType,
+  SingleChoiceType,
+} from '../../../types'
 
 const NewResultForm = ({
   open,
@@ -31,8 +37,9 @@ const NewResultForm = ({
   const mutation = useCreateResultMutation()
   const language = i18n.language as keyof Locales
 
-  const [selectedOption, setSelectedOption] =
-    useState<ChoiceType extends (infer U)[] ? U : never>(null)
+  const [selectedOption, setSelectedOption] = useState<
+    MultipleChoiceType | DimensionSelectionData | SingleChoiceType | null
+  >(null)
 
   const defaultValue = {
     fi: '',
@@ -72,7 +79,7 @@ const NewResultForm = ({
       await mutation.mutateAsync(newResult)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }

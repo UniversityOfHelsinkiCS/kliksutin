@@ -35,10 +35,10 @@ export interface TranslatedText {
 export interface User {
   id: string
   username: string
-  firsName?: string
-  lastName?: string
-  email?: string
-  language?: string
+  firstName: string
+  lastName: string
+  email: string
+  language: string
   isAdmin: boolean
   iamGroups: string[]
 }
@@ -139,7 +139,7 @@ export interface OptionData {
 export interface Question {
   id: number
   surveyId: number
-  parentId: number
+  parentId: number | null
   priority: number
   title: Locales
   text: Locales

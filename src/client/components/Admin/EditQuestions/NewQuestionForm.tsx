@@ -11,7 +11,7 @@ import NewItemDialog from '../NewItemDialog'
 import { DialogSelect } from '../Select'
 import { DialogLocalesField } from '../TextField'
 
-import { NewQuestion, QuestionZod } from '../../../validators/questions'
+import { NewQuestion, QuestionZod } from '../../../../validators/questions'
 
 import { questionTypes } from '../config'
 import { Locales } from '../../../types'
@@ -87,7 +87,7 @@ const NewQuestionForm = ({
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
       reset()
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
@@ -147,7 +147,7 @@ const NewQuestionForm = ({
                 number: index + 1,
               })}
               control={control}
-              error={errors.optionData?.options[index]?.title}
+              error={(errors.optionData?.options as any)[index]?.title}
             />
             {item.data && (
               <DialogLocalesField
@@ -156,7 +156,7 @@ const NewQuestionForm = ({
                   number: index + 1,
                 })}
                 control={control}
-                error={errors.optionData?.options[index]?.data}
+                error={(errors.optionData?.options as any)[index]?.data}
               />
             )}
           </Box>

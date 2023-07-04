@@ -16,7 +16,7 @@ const Admin = () => {
 
   if (isLoading) return null
 
-  if (!user.isAdmin) return <Navigate to="/" />
+  if (!user || !user.isAdmin) return <Navigate to="/" />
 
   return (
     <Box

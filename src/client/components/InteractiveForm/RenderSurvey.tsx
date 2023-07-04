@@ -20,11 +20,15 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
   const location = useLocation()
   const { t, i18n } = useTranslation()
   const { survey, isLoading } = useSurvey()
-  const { cardStyles, formStyles } = styles
+
   const savedData = sessionStorage.getItem(FORM_DATA_KEY)
   const [showQuestions, setShowQuestions] = useState(
     savedData && savedData !== '{}'
   )
+
+  if (!survey || !watch) return null
+
+  const { cardStyles, formStyles } = styles
 
   const { language } = i18n
 
@@ -32,6 +36,8 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
 
   const isAllowedToProceed = () => {
     const isFacultySelected = watch('faculty') !== ''
+
+    if (!dimensions) return false
 
     return isFacultySelected && dimensions.length > 0
   }
@@ -75,7 +81,7 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
           {!showQuestions ? (
             <Button
               data-cy="open-form-button"
-              disabled={dimensions && !isAllowedToProceed()}
+              disabled={!!dimensions && !isAllowedToProceed()}
               onClick={() => setShowQuestions(true)}
             >
               {t('openForm')}

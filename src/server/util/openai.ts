@@ -37,7 +37,7 @@ export const createCompletion = async (prompt: string) => {
     logger.info('OpenAI API response', { data })
 
     return data
-  } catch (err) {
+  } catch (err: any) {
     if (err.response) {
       logger.error('OpenAI API error', {
         status: err.response.status,

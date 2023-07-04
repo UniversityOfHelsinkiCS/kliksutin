@@ -4,7 +4,7 @@ import { Locales } from '../types'
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 import useSurvey from './useSurvey'
-import { NewQuestion } from '../validators/questions'
+import { NewQuestion } from '../../validators/questions'
 
 type QuestionsUpdates = {
   title: Locales
@@ -15,13 +15,13 @@ export const useCreateQuestionMutation = () => {
   const { survey } = useSurvey()
 
   const mutationFn = async (data: NewQuestion) => {
-    await apiClient.post(`/questions/${survey.id}`, data)
+    await apiClient.post(`/questions/${survey?.id}`, data)
   }
 
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
+        queryKey: ['questions', survey?.id],
       }),
   })
 
@@ -38,7 +38,7 @@ export const useEditQuestionMutation = (questionId: number) => {
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
+        queryKey: ['questions', survey?.id],
       }),
   })
 
@@ -55,7 +55,7 @@ export const useDeleteQuestionMutation = (questionId: number) => {
   const mutation = useMutation(mutationFn, {
     onSuccess: () =>
       queryClient.invalidateQueries({
-        queryKey: ['questions', survey.id],
+        queryKey: ['questions', survey?.id],
       }),
   })
 

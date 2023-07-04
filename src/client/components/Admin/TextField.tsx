@@ -43,7 +43,7 @@ export const DialogLocalesField = ({
   value: string
   inputlabel: string
   control: Control<any>
-  error: Merge<FieldError, FieldErrorsImpl<Locales>>
+  error: Merge<FieldError, FieldErrorsImpl<Locales>> | undefined
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
@@ -54,10 +54,11 @@ export const DialogLocalesField = ({
         control={control}
         render={({ field }) => (
           <TextField
+            {...field}
             error={error && language in error}
             helperText={
               error && language in error
-                ? error[language as keyof Locales].message
+                ? error[language as keyof Locales]?.message
                 : ''
             }
             sx={{ mt: 2 }}
@@ -65,7 +66,6 @@ export const DialogLocalesField = ({
             label={language.toUpperCase()}
             fullWidth
             value={field.value?.language || ''}
-            {...field}
           />
         )}
       />
@@ -82,7 +82,7 @@ export const DialogTextField = ({
   value: string
   inputlabel: string
   control: Control<any>
-  error: FieldError
+  error: FieldError | undefined
 }) => (
   <Box sx={{ my: 4 }}>
     <InputLabel>{inputlabel}</InputLabel>
@@ -91,6 +91,7 @@ export const DialogTextField = ({
       control={control}
       render={({ field }) => (
         <TextField
+          {...field}
           error={!!error}
           helperText={error ? error.message : ''}
           sx={{ mt: 2 }}
@@ -98,7 +99,6 @@ export const DialogTextField = ({
           label={value.toUpperCase()}
           fullWidth
           value={field.value}
-          {...field}
         />
       )}
     />

@@ -10,7 +10,7 @@ import { useCreateDimensionMutation } from '../../../hooks/useDimensionMutation'
 import NewItemDialog from '../NewItemDialog'
 import { DialogLocalesField } from '../TextField'
 
-import { NewDimension, DimensionZod } from '../../../validators/options'
+import { NewDimension, DimensionZod } from '../../../../validators/options'
 import { ColorSelect } from '../Select'
 
 const NewDimensionForm = ({
@@ -60,7 +60,7 @@ const NewDimensionForm = ({
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
       reset()
-    } catch (error) {
+    } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }

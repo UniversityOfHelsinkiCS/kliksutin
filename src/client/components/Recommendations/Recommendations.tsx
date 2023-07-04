@@ -37,7 +37,8 @@ const Recommendations = ({ watch }: InputProps) => {
 
   const { recommendationStyles, cardStyles } = styles
 
-  if (!recommendationsFetched) return null
+  if (!recommendationsFetched || !recommendations || !survey || !watch)
+    return null
 
   const teachingRecommendations = recommendations.filter(
     (rec) => rec.type === 'teaching'
@@ -61,7 +62,7 @@ const Recommendations = ({ watch }: InputProps) => {
   const extractSubtools = (toolLabel: string) => {
     const extractedSubtoolObjects: Subtool[] = dimensionSelections
       .map((aSelection: DimensionSelectionData) =>
-        aSelection.data.filter(
+        (aSelection.data as ToolType[]).filter(
           (aTool: ToolType) => aTool.recommendationLabel === toolLabel
         )
       )
@@ -95,11 +96,15 @@ const Recommendations = ({ watch }: InputProps) => {
   }
 
   const mergedRecommendationData = rawRecommendationData.map(
-    (aRawTool): MergedRecommendationData => ({
-      ...aRawTool,
-      ...recommendationsData.find((aTool) => aTool.label === aRawTool.label),
-      subtools: extractSubtools(aRawTool.label),
-    })
+    (aRawTool): MergedRecommendationData => {
+      const subtools = extractSubtools(aRawTool.label) as string[]
+
+      return {
+        ...aRawTool,
+        ...recommendationsData.find((aTool) => aTool.label === aRawTool.label),
+        subtools,
+      }
+    }
   )
 
   return (

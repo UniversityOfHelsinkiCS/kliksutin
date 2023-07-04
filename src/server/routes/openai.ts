@@ -20,6 +20,8 @@ openaiRouter.post('/', async (req, res) => {
 
   const { message } = openAIRes.choices[0]
 
+  if (!message) throw new Error('Open AI service unavailable')
+
   return res.send(message.content)
 })
 
