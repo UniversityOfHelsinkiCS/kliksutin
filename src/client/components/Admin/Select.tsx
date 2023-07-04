@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { Control, Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -13,9 +14,14 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Checkbox,
+  Tooltip,
 } from '@mui/material'
 
+import DimensionChip from '../Chip/DimensionChip'
+
 import { languages } from './config'
+
 import {
   DimensionSelectionData,
   Locales,
@@ -98,6 +104,72 @@ export const LanguageSelect = ({
           ))}
         </RadioGroup>
       </FormControl>
+    </Box>
+  )
+}
+
+export const DialogDimensionSelect = ({
+  label,
+  control,
+  dimensionQuestion,
+}: {
+  label: string
+  control: Control<any>
+  dimensionQuestion: Question
+}) => {
+  const { i18n } = useTranslation()
+  const { language } = i18n
+
+  return (
+    <Box sx={{ my: 4 }}>
+      <InputLabel>{label}</InputLabel>
+      <Box sx={{ mt: 2 }}>
+        {(dimensionQuestion.optionData.options as DimensionSelectionData[]).map(
+          (choice: DimensionSelectionData) => (
+            <Controller
+              key={choice.id}
+              name={`dimensions.${choice.id}`}
+              control={control}
+              defaultValue={false}
+              render={({ field }) => (
+                <FormControl>
+                  <Box>
+                    <Tooltip
+                      title={choice.text[language as keyof Locales]}
+                      placement="right"
+                      arrow
+                    >
+                      <div>
+                        <Checkbox
+                          {...field}
+                          icon={
+                            <DimensionChip
+                              key={choice.id}
+                              choice={choice}
+                              color={undefined}
+                              compact={false}
+                            />
+                          }
+                          checkedIcon={
+                            <DimensionChip
+                              key={choice.id}
+                              choice={choice}
+                              color={choice.color}
+                              compact={false}
+                            />
+                          }
+                          value={choice.id}
+                          checked={field.value}
+                        />
+                      </div>
+                    </Tooltip>
+                  </Box>
+                </FormControl>
+              )}
+            />
+          )
+        )}
+      </Box>
     </Box>
   )
 }
