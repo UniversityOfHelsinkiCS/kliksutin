@@ -12,7 +12,10 @@ import { DialogSelect } from '../Select'
 import { DialogLocalesField } from '../TextField'
 import NewItemDialog from '../NewItemDialog'
 
-import { NewResult, ResultZod } from '../../../../validators/results'
+import {
+  NewResultFormType,
+  NewResultFormZod,
+} from '../../../../validators/results'
 
 import {
   DimensionSelectionData,
@@ -51,10 +54,10 @@ const NewResultForm = ({
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<NewResult>({
+  } = useForm<NewResultFormType>({
     mode: 'onBlur',
     shouldUnregister: true,
-    resolver: zodResolver(ResultZod),
+    resolver: zodResolver(NewResultFormZod),
     defaultValues: {
       optionLabel: '',
       isSelected: defaultValue,
@@ -66,7 +69,7 @@ const NewResultForm = ({
     setOpen(!open)
   }
 
-  const onSubmit = async (data: NewResult) => {
+  const onSubmit = async (data: NewResultFormType) => {
     const resultDataField = Object.fromEntries(
       dimensions.map((dimension) => [dimension.id, defaultValue])
     )

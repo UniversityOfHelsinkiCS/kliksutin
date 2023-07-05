@@ -1,12 +1,10 @@
 import express from 'express'
 
-import { RequestWithUser, ResultUpdates } from '../types'
 import { Result, Survey } from '../db/models'
 
-const parseUpdates = (body: ResultUpdates): ResultUpdates => ({
-  data: body?.data,
-  isSelected: body?.isSelected,
-})
+import { NewResultZod, UpdatedResultZod } from '../../validators/results'
+
+import { RequestWithUser } from '../types'
 
 const resultRouter = express.Router()
 
@@ -34,9 +32,12 @@ resultRouter.put('/:id', async (req: RequestWithUser, res: any) => {
 
   if (!result) throw new Error('Result not found')
 
-  const updates = parseUpdates(req.body.data)
+  const request = UpdatedResultZod.safeParse(req.body)
 
-  Object.assign(result, updates)
+  if (!request.success) throw new Error('Validation failed')
+  const body = request.data
+
+  Object.assign(result, body)
   await result.save()
 
   return res.send(result)
@@ -45,16 +46,20 @@ resultRouter.put('/:id', async (req: RequestWithUser, res: any) => {
 resultRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { surveyId } = req.params
   const { isAdmin } = req.user
-  const data = req.body
 
   if (!isAdmin) throw new Error('Unauthorized')
 
   const survey = await Survey.findByPk(surveyId)
   if (!survey) throw new Error('Survey not found')
 
+  const request = NewResultZod.safeParse(req.body)
+
+  if (!request.success) throw new Error('Validation failed')
+  const body = request.data
+
   const recommendation = await Result.create({
     surveyId: Number(surveyId),
-    ...data,
+    ...body,
   })
 
   return res.status(201).send(recommendation)

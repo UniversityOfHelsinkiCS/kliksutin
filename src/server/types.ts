@@ -47,11 +47,6 @@ export interface RequestWithUser extends Request {
   user: User
 }
 
-export interface ResultUpdates {
-  data?: Object
-  isSelected?: string
-}
-
 export interface OptionUpdates {
   title: Locales
   data?: Locales
@@ -76,15 +71,7 @@ export interface Result {
   surveyId: number
   optionLabel: string
   isSelected: Locales
-  data: {
-    allDimensions: Locales
-    investication: Locales
-    production: Locales
-    collaboration: Locales
-    discussion: Locales
-    acquisition: Locales
-    practice: Locales
-  }
+  data: Record<string, Locales>
 }
 
 export type SingleChoiceType = {
