@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const RecommendationZod = z.object({
+export const NewRecommendationZod = z.object({
   label: z.string().nonempty(),
   type: z.string().nonempty(),
   dimensions: z.record(z.string(), z.boolean()),
@@ -16,9 +16,9 @@ export const RecommendationZod = z.object({
   }),
 })
 
-export type NewRecommendation = z.infer<typeof RecommendationZod>
+export type NewRecommendation = z.infer<typeof NewRecommendationZod>
 
-export const RecommendationUpdateZod = z.object({
+export const UpdatedRecommendationZod = z.object({
   title: z.object({
     fi: z.string().nonempty(),
     sv: z.string().nonempty(),
@@ -31,4 +31,4 @@ export const RecommendationUpdateZod = z.object({
   }),
 })
 
-export type RecommendationUpdates = z.infer<typeof RecommendationUpdateZod>
+export type UpdatedRecommendation = z.infer<typeof UpdatedRecommendationZod>

@@ -15,7 +15,7 @@ import { DialogLocalesField, DialogTextField } from '../TextField'
 
 import {
   NewRecommendation,
-  RecommendationZod,
+  NewRecommendationZod,
 } from '../../../../validators/recommendations'
 
 import { Locales } from '../../../types'
@@ -40,7 +40,7 @@ const NewRecommendationForm = ({
   } = useForm<NewRecommendation>({
     mode: 'onBlur',
     shouldUnregister: true,
-    resolver: zodResolver(RecommendationZod),
+    resolver: zodResolver(NewRecommendationZod),
     defaultValues: {
       label: '',
       type: 'teaching',

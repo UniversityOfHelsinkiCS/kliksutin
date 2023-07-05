@@ -12,7 +12,7 @@ import DeleteDialog from '../DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
 
 import { Locales, Recommendation } from '../../../types'
-import { RecommendationUpdates } from '../../../../validators/recommendations'
+import { UpdatedRecommendation } from '../../../../validators/recommendations'
 
 const RecommendationItem = ({
   language,
@@ -36,7 +36,7 @@ const RecommendationItem = ({
   }, [language, recommendation])
 
   const handleSave = async () => {
-    const updatedRecommendation: RecommendationUpdates = {
+    const updatedRecommendation: UpdatedRecommendation = {
       title: {
         ...recommendation.title,
         [language]: recommendationTitle,

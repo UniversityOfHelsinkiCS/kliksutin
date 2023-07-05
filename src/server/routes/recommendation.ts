@@ -5,8 +5,8 @@ import { Op } from 'sequelize'
 import { Question, Recommendation, Survey } from '../db/models'
 
 import {
-  RecommendationUpdateZod,
-  RecommendationZod,
+  UpdatedRecommendationZod,
+  NewRecommendationZod,
 } from '../../validators/recommendations'
 import { RequestWithUser, ToolType } from '../types'
 
@@ -35,7 +35,7 @@ recommendationRouter.put('/:id', async (req: RequestWithUser, res: any) => {
   const recommendation = await Recommendation.findByPk(id)
   if (!recommendation) throw new Error('Recommendation not found')
 
-  const request = RecommendationUpdateZod.safeParse(req.body)
+  const request = UpdatedRecommendationZod.safeParse(req.body)
 
   if (!request.success) throw new Error('Validation failed')
   const body = request.data
@@ -53,7 +53,7 @@ recommendationRouter.post(
     const { surveyId } = req.params
     const { isAdmin } = req.user
 
-    const request = RecommendationZod.safeParse(req.body)
+    const request = NewRecommendationZod.safeParse(req.body)
 
     if (!request.success) throw new Error('Validation failed')
     const body = request.data
