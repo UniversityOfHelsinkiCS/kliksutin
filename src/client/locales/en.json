@@ -108,6 +108,7 @@
     "optionNewOptionTitleLabel": "Valinnan otsikko",
     "optionNewOptionDataLabel": "Monivalinnan sisältö",
     "dimensionViewInfo": "Start by selecting dimension from the dropdown",
+    "dimensionViewDimensionColorEdit": "Edit dimension color",
     "dimensionViewDimensionEdit": "Edit dimension",
     "dimensionAddNew": "Add new dimension",
     "dimensionRemove": "Remove this dimension",

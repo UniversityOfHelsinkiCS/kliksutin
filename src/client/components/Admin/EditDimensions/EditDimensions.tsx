@@ -18,7 +18,7 @@ const EditDimensions = () => {
   const { t } = useTranslation()
   const { survey } = useSurvey()
 
-  const [color, setColor] = useState('#000000')
+  const [color, setColor] = useState('000000')
   const [dimensionId, setDimensionId] = useState('')
   const [openNewDimension, setOpenNewDimension] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
@@ -91,7 +91,7 @@ const EditDimensions = () => {
         {selectedDimension ? (
           <Box sx={{ my: 4 }}>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              Oppimismuodon värin muokkaus
+              {t('admin:dimensionViewDimensionColorEdit')}
             </Typography>
             <Box sx={{ mx: 4 }}>
               <ColorSelect
