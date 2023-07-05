@@ -73,6 +73,9 @@ const ResultElement = ({
       >
         {dimensions.map((dimension) => {
           const color = dimension.color ?? null
+
+          if (!resultData.data[dimension.id]) return null
+
           return (
             <Box
               data-cy={`result-wrapper-${resultData.optionLabel}-${dimension.id}`}

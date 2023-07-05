@@ -28,13 +28,17 @@ const ResultItem = ({
   const mutation = useEditResultMutation(result.id)
 
   const { isSelected, optionLabel, data } = result
+
   const resultData = data[dimensionId]
+
   const optionData = options.find(({ label }) => label === optionLabel)
 
-  const [selected, setSelected] = useState(isSelected[language])
-  const [value, setValue] = useState(resultData[language])
+  const [selected, setSelected] = useState('')
+  const [value, setValue] = useState('')
 
   useEffect(() => {
+    if (!resultData) return
+
     setValue(resultData[language])
   }, [language, resultData])
 
@@ -54,7 +58,7 @@ const ResultItem = ({
     }
   }
 
-  if (!optionData) return null
+  if (!optionData || !selected) return null
 
   return (
     <Box sx={{ my: 2, mx: 4, width: '50%' }}>
