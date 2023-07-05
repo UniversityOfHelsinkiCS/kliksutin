@@ -15,6 +15,10 @@ import { getDimensions } from '../../../util/dimensions'
 import { Locales } from '../../../types'
 
 const EditResults = () => {
+  const { survey } = useSurvey()
+  const { t, i18n } = useTranslation()
+  const { results, isSuccess: resultsFetched } = useResults(survey?.id)
+
   const [openForm, setOpenForm] = useState(false)
   const [dimensionId, setDimensionId] = useState('allDimensions')
   const handleDimensionChange = (event: SelectChangeEvent) => {
@@ -30,10 +34,6 @@ const EditResults = () => {
   const handleLanguageChange = (event: SelectChangeEvent) => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
-
-  const { survey } = useSurvey()
-  const { t, i18n } = useTranslation()
-  const { results, isSuccess: resultsFetched } = useResults(survey?.id)
 
   const language = i18n.language as keyof Locales
 

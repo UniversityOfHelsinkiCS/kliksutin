@@ -33,22 +33,29 @@ const ResultItem = ({
 
   const optionData = options.find(({ label }) => label === optionLabel)
 
-  const [selected, setSelected] = useState('')
-  const [value, setValue] = useState('')
+  const [resultIsSelected, setResultIsSelected] = useState('')
+  const [resultContent, setResultContent] = useState('')
 
   useEffect(() => {
     if (!resultData) return
 
-    setValue(resultData[language])
+    setResultContent(resultData[language])
   }, [language, resultData])
 
   useEffect(() => {
-    setSelected(isSelected[language])
+    setResultIsSelected(isSelected[language])
   }, [language, isSelected])
 
   const handleSave = async () => {
-    data[dimensionId][language] = value
-    isSelected[language] = selected
+    if (!data[dimensionId]) {
+      data[dimensionId] = {
+        en: '',
+        fi: '',
+        sv: '',
+      }
+    }
+    isSelected[language] = resultIsSelected
+    data[dimensionId][language] = resultContent
 
     try {
       await mutation.mutateAsync({ data, isSelected })
@@ -58,7 +65,7 @@ const ResultItem = ({
     }
   }
 
-  if (!optionData || !selected) return null
+  if (!optionData || !resultIsSelected) return null
 
   return (
     <Box sx={{ my: 2, mx: 4, width: '50%' }}>
@@ -72,12 +79,12 @@ const ResultItem = ({
       </Box>
 
       <TitleTextField
-        value={selected}
-        onChange={(event) => setSelected(event.target.value)}
+        value={resultIsSelected}
+        onChange={(event) => setResultIsSelected(event.target.value)}
       />
       <ContentTextField
-        value={value}
-        onChange={(event) => setValue(event.target.value)}
+        value={resultContent}
+        onChange={(event) => setResultContent(event.target.value)}
       />
       <Button onClick={handleSave}>{t('admin:save')}</Button>
     </Box>
