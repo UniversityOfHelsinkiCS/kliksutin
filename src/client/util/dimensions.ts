@@ -1,7 +1,11 @@
 import { UseFormWatch, FieldValues } from 'react-hook-form'
 import { Survey, DimensionSelectionData } from '../types'
 
-export const getDimensions = (survey: Survey): DimensionSelectionData[] => {
+export const getDimensions = (
+  survey: Survey | undefined
+): DimensionSelectionData[] => {
+  if (!survey) return []
+
   const dimensionQuestion = survey.Questions.find(
     (question) => question.optionData.type === 'dimensions'
   )

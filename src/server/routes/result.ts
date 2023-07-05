@@ -57,8 +57,6 @@ resultRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   if (!request.success) throw new Error('Validation failed')
   const body = request.data
 
-  console.log(body)
-
   const recommendation = await Result.create({
     surveyId: Number(surveyId),
     ...body,

@@ -10,8 +10,9 @@ import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 
 type DimensionUpdates = {
-  title: Locales
-  text: Locales
+  title?: Locales
+  text?: Locales
+  color?: string
 }
 
 export const useCreateDimensionMutation = () => {

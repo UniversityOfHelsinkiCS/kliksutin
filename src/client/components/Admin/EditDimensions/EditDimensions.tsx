@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
-import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { enqueueSnackbar } from 'notistack'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 
 import useSurvey from '../../../hooks/useSurvey'
+import { useEditDimensionMutation } from '../../../hooks/useDimensionMutation'
 
 import EditDimension from './EditDimension'
 import NewDimensionForm from './NewDimensionForm'
-import { DimensionSelect, LanguageSelect } from '../Select'
+import { ColorSelect, DimensionSelect, LanguageSelect } from '../Select'
 
 import { getDimensions } from '../../../util/dimensions'
 
@@ -16,10 +18,17 @@ const EditDimensions = () => {
   const { t } = useTranslation()
   const { survey } = useSurvey()
 
+  const [color, setColor] = useState('#000000')
   const [dimensionId, setDimensionId] = useState('')
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
-
   const [openNewDimension, setOpenNewDimension] = useState(false)
+  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
+  const mutation = useEditDimensionMutation(dimensionId)
+
+  const dimensions = getDimensions(survey)
+
+  const selectedDimension = dimensions.find(
+    (dimension) => dimension.id === dimensionId
+  )
 
   const handleDimensionChange = (event: SelectChangeEvent) => {
     setDimensionId(event.target.value)
@@ -29,13 +38,27 @@ const EditDimensions = () => {
     setSelectedLanguage(event.target.value as keyof Locales)
   }
 
-  if (!survey) return null
+  const handleColorChange = (newColor: string) => {
+    setColor(newColor)
+  }
 
-  const dimensions = getDimensions(survey)
+  const handleColorSave = async () => {
+    const updateColor = {
+      color,
+    }
+    try {
+      await mutation.mutateAsync(updateColor)
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+    } catch (error: any) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
+  }
 
-  const selectedDimension = dimensions.find(
-    (dimension) => dimension.id === dimensionId
-  )
+  useEffect(() => {
+    if (!selectedDimension) return
+
+    setColor(selectedDimension.color)
+  }, [selectedDimension])
 
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
@@ -67,6 +90,17 @@ const EditDimensions = () => {
       <Box width="100%" flexWrap="wrap">
         {selectedDimension ? (
           <Box sx={{ my: 4 }}>
+            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+              Oppimismuodon värin muokkaus
+            </Typography>
+            <Box sx={{ mx: 4 }}>
+              <ColorSelect
+                label={t('admin:dimensionNewDimensionColorLabel')}
+                value={color}
+                setValue={handleColorChange}
+              />
+              <Button onClick={handleColorSave}>{t('admin:save')}</Button>
+            </Box>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               {t('admin:dimensionViewDimensionEdit')}
             </Typography>
