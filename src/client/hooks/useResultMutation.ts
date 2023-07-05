@@ -5,11 +5,7 @@ import useSurvey from './useSurvey'
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 
-import { NewResult } from '../../validators/results'
-
-import { Result } from '../types'
-
-type MutationData = Pick<Result, 'data' | 'isSelected'>
+import { NewResult, UpdatedResult } from '../../validators/results'
 
 export const useCreateResultMutation = () => {
   const { survey } = useSurvey()
@@ -29,7 +25,7 @@ export const useCreateResultMutation = () => {
 }
 
 export const useEditResultMutation = (resultId: number) => {
-  const mutationFn = async (data: MutationData) => {
+  const mutationFn = async (data: UpdatedResult) => {
     await apiClient.put(`/results/${resultId}`, data)
   }
 
