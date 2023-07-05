@@ -37,7 +37,10 @@ const ResultItem = ({
   const [resultContent, setResultContent] = useState('')
 
   useEffect(() => {
-    if (!resultData) return
+    if (!resultData) {
+      setResultContent('')
+      return
+    }
 
     setResultContent(resultData[language])
   }, [language, resultData])
