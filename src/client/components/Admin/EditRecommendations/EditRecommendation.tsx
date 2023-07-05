@@ -12,7 +12,7 @@ import DeleteDialog from '../DeleteDialog'
 import { ContentTextField, TitleTextField } from '../TextField'
 
 import { Locales, Recommendation } from '../../../types'
-import { RecommendationUpdates } from '../../../../server/types'
+import { RecommendationUpdates } from '../../../../validators/recommendations'
 
 const RecommendationItem = ({
   language,

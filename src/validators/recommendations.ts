@@ -17,3 +17,18 @@ export const RecommendationZod = z.object({
 })
 
 export type NewRecommendation = z.infer<typeof RecommendationZod>
+
+export const RecommendationUpdateZod = z.object({
+  title: z.object({
+    fi: z.string().nonempty(),
+    sv: z.string().nonempty(),
+    en: z.string().nonempty(),
+  }),
+  text: z.object({
+    fi: z.string().nonempty(),
+    sv: z.string().nonempty(),
+    en: z.string().nonempty(),
+  }),
+})
+
+export type RecommendationUpdates = z.infer<typeof RecommendationUpdateZod>

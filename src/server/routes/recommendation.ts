@@ -4,8 +4,11 @@ import { Op } from 'sequelize'
 
 import { Question, Recommendation, Survey } from '../db/models'
 
-import { RecommendationZod } from '../../validators/recommendations'
-import { RecommendationUpdates, RequestWithUser, ToolType } from '../types'
+import {
+  RecommendationUpdateZod,
+  RecommendationZod,
+} from '../../validators/recommendations'
+import { RequestWithUser, ToolType } from '../types'
 
 const recommendationRouter = express.Router()
 
@@ -32,9 +35,12 @@ recommendationRouter.put('/:id', async (req: RequestWithUser, res: any) => {
   const recommendation = await Recommendation.findByPk(id)
   if (!recommendation) throw new Error('Recommendation not found')
 
-  const updates: RecommendationUpdates = req.body
+  const request = RecommendationUpdateZod.safeParse(req.body)
 
-  Object.assign(recommendation, updates)
+  if (!request.success) throw new Error('Validation failed')
+  const body = request.data
+
+  Object.assign(recommendation, body)
 
   await recommendation.save()
 
