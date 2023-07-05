@@ -66,8 +66,7 @@ const NewRecommendationForm = ({
 
   const onSubmit = async (data: NewRecommendation) => {
     try {
-      // await mutation.mutateAsync(data)
-      console.log(data)
+      await mutation.mutateAsync(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
     } catch (error: any) {

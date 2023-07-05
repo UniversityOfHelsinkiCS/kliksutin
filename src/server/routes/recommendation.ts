@@ -46,6 +46,7 @@ recommendationRouter.post(
   async (req: RequestWithUser, res: any) => {
     const { surveyId } = req.params
     const { isAdmin } = req.user
+
     const request = RecommendationZod.safeParse(req.body)
 
     if (!request.success) throw new Error('Validation failed')
@@ -63,6 +64,44 @@ recommendationRouter.post(
       title: body.title,
       text: body.text,
     })
+
+    const dimensionQuestion = await Question.findOne({
+      where: {
+        optionData: {
+          type: {
+            [Op.eq]: 'dimensions',
+          },
+        },
+      },
+    })
+
+    // Concat the new recommendation to the selected dimensions
+    if (dimensionQuestion) {
+      const newDimensionTool = {
+        recommendationLabel: body.label,
+        subtools: [],
+      }
+
+      // Map the dimension question options and concat the options.data array to
+      // include the new recommendation if the dimension was selected
+      const updatedDimensionQuestion = dimensionQuestion.optionData.options.map(
+        (option) => {
+          if (body.dimensions[option.id] && option.data) {
+            const newOptionData = [...option.data, newDimensionTool]
+            Object.assign(option.data, newOptionData)
+          }
+          return option
+        }
+      )
+
+      Object.assign(dimensionQuestion.optionData.options, {
+        data: updatedDimensionQuestion,
+      })
+
+      dimensionQuestion.changed('optionData', true)
+
+      await dimensionQuestion.save()
+    }
 
     return res.status(201).send(recommendation)
   }
