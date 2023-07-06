@@ -82,10 +82,9 @@ const NewQuestionForm = ({
     append(newOption)
   }
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: NewQuestion) => {
     try {
-      // await mutation.mutateAsync(data)
-      console.log(data)
+      await mutation.mutateAsync(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
       reset()

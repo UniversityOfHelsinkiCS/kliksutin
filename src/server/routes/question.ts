@@ -1,4 +1,5 @@
 import express from 'express'
+import { Op } from 'sequelize'
 
 import { v4 as uuidv4 } from 'uuid'
 
@@ -68,12 +69,28 @@ questionRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
 
   Object.assign(data.optionData.options, injectedOptions)
 
-  const nextAvailablePriority = async (parentId: number) => {
-    const result: number = await Question.max('priority', {
-      where: { parentId },
-    })
+  const nextAvailablePriority = async (parentId: number | null) => {
+    let result = 1
 
-    return result + 1
+    if (!parentId) {
+      const priority: number = await Question.max('priority', {
+        where: {
+          parentId: {
+            [Op.is]: null,
+          },
+        },
+      })
+
+      result += priority
+    } else {
+      const priority: number = await Question.max('priority', {
+        where: { parentId },
+      })
+
+      result += priority
+    }
+
+    return result
   }
 
   const question = await Question.create({

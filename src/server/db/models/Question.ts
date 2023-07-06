@@ -24,7 +24,7 @@ interface OptionData {
 }
 
 interface Visibility {
-  optionIds: Array<string>
+  options?: Array<string>
 }
 
 class Question extends Model<
@@ -35,7 +35,7 @@ class Question extends Model<
 
   declare surveyId: number
 
-  declare parentId: number
+  declare parentId: number | null
 
   declare priority: number
 
