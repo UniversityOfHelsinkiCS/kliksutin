@@ -674,29 +674,6 @@ const getQuestionData = (): Question[] => [
     },
   },
   {
-    id: 9,
-    surveyId: 1,
-    parentId: 4,
-    priority: 0,
-    title: {
-      fi: 'This question is not in use as of 16.2.2023',
-      sv: 'This question is not in use as of 16.2.2023',
-      en: 'This question is not in use as of 16.2.2023',
-    },
-    text: {
-      fi: '',
-      sv: '',
-      en: '',
-    },
-    optionData: {
-      type: 'info',
-      options: [],
-    },
-    visibility: {
-      options: ['out-of-use'],
-    },
-  },
-  {
     id: 10,
     surveyId: 1,
     parentId: null,
