@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react'
-import { Box, TextField, Typography, Button } from '@mui/material'
+import MDEditor from '@uiw/react-md-editor'
+import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
@@ -23,8 +25,12 @@ const QuestionItem = ({
 }) => {
   const { t } = useTranslation()
   const mutation = useEditQuestionMutation(question.id)
-  const [questionTitle, setQuestionTitle] = useState(question.title[language])
-  const [questionText, setQuestionText] = useState(question.text[language])
+  const [questionTitle, setQuestionTitle] = useState<string | undefined>(
+    question.title[language]
+  )
+  const [questionText, setQuestionText] = useState<string | undefined>(
+    question.text[language]
+  )
 
   useEffect(() => {
     setQuestionTitle(question.title[language])
@@ -52,25 +58,48 @@ const QuestionItem = ({
   }
 
   return (
-    <Box sx={{ my: 2, mx: 4, width: '50%' }}>
-      <Box sx={{ display: 'flex', mb: 2 }}>
-        <Typography variant="h6">{t('admin:question')}</Typography>
-        <Typography ml={1}>{language}</Typography>
+    <Box
+      sx={{
+        p: 2,
+        my: 4,
+        mx: 4,
+        width: '50%',
+        '&:hover': {
+          border: 1,
+          borderRadius: '8px',
+          borderColor: 'blue',
+        },
+      }}
+    >
+      <Box sx={{ mb: 2 }}>
+        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          {t('admin:questionTitle')}
+          <Typography ml={1}>{language}</Typography>
+        </Typography>
+        <MDEditor
+          data-color-mode="light"
+          height={200}
+          value={questionTitle}
+          onChange={setQuestionTitle}
+        />
       </Box>
-      <TextField
-        fullWidth
-        value={questionTitle}
-        onChange={(event) => setQuestionTitle(event.target.value)}
-      />
 
-      <TextField
-        multiline
-        rows={20}
-        fullWidth
-        value={questionText}
-        onChange={(event) => setQuestionText(event.target.value)}
-      />
-      <Button onClick={handleSave}>{t('admin:save')}</Button>
+      <Box sx={{ mb: 2 }}>
+        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          {t('admin:questionText')}
+          <Typography ml={1}>{language}</Typography>
+        </Typography>
+        <MDEditor
+          data-color-mode="light"
+          height={400}
+          value={questionText}
+          onChange={setQuestionText}
+        />
+      </Box>
+
+      <Button variant="outlined" onClick={handleSave}>
+        {t('admin:save')}
+      </Button>
     </Box>
   )
 }
