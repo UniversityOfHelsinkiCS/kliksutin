@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { z } from 'zod'
 
 export const NewQuestionZod = z.object({
@@ -35,7 +34,7 @@ export const NewQuestionZod = z.object({
     ),
   }),
   visibility: z.object({
-    options: z.array(z.unknown()).optional(),
+    options: z.array(z.string()).optional(),
   }),
 })
 

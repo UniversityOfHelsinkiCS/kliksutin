@@ -48,13 +48,13 @@ questionRouter.put('/:id', async (req: RequestWithUser, res: any) => {
 questionRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { surveyId } = req.params
   const { isAdmin } = req.user
-  const data: Question = req.body
 
   if (!isAdmin) throw new Error('Unauthorized')
 
   const survey = await Survey.findByPk(surveyId)
   if (!survey) throw new Error('Survey not found')
 
+  const data: Question = req.body
   const { options } = data.optionData
 
   // inject the options with id and label of random uuid

@@ -22,7 +22,7 @@ const NewDimensionForm = ({
 }) => {
   const { t } = useTranslation()
   const mutation = useCreateDimensionMutation()
-  const [color, setColor] = useState('#000000')
+  const [color, setColor] = useState('000000')
 
   const {
     handleSubmit,

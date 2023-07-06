@@ -82,12 +82,9 @@ export interface ToolType {
   subtools: Subtool[]
 }
 
-export interface DimensionSelectionData {
-  id: string
-  label: string
-  color: string
-  title: Locales
+export interface DimensionSelectionData extends SingleChoiceType {
   text: Locales
+  color: string
   data: ToolType[]
 }
 
