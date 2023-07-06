@@ -112,9 +112,10 @@ recommendationRouter.post(
         }
       )
 
-      Object.assign(dimensionQuestion.optionData.options, {
-        data: updatedDimensionQuestion,
-      })
+      Object.assign(
+        dimensionQuestion.optionData.options,
+        updatedDimensionQuestion
+      )
 
       dimensionQuestion.changed('optionData', true)
 
@@ -160,9 +161,10 @@ recommendationRouter.delete('/:id', async (req: RequestWithUser, res: any) => {
       }
     )
 
-    Object.assign(dimensionQuestion.optionData.options, {
-      data: updatedDimensionQuestion,
-    })
+    Object.assign(
+      dimensionQuestion.optionData.options,
+      updatedDimensionQuestion
+    )
     dimensionQuestion.changed('optionData', true)
 
     await dimensionQuestion.save()
