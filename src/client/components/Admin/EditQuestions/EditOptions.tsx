@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react'
+import MDEditor from '@uiw/react-md-editor'
 import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
@@ -9,7 +11,6 @@ import {
 } from '../../../hooks/useOptionMutation'
 
 import DeleteDialog from '../DeleteDialog'
-import { ContentTextField, TitleTextField } from '../TextField'
 
 import { ChoiceType, Locales, Question } from '../../../types'
 import { OptionUpdates } from '../../../../server/types'
@@ -29,8 +30,10 @@ const OptionItem = ({
 }) => {
   const { t } = useTranslation()
   const mutation = useEditOptionMutation(question.id, option.id)
-  const [optionTitle, setOptionTitle] = useState(option.title[language])
-  const [optionData, setOptionData] = useState('')
+  const [optionTitle, setOptionTitle] = useState<string | undefined>(
+    option.title[language]
+  )
+  const [optionData, setOptionData] = useState<string | undefined>('')
 
   useEffect(() => {
     if ('data' in option && !('text' in option)) {
@@ -65,24 +68,50 @@ const OptionItem = ({
   }
 
   return (
-    <Box sx={{ my: 2, mx: 4, width: '50%' }}>
-      <Box sx={{ display: 'flex', mb: 2 }}>
-        <Typography variant="h6">
-          {t('admin:option')} {optionNumber}
+    <Box
+      sx={{
+        p: 2,
+        my: 4,
+        mx: 4,
+        width: '50%',
+        '&:hover': {
+          border: 1,
+          borderRadius: '8px',
+          borderColor: 'blue',
+        },
+      }}
+    >
+      <Box sx={{ mb: 2 }}>
+        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          {t('admin:optionTitle', { optionNumber })}
+          <Typography ml={1}>{language}</Typography>
         </Typography>
-        <Typography ml={1}>{language}</Typography>
-      </Box>
-      <TitleTextField
-        value={optionTitle}
-        onChange={(event) => setOptionTitle(event.target.value)}
-      />
-      {optionData && (
-        <ContentTextField
-          value={optionData}
-          onChange={(event) => setOptionData(event.target.value)}
+        <MDEditor
+          data-color-mode="light"
+          height={200}
+          value={optionTitle}
+          onChange={setOptionTitle}
         />
+      </Box>
+
+      {optionData && (
+        <Box sx={{ mb: 2 }}>
+          <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+            {t('admin:optionText', { optionNumber })}
+            <Typography ml={1}>{language}</Typography>
+          </Typography>
+          <MDEditor
+            data-color-mode="light"
+            height={400}
+            value={optionData}
+            onChange={setOptionData}
+          />
+        </Box>
       )}
-      <Button onClick={handleSave}>{t('admin:save')}</Button>
+
+      <Button variant="outlined" onClick={handleSave}>
+        {t('admin:save')}
+      </Button>
     </Box>
   )
 }
