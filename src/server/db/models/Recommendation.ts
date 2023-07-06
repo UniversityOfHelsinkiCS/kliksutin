@@ -7,7 +7,7 @@ import {
 } from 'sequelize'
 
 import { sequelize } from '../connection'
-import { TranslatedText } from '../../types'
+import { Locales } from '../../types'
 
 class Recommendation extends Model<
   InferAttributes<Recommendation>,
@@ -17,13 +17,13 @@ class Recommendation extends Model<
 
   declare surveyId: number
 
-  declare label: String
+  declare label: string
 
-  declare type: String
+  declare type: string
 
-  declare title: TranslatedText
+  declare title: Locales
 
-  declare text: TranslatedText
+  declare text: Locales
 }
 
 Recommendation.init(

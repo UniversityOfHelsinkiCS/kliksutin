@@ -1,11 +1,5 @@
 import { Request } from 'express'
 
-export type Faculty = {
-  fi: string
-  en: string
-  se: string
-}
-
 export type Locales = {
   fi: string
   en: string
@@ -14,7 +8,7 @@ export type Locales = {
 
 export type Programme = {
   key: string
-  name: Faculty
+  name: Locales
   level: string
   companionFaculties: Array<string>
   international: Boolean
@@ -22,14 +16,8 @@ export type Programme = {
 
 export interface OrganisationData {
   code: string
-  name: Faculty
+  name: Locales
   programmes: Array<Programme>
-}
-
-export interface TranslatedText {
-  fi: string
-  sv: string
-  en: string
 }
 
 export interface User {

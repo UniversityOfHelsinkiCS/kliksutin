@@ -9,7 +9,8 @@ import {
 
 import { sequelize } from '../connection'
 import Question from './Question'
-import { TranslatedText } from '../../types'
+
+import { Locales } from '../../types'
 
 class Survey extends Model<
   InferAttributes<Survey>,
@@ -19,9 +20,9 @@ class Survey extends Model<
 
   declare name: string
 
-  declare title: TranslatedText
+  declare title: Locales
 
-  declare text: TranslatedText
+  declare text: Locales
 
   declare Questions: NonAttribute<Question[]>
 }

@@ -22,7 +22,7 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
 
   declare lastLoggedIn: Date
 
-  declare isAdmin: Boolean
+  declare isAdmin: boolean
 }
 
 User.init(
