@@ -113,9 +113,11 @@ const EditQuestion = ({
   question: Question
   onDelete: React.Dispatch<React.SetStateAction<string>>
 }) => {
-  const { t } = useTranslation()
-  const mutation = useDeleteQuestionMutation(question.id)
+  const { t, i18n } = useTranslation()
   const [openAlert, setOpenAlert] = useState(false)
+  const mutation = useDeleteQuestionMutation(question.id)
+
+  const selectedLanguage = i18n.language
 
   const handleDelete = async () => {
     try {
@@ -139,11 +141,15 @@ const EditQuestion = ({
         color="error"
         onClick={() => setOpenAlert(!openAlert)}
       >
-        {t('admin:questionRemove')}
+        {t('admin:questionRemove', {
+          questionName: question.title[selectedLanguage as keyof Locales],
+        })}
       </Button>
       <DeleteDialog
         open={openAlert}
-        title={t('admin:questionRemoveQuestionInfo')}
+        title={t('admin:questionRemoveQuestionInfo', {
+          questionName: question.title[selectedLanguage as keyof Locales],
+        })}
         content={t('admin:questionRemoveQuestionContent')}
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
