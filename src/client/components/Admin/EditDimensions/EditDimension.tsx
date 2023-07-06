@@ -111,9 +111,11 @@ const EditDimension = ({
   dimension: DimensionSelectionData
   onDelete: React.Dispatch<React.SetStateAction<string>>
 }) => {
-  const { t } = useTranslation()
-  const mutation = useDeleteDimensionMutation(dimension.id)
+  const { t, i18n } = useTranslation()
   const [openAlert, setOpenAlert] = useState(false)
+  const mutation = useDeleteDimensionMutation(dimension.id)
+
+  const selectedLanguage = i18n.language
 
   const handleDelete = async () => {
     try {
@@ -137,11 +139,15 @@ const EditDimension = ({
         color="error"
         onClick={() => setOpenAlert(!openAlert)}
       >
-        {t('admin:dimensionRemove')}
+        {t('admin:dimensionRemove', {
+          dimensionName: dimension.title[selectedLanguage as keyof Locales],
+        })}
       </Button>
       <DeleteDialog
         open={openAlert}
-        title={t('admin:dimensionRemoveDimensionInfo')}
+        title={t('admin:dimensionRemoveDimensionInfo', {
+          dimensionName: dimension.title[selectedLanguage as keyof Locales],
+        })}
         content={t('admin:dimensionRemoveDimensionContent')}
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
