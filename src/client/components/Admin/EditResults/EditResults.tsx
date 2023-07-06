@@ -107,7 +107,7 @@ const EditResults = () => {
             <EditResult
               key={result.id}
               dimensionId={dimensionId}
-              selectedLanguage={selectedLanguage}
+              language={selectedLanguage}
               options={options}
               result={result}
             />

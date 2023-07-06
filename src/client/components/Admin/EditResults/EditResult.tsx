@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react'
+import MDEditor from '@uiw/react-md-editor'
 import { Box, Typography, Button } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
@@ -9,32 +11,31 @@ import {
 } from '../../../hooks/useResultMutation'
 
 import DeleteDialog from '../DeleteDialog'
-import { ContentTextField, TitleTextField } from '../TextField'
 
-import { Locales, Result, ChoiceType } from '../../../types'
+import { Locales, Result, ChoiceType, SingleChoiceType } from '../../../types'
 
 const ResultItem = ({
   dimensionId,
   language,
-  options,
+  optionData,
   result,
 }: {
   dimensionId: string
   language: keyof Locales
-  options: ChoiceType
+  optionData: SingleChoiceType | undefined
   result: Result
 }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const mutation = useEditResultMutation(result.id)
 
-  const { isSelected, optionLabel, data } = result
+  const selectedLanguage = i18n.language
+
+  const { isSelected, data } = result
 
   const resultData = data[dimensionId]
 
-  const optionData = options.find(({ label }) => label === optionLabel)
-
-  const [resultIsSelected, setResultIsSelected] = useState('')
-  const [resultContent, setResultContent] = useState('')
+  const [resultIsSelected, setResultIsSelected] = useState<any>('')
+  const [resultContent, setResultContent] = useState<any>('')
 
   useEffect(() => {
     if (!resultData) {
@@ -71,43 +72,74 @@ const ResultItem = ({
   if (!optionData || !resultIsSelected) return null
 
   return (
-    <Box sx={{ my: 2, mx: 4, width: '50%' }}>
-      <Box sx={{ display: 'flex', mb: 2 }}>
-        <Typography variant="h6">
-          {t('admin:option')} {optionData.title[language]}
+    <Box
+      sx={{
+        p: 2,
+        my: 4,
+        mx: 4,
+        width: '50%',
+        '&:hover': {
+          border: 1,
+          borderRadius: '8px',
+          borderColor: 'blue',
+        },
+      }}
+    >
+      <Box sx={{ mb: 2 }}>
+        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          {t('admin:resultTitle')}{' '}
+          {`'${optionData.title[selectedLanguage as keyof Locales]}'`}
+          <Typography ml={1}>{language}</Typography>
         </Typography>
-        <Typography display="inline" ml={1}>
-          {language}
-        </Typography>
+        <MDEditor
+          data-color-mode="light"
+          height={200}
+          value={resultIsSelected}
+          onChange={setResultIsSelected}
+        />
       </Box>
 
-      <TitleTextField
-        value={resultIsSelected}
-        onChange={(event) => setResultIsSelected(event.target.value)}
-      />
-      <ContentTextField
-        value={resultContent}
-        onChange={(event) => setResultContent(event.target.value)}
-      />
-      <Button onClick={handleSave}>{t('admin:save')}</Button>
+      <Box sx={{ mb: 2 }}>
+        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          {t('admin:resultText')}{' '}
+          {`'${optionData.title[selectedLanguage as keyof Locales]}'`}
+          <Typography ml={1}>{language}</Typography>
+        </Typography>
+        <MDEditor
+          data-color-mode="light"
+          height={400}
+          value={resultContent}
+          onChange={setResultContent}
+        />
+      </Box>
+
+      <Button variant="outlined" onClick={handleSave}>
+        {t('admin:save')}
+      </Button>
     </Box>
   )
 }
 
 const EditResult = ({
   dimensionId,
-  selectedLanguage,
+  language,
   options,
   result,
 }: {
   dimensionId: string
-  selectedLanguage: keyof Locales
+  language: keyof Locales
   options: ChoiceType
   result: Result
 }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const mutation = useDeleteResultMutation(result.id)
   const [openAlert, setOpenAlert] = useState(false)
+
+  const selectedLanguage = i18n.language
+
+  const optionData = options.find(({ label }) => label === result.optionLabel)
+
+  if (!optionData) return null
 
   const handleDelete = async () => {
     try {
@@ -130,7 +162,9 @@ const EditResult = ({
         color="error"
         onClick={() => setOpenAlert(!openAlert)}
       >
-        {t('admin:resultRemove')}
+        {t('admin:resultRemove', {
+          optionName: optionData.title[selectedLanguage as keyof Locales],
+        })}
       </Button>
       <DeleteDialog
         open={openAlert}
@@ -143,13 +177,13 @@ const EditResult = ({
         <ResultItem
           dimensionId={dimensionId}
           language={'fi' as keyof Locales}
-          options={options}
+          optionData={optionData}
           result={result}
         />
         <ResultItem
           dimensionId={dimensionId}
-          language={selectedLanguage}
-          options={options}
+          language={language}
+          optionData={optionData}
           result={result}
         />
       </Box>

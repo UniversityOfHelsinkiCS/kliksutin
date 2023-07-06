@@ -99,7 +99,9 @@ const EditDimensions = () => {
                 value={color}
                 setValue={handleColorChange}
               />
-              <Button onClick={handleColorSave}>{t('admin:save')}</Button>
+              <Button variant="outlined" onClick={handleColorSave}>
+                {t('admin:save')}
+              </Button>
             </Box>
             <Typography sx={{ my: 4, pl: 1 }} variant="h4">
               {t('admin:dimensionViewDimensionEdit')}
