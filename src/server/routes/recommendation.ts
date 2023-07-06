@@ -9,7 +9,12 @@ import {
   NewRecommendationZod,
 } from '../../validators/recommendations'
 
-import { RequestWithUser, ToolType } from '../types'
+import {
+  DimensionSelectionData,
+  MultipleChoiceType,
+  RequestWithUser,
+  SingleChoiceType,
+} from '../types'
 
 const recommendationRouter = express.Router()
 
@@ -92,10 +97,16 @@ recommendationRouter.post(
       // Map the dimension question options and concat the options.data array to
       // include the new recommendation if the dimension was selected
       const updatedDimensionQuestion = dimensionQuestion.optionData.options.map(
-        (option) => {
-          if (body.dimensions[option.id] && option.data) {
+        (
+          option: SingleChoiceType | MultipleChoiceType | DimensionSelectionData
+        ) => {
+          if (
+            body.dimensions[option.id] &&
+            'data' in option &&
+            Array.isArray(option.data)
+          ) {
             const newOptionData = [...option.data, newDimensionTool]
-            Object.assign(option.data, newOptionData)
+            return { ...option, data: newOptionData }
           }
           return option
         }
@@ -135,15 +146,20 @@ recommendationRouter.delete('/:id', async (req: RequestWithUser, res: any) => {
 
   // Delete the recommendation association from the dimension question
   // recommendation associations are in the question.optionData.options.data array
-
   if (dimensionQuestion) {
     const updatedDimensionQuestion = dimensionQuestion.optionData.options.map(
-      (option) =>
-        option.data?.filter(
-          (aRecommendation: ToolType) =>
-            aRecommendation.recommendationLabel !== recommendation.label
-        )
+      (option) => {
+        if ('data' in option && Array.isArray(option.data)) {
+          const updatedData = option.data.filter(
+            (aRecommendation) =>
+              aRecommendation.recommendationLabel !== recommendation.label
+          )
+          return { ...option, data: updatedData }
+        }
+        return option
+      }
     )
+
     Object.assign(dimensionQuestion.optionData.options, {
       data: updatedDimensionQuestion,
     })

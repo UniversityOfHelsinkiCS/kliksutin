@@ -8,24 +8,7 @@ import {
 
 import { sequelize } from '../connection'
 
-import { ToolType, Locales } from '../../types'
-
-interface Option {
-  id: string
-  label: string
-  title: Locales
-  text?: Locales
-  data?: ToolType[]
-}
-
-interface OptionData {
-  type: 'singleChoice' | 'multipleChoice' | 'dimensions' | 'text' | 'info'
-  options: Array<Option>
-}
-
-interface Visibility {
-  options?: Array<string>
-}
+import { Visibility, OptionData, Locales } from '../../types'
 
 class Question extends Model<
   InferAttributes<Question>,
