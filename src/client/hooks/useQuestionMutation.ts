@@ -1,15 +1,9 @@
 import { useMutation } from 'react-query'
-import { Locales } from '../types'
 
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 import useSurvey from './useSurvey'
-import { NewQuestion } from '../../validators/questions'
-
-type QuestionsUpdates = {
-  title: Locales
-  text: Locales
-}
+import { NewQuestion, UpdatedQuestion } from '../../validators/questions'
 
 export const useCreateQuestionMutation = () => {
   const { survey } = useSurvey()
@@ -31,7 +25,7 @@ export const useCreateQuestionMutation = () => {
 export const useEditQuestionMutation = (questionId: number) => {
   const { survey } = useSurvey()
 
-  const mutationFn = async (data: QuestionsUpdates) => {
+  const mutationFn = async (data: UpdatedQuestion) => {
     await apiClient.put(`/questions/${questionId}`, data)
   }
 

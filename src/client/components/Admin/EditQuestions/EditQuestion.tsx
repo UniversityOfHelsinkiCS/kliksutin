@@ -10,8 +10,9 @@ import {
 
 import DeleteDialog from '../DeleteDialog'
 
+import { UpdatedQuestion } from '../../../../validators/questions'
+
 import { Locales, Question } from '../../../types'
-import { QuestionsUpdates } from '../../../../server/types'
 
 const QuestionItem = ({
   language,
@@ -31,7 +32,7 @@ const QuestionItem = ({
   }, [language, question])
 
   const handleSave = async () => {
-    const updatedQuestion: QuestionsUpdates = {
+    const updatedQuestion: UpdatedQuestion = {
       title: {
         ...question.title,
         [language]: questionTitle,

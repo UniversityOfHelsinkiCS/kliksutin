@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,7 +12,7 @@ import NewItemDialog from '../NewItemDialog'
 import { DialogSelect } from '../Select'
 import { DialogLocalesField } from '../TextField'
 
-import { NewQuestion, QuestionZod } from '../../../../validators/questions'
+import { NewQuestion, NewQuestionZod } from '../../../../validators/questions'
 
 import { questionTypes } from '../config'
 import { Locales } from '../../../types'
@@ -36,7 +37,7 @@ const NewQuestionForm = ({
     reset,
   } = useForm<NewQuestion>({
     mode: 'onBlur',
-    resolver: zodResolver(QuestionZod),
+    resolver: zodResolver(NewQuestionZod),
     defaultValues: {
       parentId: null,
       title: {
@@ -83,7 +84,8 @@ const NewQuestionForm = ({
 
   const onSubmit = async (data: any) => {
     try {
-      await mutation.mutateAsync(data)
+      // await mutation.mutateAsync(data)
+      console.log(data)
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
       reset()

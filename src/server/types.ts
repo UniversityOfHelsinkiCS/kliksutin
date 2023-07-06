@@ -52,11 +52,6 @@ export interface OptionUpdates {
   data?: Locales
 }
 
-export interface QuestionsUpdates {
-  title: Locales
-  text: Locales
-}
-
 export interface Recommendation {
   id?: number
   surveyId: number

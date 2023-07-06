@@ -4,7 +4,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { Question, Survey } from '../db/models'
 
-import { QuestionsUpdates, RequestWithUser } from '../types'
+import { UpdatedQuestionZod } from '../../validators/questions'
+
+import { RequestWithUser } from '../types'
 
 const questionRouter = express.Router()
 
@@ -30,9 +32,12 @@ questionRouter.put('/:id', async (req: RequestWithUser, res: any) => {
 
   if (!question) throw new Error('Question not found')
 
-  const updates: QuestionsUpdates = req.body
+  const request = UpdatedQuestionZod.safeParse(req.body)
 
-  Object.assign(question, updates)
+  if (!request.success) throw new Error('Validation failed')
+  const body = request.data
+
+  Object.assign(question, body)
 
   await question.save()
 
