@@ -93,7 +93,7 @@
     "resultViewResultsNotFound": "Tähän kysymykseen ei liity yhtään tulosta",
     "resultAddNew": "Lisää uusi tulos",
     "resultRemove": "Poista tulos valinnalle '{{optionName}}'",
-    "resultRemoveResultInfo": "Poista tulos",
+    "resultRemoveResultInfo": "Poista tulos valinnalle '{{optionName}}'",
     "resultRemoveResultContent": "Vahvista, että haluaisit poistaa tämän tuloksen",
     "resultNewResultInfo": "Uusi tulos",
     "resultNewResultContent": "Täällä voit lisätä uuden tuloksen Curreen",

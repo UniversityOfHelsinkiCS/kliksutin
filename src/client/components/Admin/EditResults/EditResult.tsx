@@ -168,7 +168,9 @@ const EditResult = ({
       </Button>
       <DeleteDialog
         open={openAlert}
-        title={t('admin:resultRemoveResultInfo')}
+        title={t('admin:resultRemoveResultInfo', {
+          optionName: optionData.title[selectedLanguage as keyof Locales],
+        })}
         content={t('admin:resultRemoveResultContent')}
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
