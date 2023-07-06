@@ -3,7 +3,7 @@ import { Op } from 'sequelize'
 
 import { v4 as uuidv4 } from 'uuid'
 
-import { Question, Survey } from '../db/models'
+import { Question, Result, Survey } from '../db/models'
 
 import { UpdatedQuestionZod } from '../../validators/questions'
 
@@ -201,6 +201,12 @@ questionRouter.delete(
     question.changed('optionData', true)
 
     await question.save()
+
+    await Result.destroy({
+      where: {
+        optionLabel: option.label,
+      },
+    })
 
     return res.send(question)
   }
