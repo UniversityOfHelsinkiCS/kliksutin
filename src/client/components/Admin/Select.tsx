@@ -138,7 +138,7 @@ export const DialogDimensionSelect = ({
                   <Box>
                     <Tooltip
                       title={choice.text[language as keyof Locales]}
-                      placement="right"
+                      placement="bottom"
                       arrow
                     >
                       <div>

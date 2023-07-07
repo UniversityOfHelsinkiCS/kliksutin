@@ -102,7 +102,7 @@ const NewRecommendationForm = ({
         </DialogSelect>
 
         <DialogDimensionSelect
-          label="Dimension"
+          label={t('admin:selectRecommendationDimensions')}
           control={control}
           dimensionQuestion={dimensionQuestion}
         />

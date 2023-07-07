@@ -82,6 +82,7 @@
     "selectLanguage": "Select language",
     "selectRecommendation": "Select recommendation",
     "selectRecommendationType": "Select recommendation type",
+    "selectRecommendationDimensions": "Select which dimensionsion are associated",
     "selectResultOption": "Select option to add result",
     "selectQuestionType": "Select question type",
     "save": "Save",
