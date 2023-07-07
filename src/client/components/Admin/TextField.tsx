@@ -9,30 +9,6 @@ import {
 import { Box, InputLabel, TextField } from '@mui/material'
 import { Locales } from '../../types'
 
-type OnChange = (
-  event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-) => void
-
-export const TitleTextField = ({
-  value,
-  onChange,
-}: {
-  value: string
-  onChange: OnChange
-}) => <TextField fullWidth multiline value={value} onChange={onChange} />
-
-// ContentTextField causes MUI rendering issue if rows are not defined
-// more information: https://github.com/mui/material-ui/issues/33081
-export const ContentTextField = ({
-  value,
-  onChange,
-}: {
-  value: string
-  onChange: OnChange
-}) => (
-  <TextField multiline rows={20} fullWidth value={value} onChange={onChange} />
-)
-
 // This component is used inside RHF form element
 export const DialogLocalesField = ({
   value,
