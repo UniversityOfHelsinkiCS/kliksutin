@@ -138,7 +138,7 @@
     "recommendationAddNew": "Lägg till ny rekommendation",
     "recommendationRemove": "Ta bort rekommendation '{{recommendationName}}'",
     "recommendationRemoveRecommendationInfo": "Ta bort rekommendation '{{recommendationName}}'",
-    "recommendationRemoveRecommendationContent": "Var god bekräfta att du vill ta bort denna rekommendation",
+    "recommendationRemoveRecommendationContent": "Var god bekräfta att du vill ta bort denna rekommendation.    \n \n Borttagning av denna rekommendation tar även bort alla kopplingar till inlärningsformens fråga.",
     "recommendationNewRecommendationInfo": "Ny rekommendation",
     "recommendationNewRecommendationLabel": "Allmänt namn för rekommendationen, såsom Zoom eller Flinga",
     "recommendationNewRecommendationContent": "Här kan du lägga till en ny rekommendation i Curre",

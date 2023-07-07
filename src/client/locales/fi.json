@@ -138,7 +138,7 @@
     "recommendationAddNew": "Lisää uusi suositus",
     "recommendationRemove": "Poista suositus '{{recommendationName}}'",
     "recommendationRemoveRecommendationInfo": "Poista suositus '{{recommendationName}}'",
-    "recommendationRemoveRecommendationContent": "Vahvista, että haluaisit poistaa tämän suosituksen",
+    "recommendationRemoveRecommendationContent": "Vahvista, että haluaisit poistaa tämän suosituksen.   \n \n Tämän suosituksen poistaminen poistaa myös kaikki yhteydet oppimismuodon kysymykseen.",
     "recommendationNewRecommendationInfo": "Uusi suositus",
     "recommendationNewRecommendationLabel": "Suosituksen yleinen nimi, kuten Zoom tai Flinga",
     "recommendationNewRecommendationContent": "Täällä voit lisätä uuden suosituksen Curreen",
