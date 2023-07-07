@@ -32,7 +32,7 @@ export const DialogLocalesField = ({
       position: 'relative',
       '&:hover': {
         border: 1,
-        borderColor: 'blue',
+        borderColor: '#0288d1',
       },
     }}
   >
@@ -48,22 +48,38 @@ export const DialogLocalesField = ({
     >
       {inputlabel}
     </InputLabel>
-    {['fi', 'sv', 'en'].map((language) => (
-      <Controller
-        key={`${value}.${language}`}
-        name={`${value}.${language}`}
-        control={control}
-        render={({ field: { ref, ...field } }) => (
-          <Box sx={{ mt: 2 }}>
-            <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
-              {inputlabel}
-              <Typography ml={1}>{language}</Typography>
-            </Typography>
-            <MDEditor {...field} data-color-mode="light" height={200} />
-          </Box>
-        )}
-      />
-    ))}
+    {['fi', 'sv', 'en'].map((language) => {
+      const isError = error && error[language as keyof Locales]
+
+      return (
+        <Controller
+          key={`${value}.${language}`}
+          name={`${value}.${language}`}
+          control={control}
+          render={({ field: { ref, ...field } }) => (
+            <Box sx={{ mt: 2 }}>
+              <Typography
+                sx={{
+                  display: 'flex',
+                  mb: 2,
+                  color: isError ? '#d32f2f' : 'inherit',
+                }}
+                variant="h6"
+              >
+                {inputlabel}
+                <Typography ml={1}>{language}</Typography>
+              </Typography>
+              {isError && (
+                <Typography sx={{ my: 2, color: '#d32f2f' }}>
+                  {error[language as keyof Locales]?.message}
+                </Typography>
+              )}
+              <MDEditor {...field} data-color-mode="light" height={200} />
+            </Box>
+          )}
+        />
+      )
+    })}
   </Box>
 )
 
