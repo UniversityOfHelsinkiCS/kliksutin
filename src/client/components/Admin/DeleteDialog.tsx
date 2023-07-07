@@ -5,9 +5,10 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
 } from '@mui/material'
+
+import Markdown from '../Common/Markdown'
 
 const DeleteDialog = ({
   open,
@@ -28,7 +29,7 @@ const DeleteDialog = ({
     <Dialog open={open} onClose={() => setOpen(!open)}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
-        <DialogContentText>{content}</DialogContentText>
+        <Markdown>{content}</Markdown>
       </DialogContent>
       <DialogActions>
         <Button variant="contained" onClick={onSubmit}>
