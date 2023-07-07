@@ -101,7 +101,7 @@
     "optionAddNew": "Lisää uusi valinta",
     "optionRemove": "Poista valinta '{{selectedOption}}'",
     "optionRemoveOptionInfo": "Poista valinta '{{selectedOption}}'",
-    "optionRemoveOptionContent": "Vahvista, että haluaisit poistaa tämän valinnan",
+    "optionRemoveOptionContent": "Vahvista, että haluaisit poistaa tämän valinnan. \n \n Tämä toiminto poistaa myös kaikki valitun vaihtoehdon tulokset.",
     "optionNewOptionInfo": "Uusi valinta",
     "optionNewOptionContent": "Täällä voit lisätä uuden valinnan kysymykselle",
     "optionNewOptionTitleLabel": "Valinnan otsikko",

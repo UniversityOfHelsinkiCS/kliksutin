@@ -101,7 +101,7 @@
     "optionAddNew": "Lägg till nytt alternativ",
     "optionRemove": "Ta bort alternativ '{{selectedOption}}'",
     "optionRemoveOptionInfo": "Ta bort alternativ '{{selectedOption}}'",
-    "optionRemoveOptionContent": "Var god bekräfta att du vill ta bort detta alternativ",
+    "optionRemoveOptionContent": "Var god bekräfta att du vill ta bort detta alternativ. \n \n Denna åtgärd tar också bort alla resultat för det valda alternativet.",
     "optionNewOptionInfo": "Nytt alternativ",
     "optionNewOptionContent": "Här kan du lägga till ett nytt alternativ till frågan",
     "optionNewOptionTitleLabel": "Alternativets rubrik",

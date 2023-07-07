@@ -102,7 +102,7 @@
     "optionAddNew": "Add new option",
     "optionRemove": "Remove option '{{selectedOption}}'",
     "optionRemoveOptionInfo": "Remove option '{{selectedOption}}'",
-    "optionRemoveOptionContent": "Please confirm that you want to remove this option",
+    "optionRemoveOptionContent": "Please confirm that you want to remove this option. \n \n This action will also delete all of the results of the selected option.",
     "optionNewOptionInfo": "New option",
     "optionNewOptionContent": "Here you can add a new option to the question",
     "optionNewOptionTitleLabel": "Option title",
