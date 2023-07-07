@@ -29,7 +29,7 @@ const NewItemDialog = ({
   const { t } = useTranslation()
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog fullWidth maxWidth="lg" open={open} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText sx={{ mb: 4 }}>{content}</DialogContentText>

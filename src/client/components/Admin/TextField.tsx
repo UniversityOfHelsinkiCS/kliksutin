@@ -1,4 +1,5 @@
 import React from 'react'
+import MDEditor from '@uiw/react-md-editor'
 import {
   Control,
   Controller,
@@ -6,7 +7,7 @@ import {
   FieldErrorsImpl,
   Merge,
 } from 'react-hook-form'
-import { Box, InputLabel, TextField } from '@mui/material'
+import { Box, InputLabel, TextField, Typography } from '@mui/material'
 import { Locales } from '../../types'
 
 // This component is used inside RHF form element
@@ -14,6 +15,7 @@ export const DialogLocalesField = ({
   value,
   inputlabel,
   control,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   error,
 }: {
   value: string
@@ -21,27 +23,44 @@ export const DialogLocalesField = ({
   control: Control<any>
   error: Merge<FieldError, FieldErrorsImpl<Locales>> | undefined
 }) => (
-  <Box sx={{ my: 4 }}>
-    <InputLabel>{inputlabel}</InputLabel>
+  <Box
+    sx={{
+      p: 2,
+      my: 4,
+      border: 1,
+      borderColor: 'grey.400',
+      position: 'relative',
+      '&:hover': {
+        border: 1,
+        borderColor: 'blue',
+      },
+    }}
+  >
+    <InputLabel
+      sx={{
+        mt: '-1.75em',
+        px: '0.5em',
+        zIndex: 2,
+        width: 'full',
+        backgroundColor: 'white',
+        position: 'absolute',
+      }}
+    >
+      {inputlabel}
+    </InputLabel>
     {['fi', 'sv', 'en'].map((language) => (
       <Controller
         key={`${value}.${language}`}
         name={`${value}.${language}`}
         control={control}
-        render={({ field }) => (
-          <TextField
-            {...field}
-            error={error && language in error}
-            helperText={
-              error && language in error
-                ? error[language as keyof Locales]?.message
-                : ''
-            }
-            sx={{ mt: 2 }}
-            multiline
-            label={language.toUpperCase()}
-            fullWidth
-          />
+        render={({ field: { ref, ...field } }) => (
+          <Box sx={{ mt: 2 }}>
+            <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+              {inputlabel}
+              <Typography ml={1}>{language}</Typography>
+            </Typography>
+            <MDEditor {...field} data-color-mode="light" height={200} />
+          </Box>
         )}
       />
     ))}
