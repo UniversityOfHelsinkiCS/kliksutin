@@ -66,8 +66,7 @@ const QuestionItem = ({
         width: '50%',
         '&:hover': {
           border: 1,
-          borderRadius: '8px',
-          borderColor: 'blue',
+          borderColor: '#0288d1',
         },
       }}
     >
