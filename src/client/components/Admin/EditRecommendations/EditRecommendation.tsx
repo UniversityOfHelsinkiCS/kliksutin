@@ -104,17 +104,17 @@ const RecommendationItem = ({
 }
 
 const EditRecommendation = ({
-  selectedLanguage,
+  language,
   recommendation,
   onDelete,
 }: {
-  selectedLanguage: keyof Locales
+  language: keyof Locales
   recommendation: Recommendation
   onDelete: React.Dispatch<React.SetStateAction<string>>
 }) => {
   const { t } = useTranslation()
-  const mutation = useDeleteRecommendationMutation(recommendation.id)
   const [openAlert, setOpenAlert] = useState(false)
+  const mutation = useDeleteRecommendationMutation(recommendation.id)
 
   const handleDelete = async () => {
     try {
@@ -138,11 +138,15 @@ const EditRecommendation = ({
         color="error"
         onClick={() => setOpenAlert(!openAlert)}
       >
-        {t('admin:recommendationRemove')}
+        {t('admin:recommendationRemove', {
+          recommendationName: recommendation.label,
+        })}
       </Button>
       <DeleteDialog
         open={openAlert}
-        title={t('admin:recommendationRemoveRecommendationInfo')}
+        title={t('admin:recommendationRemoveRecommendationInfo', {
+          recommendationName: recommendation.label,
+        })}
         content={t('admin:recommendationRemoveRecommendationContent')}
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
@@ -153,7 +157,7 @@ const EditRecommendation = ({
           recommendation={recommendation}
         />
         <RecommendationItem
-          language={selectedLanguage}
+          language={language}
           recommendation={recommendation}
         />
       </Box>
