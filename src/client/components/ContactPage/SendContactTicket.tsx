@@ -73,7 +73,12 @@ const SendContactTicket = () => {
     `
 
     sendEmail(targets, text, subject)
-      .then(() => setIsSent(true))
+      .then(() => {
+        setIsSent(true)
+        enqueueSnackbar(t('contact:sendSuccess', { email: ticketEmail }), {
+          variant: 'success',
+        })
+      })
       .catch(() => {
         enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
       })
