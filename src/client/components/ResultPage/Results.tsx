@@ -1,14 +1,15 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Container, Stack, Typography } from '@mui/material'
+import { Box, Button, Container, Typography } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
 
+import RenderResults from './RenderResults'
+import SurveyButtons from '../InteractiveForm/SurveyButtons'
 import SendSummaryEmail from './SendSummaryEmail'
 import ProceedToContact from './ProceedToContact'
 import Openai from '../Openai/Openai'
-import ResetForm from '../Common/ResetForm'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
 
 import { useResultData } from '../../contexts/ResultDataContext'
@@ -16,9 +17,8 @@ import { useResultData } from '../../contexts/ResultDataContext'
 import { getResultArray } from '../../util/results'
 import { getSelectedDimensionsFromResultData } from '../../util/dimensions'
 import styles from '../../styles'
-import RenderResults from './RenderResults'
 
-const { cardStyles, resultStyles, formStyles } = styles
+const { cardStyles, resultStyles } = styles
 
 const Results = ({
   setShowResults,
@@ -80,15 +80,11 @@ const Results = ({
 
           <SendSummaryEmail />
 
-          <Box sx={formStyles.stackBoxWrapper}>
-            <Stack sx={formStyles.stack} direction="row">
-              <Button data-cy="back-to-selections" onClick={onNavigateBack}>
-                {'<'} {t('results:backToMessage')}
-              </Button>
-
-              <ResetForm />
-            </Stack>
-          </Box>
+          <SurveyButtons>
+            <Button data-cy="back-to-selections" onClick={onNavigateBack}>
+              {'<'} {t('results:backToMessage')}
+            </Button>
+          </SurveyButtons>
         </Box>
       </Box>
 

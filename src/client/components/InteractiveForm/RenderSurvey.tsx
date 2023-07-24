@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Stack } from '@mui/material'
+import { Box, Button } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
 
 import SelectCourse from './SelectCourse'
 import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
-import ResetForm from '../Common/ResetForm'
 
 import { getSelectedDimensionsFromWatch } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'
 
 import { InputProps } from '../../types'
 import styles from '../../styles'
+import SurveyButtons from './SurveyButtons'
 
 const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
   const location = useLocation()
@@ -86,19 +86,16 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
               {t('openForm')}
             </Button>
           ) : (
-            <Box sx={formStyles.stackBoxWrapper}>
-              <Stack sx={formStyles.stack} direction="row">
-                <Button
-                  sx={formStyles.stackButton}
-                  type="submit"
-                  data-cy="submit-form-button"
-                  variant="contained"
-                >
-                  {isSubmitted ? t('updateSubmit') : t('submit')}
-                </Button>
-                <ResetForm />
-              </Stack>
-            </Box>
+            <SurveyButtons>
+              <Button
+                sx={formStyles.stackButton}
+                type="submit"
+                data-cy="submit-form-button"
+                variant="contained"
+              >
+                {isSubmitted ? t('updateSubmit') : t('submit')}
+              </Button>
+            </SurveyButtons>
           )}
         </Box>
       </Box>
