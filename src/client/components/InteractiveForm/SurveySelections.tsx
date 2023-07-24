@@ -7,7 +7,7 @@ import SelectFaculty from './SelectFaculty'
 
 import { InputProps } from '../../types'
 
-const SurveySelections = ({ control }: InputProps) => {
+const RenderSelections = ({ control }: InputProps) => {
   const location = useLocation()
 
   return (
@@ -18,4 +18,4 @@ const SurveySelections = ({ control }: InputProps) => {
   )
 }
 
-export default SurveySelections
+export default RenderSelections

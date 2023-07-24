@@ -6,7 +6,7 @@ import useSurvey from '../../hooks/useSurvey'
 
 import RenderQuestions from './RenderQuestions'
 import SurveyButtons from './SurveyButtons'
-import SurveySelections from './SurveySelections'
+import RenderSelections from './SurveySelections'
 
 import { getSelectedDimensionsFromWatch } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'
@@ -44,7 +44,7 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
 
   return (
     <Box sx={cardStyles.outerBox}>
-      <SurveySelections control={control} />
+      <RenderSelections control={control} />
 
       <Box sx={cardStyles.card}>
         {questions.map((question) => (
