@@ -1,3 +1,4 @@
+import { DimensionSelectionData, Locales, Question } from '@backend/types'
 import {
   Control,
   UseFormWatch,
@@ -8,18 +9,6 @@ import {
 export interface Faculty {
   code: string
   name: Locales
-}
-
-export interface User {
-  id: string
-  username: string
-  firstName?: string
-  lastName?: string
-  email?: string
-  language?: string
-  isAdmin: boolean
-  iamGroups: string[]
-  newUser: boolean
 }
 
 export interface InputProps {
@@ -44,71 +33,6 @@ export type SurveySave = 'curre_local_save'
 export interface PersistForm {
   value: FormValues
   sessionStorageKey: SurveySave
-}
-
-export type Locales = {
-  en: string
-  fi: string
-  sv: string
-}
-
-export interface InfoType {
-  id: string
-  title: Locales
-}
-
-export type SingleChoiceType = {
-  id: string
-  label: string
-  title: Locales
-}
-
-export interface MultipleChoiceType extends SingleChoiceType {
-  data: Locales
-}
-
-export type ChoiceType =
-  | SingleChoiceType[]
-  | MultipleChoiceType[]
-  | DimensionSelectionData[]
-
-export type PossibleChoiceTypes =
-  | 'singleChoice'
-  | 'multipleChoice'
-  | 'dimensions'
-  | 'info'
-
-export interface OptionData {
-  type: PossibleChoiceTypes
-  options: ChoiceType
-}
-
-/** List of question selection id's that controls the visibility of a tool */
-export type Visibility = {
-  options?: string[]
-}
-
-/** Represents a subtool of a tool. Visibility controls when to render a subtool based on a question selection id eg. "isCourseMooc" */
-export interface Subtool {
-  label: string
-  title: Locales
-  visibility: Visibility
-}
-
-/** Represents a tool that has a common label eg. "moodle" and alse subtools that link to this type of tool. Subtools may be empty and they are rendered based on the visibility field */
-export interface ToolType {
-  recommendationLabel: string
-  subtools: Subtool[]
-}
-
-/** Represents the dimension data that has the dimensions common name as id, label and texts are for visible rendering as Locales and data includes tools eg. "moodle" and their respective subtools */
-export interface DimensionSelectionData {
-  id: string
-  label: string
-  color: string
-  title: Locales
-  text: Locales
-  data?: ToolType[]
 }
 
 /** Represents the recommendation data that has rawRecommendationdata and Recommendationdata by tool names eg. "moodle" into one bigger entity that has all the subtools, dimensions and texts needed */
@@ -149,31 +73,6 @@ export interface Survey {
   title: Locales
   text: Locales
   Questions: Question[]
-  createdAt?: Date
-  updatedAt?: Date
-}
-
-export interface Question {
-  id: number
-  surveyId: number
-  parentId: number
-  priority: number
-  title: Locales
-  text: Locales
-  optionData: OptionData
-  visibility: Visibility
-  createdAt?: Date
-  updatedAt?: Date
-}
-
-export interface Result {
-  id: number
-  surveyId: number
-  optionLabel: string
-  isSelected: Locales
-  data: {
-    [key: string]: Locales
-  }
   createdAt?: Date
   updatedAt?: Date
 }

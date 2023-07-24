@@ -29,6 +29,7 @@ export interface User {
   language: string
   isAdmin: boolean
   iamGroups: string[]
+  newUser?: boolean
 }
 
 export interface RequestWithUser extends Request {
@@ -57,6 +58,11 @@ export interface Result {
   data: Record<string, Locales>
 }
 
+export interface InfoType {
+  id: string
+  title: Locales
+}
+
 export type SingleChoiceType = {
   id: string
   label: string
@@ -67,25 +73,32 @@ export interface MultipleChoiceType extends SingleChoiceType {
   data: Locales
 }
 
+/** List of question selection id's that controls the visibility of a tool */
 export type Visibility = {
   options?: string[]
 }
 
+/** Represents a subtool of a tool. Visibility controls when to render a subtool based on a question selection id eg. "isCourseMooc" */
 export interface Subtool {
   label: string
   title: Locales
   visibility: Visibility
 }
 
+/** Represents a tool that has a common label eg. "moodle" and alse subtools that link to this type of tool. Subtools may be empty and they are rendered based on the visibility field */
 export interface ToolType {
   recommendationLabel: string
   subtools: Subtool[]
 }
 
-export interface DimensionSelectionData extends SingleChoiceType {
-  text: Locales
+/** Represents the dimension data that has the dimensions common name as id, label and texts are for visible rendering as Locales and data includes tools eg. "moodle" and their respective subtools */
+export interface DimensionSelectionData {
+  id: string
+  label: string
   color: string
-  data: ToolType[]
+  title: Locales
+  text: Locales
+  data?: ToolType[]
 }
 
 export type ChoiceType =
@@ -93,8 +106,14 @@ export type ChoiceType =
   | MultipleChoiceType[]
   | DimensionSelectionData[]
 
+export type PossibleChoiceTypes =
+  | 'singleChoice'
+  | 'multipleChoice'
+  | 'dimensions'
+  | 'info'
+
 export interface OptionData {
-  type: string
+  type: PossibleChoiceTypes
   options: ChoiceType
 }
 

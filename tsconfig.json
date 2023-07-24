@@ -12,7 +12,9 @@
     "outDir": "dist",
     "strict": true,
     "target": "es2022",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": { "@backend/*": ["src/server/*"] }
   },
   "include": ["src/**/*", "types/@unfuck-utf8-headers-middleware.d..ts"],
   "ts-node": {
