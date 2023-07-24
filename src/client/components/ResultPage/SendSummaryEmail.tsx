@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 import {
-  Alert,
   Box,
   Button,
   FormControlLabel,
@@ -27,7 +26,7 @@ const SendSummaryEmail = () => {
   const [notes, setNotes] = useState('')
   const [isSent, setIsSent] = useState(false)
 
-  const { cardStyles, common } = styles
+  const { cardStyles } = styles
 
   if (isLoading || !user?.email || location.pathname === '/public') return null
 
@@ -58,7 +57,12 @@ const SendSummaryEmail = () => {
       `
 
     sendEmail(targets, text, subject)
-      .then(() => setIsSent(true))
+      .then(() => {
+        setIsSent(true)
+        enqueueSnackbar(t('results:sendSuccess'), {
+          variant: 'success',
+        })
+      })
       .catch(() => {
         enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
       })
@@ -70,47 +74,37 @@ const SendSummaryEmail = () => {
         {t('results:proceedEmailInfoText')}
       </Typography>
       <Box sx={cardStyles.content}>
-        {!isSent ? (
+        <Box>
           <Box>
-            <Box>
-              <FormControlLabel
-                control={<Switch onChange={() => setShowNotes(!showNotes)} />}
-                label={t('results:showSummaryNotes')}
-              />
-            </Box>
-            {showNotes && (
-              <TextField
-                sx={cardStyles.inputField}
-                required
-                size="small"
-                value={notes}
-                fullWidth
-                multiline
-                rows={10}
-                placeholder={t('results:summaryMailPlaceholder') ?? ''}
-                onChange={({ target }) => setNotes(target.value)}
-              />
-            )}
-            <Button
-              data-cy="summary-email-button"
-              sx={{ mt: 2 }}
-              variant="contained"
-              color="primary"
-              disabled={!user?.email}
-              onClick={onSubmit}
-            >
-              {t('results:sendSummaryMail')}
-            </Button>
+            <FormControlLabel
+              control={<Switch onChange={() => setShowNotes(!showNotes)} />}
+              label={t('results:showSummaryNotes')}
+            />
           </Box>
-        ) : (
-          <Alert
-            data-cy="summary-email-success-alert"
-            sx={common.alertStyle}
-            severity="success"
+          {showNotes && (
+            <TextField
+              sx={cardStyles.inputField}
+              required
+              size="small"
+              value={notes}
+              fullWidth
+              multiline
+              rows={10}
+              placeholder={t('results:summaryMailPlaceholder') ?? ''}
+              onChange={({ target }) => setNotes(target.value)}
+            />
+          )}
+          <Button
+            data-cy="summary-email-button"
+            sx={{ mt: 2 }}
+            variant="contained"
+            color="primary"
+            disabled={!user?.email || isSent}
+            onClick={onSubmit}
           >
-            {t('results:sendSuccess')}
-          </Alert>
-        )}
+            {t('results:sendSummaryMail')}
+          </Button>
+        </Box>
       </Box>
     </Box>
   )
