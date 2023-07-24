@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
@@ -17,6 +17,7 @@ import { getSelectedDimensions } from '../../util/dimensions'
 
 import styles from '../../styles'
 import { InputProps, Locales } from '../../types'
+import useResultRefCallback from '../../hooks/useResultRefCallback'
 
 const { cardStyles, resultStyles, formStyles } = styles
 
@@ -26,10 +27,10 @@ const Results = ({
   setShowResults,
 }: InputProps & { setShowResults: any }) => {
   const location = useLocation()
-  const resultRef = useRef(null)
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
+  const refCallback = useResultRefCallback()
 
   const { language } = i18n
 
@@ -77,11 +78,6 @@ const Results = ({
       ?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  sessionStorage.setItem(
-    'curre-session-resultHTML',
-    (resultRef.current as any)?.innerHTML
-  )
-
   return (
     <Box>
       <Box sx={cardStyles.outerBox}>
@@ -101,7 +97,7 @@ const Results = ({
             />
           </Container>
 
-          <Box ref={resultRef}>
+          <Box ref={refCallback}>
             {resultArray.map((resultLabels) =>
               resultLabels.map((resultLabel) => (
                 <ResultElement
