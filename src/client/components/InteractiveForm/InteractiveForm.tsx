@@ -83,7 +83,7 @@ const InteractiveForm = () => {
           </form>
 
           {resultData && showResults && (
-            <Results setShowResults={setShowResults} watch={watch} />
+            <Results setShowResults={setShowResults} />
           )}
         </Grid>
         <Grid item sm={12} md={5} xl={4}>

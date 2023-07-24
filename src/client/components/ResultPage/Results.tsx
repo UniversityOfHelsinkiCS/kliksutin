@@ -24,10 +24,7 @@ import { InputProps } from '../../types'
 
 const { cardStyles, resultStyles, formStyles } = styles
 
-const Results = ({
-  watch,
-  setShowResults,
-}: InputProps & { setShowResults: any }) => {
+const Results = ({ setShowResults }: InputProps & { setShowResults: any }) => {
   const location = useLocation()
   const { t, i18n } = useTranslation()
   const { survey } = useSurvey()
@@ -37,7 +34,7 @@ const Results = ({
   const { resultData } = useResultData()
   const { language } = i18n
 
-  if (!survey || !watch || !resultsFetched || !resultData) return null
+  if (!survey || !resultsFetched || !resultData) return null
 
   const dimensionSelections = getSelectedDimensionsFromResultData(
     survey,
