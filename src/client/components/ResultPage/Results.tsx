@@ -46,7 +46,7 @@ const Results = ({ setShowResults }: InputProps & { setShowResults: any }) => {
       (index) => resultData[aChoiceId][index]
     )
 
-  const multipleChoiceObjectsToArrays = (): string[][] => {
+  const resultObjectsToArrays = (): string[][] => {
     const entries = Object.entries(resultData)
     return entries.map(([key, value]) => {
       if (typeof value === 'object') {
@@ -66,11 +66,13 @@ const Results = ({ setShowResults }: InputProps & { setShowResults: any }) => {
     })
   }
 
-  const dimensions = multipleChoiceObjectsToArrays()[0]
+  const resultArrays = resultObjectsToArrays()
 
-  const resultArray = multipleChoiceObjectsToArrays()
-    .slice(1)
-    .filter(([x]) => x !== '')
+  // Dimensions are the first of the selections
+  const dimensions = resultArrays[0]
+
+  // Rest of the selections and empty values filtered
+  const resultArray = resultArrays.slice(1).filter(([x]) => x !== '')
 
   const onNavigateBack = () => {
     sessionStorage.setItem('curre-session-location', 'form')
