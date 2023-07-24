@@ -4,6 +4,14 @@ import { DimensionSelectionData } from '@backend/types'
 
 import { FormValues, Survey } from '../types'
 
+const getDimensionQuestion = (survey: Survey) => {
+  const dimensionQuestion = survey.Questions.find(
+    (question) => question.optionData.type === 'dimensions'
+  )
+
+  return dimensionQuestion
+}
+
 export const getDimensions = (
   survey: Survey | undefined
 ): DimensionSelectionData[] => {
@@ -16,19 +24,15 @@ export const getDimensions = (
   return dimensionQuestion?.optionData.options as DimensionSelectionData[]
 }
 
-export const getSelectedDimensions = (
+export const getSelectedDimensionsFromWatch = (
   survey: Survey,
   watch: UseFormWatch<FieldValues>
 ) => {
-  const dimensionQuestion = survey.Questions.find(
-    (question) => question.optionData.type === 'dimensions'
-  )
+  const dimensionQuestion = getDimensionQuestion(survey)
 
   if (!dimensionQuestion) return null
 
-  const dimensionSelections: { [x: string]: boolean } = watch(
-    dimensionQuestion.id.toString()
-  )
+  const dimensionSelections = watch(dimensionQuestion.id.toString())
 
   if (!dimensionSelections) return null
 
@@ -43,9 +47,7 @@ export const getSelectedDimensionsFromResultData = (
   survey: Survey,
   resultData: FormValues
 ) => {
-  const dimensionQuestion = survey.Questions.find(
-    (question) => question.optionData.type === 'dimensions'
-  )
+  const dimensionQuestion = getDimensionQuestion(survey)
 
   if (!dimensionQuestion) return null
 

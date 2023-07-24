@@ -10,7 +10,7 @@ import SelectFaculty from './SelectFaculty'
 import RenderQuestions from './RenderQuestions'
 import ResetForm from '../Common/ResetForm'
 
-import { getSelectedDimensions } from '../../util/dimensions'
+import { getSelectedDimensionsFromWatch } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'
 
 import { InputProps } from '../../types'
@@ -35,7 +35,7 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
   if (isLoading) return null
 
   const questions = survey.Questions
-  const dimensions = getSelectedDimensions(survey, watch)
+  const dimensions = getSelectedDimensionsFromWatch(survey, watch)
 
   const isAllowedToProceed = () => {
     const isFacultySelected = watch('faculty') !== ''

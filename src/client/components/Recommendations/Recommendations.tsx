@@ -17,7 +17,7 @@ import NonSelectedTools from './NonSelectedTools'
 import AdministativeTools from './AdministrativeTools'
 import ShowMore from '../Common/ShowMore'
 
-import { getSelectedDimensions } from '../../util/dimensions'
+import { getSelectedDimensionsFromWatch } from '../../util/dimensions'
 import {
   sortRecommendations,
   getRecommendationsData,
@@ -53,7 +53,7 @@ const Recommendations = ({ watch }: InputProps) => {
   const rawRecommendationData: Recommendation[] =
     teachingRecommendations.sort(sortRecommendations)
 
-  const dimensionSelections = getSelectedDimensions(survey, watch)
+  const dimensionSelections = getSelectedDimensionsFromWatch(survey, watch)
 
   if (!dimensionSelections) return null
 

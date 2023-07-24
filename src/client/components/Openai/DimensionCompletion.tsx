@@ -20,7 +20,7 @@ import useSurvey from '../../hooks/useSurvey'
 import CompletionResultBox from './CompletionResultBox'
 import LoadingProgress from '../Common/LoadingProgress'
 
-import { getSelectedDimensions } from '../../util/dimensions'
+import { getSelectedDimensionsFromWatch } from '../../util/dimensions'
 
 import styles from '../../styles'
 
@@ -84,7 +84,7 @@ const DimensionCompletion = ({
 
   if (isLoading || !survey) return null
 
-  const dimensions = getSelectedDimensions(survey, watch)
+  const dimensions = getSelectedDimensionsFromWatch(survey, watch)
 
   if (!dimensions) return null
 
