@@ -6,7 +6,7 @@ import { Box, Button, Container, Typography } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
 import RenderResults from './RenderResults'
-import SurveyButtons from '../InteractiveForm/SurveyButtons'
+import SurveyButtons from '../Common/SurveyButtons'
 import SendSummaryEmail from './SendSummaryEmail'
 import ProceedToContact from './ProceedToContact'
 import Openai from '../Openai/Openai'

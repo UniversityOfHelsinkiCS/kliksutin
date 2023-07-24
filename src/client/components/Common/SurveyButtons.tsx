@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Stack } from '@mui/material'
 
-import ResetForm from '../Common/ResetForm'
+import ResetForm from './ResetForm'
 
 import { InputProps } from '../../types'
 import styles from '../../styles'

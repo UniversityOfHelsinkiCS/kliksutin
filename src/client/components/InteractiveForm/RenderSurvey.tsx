@@ -5,8 +5,8 @@ import { Box, Button } from '@mui/material'
 import useSurvey from '../../hooks/useSurvey'
 
 import RenderQuestions from './RenderQuestions'
-import SurveyButtons from './SurveyButtons'
-import RenderSelections from './SurveySelections'
+import SurveyButtons from '../Common/SurveyButtons'
+import RenderSelections from './RenderSelections'
 
 import { getSelectedDimensionsFromWatch } from '../../util/dimensions'
 import { FORM_DATA_KEY } from '../../../config'

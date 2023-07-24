@@ -16,8 +16,8 @@ import { Locales } from '@backend/types'
 import useFaculties from '../../hooks/useFaculties'
 import useUserFaculties from '../../hooks/useUserFaculties'
 
-import Markdown from '../Common/Markdown'
-import ShowMore from '../Common/ShowMore'
+import Markdown from './Markdown'
+import ShowMore from './ShowMore'
 
 import { extraOrganisations, organisationInfos } from '../../util/organisations'
 

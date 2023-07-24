@@ -2,8 +2,8 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { Box } from '@mui/material'
 
-import SelectCourse from './SelectCourse'
-import SelectFaculty from './SelectFaculty'
+import SelectCourse from '../Common/SelectCourse'
+import SelectFaculty from '../Common/SelectFaculty'
 
 import { InputProps } from '../../types'
 

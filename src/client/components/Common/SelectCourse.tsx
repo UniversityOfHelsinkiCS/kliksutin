@@ -7,7 +7,7 @@ import { Locales } from '@backend/types'
 
 import useUserCourses from '../../hooks/useUserCourses'
 
-import Markdown from '../Common/Markdown'
+import Markdown from './Markdown'
 
 import otherCourse from '../../util/courses'
 
