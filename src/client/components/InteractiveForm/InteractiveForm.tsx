@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
 
@@ -23,9 +23,6 @@ const InteractiveForm = () => {
 
   const sessionLocation = sessionStorage.getItem('curre-session-location')
   const [showResults, setShowResults] = useState(sessionLocation === 'results')
-  const [resultData, setResultData] = useState<FormValues | null>(null)
-
-  const { formStyles } = styles
 
   const getSavedInstance = useCallback(() => {
     const savedData = sessionStorage.getItem(FORM_DATA_KEY)
@@ -36,9 +33,9 @@ const InteractiveForm = () => {
 
   const savedFormData = getSavedInstance()
 
-  useEffect(() => {
-    if (savedFormData !== '{}') setResultData(savedFormData)
-  }, [])
+  const [resultData, setResultData] = useState<FormValues | null>(savedFormData)
+
+  const { formStyles } = styles
 
   const {
     formState: { isSubmitted },

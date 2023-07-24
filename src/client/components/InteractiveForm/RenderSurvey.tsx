@@ -32,6 +32,9 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
 
   const { language } = i18n
 
+  if (isLoading) return null
+
+  const questions = survey.Questions
   const dimensions = getSelectedDimensions(survey, watch)
 
   const isAllowedToProceed = () => {
@@ -41,10 +44,6 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
 
     return isFacultySelected && dimensions.length > 0
   }
-
-  if (isLoading) return null
-
-  const questions = survey.Questions
 
   return (
     <Box sx={cardStyles.outerBox}>
