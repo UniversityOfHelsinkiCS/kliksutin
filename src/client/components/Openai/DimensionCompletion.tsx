@@ -12,13 +12,17 @@ import {
 import { UseFormWatch, FieldValues } from 'react-hook-form'
 import { enqueueSnackbar } from 'notistack'
 
+import { DimensionSelectionData, Locales, ToolType } from '@backend/types'
+
 import useOpenaiCompletion from '../../hooks/useOpenaiCompletion'
 import useSurvey from '../../hooks/useSurvey'
+
 import CompletionResultBox from './CompletionResultBox'
 import LoadingProgress from '../Common/LoadingProgress'
+
 import { getSelectedDimensions } from '../../util/dimensions'
+
 import styles from '../../styles'
-import { DimensionSelectionData, Locales, ToolType } from '../../types'
 
 const { cardStyles } = styles
 

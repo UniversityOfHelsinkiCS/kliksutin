@@ -1,5 +1,8 @@
 import { UseFormWatch, FieldValues } from 'react-hook-form'
-import { Survey, DimensionSelectionData } from '../types'
+
+import { DimensionSelectionData } from '@backend/types'
+
+import { Survey } from '../types'
 
 export const getDimensions = (
   survey: Survey | undefined

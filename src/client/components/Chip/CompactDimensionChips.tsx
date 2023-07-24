@@ -1,9 +1,10 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import styles from '../../styles'
-import { DimensionSelectionData } from '../../types'
+import { DimensionSelectionData } from '@backend/types'
 
 import DimensionChip from './DimensionChip'
+
+import styles from '../../styles'
 
 const { recommendationStyles } = styles
 

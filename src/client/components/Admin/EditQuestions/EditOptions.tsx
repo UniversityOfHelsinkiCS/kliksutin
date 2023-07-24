@@ -5,6 +5,8 @@ import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
+import { ChoiceType, Locales, Question } from '@backend/types'
+
 import {
   useDeleteOptionMutation,
   useEditOptionMutation,
@@ -12,7 +14,6 @@ import {
 
 import DeleteDialog from '../DeleteDialog'
 
-import { ChoiceType, Locales, Question } from '../../../types'
 import { OptionUpdates } from '../../../../server/types'
 
 type Option<A> = A extends readonly (infer T)[] ? T : never

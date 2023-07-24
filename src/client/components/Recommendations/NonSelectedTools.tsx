@@ -1,9 +1,14 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+
+import { Locales } from '@backend/types'
+
 import Markdown from '../Common/Markdown'
+
 import styles from '../../styles'
-import { Locales, SelectedTools } from '../../types'
+
+import { SelectedTools } from '../../types'
 
 const NonSelectedTools = ({ mergedRecommendationData }: SelectedTools) => {
   const { i18n } = useTranslation()

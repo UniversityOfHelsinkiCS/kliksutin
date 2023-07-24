@@ -1,7 +1,8 @@
 import { useQuery } from 'react-query'
 
+import { Question } from '@backend/types'
+
 import apiClient from '../util/apiClient'
-import { Question } from '../types'
 
 const useQuestions = (surveyId: number | undefined) => {
   const queryKey = ['questions', surveyId]

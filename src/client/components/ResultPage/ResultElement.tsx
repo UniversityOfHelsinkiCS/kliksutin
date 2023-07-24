@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Container } from '@mui/material'
 
-import Markdown from '../Common/Markdown'
+import { DimensionSelectionData, Locales, Result } from '@backend/types'
 
-import { DimensionSelectionData, Locales, Result } from '../../types'
+import Markdown from '../Common/Markdown'
 
 const ResultElement = ({
   language,

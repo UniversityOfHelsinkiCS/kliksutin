@@ -1,15 +1,20 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
+
 import useSurvey from '../../hooks/useSurvey'
 import usePersistForm from '../../hooks/usePersistForm'
 import useSaveEntryMutation from '../../hooks/useSaveEntryMutation'
+
 import HelloBanner from './HelloBanner'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import Results from '../ResultPage/Results'
+
 import { FormValues } from '../../types'
+
 import { FORM_DATA_KEY } from '../../../config'
+
 import styles from '../../styles'
 
 const InteractiveForm = () => {

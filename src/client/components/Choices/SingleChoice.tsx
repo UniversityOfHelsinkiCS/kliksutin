@@ -2,7 +2,9 @@ import React from 'react'
 import { Controller } from 'react-hook-form'
 import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material'
 
-import { InputProps, Locales, SingleChoiceType } from '../../types'
+import { Locales, SingleChoiceType } from '@backend/types'
+
+import { InputProps } from '../../types'
 
 const SingleChoice = ({
   control,

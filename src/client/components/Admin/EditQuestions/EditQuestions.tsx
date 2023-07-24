@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
+import { Question, Locales } from '@backend/types'
+
 import useSurvey from '../../../hooks/useSurvey'
 import useQuestions from '../../../hooks/useQuestions'
 
@@ -9,7 +11,6 @@ import { LanguageSelect, QuestionSelect } from '../Select'
 import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
 
-import { Question, Locales } from '../../../types'
 import NewQuestionForm from './NewQuestionForm'
 import NewOptionForm from './NewOptionForm'
 

@@ -1,11 +1,12 @@
 import { useMutation } from 'react-query'
 
+import { Locales } from '@backend/types'
+
 import useSurvey from './useSurvey'
 
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 
-import { Locales } from '../types'
 import { NewRecommendation } from '../../validators/recommendations'
 
 type RecommendationUpdates = {

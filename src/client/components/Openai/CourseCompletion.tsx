@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, Typography, TextField, Stack } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { UseFormWatch, FieldValues } from 'react-hook-form'
+import { Box, Button, Typography, TextField, Stack } from '@mui/material'
+
+import { Locales } from '@backend/types'
 
 import useOpenaiCompletion from '../../hooks/useOpenaiCompletion'
 import useUserCourses from '../../hooks/useUserCourses'
+
 import CompletionResultBox from './CompletionResultBox'
 import LoadingProgress from '../Common/LoadingProgress'
+
 import styles from '../../styles'
-import { Locales } from '../../types'
 
 const { cardStyles, formStyles } = styles
 
@@ -57,7 +60,7 @@ const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
       selectedCourse?.name[i18n.language as keyof Locales] || ''
 
     setName(courseName)
-  }, [userCourses])
+  }, [courseId, i18n.language, isLoading, userCourses])
 
   if (isLoading) return null
 

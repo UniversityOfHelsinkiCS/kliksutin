@@ -1,22 +1,28 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import Select from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import { Box, Typography } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from '@mui/material'
+
+import { Locales } from '@backend/types'
 
 import useFaculties from '../../hooks/useFaculties'
 import useUserFaculties from '../../hooks/useUserFaculties'
+
 import Markdown from '../Common/Markdown'
 import ShowMore from '../Common/ShowMore'
 
 import { extraOrganisations, organisationInfos } from '../../util/organisations'
 
 import styles from '../../styles'
-import { InputProps, Faculty, Locales } from '../../types'
+import { InputProps, Faculty } from '../../types'
 
 const sortFaculties = (faculties: Faculty[], language: keyof Locales) => {
   const sortedFaculties = faculties.sort((a, b) => {

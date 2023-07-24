@@ -22,9 +22,10 @@ import {
 } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
+import useLoggedInUser from '../../hooks/useLoggedInUser'
+
 import hyLogo from '../../assets/hy_logo.svg'
 import styles from '../../styles'
-import useLoggedInUser from '../../hooks/useLoggedInUser'
 import { FULL_URL } from '../../../config'
 
 const NavBar = () => {

@@ -5,14 +5,14 @@ import { Box, Typography, Button } from '@mui/material'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 
+import { Locales, Result, ChoiceType, SingleChoiceType } from '@backend/types'
+
 import {
   useDeleteResultMutation,
   useEditResultMutation,
 } from '../../../hooks/useResultMutation'
 
 import DeleteDialog from '../DeleteDialog'
-
-import { Locales, Result, ChoiceType, SingleChoiceType } from '../../../types'
 
 const ResultItem = ({
   dimensionId,

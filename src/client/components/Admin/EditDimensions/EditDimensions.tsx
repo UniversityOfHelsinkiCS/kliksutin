@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 
+import { Locales } from '@backend/types'
+
 import useSurvey from '../../../hooks/useSurvey'
 import { useEditDimensionMutation } from '../../../hooks/useDimensionMutation'
 
@@ -11,8 +13,6 @@ import NewDimensionForm from './NewDimensionForm'
 import { ColorSelect, DimensionSelect, LanguageSelect } from '../Select'
 
 import { getDimensions } from '../../../util/dimensions'
-
-import { Locales } from '../../../types'
 
 const EditDimensions = () => {
   const { t } = useTranslation()

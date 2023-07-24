@@ -4,13 +4,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
+import { Question } from '@backend/types'
+
 import { useCreateOptionMutation } from '../../../hooks/useOptionMutation'
 
 import NewItemDialog from '../NewItemDialog'
 import { DialogLocalesField } from '../TextField'
 
 import { NewOption, OptionZod } from '../../../../validators/options'
-import { Question } from '../../../types'
 
 const NewOptionForm = ({
   open,

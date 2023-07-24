@@ -1,9 +1,6 @@
-import {
-  Recommendation,
-  DimensionSelectionData,
-  RecommendationData,
-  ToolType,
-} from '../types'
+import { DimensionSelectionData, ToolType } from '@backend/types'
+
+import { Recommendation, RecommendationData } from '../types'
 
 /* eslint-disable no-nested-ternary */
 export const sortRecommendations = (a: Recommendation, b: Recommendation) =>

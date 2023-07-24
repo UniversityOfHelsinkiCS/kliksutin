@@ -1,8 +1,13 @@
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import { Box, FormControl, Checkbox, FormControlLabel } from '@mui/material'
+
+import { MultipleChoiceType, Locales } from '@backend/types'
+
 import ShowMore from '../Common/ShowMore'
-import { MultipleChoiceType, InputProps, Locales } from '../../types'
+
+import { InputProps } from '../../types'
+
 import styles from '../../styles'
 
 const MultiChoice = ({ control, question, children, language }: InputProps) => {

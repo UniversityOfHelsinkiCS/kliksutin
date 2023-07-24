@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { MenuItem } from '@mui/material'
 
+import { Locales } from '@backend/types'
+
 import useSurvey from '../../../hooks/useSurvey'
 import { useCreateRecommendationMutation } from '../../../hooks/useRecommendationMutation'
 
@@ -18,7 +20,6 @@ import {
   NewRecommendationZod,
 } from '../../../../validators/recommendations'
 
-import { Locales } from '../../../types'
 import { recommendationTypes } from '../config'
 
 const NewRecommendationForm = ({

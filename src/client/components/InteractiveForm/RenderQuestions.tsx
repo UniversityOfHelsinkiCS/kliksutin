@@ -1,12 +1,16 @@
 import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
-import { InputProps, Locales, PossibleChoiceTypes, Question } from '../../types'
-import styles from '../../styles'
+import { Locales, PossibleChoiceTypes, Question } from '@backend/types'
+
 import MultiChoice from '../Choices/MultiChoice'
 import SingleChoice from '../Choices/SingleChoice'
 import DimensionSelect from '../Choices/DimensionSelect'
 import Markdown from '../Common/Markdown'
 import ShowMore from '../Common/ShowMore'
+
+import { InputProps } from '../../types'
+
+import styles from '../../styles'
 
 const { cardStyles } = styles
 

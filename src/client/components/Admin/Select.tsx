@@ -18,16 +18,13 @@ import {
   Tooltip,
 } from '@mui/material'
 
+import { DimensionSelectionData, Locales, Question } from '@backend/types'
+
 import DimensionChip from '../Chip/DimensionChip'
 
 import { languages } from './config'
 
-import {
-  DimensionSelectionData,
-  Locales,
-  Question,
-  Recommendation,
-} from '../../types'
+import { Recommendation } from '../../types'
 
 type HandleChange = (event: SelectChangeEvent) => void
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Chip, Tooltip } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { DimensionSelectionData, Locales } from '../../types'
+import { DimensionSelectionData, Locales } from '@backend/types'
 
 const DimensionChip: React.FC<{
   choice: DimensionSelectionData

@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 
 import apiClient from '../util/apiClient'
+
 import { Faculty } from '../types'
 
 const useUserFaculties = () => {

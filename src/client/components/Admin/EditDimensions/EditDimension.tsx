@@ -5,14 +5,14 @@ import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
+import { DimensionSelectionData, Locales } from '@backend/types'
+
 import {
   useDeleteDimensionMutation,
   useEditDimensionMutation,
 } from '../../../hooks/useDimensionMutation'
 
 import DeleteDialog from '../DeleteDialog'
-
-import { DimensionSelectionData, Locales } from '../../../types'
 
 const DimensionItem = ({
   language,

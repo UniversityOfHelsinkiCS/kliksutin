@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
+import { Locales } from '@backend/types'
+
 import useSurvey from '../../../hooks/useSurvey'
 import useResults from '../../../hooks/useResults'
 
@@ -12,7 +14,6 @@ import NewResultForm from './NewResultForm'
 
 import { sortDimensions, allSelection } from '../config'
 import { getDimensions } from '../../../util/dimensions'
-import { Locales } from '../../../types'
 
 const EditResults = () => {
   const { survey } = useSurvey()

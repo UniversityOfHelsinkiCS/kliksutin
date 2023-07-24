@@ -5,6 +5,8 @@ import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 
+import { Locales } from '@backend/types'
+
 import {
   useDeleteRecommendationMutation,
   useEditRecommendationMutation,
@@ -12,7 +14,7 @@ import {
 
 import DeleteDialog from '../DeleteDialog'
 
-import { Locales, Recommendation } from '../../../types'
+import { Recommendation } from '../../../types'
 import { UpdatedRecommendation } from '../../../../validators/recommendations'
 
 const RecommendationItem = ({

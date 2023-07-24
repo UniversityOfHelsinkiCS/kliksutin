@@ -3,8 +3,11 @@ import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 
+import { Locales } from '@backend/types'
+
 import useSurvey from '../../hooks/useSurvey'
 import useResults from '../../hooks/useResults'
+import useResultRefCallback from '../../hooks/useResultRefCallback'
 
 import ResultElement from './ResultElement'
 import SendSummaryEmail from './SendSummaryEmail'
@@ -16,8 +19,7 @@ import CompactDimensionChips from '../Chip/CompactDimensionChips'
 import { getSelectedDimensions } from '../../util/dimensions'
 
 import styles from '../../styles'
-import { InputProps, Locales } from '../../types'
-import useResultRefCallback from '../../hooks/useResultRefCallback'
+import { InputProps } from '../../types'
 
 const { cardStyles, resultStyles, formStyles } = styles
 

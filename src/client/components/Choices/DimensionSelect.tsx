@@ -3,9 +3,11 @@ import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Box, FormControl, Checkbox, Tooltip } from '@mui/material'
 
+import { DimensionSelectionData, Locales } from '@backend/types'
+
 import DimensionChip from '../Chip/DimensionChip'
 
-import { InputProps, DimensionSelectionData, Locales } from '../../types'
+import { InputProps } from '../../types'
 
 import styles from '../../styles'
 

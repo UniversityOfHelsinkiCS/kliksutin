@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { Box, Button, MenuItem } from '@mui/material'
 
+import { Locales } from '@backend/types'
+
 import { useCreateQuestionMutation } from '../../../hooks/useQuestionMutation'
 
 import NewItemDialog from '../NewItemDialog'
@@ -15,7 +17,6 @@ import { DialogLocalesField } from '../TextField'
 import { NewQuestion, NewQuestionZod } from '../../../../validators/questions'
 
 import { questionTypes } from '../config'
-import { Locales } from '../../../types'
 
 const NewQuestionForm = ({
   open,

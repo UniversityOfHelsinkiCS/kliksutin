@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
+import { Locales } from '@backend/types'
+
 import useSurvey from '../../../hooks/useSurvey'
 import useRecommendations from '../../../hooks/useRecommendations'
 
 import EditRecommendation from './EditRecommendation'
 import NewRecommendationForm from './NewRecommendationForm'
 import { LanguageSelect, RecommendationSelect } from '../Select'
-
-import { Locales } from '../../../types'
 
 const EditRecommendations = () => {
   const { t } = useTranslation()

@@ -6,6 +6,14 @@ import { enqueueSnackbar } from 'notistack'
 
 import { MenuItem } from '@mui/material'
 
+import {
+  DimensionSelectionData,
+  Locales,
+  ChoiceType,
+  MultipleChoiceType,
+  SingleChoiceType,
+} from '@backend/types'
+
 import { useCreateResultMutation } from '../../../hooks/useResultMutation'
 
 import { DialogSelect } from '../Select'
@@ -16,14 +24,6 @@ import {
   NewResultFormType,
   NewResultFormZod,
 } from '../../../../validators/results'
-
-import {
-  DimensionSelectionData,
-  Locales,
-  ChoiceType,
-  MultipleChoiceType,
-  SingleChoiceType,
-} from '../../../types'
 
 const NewResultForm = ({
   open,

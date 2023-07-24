@@ -2,12 +2,15 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box } from '@mui/material'
-import styles from '../../styles'
+import { Locales } from '@backend/types'
+
+import useSurvey from '../../hooks/useSurvey'
+import useLoggedInUser from '../../hooks/useLoggedInUser'
+
 import ShowMore from '../Common/ShowMore'
 import Markdown from '../Common/Markdown'
-import { Locales } from '../../types'
-import useLoggedInUser from '../../hooks/useLoggedInUser'
-import useSurvey from '../../hooks/useSurvey'
+
+import styles from '../../styles'
 
 const HelloBanner = () => {
   const { i18n } = useTranslation()

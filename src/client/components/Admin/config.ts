@@ -1,4 +1,4 @@
-import { DimensionSelectionData, InfoType, Locales } from '../../types'
+import { DimensionSelectionData, InfoType, Locales } from '@backend/types'
 
 export const recommendationTypes: InfoType[] = [
   {

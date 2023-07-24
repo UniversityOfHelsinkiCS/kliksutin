@@ -2,10 +2,13 @@ import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
+import { Locales } from '@backend/types'
+
 import Markdown from '../Common/Markdown'
 
 import styles from '../../styles'
-import { Locales, Recommendation } from '../../types'
+
+import { Recommendation } from '../../types'
 
 const AdministativeTools = ({
   administrativeRecommendations,
