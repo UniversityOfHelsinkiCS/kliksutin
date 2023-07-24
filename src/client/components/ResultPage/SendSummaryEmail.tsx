@@ -12,12 +12,12 @@ import {
   Typography,
 } from '@mui/material'
 
-import apiClient from '../../util/apiClient'
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
 import summaryEmailHTML from '../../templates/summaryEmail'
 
 import styles from '../../styles'
+import sendEmail from '../../util/mailing'
 
 const SendSummaryEmail = () => {
   const { t } = useTranslation()
@@ -29,23 +29,13 @@ const SendSummaryEmail = () => {
 
   const { cardStyles, common } = styles
 
+  if (isLoading || !user?.email || location.pathname === '/public') return null
+
   const resultHTML = sessionStorage.getItem('curre-session-resultHTML')
 
-  const sendResultsToEmail = async (
-    targets: (string | undefined)[],
-    text: string
-  ) => {
-    if (!targets) return
-
-    apiClient.post('/summary', {
-      targets,
-      text,
-      subject: t('results:summaryEmailSubject'),
-    })
-  }
-
   const onSubmit = () => {
-    const targets = [user?.email]
+    const subject = t('results:summaryEmailSubject')
+    const targets = [user.email]
     const text = `\
       ${summaryEmailHTML} \
       ${
@@ -67,14 +57,12 @@ const SendSummaryEmail = () => {
       ${resultHTML} \
       `
 
-    sendResultsToEmail(targets, text)
+    sendEmail(targets, text, subject)
       .then(() => setIsSent(true))
       .catch(() => {
         enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
       })
   }
-
-  if (isLoading || !user?.email || location.pathname === '/public') return null
 
   return (
     <Box sx={cardStyles.subHeading}>

@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 import { Alert, Box, Button, Stack, TextField, Typography } from '@mui/material'
+
 import useLoggedInUser from '../../hooks/useLoggedInUser'
-import apiClient from '../../util/apiClient'
+
 import styles from '../../styles'
+import sendEmail from '../../util/mailing'
 
 const ticketEmail = 'opetusteknologia@helsinki.fi'
 
@@ -20,14 +20,6 @@ const SendContactTicket = () => {
   const { formStyles, common } = styles
 
   const resultHTML = sessionStorage.getItem('curre-session-resultHTML')
-
-  const sendResultsToEmail = async (targets: string[], text: string) => {
-    apiClient.post('/summary', {
-      targets,
-      text,
-      subject: 'Curre contact ticket',
-    })
-  }
 
   const {
     register,
@@ -41,8 +33,8 @@ const SendContactTicket = () => {
   })
 
   const onSubmit = async ({ content }: { content: string }) => {
+    const subject = 'Curre contact ticket'
     const targets = [ticketEmail]
-
     const text = ` \
     <div> \
       <h3> \
@@ -78,10 +70,9 @@ const SendContactTicket = () => {
     </div> \
     `
 
-    await sendResultsToEmail(targets, text)
+    sendEmail(targets, text, subject)
       .then(() => setIsSent(true))
-      .catch((err) => {
-        console.log(err)
+      .catch(() => {
         enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
       })
   }
