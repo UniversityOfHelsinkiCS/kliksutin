@@ -39,9 +39,11 @@ export interface FormValues {
   faculty: string
 }
 
+export type SurveySave = 'curre_local_save'
+
 export interface PersistForm {
   value: FormValues
-  sessionStorageKey: string
+  sessionStorageKey: SurveySave
 }
 
 export type Locales = {

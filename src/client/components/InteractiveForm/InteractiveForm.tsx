@@ -40,7 +40,6 @@ const InteractiveForm = () => {
     handleSubmit,
     control,
     watch,
-    getValues,
   } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
@@ -61,7 +60,7 @@ const InteractiveForm = () => {
       ?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  usePersistForm({ value: getValues(), sessionStorageKey: FORM_DATA_KEY })
+  usePersistForm({ value: watch(), sessionStorageKey: FORM_DATA_KEY })
 
   if (isLoading) return null
 
