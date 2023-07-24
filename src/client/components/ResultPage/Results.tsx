@@ -16,15 +16,15 @@ import Openai from '../Openai/Openai'
 import ResetForm from '../Common/ResetForm'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
 
-import { getSelectedDimensions } from '../../util/dimensions'
+import { useResultData } from '../../contexts/ResultDataContext'
 
+import { getSelectedDimensionsFromResultData } from '../../util/dimensions'
 import styles from '../../styles'
 import { InputProps } from '../../types'
 
 const { cardStyles, resultStyles, formStyles } = styles
 
 const Results = ({
-  formResultData,
   watch,
   setShowResults,
 }: InputProps & { setShowResults: any }) => {
@@ -34,19 +34,23 @@ const Results = ({
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
   const refCallback = useResultRefCallback()
 
+  const { resultData } = useResultData()
   const { language } = i18n
 
-  if (!survey || !watch || !resultsFetched || !formResultData) return null
+  if (!survey || !watch || !resultsFetched || !resultData) return null
 
-  const dimensionSelections = getSelectedDimensions(survey, watch)
+  const dimensionSelections = getSelectedDimensionsFromResultData(
+    survey,
+    resultData
+  )
 
   const objectToArray = (aChoiceId: number): string[] =>
-    Object.keys(formResultData[aChoiceId]).filter(
-      (index) => formResultData[aChoiceId][index]
+    Object.keys(resultData[aChoiceId]).filter(
+      (index) => resultData[aChoiceId][index]
     )
 
   const multipleChoiceObjectsToArrays = (): string[][] => {
-    const entries = Object.entries(formResultData)
+    const entries = Object.entries(resultData)
     return entries.map(([key, value]) => {
       if (typeof value === 'object') {
         const selections = objectToArray(Number(key))

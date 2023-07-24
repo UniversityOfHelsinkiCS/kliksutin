@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Box, Grid } from '@mui/material'
 
@@ -11,11 +11,11 @@ import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import Results from '../ResultPage/Results'
 
-import { FormValues } from '../../types'
-
-import { FORM_DATA_KEY } from '../../../config'
+import { useResultData } from '../../contexts/ResultDataContext'
 
 import styles from '../../styles'
+import { FormValues } from '../../types'
+import { FORM_DATA_KEY } from '../../../config'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
@@ -24,16 +24,7 @@ const InteractiveForm = () => {
   const sessionLocation = sessionStorage.getItem('curre-session-location')
   const [showResults, setShowResults] = useState(sessionLocation === 'results')
 
-  const getSavedInstance = useCallback(() => {
-    const savedData = sessionStorage.getItem(FORM_DATA_KEY)
-    if (savedData) return JSON.parse(savedData)
-
-    return {}
-  }, [])
-
-  const savedFormData = getSavedInstance()
-
-  const [resultData, setResultData] = useState<FormValues | null>(savedFormData)
+  const { resultData, setResultData } = useResultData()
 
   const { formStyles } = styles
 
@@ -45,7 +36,7 @@ const InteractiveForm = () => {
   } = useForm({
     mode: 'onBlur',
     shouldUnregister: true,
-    defaultValues: savedFormData,
+    defaultValues: resultData,
   })
 
   const onSubmit = (data: FormValues) => {
@@ -92,11 +83,7 @@ const InteractiveForm = () => {
           </form>
 
           {resultData && showResults && (
-            <Results
-              formResultData={resultData}
-              setShowResults={setShowResults}
-              watch={watch}
-            />
+            <Results setShowResults={setShowResults} watch={watch} />
           )}
         </Grid>
         <Grid item sm={12} md={5} xl={4}>

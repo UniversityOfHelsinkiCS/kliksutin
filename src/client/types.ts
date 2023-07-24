@@ -1,10 +1,5 @@
 import { DimensionSelectionData, Locales, Question } from '@backend/types'
-import {
-  Control,
-  UseFormWatch,
-  FieldValues,
-  UseFormRegister,
-} from 'react-hook-form'
+import { Control, UseFormWatch, UseFormRegister } from 'react-hook-form'
 
 export interface Faculty {
   code: string
@@ -12,15 +7,14 @@ export interface Faculty {
 }
 
 export interface InputProps {
-  control?: Control<FieldValues>
-  watch?: UseFormWatch<FieldValues>
-  register?: UseFormRegister<FieldValues>
+  control?: Control<any>
+  watch?: UseFormWatch<any>
+  register?: UseFormRegister<any>
   question?: Question
   children?: React.ReactNode
   language?: string
   questions?: Question[]
   isSubmitted?: boolean
-  formResultData?: FormValues
 }
 
 export interface FormValues {

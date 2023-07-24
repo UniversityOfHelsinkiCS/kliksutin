@@ -7,6 +7,7 @@ import { useTheme } from './theme'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar/NavBar'
 import Router from './Router'
+import { ResultDataProvider } from './contexts/ResultDataContext'
 
 const App = () => {
   const theme = useTheme()
@@ -29,7 +30,9 @@ const App = () => {
             alignItems="center"
             minHeight="100vh"
           >
-            <Router />
+            <ResultDataProvider>
+              <Router />
+            </ResultDataProvider>
           </Box>
           <Footer />
         </Box>
