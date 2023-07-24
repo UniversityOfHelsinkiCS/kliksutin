@@ -77,7 +77,12 @@ const SendSummaryEmail = () => {
         <Box>
           <Box>
             <FormControlLabel
-              control={<Switch onChange={() => setShowNotes(!showNotes)} />}
+              control={
+                <Switch
+                  onChange={() => setShowNotes(!showNotes)}
+                  disabled={isSent}
+                />
+              }
               label={t('results:showSummaryNotes')}
             />
           </Box>
