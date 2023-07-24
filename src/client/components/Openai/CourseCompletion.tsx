@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
-import { UseFormWatch, FieldValues } from 'react-hook-form'
 import { Box, Button, Typography, TextField, Stack } from '@mui/material'
 
 import { Locales } from '@backend/types'
@@ -13,6 +12,7 @@ import CompletionResultBox from './CompletionResultBox'
 import LoadingProgress from '../Common/LoadingProgress'
 
 import styles from '../../styles'
+import { useResultData } from '../../contexts/ResultDataContext'
 
 const { cardStyles, formStyles } = styles
 
@@ -43,14 +43,15 @@ const CompletionResult = ({
   return <CompletionResultBox result={completion} />
 }
 
-const CourseCompletion = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
+const CourseCompletion = () => {
   const { t, i18n } = useTranslation()
   const [name, setName] = useState('')
   const [showCompletion, setShowCompletion] = useState(false)
 
   const { userCourses, isLoading } = useUserCourses()
+  const { resultData } = useResultData()
 
-  const courseId = watch('course')
+  const courseId = resultData?.course || ''
 
   useEffect(() => {
     if (isLoading || !userCourses) return

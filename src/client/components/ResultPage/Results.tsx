@@ -139,7 +139,7 @@ const Results = ({
 
       {location.pathname !== '/public' && (
         <Box>
-          <Openai watch={watch} />
+          <Openai />
           <ProceedToContact />
         </Box>
       )}

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Container, Typography } from '@mui/material'
-import { UseFormWatch, FieldValues } from 'react-hook-form'
 
 import styles from '../../styles'
 import InfoBox from './InfoBox'
@@ -10,7 +9,7 @@ import DimensionCompletion from './DimensionCompletion'
 
 const { cardStyles, resultStyles } = styles
 
-const Openai = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
+const Openai = () => {
   const { t } = useTranslation()
 
   return (
@@ -23,8 +22,8 @@ const Openai = ({ watch }: { watch: UseFormWatch<FieldValues> }) => {
           <InfoBox />
         </Container>
         <Box>
-          <CourseCompletion watch={watch} />
-          <DimensionCompletion watch={watch} />
+          <CourseCompletion />
+          <DimensionCompletion />
         </Box>
       </Box>
     </Box>

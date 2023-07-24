@@ -9,7 +9,6 @@ import {
   Select,
   MenuItem,
 } from '@mui/material'
-import { UseFormWatch, FieldValues } from 'react-hook-form'
 import { enqueueSnackbar } from 'notistack'
 
 import { DimensionSelectionData, Locales, ToolType } from '@backend/types'
@@ -20,7 +19,9 @@ import useSurvey from '../../hooks/useSurvey'
 import CompletionResultBox from './CompletionResultBox'
 import LoadingProgress from '../Common/LoadingProgress'
 
-import { getSelectedDimensionsFromWatch } from '../../util/dimensions'
+import { useResultData } from '../../contexts/ResultDataContext'
+
+import { getSelectedDimensionsFromResultData } from '../../util/dimensions'
 
 import styles from '../../styles'
 
@@ -70,21 +71,18 @@ const CompletionResult = ({
   return <CompletionResultBox result={completion} />
 }
 
-const DimensionCompletion = ({
-  watch,
-}: {
-  watch: UseFormWatch<FieldValues>
-}) => {
+const DimensionCompletion = () => {
   const { t, i18n } = useTranslation()
   const { survey, isLoading } = useSurvey()
   const [dimensionId, setdimensionId] = useState('')
   const [showCompletion, setShowCompletion] = useState(false)
 
+  const { resultData } = useResultData()
   const { language } = i18n
 
   if (isLoading || !survey) return null
 
-  const dimensions = getSelectedDimensionsFromWatch(survey, watch)
+  const dimensions = getSelectedDimensionsFromResultData(survey, resultData)
 
   if (!dimensions) return null
 
