@@ -1,11 +1,14 @@
 import express from 'express'
-import { Op } from 'sequelize'
 
 import { v4 as uuidv4 } from 'uuid'
 
 import { Question, Result, Survey } from '../db/models'
 
-import { UpdatedQuestionZod } from '../../validators/questions'
+import { nextAvailablePriority } from '../util/question'
+import {
+  UpdatedQuestionLocationZod,
+  UpdatedQuestionZod,
+} from '../../validators/questions'
 
 import { RequestWithUser } from '../types'
 
@@ -21,28 +24,6 @@ questionRouter.get('/:surveyId', async (req, res) => {
   })
 
   return res.send(questions)
-})
-
-questionRouter.put('/:id', async (req: RequestWithUser, res: any) => {
-  const { id } = req.params
-  const { isAdmin } = req.user
-
-  if (!isAdmin) throw new Error('Unauthorized')
-
-  const question = await Question.findByPk(id)
-
-  if (!question) throw new Error('Question not found')
-
-  const request = UpdatedQuestionZod.safeParse(req.body)
-
-  if (!request.success) throw new Error('Validation failed')
-  const body = request.data
-
-  Object.assign(question, body)
-
-  await question.save()
-
-  return res.send(question)
 })
 
 questionRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
@@ -69,30 +50,6 @@ questionRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
 
   Object.assign(data.optionData.options, injectedOptions)
 
-  const nextAvailablePriority = async (parentId: number | null) => {
-    let result = 1
-
-    if (!parentId) {
-      const priority: number = await Question.max('priority', {
-        where: {
-          parentId: {
-            [Op.is]: null,
-          },
-        },
-      })
-
-      result += priority
-    } else {
-      const priority: number = await Question.max('priority', {
-        where: { parentId },
-      })
-
-      result += priority
-    }
-
-    return result
-  }
-
   const question = await Question.create({
     ...data,
     surveyId: Number(surveyId),
@@ -100,6 +57,50 @@ questionRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   })
 
   return res.status(201).send(question)
+})
+
+questionRouter.put('/:id', async (req: RequestWithUser, res: any) => {
+  const { id } = req.params
+  const { isAdmin } = req.user
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const question = await Question.findByPk(id)
+
+  if (!question) throw new Error('Question not found')
+
+  const request = UpdatedQuestionZod.safeParse(req.body)
+
+  if (!request.success) throw new Error('Validation failed')
+  const body = request.data
+
+  Object.assign(question, body)
+
+  await question.save()
+
+  return res.send(question)
+})
+
+questionRouter.put('/:id/location', async (req: RequestWithUser, res: any) => {
+  const { id } = req.params
+  const { isAdmin } = req.user
+
+  if (!isAdmin) throw new Error('Unauthorized')
+
+  const question = await Question.findByPk(id)
+
+  if (!question) throw new Error('Question not found')
+
+  const request = UpdatedQuestionLocationZod.safeParse(req.body)
+
+  if (!request.success) throw new Error('Validation failed')
+  const body = request.data
+
+  Object.assign(question, body)
+
+  await question.save()
+
+  return res.send(question)
 })
 
 questionRouter.delete('/:id', async (req: RequestWithUser, res: any) => {

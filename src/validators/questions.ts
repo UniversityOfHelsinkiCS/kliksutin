@@ -54,3 +54,10 @@ export const UpdatedQuestionZod = z.object({
 })
 
 export type UpdatedQuestion = z.infer<typeof UpdatedQuestionZod>
+
+export const UpdatedQuestionLocationZod = z.object({
+  parentId: z.number().nullable(),
+  priority: z.number().min(0),
+})
+
+export type UpdatedQuestionLocation = z.infer<typeof UpdatedQuestionLocationZod>
