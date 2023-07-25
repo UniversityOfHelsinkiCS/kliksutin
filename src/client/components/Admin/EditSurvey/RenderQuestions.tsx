@@ -48,6 +48,7 @@ const RenderQuestions = ({
           {question.title[language]}
         </InputLabel>
         <Box>
+          <Typography variant="body2">ID: {question.id}</Typography>
           <Typography variant="body2">
             Järjestysnumero: {question.priority}
           </Typography>

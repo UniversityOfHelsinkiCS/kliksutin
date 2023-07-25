@@ -1,4 +1,5 @@
 import express from 'express'
+import { Op } from 'sequelize'
 
 import { v4 as uuidv4 } from 'uuid'
 
@@ -96,9 +97,38 @@ questionRouter.put('/:id/location', async (req: RequestWithUser, res: any) => {
   if (!request.success) throw new Error('Validation failed')
   const body = request.data
 
-  Object.assign(question, body)
+  if (!body.parentId) {
+    if (body.priority === question.priority && !body.parentId)
+      throw new Error('Question position not modified')
 
-  await question.save()
+    if (body.priority < question.priority) {
+      await Question.increment('priority', {
+        by: 1,
+        where: {
+          parentId: {
+            [Op.is]: null,
+          },
+          priority: {
+            [Op.between]: [body.priority, question.priority],
+          },
+        },
+      })
+    } else {
+      await Question.decrement('priority', {
+        by: 1,
+        where: {
+          parentId: {
+            [Op.is]: null,
+          },
+          priority: {
+            [Op.between]: [question.priority, body.priority],
+          },
+        },
+      })
+    }
+
+    question.update({ priority: body.priority })
+  }
 
   return res.send(question)
 })
