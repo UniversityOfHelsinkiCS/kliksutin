@@ -98,7 +98,7 @@ questionRouter.put('/:id/location', async (req: RequestWithUser, res: any) => {
   const body = request.data
 
   if (!body.parentId || body.parentId === question.parentId) {
-    if (body.priority === question.priority && !body.parentId)
+    if (body.priority === question.priority)
       throw new Error('Question position not modified')
 
     if (body.priority < question.priority) {
