@@ -51,17 +51,28 @@ const CourseCompletion = () => {
   const { userCourses, isLoading } = useUserCourses()
   const { resultData } = useResultData()
 
+  const { language } = i18n
+
   const courseId = resultData?.course || ''
 
   useEffect(() => {
     if (isLoading || !userCourses) return
 
     const selectedCourse = userCourses.find(({ id }) => id === courseId)
+
+    if (!selectedCourse) {
+      setName('')
+      return
+    }
+
     const courseName =
-      selectedCourse?.name[i18n.language as keyof Locales] || ''
+      selectedCourse.name[language as keyof Locales].length >
+      selectedCourse.nameSpecifier[language as keyof Locales].length
+        ? selectedCourse?.name[language as keyof Locales]
+        : selectedCourse?.nameSpecifier[language as keyof Locales]
 
     setName(courseName)
-  }, [courseId, i18n.language, isLoading, userCourses])
+  }, [courseId, isLoading, language, userCourses])
 
   if (isLoading) return null
 
