@@ -97,7 +97,7 @@ questionRouter.put('/:id/location', async (req: RequestWithUser, res: any) => {
   if (!request.success) throw new Error('Validation failed')
   const body = request.data
 
-  if (!body.parentId) {
+  if (!body.parentId || body.parentId === question.parentId) {
     if (body.priority === question.priority && !body.parentId)
       throw new Error('Question position not modified')
 
@@ -105,9 +105,7 @@ questionRouter.put('/:id/location', async (req: RequestWithUser, res: any) => {
       await Question.increment('priority', {
         by: 1,
         where: {
-          parentId: {
-            [Op.is]: null,
-          },
+          parentId: body.parentId,
           priority: {
             [Op.between]: [body.priority, question.priority],
           },
@@ -117,9 +115,7 @@ questionRouter.put('/:id/location', async (req: RequestWithUser, res: any) => {
       await Question.decrement('priority', {
         by: 1,
         where: {
-          parentId: {
-            [Op.is]: null,
-          },
+          parentId: body.parentId,
           priority: {
             [Op.between]: [question.priority, body.priority],
           },
