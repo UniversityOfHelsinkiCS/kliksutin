@@ -8,12 +8,14 @@ import EditDimensions from './components/Admin/EditDimensions/EditDimensions'
 import EditQuestions from './components/Admin/EditQuestions/EditQuestions'
 import EditResults from './components/Admin/EditResults/EditResults'
 import EditRecommendations from './components/Admin/EditRecommendations/EditRecommendations'
+import EditSurvey from './components/Admin/EditSurvey/EditSurvey'
 
 const Router = () => (
   <Routes>
     <Route path="/*" element={<InteractiveForm />} />
     <Route path="/public" element={<InteractiveForm />} />
     <Route path="/admin" element={<Admin />}>
+      <Route index element={<EditSurvey />} />
       <Route path="edit-dimensions" element={<EditDimensions />} />
       <Route path="edit-questions" element={<EditQuestions />} />
       <Route path="edit-results" element={<EditResults />} />
