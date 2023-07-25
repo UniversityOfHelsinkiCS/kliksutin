@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, InputLabel, Typography } from '@mui/material'
 import { Locales, Question } from '@backend/types'
 
 interface RenderQuestionsProps {
@@ -20,13 +20,12 @@ const RenderQuestions = ({
   )
 
   return (
-    <Container>
+    <Box sx={{ ml: 4 }}>
       <Box
         key={question.id}
         sx={{
           p: 2,
-          my: 1,
-          ml: 4,
+          my: 4,
           border: 1,
           borderColor: 'grey.400',
           position: 'relative',
@@ -36,9 +35,29 @@ const RenderQuestions = ({
           },
         }}
       >
-        <Typography variant="body2">
-          {question.title[language as keyof Locales]}
-        </Typography>
+        <InputLabel
+          sx={{
+            mt: '-1.75em',
+            px: '0.5em',
+            zIndex: 2,
+            width: 'full',
+            backgroundColor: 'white',
+            position: 'absolute',
+          }}
+        >
+          {question.title[language]}
+        </InputLabel>
+        <Box>
+          <Typography variant="body2">
+            Järjestysnumero: {question.priority}
+          </Typography>
+          <Typography variant="body2">
+            Isäntäkysymys: {question.parentId}
+          </Typography>
+          <Typography variant="body2">
+            Sisältö: {question.text[language]}
+          </Typography>
+        </Box>
       </Box>
 
       {childQuestions &&
@@ -50,7 +69,7 @@ const RenderQuestions = ({
             language={language}
           />
         ))}
-    </Container>
+    </Box>
   )
 }
 

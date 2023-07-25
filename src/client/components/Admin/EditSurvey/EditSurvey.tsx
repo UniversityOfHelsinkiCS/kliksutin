@@ -18,7 +18,7 @@ const EditSurvey = () => {
   const questions = survey.Questions.sort((a, b) => a.priority - b.priority)
 
   return (
-    <Box>
+    <Box sx={{ mr: 4 }}>
       {questions.map((question) => (
         <div key={question.id}>
           {question.parentId === null && (
