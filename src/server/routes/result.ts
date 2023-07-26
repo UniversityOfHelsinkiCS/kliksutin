@@ -57,12 +57,12 @@ resultRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   if (!request.success) throw new Error('Validation failed')
   const body = request.data
 
-  const recommendation = await Result.create({
+  const result = await Result.create({
     surveyId: Number(surveyId),
     ...body,
   })
 
-  return res.status(201).send(recommendation)
+  return res.status(201).send(result)
 })
 
 resultRouter.delete('/:id', async (req: RequestWithUser, res: any) => {
