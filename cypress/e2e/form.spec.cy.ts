@@ -1,3 +1,5 @@
+/* eslint-disable jest/valid-expect */
+/* eslint-disable cypress/unsafe-to-chain-command */
 import { baseUrl } from '../support/e2e'
 
 import getQuestionData from '../../src/server/data/questions'
@@ -6,7 +8,7 @@ import {
   MultipleChoiceType,
   Question,
   SingleChoiceType,
-} from '../../src/client/types'
+} from '../../src/server/types'
 
 describe('Form section', () => {
   let questionData: Question[]

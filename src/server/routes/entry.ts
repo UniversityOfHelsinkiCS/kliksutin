@@ -1,7 +1,8 @@
 import express from 'express'
+import { Entry } from '../db/models'
 
 import { EntryValues, RequestWithUser } from '../types'
-import { Entry } from '../db/models'
+import { inE2EMode } from '../../config'
 
 const entryRouter = express.Router()
 
@@ -22,23 +23,25 @@ entryRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { id: userId } = req.user
   const { data, sessionToken } = req.body as EntryValues
 
-  const existingEntry = await Entry.findOne({
-    where: {
-      surveyId,
-      userId,
-      sessionToken,
-      data: {
-        course: data.course,
+  if (!inE2EMode) {
+    const existingEntry = await Entry.findOne({
+      where: {
+        surveyId,
+        userId,
+        sessionToken,
+        data: {
+          course: data.course,
+        },
       },
-    },
-  })
-
-  if (existingEntry) {
-    await existingEntry.update({
-      data,
     })
 
-    return res.status(200).send(existingEntry)
+    if (existingEntry) {
+      await existingEntry.update({
+        data,
+      })
+
+      return res.status(200).send(existingEntry)
+    }
   }
 
   const newEntry = await Entry.create({

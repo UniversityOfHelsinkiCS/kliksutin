@@ -8,7 +8,7 @@ import {
   Recommendation,
   Subtool,
   ToolType,
-} from '../../src/client/types'
+} from '../../src/server/types'
 
 describe('Recommendation section', () => {
   let questionData: Question[]

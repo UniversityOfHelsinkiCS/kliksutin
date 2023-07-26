@@ -1,11 +1,12 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
+/* eslint-disable cypress/unsafe-to-chain-command */
 import {
   Question,
-  SingleChoiceType,
-  MultipleChoiceType,
   DimensionSelectionData,
   Result,
-  Locales,
-} from '../../src/client/types'
+} from '../../src/server/types'
 
 import { baseUrl } from '../support/e2e'
 
@@ -37,7 +38,7 @@ describe('Results section', () => {
     cy.wrap(dimensionQuestion.optionData.options).each(
       (option: DimensionSelectionData) => {
         cy.get(`[data-cy = "dimension-select-${option.id}"]`).click()
-        cy.log(`Clicked dimension with label of [${option.label.fi}]`)
+        cy.log(`Clicked dimension with label of [${option.label}]`)
       }
     )
 
@@ -58,7 +59,7 @@ describe('Results section', () => {
           force: true,
         })
         cy.log(
-          `'Clicked single choice [Question title: ${question.title.fi}, Option label: ${randomOption.label.fi}]`
+          `'Clicked single choice [Question title: ${question.title.fi}, Option label: ${randomOption.label}]`
         )
 
         selectedChoices.push(randomOption.id)
@@ -81,7 +82,7 @@ describe('Results section', () => {
             force: true,
           })
           cy.log(
-            `'Clicked multiple choice [Question title: ${question.title.fi}, Option label: ${randomOption.label.fi}]`
+            `'Clicked multiple choice [Question title: ${question.title.fi}, Option label: ${randomOption.label}]`
           )
           selectedChoices.push(randomOption.id)
         })
