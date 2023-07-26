@@ -135,7 +135,12 @@ const NewQuestionForm = ({
           <Box key={item.id} sx={{ mb: 8 }}>
             <Box sx={{ position: 'relative' }}>
               <Button
-                sx={{ zIndex: 20, position: 'absolute', right: 0, top: -4 }}
+                sx={{
+                  zIndex: 20,
+                  position: 'absolute',
+                  right: '1rem',
+                  top: '1rem',
+                }}
                 variant="outlined"
                 color="error"
                 onClick={() => remove(index)}
