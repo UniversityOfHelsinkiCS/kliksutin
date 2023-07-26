@@ -98,7 +98,7 @@
     "resultRemoveResultContent": "Vahvista, että haluaisit poistaa tämän tuloksen. \n \n Tämä toiminto poistaa kaikki valitun vaihtoehdon tulokset. Ei vain valitun oppimismuodon tulosta.",
     "resultNewResultInfo": "Uusi tulos",
     "resultNewResultContent": "Täällä voit lisätä uuden tuloksen Curreen",
-    "resultNewResultTitleLabel": "Tuloksen valintateksti valinnalle",
+    "resultNewResultTitleLabel": "Tuloksen otsikko valinnalle",
     "optionAddNew": "Lisää uusi valinta",
     "optionRemove": "Poista valinta '{{selectedOption}}'",
     "optionRemoveOptionInfo": "Poista valinta '{{selectedOption}}'",
