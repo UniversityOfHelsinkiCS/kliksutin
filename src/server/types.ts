@@ -116,6 +116,15 @@ export interface OptionData {
   type: PossibleChoiceTypes
   options: ChoiceType
 }
+export interface EntryValues {
+  data: FormValues
+  sessionToken: string
+}
+export interface FormValues {
+  [key: number]: Record<string, { [key: string]: boolean }>
+  course: string
+  faculty: string
+}
 
 export interface Question {
   id: number

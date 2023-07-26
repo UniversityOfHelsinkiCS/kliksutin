@@ -15,6 +15,8 @@ export const DEFAULT_SURVEY_NAME =
 
 export const FORM_DATA_KEY = 'curre_local_save'
 
+export const SESSION_TOKEN = 'curre_session_token'
+
 // eslint-disable-next-line no-nested-ternary
 export const FULL_URL = inProduction
   ? 'https://curre.helsinki.fi'

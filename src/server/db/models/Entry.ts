@@ -19,6 +19,10 @@ class Entry extends Model<
   declare userId: string
 
   declare data: object
+
+  declare sessionToken: string
+
+  declare reminderSent: CreationOptional<boolean>
 }
 
 Entry.init(
@@ -39,6 +43,16 @@ Entry.init(
     data: {
       type: DataTypes.JSONB,
       allowNull: false,
+    },
+    sessionToken: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+    },
+    reminderSent: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
   },
   {
