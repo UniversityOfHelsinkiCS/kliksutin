@@ -30,6 +30,11 @@ describe('Results section', () => {
     cy.get(`[data-cy = "faculty-select"]`).click()
     cy.get(`[data-cy = "faculty-option-H50"]`).click()
 
+    cy.get(`[data-cy = "course-select"]`).click()
+    cy.get(
+      `[data-cy = "course-option-otm-861c248f-e4e4-43df-a69a-50fd206afabf"]`
+    ).click()
+
     const dimensionQuestion = questionData.find((q) => q.priority === 0)
 
     if (!dimensionQuestion) return
