@@ -4,10 +4,14 @@ import express from 'express'
 import path from 'path'
 
 import router from './routes'
-import { PORT } from './util/config'
-import { connectToDatabase } from './db/connection'
+
 import seed from './db/seeders'
+import { connectToDatabase } from './db/connection'
+
+import scheduleAllCronJobs from './mailer/mailerCronJobs'
+
 import logger from './util/logger'
+import { PORT } from './util/config'
 
 const app = express()
 
@@ -25,6 +29,8 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
 app.listen(PORT, async () => {
   await connectToDatabase()
   await seed()
+
+  await scheduleAllCronJobs()
 
   logger.info(`Server running on port ${PORT}`)
 })
