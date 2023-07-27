@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getCourses } from '../util/importer'
+import { getTeacherCourses } from '../util/importer'
 
 import { RequestWithUser } from '../types'
 import { inE2EMode } from '../../config'
@@ -78,7 +78,7 @@ courseRouter.get('/', async (req: RequestWithUser, res: any) => {
 
   if (!id) return res.send([])
 
-  const courses = (await getCourses(id)) || []
+  const courses = (await getTeacherCourses(id)) || []
 
   return res.send(courses)
 })
