@@ -19,8 +19,8 @@ entryRouter.get('/:surveyId', async (req, res) => {
 
 entryRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { surveyId } = req.params
-  const { id: userId } = req?.user || { id: '' }
   const { data, sessionToken } = req.body as EntryValues
+  const userId = req.user?.id || `publicUser-${sessionToken}`
 
   const existingEntry = await Entry.findOne({
     where: {
