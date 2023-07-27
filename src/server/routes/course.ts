@@ -34,14 +34,14 @@ const mockCourse = [
         text: null,
         roleUrn:
           'urn:code:course-unit-realisation-responsibility-info-type:responsible-teacher',
-        personId: 'hy-hlo-1441871',
+        personId: '',
         validityPeriod: {},
       },
       {
         text: null,
         roleUrn:
           'urn:code:course-unit-realisation-responsibility-info-type:administrative-person',
-        personId: 'hy-hlo-134309301',
+        personId: '',
         validityPeriod: {},
       },
     ],
@@ -54,7 +54,7 @@ const mockCourse = [
             text: null,
             roleUrn:
               'urn:code:module-responsibility-info-type:responsible-teacher',
-            personId: 'hy-hlo-1441871',
+            personId: '',
             validityPeriod: {},
           },
         ],
