@@ -13,3 +13,9 @@ export const getTeacherCourses = async (userId: string): Promise<any[]> => {
 
   return data
 }
+
+export const getCourse = async (courseId: string): Promise<any[]> => {
+  const { data } = await importerClient.get(`/course/${courseId}`)
+
+  return data
+}
