@@ -5,7 +5,8 @@
     "updateSubmit": "Update choices",
     "openForm": "Proceed to the questions",
     "admin": "Admin",
-    "login": "Login"
+    "login": "Login",
+    "submitError": "Sending the results failed, please try again shortly"
   },
   "footer": {
     "contactSupport": "Contact support: <mailTo>{{supportEmail}}</mailTo>",

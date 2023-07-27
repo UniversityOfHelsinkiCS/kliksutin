@@ -6,7 +6,8 @@
     "reset": "Aloita alusta",
     "openForm": "Jatka kysymyksiin",
     "admin": "ylläpito",
-    "login": "Kirjaudu sisään"
+    "login": "Kirjaudu sisään",
+    "submitError": "Tulosten lähettäminen epäonnistui, kokeile uudelleen hetken päästä"
   },
   "footer": {
     "contactSupport": "Ota yhteyttä tukeen: <mailTo>{{supportEmail}}</mailTo>",

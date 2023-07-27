@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
+import { enqueueSnackbar } from 'notistack'
 import { Box, Grid } from '@mui/material'
 
 import useSurvey from '../../hooks/useSurvey'
@@ -19,6 +21,7 @@ import { FORM_DATA_KEY } from '../../../config'
 
 const InteractiveForm = () => {
   const { survey, isLoading } = useSurvey()
+  const { t } = useTranslation()
   const mutation = useSaveEntryMutation(survey?.id)
 
   const sessionLocation = sessionStorage.getItem('curre-session-location')
@@ -43,14 +46,20 @@ const InteractiveForm = () => {
     const submittedData = data
 
     setResultData(submittedData)
-    mutation.mutateAsync(submittedData)
+    mutation
+      .mutateAsync(submittedData)
+      .then(() => {
+        sessionStorage.setItem('curre-session-location', 'results')
+        setShowResults(true)
 
-    sessionStorage.setItem('curre-session-location', 'results')
-    setShowResults(true)
-
-    document
-      ?.getElementById('curre-main-section')
-      ?.scrollIntoView({ behavior: 'smooth' })
+        document
+          ?.getElementById('curre-main-section')
+          ?.scrollIntoView({ behavior: 'smooth' })
+      })
+      .catch((error) => {
+        console.log(error)
+        enqueueSnackbar(t('common:submitError'), { variant: 'error' })
+      })
   }
 
   usePersistForm({ value: watch(), sessionStorageKey: FORM_DATA_KEY })
