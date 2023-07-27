@@ -136,3 +136,33 @@ export interface Question {
   optionData: OptionData
   visibility: Visibility
 }
+
+export interface CourseUnit {
+  id: string
+  code: string
+  responsibilityInfos: {
+    text: string | null
+    roleUrn: string
+    personId: string
+    validityPeriod: {}
+  }[]
+  name: Locales
+  validityPeriod: {
+    startDate: Date
+  }
+}
+
+export interface Course {
+  id: string
+  code: string
+  name: Locales
+  nameSpecifier: Locales
+  assessmentItemIds?: string[]
+  activityPeriod?: {
+    endDate: Date
+    startDate: Date
+  }
+  courseUnitRealisationTypeUrn?: string
+  responsibilityInfos?: any[]
+  courseUnits?: CourseUnit[]
+}

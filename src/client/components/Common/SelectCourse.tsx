@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 
-import { Locales } from '@backend/types'
+import { Locales, Course } from '@backend/types'
 
 import useUserCourses from '../../hooks/useUserCourses'
 
@@ -13,7 +13,7 @@ import otherCourse from '../../util/courses'
 
 import styles from '../../styles'
 
-import { Course, InputProps } from '../../types'
+import { InputProps } from '../../types'
 
 const sortCourses = (courses: Course[]) => {
   const sortedCourses = courses.sort((a, b) => {
