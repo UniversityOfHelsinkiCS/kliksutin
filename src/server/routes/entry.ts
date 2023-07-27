@@ -2,7 +2,6 @@ import express from 'express'
 import { Entry } from '../db/models'
 
 import { EntryValues, RequestWithUser } from '../types'
-import { inE2EMode } from '../../config'
 
 const entryRouter = express.Router()
 
@@ -20,7 +19,7 @@ entryRouter.get('/:surveyId', async (req, res) => {
 
 entryRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { surveyId } = req.params
-  const { id: userId } = inE2EMode ? { id: '' } : req.user
+  const { id: userId } = req?.user || { id: '' }
   const { data, sessionToken } = req.body as EntryValues
 
   const existingEntry = await Entry.findOne({
