@@ -74,9 +74,9 @@ const mockCourse = [
 courseRouter.get('/', async (req: RequestWithUser, res: any) => {
   const { id } = req.user
 
-  if (!id) return res.send([])
-
   if (inE2EMode) return res.send(mockCourse)
+
+  if (!id) return res.send([])
 
   const courses = (await getCourses(id)) || []
 
