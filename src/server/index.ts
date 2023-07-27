@@ -8,7 +8,7 @@ import router from './routes'
 import seed from './db/seeders'
 import { connectToDatabase } from './db/connection'
 
-import scheduleAllCronJobs from './mailer/mailerCronJobs'
+import scheduleMailerCronJobs from './mailer/mailerCronJobs'
 
 import logger from './util/logger'
 import { PORT } from './util/config'
@@ -30,7 +30,7 @@ app.listen(PORT, async () => {
   await connectToDatabase()
   await seed()
 
-  await scheduleAllCronJobs()
+  await scheduleMailerCronJobs()
 
   logger.info(`Server running on port ${PORT}`)
 })

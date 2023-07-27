@@ -34,8 +34,8 @@ const startReminderEmailCron = async () => {
   return scheduleCronJob(cronSchedule, runReminderEmailCron)
 }
 
-const scheduleAllCronJobs = async () => {
+const scheduleMailerCronJobs = async () => {
   await startReminderEmailCron()
 }
 
-export default scheduleAllCronJobs
+export default scheduleMailerCronJobs
