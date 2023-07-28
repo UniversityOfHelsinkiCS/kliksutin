@@ -6,6 +6,7 @@ import { Box, Container, Typography } from '@mui/material'
 import useEntry from '../../hooks/useEntry'
 import useSurvey from '../../hooks/useSurvey'
 
+import NotFound from './NotFound'
 import RenderResults from '../ResultPage/RenderResults'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
 
@@ -20,7 +21,9 @@ const Viewer = () => {
   const { t } = useTranslation()
   const { entryId } = useParams()
   const { survey } = useSurvey()
-  const { entry, isLoading } = useEntry(entryId)
+  const { entry, isLoading, isError } = useEntry(entryId)
+
+  if (isError) return <NotFound />
 
   if (!survey || isLoading || !entry) return null
 

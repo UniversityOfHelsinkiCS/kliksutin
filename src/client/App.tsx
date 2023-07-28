@@ -5,9 +5,11 @@ import { ThemeProvider } from '@mui/material/styles'
 import { SnackbarProvider } from 'notistack'
 
 import { useTheme } from './theme'
+
+import { ResultDataProvider } from './contexts/ResultDataContext'
+
 import Footer from './components/Footer'
 import NavBar from './components/NavBar/NavBar'
-import { ResultDataProvider } from './contexts/ResultDataContext'
 
 const App = () => {
   const theme = useTheme()
