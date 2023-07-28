@@ -71,3 +71,14 @@ export interface Survey {
   createdAt?: Date
   updatedAt?: Date
 }
+
+export interface Entry {
+  id: number
+  surveyId: number
+  userId: string
+  data: FormValues
+  sessionToken: string
+  reminderSent: boolean
+  SurveyId: number
+  UserId: string
+}
