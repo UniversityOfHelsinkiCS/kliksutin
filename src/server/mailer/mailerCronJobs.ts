@@ -3,9 +3,13 @@ import logger from '../util/logger'
 import scheduleCronJob from '../util/cron'
 
 import { inProduction, inStaging, inDevelopment } from '../../config'
+import sendSummaryReminderEmails from './mails/sendReminderEmails'
 
 const runReminderEmailCron = async () => {
   logger.info('Reminder email cron job is running')
+  /* const summaries = await sendSummaryReminderEmails(1)
+
+  console.log(summaries) */
 }
 
 const startReminderEmailCron = async () => {
