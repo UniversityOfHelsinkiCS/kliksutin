@@ -5,16 +5,12 @@ import { EntryValues, RequestWithUser } from '../types'
 
 const entryRouter = express.Router()
 
-entryRouter.get('/:surveyId', async (req, res) => {
-  const { surveyId } = req.params
+entryRouter.get('/:entryId', async (req, res) => {
+  const { entryId } = req.params
 
-  const entries = await Entry.findAll({
-    where: {
-      surveyId: Number(surveyId),
-    },
-  })
+  const entry = await Entry.findByPk(entryId)
 
-  return res.status(200).send(entries)
+  return res.status(200).send(entry)
 })
 
 entryRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
