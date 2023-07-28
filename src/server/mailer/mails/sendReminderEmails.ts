@@ -78,7 +78,9 @@ const sendReminderEmails = async (surveyId: number) => {
 
   const upcomingEntries = await getUpcomingCoursesWithEntries(newEntries)
 
-  const entriesToRemind = upcomingEntries.filter((entry) => entry !== null)
+  const entriesToRemind = upcomingEntries.filter(
+    (entry): entry is UpcomingData => entry !== null
+  )
 
   const emails = entriesToRemind.map((entry) => {
     const email = {
