@@ -27,12 +27,13 @@ const errorHandler = (
       .send({ error: error.message, data: (error as ValidationError).errors })
   }
   if (error.name === 'SequelizeUniqueConstraintError') {
-    return res
-      .status(400)
-      .send({
-        error: error.message,
-        data: (error as UniqueConstraintError).errors,
-      })
+    return res.status(400).send({
+      error: error.message,
+      data: (error as UniqueConstraintError).errors,
+    })
+  }
+  if (error.message === 'Entry not found') {
+    return res.status(404).send({ error: 'Entry not found', data: { error } })
   }
   if (error.message === 'Survey not found') {
     return res.status(404).send({ error: 'Survey not found', data: { error } })
@@ -54,12 +55,10 @@ const errorHandler = (
     return res.status(404).send({ error: 'Result not found', data: { error } })
   }
   if (error.message === 'Open AI service unavailable') {
-    return res
-      .status(503)
-      .send({
-        error: 'Open AI service unavailable, try again shortly',
-        data: { error },
-      })
+    return res.status(503).send({
+      error: 'Open AI service unavailable, try again shortly',
+      data: { error },
+    })
   }
 
   return next(error)
