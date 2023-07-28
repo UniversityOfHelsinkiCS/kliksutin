@@ -16,10 +16,13 @@ const startDateInXMonths = <T extends number>(
 ) => {
   const now = new Date()
 
-  const inXMonths = new Date(startDate)
-  inXMonths.setMonth(inXMonths.getMonth() - XMonths)
+  // Email treshold date that is x months before the starting date
+  // If date of now is in range of treshold and startDate then the
+  // course is upcoming
+  const emailTreshold = new Date(startDate)
+  emailTreshold.setMonth(emailTreshold.getMonth() - XMonths)
 
-  return now >= inXMonths && now <= startDate
+  return now >= emailTreshold && now <= startDate
 }
 
 const sendReminderEmails = async (surveyId: number) => {
@@ -31,8 +34,7 @@ const sendReminderEmails = async (surveyId: number) => {
     },
   })
 
-  // Find and combine all the courses that starts in one month with the
-  // entries
+  // Find and combine the courses and entries if the course starts in x months
   const newSummaries = await Promise.all(
     newEntries.map(async (entry) => {
       const courseId = entry.data.course
