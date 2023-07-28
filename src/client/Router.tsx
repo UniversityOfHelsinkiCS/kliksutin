@@ -9,6 +9,7 @@ import EditQuestions from './components/Admin/EditQuestions/EditQuestions'
 import EditResults from './components/Admin/EditResults/EditResults'
 import EditRecommendations from './components/Admin/EditRecommendations/EditRecommendations'
 import EditSurvey from './components/Admin/EditSurvey/EditSurvey'
+import Viewer from './components/Viewer/Viewer'
 
 const Router = () => (
   <Routes>
@@ -22,6 +23,9 @@ const Router = () => (
       <Route path="edit-recommendations" element={<EditRecommendations />} />
     </Route>
     <Route path="/contact" element={<Contact />} />
+    <Route path="/view">
+      <Route path=":entryId" element={<Viewer />} />
+    </Route>
   </Routes>
 )
 
