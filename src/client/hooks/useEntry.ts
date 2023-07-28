@@ -4,7 +4,7 @@ import apiClient from '../util/apiClient'
 
 import { Entry } from '../types'
 
-const useEntry = (entryId: number) => {
+const useEntry = (entryId: string | undefined) => {
   const queryKey = ['entry', entryId]
 
   const query = async (): Promise<Entry> => {
@@ -13,7 +13,9 @@ const useEntry = (entryId: number) => {
     return data
   }
 
-  const { data: entry, ...rest } = useQuery(queryKey, query)
+  const { data: entry, ...rest } = useQuery(queryKey, query, {
+    enabled: !!entryId,
+  })
 
   return { entry, ...rest }
 }
