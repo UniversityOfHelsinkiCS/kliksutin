@@ -5,10 +5,15 @@ import { EntryValues, RequestWithUser } from '../types'
 
 const entryRouter = express.Router()
 
-entryRouter.get('/:entryId', async (req, res) => {
+entryRouter.get('/:entryId', async (req: RequestWithUser, res: any) => {
   const { entryId } = req.params
+  const userId = req.user?.id
 
   const entry = await Entry.findByPk(entryId)
+
+  if (!entry) throw new Error('Entry not found')
+
+  if (entry.userId !== userId) throw new Error('Unauthorized')
 
   return res.status(200).send(entry)
 })
