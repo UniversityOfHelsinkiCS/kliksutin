@@ -13,7 +13,7 @@ type PositiveInteger<T extends number> = `${T}` extends
   ? never
   : T
 
-const startDateInXMonths = <T extends number>(
+const isStartingInXMonths = <T extends number>(
   startDate: Date,
   XMonths: PositiveInteger<T>
 ) => {
@@ -52,7 +52,7 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
         return null
       }
 
-      if (startDateInXMonths(startDate, 1)) {
+      if (isStartingInXMonths(startDate, 1)) {
         // Clone the entry object and add the course property to it
         Object.assign(entry, { courseData: course })
         return entry as UpcomingReminderData
