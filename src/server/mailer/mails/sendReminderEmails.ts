@@ -10,7 +10,7 @@ interface EntryWithUser extends Entry {
   User: User
 }
 
-interface UpcomingData extends EntryWithUser {
+interface UpcomingCoursesWithEntries extends EntryWithUser {
   courseData: Course
 }
 
@@ -59,7 +59,7 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
       if (isStartingInXMonths(startDate, 1)) {
         // Clone the entry object and add the course property to it
         Object.assign(entry, { courseData: course })
-        return entry as UpcomingData
+        return entry as UpcomingCoursesWithEntries
       }
 
       return null
@@ -76,10 +76,10 @@ const sendReminderEmails = async (surveyId: number) => {
     },
   })) as EntryWithUser[]
 
-  const upcomingEntries = await getUpcomingCoursesWithEntries(newEntries)
+  const upcoming = await getUpcomingCoursesWithEntries(newEntries)
 
-  const entriesToRemind = upcomingEntries.filter(
-    (entry): entry is UpcomingData => entry !== null
+  const entriesToRemind = upcoming.filter(
+    (entry): entry is UpcomingCoursesWithEntries => entry !== null
   )
 
   const emails = entriesToRemind.map((entry) => {
