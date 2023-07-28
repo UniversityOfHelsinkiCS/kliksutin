@@ -6,6 +6,14 @@ import { getCourse } from '../../util/importer'
 
 import { Course } from '../../types'
 
+interface EntryWithUser extends Entry {
+  User: User
+}
+
+interface UpcomingData extends EntryWithUser {
+  courseData: Course
+}
+
 type PositiveInteger<T extends number> = `${T}` extends
   | '0'
   | `-${any}`
@@ -26,10 +34,6 @@ const isStartingInXMonths = <T extends number>(
   emailTreshold.setMonth(emailTreshold.getMonth() - XMonths)
 
   return now >= emailTreshold && now <= startDate
-}
-
-interface UpcomingReminderData extends Entry {
-  courseData: Course
 }
 
 // Find and combine the courses and entries if the course starts in x months
@@ -55,7 +59,7 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
       if (isStartingInXMonths(startDate, 1)) {
         // Clone the entry object and add the course property to it
         Object.assign(entry, { courseData: course })
-        return entry as UpcomingReminderData
+        return entry as UpcomingData
       }
 
       return null
@@ -64,13 +68,13 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
 
 const sendReminderEmails = async (surveyId: number) => {
   // Find all the entries where reminder email is not sent already
-  const newEntries = await Entry.findAll({
+  const newEntries = (await Entry.findAll({
     include: User,
     where: {
       surveyId,
       reminderSent: false,
     },
-  })
+  })) as EntryWithUser[]
 
   const upcomingEntries = await getUpcomingCoursesWithEntries(newEntries)
 
