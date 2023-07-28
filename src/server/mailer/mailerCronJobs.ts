@@ -8,8 +8,8 @@ import sendReminderEmails from './mails/sendReminderEmails'
 const runReminderEmailCron = async () => {
   logger.info('Reminder email cron job is running')
 
-  const surveyId = 1 // kliksutin surveyId
-  await sendReminderEmails(surveyId)
+  /* const surveyId = 1 // kliksutin surveyId
+  await sendReminderEmails(surveyId) */
 }
 
 const startReminderEmailCron = async () => {

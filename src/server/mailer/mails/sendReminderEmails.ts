@@ -84,7 +84,7 @@ const sendReminderEmails = async (surveyId: number) => {
 
   const emails = entriesToRemind.map((entry) => {
     const email = {
-      to: '',
+      to: entry.User.email,
       subject: `Curre reminder for ${entry?.courseData.name.en}`,
       text: 'This is a reminder email',
     }
