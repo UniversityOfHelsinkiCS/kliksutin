@@ -33,7 +33,7 @@ interface UpcomingReminderData extends Entry {
 }
 
 // Find and combine the courses and entries if the course starts in x months
-const upcomingReminderData = (entries: Entry[]) =>
+const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
   Promise.all(
     entries.map(async (entry) => {
       const courseId = entry.data.course
@@ -72,9 +72,9 @@ const sendReminderEmails = async (surveyId: number) => {
     },
   })
 
-  const entries = await upcomingReminderData(newEntries)
+  const upcomingEntries = await getUpcomingCoursesWithEntries(newEntries)
 
-  const entriesToRemind = entries.filter((entry) => entry !== null)
+  const entriesToRemind = upcomingEntries.filter((entry) => entry !== null)
 
   const emails = entriesToRemind.map((entry) => {
     const email = {
