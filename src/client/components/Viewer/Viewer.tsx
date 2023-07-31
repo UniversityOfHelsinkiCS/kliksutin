@@ -6,7 +6,7 @@ import { Box, Container, Typography } from '@mui/material'
 import useEntry from '../../hooks/useEntry'
 import useSurvey from '../../hooks/useSurvey'
 
-import NotFound from './NotFound'
+import NotFound from '../Common/NotFound'
 import RenderResults from '../ResultPage/RenderResults'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
 
