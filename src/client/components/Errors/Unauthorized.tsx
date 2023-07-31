@@ -30,7 +30,7 @@ const Unauthorized = () => {
               Back Home
             </Button>
           </Grid>
-          {error.response && error.response.data && (
+          {error?.response && error.response?.data && (
             <Grid item xs={6}>
               <Typography variant="h6">
                 Error details:

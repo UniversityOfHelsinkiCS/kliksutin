@@ -17,6 +17,7 @@ import EditResults from './components/Admin/EditResults/EditResults'
 import EditRecommendations from './components/Admin/EditRecommendations/EditRecommendations'
 import EditSurvey from './components/Admin/EditSurvey/EditSurvey'
 import RootBoundary from './components/Errors/RootBoundary'
+import NotFound from './components/Errors/NotFound'
 
 import { PUBLIC_URL } from '../config'
 
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         <Route path="edit-results" element={<EditResults />} />
         <Route path="edit-recommendations" element={<EditRecommendations />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Route>
   ),
   { basename: PUBLIC_URL }
