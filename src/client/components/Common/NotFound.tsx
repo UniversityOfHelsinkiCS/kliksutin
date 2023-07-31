@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Button, Container, Grid, Typography } from '@mui/material'
