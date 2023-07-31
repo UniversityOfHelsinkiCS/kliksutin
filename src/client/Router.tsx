@@ -24,7 +24,7 @@ import { PUBLIC_URL } from '../config'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<RootBoundary />}>
-      <Route path="/" element={<InteractiveForm />} />
+      <Route index element={<InteractiveForm />} />
       <Route path="/public" element={<InteractiveForm />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/view">
