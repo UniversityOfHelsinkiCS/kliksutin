@@ -23,9 +23,9 @@ const Viewer = () => {
   const { survey } = useSurvey()
   const { entry, isLoading, isError } = useEntry(entryId)
 
-  if (isError) return <NotFound />
+  if (isLoading) return null
 
-  if (!survey || isLoading || !entry) return null
+  if (!survey || isError || !entry) return <NotFound />
 
   const { data: resultData } = entry
 

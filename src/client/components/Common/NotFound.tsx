@@ -9,18 +9,19 @@ const NotFound = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        my: 8,
         minHeight: '100vh',
       }}
     >
-      <Container maxWidth="md">
+      <Container>
+        <Typography variant="h2" sx={{ my: 4, fontWeight: 'bold' }}>
+          PAGE NOT FOUND (404)
+        </Typography>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <Typography variant="h1">404</Typography>
+          <Grid item xs={6} margin="auto">
             <Typography variant="h6">
-              The page you’re looking for doesn’t exist.
+              Sorry, but the page cannot be found. The page may have been moved
+              or deleted.
             </Typography>
             <Button
               sx={{ mt: 4 }}
@@ -31,7 +32,10 @@ const NotFound = () => {
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h1">404</Typography>
+            <Typography variant="h6">
+              If you want, you can also give us{' '}
+              <a href="mailto:opetusteknologia@helsinki.fi">feedback</a>.
+            </Typography>
           </Grid>
         </Grid>
       </Container>
