@@ -18,7 +18,7 @@ const RootBoundary = () => {
     }
   }, [error])
 
-  if (error.response && error.response.data) {
+  if (error?.response && error.response?.data) {
     if (error.response.status === 404) return <NotFound />
 
     if (error.response.status === 401) return <Unauthorized />
