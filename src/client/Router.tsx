@@ -18,12 +18,21 @@ import Viewer from './components/Viewer/Viewer'
 
 import { PUBLIC_URL } from '../config'
 import App from './App'
+import ErrorPage from './components/Common/ErrorPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route path="/" element={<InteractiveForm />} />
-      <Route path="/public" element={<InteractiveForm />} />
+    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+      <Route
+        path="/"
+        element={<InteractiveForm />}
+        errorElement={<ErrorPage />}
+      />
+      <Route
+        path="/public"
+        element={<InteractiveForm />}
+        errorElement={<ErrorPage />}
+      />
       <Route path="/admin" element={<Admin />}>
         <Route index element={<EditSurvey />} />
         <Route path="edit-dimensions" element={<EditDimensions />} />
