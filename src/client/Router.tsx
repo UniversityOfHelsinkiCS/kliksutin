@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom'
 
 import App from './App'
-import ErrorPage from './components/Common/ErrorPage'
 import InteractiveForm from './components/InteractiveForm/InteractiveForm'
 import Admin from './components/Admin/Admin'
 import Contact from './components/ContactPage/Contact'
@@ -17,22 +16,15 @@ import EditQuestions from './components/Admin/EditQuestions/EditQuestions'
 import EditResults from './components/Admin/EditResults/EditResults'
 import EditRecommendations from './components/Admin/EditRecommendations/EditRecommendations'
 import EditSurvey from './components/Admin/EditSurvey/EditSurvey'
+import RootBoundary from './components/Errors/RootBoundary'
 
 import { PUBLIC_URL } from '../config'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
-      <Route
-        path="/"
-        element={<InteractiveForm />}
-        errorElement={<ErrorPage />}
-      />
-      <Route
-        path="/public"
-        element={<InteractiveForm />}
-        errorElement={<ErrorPage />}
-      />
+    <Route path="/" element={<App />} errorElement={<RootBoundary />}>
+      <Route path="/" element={<InteractiveForm />} />
+      <Route path="/public" element={<InteractiveForm />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/view">
         <Route path=":entryId" element={<Viewer />} />
