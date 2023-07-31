@@ -15,6 +15,7 @@ const useEntry = (entryId: string | undefined) => {
 
   const { data: entry, ...rest } = useQuery(queryKey, query, {
     enabled: !!entryId,
+    retry: false,
   })
 
   return { entry, ...rest }
