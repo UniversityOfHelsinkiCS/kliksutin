@@ -72,6 +72,9 @@ const QuestionItem = ({
   setInEditMode,
   setSelectedQuestion,
 }: QuestionsProps) => {
+  const borderColor = inEditMode ? 'grey.300' : 'grey.400'
+  const textColor = inEditMode ? 'grey.400' : 'black'
+
   const handleChangePosition = () => {
     setSelectedQuestion(question)
     setInEditMode(true)
@@ -84,12 +87,17 @@ const QuestionItem = ({
         p: 2,
         my: 4,
         border: 1,
-        borderColor: 'grey.400',
+        borderColor,
+        color: textColor,
         position: 'relative',
-        '&:hover': {
-          border: 1,
-          borderColor: '#0288d1',
-        },
+        ...(inEditMode
+          ? {} // Empty object when inEditMode is true, so no additional styles are applied
+          : {
+              '&:hover': {
+                border: 1,
+                borderColor: '#0288d1',
+              },
+            }),
       }}
     >
       <InputLabel
@@ -100,6 +108,7 @@ const QuestionItem = ({
           width: 'full',
           backgroundColor: 'white',
           position: 'absolute',
+          color: textColor,
         }}
       >
         {question.title[language]}
