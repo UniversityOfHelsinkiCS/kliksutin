@@ -26,30 +26,22 @@ interface RenderQuestionsProps {
 }
 
 interface MoveHereButtonProps {
+  isEnding: boolean
   question: Question
-  childQuestions: Question[]
   inEditMode: boolean
   selectedQuestion: Question | undefined
 }
 
 const MoveHereButton = ({
+  isEnding,
   question,
-  childQuestions,
   inEditMode,
   selectedQuestion,
 }: MoveHereButtonProps) => {
-  if (
-    !inEditMode ||
-    question.id === selectedQuestion?.id ||
-    selectedQuestion?.parentId === question.id
-  )
+  if (!inEditMode || question.id === selectedQuestion?.id || !selectedQuestion)
     return null
 
-  let { priority } = question
-
-  if (childQuestions.length > 0) {
-    priority = childQuestions.slice(-1)[0].priority + 1
-  }
+  const { priority } = question
 
   return (
     <Button
@@ -60,7 +52,7 @@ const MoveHereButton = ({
         width: '100%',
       }}
     >
-      Move to priority {priority}
+      Move to {isEnding ? 'end' : `priority ${priority}`}
     </Button>
   )
 }
@@ -75,7 +67,7 @@ const QuestionItem = ({
   const borderColor = inEditMode ? 'grey.300' : 'grey.400'
   const textColor = inEditMode ? 'grey.400' : 'black'
 
-  const handleChangePosition = () => {
+  const handleStartPositionChange = () => {
     setSelectedQuestion(question)
     setInEditMode(true)
   }
@@ -117,7 +109,7 @@ const QuestionItem = ({
         <Button
           variant="outlined"
           sx={{ position: 'absolute', top: 4, right: 4 }}
-          onClick={handleChangePosition}
+          onClick={handleStartPositionChange}
           disabled={inEditMode}
         >
           Change Position
@@ -155,8 +147,8 @@ const RenderQuestions = ({
   return (
     <Box sx={{ ml: 4 }}>
       <MoveHereButton
+        isEnding={false}
         question={question}
-        childQuestions={childQuestions}
         inEditMode={inEditMode}
         selectedQuestion={selectedQuestion}
       />
@@ -182,14 +174,16 @@ const RenderQuestions = ({
               setSelectedQuestion={setSelectedQuestion}
             />
           ))}
-          <Box sx={{ ml: 4, mb: 4 }}>
-            <MoveHereButton
-              question={question}
-              childQuestions={childQuestions}
-              inEditMode={inEditMode}
-              selectedQuestion={selectedQuestion}
-            />
-          </Box>
+          {selectedQuestion?.parentId !== question.id && (
+            <Box sx={{ ml: 4, mb: 4 }}>
+              <MoveHereButton
+                isEnding
+                question={childQuestions.slice(-1)[0]}
+                inEditMode={inEditMode}
+                selectedQuestion={selectedQuestion}
+              />
+            </Box>
+          )}
         </>
       )}
     </Box>
