@@ -1,8 +1,9 @@
-import React from 'react'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box } from '@mui/material'
 
-import { Locales } from '@backend/types'
+import { Locales, Question } from '@backend/types'
 
 import useSurvey from '../../../hooks/useSurvey'
 
@@ -11,6 +12,10 @@ import RenderQuestions from './RenderQuestions'
 const EditSurvey = () => {
   const { i18n } = useTranslation()
   const { survey, isLoading } = useSurvey()
+  const [inEditMode, setInEditMode] = useState(false)
+  const [selectedQuestion, setSelectedQuestion] = useState<
+    Question | undefined
+  >()
 
   if (!survey || isLoading) return null
 
@@ -26,6 +31,10 @@ const EditSurvey = () => {
               question={question}
               questions={questions}
               language={language as keyof Locales}
+              inEditMode={inEditMode}
+              setInEditMode={setInEditMode}
+              selectedQuestion={selectedQuestion}
+              setSelectedQuestion={setSelectedQuestion}
             />
           )}
         </div>
