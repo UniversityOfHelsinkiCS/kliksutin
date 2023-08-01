@@ -26,14 +26,15 @@ interface RenderQuestionsProps {
 }
 
 interface MoveHereButtonProps {
-  isEnding: boolean
+  // eslint-disable-next-line react/require-default-props
+  isEnding?: boolean
   question: Question
   inEditMode: boolean
   selectedQuestion: Question | undefined
 }
 
 const MoveHereButton = ({
-  isEnding,
+  isEnding = false,
   question,
   inEditMode,
   selectedQuestion,
@@ -147,7 +148,6 @@ const RenderQuestions = ({
   return (
     <Box sx={{ ml: 4 }}>
       <MoveHereButton
-        isEnding={false}
         question={question}
         inEditMode={inEditMode}
         selectedQuestion={selectedQuestion}
@@ -160,32 +160,30 @@ const RenderQuestions = ({
         setSelectedQuestion={setSelectedQuestion}
       />
 
-      {childQuestions.length > 0 && (
-        <>
-          {childQuestions.map((children) => (
-            <RenderQuestions
-              key={children.id}
-              question={children}
-              questions={questions}
-              language={language}
+      <>
+        {childQuestions.map((children) => (
+          <RenderQuestions
+            key={children.id}
+            question={children}
+            questions={questions}
+            language={language}
+            inEditMode={inEditMode}
+            setInEditMode={setInEditMode}
+            selectedQuestion={selectedQuestion}
+            setSelectedQuestion={setSelectedQuestion}
+          />
+        ))}
+        {selectedQuestion?.parentId !== question.id && (
+          <Box sx={{ ml: 4, mb: 4 }}>
+            <MoveHereButton
+              isEnding
+              question={question}
               inEditMode={inEditMode}
-              setInEditMode={setInEditMode}
               selectedQuestion={selectedQuestion}
-              setSelectedQuestion={setSelectedQuestion}
             />
-          ))}
-          {selectedQuestion?.parentId !== question.id && (
-            <Box sx={{ ml: 4, mb: 4 }}>
-              <MoveHereButton
-                isEnding
-                question={childQuestions.slice(-1)[0]}
-                inEditMode={inEditMode}
-                selectedQuestion={selectedQuestion}
-              />
-            </Box>
-          )}
-        </>
-      )}
+          </Box>
+        )}
+      </>
     </Box>
   )
 }
