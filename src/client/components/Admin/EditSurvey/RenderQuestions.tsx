@@ -37,7 +37,7 @@ const MoveHereButton = ({
   question,
   selectedQuestion,
 }: MoveHereButtonProps) => {
-  if (!inEditMode || question.id !== selectedQuestion?.id) return null
+  if (!inEditMode || question.id === selectedQuestion?.id) return null
 
   return (
     <Button
