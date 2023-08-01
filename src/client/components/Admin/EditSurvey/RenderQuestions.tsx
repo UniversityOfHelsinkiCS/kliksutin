@@ -26,15 +26,39 @@ interface RenderQuestionsProps {
   >
 }
 
+interface MoveToEndButtonProps {
+  priority: number
+  inEditMode: boolean
+}
+
 interface MoveHereButtonProps {
   question: Question
   inEditMode: boolean
   selectedQuestion: Question | undefined
 }
 
+const MoveToEndButton = ({ priority, inEditMode }: MoveToEndButtonProps) => {
+  if (!inEditMode) return null
+
+  return (
+    <Box sx={{ ml: 4, mb: 4 }}>
+      <Button
+        sx={{
+          border: 1,
+          borderColor: '#0288d1',
+          borderStyle: 'dashed',
+          width: '100%',
+        }}
+      >
+        Move to priority {priority}
+      </Button>
+    </Box>
+  )
+}
+
 const MoveHereButton = ({
-  inEditMode,
   question,
+  inEditMode,
   selectedQuestion,
 }: MoveHereButtonProps) => {
   if (!inEditMode || question.id === selectedQuestion?.id) return null
@@ -150,19 +174,26 @@ const RenderQuestions = ({
         setSelectedQuestion={setSelectedQuestion}
       />
 
-      {childQuestions &&
-        childQuestions.map((children) => (
-          <RenderQuestions
-            key={children.id}
-            question={children}
-            questions={questions}
-            language={language}
+      {childQuestions.length > 0 && (
+        <>
+          {childQuestions.map((children) => (
+            <RenderQuestions
+              key={children.id}
+              question={children}
+              questions={questions}
+              language={language}
+              inEditMode={inEditMode}
+              setInEditMode={setInEditMode}
+              selectedQuestion={selectedQuestion}
+              setSelectedQuestion={setSelectedQuestion}
+            />
+          ))}
+          <MoveToEndButton
+            priority={childQuestions[childQuestions.length - 1].priority + 1}
             inEditMode={inEditMode}
-            setInEditMode={setInEditMode}
-            selectedQuestion={selectedQuestion}
-            setSelectedQuestion={setSelectedQuestion}
           />
-        ))}
+        </>
+      )}
     </Box>
   )
 }
