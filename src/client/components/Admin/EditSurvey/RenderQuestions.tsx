@@ -8,7 +8,6 @@ interface QuestionsProps {
   language: keyof Locales
   inEditMode: boolean
   setInEditMode: React.Dispatch<React.SetStateAction<boolean>>
-  selectedQuestion: Question | undefined
   setSelectedQuestion: React.Dispatch<
     React.SetStateAction<Question | undefined>
   >
@@ -26,42 +25,31 @@ interface RenderQuestionsProps {
   >
 }
 
-interface MoveToEndButtonProps {
-  priority: number
-  inEditMode: boolean
-}
-
 interface MoveHereButtonProps {
   question: Question
+  childQuestions: Question[]
   inEditMode: boolean
   selectedQuestion: Question | undefined
 }
 
-const MoveToEndButton = ({ priority, inEditMode }: MoveToEndButtonProps) => {
-  if (!inEditMode) return null
-
-  return (
-    <Box sx={{ ml: 4, mb: 4 }}>
-      <Button
-        sx={{
-          border: 1,
-          borderColor: '#0288d1',
-          borderStyle: 'dashed',
-          width: '100%',
-        }}
-      >
-        Move to priority {priority}
-      </Button>
-    </Box>
-  )
-}
-
 const MoveHereButton = ({
   question,
+  childQuestions,
   inEditMode,
   selectedQuestion,
 }: MoveHereButtonProps) => {
-  if (!inEditMode || question.id === selectedQuestion?.id) return null
+  if (
+    !inEditMode ||
+    question.id === selectedQuestion?.id ||
+    selectedQuestion?.parentId === question.id
+  )
+    return null
+
+  let { priority } = question
+
+  if (childQuestions.length > 0) {
+    priority = childQuestions.slice(-1)[0].priority + 1
+  }
 
   return (
     <Button
@@ -72,7 +60,7 @@ const MoveHereButton = ({
         width: '100%',
       }}
     >
-      Move to priority {question.priority}
+      Move to priority {priority}
     </Button>
   )
 }
@@ -82,7 +70,6 @@ const QuestionItem = ({
   language,
   inEditMode,
   setInEditMode,
-  selectedQuestion,
   setSelectedQuestion,
 }: QuestionsProps) => {
   const handleChangePosition = () => {
@@ -91,60 +78,53 @@ const QuestionItem = ({
   }
 
   return (
-    <>
-      <MoveHereButton
-        question={question}
-        inEditMode={inEditMode}
-        selectedQuestion={selectedQuestion}
-      />
-      <Box
-        key={question.id}
-        sx={{
-          p: 2,
-          my: 4,
+    <Box
+      key={question.id}
+      sx={{
+        p: 2,
+        my: 4,
+        border: 1,
+        borderColor: 'grey.400',
+        position: 'relative',
+        '&:hover': {
           border: 1,
-          borderColor: 'grey.400',
-          position: 'relative',
-          '&:hover': {
-            border: 1,
-            borderColor: '#0288d1',
-          },
+          borderColor: '#0288d1',
+        },
+      }}
+    >
+      <InputLabel
+        sx={{
+          mt: '-1.75em',
+          px: '0.5em',
+          zIndex: 2,
+          width: 'full',
+          backgroundColor: 'white',
+          position: 'absolute',
         }}
       >
-        <InputLabel
-          sx={{
-            mt: '-1.75em',
-            px: '0.5em',
-            zIndex: 2,
-            width: 'full',
-            backgroundColor: 'white',
-            position: 'absolute',
-          }}
+        {question.title[language]}
+      </InputLabel>
+      <Box>
+        <Button
+          variant="outlined"
+          sx={{ position: 'absolute', top: 4, right: 4 }}
+          onClick={handleChangePosition}
+          disabled={inEditMode}
         >
-          {question.title[language]}
-        </InputLabel>
-        <Box>
-          <Button
-            variant="outlined"
-            sx={{ position: 'absolute', top: 4, right: 4 }}
-            onClick={handleChangePosition}
-            disabled={inEditMode}
-          >
-            Change Position
-          </Button>
-          <Typography variant="body2">ID: {question.id}</Typography>
-          <Typography variant="body2">
-            Järjestysnumero: {question.priority}
-          </Typography>
-          <Typography variant="body2">
-            Isäntäkysymys: {question.parentId}
-          </Typography>
-          <Typography variant="body2">
-            Sisältö: {question.text[language]}
-          </Typography>
-        </Box>
+          Change Position
+        </Button>
+        <Typography variant="body2">ID: {question.id}</Typography>
+        <Typography variant="body2">
+          Järjestysnumero: {question.priority}
+        </Typography>
+        <Typography variant="body2">
+          Isäntäkysymys: {question.parentId}
+        </Typography>
+        <Typography variant="body2">
+          Sisältö: {question.text[language]}
+        </Typography>
       </Box>
-    </>
+    </Box>
   )
 }
 
@@ -165,12 +145,17 @@ const RenderQuestions = ({
 
   return (
     <Box sx={{ ml: 4 }}>
+      <MoveHereButton
+        question={question}
+        childQuestions={childQuestions}
+        inEditMode={inEditMode}
+        selectedQuestion={selectedQuestion}
+      />
       <QuestionItem
         question={question}
         language={language}
         inEditMode={inEditMode}
         setInEditMode={setInEditMode}
-        selectedQuestion={selectedQuestion}
         setSelectedQuestion={setSelectedQuestion}
       />
 
@@ -188,10 +173,14 @@ const RenderQuestions = ({
               setSelectedQuestion={setSelectedQuestion}
             />
           ))}
-          <MoveToEndButton
-            priority={childQuestions[childQuestions.length - 1].priority + 1}
-            inEditMode={inEditMode}
-          />
+          <Box sx={{ ml: 4, mb: 4 }}>
+            <MoveHereButton
+              question={question}
+              childQuestions={childQuestions}
+              inEditMode={inEditMode}
+              selectedQuestion={selectedQuestion}
+            />
+          </Box>
         </>
       )}
     </Box>
