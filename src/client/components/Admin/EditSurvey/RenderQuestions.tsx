@@ -29,6 +29,7 @@ interface MoveHereButtonProps {
   // eslint-disable-next-line react/require-default-props
   isEnding?: boolean
   question: Question
+  childQuestions: Question[]
   inEditMode: boolean
   selectedQuestion: Question | undefined
 }
@@ -36,13 +37,29 @@ interface MoveHereButtonProps {
 const MoveHereButton = ({
   isEnding = false,
   question,
+  childQuestions,
   inEditMode,
   selectedQuestion,
 }: MoveHereButtonProps) => {
-  if (!inEditMode || question.id === selectedQuestion?.id || !selectedQuestion)
+  if (!inEditMode || question?.id === selectedQuestion?.id || !selectedQuestion)
     return null
 
-  const { priority } = question
+  const lastChildQuestion = childQuestions.slice(-1)[0]
+
+  let { priority } = question
+
+  if (isEnding && lastChildQuestion) {
+    priority = lastChildQuestion.priority + 1
+  } else if (isEnding && !lastChildQuestion) priority = 0
+
+  const handleEndPositionChange = () => {
+    const destination = {
+      parentId: isEnding ? question?.id : question.parentId,
+      priority,
+    }
+
+    console.log(destination)
+  }
 
   return (
     <Button
@@ -52,6 +69,7 @@ const MoveHereButton = ({
         borderStyle: 'dashed',
         width: '100%',
       }}
+      onClick={handleEndPositionChange}
     >
       Move to {isEnding ? 'end' : `priority ${priority}`}
     </Button>
@@ -149,6 +167,7 @@ const RenderQuestions = ({
     <Box sx={{ ml: 4 }}>
       <MoveHereButton
         question={question}
+        childQuestions={childQuestions}
         inEditMode={inEditMode}
         selectedQuestion={selectedQuestion}
       />
@@ -178,6 +197,7 @@ const RenderQuestions = ({
             <MoveHereButton
               isEnding
               question={question}
+              childQuestions={childQuestions}
               inEditMode={inEditMode}
               selectedQuestion={selectedQuestion}
             />
