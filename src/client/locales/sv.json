@@ -90,7 +90,7 @@
     "cancel": "Avbryt",
     "saveSuccess": "Sparat",
     "deleteSuccess": "Borttaget",
-    "editModeControlContent": "Valitse uusi sijainti kysymykselle {{questionName}}, paina 'x' peruuttaaksesi",
+    "editModeControlContent": "Valitse uusi sijainti kysymykselle {{questionName}}, paina rastia peruuttaaksesi",
     "rePrioritizeSuccess": "Siirretty onnistuneesti",
     "rePrioritizeButton": "Siirrä kysymys",
     "moveToPriorityNumber": "Siirrä kohtaan {{priority}}",
