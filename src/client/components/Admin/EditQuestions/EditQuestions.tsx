@@ -79,7 +79,7 @@ const EditQuestions = () => {
   const [questionId, setQuestionId] = useState('')
   const [openNewQuestion, setOpenNewQuestion] = useState(false)
 
-  const selectedLanguage = searchParams.get('language') as keyof Locales
+  const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setQuestionId(event.target.value)

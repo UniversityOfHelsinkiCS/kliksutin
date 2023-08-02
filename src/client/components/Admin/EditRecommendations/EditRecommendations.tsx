@@ -21,7 +21,7 @@ const EditRecommendations = () => {
   const [openForm, setOpenForm] = useState(false)
   const [recommendationId, setRecommendationId] = useState('')
 
-  const selectedLanguage = searchParams.get('language') as keyof Locales
+  const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setRecommendationId(event.target.value)

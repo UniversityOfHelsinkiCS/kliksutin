@@ -26,7 +26,7 @@ const EditDimensions = () => {
 
   const mutation = useEditDimensionMutation(dimensionId)
 
-  const selectedLanguage = searchParams.get('language') as keyof Locales
+  const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
   const dimensions = getDimensions(survey)
   const selectedDimension = dimensions.find(

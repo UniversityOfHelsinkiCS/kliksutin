@@ -83,15 +83,16 @@ export const LanguageSelect = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
 
   useEffect(() => {
-    const persistLanguage = searchParams.get('language')
+    const persistLanguage = searchParams.get('transLang')
 
     if (persistLanguage) setSelectedLanguage(persistLanguage as keyof Locales)
 
-    if (!persistLanguage) setSearchParams({ language: selectedLanguage })
+    if (!persistLanguage) setSearchParams({ transLang: selectedLanguage })
   }, [searchParams, selectedLanguage, setSearchParams])
 
   const handleLanguageChange = (event: SelectChangeEvent) => {
     const newLanguage = event.target.value as keyof Locales
+
     setSelectedLanguage(newLanguage)
     setSearchParams({ language: newLanguage })
   }

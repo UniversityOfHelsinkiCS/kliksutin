@@ -34,7 +34,7 @@ const EditResults = () => {
   }
 
   const language = i18n.language as keyof Locales
-  const selectedLanguage = searchParams.get('language') as keyof Locales
+  const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
   if (!resultsFetched || !results || !survey) return null
 
