@@ -31,9 +31,10 @@ import useQuestions from '../../hooks/useQuestions'
 
 import DimensionChip from '../Chip/DimensionChip'
 
-import { languages } from './config'
+import { allSelection, languages, sortDimensions } from './config'
 
 import { Recommendation } from '../../types'
+import { getDimensions } from '../../util/dimensions'
 
 type HandleChange = (event: SelectChangeEvent) => void
 
@@ -193,25 +194,52 @@ export const DialogDimensionSelect = ({
   )
 }
 
-export const DimensionSelect = ({
-  dimensionId,
-  dimensions,
-  handleChange,
-}: {
-  dimensionId: string
-  dimensions: DimensionSelectionData[]
-  handleChange: HandleChange
-}) => {
+export const DimensionSelect = () => {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { questionId, dimensionId: persistDimensionId } = useParams()
+
+  const { survey } = useSurvey()
+
+  const [dimensionId, setDimensionId] = useState('allDimensions')
+
+  useEffect(() => {
+    if (persistDimensionId) setDimensionId(persistDimensionId)
+
+    if (questionId && !persistDimensionId) {
+      navigate({
+        pathname: `./${questionId}/${dimensionId}`,
+        search: location.search,
+      })
+    }
+  }, [dimensionId, location.search, navigate, persistDimensionId, questionId])
+
+  const handleDimensionChange = (event: SelectChangeEvent) => {
+    setDimensionId(event.target.value)
+
+    navigate({
+      pathname: `./${questionId}/${event.target.value}`,
+      search: location.search,
+    })
+  }
+
   const language = i18n.language as keyof Locales
+
+  const dimensions = getDimensions(survey)
+
+  if (!dimensions || !questionId) return null
+
+  const sortedDimensions = sortDimensions(dimensions, language)
+  const dimensionSelections = [allSelection].concat(sortedDimensions)
 
   return (
     <SelectWrapper
       label={t('admin:selectDimension')}
       value={dimensionId}
-      handleChange={handleChange}
+      handleChange={handleDimensionChange}
     >
-      {dimensions.map(({ id, title }) => (
+      {dimensionSelections.map(({ id, title }) => (
         <MenuItem key={id} value={id}>
           {title[language]}
         </MenuItem>
