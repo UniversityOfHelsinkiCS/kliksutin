@@ -250,7 +250,7 @@ export const QuestionSelect = () => {
     setQuestionId(event.target.value)
 
     navigate({
-      pathname: `/admin/edit-questions/${event.target.value}`,
+      pathname: `./${event.target.value}`,
       search: location.search,
     })
   }
