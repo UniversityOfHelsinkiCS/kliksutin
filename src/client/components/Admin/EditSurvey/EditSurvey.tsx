@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box } from '@mui/material'
 
@@ -20,17 +20,29 @@ const EditSurvey = () => {
     Question | undefined
   >()
 
+  const onCancel = () => {
+    setInEditMode(false)
+    setSelectedQuestion(undefined)
+  }
+
+  useEffect(() => {
+    const close = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onCancel()
+      }
+    }
+
+    window.addEventListener('keydown', close)
+
+    return () => window.removeEventListener('keydown', close)
+  }, [])
+
   if (!survey || surveyIsLoading || !questions || questionsIsLoading)
     return null
 
   const { language } = i18n
 
   const sortedQuestions = questions.sort((a, b) => a.priority - b.priority)
-
-  const onCancel = () => {
-    setInEditMode(false)
-    setSelectedQuestion(undefined)
-  }
 
   return (
     <Box sx={{ mr: 4 }}>
