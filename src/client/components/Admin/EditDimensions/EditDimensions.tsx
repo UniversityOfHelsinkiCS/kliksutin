@@ -29,7 +29,6 @@ const EditDimensions = () => {
   const selectedLanguage = searchParams.get('language') as keyof Locales
 
   const dimensions = getDimensions(survey)
-
   const selectedDimension = dimensions.find(
     (dimension) => dimension.id === dimensionId
   )

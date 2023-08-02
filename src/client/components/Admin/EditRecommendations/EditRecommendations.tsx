@@ -13,8 +13,8 @@ import NewRecommendationForm from './NewRecommendationForm'
 import { LanguageSelect, RecommendationSelect } from '../Select'
 
 const EditRecommendations = () => {
-  const { t } = useTranslation()
   const [searchParams] = useSearchParams()
+  const { t } = useTranslation()
   const { survey } = useSurvey()
   const { recommendations, isSuccess } = useRecommendations(survey?.id)
 

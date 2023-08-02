@@ -18,11 +18,9 @@ import { getDimensions } from '../../../util/dimensions'
 
 const EditResults = () => {
   const [searchParams] = useSearchParams()
-  const { survey } = useSurvey()
   const { t, i18n } = useTranslation()
+  const { survey } = useSurvey()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
-
-  const selectedLanguage = searchParams.get('language') as keyof Locales
 
   const [openForm, setOpenForm] = useState(false)
   const [dimensionId, setDimensionId] = useState('allDimensions')
@@ -36,6 +34,7 @@ const EditResults = () => {
   }
 
   const language = i18n.language as keyof Locales
+  const selectedLanguage = searchParams.get('language') as keyof Locales
 
   if (!resultsFetched || !results || !survey) return null
 

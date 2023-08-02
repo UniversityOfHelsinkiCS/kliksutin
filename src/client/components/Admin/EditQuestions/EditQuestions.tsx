@@ -71,16 +71,15 @@ const OptionSection = ({
   )
 }
 const EditQuestions = () => {
+  const [searchParams] = useSearchParams()
   const { t } = useTranslation()
   const { survey } = useSurvey()
-  const [searchParams] = useSearchParams()
   const { questions, isSuccess } = useQuestions(survey?.id)
 
   const [questionId, setQuestionId] = useState('')
+  const [openNewQuestion, setOpenNewQuestion] = useState(false)
 
   const selectedLanguage = searchParams.get('language') as keyof Locales
-
-  const [openNewQuestion, setOpenNewQuestion] = useState(false)
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setQuestionId(event.target.value)
