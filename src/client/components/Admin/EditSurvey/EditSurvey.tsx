@@ -9,6 +9,7 @@ import useSurvey from '../../../hooks/useSurvey'
 import useQuestions from '../../../hooks/useQuestions'
 
 import RenderQuestions from './RenderQuestions'
+import EditModeControls from './EditModeControls'
 
 const EditSurvey = () => {
   const { i18n } = useTranslation()
@@ -25,6 +26,11 @@ const EditSurvey = () => {
   const { language } = i18n
 
   const sortedQuestions = questions.sort((a, b) => a.priority - b.priority)
+
+  const onCancel = () => {
+    setInEditMode(false)
+    setSelectedQuestion(undefined)
+  }
 
   return (
     <Box sx={{ mr: 4 }}>
@@ -43,6 +49,12 @@ const EditSurvey = () => {
           )}
         </div>
       ))}
+
+      <EditModeControls
+        questionName={selectedQuestion?.title[language as keyof Locales]}
+        isOpen={inEditMode}
+        onClose={onCancel}
+      />
     </Box>
   )
 }

@@ -91,6 +91,7 @@
     "cancel": "Cancel",
     "saveSuccess": "Saved successfully",
     "deleteSuccess": "Deleted successfully",
+    "editModeControlContent": "Select new priority for question {{questionName}}, press 'x' to cancel",
     "rePrioritizeSuccess": "Moved successfully",
     "rePrioritizeButton": "Move question",
     "moveToPriorityNumber": "Move to priority {{priority}}",
