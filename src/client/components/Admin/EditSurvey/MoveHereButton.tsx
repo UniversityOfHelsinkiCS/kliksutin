@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 import { Question } from '@backend/types'
 
@@ -25,6 +26,7 @@ const MoveHereButton = ({
   handleEndPositionChange,
   isEnding = false,
 }: MoveHereButtonProps) => {
+  const { t } = useTranslation()
   if (!inEditMode || question?.id === selectedQuestion?.id || !selectedQuestion)
     return null
 
@@ -51,7 +53,9 @@ const MoveHereButton = ({
       }}
       onClick={() => handleEndPositionChange(destinationData)}
     >
-      Move to {isEnding ? 'end' : `priority ${priority}`}
+      {isEnding
+        ? t('admin:moveToEnd')
+        : t('admin:moveToPriorityNumber', { priority })}
     </Button>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Box, Button, InputLabel, Typography } from '@mui/material'
 
 import { Locales, Question } from '@backend/types'
@@ -16,6 +17,7 @@ const QuestionItem = ({
   inEditMode,
   handleStartPositionChange,
 }: QuestionsProps) => {
+  const { t } = useTranslation()
   const borderColor = inEditMode ? 'grey.300' : 'grey.400'
   const textColor = inEditMode ? 'grey.400' : 'black'
 
@@ -59,7 +61,7 @@ const QuestionItem = ({
           onClick={handleStartPositionChange}
           disabled={inEditMode}
         >
-          Change Position
+          {t('admin:rePrioritizeButton')}
         </Button>
         <Typography variant="body2">ID: {question.id}</Typography>
         <Typography variant="body2">

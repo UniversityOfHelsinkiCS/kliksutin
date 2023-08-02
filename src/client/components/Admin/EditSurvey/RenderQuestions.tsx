@@ -1,5 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
+import { enqueueSnackbar } from 'notistack'
+import { useTranslation } from 'react-i18next'
 
 import { Locales, Question } from '@backend/types'
 
@@ -30,6 +32,7 @@ const RenderQuestions = ({
   selectedQuestion,
   setSelectedQuestion,
 }: RenderQuestionsProps) => {
+  const { t } = useTranslation()
   const mutation = useEditQuestionPriorityMutation(selectedQuestion?.id)
 
   if (!question || !questions) return null
@@ -48,10 +51,13 @@ const RenderQuestions = ({
   ) => {
     try {
       await mutation.mutateAsync(destinationData)
+
       setInEditMode(false)
       setSelectedQuestion(undefined)
+
+      enqueueSnackbar(t('admin:rePrioritizeSuccess'), { variant: 'success' })
     } catch (error: any) {
-      console.log(error)
+      enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
 
