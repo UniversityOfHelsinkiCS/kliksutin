@@ -11,10 +11,7 @@ interface QuestionsProps {
   question: Question
   language: keyof Locales
   inEditMode: boolean
-  setInEditMode: React.Dispatch<React.SetStateAction<boolean>>
-  setSelectedQuestion: React.Dispatch<
-    React.SetStateAction<Question | undefined>
-  >
+  handleStartPositionChange: () => void
 }
 
 interface RenderQuestionsProps {
@@ -84,16 +81,10 @@ const QuestionItem = ({
   question,
   language,
   inEditMode,
-  setInEditMode,
-  setSelectedQuestion,
+  handleStartPositionChange,
 }: QuestionsProps) => {
   const borderColor = inEditMode ? 'grey.300' : 'grey.400'
   const textColor = inEditMode ? 'grey.400' : 'black'
-
-  const handleStartPositionChange = () => {
-    setSelectedQuestion(question)
-    setInEditMode(true)
-  }
 
   return (
     <Box
@@ -169,6 +160,11 @@ const RenderQuestions = ({
     (childQuestion) => question.id === childQuestion.parentId
   )
 
+  const handleStartPositionChange = () => {
+    setSelectedQuestion(question)
+    setInEditMode(true)
+  }
+
   const handleEndPositionChange = async (
     destinationData: UpdatedQuestionLocation
   ) => {
@@ -194,8 +190,7 @@ const RenderQuestions = ({
         question={question}
         language={language}
         inEditMode={inEditMode}
-        setInEditMode={setInEditMode}
-        setSelectedQuestion={setSelectedQuestion}
+        handleStartPositionChange={handleStartPositionChange}
       />
 
       <>
