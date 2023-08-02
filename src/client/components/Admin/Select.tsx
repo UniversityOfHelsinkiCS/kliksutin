@@ -194,6 +194,33 @@ export const DialogDimensionSelect = ({
   )
 }
 
+export const OldDimensionSelect = ({
+  dimensionId,
+  dimensions,
+  handleChange,
+}: {
+  dimensionId: string
+  dimensions: DimensionSelectionData[]
+  handleChange: HandleChange
+}) => {
+  const { t, i18n } = useTranslation()
+  const language = i18n.language as keyof Locales
+
+  return (
+    <SelectWrapper
+      label={t('admin:selectDimension')}
+      value={dimensionId}
+      handleChange={handleChange}
+    >
+      {dimensions.map(({ id, title }) => (
+        <MenuItem key={id} value={id}>
+          {title[language]}
+        </MenuItem>
+      ))}
+    </SelectWrapper>
+  )
+}
+
 export const DimensionSelect = () => {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()

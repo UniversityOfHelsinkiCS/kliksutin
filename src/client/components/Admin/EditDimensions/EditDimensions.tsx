@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 
 import { Locales } from '@backend/types'
 
@@ -11,7 +11,7 @@ import { useEditDimensionMutation } from '../../../hooks/useDimensionMutation'
 
 import EditDimension from './EditDimension'
 import NewDimensionForm from './NewDimensionForm'
-import { ColorSelect, DimensionSelect, LanguageSelect } from '../Select'
+import { ColorSelect, LanguageSelect, OldDimensionSelect } from '../Select'
 
 import { getDimensions } from '../../../util/dimensions'
 
@@ -32,6 +32,10 @@ const EditDimensions = () => {
   const selectedDimension = dimensions.find(
     (dimension) => dimension.id === dimensionId
   )
+
+  const handleDimensionChange = (event: SelectChangeEvent) => {
+    setDimensionId(event.target.value)
+  }
 
   const handleColorChange = (newColor: string) => {
     setColor(newColor)
@@ -65,7 +69,11 @@ const EditDimensions = () => {
           justifyContent: 'flex-start',
         }}
       >
-        <DimensionSelect />
+        <OldDimensionSelect
+          dimensionId={dimensionId}
+          dimensions={dimensions}
+          handleChange={handleDimensionChange}
+        />
 
         <LanguageSelect />
 
