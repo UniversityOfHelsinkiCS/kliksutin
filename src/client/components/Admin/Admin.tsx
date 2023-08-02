@@ -18,6 +18,10 @@ const Admin = () => {
 
   if (!user || !user.isAdmin) return <Navigate to="/" />
 
+  const pathParts = location.pathname.split('/').filter(Boolean)
+
+  const tab = pathParts.length < 2 ? 'admin' : pathParts[1]
+
   return (
     <Box
       sx={{
@@ -27,7 +31,7 @@ const Admin = () => {
       }}
     >
       <Tabs
-        value={location.pathname}
+        value={tab}
         variant="scrollable"
         scrollButtons
         allowScrollButtonsMobile
@@ -36,31 +40,31 @@ const Admin = () => {
           component={Link}
           to="."
           label={t('admin:indexTab')}
-          value="/admin"
+          value="admin"
         />
         <Tab
           component={Link}
           to="./edit-dimensions"
           label={t('admin:dimensionTab')}
-          value="/admin/edit-dimensions"
+          value="edit-dimensions"
         />
         <Tab
           component={Link}
           to="./edit-questions"
           label={t('admin:questionTab')}
-          value="/admin/edit-questions"
+          value="edit-questions"
         />
         <Tab
           component={Link}
           to="./edit-results"
           label={t('admin:resultTab')}
-          value="/admin/edit-results"
+          value="edit-results"
         />
         <Tab
           component={Link}
           to="./edit-recommendations"
           label={t('admin:recommendationTab')}
-          value="/admin/edit-recommendations"
+          value="edit-recommendations"
         />
       </Tabs>
       <Alert sx={{ ...common.alertStyle, m: 4 }} severity="info">
