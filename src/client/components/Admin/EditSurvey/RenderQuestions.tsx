@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { Box, Button, InputLabel, Typography } from '@mui/material'
+
 import { Locales, Question } from '@backend/types'
+
+import { useEditQuestionPriorityMutation } from '../../../hooks/useQuestionMutation'
+import { UpdatedQuestionLocation } from '../../../../validators/questions'
 
 interface QuestionsProps {
   question: Question
@@ -26,20 +30,24 @@ interface RenderQuestionsProps {
 }
 
 interface MoveHereButtonProps {
-  // eslint-disable-next-line react/require-default-props
-  isEnding?: boolean
   question: Question
   childQuestions: Question[]
   inEditMode: boolean
   selectedQuestion: Question | undefined
+  handleEndPositionChange: (
+    destinationData: UpdatedQuestionLocation
+  ) => Promise<void>
+  // eslint-disable-next-line react/require-default-props
+  isEnding?: boolean
 }
 
 const MoveHereButton = ({
-  isEnding = false,
   question,
   childQuestions,
-  inEditMode,
   selectedQuestion,
+  inEditMode,
+  handleEndPositionChange,
+  isEnding = false,
 }: MoveHereButtonProps) => {
   if (!inEditMode || question?.id === selectedQuestion?.id || !selectedQuestion)
     return null
@@ -52,13 +60,9 @@ const MoveHereButton = ({
     priority = lastChildQuestion.priority + 1
   } else if (isEnding && !lastChildQuestion) priority = 0
 
-  const handleEndPositionChange = () => {
-    const destination = {
-      parentId: isEnding ? question?.id : question.parentId,
-      priority,
-    }
-
-    console.log(destination)
+  const destinationData = {
+    parentId: isEnding ? question?.id : question.parentId,
+    priority,
   }
 
   return (
@@ -69,7 +73,7 @@ const MoveHereButton = ({
         borderStyle: 'dashed',
         width: '100%',
       }}
-      onClick={handleEndPositionChange}
+      onClick={() => handleEndPositionChange(destinationData)}
     >
       Move to {isEnding ? 'end' : `priority ${priority}`}
     </Button>
@@ -157,11 +161,25 @@ const RenderQuestions = ({
   selectedQuestion,
   setSelectedQuestion,
 }: RenderQuestionsProps) => {
+  const mutation = useEditQuestionPriorityMutation(selectedQuestion?.id)
+
   if (!question || !questions) return null
 
   const childQuestions = questions.filter(
     (childQuestion) => question.id === childQuestion.parentId
   )
+
+  const handleEndPositionChange = async (
+    destinationData: UpdatedQuestionLocation
+  ) => {
+    try {
+      await mutation.mutateAsync(destinationData)
+      setInEditMode(false)
+      setSelectedQuestion(undefined)
+    } catch (error: any) {
+      console.log(error)
+    }
+  }
 
   return (
     <Box sx={{ ml: 4 }}>
@@ -170,6 +188,7 @@ const RenderQuestions = ({
         childQuestions={childQuestions}
         inEditMode={inEditMode}
         selectedQuestion={selectedQuestion}
+        handleEndPositionChange={handleEndPositionChange}
       />
       <QuestionItem
         question={question}
@@ -200,6 +219,7 @@ const RenderQuestions = ({
               childQuestions={childQuestions}
               inEditMode={inEditMode}
               selectedQuestion={selectedQuestion}
+              handleEndPositionChange={handleEndPositionChange}
             />
           </Box>
         )}
