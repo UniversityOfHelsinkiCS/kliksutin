@@ -1,7 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react'
-import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { useSearchParams } from 'react-router-dom'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 
 import { Locales } from '@backend/types'
 
@@ -16,9 +17,12 @@ import { sortDimensions, allSelection } from '../config'
 import { getDimensions } from '../../../util/dimensions'
 
 const EditResults = () => {
+  const [searchParams] = useSearchParams()
   const { survey } = useSurvey()
   const { t, i18n } = useTranslation()
   const { results, isSuccess: resultsFetched } = useResults(survey?.id)
+
+  const selectedLanguage = searchParams.get('language') as keyof Locales
 
   const [openForm, setOpenForm] = useState(false)
   const [dimensionId, setDimensionId] = useState('allDimensions')
@@ -29,11 +33,6 @@ const EditResults = () => {
   const [questionId, setQuestionId] = useState('')
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setQuestionId(event.target.value)
-  }
-
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
-  const handleLanguageChange = (event: SelectChangeEvent) => {
-    setSelectedLanguage(event.target.value as keyof Locales)
   }
 
   const language = i18n.language as keyof Locales
@@ -80,10 +79,9 @@ const EditResults = () => {
           questions={survey.Questions}
           handleChange={handleQuestionChange}
         />
-        <LanguageSelect
-          selectedLanguage={selectedLanguage}
-          handleChange={handleLanguageChange}
-        />
+
+        <LanguageSelect />
+
         {!!nonSelectedOptions.length && (
           <Button
             sx={{

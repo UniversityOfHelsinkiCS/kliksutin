@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { useSearchParams } from 'react-router-dom'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 
 import { Locales } from '@backend/types'
 
@@ -13,19 +14,17 @@ import { LanguageSelect, RecommendationSelect } from '../Select'
 
 const EditRecommendations = () => {
   const { t } = useTranslation()
+  const [searchParams] = useSearchParams()
   const { survey } = useSurvey()
   const { recommendations, isSuccess } = useRecommendations(survey?.id)
 
-  const [recommendationId, setRecommendationId] = useState('')
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
   const [openForm, setOpenForm] = useState(false)
+  const [recommendationId, setRecommendationId] = useState('')
+
+  const selectedLanguage = searchParams.get('language') as keyof Locales
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setRecommendationId(event.target.value)
-  }
-
-  const handleLanguageChange = (event: SelectChangeEvent) => {
-    setSelectedLanguage(event.target.value as keyof Locales)
   }
 
   if (!isSuccess || !recommendations) return null
@@ -50,10 +49,9 @@ const EditRecommendations = () => {
           recommendations={recommendations}
           handleChange={handleQuestionChange}
         />
-        <LanguageSelect
-          selectedLanguage={selectedLanguage}
-          handleChange={handleLanguageChange}
-        />
+
+        <LanguageSelect />
+
         <Button
           sx={{ position: 'absolute', right: 0, mr: 2, alignSelf: 'center' }}
           variant="contained"

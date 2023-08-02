@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
@@ -17,12 +18,15 @@ import { getDimensions } from '../../../util/dimensions'
 const EditDimensions = () => {
   const { t } = useTranslation()
   const { survey } = useSurvey()
+  const [searchParams] = useSearchParams()
 
   const [color, setColor] = useState('000000')
   const [dimensionId, setDimensionId] = useState('')
   const [openNewDimension, setOpenNewDimension] = useState(false)
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
+
   const mutation = useEditDimensionMutation(dimensionId)
+
+  const selectedLanguage = searchParams.get('language') as keyof Locales
 
   const dimensions = getDimensions(survey)
 
@@ -32,10 +36,6 @@ const EditDimensions = () => {
 
   const handleDimensionChange = (event: SelectChangeEvent) => {
     setDimensionId(event.target.value)
-  }
-
-  const handleLanguageChange = (event: SelectChangeEvent) => {
-    setSelectedLanguage(event.target.value as keyof Locales)
   }
 
   const handleColorChange = (newColor: string) => {
@@ -75,10 +75,9 @@ const EditDimensions = () => {
           dimensions={dimensions}
           handleChange={handleDimensionChange}
         />
-        <LanguageSelect
-          selectedLanguage={selectedLanguage}
-          handleChange={handleLanguageChange}
-        />
+
+        <LanguageSelect />
+
         <Button
           sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
           variant="contained"

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
+import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
 
 import { Question, Locales } from '@backend/types'
 
@@ -72,19 +73,17 @@ const OptionSection = ({
 const EditQuestions = () => {
   const { t } = useTranslation()
   const { survey } = useSurvey()
+  const [searchParams] = useSearchParams()
   const { questions, isSuccess } = useQuestions(survey?.id)
 
   const [questionId, setQuestionId] = useState('')
-  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
+
+  const selectedLanguage = searchParams.get('language') as keyof Locales
 
   const [openNewQuestion, setOpenNewQuestion] = useState(false)
 
   const handleQuestionChange = (event: SelectChangeEvent) => {
     setQuestionId(event.target.value)
-  }
-
-  const handleLanguageChange = (event: SelectChangeEvent) => {
-    setSelectedLanguage(event.target.value as keyof Locales)
   }
 
   if (!isSuccess || !questions) return null
@@ -108,10 +107,9 @@ const EditQuestions = () => {
           questions={questions}
           handleChange={handleQuestionChange}
         />
-        <LanguageSelect
-          selectedLanguage={selectedLanguage}
-          handleChange={handleLanguageChange}
-        />
+
+        <LanguageSelect />
+
         <Button
           sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
           variant="contained"

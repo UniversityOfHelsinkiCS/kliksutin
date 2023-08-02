@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Control, Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { HexColorInput, HexColorPicker } from 'react-colorful'
@@ -75,21 +76,31 @@ export const DialogSelect = ({
   />
 )
 
-export const LanguageSelect = ({
-  selectedLanguage,
-  handleChange,
-}: {
-  selectedLanguage: keyof Locales
-  handleChange: HandleChange
-}) => {
+export const LanguageSelect = () => {
   const { t, i18n } = useTranslation()
   const language = i18n.language as keyof Locales
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [selectedLanguage, setSelectedLanguage] = useState<keyof Locales>('en')
+
+  useEffect(() => {
+    const persistLanguage = searchParams.get('language')
+
+    if (persistLanguage) setSelectedLanguage(persistLanguage as keyof Locales)
+
+    if (!persistLanguage) setSearchParams({ language: selectedLanguage })
+  }, [searchParams, selectedLanguage, setSearchParams])
+
+  const handleLanguageChange = (event: SelectChangeEvent) => {
+    const newLanguage = event.target.value as keyof Locales
+    setSelectedLanguage(newLanguage)
+    setSearchParams({ language: newLanguage })
+  }
 
   return (
     <Box sx={{ width: '20vw' }}>
       <FormControl fullWidth>
         <FormLabel>{t('admin:selectLanguage')}</FormLabel>
-        <RadioGroup defaultValue="en" onChange={handleChange} row>
+        <RadioGroup defaultValue="en" onChange={handleLanguageChange} row>
           {languages.map(({ id, title }) => (
             <FormControlLabel
               key={id}
