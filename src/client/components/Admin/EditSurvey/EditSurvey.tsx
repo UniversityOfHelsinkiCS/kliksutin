@@ -6,30 +6,34 @@ import { Box } from '@mui/material'
 import { Locales, Question } from '@backend/types'
 
 import useSurvey from '../../../hooks/useSurvey'
+import useQuestions from '../../../hooks/useQuestions'
 
 import RenderQuestions from './RenderQuestions'
 
 const EditSurvey = () => {
   const { i18n } = useTranslation()
-  const { survey, isLoading } = useSurvey()
+  const { survey, isLoading: surveyIsLoading } = useSurvey()
+  const { questions, isLoading: questionsIsLoading } = useQuestions(survey?.id)
   const [inEditMode, setInEditMode] = useState(false)
   const [selectedQuestion, setSelectedQuestion] = useState<
     Question | undefined
   >()
 
-  if (!survey || isLoading) return null
+  if (!survey || surveyIsLoading || !questions || questionsIsLoading)
+    return null
 
   const { language } = i18n
-  const questions = survey.Questions.sort((a, b) => a.priority - b.priority)
+
+  const sortedQuestions = questions.sort((a, b) => a.priority - b.priority)
 
   return (
     <Box sx={{ mr: 4 }}>
-      {questions.map((question) => (
+      {sortedQuestions.map((question) => (
         <div key={question.id}>
           {question.parentId === null && (
             <RenderQuestions
               question={question}
-              questions={questions}
+              questions={sortedQuestions}
               language={language as keyof Locales}
               inEditMode={inEditMode}
               setInEditMode={setInEditMode}
