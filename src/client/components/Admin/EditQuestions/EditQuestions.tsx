@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom'
+import { Box, Button, Typography } from '@mui/material'
 
 import { Question, Locales } from '@backend/types'
 
 import useSurvey from '../../../hooks/useSurvey'
-import useQuestions from '../../../hooks/useQuestions'
 
-import { LanguageSelect, QuestionSelect } from '../Select'
 import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
 
-import NewQuestionForm from './NewQuestionForm'
 import NewOptionForm from './NewOptionForm'
 
 const OptionSection = ({
@@ -70,77 +72,52 @@ const OptionSection = ({
     </Box>
   )
 }
-const EditQuestions = () => {
-  const [searchParams] = useSearchParams()
-  const { t } = useTranslation()
-  const { survey } = useSurvey()
-  const { questions, isSuccess } = useQuestions(survey?.id)
 
-  const [questionId, setQuestionId] = useState('')
-  const [openNewQuestion, setOpenNewQuestion] = useState(false)
+const EditQuestions = () => {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { questionId } = useParams()
+  const [searchParams] = useSearchParams()
+  const { survey, isLoading } = useSurvey()
+
+  if (isLoading || !survey || !questionId) return null
 
   const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
-  const handleQuestionChange = (event: SelectChangeEvent) => {
-    setQuestionId(event.target.value)
-  }
-
-  if (!isSuccess || !questions) return null
-
-  const selectedQuestion = questions.find(
-    ({ id }) => id === (questionId as unknown as number)
+  const selectedQuestion = survey.Questions.find(
+    (question) => question.id === Number(questionId)
   )
 
+  const handleQuestionDeletion = () => {
+    navigate({
+      pathname: '/admin/edit-questions',
+      search: location.search,
+    })
+  }
+
   return (
-    <Box sx={{ mx: 2, mt: 8 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          my: 4,
-          justifyContent: 'flex-start',
-        }}
-      >
-        <QuestionSelect
-          questionId={questionId}
-          questions={questions}
-          handleChange={handleQuestionChange}
-        />
-
-        <LanguageSelect />
-
-        <Button
-          sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
-          variant="contained"
-          onClick={() => setOpenNewQuestion(!openNewQuestion)}
-        >
-          {t('admin:questionAddNew')}
-        </Button>
-      </Box>
-      <Box width="100%" flexWrap="wrap">
-        {selectedQuestion ? (
-          <Box sx={{ my: 4 }}>
-            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              {t('admin:questionViewQuestionEdit')}
-            </Typography>
-            <EditQuestion
-              language={selectedLanguage}
-              question={selectedQuestion}
-              onDelete={setQuestionId}
-            />
-          </Box>
-        ) : (
+    <Box width="100%" flexWrap="wrap">
+      {selectedQuestion ? (
+        <Box sx={{ my: 4 }}>
           <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-            {t('admin:questionViewInfo')}
+            {t('admin:questionViewQuestionEdit')}
           </Typography>
-        )}
-        <OptionSection
-          selectedQuestion={selectedQuestion}
-          selectedLanguage={selectedLanguage}
-        />
-      </Box>
-
-      <NewQuestionForm open={openNewQuestion} setOpen={setOpenNewQuestion} />
+          <EditQuestion
+            language={selectedLanguage}
+            question={selectedQuestion}
+            onDelete={handleQuestionDeletion}
+          />
+        </Box>
+      ) : (
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          {t('admin:questionViewInfo')}
+        </Typography>
+      )}
+      <OptionSection
+        selectedQuestion={selectedQuestion}
+        selectedLanguage={selectedLanguage}
+      />
     </Box>
   )
 }

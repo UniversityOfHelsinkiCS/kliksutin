@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -73,11 +74,11 @@ const EditResults = () => {
           dimensions={dimensionSelections}
           handleChange={handleDimensionChange}
         />
-        <QuestionSelect
+        {/* <QuestionSelect
           questionId={questionId}
           questions={survey.Questions}
           handleChange={handleQuestionChange}
-        />
+        /> */}
 
         <LanguageSelect />
 

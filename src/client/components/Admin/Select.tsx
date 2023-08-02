@@ -1,6 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom'
 import { Control, Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { HexColorInput, HexColorPicker } from 'react-colorful'
@@ -20,6 +25,9 @@ import {
 } from '@mui/material'
 
 import { DimensionSelectionData, Locales, Question } from '@backend/types'
+
+import useSurvey from '../../hooks/useSurvey'
+import useQuestions from '../../hooks/useQuestions'
 
 import DimensionChip from '../Chip/DimensionChip'
 
@@ -223,17 +231,33 @@ const sortQuestions = (questions: Question[], language: keyof Locales) => {
   return sortedQuestions
 }
 
-export const QuestionSelect = ({
-  questionId,
-  questions,
-  handleChange,
-}: {
-  questionId: string
-  questions: Question[]
-  handleChange: HandleChange
-}) => {
+export const QuestionSelect = () => {
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { questionId: persistQuestionId } = useParams()
+
+  const { survey } = useSurvey()
+  const { questions, isSuccess } = useQuestions(survey?.id)
+
+  const [questionId, setQuestionId] = useState('')
+
+  useEffect(() => {
+    if (persistQuestionId) setQuestionId(persistQuestionId)
+  }, [persistQuestionId])
+
+  const handleQuestionChange = (event: SelectChangeEvent) => {
+    setQuestionId(event.target.value)
+
+    navigate({
+      pathname: `/admin/edit-questions/${event.target.value}`,
+      search: location.search,
+    })
+  }
+
   const language = i18n.language as keyof Locales
+
+  if (!isSuccess || !questions) return null
 
   const filteredQuestions = questions.filter(
     ({ optionData }) => !['dimensions'].includes(optionData.type)
@@ -244,7 +268,7 @@ export const QuestionSelect = ({
     <SelectWrapper
       label={t('admin:selectQuestion')}
       value={questionId}
-      handleChange={handleChange}
+      handleChange={handleQuestionChange}
     >
       {sortedQuestions.map(({ id, title }) => (
         <MenuItem key={id} value={id}>
