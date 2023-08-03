@@ -1,6 +1,10 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, InputLabel, Typography } from '@mui/material'
+import { Badge, Box, Button, Chip, InputLabel, Tooltip } from '@mui/material'
+
+import FingerprintIcon from '@mui/icons-material/Fingerprint'
+import LowPriorityIcon from '@mui/icons-material/LowPriority'
+import ChildCareIcon from '@mui/icons-material/ChildCare'
 
 import { Locales, Question } from '@backend/types'
 
@@ -63,16 +67,37 @@ const QuestionItem = ({
         >
           {t('admin:rePrioritizeButton')}
         </Button>
-        <Typography variant="body2">ID: {question.id}</Typography>
-        <Typography variant="body2">
-          Järjestysnumero: {question.priority}
-        </Typography>
-        <Typography variant="body2">
-          Isäntäkysymys: {question.parentId}
-        </Typography>
-        <Typography variant="body2">
-          Sisältö: {question.text[language]}
-        </Typography>
+        <Tooltip title="The number represents the unique ID of the question">
+          <Badge sx={{ mt: 1 }} badgeContent={question.id} color="primary">
+            <FingerprintIcon color="action" />
+          </Badge>
+        </Tooltip>
+        {question.parentId && (
+          <Tooltip title="This badge represents that the question is a child question. The number represents the ID number of the parent question">
+            <Badge
+              sx={{ mt: 1, mx: 1 }}
+              badgeContent={question.parentId}
+              color="primary"
+            >
+              <ChildCareIcon color="action" />
+            </Badge>
+          </Tooltip>
+        )}
+        <Tooltip title="Priority determines the order in which the questions appear on the survey. 0 being the first question. Child question priorities starts from 0 but their priorities are only valid inside the child tree">
+          <Chip
+            sx={{
+              mx: 2,
+              px: '0.3rem',
+              fontWeight: 'normal',
+              borderRadius: '1rem',
+            }}
+            label={`Priority: ${question.priority}`}
+            color="primary"
+            variant="outlined"
+            size="small"
+            icon={<LowPriorityIcon />}
+          />
+        </Tooltip>
       </Box>
     </Box>
   )
