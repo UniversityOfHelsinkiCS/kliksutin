@@ -28,12 +28,12 @@ import { DimensionSelectionData, Locales, Question } from '@backend/types'
 
 import useSurvey from '../../hooks/useSurvey'
 import useQuestions from '../../hooks/useQuestions'
+import useRecommendations from '../../hooks/useRecommendations'
 
 import DimensionChip from '../Chip/DimensionChip'
 
 import { allSelection, languages, sortDimensions } from './config'
 
-import { Recommendation } from '../../types'
 import { getDimensions } from '../../util/dimensions'
 
 type HandleChange = (event: SelectChangeEvent) => void
@@ -355,22 +355,37 @@ export const QuestionSelect = () => {
   )
 }
 
-export const RecommendationSelect = ({
-  recommendationId,
-  recommendations,
-  handleChange,
-}: {
-  recommendationId: string
-  recommendations: Recommendation[]
-  handleChange: HandleChange
-}) => {
+export const RecommendationSelect = () => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { recommendationId: persistRecommendationId } = useParams()
+
+  const { survey } = useSurvey()
+  const { recommendations, isSuccess } = useRecommendations(survey?.id)
+
+  const [recommendationId, setRecommendationId] = useState('')
+
+  useEffect(() => {
+    if (persistRecommendationId) setRecommendationId(persistRecommendationId)
+  }, [persistRecommendationId])
+
+  const handleRecommendationChange = (event: SelectChangeEvent) => {
+    setRecommendationId(event.target.value)
+
+    navigate({
+      pathname: `./${event.target.value}`,
+      search: location.search,
+    })
+  }
+
+  if (!isSuccess || !recommendations) return null
 
   return (
     <SelectWrapper
       label={t('admin:selectRecommendation')}
       value={recommendationId}
-      handleChange={handleChange}
+      handleChange={handleRecommendationChange}
     >
       {recommendations.map(({ id, label }) => (
         <MenuItem key={id} value={id}>
