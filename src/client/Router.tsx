@@ -18,6 +18,7 @@ import RenderEditQuestions from './components/Admin/EditQuestions/RenderEditQues
 import EditResults from './components/Admin/EditResults/EditResults'
 import RenderEditResults from './components/Admin/EditResults/RenderEditResults'
 import EditRecommendations from './components/Admin/EditRecommendations/EditRecommendations'
+import RenderEditRecommendations from './components/Admin/EditRecommendations/RenderEditRecommenstations'
 import EditSurvey from './components/Admin/EditSurvey/EditSurvey'
 import RootBoundary from './components/Errors/RootBoundary'
 import NotFound from './components/Errors/NotFound'
@@ -44,7 +45,12 @@ const router = createBrowserRouter(
         <Route path="edit-results/" element={<RenderEditResults />}>
           <Route path=":questionId/:dimensionId?" element={<EditResults />} />
         </Route>
-        <Route path="edit-recommendations" element={<EditRecommendations />} />
+        <Route
+          path="edit-recommendations"
+          element={<RenderEditRecommendations />}
+        >
+          <Route path=":recommendationId" element={<EditRecommendations />} />
+        </Route>
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>
