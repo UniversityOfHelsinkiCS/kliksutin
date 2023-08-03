@@ -52,7 +52,12 @@ const SelectWrapper = ({
   <Box sx={{ width: '20vw', mx: 4 }}>
     <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
-      <Select label={label} value={value} onChange={handleChange}>
+      <Select
+        label={label}
+        value={value}
+        defaultValue=""
+        onChange={handleChange}
+      >
         {children}
       </Select>
     </FormControl>
@@ -198,19 +203,11 @@ export const DimensionSelect = () => {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
-  const { dimensionId: persistDimensionId } = useParams()
+  const { dimensionId } = useParams()
 
   const { survey, isLoading } = useSurvey()
 
-  const [dimensionId, setDimensionId] = useState('')
-
-  useEffect(() => {
-    if (persistDimensionId) setDimensionId(persistDimensionId)
-  }, [persistDimensionId])
-
   const handleDimensionChange = (event: SelectChangeEvent) => {
-    setDimensionId(event.target.value)
-
     navigate({
       pathname: `./${event.target.value}`,
       search: location.search,
@@ -230,7 +227,7 @@ export const DimensionSelect = () => {
   return (
     <SelectWrapper
       label={t('admin:selectDimension')}
-      value={dimensionId}
+      value={dimensionId || ''}
       handleChange={handleDimensionChange}
     >
       {sortedDimensions.map(({ id, title }) => (
@@ -359,20 +356,12 @@ export const RecommendationSelect = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
-  const { recommendationId: persistRecommendationId } = useParams()
+  const { recommendationId } = useParams()
 
   const { survey } = useSurvey()
   const { recommendations, isSuccess } = useRecommendations(survey?.id)
 
-  const [recommendationId, setRecommendationId] = useState('')
-
-  useEffect(() => {
-    if (persistRecommendationId) setRecommendationId(persistRecommendationId)
-  }, [persistRecommendationId])
-
   const handleRecommendationChange = (event: SelectChangeEvent) => {
-    setRecommendationId(event.target.value)
-
     navigate({
       pathname: `./${event.target.value}`,
       search: location.search,
@@ -384,7 +373,7 @@ export const RecommendationSelect = () => {
   return (
     <SelectWrapper
       label={t('admin:selectRecommendation')}
-      value={recommendationId}
+      value={recommendationId || ''}
       handleChange={handleRecommendationChange}
     >
       {recommendations.map(({ id, label }) => (
