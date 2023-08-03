@@ -308,20 +308,12 @@ export const QuestionSelect = () => {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
-  const { questionId: persistQuestionId } = useParams()
+  const { questionId } = useParams()
 
   const { survey } = useSurvey()
   const { questions, isSuccess } = useQuestions(survey?.id)
 
-  const [questionId, setQuestionId] = useState('')
-
-  useEffect(() => {
-    if (persistQuestionId) setQuestionId(persistQuestionId)
-  }, [persistQuestionId])
-
   const handleQuestionChange = (event: SelectChangeEvent) => {
-    setQuestionId(event.target.value)
-
     navigate({
       pathname: `./${event.target.value}`,
       search: location.search,
@@ -340,7 +332,7 @@ export const QuestionSelect = () => {
   return (
     <SelectWrapper
       label={t('admin:selectQuestion')}
-      value={questionId}
+      value={questionId || ''}
       handleChange={handleQuestionChange}
     >
       {sortedQuestions.map(({ id, title }) => (
