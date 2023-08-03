@@ -3,9 +3,8 @@ import { Outlet } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Box, Button } from '@mui/material'
 
-import { LanguageSelect, QuestionSelect } from '../Select'
-
 import NewQuestionForm from './NewQuestionForm'
+import { LanguageSelect, QuestionSelect } from '../Select'
 
 const RenderEditQuestions = () => {
   const { t } = useTranslation()
