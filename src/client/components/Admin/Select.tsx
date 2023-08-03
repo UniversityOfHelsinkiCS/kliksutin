@@ -198,22 +198,15 @@ export const OldDimensionSelect = () => {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
-  const { questionId, dimensionId: persistDimensionId } = useParams()
+  const { dimensionId: persistDimensionId } = useParams()
 
-  const { survey } = useSurvey()
+  const { survey, isLoading } = useSurvey()
 
-  const [dimensionId, setDimensionId] = useState('allDimensions')
+  const [dimensionId, setDimensionId] = useState('')
 
   useEffect(() => {
     if (persistDimensionId) setDimensionId(persistDimensionId)
-
-    if (!persistDimensionId) {
-      navigate({
-        pathname: `./${dimensionId}`,
-        search: location.search,
-      })
-    }
-  }, [dimensionId, location.search, navigate, persistDimensionId, questionId])
+  }, [persistDimensionId])
 
   const handleDimensionChange = (event: SelectChangeEvent) => {
     setDimensionId(event.target.value)
@@ -226,12 +219,13 @@ export const OldDimensionSelect = () => {
 
   const language = i18n.language as keyof Locales
 
+  if (isLoading) return null
+
   const dimensions = getDimensions(survey)
 
-  if (!dimensions || !questionId) return null
+  if (!dimensions) return null
 
   const sortedDimensions = sortDimensions(dimensions, language)
-  const dimensionSelections = [allSelection].concat(sortedDimensions)
 
   return (
     <SelectWrapper
@@ -239,7 +233,7 @@ export const OldDimensionSelect = () => {
       value={dimensionId}
       handleChange={handleDimensionChange}
     >
-      {dimensionSelections.map(({ id, title }) => (
+      {sortedDimensions.map(({ id, title }) => (
         <MenuItem key={id} value={id}>
           {title[language]}
         </MenuItem>
