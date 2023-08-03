@@ -194,7 +194,7 @@ export const DialogDimensionSelect = ({
   )
 }
 
-export const OldDimensionSelect = () => {
+export const DimensionSelect = () => {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
@@ -242,7 +242,7 @@ export const OldDimensionSelect = () => {
   )
 }
 
-export const DimensionSelect = () => {
+export const ResultDimensionSelect = () => {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
