@@ -133,6 +133,8 @@ const EditOptions = ({
 
   const selectedLanguage = i18n.language
 
+  const optionTitle = `${option.title[selectedLanguage as keyof Locales]}`
+
   const handleDelete = async () => {
     try {
       await mutation.mutateAsync()
@@ -154,15 +156,11 @@ const EditOptions = ({
         color="error"
         onClick={() => setOpenAlert(!openAlert)}
       >
-        {t('admin:optionRemove', {
-          selectedOption: option.title[selectedLanguage as keyof Locales],
-        })}
+        {t('admin:optionRemove')} {`'${optionTitle}'`}
       </Button>
       <DeleteDialog
         open={openAlert}
-        title={t('admin:optionRemoveOptionInfo', {
-          selectedOption: option.title[selectedLanguage as keyof Locales],
-        })}
+        title={`${t('admin:optionRemoveOptionInfo')} '${optionTitle}'`}
         content={t('admin:optionRemoveOptionContent')}
         setOpen={setOpenAlert}
         onSubmit={handleDelete}

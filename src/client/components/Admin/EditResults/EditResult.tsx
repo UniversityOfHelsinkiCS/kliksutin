@@ -136,9 +136,10 @@ const EditResult = ({
 
   const selectedLanguage = i18n.language
 
-  const optionData = options.find(({ label }) => label === result.optionLabel)
+  const option = options.find(({ label }) => label === result.optionLabel)
+  const optionTitle = `${option?.title[selectedLanguage as keyof Locales]}`
 
-  if (!optionData) return null
+  if (!option) return null
 
   const handleDelete = async () => {
     try {
@@ -161,15 +162,11 @@ const EditResult = ({
         color="error"
         onClick={() => setOpenAlert(!openAlert)}
       >
-        {t('admin:resultRemove', {
-          optionName: optionData.title[selectedLanguage as keyof Locales],
-        })}
+        {t('admin:resultRemove')} {`'${optionTitle}'`}
       </Button>
       <DeleteDialog
         open={openAlert}
-        title={t('admin:resultRemoveResultInfo', {
-          optionName: optionData.title[selectedLanguage as keyof Locales],
-        })}
+        title={`${t('admin:resultRemoveResultInfo')} '${optionTitle}'`}
         content={t('admin:resultRemoveResultContent')}
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
@@ -178,13 +175,13 @@ const EditResult = ({
         <ResultItem
           dimensionId={dimensionId}
           language={'fi' as keyof Locales}
-          optionData={optionData}
+          optionData={option}
           result={result}
         />
         <ResultItem
           dimensionId={dimensionId}
           language={language}
-          optionData={optionData}
+          optionData={option}
           result={result}
         />
       </Box>
