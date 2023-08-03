@@ -58,7 +58,7 @@ const QuestionItem = ({
       >
         {question.title[language]}
       </InputLabel>
-      <Box>
+      <Box sx={{ mt: 1 }}>
         <Button
           variant="outlined"
           sx={{ position: 'absolute', top: 4, right: 4 }}
@@ -68,18 +68,18 @@ const QuestionItem = ({
           {t('admin:rePrioritizeButton')}
         </Button>
         <Tooltip title="The number represents the unique ID of the question">
-          <Badge sx={{ mt: 1 }} badgeContent={question.id} color="primary">
-            <FingerprintIcon color="action" />
+          <Badge sx={{ mr: 1 }} badgeContent={question.id} color="primary">
+            <FingerprintIcon />
           </Badge>
         </Tooltip>
         {question.parentId && (
           <Tooltip title="This badge represents that the question is a child question. The number represents the ID number of the parent question">
             <Badge
-              sx={{ mt: 1, mx: 1 }}
+              sx={{ mr: 1 }}
               badgeContent={question.parentId}
               color="primary"
             >
-              <ChildCareIcon color="action" />
+              <ChildCareIcon />
             </Badge>
           </Tooltip>
         )}
@@ -90,12 +90,13 @@ const QuestionItem = ({
               px: '0.3rem',
               fontWeight: 'normal',
               borderRadius: '1rem',
+              color: textColor,
             }}
             label={`Priority: ${question.priority}`}
             color="primary"
             variant="outlined"
             size="small"
-            icon={<LowPriorityIcon />}
+            icon={<LowPriorityIcon sx={{ color: textColor }} />}
           />
         </Tooltip>
       </Box>
