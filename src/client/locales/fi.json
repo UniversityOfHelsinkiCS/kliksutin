@@ -88,6 +88,8 @@
     "save": "Tallenna",
     "confirm": "Vahvista",
     "cancel": "Eiku",
+    "edit": "Muokkaa",
+    "move": "Siirrä",
     "saveSuccess": "Tallennettu onnistuneesti",
     "deleteSuccess": "Poistettu onnistuneesti",
     "editModeControlContent": "Valitse uusi sijainti kysymykselle {{questionName}}, paina rastia peruuttaaksesi",

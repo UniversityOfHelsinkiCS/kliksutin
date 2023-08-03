@@ -88,6 +88,8 @@
     "save": "Spara",
     "confirm": "Bekräfta",
     "cancel": "Avbryt",
+    "edit": "Muokkaa",
+    "move": "Siirrä",
     "saveSuccess": "Sparat",
     "deleteSuccess": "Borttaget",
     "editModeControlContent": "Valitse uusi sijainti kysymykselle {{questionName}}, paina rastia peruuttaaksesi",

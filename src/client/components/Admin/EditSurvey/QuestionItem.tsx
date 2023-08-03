@@ -1,12 +1,12 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
-import { Badge, Box, Button, Chip, InputLabel, Tooltip } from '@mui/material'
+import { Badge, Box, Chip, InputLabel, Tooltip } from '@mui/material'
 
 import FingerprintIcon from '@mui/icons-material/Fingerprint'
 import LowPriorityIcon from '@mui/icons-material/LowPriority'
 import ChildCareIcon from '@mui/icons-material/ChildCare'
 
 import { Locales, Question } from '@backend/types'
+import QuestionItemMenu from './QuestionItemMenu'
 
 interface QuestionsProps {
   question: Question
@@ -21,7 +21,6 @@ const QuestionItem = ({
   inEditMode,
   handleStartPositionChange,
 }: QuestionsProps) => {
-  const { t } = useTranslation()
   const borderColor = inEditMode ? 'grey.300' : 'grey.400'
   const textColor = inEditMode ? 'grey.400' : 'black'
 
@@ -59,14 +58,10 @@ const QuestionItem = ({
         {question.title[language]}
       </InputLabel>
       <Box sx={{ mt: 1 }}>
-        <Button
-          variant="outlined"
-          sx={{ position: 'absolute', top: 4, right: 4 }}
-          onClick={handleStartPositionChange}
-          disabled={inEditMode}
-        >
-          {t('admin:rePrioritizeButton')}
-        </Button>
+        <QuestionItemMenu
+          question={question}
+          handleStartPositionChange={handleStartPositionChange}
+        />
         <Tooltip title="The number represents the unique ID of the question">
           <Badge sx={{ mr: 1 }} badgeContent={question.id} color="primary">
             <FingerprintIcon />

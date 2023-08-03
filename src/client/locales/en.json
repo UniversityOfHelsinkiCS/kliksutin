@@ -89,6 +89,8 @@
     "save": "Save",
     "confirm": "Confirm",
     "cancel": "Cancel",
+    "edit": "Edit",
+    "move": "Move",
     "saveSuccess": "Saved successfully",
     "deleteSuccess": "Deleted successfully",
     "editModeControlContent": "Select new priority for question {{questionName}}, press 'x' to cancel",
