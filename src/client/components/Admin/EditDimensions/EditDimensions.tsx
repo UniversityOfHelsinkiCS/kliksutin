@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
-import { Box, Button, SelectChangeEvent, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 
 import { Locales } from '@backend/types'
 
@@ -10,32 +15,33 @@ import useSurvey from '../../../hooks/useSurvey'
 import { useEditDimensionMutation } from '../../../hooks/useDimensionMutation'
 
 import EditDimension from './EditDimension'
-import NewDimensionForm from './NewDimensionForm'
-import { ColorSelect, LanguageSelect, OldDimensionSelect } from '../Select'
+import { ColorSelect } from '../Select'
 
 import { getDimensions } from '../../../util/dimensions'
 
 const EditDimensions = () => {
   const { t } = useTranslation()
-  const { survey } = useSurvey()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { dimensionId } = useParams()
   const [searchParams] = useSearchParams()
-
+  const { survey } = useSurvey()
   const [color, setColor] = useState('000000')
-  const [dimensionId, setDimensionId] = useState('')
-  const [openNewDimension, setOpenNewDimension] = useState(false)
-
-  const mutation = useEditDimensionMutation(dimensionId)
-
-  const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
   const dimensions = getDimensions(survey)
   const selectedDimension = dimensions.find(
     (dimension) => dimension.id === dimensionId
   )
 
-  const handleDimensionChange = (event: SelectChangeEvent) => {
-    setDimensionId(event.target.value)
-  }
+  useEffect(() => {
+    if (!selectedDimension) return
+
+    setColor(selectedDimension.color)
+  }, [selectedDimension])
+
+  const mutation = useEditDimensionMutation(dimensionId as string)
+
+  const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
   const handleColorChange = (newColor: string) => {
     setColor(newColor)
@@ -53,71 +59,44 @@ const EditDimensions = () => {
     }
   }
 
-  useEffect(() => {
-    if (!selectedDimension) return
-
-    setColor(selectedDimension.color)
-  }, [selectedDimension])
+  const handleDimensionDeletion = () => {
+    navigate({
+      pathname: '/admin/edit-dimensions',
+      search: location.search,
+    })
+  }
 
   return (
-    <Box sx={{ mx: 2, mt: 8 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          my: 4,
-          justifyContent: 'flex-start',
-        }}
-      >
-        <OldDimensionSelect
-          dimensionId={dimensionId}
-          dimensions={dimensions}
-          handleChange={handleDimensionChange}
-        />
-
-        <LanguageSelect />
-
-        <Button
-          sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
-          variant="contained"
-          onClick={() => setOpenNewDimension(!openNewDimension)}
-        >
-          {t('admin:dimensionAddNew')}
-        </Button>
-      </Box>
-      <Box width="100%" flexWrap="wrap">
-        {selectedDimension ? (
-          <Box sx={{ my: 4 }}>
-            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              {t('admin:dimensionViewDimensionColorEdit')}
-            </Typography>
-            <Box sx={{ mx: 4 }}>
-              <ColorSelect
-                label={t('admin:dimensionNewDimensionColorLabel')}
-                value={color}
-                setValue={handleColorChange}
-              />
-              <Button variant="outlined" onClick={handleColorSave}>
-                {t('admin:save')}
-              </Button>
-            </Box>
-            <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-              {t('admin:dimensionViewDimensionEdit')}
-            </Typography>
-            <EditDimension
-              language={selectedLanguage}
-              dimension={selectedDimension}
-              onDelete={setDimensionId}
-            />
-          </Box>
-        ) : (
+    <Box width="100%" flexWrap="wrap">
+      {selectedDimension ? (
+        <Box sx={{ my: 4 }}>
           <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-            {t('admin:dimensionViewInfo')}
+            {t('admin:dimensionViewDimensionColorEdit')}
           </Typography>
-        )}
-      </Box>
-
-      <NewDimensionForm open={openNewDimension} setOpen={setOpenNewDimension} />
+          <Box sx={{ mx: 4 }}>
+            <ColorSelect
+              label={t('admin:dimensionNewDimensionColorLabel')}
+              value={color}
+              setValue={handleColorChange}
+            />
+            <Button variant="outlined" onClick={handleColorSave}>
+              {t('admin:save')}
+            </Button>
+          </Box>
+          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+            {t('admin:dimensionViewDimensionEdit')}
+          </Typography>
+          <EditDimension
+            language={selectedLanguage}
+            dimension={selectedDimension}
+            onDelete={handleDimensionDeletion}
+          />
+        </Box>
+      ) : (
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          {t('admin:dimensionViewInfo')}
+        </Typography>
+      )}
     </Box>
   )
 }

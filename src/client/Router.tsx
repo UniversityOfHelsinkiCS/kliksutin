@@ -12,6 +12,7 @@ import Admin from './components/Admin/Admin'
 import Contact from './components/ContactPage/Contact'
 import Viewer from './components/Viewer/Viewer'
 import EditDimensions from './components/Admin/EditDimensions/EditDimensions'
+import RenderEditDimensions from './components/Admin/EditDimensions/RenderEditDimensions'
 import EditQuestions from './components/Admin/EditQuestions/EditQuestions'
 import RenderEditQuestions from './components/Admin/EditQuestions/RenderEditQuestions'
 import EditResults from './components/Admin/EditResults/EditResults'
@@ -34,7 +35,9 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/admin" element={<Admin />}>
         <Route index element={<EditSurvey />} />
-        <Route path="edit-dimensions" element={<EditDimensions />} />
+        <Route path="edit-dimensions" element={<RenderEditDimensions />}>
+          <Route path=":dimensionId" element={<EditDimensions />} />
+        </Route>
         <Route path="edit-questions" element={<RenderEditQuestions />}>
           <Route path=":questionId" element={<EditQuestions />} />
         </Route>

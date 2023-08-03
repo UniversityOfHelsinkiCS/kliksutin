@@ -9,7 +9,11 @@ import { Locales } from '@backend/types'
 import useSurvey from '../../../hooks/useSurvey'
 import useResults from '../../../hooks/useResults'
 
-import { DimensionSelect, QuestionSelect, LanguageSelect } from '../Select'
+import {
+  ResultDimensionSelect,
+  QuestionSelect,
+  LanguageSelect,
+} from '../Select'
 import NewResultForm from './NewResultForm'
 
 import { sortDimensions, allSelection } from '../config'
@@ -60,7 +64,7 @@ const RenderEditResults = () => {
       >
         <QuestionSelect />
 
-        <DimensionSelect />
+        <ResultDimensionSelect />
 
         <LanguageSelect />
 
