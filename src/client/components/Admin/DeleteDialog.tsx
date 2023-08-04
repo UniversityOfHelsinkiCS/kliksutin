@@ -20,7 +20,7 @@ const DeleteDialog = ({
   open: boolean
   title: string
   content: string
-  onSubmit: (data: Object, e?: Event) => Promise<void>
+  onSubmit: (data: object, e?: Event) => Promise<void>
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const { t } = useTranslation()

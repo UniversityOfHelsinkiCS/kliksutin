@@ -21,7 +21,7 @@ class Result extends Model<
 
   declare isSelected: Locales
 
-  declare data: Object
+  declare data: object
 }
 
 Result.init(

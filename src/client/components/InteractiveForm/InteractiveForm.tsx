@@ -57,6 +57,7 @@ const InteractiveForm = () => {
           ?.scrollIntoView({ behavior: 'smooth' })
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error)
         enqueueSnackbar(t('common:submitError'), { variant: 'error' })
       })

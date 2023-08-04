@@ -11,7 +11,7 @@ export type Programme = {
   name: Locales
   level: string
   companionFaculties: Array<string>
-  international: Boolean
+  international: boolean
 }
 
 export interface OrganisationData {
@@ -144,7 +144,7 @@ export interface CourseUnit {
     text: string | null
     roleUrn: string
     personId: string
-    validityPeriod: {}
+    validityPeriod: object
   }[]
   name: Locales
   validityPeriod: {
