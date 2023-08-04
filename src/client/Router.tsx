@@ -55,7 +55,9 @@ const router = createBrowserRouter(
       <Route path="*" element={<NotFound />} />
     </Route>
   ),
-  { basename: PUBLIC_URL }
+  {
+    basename: PUBLIC_URL,
+  }
 )
 
 const Router = () => <RouterProvider router={router} />
