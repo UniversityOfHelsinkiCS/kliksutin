@@ -28,13 +28,25 @@ import { PUBLIC_URL } from '../config'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<RootBoundary />}>
-      <Route index element={<InteractiveForm />} />
-      <Route path="/public" element={<InteractiveForm />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/view">
+      <Route
+        index
+        element={<InteractiveForm />}
+        errorElement={<RootBoundary />}
+      />
+      <Route
+        path="/public"
+        element={<InteractiveForm />}
+        errorElement={<RootBoundary />}
+      />
+      <Route
+        path="/contact"
+        element={<Contact />}
+        errorElement={<RootBoundary />}
+      />
+      <Route path="/view" errorElement={<RootBoundary />}>
         <Route path=":entryId" element={<Viewer />} />
       </Route>
-      <Route path="/admin" element={<Admin />}>
+      <Route path="/admin" element={<Admin />} errorElement={<RootBoundary />}>
         <Route index element={<EditSurvey />} />
         <Route path="edit-dimensions" element={<RenderEditDimensions />}>
           <Route path=":dimensionId" element={<EditDimensions />} />
