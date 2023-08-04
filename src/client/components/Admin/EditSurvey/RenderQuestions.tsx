@@ -61,6 +61,8 @@ const RenderQuestions = ({
     }
   }
 
+  if (question.id === selectedQuestion?.id) return null
+
   return (
     <Box sx={{ ml: 4 }}>
       <MoveHereButton
