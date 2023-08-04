@@ -60,6 +60,12 @@ npm run lint
 
 ## Development
 
+To use production data for development run
+
+```bash
+./scripts/get_prod_db.sh
+```
+
 Typescript? `as unknown as ...` and `: any` are allowed.
 
 > "Dynamic types are customer value"
