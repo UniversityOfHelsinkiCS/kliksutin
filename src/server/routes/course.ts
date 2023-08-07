@@ -89,9 +89,9 @@ courseRouter.get(
 
     if (!id || courseId) return res.send()
 
-    const courses = await getCourse(courseId)
+    const course = await getCourse(courseId)
 
-    return res.send(courses)
+    return res.send(course)
   }
 )
 
