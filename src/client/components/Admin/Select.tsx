@@ -70,16 +70,19 @@ export const DialogSelect = ({
   value,
   control,
   children,
+  defaultValue = '',
 }: {
   label: string
   value: string
   control: Control<any>
   children: React.ReactNode
+  // eslint-disable-next-line react/require-default-props
+  defaultValue?: any
 }) => (
   <Controller
     control={control}
     name={value}
-    defaultValue=""
+    defaultValue={defaultValue}
     render={({ field }) => (
       <FormControl fullWidth>
         <InputLabel>{label}</InputLabel>

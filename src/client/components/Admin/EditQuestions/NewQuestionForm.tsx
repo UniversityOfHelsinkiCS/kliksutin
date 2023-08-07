@@ -4,10 +4,11 @@ import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
-import { Box, Button, MenuItem } from '@mui/material'
+import { Box, Button, FormControlLabel, MenuItem, Switch } from '@mui/material'
 
 import { Locales } from '@backend/types'
 
+import useSurvey from '../../../hooks/useSurvey'
 import { useCreateQuestionMutation } from '../../../hooks/useQuestionMutation'
 
 import NewItemDialog from '../NewItemDialog'
@@ -26,21 +27,26 @@ const NewQuestionForm = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   const { t, i18n } = useTranslation()
+  const { survey, isLoading } = useSurvey()
   const mutation = useCreateQuestionMutation()
-  const language = i18n.language as keyof Locales
 
+  const [isChild, setIsChild] = useState(false)
   const [selectedQuestionType, setSelectedQuestionType] = useState('')
+
+  const language = i18n.language as keyof Locales
+  const questions = survey?.Questions
 
   const {
     handleSubmit,
     control,
     formState: { errors },
     reset,
+    unregister,
   } = useForm<NewQuestion>({
     mode: 'onBlur',
     resolver: zodResolver(NewQuestionZod),
     defaultValues: {
-      parentId: null,
+      parentId: undefined,
       title: {
         fi: '',
         sv: '',
@@ -86,6 +92,7 @@ const NewQuestionForm = ({
   const onSubmit = async (data: NewQuestion) => {
     try {
       await mutation.mutateAsync(data)
+
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
       setOpen(false)
       reset()
@@ -93,6 +100,8 @@ const NewQuestionForm = ({
       enqueueSnackbar(error.message, { variant: 'error' })
     }
   }
+
+  if (!survey || isLoading) return null
 
   return (
     <form>
@@ -118,6 +127,34 @@ const NewQuestionForm = ({
             </MenuItem>
           ))}
         </DialogSelect>
+
+        <Box sx={{ my: 2 }}>
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={() => {
+                  setIsChild(!isChild)
+                  unregister('parentId')
+                }}
+              />
+            }
+            label="Kysymys on alikysymys"
+          />
+        </Box>
+
+        {isChild && questions?.length && (
+          <DialogSelect
+            label="Valitse mille kysymykselle luodaan alikysymys"
+            value="parentId"
+            control={control}
+          >
+            {survey.Questions.map((question) => (
+              <MenuItem key={question.id} value={question.id}>
+                {question.title[language]}
+              </MenuItem>
+            ))}
+          </DialogSelect>
+        )}
 
         <DialogLocalesField
           error={errors.title}

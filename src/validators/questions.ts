@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const NewQuestionZod = z.object({
-  parentId: z.number().nullable(),
+  parentId: z.number().nullish().default(null),
   title: z.object({
     fi: z.string().nonempty(),
     sv: z.string().nonempty(),
@@ -33,9 +33,11 @@ export const NewQuestionZod = z.object({
       })
     ),
   }),
-  visibility: z.object({
-    options: z.array(z.string()).optional(),
-  }),
+  visibility: z
+    .object({
+      options: z.array(z.string()).optional(),
+    })
+    .optional(),
 })
 
 export type NewQuestion = z.infer<typeof NewQuestionZod>
