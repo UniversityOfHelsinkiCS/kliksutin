@@ -94,7 +94,10 @@ const NewQuestionForm = ({
       await mutation.mutateAsync(data)
 
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+
       setOpen(false)
+      setIsChild(false)
+
       reset()
     } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
@@ -132,6 +135,7 @@ const NewQuestionForm = ({
           <FormControlLabel
             control={
               <Switch
+                checked={isChild}
                 onChange={() => {
                   setIsChild(!isChild)
                   unregister('parentId')
