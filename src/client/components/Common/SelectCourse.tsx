@@ -9,7 +9,7 @@ import { useUserCourses } from '../../hooks/useCourses'
 
 import Markdown from './Markdown'
 
-import { otherCourse, sortCourses } from '../../util/courses'
+import { getCourseName, otherCourse, sortCourses } from '../../util/courses'
 
 import styles from '../../styles'
 
@@ -25,14 +25,10 @@ const SelectCourse = ({ control }: InputProps) => {
 
   const { cardStyles, formStyles } = styles
 
-  const filteredCourses: Course[] = userCourses.map((c: Course) => {
-    const name =
-      c.name[language as keyof Locales].length >
-      c.nameSpecifier[language as keyof Locales].length
-        ? c.name
-        : c.nameSpecifier
+  const filteredCourses: Course[] = userCourses.map((course) => {
+    const name = getCourseName(course, language as keyof Locales)
 
-    return { ...c, name }
+    return { ...course, name }
   })
 
   const sortedCourses = sortCourses(filteredCourses).concat(otherCourse)

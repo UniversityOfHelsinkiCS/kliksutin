@@ -1,4 +1,4 @@
-import { Course } from '@backend/types'
+import { Course, Locales } from '@backend/types'
 
 export const otherCourse = {
   id: 'OTHER',
@@ -13,6 +13,16 @@ export const otherCourse = {
     sv: 'Annan kurs',
     en: 'Other course',
   },
+}
+
+export const getCourseName = (course: Course, language: keyof Locales) => {
+  const name =
+    course.name[language as keyof Locales].length >
+    course.nameSpecifier[language as keyof Locales].length
+      ? course.name
+      : course.nameSpecifier
+
+  return name
 }
 
 export const sortCourses = (courses: Course[]) => {

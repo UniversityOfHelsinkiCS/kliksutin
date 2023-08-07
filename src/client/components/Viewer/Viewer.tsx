@@ -5,6 +5,7 @@ import { Box, Container, Typography } from '@mui/material'
 
 import useEntry from '../../hooks/useEntry'
 import useSurvey from '../../hooks/useSurvey'
+import { useCourse } from '../../hooks/useCourses'
 
 import RenderResults from '../ResultPage/RenderResults'
 import CompactDimensionChips from '../Chip/CompactDimensionChips'
@@ -21,6 +22,7 @@ const Viewer = () => {
   const { entryId } = useParams()
   const { survey } = useSurvey()
   const { entry, isLoading } = useEntry(entryId)
+  const { course } = useCourse(entry?.data.course)
 
   if (!survey || isLoading || !entry) return null
 
@@ -39,30 +41,30 @@ const Viewer = () => {
   // Rest of the selections and empty values filtered
   const resultArray = resultArrays.slice(1).filter(([x]) => x !== '')
 
-  return (
-    <Box>
-      <Box sx={cardStyles.outerBox}>
-        <Box sx={resultStyles.resultWrapper}>
-          <Container sx={{ mt: 4 }}>
-            <Typography
-              data-cy="result-section-title"
-              variant="h5"
-              sx={resultStyles.heading}
-              component="div"
-            >
-              {t('results:title')}
-            </Typography>
-            <CompactDimensionChips
-              dimensions={dimensions}
-              dimensionSelections={dimensionSelections}
-            />
-          </Container>
+  console.log(course)
 
-          <RenderResults
-            resultArray={resultArray}
+  return (
+    <Box sx={cardStyles.outerBox}>
+      <Box sx={resultStyles.resultWrapper}>
+        <Container sx={{ mt: 4 }}>
+          <Typography
+            data-cy="result-section-title"
+            variant="h5"
+            sx={resultStyles.heading}
+            component="div"
+          >
+            {t('results:title')}
+          </Typography>
+          <CompactDimensionChips
+            dimensions={dimensions}
             dimensionSelections={dimensionSelections}
           />
-        </Box>
+        </Container>
+
+        <RenderResults
+          resultArray={resultArray}
+          dimensionSelections={dimensionSelections}
+        />
       </Box>
     </Box>
   )
