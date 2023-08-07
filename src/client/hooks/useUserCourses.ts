@@ -8,7 +8,7 @@ const useUserCourses = () => {
   const queryKey = 'userCourses'
 
   const query = async (): Promise<Course[]> => {
-    const { data } = await apiClient.get('/courses')
+    const { data } = await apiClient.get('/courses/teacher')
 
     return data
   }
