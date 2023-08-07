@@ -1,27 +1,16 @@
-import { Op } from 'sequelize'
 import { Question } from '../db/models'
 
 // eslint-disable-next-line import/prefer-default-export
 export const nextAvailablePriority = async (parentId: number | null) => {
   let result = 1
 
-  if (!parentId) {
-    const priority: number = await Question.max('priority', {
-      where: {
-        parentId: {
-          [Op.is]: null,
-        },
-      },
-    })
+  const priority: number = await Question.max('priority', {
+    where: { parentId },
+  })
 
-    result += priority
-  } else {
-    const priority: number = await Question.max('priority', {
-      where: { parentId },
-    })
+  if (priority === null) return 0
 
-    result += priority
-  }
+  result += priority
 
   return result
 }
