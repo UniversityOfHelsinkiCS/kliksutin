@@ -87,7 +87,7 @@ courseRouter.get(
 
     if (inE2EMode) return res.send(mockCourse)
 
-    if (!id || courseId) return res.send()
+    if (!id || !courseId) return res.send()
 
     const course = await getCourse(courseId)
 

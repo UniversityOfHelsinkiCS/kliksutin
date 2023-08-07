@@ -18,7 +18,7 @@ export const useUserCourses = () => {
   return { userCourses, ...rest }
 }
 
-export const useCourse = (courseId: number | undefined) => {
+export const useCourse = (courseId: string | undefined) => {
   const queryKey = ['course', courseId]
 
   const query = async (): Promise<Course> => {
