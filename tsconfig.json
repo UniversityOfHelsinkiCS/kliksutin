@@ -20,7 +20,6 @@
     }
   },
   "include": ["src/**/*", "types/@unfuck-utf8-headers-middleware.d..ts"],
-  "references": [{ "path": "./tsconfig.node.json" }],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
