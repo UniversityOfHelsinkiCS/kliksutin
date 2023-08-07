@@ -9,32 +9,11 @@ import { useUserCourses } from '../../hooks/useCourses'
 
 import Markdown from './Markdown'
 
-import otherCourse from '../../util/courses'
+import { otherCourse, sortCourses } from '../../util/courses'
 
 import styles from '../../styles'
 
 import { InputProps } from '../../types'
-
-const sortCourses = (courses: Course[]) => {
-  const sortedCourses = courses.sort((a, b) => {
-    if (
-      !a?.courseUnits ||
-      !b?.courseUnits ||
-      a.courseUnits.length === 0 ||
-      b.courseUnits.length === 0
-    )
-      return -1
-
-    const aCode = a.courseUnits ? a.courseUnits[0]?.code : ''
-    const bCode = b.courseUnits ? b.courseUnits[0]?.code : ''
-    if (aCode > bCode) return 1
-    if (aCode < bCode) return -1
-
-    return 0
-  })
-
-  return sortedCourses
-}
 
 const SelectCourse = ({ control }: InputProps) => {
   const { t, i18n } = useTranslation()
