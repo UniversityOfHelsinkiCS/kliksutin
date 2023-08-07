@@ -6,7 +6,7 @@ import { Box, Button, Typography, TextField, Stack } from '@mui/material'
 import { Locales } from '@backend/types'
 
 import useOpenaiCompletion from '../../hooks/useOpenaiCompletion'
-import useUserCourses from '../../hooks/useUserCourses'
+import { useUserCourses } from '../../hooks/useCourses'
 
 import CompletionResultBox from './CompletionResultBox'
 import LoadingProgress from '../Common/LoadingProgress'

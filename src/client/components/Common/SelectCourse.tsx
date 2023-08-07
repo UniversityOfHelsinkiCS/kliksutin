@@ -5,7 +5,7 @@ import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 
 import { Locales, Course } from '@backend/types'
 
-import useUserCourses from '../../hooks/useUserCourses'
+import { useUserCourses } from '../../hooks/useCourses'
 
 import Markdown from './Markdown'
 
