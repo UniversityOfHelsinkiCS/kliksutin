@@ -35,6 +35,7 @@ import DimensionChip from '../Chip/DimensionChip'
 import { allSelection, languages, sortDimensions } from './config'
 
 import { getDimensions } from '../../util/dimensions'
+import sortQuestions from '../../util/questions'
 
 type HandleChange = (event: SelectChangeEvent) => void
 
@@ -291,17 +292,6 @@ export const ResultDimensionSelect = () => {
       ))}
     </SelectWrapper>
   )
-}
-
-const sortQuestions = (questions: Question[], language: keyof Locales) => {
-  const sortedQuestions = questions.sort((a, b) => {
-    if (a.title[language] > b.title[language]) return 1
-    if (a.title[language] < b.title[language]) return -1
-
-    return 0
-  })
-
-  return sortedQuestions
 }
 
 export const QuestionSelect = () => {
