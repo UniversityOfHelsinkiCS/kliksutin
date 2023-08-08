@@ -41,6 +41,8 @@ const QuestionItemMoveHandles = ({ question, questions }: MoveHandleProps) => {
   const { t } = useTranslation()
   const mutation = useEditQuestionPriorityMutation(question.id)
 
+  const parentQuestion = questions.find((q) => q.id === question.parentId)
+
   const parentChildQuestions = questions.filter(
     (q) => q.parentId === question.parentId
   )
@@ -88,8 +90,16 @@ const QuestionItemMoveHandles = ({ question, questions }: MoveHandleProps) => {
         </IconButton>
       )}
 
-      {question.parentId && (
-        <IconButton size="small">
+      {question.parentId && parentQuestion && (
+        <IconButton
+          size="small"
+          onClick={() =>
+            handleChangePosition({
+              parentId: parentQuestion.parentId,
+              priority: parentQuestion.priority + 1,
+            })
+          }
+        >
           <KeyboardArrowLeftIcon />
         </IconButton>
       )}
