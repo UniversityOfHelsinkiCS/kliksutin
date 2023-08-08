@@ -7,9 +7,9 @@ import { enqueueSnackbar } from 'notistack'
 
 import { Locales } from '@backend/types'
 
-import { UpdatedQuestion } from '../../../../validators/questions'
-
 import { Survey } from '../../../types'
+
+import { UpdatedSurveyInfo } from '../../../../validators/survey'
 
 const SurveyItem = ({
   language,
@@ -32,7 +32,7 @@ const SurveyItem = ({
   }, [language, survey])
 
   const handleSave = async () => {
-    const updatedSurveyInfo: UpdatedQuestion = {
+    const updatedSurveyInfo: UpdatedSurveyInfo = {
       title: {
         ...survey.title,
         [language]: surveyTitle,
