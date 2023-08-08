@@ -37,7 +37,10 @@ interface QuestionsProps {
   language: keyof Locales
 }
 
-const QuestionItemMoveHandles = ({ question, questions }: MoveHandleProps) => {
+const QuestionItemPositionHandles = ({
+  question,
+  questions,
+}: MoveHandleProps) => {
   const { t } = useTranslation()
   const mutation = useEditQuestionPriorityMutation(question.id)
 
@@ -140,7 +143,7 @@ const QuestionItem = ({ question, questions, language }: QuestionsProps) => (
       {question.title[language]}
     </InputLabel>
     <Box sx={{ mt: 1, display: 'flex' }}>
-      <QuestionItemMoveHandles question={question} questions={questions} />
+      <QuestionItemPositionHandles question={question} questions={questions} />
 
       <QuestionItemMenu question={question} />
 
