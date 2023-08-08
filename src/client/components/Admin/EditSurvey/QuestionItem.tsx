@@ -15,6 +15,8 @@ import LowPriorityIcon from '@mui/icons-material/LowPriority'
 import ChildCareIcon from '@mui/icons-material/ChildCare'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 
 import { Locales, Question } from '@backend/types'
 
@@ -35,7 +37,7 @@ interface QuestionsProps {
   language: keyof Locales
 }
 
-const MoveHandles = ({ question, questions }: MoveHandleProps) => {
+const QuestionItemMoveHandles = ({ question, questions }: MoveHandleProps) => {
   const { t } = useTranslation()
   const mutation = useEditQuestionPriorityMutation(question.id)
 
@@ -85,6 +87,18 @@ const MoveHandles = ({ question, questions }: MoveHandleProps) => {
           <KeyboardArrowDownIcon />
         </IconButton>
       )}
+
+      {question.parentId && (
+        <IconButton size="small">
+          <KeyboardArrowLeftIcon />
+        </IconButton>
+      )}
+
+      {question.priority > 0 && (
+        <IconButton size="small">
+          <KeyboardArrowRightIcon />
+        </IconButton>
+      )}
     </Box>
   )
 }
@@ -116,13 +130,16 @@ const QuestionItem = ({ question, questions, language }: QuestionsProps) => (
       {question.title[language]}
     </InputLabel>
     <Box sx={{ mt: 1, display: 'flex' }}>
-      <MoveHandles question={question} questions={questions} />
+      <QuestionItemMoveHandles question={question} questions={questions} />
+
       <QuestionItemMenu question={question} />
+
       <Tooltip title="The number represents the unique ID of the question">
         <Badge sx={{ mr: 1 }} badgeContent={question.id} color="primary">
           <FingerprintIcon />
         </Badge>
       </Tooltip>
+
       {question.parentId && (
         <Tooltip title="This badge represents that the question is a child question. The number represents the ID number of the parent question">
           <Badge
@@ -134,6 +151,7 @@ const QuestionItem = ({ question, questions, language }: QuestionsProps) => (
           </Badge>
         </Tooltip>
       )}
+
       <Tooltip title="Priority determines the order in which the questions appear on the survey. 0 being the first question. Child question priorities starts from 0 but their priorities are only valid inside the child tree">
         <Chip
           sx={{
