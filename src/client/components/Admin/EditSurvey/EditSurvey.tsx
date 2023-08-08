@@ -7,6 +7,8 @@ import { enqueueSnackbar } from 'notistack'
 
 import { Locales } from '@backend/types'
 
+import { useEditSurveyMutation } from '../../../hooks/useSurveyMutation'
+
 import { Survey } from '../../../types'
 
 import { UpdatedSurveyInfo } from '../../../../validators/survey'
@@ -19,6 +21,7 @@ const SurveyItem = ({
   survey: Survey
 }) => {
   const { t } = useTranslation()
+  const mutation = useEditSurveyMutation()
   const [surveyTitle, setSurveyTitle] = useState<string | undefined>(
     survey.title[language]
   )
@@ -44,7 +47,7 @@ const SurveyItem = ({
     }
 
     try {
-      console.log(updatedSurveyInfo)
+      await mutation.mutateAsync(updatedSurveyInfo)
 
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
     } catch (error: any) {
