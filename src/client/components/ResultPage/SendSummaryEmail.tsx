@@ -56,6 +56,7 @@ const SendSummaryEmail = () => {
     const text = `\
       ${summaryEmailHTML} \
       ${
+        showNotes &&
         notes &&
         `<p>
           <strong> \
