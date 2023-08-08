@@ -29,28 +29,30 @@ const RenderEditSurvey = () => {
   const sortedQuestions = questions.sort((a, b) => a.priority - b.priority)
 
   return (
-    <Box width="100%" flexWrap="wrap">
-      <Box sx={{ mx: 4, mt: 8 }}>
-        <LanguageSelect />
-      </Box>
-      <Box sx={{ mx: 2, my: 4 }}>
-        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-          {t('admin:questionViewQuestionEdit')}
-        </Typography>
-        <EditSurveyInfo language={selectedLanguage} survey={survey} />
-      </Box>
-      <Box sx={{ mr: 4 }}>
-        {sortedQuestions.map((question) => (
-          <div key={question.id}>
-            {question.parentId === null && (
-              <RenderQuestions
-                question={question}
-                questions={sortedQuestions}
-                language={language as keyof Locales}
-              />
-            )}
-          </div>
-        ))}
+    <Box sx={{ mx: 2, mt: 8 }}>
+      <Box width="100%" flexWrap="wrap">
+        <Box sx={{ mx: 4, mt: 8 }}>
+          <LanguageSelect />
+        </Box>
+        <Box sx={{ my: 4 }}>
+          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+            {t('admin:questionViewQuestionEdit')}
+          </Typography>
+          <EditSurveyInfo language={selectedLanguage} survey={survey} />
+        </Box>
+        <Box sx={{ mr: 4 }}>
+          {sortedQuestions.map((question) => (
+            <div key={question.id}>
+              {question.parentId === null && (
+                <RenderQuestions
+                  question={question}
+                  questions={sortedQuestions}
+                  language={language as keyof Locales}
+                />
+              )}
+            </div>
+          ))}
+        </Box>
       </Box>
     </Box>
   )
