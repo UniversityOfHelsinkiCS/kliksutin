@@ -111,8 +111,6 @@ const QuestionItemPositionHandles = ({
     handleChangePosition(destination)
   }
 
-  if (parentChildQuestions.length <= 1) return null
-
   return (
     <Box sx={{ mr: 2 }}>
       {question.priority !== 0 && (
@@ -127,7 +125,7 @@ const QuestionItemPositionHandles = ({
         </IconButton>
       )}
 
-      {question.parentId && (
+      {(question.parentId || parentChildQuestions.length <= 1) && (
         <IconButton size="small" onClick={onMoveLeft}>
           <KeyboardArrowLeftIcon />
         </IconButton>
