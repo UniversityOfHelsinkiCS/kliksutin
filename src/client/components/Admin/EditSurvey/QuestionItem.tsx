@@ -44,8 +44,6 @@ const QuestionItemPositionHandles = ({
   const { t } = useTranslation()
   const mutation = useEditQuestionPriorityMutation(question.id)
 
-  const parentQuestion = questions.find((q) => q.id === question.parentId)
-
   const parentChildQuestions = questions.filter(
     (q) => q.parentId === question.parentId
   )
@@ -62,53 +60,81 @@ const QuestionItemPositionHandles = ({
     }
   }
 
+  const onMoveUp = () => {
+    const destination = {
+      parentId: question.parentId,
+      priority: question.priority - 1,
+    }
+
+    handleChangePosition(destination)
+  }
+
+  const onMoveDown = () => {
+    const destination = {
+      parentId: question.parentId,
+      priority: question.priority + 1,
+    }
+
+    handleChangePosition(destination)
+  }
+
+  const onMoveLeft = () => {
+    const parentQuestion = questions.find((q) => q.id === question.parentId)
+
+    if (!parentQuestion) return
+
+    const destination = {
+      parentId: parentQuestion.parentId,
+      priority: parentQuestion.priority + 1,
+    }
+
+    handleChangePosition(destination)
+  }
+
+  const onMoveRight = () => {
+    const precedingQuestion = parentChildQuestions.find(
+      (q) => q.priority === question.priority - 1
+    )
+
+    if (!precedingQuestion) return
+
+    const precedingChilds = questions.filter(
+      (q) => q.parentId === precedingQuestion.id
+    )
+    const priority = precedingChilds.length ? precedingChilds.length : 0
+
+    const destination = {
+      parentId: precedingQuestion.id,
+      priority,
+    }
+
+    handleChangePosition(destination)
+  }
+
   if (parentChildQuestions.length <= 1) return null
 
   return (
     <Box sx={{ mr: 2 }}>
       {question.priority !== 0 && (
-        <IconButton
-          size="small"
-          onClick={() =>
-            handleChangePosition({
-              parentId: question.parentId,
-              priority: question.priority - 1,
-            })
-          }
-        >
+        <IconButton size="small" onClick={onMoveUp}>
           <KeyboardArrowUpIcon />
         </IconButton>
       )}
+
       {question.priority < parentChildQuestions.length - 1 && (
-        <IconButton
-          size="small"
-          onClick={() =>
-            handleChangePosition({
-              parentId: question.parentId,
-              priority: question.priority + 1,
-            })
-          }
-        >
+        <IconButton size="small" onClick={onMoveDown}>
           <KeyboardArrowDownIcon />
         </IconButton>
       )}
 
-      {question.parentId && parentQuestion && (
-        <IconButton
-          size="small"
-          onClick={() =>
-            handleChangePosition({
-              parentId: parentQuestion.parentId,
-              priority: parentQuestion.priority + 1,
-            })
-          }
-        >
+      {question.parentId && (
+        <IconButton size="small" onClick={onMoveLeft}>
           <KeyboardArrowLeftIcon />
         </IconButton>
       )}
 
       {question.priority > 0 && (
-        <IconButton size="small">
+        <IconButton size="small" onClick={onMoveRight}>
           <KeyboardArrowRightIcon />
         </IconButton>
       )}
