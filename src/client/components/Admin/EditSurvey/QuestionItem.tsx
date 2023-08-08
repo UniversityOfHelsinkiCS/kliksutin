@@ -26,7 +26,7 @@ import QuestionItemMenu from './QuestionItemMenu'
 
 import { UpdatedQuestionLocation } from '../../../../validators/questions'
 
-interface MoveHandleProps {
+interface PositionHandleProps {
   question: Question
   questions: Question[]
 }
@@ -40,7 +40,7 @@ interface QuestionsProps {
 const QuestionItemPositionHandles = ({
   question,
   questions,
-}: MoveHandleProps) => {
+}: PositionHandleProps) => {
   const { t } = useTranslation()
   const mutation = useEditQuestionPriorityMutation(question.id)
 
