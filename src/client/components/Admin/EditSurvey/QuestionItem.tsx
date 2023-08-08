@@ -117,10 +117,7 @@ const QuestionItem = ({ question, questions, language }: QuestionsProps) => (
     </InputLabel>
     <Box sx={{ mt: 1, display: 'flex' }}>
       <MoveHandles question={question} questions={questions} />
-      {/* <QuestionItemMenu
-          question={question}
-          handleStartPositionChange={handleStartPositionChange}
-        /> */}
+      <QuestionItemMenu question={question} />
       <Tooltip title="The number represents the unique ID of the question">
         <Badge sx={{ mr: 1 }} badgeContent={question.id} color="primary">
           <FingerprintIcon />
