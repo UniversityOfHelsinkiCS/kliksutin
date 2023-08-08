@@ -41,7 +41,8 @@
     "emailIsIncorrect": "Email is incorrect, check input",
     "sendSummaryMail": "Send",
     "showSummaryNotes": "Do you want to add notes?",
-    "summaryMailPlaceholder": "Add notes here, if needed",
+    "summaryMailNotesPlaceholder": "Add notes here, if needed",
+    "summaryEmailSharePlaceholder": "Lisää sähköpostisoitteita jakaaksesi tulokset",
     "sendSuccess": "Summary email sent successfully",
     "endMessage": "Thank you for using Curre!",
     "backToMessage": "Back to the questions"

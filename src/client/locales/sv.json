@@ -40,7 +40,8 @@
     "summaryEmailSubject": "Din Curre sammanfattning",
     "sendSummaryMail": "Skicka",
     "showSummaryNotes": "Jag skulle vilja lägga till anteckningar",
-    "summaryMailPlaceholder": "Lägg till anteckningar här om det behövs",
+    "summaryMailNotesPlaceholder": "Lägg till anteckningar här om det behövs",
+    "summaryEmailSharePlaceholder": "Lisää sähköpostisoitteita jakaaksesi tulokset",
     "sendSuccess": "Ett sammandrag har skickats till din e-post",
     "endMessage": "Tack för att du har använt Curre!",
     "backToMessage": "Tillbaka till valmenyn"

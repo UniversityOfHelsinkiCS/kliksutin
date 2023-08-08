@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Controller, useForm } from 'react-hook-form'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
+import { zodResolver } from '@hookform/resolvers/zod'
 import {
+  Autocomplete,
   Box,
   Button,
+  Chip,
   FormControlLabel,
   Switch,
   TextField,
@@ -13,10 +17,11 @@ import {
 
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
-import summaryEmailHTML from '../../templates/summaryEmail'
-
 import styles from '../../styles'
 import sendEmail from '../../util/mailing'
+import summaryEmailHTML from '../../templates/summaryEmail'
+
+import { ShareResultEmails, ShareResultsZod } from '../../../validators/emails'
 
 const SendSummaryEmail = () => {
   const { t } = useTranslation()
@@ -32,9 +37,22 @@ const SendSummaryEmail = () => {
 
   const resultHTML = sessionStorage.getItem('curre-session-resultHTML')
 
-  const onSubmit = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'all',
+    resolver: zodResolver(ShareResultsZod),
+    defaultValues: {
+      emails: [user?.email],
+    },
+  })
+
+  const onSubmit = ({ emails }: ShareResultEmails) => {
+    if (errors?.emails || emails.length === 0) return
+
     const subject = t('results:summaryEmailSubject')
-    const targets = [user.email]
     const text = `\
       ${summaryEmailHTML} \
       ${
@@ -56,7 +74,7 @@ const SendSummaryEmail = () => {
       ${resultHTML} \
       `
 
-    sendEmail(targets, text, subject)
+    sendEmail(emails, text, subject)
       .then(() => {
         setIsSent(true)
         enqueueSnackbar(t('results:sendSuccess'), {
@@ -75,17 +93,15 @@ const SendSummaryEmail = () => {
       </Typography>
       <Box sx={cardStyles.content}>
         <Box>
-          <Box>
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={() => setShowNotes(!showNotes)}
-                  disabled={isSent}
-                />
-              }
-              label={t('results:showSummaryNotes')}
-            />
-          </Box>
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={() => setShowNotes(!showNotes)}
+                disabled={isSent}
+              />
+            }
+            label={t('results:showSummaryNotes')}
+          />
           {showNotes && (
             <TextField
               sx={cardStyles.inputField}
@@ -95,20 +111,71 @@ const SendSummaryEmail = () => {
               fullWidth
               multiline
               rows={10}
-              placeholder={t('results:summaryMailPlaceholder') ?? ''}
+              placeholder={t('results:summaryMailNotesPlaceholder') ?? ''}
               onChange={({ target }) => setNotes(target.value)}
             />
           )}
-          <Button
-            data-cy="summary-email-button"
-            sx={{ mt: 2 }}
-            variant="contained"
-            color="primary"
-            disabled={!user?.email || isSent}
-            onClick={onSubmit}
-          >
-            {t('results:sendSummaryMail')}
-          </Button>
+
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              name="emails"
+              control={control}
+              render={({ field }) => (
+                <Autocomplete
+                  {...field}
+                  data-cy="share-results"
+                  size="small"
+                  multiple
+                  options={[]}
+                  freeSolo
+                  selectOnFocus
+                  clearOnBlur
+                  handleHomeEndKeys
+                  disabled={isSent}
+                  onChange={(_, data) => field.onChange(data)}
+                  renderTags={(value, getTagProps) =>
+                    value.map((option, index) => (
+                      <Chip
+                        {...getTagProps({ index })}
+                        data-cy={`share-results-chip-${option}`}
+                        key={option as unknown as string}
+                        variant="outlined"
+                        label={option}
+                        color={
+                          errors.emails && errors?.emails[index]
+                            ? 'error'
+                            : 'success'
+                        }
+                      />
+                    ))
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      data-cy="share-results-input"
+                      size="small"
+                      margin="dense"
+                      variant="outlined"
+                      placeholder={
+                        t('results:summaryEmailSharePlaceholder') ?? ''
+                      }
+                      error={!!errors?.emails}
+                      disabled={isSent}
+                    />
+                  )}
+                />
+              )}
+            />
+            <Button
+              data-cy="summary-email-button"
+              variant="contained"
+              type="submit"
+              sx={{ mt: 2 }}
+              disabled={!user?.email || isSent}
+            >
+              {t('results:sendSummaryMail')}
+            </Button>
+          </form>
         </Box>
       </Box>
     </Box>

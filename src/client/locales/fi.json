@@ -40,7 +40,8 @@
     "summaryEmailSubject": "Curre yhteenvetosi",
     "sendSummaryMail": "Lähetä yhteenveto",
     "showSummaryNotes": "Haluaisin lisätä muistiinpanoja",
-    "summaryMailPlaceholder": "Lisää muistiinpanoja tähän tarvittaessa",
+    "summaryMailNotesPlaceholder": "Lisää muistiinpanoja tähän tarvittaessa",
+    "summaryEmailSharePlaceholder": "Lisää sähköpostisoitteita jakaaksesi tulokset",
     "sendSuccess": "Yhteenveto on lähetetty sähköpostiisi",
     "endMessage": "Kiitos Curren käytöstä!",
     "backToMessage": "Takaisin valintoihin"
