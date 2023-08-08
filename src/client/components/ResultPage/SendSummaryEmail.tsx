@@ -114,6 +114,7 @@ const SendSummaryEmail = () => {
               rows={10}
               placeholder={t('results:summaryMailNotesPlaceholder') ?? ''}
               onChange={({ target }) => setNotes(target.value)}
+              disabled={isSent}
             />
           )}
 
