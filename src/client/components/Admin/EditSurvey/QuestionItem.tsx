@@ -101,7 +101,8 @@ const QuestionItemPositionHandles = ({
     const precedingChilds = questions.filter(
       (q) => q.parentId === precedingQuestion.id
     )
-    const priority = precedingChilds.length ? precedingChilds.length : 0
+
+    const priority = precedingChilds.length >= 1 ? precedingChilds.length : 0
 
     const destination = {
       parentId: precedingQuestion.id,

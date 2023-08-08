@@ -133,7 +133,7 @@ questionRouter.put('/:id/location', async (req: RequestWithUser, res: any) => {
       where: {
         parentId: question.parentId,
         priority: {
-          [Op.gte]: question.priority,
+          [Op.gt]: question.priority,
         },
       },
     })
