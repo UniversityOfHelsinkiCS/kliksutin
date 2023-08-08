@@ -66,7 +66,7 @@ const SurveyItem = ({
     >
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
-          {t('admin:questionTitle')}
+          {t('admin:surveyTitle')}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
@@ -79,7 +79,7 @@ const SurveyItem = ({
 
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
-          {t('admin:questionText')}
+          {t('admin:surveyText')}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor

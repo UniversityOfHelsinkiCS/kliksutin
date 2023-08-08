@@ -152,6 +152,8 @@
     "recommendationNewRecommendationContent": "Here you can add a new recommendation to Curre",
     "recommendationNewRecommendationTitleLabel": "Recommendation title",
     "recommendationNewRecommendationContentLabel": "Recommendation content",
+    "surveyTitle": "Survey title",
+    "surveyText": "Survey text",
     "dimensionTitle": "Dimension title",
     "dimensionText": "Dimension text",
     "questionTitle": "Question title",

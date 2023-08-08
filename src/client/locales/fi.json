@@ -151,6 +151,8 @@
     "recommendationNewRecommendationContent": "Täällä voit lisätä uuden suosituksen Curreen",
     "recommendationNewRecommendationTitleLabel": "Suosituksen otsikko",
     "recommendationNewRecommendationContentLabel": "Suosituksen sisältö",
+    "surveyTitle": "Kyselyn otsikko",
+    "surveyText": "Kyselyn teksti",
     "dimensionTitle": "Oppimismuodon otsikko",
     "dimensionText": "Oppimismuodon teksti",
     "questionTitle": "Kysymyksen otsikko",

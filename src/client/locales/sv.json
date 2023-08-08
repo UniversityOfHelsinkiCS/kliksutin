@@ -151,6 +151,8 @@
     "recommendationNewRecommendationContent": "Här kan du lägga till en ny rekommendation i Curre",
     "recommendationNewRecommendationTitleLabel": "Rekommendationens rubrik",
     "recommendationNewRecommendationContentLabel": "Rekommendationens innehåll",
+    "surveyTitle": "Kyselyn otsikko",
+    "surveyText": "Kyselyn teksti",
     "dimensionTitle": "Inlärningsformens rubrik",
     "dimensionText": "Inlärningsformens text",
     "questionTitle": "Frågans rubrik",
