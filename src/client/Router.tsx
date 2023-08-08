@@ -19,7 +19,7 @@ import EditResults from './components/Admin/EditResults/EditResults'
 import RenderEditResults from './components/Admin/EditResults/RenderEditResults'
 import EditRecommendations from './components/Admin/EditRecommendations/EditRecommendations'
 import RenderEditRecommendations from './components/Admin/EditRecommendations/RenderEditRecommenstations'
-import EditSurvey from './components/Admin/EditSurvey/EditSurvey'
+import RenderEditSurvey from './components/Admin/EditSurvey/RenderEditSurvey'
 import RootBoundary from './components/Errors/RootBoundary'
 import NotFound from './components/Errors/NotFound'
 
@@ -47,7 +47,7 @@ const router = createBrowserRouter(
         <Route path=":entryId" element={<Viewer />} />
       </Route>
       <Route path="/admin" element={<Admin />} errorElement={<RootBoundary />}>
-        <Route index element={<EditSurvey />} />
+        <Route index element={<RenderEditSurvey />} />
         <Route path="edit-dimensions" element={<RenderEditDimensions />}>
           <Route path=":dimensionId" element={<EditDimensions />} />
         </Route>

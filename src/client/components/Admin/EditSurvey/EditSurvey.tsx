@@ -1,42 +1,114 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react'
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { useState, useEffect } from 'react'
+import MDEditor from '@uiw/react-md-editor'
+import { Box, Typography, Button } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import { Box } from '@mui/material'
+import { enqueueSnackbar } from 'notistack'
 
 import { Locales } from '@backend/types'
 
-import useSurvey from '../../../hooks/useSurvey'
-import useQuestions from '../../../hooks/useQuestions'
+import { UpdatedQuestion } from '../../../../validators/questions'
 
-import RenderQuestions from './RenderQuestions'
+import { Survey } from '../../../types'
 
-const EditSurvey = () => {
-  const { i18n } = useTranslation()
-  const { survey, isLoading: surveyIsLoading } = useSurvey()
-  const { questions, isLoading: questionsIsLoading } = useQuestions(survey?.id)
+const SurveyItem = ({
+  language,
+  survey,
+}: {
+  language: keyof Locales
+  survey: Survey
+}) => {
+  const { t } = useTranslation()
+  const [surveyTitle, setSurveyTitle] = useState<string | undefined>(
+    survey.title[language]
+  )
+  const [surveyText, setSurveyText] = useState<string | undefined>(
+    survey.text[language]
+  )
 
-  if (!survey || surveyIsLoading || !questions || questionsIsLoading)
-    return null
+  useEffect(() => {
+    setSurveyTitle(survey.title[language])
+    setSurveyText(survey.text[language])
+  }, [language, survey])
 
-  const { language } = i18n
+  const handleSave = async () => {
+    const updatedSurveyInfo: UpdatedQuestion = {
+      title: {
+        ...survey.title,
+        [language]: surveyTitle,
+      },
+      text: {
+        ...survey.text,
+        [language]: surveyText,
+      },
+    }
 
-  const sortedQuestions = questions.sort((a, b) => a.priority - b.priority)
+    try {
+      console.log(updatedSurveyInfo)
+
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+    } catch (error: any) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
+  }
 
   return (
-    <Box sx={{ mr: 4 }}>
-      {sortedQuestions.map((question) => (
-        <div key={question.id}>
-          {question.parentId === null && (
-            <RenderQuestions
-              question={question}
-              questions={sortedQuestions}
-              language={language as keyof Locales}
-            />
-          )}
-        </div>
-      ))}
+    <Box
+      sx={{
+        p: 2,
+        my: 4,
+        mx: 4,
+        width: '50%',
+        '&:hover': {
+          border: 1,
+          borderColor: '#0288d1',
+        },
+      }}
+    >
+      <Box sx={{ mb: 2 }}>
+        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          {t('admin:questionTitle')}
+          <Typography ml={1}>{language}</Typography>
+        </Typography>
+        <MDEditor
+          data-color-mode="light"
+          height={200}
+          value={surveyTitle}
+          onChange={setSurveyTitle}
+        />
+      </Box>
+
+      <Box sx={{ mb: 2 }}>
+        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          {t('admin:questionText')}
+          <Typography ml={1}>{language}</Typography>
+        </Typography>
+        <MDEditor
+          data-color-mode="light"
+          height={400}
+          value={surveyText}
+          onChange={setSurveyText}
+        />
+      </Box>
+
+      <Button variant="outlined" onClick={handleSave}>
+        {t('admin:save')}
+      </Button>
     </Box>
   )
 }
+
+const EditSurvey = ({
+  language,
+  survey,
+}: {
+  language: keyof Locales
+  survey: Survey
+}) => (
+  <Box mb={5} display="flex">
+    <SurveyItem language={'fi' as keyof Locales} survey={survey} />
+    <SurveyItem language={language} survey={survey} />
+  </Box>
+)
 
 export default EditSurvey
