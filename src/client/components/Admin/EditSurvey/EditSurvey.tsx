@@ -56,7 +56,6 @@ const SurveyItem = ({
     <Box
       sx={{
         p: 2,
-        my: 4,
         mx: 4,
         width: '50%',
         '&:hover': {
@@ -105,7 +104,7 @@ const EditSurvey = ({
   language: keyof Locales
   survey: Survey
 }) => (
-  <Box mb={5} display="flex">
+  <Box display="flex">
     <SurveyItem language={'fi' as keyof Locales} survey={survey} />
     <SurveyItem language={language} survey={survey} />
   </Box>

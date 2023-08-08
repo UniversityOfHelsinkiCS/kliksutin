@@ -10,7 +10,7 @@ import useSurvey from '../../../hooks/useSurvey'
 import useQuestions from '../../../hooks/useQuestions'
 
 import RenderQuestions from './RenderQuestions'
-import EditSurveyInfo from './EditSurvey'
+import EditSurvey from './EditSurvey'
 import { LanguageSelect } from '../Select'
 
 const RenderEditSurvey = () => {
@@ -30,17 +30,22 @@ const RenderEditSurvey = () => {
 
   return (
     <Box sx={{ mx: 2, mt: 8 }}>
-      <Box width="100%" flexWrap="wrap">
-        <Box sx={{ mx: 4, mt: 8 }}>
-          <LanguageSelect />
-        </Box>
-        <Box sx={{ my: 4 }}>
-          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
-            {t('admin:questionViewQuestionEdit')}
-          </Typography>
-          <EditSurveyInfo language={selectedLanguage} survey={survey} />
-        </Box>
-        <Box sx={{ mr: 4 }}>
+      <Box sx={{ mx: 4, mt: 8 }}>
+        <LanguageSelect />
+      </Box>
+
+      <Box sx={{ my: 4 }}>
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          {t('admin:surveyViewSurveyEdit')}
+        </Typography>
+        <EditSurvey language={selectedLanguage} survey={survey} />
+      </Box>
+
+      <Box sx={{ my: 16, mr: 4 }}>
+        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          {t('admin:surveyViewQuestionPositionEdit')}
+        </Typography>
+        <Box sx={{ mt: 10 }}>
           {sortedQuestions.map((question) => (
             <div key={question.id}>
               {question.parentId === null && (
