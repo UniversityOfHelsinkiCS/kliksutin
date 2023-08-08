@@ -69,7 +69,7 @@ const SendSummaryEmail = () => {
   }
 
   return (
-    <Box sx={cardStyles.subHeading}>
+    <Box sx={cardStyles.nestedSubSection}>
       <Typography variant="body2">
         {t('results:proceedEmailInfoText')}
       </Typography>

@@ -48,7 +48,6 @@ const SurveyItem = ({
 
     try {
       await mutation.mutateAsync(updatedSurveyInfo)
-
       enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
     } catch (error: any) {
       enqueueSnackbar(error.message, { variant: 'error' })
