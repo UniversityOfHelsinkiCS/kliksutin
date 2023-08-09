@@ -1,4 +1,5 @@
 import { Request } from 'express'
+import { Entry } from './db/models'
 
 export type Locales = {
   fi: string
@@ -165,4 +166,12 @@ export interface Course {
   courseUnitRealisationTypeUrn?: string
   responsibilityInfos?: any[]
   courseUnits?: CourseUnit[]
+}
+
+export interface EntryWithUser extends Entry {
+  User: User
+}
+
+export interface UpcomingCoursesWithEntries extends EntryWithUser {
+  courseData: Course
 }
