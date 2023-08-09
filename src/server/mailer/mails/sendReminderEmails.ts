@@ -1,18 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Entry, User } from '../../db/models'
 
 import logger from '../../util/logger'
 import { getCourse } from '../../util/importer'
 
-import { Course } from '../../types'
-
-interface EntryWithUser extends Entry {
-  User: User
-}
-
-interface UpcomingCoursesWithEntries extends EntryWithUser {
-  courseData: Course
-}
+import { EntryWithUser, UpcomingCoursesWithEntries } from '../../types'
+import generateReminderEmail from '../templates/reminder'
 
 type PositiveInteger<T extends number> = `${T}` extends
   | '0'
@@ -49,7 +41,13 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
 
       const course = await getCourse(courseId)
 
-      const startDate = course.activityPeriod?.startDate
+      if (!course) {
+        logger.warn(`Course not found for course ID: ${courseId}`)
+        return null
+      }
+
+      const startDate = new Date() // course.activityPeriod?.startDate
+      startDate.setDate(startDate.getDate() + 7)
 
       if (!startDate) {
         logger.warn(`Course start date not found in the course ID: ${courseId}`)
@@ -58,8 +56,11 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
 
       if (isStartingInXMonths(startDate, 1)) {
         // Clone the entry object and add the course property to it
-        Object.assign(entry, { courseData: course })
-        return entry as UpcomingCoursesWithEntries
+        const entryWithCourseData = {
+          ...entry,
+          courseData: course,
+        }
+        return entryWithCourseData
       }
 
       return null
@@ -74,6 +75,8 @@ const sendReminderEmails = async (surveyId: number) => {
       surveyId,
       reminderSent: false,
     },
+    raw: true,
+    nest: true,
   })) as EntryWithUser[]
 
   const upcoming = await getUpcomingCoursesWithEntries(newEntries)
@@ -83,14 +86,18 @@ const sendReminderEmails = async (surveyId: number) => {
   )
 
   const emails = entriesToRemind.map((entry) => {
+    const text = generateReminderEmail(entry)
+
     const email = {
       to: entry.User.email,
-      subject: `Curre reminder for ${entry?.courseData.name.en}`,
-      text: 'This is a reminder email',
+      subject: `Curre reminder for `,
+      text,
     }
 
     return email
   })
+
+  console.log(`Sending emails for ${emails.length} teachers`)
 }
 
 export default sendReminderEmails
