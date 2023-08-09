@@ -1,3 +1,4 @@
+import { Op } from 'sequelize'
 import { Entry, User } from '../../db/models'
 
 import logger from '../../util/logger'
@@ -35,22 +36,23 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
       const courseId = entry.data.course
 
       if (!courseId) {
-        logger.warn(`Course ID not found in the entry ID: ${entry.id}`)
+        logger.warn(`Course ID not found for the entry ID: ${entry.id}`)
         return null
       }
 
       const course = await getCourse(courseId)
 
       if (!course) {
-        logger.warn(`Course not found for course ID: ${courseId}`)
+        logger.warn(`Course not found for the course ID: ${courseId}`)
         return null
       }
 
-      const startDate = new Date() // course.activityPeriod?.startDate
-      startDate.setDate(startDate.getDate() + 7)
+      const startDate = course.activityPeriod?.startDate
 
       if (!startDate) {
-        logger.warn(`Course start date not found in the course ID: ${courseId}`)
+        logger.warn(
+          `Course start date not found for the course ID: ${courseId}`
+        )
         return null
       }
 
@@ -73,7 +75,7 @@ const sendReminderEmails = async (surveyId: number) => {
     include: User,
     where: {
       surveyId,
-      reminderSent: false,
+      [Op.and]: [{ receiveReminder: true }, { reminderSent: false }],
     },
     raw: true,
     nest: true,
@@ -90,14 +92,14 @@ const sendReminderEmails = async (surveyId: number) => {
 
     const email = {
       to: entry.User.email,
-      subject: `Curre reminder for `,
+      subject: 'Curre reminder',
       text,
     }
 
     return email
   })
 
-  console.log(`Sending emails for ${emails.length} teachers`)
+  console.log(`Sending reminder emails for ${emails.length} teachers`)
 }
 
 export default sendReminderEmails
