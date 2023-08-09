@@ -27,7 +27,7 @@ class Entry extends Model<
 
   declare reminderSent: CreationOptional<boolean>
 
-  declare reminderSentAt: CreationOptional<boolean>
+  declare reminderSentAt: CreationOptional<Date>
 }
 
 Entry.init(
