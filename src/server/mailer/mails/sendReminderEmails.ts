@@ -6,6 +6,7 @@ import { getCourse } from '../../util/importer'
 
 import { EntryWithUser, UpcomingCoursesWithEntries } from '../../types'
 import generateReminderEmail from '../templates/reminder'
+import sendEmail from '../pate'
 
 type PositiveInteger<T extends number> = `${T}` extends
   | '0'
@@ -36,21 +37,22 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
       const courseId = entry.data.course
 
       if (!courseId) {
-        logger.warn(`Course ID not found for the entry ID: ${entry.id}`)
+        logger.info(`Course ID not found for the entry ID: ${entry.id}`)
         return null
       }
 
       const course = await getCourse(courseId)
 
       if (!course) {
-        logger.warn(`Course not found for the course ID: ${courseId}`)
+        logger.info(`Course not found for the course ID: ${courseId}`)
         return null
       }
 
-      const startDate = course.activityPeriod?.startDate
+      const startDate = new Date() // course.activityPeriod?.startDate
+      startDate.setDate(startDate.getDate() + 7)
 
       if (!startDate) {
-        logger.warn(
+        logger.info(
           `Course start date not found for the course ID: ${courseId}`
         )
         return null
@@ -87,19 +89,29 @@ const sendReminderEmails = async (surveyId: number) => {
     (entry): entry is UpcomingCoursesWithEntries => entry !== null
   )
 
-  const emails = entriesToRemind.map((entry) => {
+  entriesToRemind.forEach(async (entry) => {
+    const targets = [entry.User.email]
+    const subject = 'Curre muistutus'
     const text = generateReminderEmail(entry)
 
-    const email = {
-      to: entry.User.email,
-      subject: 'Curre reminder',
-      text,
-    }
+    await Entry.update(
+      {
+        reminderSent: true,
+        reminderSentAt: new Date(),
+      },
+      {
+        where: {
+          id: entry.id,
+        },
+      }
+    )
 
-    return email
+    await sendEmail(targets, subject, text)
   })
 
-  console.log(`Sending reminder emails for ${emails.length} teachers`)
+  logger.info(
+    `Succesfully sent reminder emails for ${entriesToRemind.length} people`
+  )
 }
 
 export default sendReminderEmails
