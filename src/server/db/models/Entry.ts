@@ -23,7 +23,11 @@ class Entry extends Model<
 
   declare sessionToken: string
 
+  declare receiveReminder: CreationOptional<boolean>
+
   declare reminderSent: CreationOptional<boolean>
+
+  declare reminderSentAt: CreationOptional<boolean>
 }
 
 Entry.init(
@@ -50,10 +54,19 @@ Entry.init(
       allowNull: false,
       defaultValue: '',
     },
+    receiveReminder: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
     reminderSent: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
+    },
+    reminderSentAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
     },
   },
   {
