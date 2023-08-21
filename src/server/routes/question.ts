@@ -1,7 +1,5 @@
 import express from 'express'
 
-import { v4 as uuidv4 } from 'uuid'
-
 import { Question, Result } from '../db/models'
 import {
   createQuestion,
@@ -10,6 +8,7 @@ import {
   updateQuestion,
   updateQuestionPriority,
 } from '../services/question'
+import { createOption, deleteOption, updateOption } from '../services/option'
 
 import { RequestWithUser } from '../types'
 import adminHandler from '../middleware/admin'
@@ -48,111 +47,43 @@ questionRouter.put('/:id/location', adminHandler, async (req, res) => {
   return res.status(200).send(updatedQuestion)
 })
 
-questionRouter.delete(
-  '/:id',
-  adminHandler,
-  async (req: RequestWithUser, res: any) => {
-    const { id } = req.params
-
-    const deletedQuestion = await deleteQuestion(id)
-
-    return res.status(204).send(deletedQuestion)
-  }
-)
-
-questionRouter.post('/:id/option/', async (req: RequestWithUser, res: any) => {
+questionRouter.delete('/:id', adminHandler, async (req, res) => {
   const { id } = req.params
-  const { isAdmin } = req.user
 
-  if (!isAdmin) throw new Error('Unauthorized')
+  const deletedQuestion = await deleteQuestion(id)
 
-  const question = await Question.findByPk(id)
+  return res.status(204).send(deletedQuestion)
+})
 
-  if (!question) throw new Error('Question not found')
+questionRouter.post('/:id/option/', adminHandler, async (req, res) => {
+  const { id } = req.params
 
-  const optionId = uuidv4()
-  const newOption = {
-    ...req.body,
-    id: optionId,
-    label: optionId,
-  }
+  const updatedQuestion = await createOption(id, req.body)
 
-  question.optionData.options = [...question.optionData.options, newOption]
-
-  question.changed('optionData', true)
-
-  await question.save()
-
-  return res.send(question)
+  return res.send(updatedQuestion)
 })
 
 questionRouter.put(
   '/:id/option/:optionId',
+  adminHandler,
   async (req: RequestWithUser, res: any) => {
     const { id, optionId } = req.params
-    const { isAdmin } = req.user
 
-    if (!isAdmin) throw new Error('Unauthorized')
+    const updatedQuestion = await updateOption(id, optionId, req.body)
 
-    const question = await Question.findByPk(id)
-
-    if (!question) throw new Error('Question not found')
-
-    const option = question.optionData.options.find(
-      (aOption) => aOption.id === optionId
-    )
-
-    if (!option) throw new Error('Option not found')
-
-    const updates = question.optionData.options.map((aOption) =>
-      aOption.id === optionId ? Object.assign(option, req.body) : aOption
-    )
-
-    Object.assign(question, updates)
-
-    question.changed('optionData', true)
-
-    await question.save()
-
-    return res.send(question)
+    return res.send(updatedQuestion)
   }
 )
 
 questionRouter.delete(
   '/:id/option/:optionId',
+  adminHandler,
   async (req: RequestWithUser, res: any) => {
     const { id, optionId } = req.params
-    const { isAdmin } = req.user
 
-    if (!isAdmin) throw new Error('Unauthorized')
+    const updatedQuestion = await deleteOption(id, optionId)
 
-    const question = await Question.findByPk(id)
-
-    if (!question) throw new Error('Question not found')
-
-    const option = question.optionData.options.find(
-      (aOption) => aOption.id === optionId
-    )
-
-    if (!option) throw new Error('Option not found')
-
-    const updates = question.optionData.options.filter(
-      (aOption) => aOption.id !== optionId
-    )
-
-    question.optionData.options = updates
-
-    question.changed('optionData', true)
-
-    await question.save()
-
-    await Result.destroy({
-      where: {
-        optionLabel: option.label,
-      },
-    })
-
-    return res.send(question)
+    return res.send(updatedQuestion)
   }
 )
 
