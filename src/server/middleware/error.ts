@@ -7,9 +7,6 @@ import ZodValidationError from '../errors/ValidationError'
 import logger from '../util/logger'
 import { inProduction } from '../../config'
 
-const notFoundError = (res: Response, error: any) =>
-  res.status(404).send({ error, data: null })
-
 const errorHandler = (
   error: Error,
   _req: Request,
@@ -25,12 +22,10 @@ const errorHandler = (
   }
 
   if (error.name === 'ZodValidationError') {
-    return res
-      .status(400)
-      .send({
-        error: error.message,
-        data: (error as ZodValidationError).errors,
-      })
+    return res.status(400).send({
+      error: error.message,
+      data: (error as ZodValidationError).errors,
+    })
   }
 
   if (error.name === 'SequelizeValidationError') {
@@ -46,32 +41,11 @@ const errorHandler = (
     })
   }
 
-  if (error.message === 'Course not found') {
-    return notFoundError(res, 'Course not found')
-  }
-
-  if (error.message === 'Entry not found') {
-    return notFoundError(res, 'Entry not found')
-  }
-
-  if (error.message === 'Survey not found') {
-    return notFoundError(res, 'Survey not found')
-  }
-
-  if (error.message === 'Question not found') {
-    return notFoundError(res, 'Question not found')
-  }
-
-  if (error.message === 'Option not found') {
-    return notFoundError(res, 'Option not found')
-  }
-
-  if (error.message === 'Recommendation not found') {
-    return notFoundError(res, 'Recommendation not found')
-  }
-
-  if (error.message === 'Result not found') {
-    return notFoundError(res, 'Result not found')
+  if (error.name === 'NotFoundError') {
+    return res.status(404).send({
+      error: error.message,
+      data: null,
+    })
   }
 
   if (error.message === 'Open AI service unavailable') {

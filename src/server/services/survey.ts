@@ -4,6 +4,9 @@ import {
 } from '../../validators/survey'
 import { Question, Survey } from '../db/models'
 
+import NotFoundError from '../errors/NotFoundError'
+import ZodValidationError from '../errors/ValidationError'
+
 const sortByPriority = (a: Question, b: Question) => a.priority - b.priority
 
 export const getSurvey = async (surveyName: string): Promise<Survey> => {
@@ -16,7 +19,7 @@ export const getSurvey = async (surveyName: string): Promise<Survey> => {
     },
   })
 
-  if (!survey) throw new Error('Survey not found')
+  if (!survey) throw new NotFoundError('Survey not found')
 
   survey.Questions = survey.Questions.sort(sortByPriority)
 
@@ -36,11 +39,15 @@ export const updateSurvey = async (
     },
   })
 
-  if (!survey) throw new Error('Survey not found')
+  if (!survey) throw new NotFoundError('Survey to update not found')
 
   const request = UpdatedSurveyInfoZod.safeParse(updates)
 
-  if (!request.success) throw new Error('Validation failed')
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the update result inputs failed',
+      request.error.issues
+    )
   const { data } = request
 
   Object.assign(survey, data)

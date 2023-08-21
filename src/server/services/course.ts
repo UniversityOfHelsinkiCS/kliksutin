@@ -7,12 +7,14 @@ import {
   getCourseFromImporter,
 } from '../util/importer'
 
+import NotFoundError from '../errors/NotFoundError'
+
 export const getCourse = async (courseId: string): Promise<Course> => {
   if (inE2EMode) return mockCourse
 
   const course = await getCourseFromImporter(courseId)
 
-  if (!course) throw new Error('Course not found')
+  if (!course) throw new NotFoundError('Course not found')
 
   return course
 }

@@ -7,6 +7,9 @@ import {
   UpdatedResultZod,
 } from '../../validators/results'
 
+import NotFoundError from '../errors/NotFoundError'
+import ZodValidationError from '../errors/ValidationError'
+
 export const getResults = async (surveyId: string): Promise<Result[]> => {
   const results = await Result.findAll({
     where: {
@@ -17,36 +20,22 @@ export const getResults = async (surveyId: string): Promise<Result[]> => {
   return results
 }
 
-export const updateResult = async (
-  resultId: string,
-  updatedResultValues: UpdatedResult
-): Promise<Result> => {
-  const result = await Result.findByPk(resultId)
-
-  if (!result) throw new Error('Result not found')
-
-  const request = UpdatedResultZod.safeParse(updatedResultValues)
-
-  if (!request.success) throw new Error('Validation failed')
-  const { data } = request
-
-  Object.assign(result, data)
-  await result.save()
-
-  return result
-}
-
 export const createResult = async (
   surveyId: string,
   newResultValues: NewResult
 ): Promise<Result> => {
   const survey = await Survey.findByPk(surveyId)
 
-  if (!survey) throw new Error('Survey not found')
+  if (!survey)
+    throw new NotFoundError('Survey to create new result for not found')
 
   const request = NewResultZod.safeParse(newResultValues)
 
-  if (!request.success) throw new Error('Validation failed')
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the new result inputs failed',
+      request.error.issues
+    )
   const { data } = request
 
   const newResult = await Result.create({
@@ -57,10 +46,33 @@ export const createResult = async (
   return newResult
 }
 
+export const updateResult = async (
+  resultId: string,
+  updatedResultValues: UpdatedResult
+): Promise<Result> => {
+  const result = await Result.findByPk(resultId)
+
+  if (!result) throw new NotFoundError('Result to update not found')
+
+  const request = UpdatedResultZod.safeParse(updatedResultValues)
+
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the update result inputs failed',
+      request.error.issues
+    )
+  const { data } = request
+
+  Object.assign(result, data)
+  await result.save()
+
+  return result
+}
+
 export const deleteResult = async (resultId: string): Promise<Result> => {
   const result = await Result.findByPk(resultId)
 
-  if (!result) throw new Error('Result not found')
+  if (!result) throw new NotFoundError('Result to delete not found')
 
   await result.destroy()
 

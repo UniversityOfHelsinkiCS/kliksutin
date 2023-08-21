@@ -2,6 +2,8 @@ import { Entry, Survey } from '../db/models'
 
 import { EntryValues } from '../types'
 
+import NotFoundError from '../errors/NotFoundError'
+
 export const getEntries = async (): Promise<Entry[]> => {
   const entries = await Entry.findAll({
     include: Survey,
@@ -17,7 +19,7 @@ export const getEntry = async (
 ): Promise<Entry> => {
   const entry = await Entry.findByPk(entryId)
 
-  if (!entry) throw new Error('Entry not found')
+  if (!entry) throw new NotFoundError('Entry not found')
 
   if (entry.userId !== userId) throw new Error('Unauthorized')
 

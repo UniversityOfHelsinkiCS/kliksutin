@@ -8,17 +8,25 @@ import {
   UpdatedOptionZod,
 } from '../../validators/options'
 
+import NotFoundError from '../errors/NotFoundError'
+import ZodValidationError from '../errors/ValidationError'
+
 export const createOption = async (
   questionId: string,
   newOptionValues: NewOption
 ): Promise<Question> => {
   const question = await Question.findByPk(questionId)
 
-  if (!question) throw new Error('Question not found')
+  if (!question)
+    throw new NotFoundError('Question to create new option for not found')
 
   const request = OptionZod.safeParse(newOptionValues)
 
-  if (!request.success) throw new Error('Validation failed')
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the new option inputs failed',
+      request.error.issues
+    )
   const { data } = request
 
   const optionId = uuidv4()
@@ -44,17 +52,22 @@ export const updateOption = async (
 ): Promise<Question> => {
   const question = await Question.findByPk(questionId)
 
-  if (!question) throw new Error('Question not found')
+  if (!question)
+    throw new NotFoundError('Question which option to update not found')
 
   const option = question.optionData.options.find(
     (aOption) => aOption.id === optionId
   )
 
-  if (!option) throw new Error('Option not found')
+  if (!option) throw new NotFoundError('Option to update not found')
 
   const request = UpdatedOptionZod.safeParse(updatedOptionValues)
 
-  if (!request.success) throw new Error('Validation failed')
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the updated option inputs failed',
+      request.error.issues
+    )
   const { data } = request
 
   const updates = question.optionData.options.map((aOption) =>
@@ -76,13 +89,14 @@ export const deleteOption = async (
 ): Promise<Question> => {
   const question = await Question.findByPk(questionId)
 
-  if (!question) throw new Error('Question not found')
+  if (!question)
+    throw new NotFoundError('Question which option to delete not found')
 
   const option = question.optionData.options.find(
     (aOption) => aOption.id === optionId
   )
 
-  if (!option) throw new Error('Option not found')
+  if (!option) throw new NotFoundError('Option to delete not found')
 
   const updates = question.optionData.options.filter(
     (aOption) => aOption.id !== optionId
