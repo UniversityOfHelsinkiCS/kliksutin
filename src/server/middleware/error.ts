@@ -3,8 +3,12 @@ import { ValidationError, UniqueConstraintError } from 'sequelize'
 
 import Sentry from '@sentry/node'
 
+import ZodValidationError from '../errors/ValidationError'
 import logger from '../util/logger'
 import { inProduction } from '../../config'
+
+const notFoundError = (res: Response, error: any) =>
+  res.status(404).send({ error, data: null })
 
 const errorHandler = (
   error: Error,
@@ -17,46 +21,59 @@ const errorHandler = (
   if (inProduction) Sentry.captureException(error)
 
   if (error.message === 'Unauthorized') {
-    return res
-      .status(401)
-      .send({ error: 'Unauthorized access', data: { error } })
+    return res.status(401).send({ error: 'Unauthorized access', data: null })
   }
+
+  if (error.name === 'ZodValidationError') {
+    return res
+      .status(400)
+      .send({
+        error: error.message,
+        data: (error as ZodValidationError).errors,
+      })
+  }
+
   if (error.name === 'SequelizeValidationError') {
     return res
       .status(400)
       .send({ error: error.message, data: (error as ValidationError).errors })
   }
+
   if (error.name === 'SequelizeUniqueConstraintError') {
     return res.status(400).send({
       error: error.message,
       data: (error as UniqueConstraintError).errors,
     })
   }
+
   if (error.message === 'Course not found') {
-    return res.status(404).send({ error: 'Course not found', data: { error } })
+    return notFoundError(res, 'Course not found')
   }
+
   if (error.message === 'Entry not found') {
-    return res.status(404).send({ error: 'Entry not found', data: { error } })
+    return notFoundError(res, 'Entry not found')
   }
+
   if (error.message === 'Survey not found') {
-    return res.status(404).send({ error: 'Survey not found', data: { error } })
+    return notFoundError(res, 'Survey not found')
   }
+
   if (error.message === 'Question not found') {
-    return res
-      .status(404)
-      .send({ error: 'Question not found', data: { error } })
+    return notFoundError(res, 'Question not found')
   }
+
   if (error.message === 'Option not found') {
-    return res.status(404).send({ error: 'Option not found', data: { error } })
+    return notFoundError(res, 'Option not found')
   }
+
   if (error.message === 'Recommendation not found') {
-    return res
-      .status(404)
-      .send({ error: 'Recommendation not found', data: { error } })
+    return notFoundError(res, 'Recommendation not found')
   }
+
   if (error.message === 'Result not found') {
-    return res.status(404).send({ error: 'Result not found', data: { error } })
+    return notFoundError(res, 'Result not found')
   }
+
   if (error.message === 'Open AI service unavailable') {
     return res.status(503).send({
       error: 'Open AI service unavailable, try again shortly',

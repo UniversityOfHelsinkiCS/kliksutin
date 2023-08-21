@@ -11,6 +11,7 @@ import {
   UpdatedQuestionZod,
 } from '../../validators/questions'
 import { nextAvailablePriority } from '../util/question'
+import ZodValidationError from '../errors/ValidationError'
 
 export const getQuestions = async (surveyId: string): Promise<Question[]> => {
   const questions = await Question.findAll({
@@ -31,7 +32,11 @@ export const createQuestion = async (
 
   const request = NewQuestionZod.safeParse(newQuestionValues)
 
-  if (!request.success) throw new Error('Validation failed')
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the new question values failed',
+      request.error.issues
+    )
   const { data } = request
   const { options } = data.optionData
 
