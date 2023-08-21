@@ -59,7 +59,7 @@ questionRouter.post('/:id/option/', adminHandler, async (req, res) => {
 
   const updatedQuestion = await createOption(id, req.body)
 
-  return res.send(updatedQuestion)
+  return res.status(201).send(updatedQuestion)
 })
 
 questionRouter.put(
@@ -70,7 +70,7 @@ questionRouter.put(
 
     const updatedQuestion = await updateOption(id, optionId, req.body)
 
-    return res.send(updatedQuestion)
+    return res.status(200).send(updatedQuestion)
   }
 )
 
@@ -82,7 +82,7 @@ questionRouter.delete(
 
     const updatedQuestion = await deleteOption(id, optionId)
 
-    return res.send(updatedQuestion)
+    return res.status(204).send(updatedQuestion)
   }
 )
 
