@@ -1,4 +1,7 @@
-import { UpdatedSurveyInfo, UpdatedSurveyInfoZod } from 'src/validators/survey'
+import {
+  UpdatedSurveyInfo,
+  UpdatedSurveyInfoZod,
+} from '../../validators/survey'
 import { Question, Survey } from '../db/models'
 
 const sortByPriority = (a: Question, b: Question) => a.priority - b.priority
