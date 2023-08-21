@@ -7,7 +7,6 @@ import logger from '../util/logger'
 import { inProduction } from '../../config'
 
 import ZodValidationError from '../errors/ValidationError'
-import OpenAIServiceError from '../errors/OpenAIServiceError'
 
 const errorHandler = (
   error: Error,
