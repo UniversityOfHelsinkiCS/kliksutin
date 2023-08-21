@@ -41,9 +41,9 @@ export const updateSurvey = async (
   const request = UpdatedSurveyInfoZod.safeParse(updates)
 
   if (!request.success) throw new Error('Validation failed')
-  const body = request.data
+  const { data } = request
 
-  Object.assign(survey, body)
+  Object.assign(survey, data)
 
   await survey.save()
 
