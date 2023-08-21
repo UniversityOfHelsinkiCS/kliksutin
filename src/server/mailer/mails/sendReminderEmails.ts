@@ -2,7 +2,7 @@ import { Op } from 'sequelize'
 import { Entry, User } from '../../db/models'
 
 import logger from '../../util/logger'
-import { getCourse } from '../../util/importer'
+import { getCourseFromImporter } from '../../util/importer'
 
 import { EntryWithUser, UpcomingCoursesWithEntries } from '../../types'
 import generateReminderEmail from '../templates/reminder'
@@ -41,7 +41,7 @@ const getUpcomingCoursesWithEntries = (entries: Entry[]) =>
         return null
       }
 
-      const course = await getCourse(courseId)
+      const course = await getCourseFromImporter(courseId)
 
       if (!course) {
         logger.info(`Course not found for the course ID: ${courseId}`)

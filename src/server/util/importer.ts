@@ -9,7 +9,9 @@ export const importerClient = axios.create({
   },
 })
 
-export const getTeacherCourses = async (userId: string): Promise<Course[]> => {
+export const getUserCoursesFromImporter = async (
+  userId: string
+): Promise<Course[]> => {
   const { data }: { data: Course[] } = await importerClient.get(
     `/courses/${userId}`
   )
@@ -17,7 +19,9 @@ export const getTeacherCourses = async (userId: string): Promise<Course[]> => {
   return data
 }
 
-export const getCourse = async (courseId: string): Promise<Course> => {
+export const getCourseFromImporter = async (
+  courseId: string
+): Promise<Course> => {
   const { data }: { data: Course } = await importerClient.get(
     `/course/${courseId}`
   )
