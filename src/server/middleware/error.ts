@@ -3,9 +3,11 @@ import { ValidationError, UniqueConstraintError } from 'sequelize'
 
 import Sentry from '@sentry/node'
 
-import ZodValidationError from '../errors/ValidationError'
 import logger from '../util/logger'
 import { inProduction } from '../../config'
+
+import ZodValidationError from '../errors/ValidationError'
+import OpenAIServiceError from '../errors/OpenAIServiceError'
 
 const errorHandler = (
   error: Error,
@@ -53,8 +55,8 @@ const errorHandler = (
 
   if (error.message === 'Open AI service unavailable') {
     return res.status(503).send({
-      error: 'Open AI service unavailable, try again shortly',
-      data: { error },
+      error: error.message,
+      data: null,
     })
   }
 
