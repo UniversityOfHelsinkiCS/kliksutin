@@ -1,9 +1,6 @@
 import express from 'express'
 
-import { inE2EMode } from '../../config'
-import { createCompletion } from '../util/openai'
-
-const mockCompletion = 'Openai response'
+import { getOpenAIResponse } from '../services/openai'
 
 const openaiRouter = express.Router()
 
@@ -12,17 +9,9 @@ openaiRouter.post('/', async (req, res) => {
 
   if (!prompt) return res.sendStatus(400)
 
-  if (inE2EMode) return res.send(mockCompletion)
+  const openAIResponse = await getOpenAIResponse(prompt)
 
-  const openAIRes = await createCompletion(prompt)
-
-  if (!openAIRes) throw new Error('Open AI service unavailable')
-
-  const { message } = openAIRes.choices[0]
-
-  if (!message) throw new Error('Open AI service unavailable')
-
-  return res.send(message.content)
+  return res.status(200).send(openAIResponse)
 })
 
 export default openaiRouter
