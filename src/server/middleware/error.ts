@@ -53,7 +53,7 @@ const errorHandler = (
     })
   }
 
-  if (error.message === 'Open AI service unavailable') {
+  if (error.name === 'OpenAIServiceError') {
     return res.status(503).send({
       error: error.message,
       data: null,
