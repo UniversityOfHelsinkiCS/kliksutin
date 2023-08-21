@@ -32,6 +32,9 @@ const errorHandler = (
       data: (error as UniqueConstraintError).errors,
     })
   }
+  if (error.message === 'Course not found') {
+    return res.status(404).send({ error: 'Course not found', data: { error } })
+  }
   if (error.message === 'Entry not found') {
     return res.status(404).send({ error: 'Entry not found', data: { error } })
   }
