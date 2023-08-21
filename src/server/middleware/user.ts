@@ -1,4 +1,6 @@
+import { NextFunction, Response } from 'express'
 import { inDevelopment, inE2EMode } from '../../config'
+import mockHeaders from '../mocs/headers'
 
 const parseIamGroups = (iamGroups: string) =>
   iamGroups?.split(';').filter(Boolean) ?? []
@@ -8,17 +10,7 @@ const checkAdmin = (iamGroups: string[]) =>
     ['hy-ypa-opa-ote', 'grp-toska'].includes(iamGroup)
   )
 
-const mockHeaders = {
-  uid: 'testuser',
-  givenname: 'Testi',
-  sn: 'Kayttaja',
-  mail: 'grp-toska@helsinki.fi',
-  preferredlanguage: 'fi',
-  hypersonsisuid: 'hy-hlo-1441871',
-  hygroupcn: 'grp-toska;hy-mltdk-employees',
-}
-
-const userMiddleware = (req: any, _res: any, next: any) => {
+const userMiddleware = (req: any, _res: Response, next: NextFunction) => {
   const headers = inDevelopment || inE2EMode ? mockHeaders : req.headers
 
   const {
