@@ -3,6 +3,7 @@ import { Entry, Survey } from '../db/models'
 import { EntryValues } from '../types'
 
 import NotFoundError from '../errors/NotFoundError'
+import UnauthorizedError from '../errors/UnauthorizedError'
 
 export const getEntries = async (): Promise<Entry[]> => {
   const entries = await Entry.findAll({
@@ -21,7 +22,8 @@ export const getEntry = async (
 
   if (!entry) throw new NotFoundError('Entry not found')
 
-  if (entry.userId !== userId) throw new Error('Unauthorized')
+  if (entry.userId !== userId)
+    throw new UnauthorizedError('Unauthorized access')
 
   return entry
 }

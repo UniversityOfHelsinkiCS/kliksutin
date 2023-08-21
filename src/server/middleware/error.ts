@@ -17,10 +17,6 @@ const errorHandler = (
 
   if (inProduction) Sentry.captureException(error)
 
-  if (error.message === 'Unauthorized') {
-    return res.status(401).send({ error: 'Unauthorized access', data: null })
-  }
-
   if (error.name === 'ZodValidationError') {
     return res.status(400).send({
       error: error.message,
@@ -38,6 +34,13 @@ const errorHandler = (
     return res.status(400).send({
       error: error.message,
       data: (error as UniqueConstraintError).errors,
+    })
+  }
+
+  if (error.name === 'UnauthorizedError') {
+    return res.status(401).send({
+      error: error.message,
+      data: null,
     })
   }
 
