@@ -1,6 +1,5 @@
 import express from 'express'
 
-import { Question, Result } from '../db/models'
 import {
   createQuestion,
   deleteQuestion,
@@ -10,8 +9,8 @@ import {
 } from '../services/question'
 import { createOption, deleteOption, updateOption } from '../services/option'
 
-import { RequestWithUser } from '../types'
 import adminHandler from '../middleware/admin'
+import { RequestWithUser } from '../types'
 
 const questionRouter = express.Router()
 

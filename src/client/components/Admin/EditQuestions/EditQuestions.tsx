@@ -11,6 +11,7 @@ import { Box, Button, Typography } from '@mui/material'
 import { Question, Locales } from '@backend/types'
 
 import useSurvey from '../../../hooks/useSurvey'
+import useQuestions from '../../../hooks/useQuestions'
 
 import EditOptions from './EditOptions'
 import EditQuestion from './EditQuestion'
@@ -79,13 +80,15 @@ const EditQuestions = () => {
   const location = useLocation()
   const { questionId } = useParams()
   const [searchParams] = useSearchParams()
-  const { survey, isLoading } = useSurvey()
 
-  if (isLoading || !survey || !questionId) return null
+  const { survey } = useSurvey()
+  const { questions, isLoading } = useQuestions(survey?.id)
+
+  if (isLoading || !survey || !questions || !questionId) return null
 
   const selectedLanguage = searchParams.get('transLang') as keyof Locales
 
-  const selectedQuestion = survey.Questions.find(
+  const selectedQuestion = questions.find(
     (question) => question.id === Number(questionId)
   )
 
