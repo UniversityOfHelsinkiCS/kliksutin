@@ -17,6 +17,7 @@ import { getResultArray } from '../../util/results'
 import { getSelectedDimensionsFromResultData } from '../../util/dimensions'
 
 import styles from '../../styles'
+import CrunchingProgress from '../Common/CrunchingProgress'
 
 const { cardStyles, resultStyles } = styles
 
@@ -25,7 +26,7 @@ interface CourseInfoProps {
 }
 
 const CourseInfo = ({ course }: CourseInfoProps) => {
-  const { i18n } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const language = i18n.language as keyof Locales
 
@@ -33,17 +34,66 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
 
   const courseName = getCourseName(course, language)
 
-  return <Container sx={{ mt: 4 }}>{courseName[language]}</Container>
+  return (
+    <Container sx={{ mt: 4 }}>
+      <Typography variant="body2" sx={cardStyles.question}>
+        {t('viewer:entryViewCourse')}: {courseName[language]} - {course.id}
+      </Typography>
+    </Container>
+  )
+}
+
+const EntryInfo = ({ entry }: any) => {
+  const { t } = useTranslation()
+
+  if (!entry) return null
+
+  return (
+    <Container sx={{ mt: 4 }}>
+      <Typography
+        data-cy="viewer-entryInfo-section-title"
+        variant="h5"
+        sx={resultStyles.heading}
+        component="div"
+      >
+        {t('viewer:entryInfoTitle')}
+      </Typography>
+      <Box>
+        <Typography variant="body2" sx={cardStyles.question}>
+          {t('viewer:entryViewSurvey')}: {t(`common:appName`)}
+        </Typography>
+        <Typography variant="body2" sx={cardStyles.question}>
+          {t('viewer:entryViewFaculty')}: {entry.data.faculty}
+        </Typography>
+        <Typography variant="body2" sx={cardStyles.question}>
+          {t('viewer:entryViewCreated')}:{' '}
+          {new Date(entry.createdAt).toLocaleString()}
+        </Typography>
+        <Typography variant="body2" sx={cardStyles.question}>
+          {t('viewer:entryViewUpdated')}:{' '}
+          {new Date(entry.updatedAt).toLocaleString()}
+        </Typography>
+      </Box>
+    </Container>
+  )
 }
 
 const Viewer = () => {
   const { t } = useTranslation()
   const { entryId } = useParams()
-  const { survey } = useSurvey()
-  const { entry, isLoading } = useEntry(entryId)
-  const { course } = useCourse(entry?.data.course)
+  const { survey, isLoading: surveyIsLoading } = useSurvey()
+  const { entry, isLoading: entryIsLoading } = useEntry(entryId)
+  const { course, isLoading: courseIsLoading } = useCourse(entry?.data.course)
 
-  if (!survey || isLoading || !entry) return null
+  if (
+    !survey ||
+    !entry ||
+    !course ||
+    surveyIsLoading ||
+    entryIsLoading ||
+    courseIsLoading
+  )
+    return <CrunchingProgress />
 
   const { data: resultData } = entry
 
@@ -63,15 +113,16 @@ const Viewer = () => {
   return (
     <Box sx={cardStyles.outerBox}>
       <Box sx={resultStyles.resultWrapper}>
+        <EntryInfo entry={entry} />
         <CourseInfo course={course} />
         <Container sx={{ mt: 4 }}>
           <Typography
-            data-cy="result-section-title"
+            data-cy="viewer-results-section-title"
             variant="h5"
             sx={resultStyles.heading}
             component="div"
           >
-            {t('results:title')}
+            {t('viewer:entryViewTitle')}
           </Typography>
           <CompactDimensionChips
             dimensions={dimensions}

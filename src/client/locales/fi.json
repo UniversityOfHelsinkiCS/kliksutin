@@ -77,6 +77,16 @@
     "apiErrorMessage": "Palvelimeen ei saatu yhteyttä",
     "spinnerMessage": "Tekoäly miettii..."
   },
+  "viewer": {
+    "entryInfoTitle": "Entry information",
+    "entryViewTitle": "Below are the results relating this entry",
+    "entryViewID": "ID",
+    "entryViewSurvey": "Survey",
+    "entryViewFaculty": "Faculty",
+    "entryViewCreated": "Created",
+    "entryViewUpdated": "Updated",
+    "entryViewCourse": "This survey was made for the following course"
+  },
   "admin": {
     "selectDimension": "Valitse oppimismuoto",
     "selectQuestion": "Valitse kysymys",
