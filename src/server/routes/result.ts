@@ -46,10 +46,14 @@ resultRouter.post(
   }
 )
 
-resultRouter.delete('/:id', async (req: RequestWithUser, res: any) => {
-  const { id } = req.params
+resultRouter.delete(
+  '/:id',
+  adminHandler,
+  async (req: RequestWithUser, res: any) => {
+    const { id } = req.params
 
-  const deletedResult = await deleteResult(id)
+    const deletedResult = await deleteResult(id)
 
-  return res.status(204).send(deletedResult)
-})
+    return res.status(204).send(deletedResult)
+  }
+)

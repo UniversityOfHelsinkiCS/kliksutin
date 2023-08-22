@@ -26,7 +26,7 @@ recommendationRouter.put('/:id', adminHandler, async (req, res) => {
   return res.status(200).send(updatedRecommendation)
 })
 
-recommendationRouter.post('/:surveyId', async (req, res) => {
+recommendationRouter.post('/:surveyId', adminHandler, async (req, res) => {
   const { surveyId } = req.params
 
   const newRecommendation = await createRecommendation(surveyId, req.body)
