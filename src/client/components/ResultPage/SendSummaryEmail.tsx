@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import ReactDOMServer from 'react-dom/server'
 import { Controller, useForm } from 'react-hook-form'
 import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
@@ -17,63 +18,59 @@ import {
 
 import useLoggedInUser from '../../hooks/useLoggedInUser'
 
+import SummaryEmailTemplate from '../../templates/SummaryEmailTemplate'
+
 import styles from '../../styles'
 import sendEmail from '../../util/mailing'
-import summaryEmailHTML from '../../templates/summaryEmail'
 
 import { ShareResultEmails, ShareResultsZod } from '../../../validators/emails'
 
 const SendSummaryEmail = () => {
   const { t } = useTranslation()
   const location = useLocation()
-  const { user, isLoading } = useLoggedInUser()
-  const [showNotes, setShowNotes] = useState(false)
   const [notes, setNotes] = useState('')
   const [isSent, setIsSent] = useState(false)
+  const [showNotes, setShowNotes] = useState(false)
+  const { user, isLoading } = useLoggedInUser()
 
   const { cardStyles } = styles
-
-  if (isLoading || !user?.email || location.pathname === '/public') return null
 
   const resultHTML = sessionStorage.getItem('curre-session-resultHTML')
 
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
     mode: 'all',
     resolver: zodResolver(ShareResultsZod),
     defaultValues: {
-      emails: [user?.email],
+      emails: [''],
     },
   })
+
+  useEffect(() => {
+    setIsSent(false)
+  }, [resultHTML])
+
+  useEffect(() => {
+    if (user?.email) reset({ emails: [user?.email] })
+  }, [reset, user])
 
   const onSubmit = ({ emails }: ShareResultEmails) => {
     if (errors?.emails || emails.length === 0) return
 
+    const summaryEmailTemplate = ReactDOMServer.renderToString(
+      <SummaryEmailTemplate showNotes={showNotes} notes={notes} />
+    )
+
     const subject = t('results:summaryEmailSubject')
-    const text = `\
-      ${summaryEmailHTML} \
-      ${
-        showNotes &&
-        notes &&
-        `<p>
-          <strong> \
-            Muistiinpanosi Curressa tekemist&auml;si valinnoista:
-          </strong> \
-        </p> \
-        <i>
-          ${notes}
-        </i>`
-      }
-      <p>
-        <strong> \
-          Kooste Curressa tekemist&auml;si valinnoista ja k&auml;ytett&auml;viss&auml; olevista sovelluksista:
-        </strong> \
-      </p> \
-      ${resultHTML} \
-      `
+    const text = `
+    ${summaryEmailTemplate}
+
+    ${resultHTML}
+    `
 
     sendEmail(emails, text, subject)
       .then(() => {
@@ -86,6 +83,8 @@ const SendSummaryEmail = () => {
         enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
       })
   }
+
+  if (isLoading || !user?.email || location.pathname === '/public') return null
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
