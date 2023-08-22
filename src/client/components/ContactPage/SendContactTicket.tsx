@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ReactDOMServer from 'react-dom/server'
 import { Link } from 'react-router-dom'
 import { Controller, useForm } from 'react-hook-form'
 import { enqueueSnackbar } from 'notistack'
@@ -6,6 +7,8 @@ import { useTranslation } from 'react-i18next'
 import { Box, Button, Stack, TextField } from '@mui/material'
 
 import useLoggedInUser from '../../hooks/useLoggedInUser'
+
+import ContactEmailTemplate from '../../templates/ContactEmailTemplate'
 
 import styles from '../../styles'
 import sendEmail from '../../util/mailing'
@@ -35,41 +38,16 @@ const SendContactTicket = () => {
   if (isLoading || !user) return null
 
   const onSubmit = async ({ content }: { content: string }) => {
+    const contactEmailTemplate = ReactDOMServer.renderToString(
+      <ContactEmailTemplate user={user} content={content} />
+    )
+
     const subject = 'Curre contact ticket'
     const targets = [ticketEmail]
-    const text = ` \
-    <div> \
-      <h3> \
-        <strong> \
-          Curre Contact Ticket
-        </strong> \
-      </h3> \
-      <p> \
-        **********
-        <strong>
-          ${t('contact:contactTicketSenderEmail')} ${user?.email} \
-        </strong> \
-        <strong>
-          ${t('contact:contactTicketSenderFullname')} ${user?.firstName} ${
-      user?.lastName
-    } \
-        </strong> \
-      </p> \
-      <p> \
-        **********
-        <strong>
-          ${t('contact:contactTicketUserMessage')} \
-        </strong> \
-        ${content} \
-      </p> \
-      <p> \
-        **********
-        <strong>
-          ${t('contact:contactTicketUserSummary')} \
-        </strong> \
-        ${resultHTML} \
-      </p> \
-    </div> \
+    const text = `
+        ${contactEmailTemplate}
+        
+        ${resultHTML}
     `
 
     sendEmail(targets, text, subject)
