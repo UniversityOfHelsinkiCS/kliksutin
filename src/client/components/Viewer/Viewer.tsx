@@ -85,14 +85,7 @@ const Viewer = () => {
   const { entry, isLoading: entryIsLoading } = useEntry(entryId)
   const { course, isLoading: courseIsLoading } = useCourse(entry?.data.course)
 
-  if (
-    !survey ||
-    !entry ||
-    !course ||
-    surveyIsLoading ||
-    entryIsLoading ||
-    courseIsLoading
-  )
+  if (!survey || !entry || surveyIsLoading || entryIsLoading || courseIsLoading)
     return <CrunchingProgress />
 
   const { data: resultData } = entry
