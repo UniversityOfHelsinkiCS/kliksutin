@@ -27,7 +27,7 @@ export const createResult = async (
   const survey = await Survey.findByPk(surveyId)
 
   if (!survey)
-    throw new NotFoundError('Survey to create new result for not found')
+    throw new NotFoundError('Survey not found while creating a new result')
 
   const request = NewResultZod.safeParse(newResultValues)
 

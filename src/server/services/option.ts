@@ -18,7 +18,7 @@ export const createOption = async (
   const question = await Question.findByPk(questionId)
 
   if (!question)
-    throw new NotFoundError('Question to create new option for not found')
+    throw new NotFoundError('Question not found while creating a new option')
 
   const request = OptionZod.safeParse(newOptionValues)
 
@@ -53,7 +53,7 @@ export const updateOption = async (
   const question = await Question.findByPk(questionId)
 
   if (!question)
-    throw new NotFoundError('Question which option to update not found')
+    throw new NotFoundError('Question not found while updating a option')
 
   const option = question.optionData.options.find(
     (aOption) => aOption.id === optionId
@@ -90,7 +90,7 @@ export const deleteOption = async (
   const question = await Question.findByPk(questionId)
 
   if (!question)
-    throw new NotFoundError('Question which option to delete not found')
+    throw new NotFoundError('Question not found while deleting a option')
 
   const option = question.optionData.options.find(
     (aOption) => aOption.id === optionId
