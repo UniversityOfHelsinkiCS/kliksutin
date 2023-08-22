@@ -78,6 +78,16 @@
     "apiErrorMessage": "No response from the server",
     "spinnerMessage": "AI is thinking..."
   },
+  "viewer": {
+    "entryInfoTitle": "Entry information",
+    "entryViewTitle": "Below are the results relating this entry",
+    "entryViewID": "ID",
+    "entryViewSurvey": "Survey",
+    "entryViewFaculty": "Faculty",
+    "entryViewCreated": "Created",
+    "entryViewUpdated": "Updated",
+    "entryViewCourse": "This survey was made for the following course"
+  },
   "admin": {
     "selectDimension": "Select dimension",
     "selectQuestion": "Select question",

@@ -78,14 +78,14 @@
     "spinnerMessage": "Tekoäly miettii..."
   },
   "viewer": {
-    "entryInfoTitle": "Entry information",
-    "entryViewTitle": "Below are the results relating this entry",
-    "entryViewID": "ID",
-    "entryViewSurvey": "Survey",
-    "entryViewFaculty": "Faculty",
-    "entryViewCreated": "Created",
-    "entryViewUpdated": "Updated",
-    "entryViewCourse": "This survey was made for the following course"
+    "entryInfoTitle": "Tulostietueen tiedot",
+    "entryViewTitle": "Alla on tulokset, jotka liittyvät tähän tietueeseen",
+    "entryViewID": "Tunniste",
+    "entryViewSurvey": "Kysely",
+    "entryViewFaculty": "Tiedekunta",
+    "entryViewCreated": "Luotu",
+    "entryViewUpdated": "Päivitetty",
+    "entryViewCourse": "Tämä kysely on tehty seuraavaa kurssia varten"
   },
   "admin": {
     "selectDimension": "Valitse oppimismuoto",

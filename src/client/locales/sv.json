@@ -77,6 +77,16 @@
     "apiErrorMessage": "Det gick inte att få kontakt med servern",
     "spinnerMessage": "AI tänker..."
   },
+  "viewer": {
+    "entryInfoTitle": "Entry information",
+    "entryViewTitle": "Below are the results relating this entry",
+    "entryViewID": "ID",
+    "entryViewSurvey": "Survey",
+    "entryViewFaculty": "Faculty",
+    "entryViewCreated": "Created",
+    "entryViewUpdated": "Updated",
+    "entryViewCourse": "This survey was made for the following course"
+  },
   "admin": {
     "selectDimension": "Välj inlärningsform",
     "selectQuestion": "Välj fråga",
