@@ -32,7 +32,8 @@ export const createQuestion = async (
 ): Promise<Question> => {
   const survey = await Survey.findByPk(surveyId)
 
-  if (!survey) throw new NotFoundError('Survey not found')
+  if (!survey)
+    throw new NotFoundError('Survey not found while creating a new question')
 
   const request = NewQuestionZod.safeParse(newQuestionValues)
 
