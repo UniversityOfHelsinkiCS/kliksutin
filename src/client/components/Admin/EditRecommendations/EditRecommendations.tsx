@@ -48,11 +48,10 @@ const EditRecommendations = () => {
       )
     )
 
-    const selectedDimensions = oldDimensions.reduce((result, dimension) => {
-      // eslint-disable-next-line no-param-reassign
-      result[dimension.id] = true
-      return result
-    }, {} as Record<string, boolean>)
+    const selectedDimensions = oldDimensions.reduce(
+      (result, dimension) => ({ ...result, [dimension.id]: true }),
+      {} as Record<string, boolean>
+    )
 
     setDimensionSelection(selectedDimensions)
   }, [survey, selectedRecommendation, dimensionQuestion])
