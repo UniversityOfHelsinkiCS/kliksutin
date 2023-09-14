@@ -56,6 +56,10 @@ const EditRecommendations = () => {
     setDimensionSelection(selectedDimensions)
   }, [survey, selectedRecommendation, dimensionQuestion])
 
+  const handleRecommendationDimensionsSave = () => {
+    console.log(dimensionSelection)
+  }
+
   const handleRecommendationDeletion = () => {
     navigate({
       pathname: '/admin/edit-recommendations',
@@ -77,7 +81,10 @@ const EditRecommendations = () => {
               value={dimensionSelection}
               setValue={setDimensionSelection}
             />
-            <Button variant='outlined' onClick={() => {}}>
+            <Button
+              variant='outlined'
+              onClick={handleRecommendationDimensionsSave}
+            >
               {t('admin:save')}
             </Button>
           </Box>
