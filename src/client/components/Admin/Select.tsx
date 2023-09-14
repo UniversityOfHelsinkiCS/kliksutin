@@ -56,7 +56,7 @@ const SelectWrapper = ({
       <Select
         label={label}
         value={value}
-        defaultValue=""
+        defaultValue=''
         onChange={handleChange}
       >
         {children}
@@ -86,7 +86,7 @@ export const DialogSelect = ({
     render={({ field }) => (
       <FormControl fullWidth>
         <InputLabel>{label}</InputLabel>
-        <Select {...field} size="medium" label={label}>
+        <Select {...field} size='medium' label={label}>
           {children}
         </Select>
       </FormControl>
@@ -119,7 +119,7 @@ export const LanguageSelect = () => {
     <Box sx={{ width: '20vw' }}>
       <FormControl fullWidth>
         <FormLabel>{t('admin:selectLanguage')}</FormLabel>
-        <RadioGroup defaultValue="en" onChange={handleLanguageChange} row>
+        <RadioGroup defaultValue='en' onChange={handleLanguageChange} row>
           {languages.map(({ id, title }) => (
             <FormControlLabel
               key={id}
@@ -165,7 +165,7 @@ export const DialogDimensionSelect = ({
                   <Box>
                     <Tooltip
                       title={choice.text[language as keyof Locales]}
-                      placement="bottom"
+                      placement='bottom'
                       arrow
                     >
                       <div>
@@ -387,3 +387,72 @@ export const ColorSelect = ({
     </Box>
   </Box>
 )
+
+export const MultiDimensionSelect = ({
+  label,
+  dimensionQuestion,
+  value,
+  setValue,
+}: {
+  label: string
+  dimensionQuestion: Question | undefined
+  value: { [key: string]: boolean }
+  setValue: (newValue: { [key: string]: boolean }) => void
+}) => {
+  const { i18n } = useTranslation()
+  const { language } = i18n
+
+  if (!dimensionQuestion) return null
+
+  const handleCheckboxChange = (choiceId: string) => {
+    const updatedValue = {
+      ...value,
+      [choiceId]: !value[choiceId],
+    }
+    setValue(updatedValue)
+  }
+
+  return (
+    <Box sx={{ my: 4 }}>
+      <InputLabel>{label}</InputLabel>
+      <Box sx={{ mt: 2 }}>
+        {(dimensionQuestion.optionData.options as DimensionSelectionData[]).map(
+          (choice: DimensionSelectionData) => (
+            <FormControl key={choice.id}>
+              <Box>
+                <Tooltip
+                  title={choice.text[language as keyof Locales]}
+                  placement='bottom'
+                  arrow
+                >
+                  <div>
+                    <Checkbox
+                      icon={
+                        <DimensionChip
+                          key={choice.id}
+                          choice={choice}
+                          color={undefined}
+                          compact={false}
+                        />
+                      }
+                      checkedIcon={
+                        <DimensionChip
+                          key={choice.id}
+                          choice={choice}
+                          color={choice.color}
+                          compact={false}
+                        />
+                      }
+                      checked={value[choice.id] || false}
+                      onChange={() => handleCheckboxChange(choice.id)}
+                    />
+                  </div>
+                </Tooltip>
+              </Box>
+            </FormControl>
+          )
+        )}
+      </Box>
+    </Box>
+  )
+}
