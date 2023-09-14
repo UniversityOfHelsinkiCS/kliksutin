@@ -6,6 +6,7 @@ import {
   deleteRecommendation,
   getRecommendations,
   updateRecommendation,
+  updateRecommendationDimensions,
 } from '../services/recommendation'
 
 const recommendationRouter = express.Router()
@@ -22,6 +23,17 @@ recommendationRouter.put('/:id', adminHandler, async (req, res) => {
   const { id } = req.params
 
   const updatedRecommendation = await updateRecommendation(id, req.body)
+
+  return res.status(200).send(updatedRecommendation)
+})
+
+recommendationRouter.put('/:id/dimensions', adminHandler, async (req, res) => {
+  const { id } = req.params
+
+  const updatedRecommendation = await updateRecommendationDimensions(
+    id,
+    req.body
+  )
 
   return res.status(200).send(updatedRecommendation)
 })
