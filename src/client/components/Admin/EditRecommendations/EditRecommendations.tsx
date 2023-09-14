@@ -48,14 +48,11 @@ const EditRecommendations = () => {
       )
     )
 
-    const selectedDimensions: Record<string, boolean> = oldDimensions.reduce(
-      (result, dimension) => {
-        // eslint-disable-next-line no-param-reassign
-        result[dimension.id] = true
-        return result
-      },
-      {} as Record<string, boolean>
-    )
+    const selectedDimensions = oldDimensions.reduce((result, dimension) => {
+      // eslint-disable-next-line no-param-reassign
+      result[dimension.id] = true
+      return result
+    }, {} as Record<string, boolean>)
 
     setDimensionSelection(selectedDimensions)
   }, [survey, selectedRecommendation, dimensionQuestion])
@@ -72,11 +69,11 @@ const EditRecommendations = () => {
       {recommendationId && selectedRecommendation ? (
         <Box sx={{ my: 4 }}>
           <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
-            {t('admin:recommendationViewRecommendationEdit')}
+            {t('admin:recommendationViewDimensionEdit')}
           </Typography>
           <Box sx={{ mx: 4 }}>
             <MultiDimensionSelect
-              label={t('admin:selectRecommendationDimensions')}
+              label={t('admin:recommendationNewDimensions')}
               dimensionQuestion={dimensionQuestion}
               value={dimensionSelection}
               setValue={setDimensionSelection}
@@ -85,6 +82,9 @@ const EditRecommendations = () => {
               {t('admin:save')}
             </Button>
           </Box>
+          <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
+            {t('admin:recommendationViewRecommendationEdit')}
+          </Typography>
           <EditRecommendation
             language={selectedLanguage}
             recommendation={selectedRecommendation}
