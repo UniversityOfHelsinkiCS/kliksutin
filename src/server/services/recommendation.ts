@@ -59,6 +59,90 @@ export const updateRecommendation = async (
   return recommendation
 }
 
+export const updateRecommendationDimensions = async (
+  recommendationId: string,
+  updatedRecommendationDimensionValues: any
+) => {
+  const recommendation = await Recommendation.findByPk(recommendationId)
+  if (!recommendation)
+    throw new NotFoundError('Recommendation to update not found')
+
+  const dimensionQuestion = await Question.findOne({
+    where: {
+      optionData: {
+        type: {
+          [Op.eq]: 'dimensions',
+        },
+      },
+    },
+  })
+
+  if (!dimensionQuestion)
+    throw new NotFoundError(
+      'Dimension question not found while updating recommendation dimension relations'
+    )
+
+  const newDimensions: string[] = Object.keys(
+    updatedRecommendationDimensionValues
+  ).filter((key) => updatedRecommendationDimensionValues[key])
+
+  const dimensionQuestionOptions = dimensionQuestion.optionData
+    .options as unknown as DimensionSelectionData[]
+
+  const newDimensionTool = {
+    recommendationLabel: recommendation.label,
+    subtools: [],
+  }
+
+  const updatedDimensionQuestionOptions = dimensionQuestionOptions.map(
+    (option) => {
+      // Find out if the option.data already has the recommendation linked
+      const isAlreadyLinked = option.data?.some(
+        (dimensionOptionRecommendation) =>
+          dimensionOptionRecommendation.recommendationLabel ===
+          recommendation.label
+      )
+
+      // Nothing changed so return unchanged
+      if (isAlreadyLinked && newDimensions.includes(option.label)) return option
+
+      // Was not linked so add the newDimensionTool to the option
+      if (
+        !isAlreadyLinked &&
+        newDimensions.includes(option.label) &&
+        option.data
+      ) {
+        const newOptionData = {
+          ...option.data,
+          newDimensionTool,
+        }
+
+        Object.assign(option.data, newOptionData)
+        return option
+      }
+
+      // Was linked previously but the linking has been removed on the update
+      if (
+        isAlreadyLinked &&
+        !newDimensions.includes(option.label) &&
+        option.data
+      ) {
+        const updatedOptionData = option.data?.filter(
+          (optionRecommendation) =>
+            optionRecommendation.recommendationLabel !== recommendation.label
+        )
+
+        Object.assign(option.data, updatedOptionData)
+        return option
+      }
+
+      return option
+    }
+  )
+
+  return updatedDimensionQuestionOptions
+}
+
 export const createRecommendation = async (
   surveyId: string,
   newRecommendationValues: NewRecommendation
