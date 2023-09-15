@@ -137,7 +137,16 @@ export const updateRecommendationDimensions = async (
     }
   )
 
-  return updatedDimensionQuestionOptions
+  Object.assign(
+    dimensionQuestion.optionData.options,
+    updatedDimensionQuestionOptions
+  )
+
+  dimensionQuestion.changed('optionData', true)
+
+  await dimensionQuestion.save()
+
+  return dimensionQuestion
 }
 
 export const createRecommendation = async (
