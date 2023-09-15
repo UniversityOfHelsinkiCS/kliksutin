@@ -5,6 +5,8 @@ import {
   NewRecommendation,
   NewRecommendationZod,
   UpdatedRecommendation,
+  UpdatedRecommendationDimensionZod,
+  UpdatedRecommendationDimensions,
   UpdatedRecommendationZod,
 } from '../../validators/recommendations'
 
@@ -61,11 +63,23 @@ export const updateRecommendation = async (
 
 export const updateRecommendationDimensions = async (
   recommendationId: string,
-  updatedRecommendationDimensionValues: any
+  updatedRecommendationDimensionValues: UpdatedRecommendationDimensions
 ) => {
   const recommendation = await Recommendation.findByPk(recommendationId)
   if (!recommendation)
     throw new NotFoundError('Recommendation to update not found')
+
+  const request = UpdatedRecommendationDimensionZod.safeParse(
+    updatedRecommendationDimensionValues
+  )
+
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the recommendation dimension update values failed',
+      request.error.issues
+    )
+
+  const { data } = request
 
   const dimensionQuestion = await Question.findOne({
     where: {
@@ -82,9 +96,7 @@ export const updateRecommendationDimensions = async (
       'Dimension question not found while updating recommendation dimension relations'
     )
 
-  const newDimensions: string[] = Object.keys(
-    updatedRecommendationDimensionValues
-  ).filter((key) => updatedRecommendationDimensionValues[key])
+  const newDimensions: string[] = Object.keys(data).filter((key) => data[key])
 
   const dimensionQuestionOptions = dimensionQuestion.optionData
     .options as unknown as DimensionSelectionData[]

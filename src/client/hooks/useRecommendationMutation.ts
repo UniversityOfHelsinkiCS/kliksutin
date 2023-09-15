@@ -7,7 +7,10 @@ import useSurvey from './useSurvey'
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
 
-import { NewRecommendation } from '../../validators/recommendations'
+import {
+  NewRecommendation,
+  UpdatedRecommendationDimensions,
+} from '../../validators/recommendations'
 
 type RecommendationUpdates = {
   title: Locales
@@ -36,6 +39,25 @@ export const useEditRecommendationMutation = (recommendationId: number) => {
 
   const mutationFn = async (data: RecommendationUpdates) => {
     await apiClient.put(`/recommendations/${recommendationId}`, data)
+  }
+
+  const mutation = useMutation(mutationFn, {
+    onSuccess: () =>
+      queryClient.invalidateQueries({
+        queryKey: ['recommendations', survey?.id],
+      }),
+  })
+
+  return mutation
+}
+
+export const useEditRecommendationDimensionMutation = (
+  recommendationId: number
+) => {
+  const { survey } = useSurvey()
+
+  const mutationFn = async (data: UpdatedRecommendationDimensions) => {
+    await apiClient.put(`/recommendations/${recommendationId}/dimensions`, data)
   }
 
   const mutation = useMutation(mutationFn, {

@@ -6,6 +6,7 @@ import {
   useParams,
   useSearchParams,
 } from 'react-router-dom'
+import { enqueueSnackbar } from 'notistack'
 import { Box, Button, Typography } from '@mui/material'
 
 import { DimensionSelectionData, Locales } from '@backend/types'
@@ -15,6 +16,7 @@ import useRecommendations from '../../../hooks/useRecommendations'
 
 import EditRecommendation from './EditRecommendation'
 import { MultiDimensionSelect } from '../Select'
+import { useEditRecommendationDimensionMutation } from '../../../hooks/useRecommendationMutation'
 
 const EditRecommendations = () => {
   const { t } = useTranslation()
@@ -56,8 +58,17 @@ const EditRecommendations = () => {
     setDimensionSelection(selectedDimensions)
   }, [survey, selectedRecommendation, dimensionQuestion])
 
-  const handleRecommendationDimensionsSave = () => {
-    console.log(dimensionSelection)
+  const mutation = useEditRecommendationDimensionMutation(
+    Number(recommendationId)
+  )
+
+  const handleRecommendationDimensionsSave = async () => {
+    try {
+      await mutation.mutateAsync(dimensionSelection)
+      enqueueSnackbar(t('admin:saveSuccess'), { variant: 'success' })
+    } catch (error: any) {
+      enqueueSnackbar(error.message, { variant: 'error' })
+    }
   }
 
   const handleRecommendationDeletion = () => {
