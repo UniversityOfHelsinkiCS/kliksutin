@@ -114,8 +114,7 @@ export const updateRecommendationDimensions = async (
       ) {
         const newOptionData = [...option.data, newDimensionTool]
 
-        Object.assign(option.data, newOptionData)
-        return option
+        return { ...option, data: newOptionData }
       }
 
       // Was linked previously but the linking has been removed on the update
@@ -129,8 +128,7 @@ export const updateRecommendationDimensions = async (
             optionRecommendation.recommendationLabel !== recommendation.label
         )
 
-        Object.assign(option.data, updatedOptionData)
-        return option
+        return { ...option, data: updatedOptionData }
       }
 
       return option
