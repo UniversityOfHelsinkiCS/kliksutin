@@ -11,6 +11,7 @@ import {
   createDimension,
   createOption,
   deleteOption,
+  updateDimension,
   updateOption,
 } from '../services/option'
 
@@ -82,6 +83,18 @@ questionRouter.put(
     const { id, optionId } = req.params
 
     const updatedQuestion = await updateOption(id, optionId, req.body)
+
+    return res.status(200).send(updatedQuestion)
+  }
+)
+
+questionRouter.put(
+  '/:id/dimension/:dimensionId',
+  adminHandler,
+  async (req: RequestWithUser, res: any) => {
+    const { id, dimensionId } = req.params
+
+    const updatedQuestion = await updateDimension(id, dimensionId, req.body)
 
     return res.status(200).send(updatedQuestion)
   }

@@ -5,16 +5,10 @@ import { Locales } from '@backend/types'
 
 import useSurvey from './useSurvey'
 
-import { NewDimension } from '../../validators/options'
+import { NewDimension, UpdatedDimension } from '../../validators/options'
 
 import apiClient from '../util/apiClient'
 import queryClient from '../util/queryClient'
-
-type DimensionUpdates = {
-  title?: Locales
-  text?: Locales
-  color?: string
-}
 
 export const useCreateDimensionMutation = () => {
   const { survey } = useSurvey()
@@ -41,9 +35,9 @@ export const useEditDimensionMutation = (dimensionId: string) => {
     (question) => question.optionData.type === 'dimensions'
   )
 
-  const mutationFn = async (data: DimensionUpdates) => {
+  const mutationFn = async (data: UpdatedDimension) => {
     await apiClient.put(
-      `/questions/${dimensionquestion?.id}/option/${dimensionId}`,
+      `/questions/${dimensionquestion?.id}/dimension/${dimensionId}`,
       data
     )
   }

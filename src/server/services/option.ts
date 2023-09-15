@@ -6,6 +6,8 @@ import {
   NewDimension,
   NewOption,
   OptionZod,
+  UpdatedDimension,
+  UpdatedDimensionZod,
   UpdatedOption,
   UpdatedOptionZod,
 } from '../../validators/options'
@@ -102,6 +104,44 @@ export const updateOption = async (
   if (!request.success)
     throw new ZodValidationError(
       'Validation of the updated option inputs failed',
+      request.error.issues
+    )
+  const { data } = request
+
+  const updates = question.optionData.options.map((aOption) =>
+    aOption.id === optionId ? Object.assign(option, data) : aOption
+  )
+
+  Object.assign(question, updates)
+
+  question.changed('optionData', true)
+
+  await question.save()
+
+  return question
+}
+
+export const updateDimension = async (
+  questionId: string,
+  optionId: string,
+  updatedDimensionValues: UpdatedDimension
+): Promise<Question> => {
+  const question = await Question.findByPk(questionId)
+
+  if (!question)
+    throw new NotFoundError('Question not found while updating a option')
+
+  const option = question.optionData.options.find(
+    (aOption) => aOption.id === optionId
+  )
+
+  if (!option) throw new NotFoundError('Option to update not found')
+
+  const request = UpdatedDimensionZod.safeParse(updatedDimensionValues)
+
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the updated dimension inputs failed',
       request.error.issues
     )
   const { data } = request
