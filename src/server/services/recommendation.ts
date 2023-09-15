@@ -90,8 +90,8 @@ export const updateRecommendationDimensions = async (
     .options as unknown as DimensionSelectionData[]
 
   const newDimensionTool = {
-    recommendationLabel: recommendation.label,
     subtools: [],
+    recommendationLabel: recommendation.label,
   }
 
   const updatedDimensionQuestionOptions = dimensionQuestionOptions.map(
@@ -106,16 +106,13 @@ export const updateRecommendationDimensions = async (
       // Nothing changed so return unchanged
       if (isAlreadyLinked && newDimensions.includes(option.label)) return option
 
-      // Was not linked so add the newDimensionTool to the option
+      // Was not linked so add the newDimensionTool to the option.data array
       if (
         !isAlreadyLinked &&
         newDimensions.includes(option.label) &&
         option.data
       ) {
-        const newOptionData = {
-          ...option.data,
-          newDimensionTool,
-        }
+        const newOptionData = [...option.data, newDimensionTool]
 
         Object.assign(option.data, newOptionData)
         return option
@@ -181,8 +178,8 @@ export const createRecommendation = async (
   // Concat the new recommendation to the selected dimensions
   if (dimensionQuestion) {
     const newDimensionTool = {
-      recommendationLabel: body.label,
       subtools: [],
+      recommendationLabel: body.label,
     }
 
     // Map the dimension question options and concat the options.data array to
