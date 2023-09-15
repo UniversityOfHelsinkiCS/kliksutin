@@ -68,13 +68,13 @@ export const createDimension = async (
   const { data } = request
 
   const optionId = uuidv4()
-  const newOption = {
+  const newDimension = {
     ...data,
     id: optionId,
     label: optionId,
   }
 
-  question.optionData.options = [...question.optionData.options, newOption]
+  question.optionData.options = [...question.optionData.options, newDimension]
 
   question.changed('optionData', true)
 
@@ -129,7 +129,7 @@ export const updateDimension = async (
   const question = await Question.findByPk(questionId)
 
   if (!question)
-    throw new NotFoundError('Question not found while updating a option')
+    throw new NotFoundError('Question not found while updating a dimension')
 
   const option = question.optionData.options.find(
     (aOption) => aOption.id === optionId
