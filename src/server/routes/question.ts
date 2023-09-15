@@ -7,7 +7,12 @@ import {
   updateQuestion,
   updateQuestionPriority,
 } from '../services/question'
-import { createOption, deleteOption, updateOption } from '../services/option'
+import {
+  createDimension,
+  createOption,
+  deleteOption,
+  updateOption,
+} from '../services/option'
 
 import adminHandler from '../middleware/admin'
 import { RequestWithUser } from '../types'
@@ -58,6 +63,14 @@ questionRouter.post('/:id/option/', adminHandler, async (req, res) => {
   const { id } = req.params
 
   const updatedQuestion = await createOption(id, req.body)
+
+  return res.status(201).send(updatedQuestion)
+})
+
+questionRouter.post('/:id/dimension/', adminHandler, async (req, res) => {
+  const { id } = req.params
+
+  const updatedQuestion = await createDimension(id, req.body)
 
   return res.status(201).send(updatedQuestion)
 })

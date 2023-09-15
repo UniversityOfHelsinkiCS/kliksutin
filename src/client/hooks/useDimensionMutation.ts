@@ -24,7 +24,7 @@ export const useCreateDimensionMutation = () => {
   )
 
   const mutationFn = async (data: NewDimension) => {
-    await apiClient.post(`/questions/${dimensionquestion?.id}/option/`, data)
+    await apiClient.post(`/questions/${dimensionquestion?.id}/dimension/`, data)
   }
 
   const mutation = useMutation(mutationFn, {

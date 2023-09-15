@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { Question, Result } from '../db/models'
 import {
+  DimensionZod,
+  NewDimension,
   NewOption,
   OptionZod,
   UpdatedOption,
@@ -25,6 +27,40 @@ export const createOption = async (
   if (!request.success)
     throw new ZodValidationError(
       'Validation of the new option inputs failed',
+      request.error.issues
+    )
+  const { data } = request
+
+  const optionId = uuidv4()
+  const newOption = {
+    ...data,
+    id: optionId,
+    label: optionId,
+  }
+
+  question.optionData.options = [...question.optionData.options, newOption]
+
+  question.changed('optionData', true)
+
+  await question.save()
+
+  return question
+}
+
+export const createDimension = async (
+  questionId: string,
+  newDimensionValues: NewDimension
+): Promise<Question> => {
+  const question = await Question.findByPk(questionId)
+
+  if (!question)
+    throw new NotFoundError('Question not found while creating a new dimension')
+
+  const request = DimensionZod.safeParse(newDimensionValues)
+
+  if (!request.success)
+    throw new ZodValidationError(
+      'Validation of the new dimension inputs failed',
       request.error.issues
     )
   const { data } = request
