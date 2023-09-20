@@ -16,7 +16,6 @@ export const otherCourse = {
 }
 
 export const getCourseName = (course: Course, language: keyof Locales) => {
-  console.log(course)
   const name =
     course.name[language as keyof Locales]?.length >
     course.nameSpecifier[language as keyof Locales]?.length
