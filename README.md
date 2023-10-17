@@ -6,31 +6,6 @@
 - Docker Compose
 - Node.js
 
-## Installation
-
-1.  Install Docker by following the instructions for your platform:
-
-    - [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
-    - [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)
-    - [Docker for Linux](https://docs.docker.com/engine/install/)
-
-2.  Install Docker Compose by following the instructions for your platform:
-
-    - [Docker Compose for Mac](https://docs.docker.com/compose/install/)
-    - [Docker Compose for Windows](https://docs.docker.com/compose/install/)
-    - [Docker Compose for Linux](https://docs.docker.com/compose/install/)
-
-3.  Install NPM
-
-        You can download and install Node.js from the official website: https://nodejs.org/en/
-
-        1. Open your terminal or command prompt.
-        2. Run the following command to install npm:
-
-    ```bash
-        npm install npm@latest -g
-    ```
-
 ## Scripts
 
 Run project locally on your machine.
@@ -79,3 +54,7 @@ Create a `.env` file inside the project's root directory. In that file, copy the
 Get the JAMI api key from Openshift JAMI pod. Use version.helsinki.fi documentation for that.
 
 Get the OPENAI api key from someone developing currently.
+
+## Credits
+
+Curre emojis & gif by https://github.com/googlefonts/noto-emoji/ licenced under SIL
