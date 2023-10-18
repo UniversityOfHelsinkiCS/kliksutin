@@ -72,12 +72,12 @@ const InteractiveForm = () => {
 
       sendEmail(targets, requestEmailTemplate, 'Curre Chat Request')
         .then(() => {
-          enqueueSnackbar(t('contact:sendSuccess'), {
+          enqueueSnackbar(t('AIrequest:sendSuccess'), {
             variant: 'success',
           })
         })
         .catch(() => {
-          enqueueSnackbar(t('contact:pateErrorMessage'), { variant: 'error' })
+          enqueueSnackbar(t('AIrequest:pateErrorMessage'), { variant: 'error' })
         })
     }
 

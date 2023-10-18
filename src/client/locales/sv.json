@@ -73,7 +73,9 @@
     "senderFullname": "Käyttäjän nimi:",
     "senderFaculty": "Käyttäjän tiedekunta",
     "userMessage": "Käyttäjän viesti:",
-    "courseSize": "Kurssin suunniteltu koko:"
+    "courseSize": "Kurssin suunniteltu koko:",
+    "sendSuccess": "Curre Chat pyyntö lähetetty onnistuneesti, olemme yhteydessä sinuun pian!",
+    "pateErrorMessage": "Palvelimeen ei saatu yhteyttä"
   },
   "openai": {
     "title": "Artificiell intelligens i undervisningen",

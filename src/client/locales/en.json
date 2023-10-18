@@ -74,7 +74,9 @@
     "senderFullname": "User's Name:",
     "senderFaculty": "User's Faculty:",
     "userMessage": "User's Message:",
-    "courseSize": "Planned Course Size:"
+    "courseSize": "Planned Course Size:",
+    "sendSuccess": "Curre Chat request has been sent successfully, we'll be in touch!",
+    "pateErrorMessage": "No response from the server"
   },
   "openai": {
     "title": "Artificial intelligence in teaching",
