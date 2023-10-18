@@ -45,6 +45,8 @@ const InteractiveForm = () => {
   const onSubmit = (data: FormValues) => {
     const submittedData = data
 
+    console.log(data)
+
     setResultData(submittedData)
     mutation
       .mutateAsync(submittedData)
@@ -74,7 +76,7 @@ const InteractiveForm = () => {
           <HelloBanner />
         </Grid>
         <Grid
-          id="curre-main-section"
+          id='curre-main-section'
           sx={{ px: 2, maxWidth: '100vw' }}
           item
           sm={12}

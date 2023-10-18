@@ -5,6 +5,7 @@ import {
   FormControlLabel,
   FormGroup,
   Switch,
+  TextField,
 } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -19,6 +20,11 @@ const { cardStyles } = styles
 const RenderAIQuestion = ({ control }: InputProps) => {
   const { t } = useTranslation()
 
+  const defaultValue = {
+    value: false,
+    content: '',
+  }
+
   return (
     <Container sx={cardStyles.questionsContainer}>
       <Markdown>{t('AIquestion:title')}</Markdown>
@@ -28,16 +34,34 @@ const RenderAIQuestion = ({ control }: InputProps) => {
       <Controller
         control={control}
         name='useAI'
-        defaultValue={false}
-        render={({ field }) => (
+        defaultValue={defaultValue}
+        render={({ field: { onChange, value } }) => (
           <Box justifyContent='center'>
-            <FormGroup {...field}>
-              <FormControlLabel
-                data-cy='AI-question-select'
-                control={<Switch />}
-                label={t('AIquestion:label')}
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={value.value}
+                  onChange={(e) =>
+                    onChange({ ...value, value: e.target.checked })
+                  }
+                />
+              }
+              label={t('AIquestion:label')}
+            />
+            {value.value && (
+              <TextField
+                label={t('AIquestion:textFieldLabel')}
+                sx={cardStyles.inputField}
+                required
+                fullWidth
+                multiline
+                rows={10}
+                value={value.content}
+                onChange={(e) =>
+                  onChange({ ...value, content: e.target.value })
+                }
               />
-            </FormGroup>
+            )}
           </Box>
         )}
       />
