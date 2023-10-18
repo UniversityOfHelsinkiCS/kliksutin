@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import logger from '../util/logger'
+
 import { PATE_URL } from '../util/config'
 import { inProduction, inStaging } from '../../config'
 
@@ -30,6 +32,12 @@ const sendEmail = async (targets: string[], text: string, subject: string) => {
     emails,
     settings,
   }
+
+  logger.info(`Sending emails to ${targets.length} recipients`, {
+    recipients: targets,
+    subject,
+    text,
+  })
 
   await pateClient.post('/', mail)
 }
