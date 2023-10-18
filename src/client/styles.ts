@@ -101,6 +101,10 @@ const cardStyles = {
   inputField: {
     width: '100%',
   },
+  textField: {
+    mt: 2,
+    width: '100%',
+  },
   answerBox: {
     my: 4,
     maxWidth: 1560,
