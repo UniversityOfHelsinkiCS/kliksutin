@@ -8,6 +8,7 @@ import {
 } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
 
 import styles from '../../styles'
 import Markdown from '../Common/Markdown'
@@ -18,11 +19,14 @@ const { cardStyles } = styles
 
 const RenderAIQuestion = ({ control }: InputProps) => {
   const { t } = useTranslation()
+  const location = useLocation()
 
   const defaultValue = {
     value: false,
     content: '',
   }
+
+  if (location.pathname === '/public') return null
 
   return (
     <Container sx={cardStyles.questionsContainer}>
