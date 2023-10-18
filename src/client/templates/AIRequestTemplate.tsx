@@ -1,34 +1,20 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Locales, User } from '@backend/types'
-
-import useFaculties from '../hooks/useFaculties'
-import { extraOrganisations } from '../util/organisations'
+import { User } from '@backend/types'
 
 interface AIRequestEmailProps {
-  user: User
-  facultyCode: string
-  courseSize: string
-  content: string
+  user: User | undefined
+  faculty: string | undefined
+  content: string | undefined
 }
 
 const AIRequestEmailTemplate = ({
   user,
-  facultyCode,
-  courseSize,
+  faculty,
   content,
 }: AIRequestEmailProps) => {
-  const { t, i18n } = useTranslation()
-  const { language } = i18n
-
-  const { faculties, isLoading } = useFaculties()
-
-  if (!faculties || isLoading) return null
-
-  const organisations = faculties.concat(extraOrganisations)
-
-  const faculty = organisations.find((f) => f.code === facultyCode)
+  const { t } = useTranslation()
 
   return (
     <div>
@@ -48,11 +34,7 @@ const AIRequestEmailTemplate = ({
       </p>
       <p>
         <strong>{t('AIrequest:senderFaculty')} </strong>
-        {faculty?.name[language as keyof Locales]}
-      </p>
-      <p>
-        <strong>{t('AIrequest:courseSize')} </strong>
-        {courseSize}
+        {faculty}
       </p>
 
       <br />
