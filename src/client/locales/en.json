@@ -23,6 +23,12 @@
     "introMessage": "What course are you organizing?",
     "inputLabel": "Course"
   },
+  "AIquestion": {
+    "title": "Using Artificial Intelligence in My Course",
+    "text": "",
+    "label": "I would like to use artificial intelligence in my course",
+    "textFieldLabel": "How would you use artificial intelligence in your course?"
+  },
   "recommendations": {
     "title": "Tools that you could use",
     "infoBoxText": "Below our recommendations on tools to use",
@@ -62,6 +68,13 @@
     "contactTicketSend": "Send",
     "sendSuccess": "Thank you for using Curre, we'll be in touch!",
     "pateErrorMessage": "No response from the server"
+  },
+  "AIrequest": {
+    "senderEmail": "User's Email:",
+    "senderFullname": "User's Name:",
+    "senderFaculty": "User's Faculty:",
+    "userMessage": "User's Message:",
+    "courseSize": "Planned Course Size:"
   },
   "openai": {
     "title": "Artificial intelligence in teaching",

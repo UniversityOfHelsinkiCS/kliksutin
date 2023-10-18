@@ -24,6 +24,12 @@
     "introMessage": "Vilken kurs håller du på att anordna?",
     "inputLabel": "Kurs"
   },
+  "AIquestion": {
+    "title": "Tekoälyn käyttö kurssilani",
+    "text": "",
+    "label": "Haluaisin käyttää tekoälyä kurssillani",
+    "textFieldLabel": "Mihin käyttäisit tekoälyä kurssilasi?"
+  },
   "recommendations": {
     "title": "Verktyg som är till ditt förfogande",
     "infoBoxText": "Nedan finns en lista över verktyg som Tjänster för digital undervisning och kontinuerligt lärande (DOJO) erbjuder officiellt digipedagogiskt stöd för. Listan kommer senare att kompletteras med andra program som är tillgängliga för universitetets lärare (t.ex. Office 365-produktfamiljen)",
@@ -61,6 +67,13 @@
     "contactTicketSend": "Skicka",
     "sendSuccess": "Tack för att du har använt Curre, vi kommer att vara i kontakt med dig snarast möjligt!",
     "pateErrorMessage": "Det gick inte att få kontakt med servern"
+  },
+  "AIrequest": {
+    "senderEmail": "Käyttäjän sähköpostiosoite:",
+    "senderFullname": "Käyttäjän nimi:",
+    "senderFaculty": "Käyttäjän tiedekunta",
+    "userMessage": "Käyttäjän viesti:",
+    "courseSize": "Kurssin suunniteltu koko:"
   },
   "openai": {
     "title": "Artificiell intelligens i undervisningen",

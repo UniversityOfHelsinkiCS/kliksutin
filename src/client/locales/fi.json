@@ -24,6 +24,12 @@
     "introMessage": "Mitä kurssia olet järjestämässä?",
     "inputLabel": "Kurssi"
   },
+  "AIquestion": {
+    "title": "Tekoälyn käyttö kurssilani",
+    "text": "",
+    "label": "Haluaisin käyttää tekoälyä kurssillani",
+    "textFieldLabel": "Mihin käyttäisit tekoälyä kurssilasi?"
+  },
   "recommendations": {
     "title": "Käytössäsi olevat työkalut",
     "infoBoxText": "Alla listaus työkaluista, joille Digitaalisen opetuksen ja jatkuvan oppimisen palvelut (DOJO) tarjoaa virallista digipedagogista tukea. Lista täydentyy myöhemmin muillakin yliopiston opettajille tarjolla olevilla ohjelmistoilla. (mm. Office 365 -tuoteperhe)",
@@ -61,6 +67,13 @@
     "contactTicketSend": "Lähetä",
     "sendSuccess": "Kiitos Curren käytöstä, olemme yhteydessä sinuun pian!",
     "pateErrorMessage": "Palvelimeen ei saatu yhteyttä"
+  },
+  "AIrequest": {
+    "senderEmail": "Käyttäjän sähköpostiosoite:",
+    "senderFullname": "Käyttäjän nimi:",
+    "senderFaculty": "Käyttäjän tiedekunta",
+    "userMessage": "Käyttäjän viesti:",
+    "courseSize": "Kurssin suunniteltu koko:"
   },
   "openai": {
     "title": "Tekoäly opetuksessa",
