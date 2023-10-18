@@ -125,6 +125,10 @@ export interface FormValues {
   [key: number]: Record<string, { [key: string]: boolean }>
   course: string
   faculty: string
+  useAI?: {
+    value: boolean
+    content: string
+  }
 }
 
 export interface Question {

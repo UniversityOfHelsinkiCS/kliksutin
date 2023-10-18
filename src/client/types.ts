@@ -1,4 +1,9 @@
-import { DimensionSelectionData, Locales, Question } from '@backend/types'
+import {
+  DimensionSelectionData,
+  FormValues,
+  Locales,
+  Question,
+} from '@backend/types'
 import { Control, UseFormWatch, UseFormRegister } from 'react-hook-form'
 
 export interface Faculty {
@@ -15,12 +20,6 @@ export interface InputProps {
   language?: string
   questions?: Question[]
   isSubmitted?: boolean
-}
-
-export interface FormValues {
-  [key: number]: Record<string, { [key: string]: boolean }>
-  course: string
-  faculty: string
 }
 
 export type SurveySave = 'curre_local_save'

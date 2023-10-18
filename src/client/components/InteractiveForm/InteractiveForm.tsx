@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import ReactDOMServer from 'react-dom/server'
 import { Box, Grid } from '@mui/material'
-import { Locales } from '@backend/types'
+import { Locales, FormValues } from '@backend/types'
 
 import useSurvey from '../../hooks/useSurvey'
 import useFaculties from '../../hooks/useFaculties'
@@ -23,7 +23,6 @@ import { useResultData } from '../../contexts/ResultDataContext'
 import sendEmail from '../../util/mailing'
 
 import styles from '../../styles'
-import { FormValues } from '../../types'
 import { FORM_DATA_KEY } from '../../../config'
 
 const InteractiveForm = () => {

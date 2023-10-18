@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-import { FormValues } from '../types'
+import { FormValues } from '@backend/types'
 
 const resultObjectsToArrays = (resultData: FormValues): string[][] => {
   const objectToArray = (aChoiceId: number): string[] =>

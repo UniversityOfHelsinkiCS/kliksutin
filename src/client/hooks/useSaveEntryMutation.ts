@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import { useMutation } from 'react-query'
 
-import { FormValues } from '../types'
+import { FormValues } from '@backend/types'
 
 import apiClient from '../util/apiClient'
 
