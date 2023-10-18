@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   FormControlLabel,
-  FormGroup,
   Switch,
   TextField,
 } from '@mui/material'
@@ -51,7 +50,7 @@ const RenderAIQuestion = ({ control }: InputProps) => {
             {value.value && (
               <TextField
                 label={t('AIquestion:textFieldLabel')}
-                sx={cardStyles.inputField}
+                sx={cardStyles.textField}
                 required
                 fullWidth
                 multiline

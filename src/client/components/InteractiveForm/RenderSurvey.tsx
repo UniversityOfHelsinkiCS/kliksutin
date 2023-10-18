@@ -74,7 +74,7 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
           </div>
         ))}
 
-        <RenderAIQuestion control={control} />
+        {showQuestions && <RenderAIQuestion control={control} />}
 
         <Box sx={formStyles.stackBox}>
           {!showQuestions ? (

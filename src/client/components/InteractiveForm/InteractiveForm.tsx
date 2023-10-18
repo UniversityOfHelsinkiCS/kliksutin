@@ -42,12 +42,11 @@ const InteractiveForm = () => {
     defaultValues: resultData,
   })
 
-  const onSubmit = (data: FormValues) => {
-    const submittedData = data
-
-    console.log(data)
-
+  const onSubmit = (submittedData: FormValues) => {
     setResultData(submittedData)
+
+    console.log(submittedData)
+
     mutation
       .mutateAsync(submittedData)
       .then(() => {
