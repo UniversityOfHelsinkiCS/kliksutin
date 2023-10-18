@@ -28,7 +28,9 @@ const resultObjectsToArrays = (resultData: FormValues): string[][] => {
   })
 }
 
-export const getResultArray = (resultData: FormValues) => {
+export const getResultArray = (data: FormValues) => {
+  const { useAI, ...resultData } = data
+
   const resultArrays = resultObjectsToArrays(resultData)
   return resultArrays
 }
