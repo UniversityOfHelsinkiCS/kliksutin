@@ -23,7 +23,7 @@ const QuestionText = ({
 }) => {
   if (question.optionData.type === 'info')
     return (
-      <Typography component="span">
+      <Typography component='span'>
         {question.title[language]}
         <ShowMore text={question.text[language as keyof Locales]} />
       </Typography>

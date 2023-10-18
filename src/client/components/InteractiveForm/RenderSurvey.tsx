@@ -13,6 +13,7 @@ import { FORM_DATA_KEY } from '../../../config'
 
 import { InputProps } from '../../types'
 import styles from '../../styles'
+import RenderAIQuestion from './RenderAIQuestion'
 
 const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
   const { t, i18n } = useTranslation()
@@ -73,10 +74,12 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
           </div>
         ))}
 
+        <RenderAIQuestion control={control} />
+
         <Box sx={formStyles.stackBox}>
           {!showQuestions ? (
             <Button
-              data-cy="open-form-button"
+              data-cy='open-form-button'
               disabled={!!dimensions && !isAllowedToProceed()}
               onClick={() => setShowQuestions(true)}
             >
@@ -86,9 +89,9 @@ const RenderSurvey = ({ control, watch, isSubmitted }: InputProps) => {
             <SurveyButtons>
               <Button
                 sx={formStyles.stackButton}
-                type="submit"
-                data-cy="submit-form-button"
-                variant="contained"
+                type='submit'
+                data-cy='submit-form-button'
+                variant='contained'
               >
                 {isSubmitted ? t('updateSubmit') : t('submit')}
               </Button>
