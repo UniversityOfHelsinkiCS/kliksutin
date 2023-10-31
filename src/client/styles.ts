@@ -208,10 +208,11 @@ const recommendationStyles = {
     [BreakPointTheme.breakpoints.down('sm')]: {
       m: 1,
     },
-    px: 2,
+    p: 2,
     top: '4rem',
     textAlign: 'left',
     position: 'sticky',
+    background: '#f5f5f5',
   },
   recommendationBox: {
     mt: '1.8rem',
