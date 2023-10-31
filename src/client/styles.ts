@@ -4,7 +4,7 @@ import { BreakPointTheme } from './theme'
 
 const cardStyles = {
   card: {
-    m: 2,
+    my: 2,
     [BreakPointTheme.breakpoints.down('sm')]: {
       m: 1,
     },

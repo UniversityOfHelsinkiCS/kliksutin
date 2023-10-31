@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { Locales, PossibleChoiceTypes, Question } from '@backend/types'
 
 import MultiChoice from '../Choices/MultiChoice'
@@ -85,7 +85,7 @@ const RenderQuestions = ({
   )
 
   return (
-    <Container sx={cardStyles.questionsContainer}>
+    <Box sx={cardStyles.questionsContainer}>
       <QuestionText question={question} language={language as keyof Locales} />
       <Choice
         key={question.id}
@@ -105,7 +105,7 @@ const RenderQuestions = ({
             />
           ))}
       </Choice>
-    </Container>
+    </Box>
   )
 }
 
