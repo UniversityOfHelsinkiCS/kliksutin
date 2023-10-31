@@ -9,18 +9,14 @@ import DimensionChip from '../Chip/DimensionChip'
 
 import { InputProps } from '../../types'
 
-import styles from '../../styles'
-
 const DimensionSelect = ({ control, question }: InputProps) => {
   const { i18n } = useTranslation()
   const { language } = i18n
 
-  const { formStyles } = styles
-
   if (!question) return null
 
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
       {(question.optionData.options as DimensionSelectionData[]).map(
         (choice: DimensionSelectionData) => (
           <Controller
@@ -29,37 +25,35 @@ const DimensionSelect = ({ control, question }: InputProps) => {
             control={control}
             defaultValue={false}
             render={({ field }) => (
-              <FormControl sx={formStyles.formControl}>
-                <Box sx={formStyles.choiceBox}>
+              <FormControl>
+                <Box>
                   <Tooltip
                     title={choice.text[language as keyof Locales]}
-                    placement="right"
+                    placement='bottom'
                     arrow
                   >
-                    <div>
-                      <Checkbox
-                        {...field}
-                        data-cy={`dimension-select-${choice.id}`}
-                        icon={
-                          <DimensionChip
-                            key={choice.id}
-                            choice={choice}
-                            color={undefined}
-                            compact={false}
-                          />
-                        }
-                        checkedIcon={
-                          <DimensionChip
-                            key={choice.id}
-                            choice={choice}
-                            color={choice.color}
-                            compact={false}
-                          />
-                        }
-                        value={choice.id}
-                        checked={field.value}
-                      />
-                    </div>
+                    <Checkbox
+                      {...field}
+                      data-cy={`dimension-select-${choice.id}`}
+                      icon={
+                        <DimensionChip
+                          key={choice.id}
+                          choice={choice}
+                          color={undefined}
+                          compact={false}
+                        />
+                      }
+                      checkedIcon={
+                        <DimensionChip
+                          key={choice.id}
+                          choice={choice}
+                          color={choice.color}
+                          compact={false}
+                        />
+                      }
+                      value={choice.id}
+                      checked={field.value}
+                    />
                   </Tooltip>
                 </Box>
               </FormControl>
@@ -67,7 +61,7 @@ const DimensionSelect = ({ control, question }: InputProps) => {
           />
         )
       )}
-    </>
+    </Box>
   )
 }
 
