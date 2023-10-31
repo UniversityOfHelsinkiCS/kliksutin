@@ -36,8 +36,6 @@ const cardStyles = {
       mt: 2,
     },
     maxWidth: 1560,
-    border: 1,
-    borderColor: 'grey.300',
   },
   gridBox: {
     px: 3,
@@ -51,8 +49,6 @@ const cardStyles = {
     [BreakPointTheme.breakpoints.down('sm')]: {
       my: 4,
     },
-    borderLeft: 1,
-    borderColor: 'grey.300',
   },
   content: {
     mt: 2,
