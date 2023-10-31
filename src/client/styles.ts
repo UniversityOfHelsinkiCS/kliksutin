@@ -56,7 +56,6 @@ const cardStyles = {
     [BreakPointTheme.breakpoints.up('sm')]: {
       mt: 2,
       mb: 2,
-      pl: 2,
     },
     textAlign: 'left',
   },
