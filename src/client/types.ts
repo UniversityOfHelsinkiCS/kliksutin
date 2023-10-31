@@ -4,6 +4,7 @@ import {
   Locales,
   Question,
 } from '@backend/types'
+import { SxProps } from '@mui/material'
 import { Control, UseFormWatch, UseFormRegister } from 'react-hook-form'
 
 export interface Faculty {
@@ -12,6 +13,7 @@ export interface Faculty {
 }
 
 export interface InputProps {
+  sx?: SxProps
   control?: Control<any>
   watch?: UseFormWatch<any>
   register?: UseFormRegister<any>

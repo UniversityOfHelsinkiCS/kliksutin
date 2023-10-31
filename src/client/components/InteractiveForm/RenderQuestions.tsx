@@ -45,6 +45,7 @@ const RenderQuestions = ({
   question,
   questions,
   language,
+  sx,
 }: InputProps) => {
   if (!question || !questions || !watch) return null
 
@@ -85,7 +86,7 @@ const RenderQuestions = ({
   )
 
   return (
-    <Box sx={cardStyles.questionsContainer}>
+    <Box sx={{ ...cardStyles.questionsContainer, ...sx }}>
       <QuestionText question={question} language={language as keyof Locales} />
       <Choice
         key={question.id}
@@ -102,6 +103,7 @@ const RenderQuestions = ({
               question={children}
               questions={questions}
               language={language}
+              sx={{ pl: 2 }}
             />
           ))}
       </Choice>
