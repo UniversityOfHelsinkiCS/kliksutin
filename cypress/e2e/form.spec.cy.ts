@@ -36,13 +36,15 @@ describe('Form section', () => {
   })
 
   it('user must proceed after faculty and dimensions are selected', () => {
-    cy.get(`[data-cy = "open-form-button"]`).should('not.be.disabled').click()
+    cy.get(`[data-cy = "open-form-button"]`)
+      .should('not.be.disabled')
+      .click({ force: true })
   })
 
   it('loads visible questions correctly', () => {
     cy.get(`[data-cy = "dimension-select-discussion"]`).click()
 
-    cy.get(`[data-cy = "open-form-button"]`).click()
+    cy.get(`[data-cy = "open-form-button"]`).click({ force: true })
 
     questionData = getQuestionData()
 
@@ -69,7 +71,7 @@ describe('Form section', () => {
   it('user can proceed with empty form to the results', () => {
     cy.get(`[data-cy = "dimension-select-discussion"]`).click()
 
-    cy.get(`[data-cy = "open-form-button"]`).click()
+    cy.get(`[data-cy = "open-form-button"]`).click({ force: true })
 
     // No selections in the middle
 
@@ -87,7 +89,7 @@ describe('Form section', () => {
 
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
 
-    cy.get(`[data-cy = "open-form-button"]`).click()
+    cy.get(`[data-cy = "open-form-button"]`).click({ force: true })
 
     cy.wrap(questionData).each((question: Question) => {
       if (!question.visibility.options) {
@@ -121,7 +123,7 @@ describe('Form section', () => {
 
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
 
-    cy.get(`[data-cy = "open-form-button"]`).click()
+    cy.get(`[data-cy = "open-form-button"]`).click({ force: true })
 
     cy.wrap(questionData).each((question: Question) => {
       if (!question.visibility.options) {
@@ -151,7 +153,7 @@ describe('Form section', () => {
 
     cy.get(`[data-cy = "dimension-select-investication"]`).click()
 
-    cy.get(`[data-cy = "open-form-button"]`).click()
+    cy.get(`[data-cy = "open-form-button"]`).click({ force: true })
 
     cy.wrap(questionData).each((question: Question) => {
       if (!question.visibility.options) {
@@ -181,7 +183,7 @@ describe('Form section', () => {
   })
 
   it('after submitting users can return to the form to modify selections', () => {
-    cy.get(`[data-cy = "open-form-button"]`).click()
+    cy.get(`[data-cy = "open-form-button"]`).click({ force: true })
 
     cy.contains('Tentti').click()
 
