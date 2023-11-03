@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  Box,
-  Container,
-  FormControlLabel,
-  Switch,
-  TextField,
-} from '@mui/material'
+import { Box, FormControlLabel, Switch, TextField } from '@mui/material'
 import { Controller } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
@@ -29,7 +23,7 @@ const RenderAIQuestion = ({ control }: InputProps) => {
   if (location.pathname === '/public') return null
 
   return (
-    <Container sx={cardStyles.questionsContainer}>
+    <Box sx={cardStyles.questionsContainer}>
       <Markdown>{t('AIquestion:title')}</Markdown>
       <Box sx={cardStyles.content}>
         <Markdown>{t('AIquestion:text')}</Markdown>
@@ -68,7 +62,7 @@ const RenderAIQuestion = ({ control }: InputProps) => {
           </Box>
         )}
       />
-    </Container>
+    </Box>
   )
 }
 
