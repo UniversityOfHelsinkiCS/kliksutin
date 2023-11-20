@@ -60,7 +60,8 @@ const InteractiveForm = () => {
     if (useAI?.value && user?.email) {
       const userFaculty = faculties?.find((f) => f.code === faculty)
 
-      const targets = [user?.email, 'opetusteknologia@helsinki.fi']
+      const replyAddr = user.email
+      const targets = [user.email, 'opetusteknologia@helsinki.fi']
 
       const requestEmailTemplate = ReactDOMServer.renderToString(
         <AIRequestEmailTemplate
@@ -70,7 +71,7 @@ const InteractiveForm = () => {
         />
       )
 
-      sendEmail(targets, requestEmailTemplate, 'Curre Chat Request')
+      sendEmail(targets, requestEmailTemplate, 'Curre Chat Request', replyAddr)
         .then(() => {
           enqueueSnackbar(t('AIrequest:sendSuccess'), {
             variant: 'success',

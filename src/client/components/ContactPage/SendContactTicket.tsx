@@ -42,6 +42,7 @@ const SendContactTicket = () => {
       <ContactEmailTemplate user={user} content={content} />
     )
 
+    const replyAddr = user.email
     const subject = 'Curre contact ticket'
     const targets = [ticketEmail]
     const text = `
@@ -50,7 +51,7 @@ const SendContactTicket = () => {
         ${resultHTML}
     `
 
-    sendEmail(targets, text, subject)
+    sendEmail(targets, text, subject, replyAddr)
       .then(() => {
         setIsSent(true)
         enqueueSnackbar(t('contact:sendSuccess'), {
@@ -65,19 +66,19 @@ const SendContactTicket = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Controller
-        name="content"
+        name='content'
         control={control}
         render={({ field }) => (
           <TextField
             {...field}
-            data-cy="contact-ticket-textfield"
-            size="small"
-            name="content"
+            data-cy='contact-ticket-textfield'
+            size='small'
+            name='content'
             label={t('contact:contactTicketContentLabel')}
             fullWidth
             multiline
             rows={20}
-            margin="dense"
+            margin='dense'
             disabled={isSent}
             error={!!errors?.content}
             helperText={errors?.content && errors.content.message}
@@ -85,21 +86,21 @@ const SendContactTicket = () => {
         )}
       />
       <Box sx={formStyles.stackBoxWrapper}>
-        <Stack sx={formStyles.stack} direction="row">
+        <Stack sx={formStyles.stack} direction='row'>
           <Button
-            data-cy="back-to-questions"
+            data-cy='back-to-questions'
             sx={formStyles.stackButton}
             component={Link}
-            to="/"
+            to='/'
           >
             {'<'} {t('results:backToMessage')}
           </Button>
           <Button
-            data-cy="send-contact-ticket-button"
-            type="submit"
+            data-cy='send-contact-ticket-button'
+            type='submit'
             disabled={isSent}
             sx={formStyles.stackButton}
-            variant="contained"
+            variant='contained'
           >
             {t('contact:contactTicketSend')}
           </Button>
