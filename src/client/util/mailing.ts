@@ -3,7 +3,8 @@ import apiClient from './apiClient'
 const sendEmail = async (
   targets: (string | undefined)[],
   text: string,
-  subject: string
+  subject: string,
+  replyTo = 'no-reply@helsinki.fi'
 ) => {
   if (!targets || targets.length === 0) throw Error('Could not send emails')
 
@@ -11,6 +12,7 @@ const sendEmail = async (
     targets,
     text,
     subject,
+    replyTo,
   })
 }
 
