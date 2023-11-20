@@ -11,7 +11,7 @@ const settings = {
   color: '#107eab',
   header: 'Curre',
   headerFontColor: 'white',
-  // dryrun: !inProduction || inStaging,
+  dryrun: !inProduction || inStaging,
 }
 
 const pateClient = axios.create({
