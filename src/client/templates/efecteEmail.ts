@@ -3,7 +3,7 @@ import { User } from '@backend/types'
 const getEfecteEmailString = (
   user: User | undefined,
   faculty: string | undefined,
-  course: string | undefined,
+  courseId: string | undefined,
   content: string | undefined
 ) =>
   `
@@ -18,7 +18,8 @@ const getEfecteEmailString = (
   Käyttäjän nimi: ${user?.firstName} ${user?.lastName}
   Käyttäjän tiedekunta: ${faculty}
 
-  Kurssi: ${course}
+  Kurssin Sisu ID: ${courseId}
+  Kurssin Sisu linkki: <a href="https://sisu.helsinki.fi/teacher/role/staff/teaching/course-unit-realisations/view/${courseId}/information/basicinfo">https://sisu.helsinki.fi/teacher/role/staff/teaching/course-unit-realisations/view/${courseId}/information/basicinfo</a>
 
   Käyttäjän viesti:
   ${content}
