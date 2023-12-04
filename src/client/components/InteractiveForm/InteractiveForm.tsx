@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
-import ReactDOMServer from 'react-dom/server'
 import { Box, Grid } from '@mui/material'
 import { Locales, FormValues } from '@backend/types'
 
@@ -16,7 +15,7 @@ import HelloBanner from './HelloBanner'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import Results from '../ResultPage/Results'
-import AIRequestEmailTemplate from '../../templates/AIRequestTemplate'
+import getEfecteEmailString from '../../templates/efecteEmail'
 
 import { useResultData } from '../../contexts/ResultDataContext'
 
@@ -26,7 +25,7 @@ import styles from '../../styles'
 import { FORM_DATA_KEY } from '../../../config'
 
 const InteractiveForm = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { faculties, isLoading: facultiesIsLoading } = useFaculties()
   const { survey, isLoading: surveyIsLoading } = useSurvey()
   const { user, isLoading: userIsLoading } = useLoggedInUser()
@@ -36,8 +35,6 @@ const InteractiveForm = () => {
   const [showResults, setShowResults] = useState(sessionLocation === 'results')
 
   const { resultData, setResultData } = useResultData()
-
-  const { language } = i18n
 
   const { formStyles } = styles
 
@@ -55,20 +52,19 @@ const InteractiveForm = () => {
   const onSubmit = (submittedData: FormValues) => {
     setResultData(submittedData)
 
-    const { useAI, faculty } = submittedData
+    const { useAI, faculty, course } = submittedData
 
     if (useAI?.value && user?.email) {
       const userFaculty = faculties?.find((f) => f.code === faculty)
 
       const replyAddr = user.email
-      const targets = [user.email, 'opetusteknologia@helsinki.fi']
+      const targets = ['opetusteknologia@helsinki.fi']
 
-      const requestEmailTemplate = ReactDOMServer.renderToString(
-        <AIRequestEmailTemplate
-          user={user}
-          faculty={userFaculty?.name[language as keyof Locales]}
-          content={useAI?.content}
-        />
+      const requestEmailTemplate = getEfecteEmailString(
+        user,
+        userFaculty?.name['fi' as keyof Locales],
+        course,
+        useAI.content
       )
 
       sendEmail(targets, requestEmailTemplate, 'Curre Chat Request', replyAddr)
