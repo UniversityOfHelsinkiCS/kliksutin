@@ -6,6 +6,7 @@
     "openForm": "Proceed to the questions",
     "admin": "Admin",
     "login": "Login",
+    "chat": "Chat",
     "submitError": "Sending the results failed, please try again shortly"
   },
   "footer": {

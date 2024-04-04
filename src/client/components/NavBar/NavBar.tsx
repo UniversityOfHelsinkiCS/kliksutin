@@ -19,6 +19,7 @@ import {
   Language,
   AdminPanelSettingsOutlined,
   LoginOutlined,
+  Assistant,
 } from '@mui/icons-material'
 import { useTranslation } from 'react-i18next'
 
@@ -62,6 +63,12 @@ const NavBar = () => {
             </Box>
           </Box>
           <Box>
+            <ExternalLink to="/chat" style={{ textDecoration: 'none' }}>
+              <Button>
+                <Assistant sx={navStyles.icon} />{' '}
+                {t('chat')}
+              </Button>
+            </ExternalLink>
             {location.pathname !== '/public' && user?.isAdmin && (
               <Link to="/admin" style={{ textDecoration: 'none' }}>
                 <Button>

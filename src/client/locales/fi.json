@@ -6,6 +6,7 @@
     "reset": "Aloita alusta",
     "openForm": "Jatka kysymyksiin",
     "admin": "ylläpito",
+    "chat": "Chat",
     "login": "Kirjaudu sisään",
     "submitError": "Tulosten lähettäminen epäonnistui, kokeile uudelleen hetken päästä"
   },
