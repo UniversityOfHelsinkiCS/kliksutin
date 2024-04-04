@@ -63,7 +63,7 @@ const NavBar = () => {
             </Box>
           </Box>
           <Box>
-            <ExternalLink to="/chat" style={{ textDecoration: 'none' }}>
+            <ExternalLink href="/chat" style={{ textDecoration: 'none' }}>
               <Button>
                 <Assistant sx={navStyles.icon} />{' '}
                 {t('chat')}
