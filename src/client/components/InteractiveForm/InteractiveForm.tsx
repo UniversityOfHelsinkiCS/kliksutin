@@ -3,32 +3,25 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar } from 'notistack'
 import { Box, Grid } from '@mui/material'
-import { Locales, FormValues } from '@backend/types'
+import { FormValues } from '@backend/types'
 
 import useSurvey from '../../hooks/useSurvey'
-import useFaculties from '../../hooks/useFaculties'
 import usePersistForm from '../../hooks/usePersistForm'
-import useLoggedInUser from '../../hooks/useLoggedInUser'
 import useSaveEntryMutation from '../../hooks/useSaveEntryMutation'
 
 import HelloBanner from './HelloBanner'
 import RenderSurvey from './RenderSurvey'
 import Recommendations from '../Recommendations/Recommendations'
 import Results from '../ResultPage/Results'
-import getEfecteEmailString from '../../templates/efecteEmail'
 
 import { useResultData } from '../../contexts/ResultDataContext'
-
-import sendEmail from '../../util/mailing'
 
 import styles from '../../styles'
 import { FORM_DATA_KEY } from '../../../config'
 
 const InteractiveForm = () => {
   const { t } = useTranslation()
-  const { faculties, isLoading: facultiesIsLoading } = useFaculties()
   const { survey, isLoading: surveyIsLoading } = useSurvey()
-  const { user, isLoading: userIsLoading } = useLoggedInUser()
   const mutation = useSaveEntryMutation(survey?.id)
 
   const sessionLocation = sessionStorage.getItem('curre-session-location')
@@ -52,32 +45,6 @@ const InteractiveForm = () => {
   const onSubmit = (submittedData: FormValues) => {
     setResultData(submittedData)
 
-    const { useAI, faculty, course } = submittedData
-
-    if (useAI?.value && user?.email) {
-      const userFaculty = faculties?.find((f) => f.code === faculty)
-
-      const replyAddr = user.email
-      const targets = ['opetusteknologia@helsinki.fi']
-
-      const requestEmailTemplate = getEfecteEmailString(
-        user,
-        userFaculty?.name['fi' as keyof Locales],
-        course,
-        useAI.content
-      )
-
-      sendEmail(targets, requestEmailTemplate, 'Curre Chat Request', replyAddr)
-        .then(() => {
-          enqueueSnackbar(t('AIrequest:sendSuccess'), {
-            variant: 'success',
-          })
-        })
-        .catch(() => {
-          enqueueSnackbar(t('AIrequest:pateErrorMessage'), { variant: 'error' })
-        })
-    }
-
     mutation
       .mutateAsync(submittedData)
       .then(() => {
@@ -97,7 +64,7 @@ const InteractiveForm = () => {
 
   usePersistForm({ value: watch(), sessionStorageKey: FORM_DATA_KEY })
 
-  if (facultiesIsLoading || surveyIsLoading || userIsLoading) return null
+  if (surveyIsLoading) return null
 
   return (
     <Box sx={formStyles.formWrapper}>
