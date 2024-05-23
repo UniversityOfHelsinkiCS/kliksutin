@@ -1,4 +1,7 @@
 import { Request } from 'express'
+import OpenAI from 'openai'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ChatRequestMessage } from '@azure/openai'
 import { Entry } from './db/models'
 
 export type Locales = {
@@ -6,7 +9,24 @@ export type Locales = {
   en: string
   sv: string
 }
+export type APIError = typeof OpenAI.APIError
 
+export type AzureOptions = {
+  model: string
+  messages: ChatRequestMessage[]
+}
+
+export type Role = 'system' | 'assistant' | 'user'
+interface ChatMessageItem {
+  role: 'system' | 'user'
+  content: string
+}
+
+export type ChatMessage = ChatMessageItem[]
+export interface Message {
+  role: Role
+  content: any
+}
 export type Programme = {
   key: string
   name: Locales
