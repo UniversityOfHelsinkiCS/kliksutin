@@ -1,6 +1,7 @@
 import express from 'express'
 
-import { getOpenAIResponse } from '../services/openai'
+import { getLlmAnswer } from '../services/openai'
+import { Message } from '../types'
 
 const openaiRouter = express.Router()
 
@@ -9,9 +10,11 @@ openaiRouter.post('/', async (req, res) => {
 
   if (!prompt) return res.sendStatus(400)
 
-  const openAIResponse = await getOpenAIResponse(prompt)
+  const messages: Message[] = []
 
-  return res.status(200).send(openAIResponse)
+  const llmAnswer = await getLlmAnswer(prompt, messages)
+  const { content } = llmAnswer
+  return res.status(200).send(content)
 })
 
 export default openaiRouter
