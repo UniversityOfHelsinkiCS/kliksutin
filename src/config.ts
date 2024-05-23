@@ -23,3 +23,27 @@ export const FULL_URL = inProduction
   : inStaging
   ? 'https://toska-staging.cs.helsinki.fi/kliksutin'
   : 'http://localhost:3000'
+
+export const validModels = [
+  {
+    name: 'gpt-3.5-turbo',
+    deployment: process.env.GPT_35_TURBO || 'curredev35',
+    context: 16_384,
+  },
+  {
+    name: 'gpt-4',
+    deployment: process.env.GPT_4 || 'curredev4',
+    context: 128_000,
+  },
+].concat(
+  // Add mock model if not in production
+  inProduction
+    ? []
+    : [
+        {
+          name: 'mock',
+          deployment: 'mock',
+          context: 128_000,
+        },
+      ]
+)

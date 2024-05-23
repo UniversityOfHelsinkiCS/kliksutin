@@ -25,3 +25,7 @@ export const PATE_URL = inStaging
 export const IMPORTER_URL = inStaging
   ? 'https://api-toska.apps.ocp-test-0.k8s.it.helsinki.fi/importer/kliksutin'
   : 'https://api-toska.apps.ocp-prod-0.k8s.it.helsinki.fi/importer/kliksutin'
+
+export const AZURE_API_KEY = process.env.AZURE_API_KEY || ''
+
+export const AZURE_RESOURCE = process.env.AZURE_RESOURCE || ''
