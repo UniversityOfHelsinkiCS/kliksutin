@@ -13,8 +13,8 @@ openaiRouter.post('/', async (req, res) => {
   const messages: Message[] = []
 
   const llmAnswer = await getLlmAnswer(prompt, messages)
-  const { content } = llmAnswer
-  return res.status(200).send(content)
+
+  return res.status(200).send(llmAnswer)
 })
 
 export default openaiRouter
