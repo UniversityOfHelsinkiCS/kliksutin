@@ -12,7 +12,7 @@ const RootBoundary = () => {
 
   useEffect(() => {
     if (isRouteErrorResponse(error)) {
-      Sentry.captureException(error.error)
+      Sentry.captureException(error)
     } else {
       Sentry.captureException(error)
     }
