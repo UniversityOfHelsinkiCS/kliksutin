@@ -13,8 +13,6 @@ import { APIError, AzureOptions, Message } from '../types'
 
 import { inE2EMode, validModels } from '../../config'
 
-import { createCompletion } from '../util/openai'
-
 import { AZURE_API_KEY, AZURE_RESOURCE } from '../util/config'
 import OpenAIServiceError from '../errors/OpenAIServiceError'
 import logger from '../util/logger'
@@ -76,7 +74,7 @@ export const getCompletionEvents = async ({
 
 export async function askLlm(allMessages: Message[]): Promise<Message> {
   const model = 'gpt-3.5-turbo'
-  const content = await getCompletionEvents({ model, messages: allMessages }) // Get content directly
+  const content = await getCompletionEvents({ model, messages: allMessages })
   const assistantMessage: Message = {
     role: 'assistant',
     content,
@@ -113,30 +111,12 @@ export async function eventStreamToText(
 export async function getLlmAnswer(
   input: string,
   messages: Message[]
-): Promise<Message> {
+): Promise<string> {
   const userMessage = createUserMessage(input)
   messages.push(userMessage)
   const llmResponse = await askLlm(messages)
+  const { content } = llmResponse
+  const llmResponseText = await eventStreamToText(content)
   messages.push(llmResponse)
-  return llmResponse
-}
-
-export const getOpenAIResponse = async (prompt: string): Promise<string> => {
-  if (inE2EMode) return mockCompletion
-
-  const openAIRes = await createCompletion(prompt)
-
-  if (!openAIRes)
-    throw new OpenAIServiceError(
-      'Open AI service unavailable, could not get a response'
-    )
-
-  const { message } = openAIRes.choices[0]
-
-  if (!message)
-    throw new OpenAIServiceError(
-      'Open AI service unavailable, could not get chat completion message'
-    )
-
-  return message.content || ''
+  return llmResponseText
 }
