@@ -6,15 +6,13 @@ import {
   EventStream,
   OpenAIClient,
 } from '@azure/openai'
-import mockCompletion from '../mocs/openai'
 /* eslint-disable no-restricted-syntax */
 
 import { APIError, AzureOptions, Message } from '../types'
 
-import { inE2EMode, validModels } from '../../config'
+import { validModels } from '../../config'
 
 import { AZURE_API_KEY, AZURE_RESOURCE } from '../util/config'
-import OpenAIServiceError from '../errors/OpenAIServiceError'
 import logger from '../util/logger'
 
 const endpoint = `https://${AZURE_RESOURCE}.openai.azure.com/`
