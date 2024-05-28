@@ -9,6 +9,8 @@ services:
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_USER=postgres
+      - AZURE_API_KEY=WHATTHEFUCK
+      - AZURE_RESOURCE=WHATTHEFUCK
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DATABASE=postgres
     command: ['npm', 'run', 'start:test']
