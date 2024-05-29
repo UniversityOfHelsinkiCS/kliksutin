@@ -1,7 +1,9 @@
+import path from 'path'
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'express-async-errors'
 import express from 'express'
-import path from 'path'
 
 import router from './routes'
 
@@ -17,7 +19,10 @@ app.use(['/api', '/public/api'], (req, res, next) => router(req, res, next))
 app.use(['/api', '/public/api'], (_, res) => res.sendStatus(404))
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
-  const DIST_PATH = path.resolve(__dirname, '../../build')
+  const DIST_PATH = path.resolve(
+    dirname(fileURLToPath(import.meta.url)),
+    '../../build'
+  )
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
 
   app.use(express.static(DIST_PATH))
