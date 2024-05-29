@@ -28,6 +28,7 @@ jobs:
             BASE_PATH=/kliksutin
             GIT_SHA=${{ github.sha }}
             STAGING=true
+            E2E=false
 
       - name: Push to quay.io
         uses: redhat-actions/push-to-registry@v2
