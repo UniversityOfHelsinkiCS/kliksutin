@@ -26,7 +26,6 @@ const runMigrations = async () => {
 }
 
 const testConnection = async () => {
-  console.log('Inside test connections')
   await sequelize.authenticate()
   await runMigrations()
 }
@@ -35,7 +34,6 @@ const testConnection = async () => {
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const connectToDatabase = async (attempt = 0): Promise<void | null> => {
-  console.log('Inside connectToDb')
   try {
     await testConnection()
   } catch (err: any) {

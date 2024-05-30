@@ -18,23 +18,16 @@ const app = express()
 app.use(['/api', '/public/api'], (req, res, next) => router(req, res, next))
 app.use(['/api', '/public/api'], (_, res) => res.sendStatus(404))
 
-console.log('Before ifs')
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
-  console.log('Inside first if')
   const DIST_PATH = path.resolve(
     dirname(fileURLToPath(import.meta.url)),
     '../../build'
   )
-  console.log('After dist path')
-  const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
-  console.log('After index path')
-  app.use(express.static(DIST_PATH))
-  console.log('After static')
-  app.get('*', (_, res) => res.sendFile(INDEX_PATH))
-  console.log('After get *')
-}
 
-console.log('After first if')
+  const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
+  app.use(express.static(DIST_PATH))
+  app.get('*', (_, res) => res.sendFile(INDEX_PATH))
+}
 
 app.listen(PORT, async () => {
   await connectToDatabase()
