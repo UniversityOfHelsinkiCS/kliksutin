@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 
 import { FormValues } from '@backend/types'
 

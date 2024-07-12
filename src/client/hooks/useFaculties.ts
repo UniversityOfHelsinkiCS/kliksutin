@@ -1,11 +1,11 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import apiClient from '../util/apiClient'
 
 import { Faculty } from '../types'
 
 const useFaculties = () => {
-  const queryKey = 'faculties'
+  const queryKey = ['faculties']
 
   const query = async (): Promise<Faculty[]> => {
     const { data } = await apiClient.get('/faculties')

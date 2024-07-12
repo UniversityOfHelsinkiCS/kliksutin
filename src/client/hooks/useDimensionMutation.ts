@@ -1,8 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useMutation } from 'react-query'
-
-import { Locales } from '@backend/types'
-
+import { useMutation } from '@tanstack/react-query'
 import useSurvey from './useSurvey'
 
 import { NewDimension, UpdatedDimension } from '../../validators/options'
@@ -22,7 +18,7 @@ export const useCreateDimensionMutation = () => {
   }
 
   const mutation = useMutation(mutationFn, {
-    onSuccess: () => queryClient.invalidateQueries('survey'),
+    onSuccess: () => queryClient.invalidateQueries(['survey']),
   })
 
   return mutation
@@ -43,7 +39,7 @@ export const useEditDimensionMutation = (dimensionId: string) => {
   }
 
   const mutation = useMutation(mutationFn, {
-    onSuccess: () => queryClient.invalidateQueries('survey'),
+    onSuccess: () => queryClient.invalidateQueries(['survey']),
   })
 
   return mutation
@@ -63,7 +59,7 @@ export const useDeleteDimensionMutation = (dimensionId: string) => {
   }
 
   const mutation = useMutation(mutationFn, {
-    onSuccess: () => queryClient.invalidateQueries('survey'),
+    onSuccess: () => queryClient.invalidateQueries(['survey']),
   })
 
   return mutation

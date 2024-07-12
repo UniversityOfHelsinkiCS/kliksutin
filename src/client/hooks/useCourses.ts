@@ -1,11 +1,10 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { Course } from '@backend/types'
-
 import apiClient from '../util/apiClient'
 
 export const useUserCourses = () => {
-  const queryKey = 'userCourses'
+  const queryKey = ['userCourses']
 
   const query = async (): Promise<Course[]> => {
     const { data } = await apiClient.get('/courses/teacher')
