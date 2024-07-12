@@ -14,7 +14,8 @@ export const useCreateResultMutation = () => {
     await apiClient.post(`/results/${survey?.id}`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['results', survey?.id],
@@ -29,7 +30,7 @@ export const useEditResultMutation = (resultId: number) => {
     await apiClient.put(`/results/${resultId}`, data)
   }
 
-  const mutation = useMutation(mutationFn)
+  const mutation = useMutation({ mutationFn })
 
   return mutation
 }
@@ -41,7 +42,8 @@ export const useDeleteResultMutation = (resultId: number) => {
     await apiClient.delete(`/results/${resultId}`)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['results', survey?.id],

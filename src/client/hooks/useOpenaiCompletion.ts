@@ -8,7 +8,7 @@ const useOpenAiCompletion = (prompt: string, key: string) => {
   const { t } = useTranslation()
   const queryKey = ['completion', key]
 
-  const query = async (): Promise<string> => {
+  const queryFn = async (): Promise<string> => {
     const { data } = await apiClient.post('/openai', {
       prompt,
     })
@@ -16,10 +16,9 @@ const useOpenAiCompletion = (prompt: string, key: string) => {
     return data
   }
 
-  const { data: completion, ...rest } = useQuery(queryKey, query, {
-    onError: () => {
-      enqueueSnackbar(t('openai:apiErrorMessage'), { variant: 'error' })
-    },
+  const { data: completion, ...rest } = useQuery({
+    queryKey,
+    queryFn,
   })
 
   const completionMessage = completion

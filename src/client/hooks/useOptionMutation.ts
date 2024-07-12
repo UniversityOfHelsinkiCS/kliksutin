@@ -21,7 +21,8 @@ export const useCreateOptionMutation = (questionId: number) => {
     await apiClient.post(`/questions/${questionId}/option/`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['questions', survey?.id],
@@ -38,7 +39,8 @@ export const useEditOptionMutation = (questionId: number, optionId: string) => {
     await apiClient.put(`/questions/${questionId}/option/${optionId}`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['questions', survey?.id],
@@ -58,7 +60,8 @@ export const useDeleteOptionMutation = (
     await apiClient.delete(`/questions/${questionId}/option/${optionId}`)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['questions', survey?.id],

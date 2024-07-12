@@ -24,7 +24,8 @@ export const useCreateRecommendationMutation = () => {
     await apiClient.post(`/recommendations/${survey?.id}`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['recommendations', survey?.id],
@@ -41,7 +42,8 @@ export const useEditRecommendationMutation = (recommendationId: number) => {
     await apiClient.put(`/recommendations/${recommendationId}`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['recommendations', survey?.id],
@@ -60,7 +62,8 @@ export const useEditRecommendationDimensionMutation = (
     await apiClient.put(`/recommendations/${recommendationId}/dimensions`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['recommendations', survey?.id],
@@ -77,7 +80,8 @@ export const useDeleteRecommendationMutation = (recommendationId: number) => {
     await apiClient.delete(`/recommendations/${recommendationId}`)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['recommendations', survey?.id],

@@ -7,13 +7,13 @@ import { Faculty } from '../types'
 const useFaculties = () => {
   const queryKey = ['faculties']
 
-  const query = async (): Promise<Faculty[]> => {
+  const queryFn = async (): Promise<Faculty[]> => {
     const { data } = await apiClient.get('/faculties')
 
     return data
   }
 
-  const { data: faculties, ...rest } = useQuery(queryKey, query)
+  const { data: faculties, ...rest } = useQuery({ queryKey, queryFn })
 
   return { faculties, ...rest }
 }

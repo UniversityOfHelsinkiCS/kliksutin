@@ -7,13 +7,15 @@ import { Recommendation } from '../types'
 const useRecommendations = (surveyId: number | undefined) => {
   const queryKey = ['recommendations', surveyId]
 
-  const query = async (): Promise<Recommendation[]> => {
+  const queryFn = async (): Promise<Recommendation[]> => {
     const { data } = await apiClient.get(`/recommendations/${surveyId}`)
 
     return data
   }
 
-  const { data: recommendations, ...rest } = useQuery(queryKey, query, {
+  const { data: recommendations, ...rest } = useQuery({
+    queryKey,
+    queryFn,
     enabled: Boolean(surveyId),
   })
 

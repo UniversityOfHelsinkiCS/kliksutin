@@ -17,8 +17,9 @@ export const useCreateDimensionMutation = () => {
     await apiClient.post(`/questions/${dimensionquestion?.id}/dimension/`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
-    onSuccess: () => queryClient.invalidateQueries(['survey']),
+  const mutation = useMutation({
+    mutationFn,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['survey'] }),
   })
 
   return mutation
@@ -38,8 +39,9 @@ export const useEditDimensionMutation = (dimensionId: string) => {
     )
   }
 
-  const mutation = useMutation(mutationFn, {
-    onSuccess: () => queryClient.invalidateQueries(['survey']),
+  const mutation = useMutation({
+    mutationFn,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['survey'] }),
   })
 
   return mutation
@@ -58,8 +60,9 @@ export const useDeleteDimensionMutation = (dimensionId: string) => {
     )
   }
 
-  const mutation = useMutation(mutationFn, {
-    onSuccess: () => queryClient.invalidateQueries(['survey']),
+  const mutation = useMutation({
+    mutationFn,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['survey'] }),
   })
 
   return mutation

@@ -6,16 +6,18 @@ import { Entry } from '../types'
 const useEntry = (entryId: string | undefined) => {
   const queryKey = ['entry', entryId]
 
-  const query = async (): Promise<Entry> => {
+  const queryFn = async (): Promise<Entry> => {
     const { data } = await apiClient.get(`/entries/${entryId}`)
 
     return data
   }
 
-  const { data: entry, ...rest } = useQuery(queryKey, query, {
+  const { data: entry, ...rest } = useQuery({
+    queryKey,
+    queryFn,
     enabled: !!entryId,
     retry: false,
-    useErrorBoundary: true,
+    throwOnError: true,
   })
 
   return { entry, ...rest }

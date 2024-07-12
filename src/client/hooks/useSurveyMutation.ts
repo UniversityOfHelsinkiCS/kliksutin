@@ -13,7 +13,8 @@ export const useEditSurveyMutation = (name = DEFAULT_SURVEY_NAME) => {
     await apiClient.put(`/surveys/${name}`, data)
   }
 
-  const mutation = useMutation(mutationFn, {
+  const mutation = useMutation({
+    mutationFn,
     onSuccess: () =>
       queryClient.invalidateQueries({
         queryKey: ['survey', name],

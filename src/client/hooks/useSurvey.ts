@@ -9,13 +9,13 @@ import { Survey } from '../types'
 const useSurvey = (name = DEFAULT_SURVEY_NAME) => {
   const queryKey = ['survey', name]
 
-  const query = async (): Promise<Survey> => {
+  const queryFn = async (): Promise<Survey> => {
     const { data } = await apiClient.get(`/surveys/${name}`)
 
     return data
   }
 
-  const { data: survey, ...rest } = useQuery(queryKey, query)
+  const { data: survey, ...rest } = useQuery({ queryKey, queryFn })
 
   return { survey, ...rest }
 }

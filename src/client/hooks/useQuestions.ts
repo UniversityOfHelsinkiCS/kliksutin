@@ -7,13 +7,15 @@ import apiClient from '../util/apiClient'
 const useQuestions = (surveyId: number | undefined) => {
   const queryKey = ['questions', surveyId]
 
-  const query = async (): Promise<Question[]> => {
+  const queryFn = async (): Promise<Question[]> => {
     const { data } = await apiClient.get(`/questions/${surveyId}`)
 
     return data
   }
 
-  const { data: questions, ...rest } = useQuery(queryKey, query, {
+  const { data: questions, ...rest } = useQuery({
+    queryKey,
+    queryFn,
     enabled: Boolean(surveyId),
   })
 

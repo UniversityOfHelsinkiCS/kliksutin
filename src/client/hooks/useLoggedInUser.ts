@@ -7,13 +7,13 @@ import apiClient from '../util/apiClient'
 const useLoggedInUser = () => {
   const queryKey = ['user']
 
-  const query = async (): Promise<User> => {
+  const queryFn = async (): Promise<User> => {
     const { data } = await apiClient.get('/users/login')
 
     return data
   }
 
-  const { data: user, ...rest } = useQuery(queryKey, query)
+  const { data: user, ...rest } = useQuery({ queryKey, queryFn })
 
   return { user, ...rest }
 }
