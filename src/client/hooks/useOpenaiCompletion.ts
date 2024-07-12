@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import { enqueueSnackbar } from 'notistack'
 import { useTranslation } from 'react-i18next'
 
 import apiClient from '../util/apiClient'
