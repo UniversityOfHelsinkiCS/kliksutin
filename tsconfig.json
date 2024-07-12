@@ -24,7 +24,8 @@
   "include": [
     "src/**/*",
     "types/@unfuck-utf8-headers-middleware.d..ts",
-    "cypress.config.js"
+    "cypress.config.js",
+    "cypress/**/*"
   ],
   "ts-node": {
     "esm": true,
