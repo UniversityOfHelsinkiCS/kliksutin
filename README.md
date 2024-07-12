@@ -15,22 +15,23 @@ npm start # or
 docker compose up
 ```
 
-Run all e2e tests
+Run all e2e tests. In order for this to work locally, you need to change the [Node version](/Dockerfile#1) from the RedHat to `node:latest` for example. Then run the following command:
 
 ```bash
 npm run test
 ```
 
-Open cypress, then run the container (set the port [here](https://github.com/UniversityOfHelsinkiCS/kliksutin/blob/ffe33eee1f187f260cd27c587825fbe4771430ba/cypress/support/e2e.ts#LL19))
+Run e2e tests in interactive Cypress environment. In order for this to work correctly change the baseURL in the [cypress.config](cypress.config.js#8) to `localhost:3000`. Then you can run the following command:
 
 ```bash
 npm run test:cypress
 ```
 
-Run eslint
+Run static code analysis tools. Each commit triggers these runs through the pre-commit hooks.
 
 ```bash
-npm run lint
+npm run lint # Run eslint
+npm run format # Run prettier
 ```
 
 ## Development
