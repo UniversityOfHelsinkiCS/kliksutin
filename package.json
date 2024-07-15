@@ -173,7 +173,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "cypress": "^13.0.0",
     "husky": "^9.0.0",
-    "lint-staged": "^13.1.0",
+    "lint-staged": "^15.0.0",
     "nodemon": "^3.1.0",
     "prettier": "^2.8.3",
     "ts-node": "^10.9.1",
