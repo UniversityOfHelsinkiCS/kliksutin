@@ -64,7 +64,7 @@
     "format": "prettier --write '*.{ts,tsx,json,css,md}'",
     "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "babel": {
     "presets": [
