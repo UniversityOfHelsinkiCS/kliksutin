@@ -41,10 +41,6 @@ router.use('/users', userRouter)
 router.use('/openai', openaiRouter)
 router.use('/courses', courseRouter)
 
-router.get('/debug-sentry', (req, res) => {
-  throw new Error('Sentry test')
-})
-
 Sentry.setupExpressErrorHandler(router)
 
 router.use(errorHandler)
