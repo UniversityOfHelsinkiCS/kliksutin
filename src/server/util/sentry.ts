@@ -1,19 +1,16 @@
-import { init as initSentry, Integrations } from '@sentry/node'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Integrations as TracingIntegrations } from '@sentry/tracing'
-import { Express } from 'express-serve-static-core'
+import * as Sentry from '@sentry/node'
 
-import { inProduction, inStaging, inE2EMode, GIT_SHA } from '../../config'
+import { inProduction, inStaging, GIT_SHA } from '../../config'
 
-const initializeSentry = (router: Express) => {
-  if (!inProduction || inStaging || inE2EMode) return
+const initializeSentry = () => {
+  if (!inProduction || !inStaging) return
 
-  initSentry({
+  Sentry.init({
     dsn: 'https://72e49107b76381db56da800209363389@toska.cs.helsinki.fi/12',
     release: GIT_SHA,
     integrations: [
-      new Integrations.Http({ tracing: true }),
-      new TracingIntegrations.Express({ router }),
+      Sentry.httpIntegration({ breadcrumbs: true }),
+      Sentry.expressIntegration(),
     ],
     tracesSampleRate: 1.0,
   })

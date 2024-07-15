@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import { Handlers as SentryHandlers } from '@sentry/node'
+import * as Sentry from '@sentry/node'
 
 import shibbolethMiddleware from '../middleware/shibboleth'
 import userMiddleware from '../middleware/user'
@@ -20,10 +20,7 @@ import questionRouter from './question'
 
 const router = express()
 
-initializeSentry(router)
-
-router.use(SentryHandlers.requestHandler())
-router.use(SentryHandlers.tracingHandler())
+initializeSentry()
 
 router.use(cors())
 router.use(express.json())
@@ -44,7 +41,12 @@ router.use('/users', userRouter)
 router.use('/openai', openaiRouter)
 router.use('/courses', courseRouter)
 
-router.use(SentryHandlers.errorHandler())
+router.get('/debug-sentry', (req, res) => {
+  throw new Error('Sentry test')
+})
+
+Sentry.setupExpressErrorHandler(router)
+
 router.use(errorHandler)
 
 export default router
