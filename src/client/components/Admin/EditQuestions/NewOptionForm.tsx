@@ -76,14 +76,14 @@ const NewOptionForm = ({
       >
         <DialogLocalesField
           error={errors.title}
-          value="title"
+          value='title'
           inputlabel={t('admin:optionNewOptionTitleLabel')}
           control={control}
         />
         {defaultValue.data && (
           <DialogLocalesField
             error={errors.data}
-            value="data"
+            value='data'
             inputlabel={t('admin:optionNewOptionDataLabel')}
             control={control}
           />

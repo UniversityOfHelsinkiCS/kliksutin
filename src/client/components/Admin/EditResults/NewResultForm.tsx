@@ -98,7 +98,7 @@ const NewResultForm = ({
       >
         <DialogSelect
           label={t('admin:selectResultOption')}
-          value="optionLabel"
+          value='optionLabel'
           control={control}
         >
           {options.map((aOption) => (
@@ -115,7 +115,7 @@ const NewResultForm = ({
         {selectedOption && (
           <DialogLocalesField
             error={errors.isSelected}
-            value="isSelected"
+            value='isSelected'
             inputlabel={`${t('admin:resultNewResultTitleLabel')}: ${
               selectedOption.title[language]
             }`}

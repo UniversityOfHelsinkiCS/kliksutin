@@ -11,7 +11,7 @@ const SurveyButtons = ({ children }: InputProps) => {
 
   return (
     <Box sx={formStyles.stackBoxWrapper}>
-      <Stack sx={formStyles.stack} direction="row">
+      <Stack sx={formStyles.stack} direction='row'>
         {children}
 
         <ResetForm />

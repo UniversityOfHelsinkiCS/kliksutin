@@ -60,10 +60,10 @@ const Results = ({
         <Box sx={resultStyles.resultWrapper}>
           <Container sx={{ mt: 4 }}>
             <Typography
-              data-cy="result-section-title"
-              variant="h5"
+              data-cy='result-section-title'
+              variant='h5'
               sx={resultStyles.heading}
-              component="div"
+              component='div'
             >
               {t('results:title')}
             </Typography>
@@ -81,7 +81,7 @@ const Results = ({
           <SendSummaryEmail />
 
           <SurveyButtons>
-            <Button data-cy="back-to-selections" onClick={onNavigateBack}>
+            <Button data-cy='back-to-selections' onClick={onNavigateBack}>
               {'<'} {t('results:backToMessage')}
             </Button>
           </SurveyButtons>

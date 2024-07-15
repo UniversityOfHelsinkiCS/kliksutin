@@ -16,7 +16,7 @@ const Openai = () => {
     <Box sx={cardStyles.outerBox}>
       <Box sx={resultStyles.resultWrapper}>
         <Container sx={{ mt: 4 }}>
-          <Typography variant="h5" sx={resultStyles.heading} component="div">
+          <Typography variant='h5' sx={resultStyles.heading} component='div'>
             {t('openai:title')}
           </Typography>
           <InfoBox />

@@ -76,7 +76,7 @@ const RenderEditResults = () => {
               mr: 4,
               alignSelf: 'center',
             }}
-            variant="contained"
+            variant='contained'
             onClick={() => setOpenForm(!openForm)}
           >
             {t('admin:resultAddNew')}

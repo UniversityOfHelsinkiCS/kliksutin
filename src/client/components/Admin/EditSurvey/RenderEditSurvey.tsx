@@ -35,14 +35,14 @@ const RenderEditSurvey = () => {
       </Box>
 
       <Box sx={{ my: 4 }}>
-        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+        <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
           {t('admin:surveyViewSurveyEdit')}
         </Typography>
         <EditSurvey language={selectedLanguage} survey={survey} />
       </Box>
 
       <Box sx={{ my: 16, mr: 4 }}>
-        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+        <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
           {t('admin:surveyViewQuestionPositionEdit')}
         </Typography>
         <Box sx={{ mt: 10 }}>

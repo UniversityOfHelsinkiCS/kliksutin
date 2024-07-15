@@ -23,14 +23,14 @@ const DimensionChip: React.FC<{
       <Chip
         data-cy={`dimension-chip-compact-${choice.id}`}
         label={choice.title[language as keyof Locales].substring(0, 3)}
-        size="small"
+        size='small'
         sx={style}
       />
     </Tooltip>
   ) : (
     <Chip
       label={choice.title[language as keyof Locales]}
-      size="small"
+      size='small'
       sx={style}
     />
   )

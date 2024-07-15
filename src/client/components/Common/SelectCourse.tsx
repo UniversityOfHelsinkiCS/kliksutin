@@ -41,14 +41,14 @@ const SelectCourse = ({ control }: InputProps) => {
 
       <Controller
         control={control}
-        name="course"
-        defaultValue=""
+        name='course'
+        defaultValue=''
         render={({ field }) => (
           <FormControl sx={formStyles.formControl}>
             <InputLabel>{t('courseSelect:inputLabel')}</InputLabel>
             <Select
               sx={cardStyles.inputField}
-              data-cy="course-select"
+              data-cy='course-select'
               label={t('courseSelect:inputLabel')}
               {...field}
             >

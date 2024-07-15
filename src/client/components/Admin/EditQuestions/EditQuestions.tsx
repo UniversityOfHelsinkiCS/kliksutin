@@ -43,12 +43,12 @@ const OptionSection = ({
           justifyContent: 'flex-start',
         }}
       >
-        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+        <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
           {t('admin:questionOptionViewInfo')}
         </Typography>
         <Button
           sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
-          variant="contained"
+          variant='contained'
           onClick={() => setOpenNewOption(!openNewOption)}
         >
           {t('admin:optionAddNew')}
@@ -100,10 +100,10 @@ const EditQuestions = () => {
   }
 
   return (
-    <Box width="100%" flexWrap="wrap">
+    <Box width='100%' flexWrap='wrap'>
       {selectedQuestion ? (
         <Box sx={{ my: 4 }}>
-          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
             {t('admin:questionViewQuestionEdit')}
           </Typography>
           <EditQuestion
@@ -113,7 +113,7 @@ const EditQuestions = () => {
           />
         </Box>
       ) : (
-        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+        <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
           {t('admin:questionViewInfo')}
         </Typography>
       )}

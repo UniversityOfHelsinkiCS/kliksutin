@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <Box
-      component="footer"
+      component='footer'
       sx={(theme) => ({
         backgroundColor: theme.palette.toskaDark.main,
         color: theme.palette.toskaDark.contrastText,
@@ -25,34 +25,34 @@ const Footer = () => {
         <Box>
           <Typography>
             <Trans
-              i18nKey="footer:contactSupport"
+              i18nKey='footer:contactSupport'
               values={{ supportEmail }}
               components={{
                 mailTo: (
                   <Link
                     href={`mailto:${supportEmail}`}
-                    underline="hover"
-                    color="toskaPrimary.main"
+                    underline='hover'
+                    color='toskaPrimary.main'
                   />
                 ),
               }}
             />
           </Typography>
           <Link
-            rel="license"
-            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+            rel='license'
+            href='http://creativecommons.org/licenses/by-nc-sa/4.0/'
           >
             <img
-              alt="Creative Commons license"
-              src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+              alt='Creative Commons license'
+              src='https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png'
             />
           </Link>
           <br />
           {t('footer:licenseText')}
           <Link
             sx={{ ml: 1 }}
-            rel="license"
-            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+            rel='license'
+            href='http://creativecommons.org/licenses/by-nc-sa/4.0/'
           >
             {t('footer:licenseLinkText')}
           </Link>
@@ -67,12 +67,12 @@ const Footer = () => {
 
         <Box sx={footerStyles.imageBox}>
           <Link
-            href="https://toska.dev"
-            target="_blank"
-            rel="noopener"
-            underline="hover"
+            href='https://toska.dev'
+            target='_blank'
+            rel='noopener'
+            underline='hover'
           >
-            <img src={toskaColor} alt="Toska" width="70" />
+            <img src={toskaColor} alt='Toska' width='70' />
           </Link>
         </Box>
       </Box>

@@ -117,7 +117,7 @@ const NewQuestionForm = ({
       >
         <DialogSelect
           label={t('admin:selectQuestionType')}
-          value="optionData.type"
+          value='optionData.type'
           control={control}
         >
           {questionTypes.map(({ id, title }) => (
@@ -142,14 +142,14 @@ const NewQuestionForm = ({
                 }}
               />
             }
-            label="Kysymys on alikysymys"
+            label='Kysymys on alikysymys'
           />
         </Box>
 
         {isChild && questions?.length && (
           <DialogSelect
-            label="Valitse mille kysymykselle luodaan alikysymys"
-            value="parentId"
+            label='Valitse mille kysymykselle luodaan alikysymys'
+            value='parentId'
             control={control}
           >
             {survey.Questions.map((question) => (
@@ -162,13 +162,13 @@ const NewQuestionForm = ({
 
         <DialogLocalesField
           error={errors.title}
-          value="title"
+          value='title'
           inputlabel={t('admin:questionNewQuestionTitleLabel')}
           control={control}
         />
         <DialogLocalesField
           error={errors.text}
-          value="text"
+          value='text'
           inputlabel={t('admin:questionNewQuestionContentLabel')}
           control={control}
         />
@@ -182,8 +182,8 @@ const NewQuestionForm = ({
                   right: '1rem',
                   top: '1rem',
                 }}
-                variant="outlined"
-                color="error"
+                variant='outlined'
+                color='error'
                 onClick={() => remove(index)}
               >
                 {t('admin:questionRemoveOption', { number: index + 1 })}
@@ -218,7 +218,7 @@ const NewQuestionForm = ({
           </Box>
         ))}
         {selectedQuestionType !== 'info' && (
-          <Button variant="outlined" fullWidth onClick={handleAppend}>
+          <Button variant='outlined' fullWidth onClick={handleAppend}>
             {t('admin:questionAddNewOption')}
           </Button>
         )}

@@ -13,16 +13,16 @@ const Error = () => {
       }}
     >
       <Container>
-        <Typography variant="h2" sx={{ my: 4, fontWeight: 'bold' }}>
+        <Typography variant='h2' sx={{ my: 4, fontWeight: 'bold' }}>
           UNEXPECTED ERROR
         </Typography>
-        <Typography variant="h6">
+        <Typography variant='h6'>
           Sorry, but something unexpected went wrong loading your page. We are
           looking into the issue.
         </Typography>
         <Button
           sx={{ mt: 4 }}
-          variant="contained"
+          variant='contained'
           onClick={() => navigate('/')}
         >
           Back Home

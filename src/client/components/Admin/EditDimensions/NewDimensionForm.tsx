@@ -81,13 +81,13 @@ const NewDimensionForm = ({
         />
         <DialogLocalesField
           error={errors.title}
-          value="title"
+          value='title'
           inputlabel={t('admin:dimensionNewDimensionTitleLabel')}
           control={control}
         />
         <DialogLocalesField
           error={errors.text}
-          value="text"
+          value='text'
           inputlabel={t('admin:dimensionNewDimensionContentLabel')}
           control={control}
         />

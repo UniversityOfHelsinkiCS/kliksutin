@@ -27,44 +27,44 @@ import { PUBLIC_URL } from '../config'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} errorElement={<RootBoundary />}>
+    <Route path='/' element={<App />} errorElement={<RootBoundary />}>
       <Route
         index
         element={<InteractiveForm />}
         errorElement={<RootBoundary />}
       />
       <Route
-        path="/public"
+        path='/public'
         element={<InteractiveForm />}
         errorElement={<RootBoundary />}
       />
       <Route
-        path="/contact"
+        path='/contact'
         element={<Contact />}
         errorElement={<RootBoundary />}
       />
-      <Route path="/view" errorElement={<RootBoundary />}>
-        <Route path=":entryId" element={<Viewer />} />
+      <Route path='/view' errorElement={<RootBoundary />}>
+        <Route path=':entryId' element={<Viewer />} />
       </Route>
-      <Route path="/admin" element={<Admin />} errorElement={<RootBoundary />}>
+      <Route path='/admin' element={<Admin />} errorElement={<RootBoundary />}>
         <Route index element={<RenderEditSurvey />} />
-        <Route path="edit-dimensions" element={<RenderEditDimensions />}>
-          <Route path=":dimensionId" element={<EditDimensions />} />
+        <Route path='edit-dimensions' element={<RenderEditDimensions />}>
+          <Route path=':dimensionId' element={<EditDimensions />} />
         </Route>
-        <Route path="edit-questions" element={<RenderEditQuestions />}>
-          <Route path=":questionId" element={<EditQuestions />} />
+        <Route path='edit-questions' element={<RenderEditQuestions />}>
+          <Route path=':questionId' element={<EditQuestions />} />
         </Route>
-        <Route path="edit-results/" element={<RenderEditResults />}>
-          <Route path=":questionId/:dimensionId?" element={<EditResults />} />
+        <Route path='edit-results/' element={<RenderEditResults />}>
+          <Route path=':questionId/:dimensionId?' element={<EditResults />} />
         </Route>
         <Route
-          path="edit-recommendations"
+          path='edit-recommendations'
           element={<RenderEditRecommendations />}
         >
-          <Route path=":recommendationId" element={<EditRecommendations />} />
+          <Route path=':recommendationId' element={<EditRecommendations />} />
         </Route>
       </Route>
-      <Route path="*" element={<NotFound />} />
+      <Route path='*' element={<NotFound />} />
     </Route>
   ),
   {

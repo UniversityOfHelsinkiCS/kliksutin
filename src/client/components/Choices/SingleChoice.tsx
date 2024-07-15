@@ -19,9 +19,9 @@ const SingleChoice = ({
       <Controller
         control={control}
         name={question.id.toString()}
-        defaultValue=""
+        defaultValue=''
         render={({ field }) => (
-          <Box justifyContent="center">
+          <Box justifyContent='center'>
             <RadioGroup {...field} row>
               {question.optionData.options.map(
                 (singleOption: SingleChoiceType) => (

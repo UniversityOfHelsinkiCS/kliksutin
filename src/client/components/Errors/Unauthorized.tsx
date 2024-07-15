@@ -13,15 +13,15 @@ const Unauthorized = () => {
       }}
     >
       <Container>
-        <Typography variant="h2" sx={{ my: 4, fontWeight: 'bold' }}>
+        <Typography variant='h2' sx={{ my: 4, fontWeight: 'bold' }}>
           UNAUTHORIZED (401)
         </Typography>
-        <Typography variant="h6">
+        <Typography variant='h6'>
           Sorry, but you do not have the needed access to this page.
         </Typography>
         <Button
           sx={{ mt: 4 }}
-          variant="contained"
+          variant='contained'
           onClick={() => navigate('/')}
         >
           Back Home

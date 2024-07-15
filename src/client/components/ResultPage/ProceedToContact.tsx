@@ -19,35 +19,35 @@ const ProceedToContact = () => {
   return (
     <Box>
       <Container sx={resultStyles.contactStackWrapper}>
-        <Typography variant="h6" sx={cardStyles.heading} component="div">
+        <Typography variant='h6' sx={cardStyles.heading} component='div'>
           {t('results:proceedTitle')}
         </Typography>
       </Container>
       <Box sx={formStyles.stackBoxWrapper}>
         {showEndMessage ? (
           <Alert
-            data-cy="form-close-success-alert"
+            data-cy='form-close-success-alert'
             sx={common.alertStyle}
-            severity="success"
+            severity='success'
           >
             {t('results:endMessage')}
           </Alert>
         ) : (
-          <Stack sx={formStyles.stack} direction="row" spacing={2}>
+          <Stack sx={formStyles.stack} direction='row' spacing={2}>
             <Button
-              data-cy="button-of-happiness"
+              data-cy='button-of-happiness'
               sx={formStyles.stackButton}
-              variant="contained"
+              variant='contained'
               onClick={endSession}
             >
               {t('results:proceedToExit')}
             </Button>
             <Button
-              data-cy="button-of-confusion"
+              data-cy='button-of-confusion'
               sx={formStyles.stackButton}
-              variant="outlined"
+              variant='outlined'
               component={Link}
-              to="/contact"
+              to='/contact'
             >
               {t('results:proceedToConsultation')}
             </Button>

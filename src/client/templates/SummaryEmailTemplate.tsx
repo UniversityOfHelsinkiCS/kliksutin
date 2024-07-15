@@ -37,21 +37,21 @@ const SummaryEmailTemplate = ({ showNotes, notes }: SummaryEmailProps) => (
     <p>*********</p>
     <p>
       Opetusty&ouml;n ohjeet:
-      <a href="https://teaching.helsinki.fi/">https://teaching.helsinki.fi/</a>
+      <a href='https://teaching.helsinki.fi/'>https://teaching.helsinki.fi/</a>
     </p>
     <p>
       Moodle-aiheiset palvelupyynn&ouml;t:
-      <a href="mailto:moodle@helsinki.fi">moodle@helsinki.fi</a>
+      <a href='mailto:moodle@helsinki.fi'>moodle@helsinki.fi</a>
     </p>
     <p>
       Muut opetusteknologiaan liittyv&auml;t palvelupyynn&ouml;t:
-      <a href="mailto:opetusteknologia@helsinki.fi">
+      <a href='mailto:opetusteknologia@helsinki.fi'>
         opetusteknologia@helsinki.fi
       </a>
     </p>
     <p>
       Norppa-kurssipalautej&auml;rjestelm&auml;:
-      <a href="http://coursefeedback.helsinki.fi/">
+      <a href='http://coursefeedback.helsinki.fi/'>
         http://coursefeedback.helsinki.fi/
       </a>
     </p>

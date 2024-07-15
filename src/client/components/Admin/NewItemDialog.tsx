@@ -29,17 +29,17 @@ const NewItemDialog = ({
   const { t } = useTranslation()
 
   return (
-    <Dialog fullWidth maxWidth="lg" open={open} onClose={onClose}>
+    <Dialog fullWidth maxWidth='lg' open={open} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText sx={{ mb: 4 }}>{content}</DialogContentText>
         {children}
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" onClick={onSubmit}>
+        <Button variant='contained' onClick={onSubmit}>
           {t('admin:save')}
         </Button>
-        <Button variant="outlined" onClick={onClose}>
+        <Button variant='outlined' onClick={onClose}>
           {t('admin:cancel')}
         </Button>
       </DialogActions>

@@ -32,10 +32,10 @@ const DeleteDialog = ({
         <Markdown>{content}</Markdown>
       </DialogContent>
       <DialogActions>
-        <Button variant="contained" onClick={onSubmit}>
+        <Button variant='contained' onClick={onSubmit}>
           {t('admin:confirm')}
         </Button>
-        <Button variant="outlined" onClick={() => setOpen(!open)}>
+        <Button variant='outlined' onClick={() => setOpen(!open)}>
           {t('admin:cancel')}
         </Button>
       </DialogActions>

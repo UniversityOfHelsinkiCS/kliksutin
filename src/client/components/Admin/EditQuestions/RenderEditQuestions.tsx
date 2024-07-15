@@ -27,7 +27,7 @@ const RenderEditQuestions = () => {
 
         <Button
           sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
-          variant="contained"
+          variant='contained'
           onClick={() => setOpenNewQuestion(!openNewQuestion)}
         >
           {t('admin:questionAddNew')}

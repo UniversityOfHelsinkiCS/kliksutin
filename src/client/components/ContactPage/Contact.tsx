@@ -22,10 +22,10 @@ const Contact = () => {
   return (
     <Box sx={formStyles.contactForm}>
       <Container sx={{ mt: 2 }}>
-        <Typography variant="h5" sx={cardStyles.heading} component="div">
+        <Typography variant='h5' sx={cardStyles.heading} component='div'>
           {t('contact:title')}
         </Typography>
-        <Typography sx={cardStyles.content} variant="body2">
+        <Typography sx={cardStyles.content} variant='body2'>
           {t('contact:contactMessage')}
         </Typography>
 

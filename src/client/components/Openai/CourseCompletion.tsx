@@ -80,21 +80,21 @@ const CourseCompletion = () => {
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
-      <Typography variant="body2">{t('openai:giveCourseInfoText')}</Typography>
+      <Typography variant='body2'>{t('openai:giveCourseInfoText')}</Typography>
       <Box sx={cardStyles.content}>
         <TextField
           sx={cardStyles.inputField}
           required
-          size="small"
+          size='small'
           value={name}
           onChange={({ target }) => setName(target.value)}
           disabled={showCompletion}
         />
 
-        <Stack sx={formStyles.stack} direction="row" spacing={2}>
+        <Stack sx={formStyles.stack} direction='row' spacing={2}>
           <Button
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             onClick={() => setShowCompletion(true)}
             disabled={!!save || showCompletion || name?.length < 5}
           >
@@ -102,7 +102,7 @@ const CourseCompletion = () => {
           </Button>
 
           <Button
-            color="primary"
+            color='primary'
             onClick={() => {
               setName('')
               setShowCompletion(false)

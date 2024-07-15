@@ -27,7 +27,7 @@ const RenderEditDimensions = () => {
 
         <Button
           sx={{ position: 'absolute', right: 0, mr: 4, alignSelf: 'center' }}
-          variant="contained"
+          variant='contained'
           onClick={() => setOpenNewDimension(!openNewDimension)}
         >
           {t('admin:dimensionAddNew')}

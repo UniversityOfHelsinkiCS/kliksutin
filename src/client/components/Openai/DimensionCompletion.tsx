@@ -96,15 +96,15 @@ const DimensionCompletion = () => {
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
-      <Typography variant="body2">
+      <Typography variant='body2'>
         {t('openai:selectDimensionInfoText')}
       </Typography>
       <Box sx={cardStyles.content}>
-        <FormControl size="small" sx={cardStyles.inputField}>
+        <FormControl size='small' sx={cardStyles.inputField}>
           <InputLabel>{t('openai:dimensionSelect')}</InputLabel>
           <Select
             sx={cardStyles.inputField}
-            data-cy="dimension-completion-select"
+            data-cy='dimension-completion-select'
             value={dimensionId}
             label={t('openai:dimensionSelect')}
             onChange={({ target }) => {
@@ -125,8 +125,8 @@ const DimensionCompletion = () => {
         </FormControl>
         <Box sx={{ my: 2 }}>
           <Button
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             onClick={() => setShowCompletion(true)}
             disabled={!!save || showCompletion || dimensionId.length === 0}
           >

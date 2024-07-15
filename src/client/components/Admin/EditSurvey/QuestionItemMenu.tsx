@@ -43,7 +43,7 @@ const QuestionItemMenu = ({ question }: QuestionMenuProps) => {
 
   return (
     <Box sx={{ position: 'absolute', top: 4, right: 4 }}>
-      <IconButton onClick={handleOpenMenu} size="small" sx={{ ml: 2 }}>
+      <IconButton onClick={handleOpenMenu} size='small' sx={{ ml: 2 }}>
         <MoreVertIcon sx={{ width: 20, height: 20 }} />
       </IconButton>
       <Menu
@@ -62,7 +62,7 @@ const QuestionItemMenu = ({ question }: QuestionMenuProps) => {
       >
         <MenuItem disableRipple onClick={handleEditQuestion}>
           <ListItemIcon>
-            <EditIcon fontSize="small" />
+            <EditIcon fontSize='small' />
           </ListItemIcon>
           <ListItemText>{t('admin:edit')}</ListItemText>
         </MenuItem>

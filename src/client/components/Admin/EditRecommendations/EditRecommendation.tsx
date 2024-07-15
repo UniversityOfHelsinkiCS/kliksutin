@@ -72,12 +72,12 @@ const RecommendationItem = ({
       }}
     >
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+        <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:recommendationTitle')}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
-          data-color-mode="light"
+          data-color-mode='light'
           height={200}
           value={recommendationTitle}
           onChange={setRecommendationTitle}
@@ -85,19 +85,19 @@ const RecommendationItem = ({
       </Box>
 
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+        <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:recommendationText')}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
-          data-color-mode="light"
+          data-color-mode='light'
           height={400}
           value={recommendationText}
           onChange={setRecommendationText}
         />
       </Box>
 
-      <Button variant="outlined" onClick={handleSave}>
+      <Button variant='outlined' onClick={handleSave}>
         {t('admin:save')}
       </Button>
     </Box>
@@ -135,8 +135,8 @@ const EditRecommendation = ({
           ml: 4,
           alignSelf: 'center',
         }}
-        variant="outlined"
-        color="error"
+        variant='outlined'
+        color='error'
         onClick={() => setOpenAlert(!openAlert)}
       >
         {t('admin:recommendationRemove', {
@@ -152,7 +152,7 @@ const EditRecommendation = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display="flex">
+      <Box mb={5} display='flex'>
         <RecommendationItem
           language={'fi' as keyof Locales}
           recommendation={recommendation}

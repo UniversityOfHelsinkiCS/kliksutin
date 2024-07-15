@@ -24,7 +24,7 @@ const HelloBanner = () => {
   if (!survey || (surveyIsLoading && userIsLoading)) return null
 
   return (
-    <Box id="hello-component" sx={cardStyles.helloBox}>
+    <Box id='hello-component' sx={cardStyles.helloBox}>
       <Box sx={cardStyles.expendableBox}>
         <Markdown>{survey.title[language as keyof Locales]}</Markdown>
         <ShowMore

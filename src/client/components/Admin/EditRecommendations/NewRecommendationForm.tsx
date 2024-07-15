@@ -86,13 +86,13 @@ const NewRecommendationForm = ({
       >
         <DialogTextField
           error={errors.label}
-          value="label"
+          value='label'
           inputlabel={t('admin:recommendationNewRecommendationLabel')}
           control={control}
         />
         <DialogSelect
           label={t('admin:selectRecommendationType')}
-          value="type"
+          value='type'
           control={control}
         >
           {recommendationTypes.map(({ id, title }) => (
@@ -110,13 +110,13 @@ const NewRecommendationForm = ({
 
         <DialogLocalesField
           error={errors.title}
-          value="title"
+          value='title'
           inputlabel={t('admin:recommendationNewRecommendationTitleLabel')}
           control={control}
         />
         <DialogLocalesField
           error={errors.text}
-          value="text"
+          value='text'
           inputlabel={t('admin:recommendationNewRecommendationContentLabel')}
           control={control}
         />

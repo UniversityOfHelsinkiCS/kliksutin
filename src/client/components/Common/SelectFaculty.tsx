@@ -51,7 +51,7 @@ const FacultyInfo = ({ faculty }: { faculty: Faculty | undefined }) => {
 
   return (
     <Box sx={cardStyles.content}>
-      <Typography component="div">
+      <Typography component='div'>
         {t('facultySelect:infoMessage')}
         <ShowMore text={facultyInfo.info[language as keyof Locales]} />
       </Typography>
@@ -80,7 +80,7 @@ const SelectFaculty = ({ control }: InputProps) => {
 
   return (
     <Box sx={cardStyles.card}>
-      <Typography variant="h5" sx={cardStyles.heading} component="div">
+      <Typography variant='h5' sx={cardStyles.heading} component='div'>
         {t('facultySelect:welcomeMessage')}
       </Typography>
       <Box sx={cardStyles.content}>
@@ -89,14 +89,14 @@ const SelectFaculty = ({ control }: InputProps) => {
 
       <Controller
         control={control}
-        name="faculty"
+        name='faculty'
         defaultValue={userFaculties[0]?.code || ''}
         render={({ field }) => (
           <FormControl sx={formStyles.formControl}>
             <InputLabel>{t('facultySelect:inputLabel')}</InputLabel>
             <Select
               sx={cardStyles.inputField}
-              data-cy="faculty-select"
+              data-cy='faculty-select'
               label={t('facultySelect:inputLabel')}
               {...field}
             >

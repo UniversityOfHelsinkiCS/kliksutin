@@ -28,7 +28,7 @@ const RenderEditRecommendations = () => {
 
         <Button
           sx={{ position: 'absolute', right: 0, mr: 2, alignSelf: 'center' }}
-          variant="contained"
+          variant='contained'
           onClick={() => setOpenForm(!openForm)}
         >
           {t('admin:recommendationAddNew')}

@@ -85,13 +85,13 @@ const ResultItem = ({
       }}
     >
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+        <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:resultTitle')}{' '}
           {`'${optionData.title[selectedLanguage as keyof Locales]}'`}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
-          data-color-mode="light"
+          data-color-mode='light'
           height={200}
           value={resultIsSelected}
           onChange={setResultIsSelected}
@@ -99,20 +99,20 @@ const ResultItem = ({
       </Box>
 
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+        <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:resultText')}{' '}
           {`'${optionData.title[selectedLanguage as keyof Locales]}'`}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
-          data-color-mode="light"
+          data-color-mode='light'
           height={400}
           value={resultContent}
           onChange={setResultContent}
         />
       </Box>
 
-      <Button variant="outlined" onClick={handleSave}>
+      <Button variant='outlined' onClick={handleSave}>
         {t('admin:save')}
       </Button>
     </Box>
@@ -158,8 +158,8 @@ const EditResult = ({
           ml: 4,
           alignSelf: 'center',
         }}
-        variant="outlined"
-        color="error"
+        variant='outlined'
+        color='error'
         onClick={() => setOpenAlert(!openAlert)}
       >
         {t('admin:resultRemove')} {`'${optionTitle}'`}
@@ -171,7 +171,7 @@ const EditResult = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display="flex">
+      <Box mb={5} display='flex'>
         <ResultItem
           dimensionId={dimensionId}
           language={'fi' as keyof Locales}

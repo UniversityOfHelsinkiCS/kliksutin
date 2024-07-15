@@ -71,12 +71,12 @@ const QuestionItem = ({
       }}
     >
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+        <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:questionTitle')}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
-          data-color-mode="light"
+          data-color-mode='light'
           height={200}
           value={questionTitle}
           onChange={setQuestionTitle}
@@ -84,19 +84,19 @@ const QuestionItem = ({
       </Box>
 
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+        <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:questionText')}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
-          data-color-mode="light"
+          data-color-mode='light'
           height={400}
           value={questionText}
           onChange={setQuestionText}
         />
       </Box>
 
-      <Button variant="outlined" onClick={handleSave}>
+      <Button variant='outlined' onClick={handleSave}>
         {t('admin:save')}
       </Button>
     </Box>
@@ -136,8 +136,8 @@ const EditQuestion = ({
           ml: 4,
           alignSelf: 'center',
         }}
-        variant="outlined"
-        color="error"
+        variant='outlined'
+        color='error'
         onClick={() => setOpenAlert(!openAlert)}
       >
         {t('admin:questionRemove', {
@@ -153,7 +153,7 @@ const EditQuestion = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display="flex">
+      <Box mb={5} display='flex'>
         <QuestionItem language={'fi' as keyof Locales} question={question} />
         <QuestionItem language={language} question={question} />
       </Box>

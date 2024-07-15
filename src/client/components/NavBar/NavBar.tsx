@@ -53,24 +53,23 @@ const NavBar = () => {
   if (isLoading) return null
 
   return (
-    <AppBar elevation={0} position="relative" sx={navStyles.appbar}>
+    <AppBar elevation={0} position='relative' sx={navStyles.appbar}>
       <Container maxWidth={false}>
         <Toolbar sx={navStyles.toolbar} disableGutters>
           <Box sx={navStyles.navBox}>
-            <img src={hyLogo} alt="University of Helsinki" width="40" />
-            <Box ml="2rem">
+            <img src={hyLogo} alt='University of Helsinki' width='40' />
+            <Box ml='2rem'>
               <Typography sx={navStyles.appName}>{t('appName')}</Typography>
             </Box>
           </Box>
           <Box>
-            <ExternalLink href="/chat" style={{ textDecoration: 'none' }}>
+            <ExternalLink href='/chat' style={{ textDecoration: 'none' }}>
               <Button>
-                <Assistant sx={navStyles.icon} />{' '}
-                {t('chat')}
+                <Assistant sx={navStyles.icon} /> {t('chat')}
               </Button>
             </ExternalLink>
             {location.pathname !== '/public' && user?.isAdmin && (
-              <Link to="/admin" style={{ textDecoration: 'none' }}>
+              <Link to='/admin' style={{ textDecoration: 'none' }}>
                 <Button>
                   <AdminPanelSettingsOutlined sx={navStyles.icon} />{' '}
                   {t('admin')}
@@ -81,7 +80,7 @@ const NavBar = () => {
               <ExternalLink href={FULL_URL} style={{ textDecoration: 'none' }}>
                 <Button>
                   <LoginOutlined sx={navStyles.icon} />
-                  <Typography variant="body2" sx={navStyles.itemText}>
+                  <Typography variant='body2' sx={navStyles.itemText}>
                     {t('login')}
                   </Typography>
                 </Button>
@@ -89,13 +88,13 @@ const NavBar = () => {
             )}
             <Button
               ref={anchorRef}
-              id="composition-button"
-              data-cy="language-select"
+              id='composition-button'
+              data-cy='language-select'
               aria-controls={
                 openLanguageSelect ? 'composition-menu' : undefined
               }
               aria-expanded={openLanguageSelect ? 'true' : undefined}
-              aria-haspopup="true"
+              aria-haspopup='true'
               onClick={() => setOpenLanguageSelect(!openLanguageSelect)}
             >
               <Language sx={navStyles.language} /> {language}
@@ -104,7 +103,7 @@ const NavBar = () => {
               open={openLanguageSelect}
               anchorEl={anchorRef.current}
               role={undefined}
-              placement="bottom-start"
+              placement='bottom-start'
               transition
               disablePortal
             >
@@ -124,8 +123,8 @@ const NavBar = () => {
                     >
                       <MenuList
                         autoFocusItem={openLanguageSelect}
-                        id="composition-menu"
-                        aria-labelledby="composition-button"
+                        id='composition-menu'
+                        aria-labelledby='composition-button'
                       >
                         {languages.map((l) => (
                           <MenuItem

@@ -40,7 +40,7 @@ const EditResults = () => {
     <Box>
       {filteredResults.length > 0 ? (
         <Box sx={{ my: 4 }}>
-          <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+          <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
             {t('admin:resultViewResultEdit')}
           </Typography>
           {filteredResults.map((result) => (
@@ -54,7 +54,7 @@ const EditResults = () => {
           ))}
         </Box>
       ) : (
-        <Typography sx={{ my: 4, pl: 1 }} variant="h4">
+        <Typography sx={{ my: 4, pl: 1 }} variant='h4'>
           {t('admin:resultViewResultsNotFound')}
         </Typography>
       )}

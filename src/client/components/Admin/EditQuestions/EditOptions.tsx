@@ -82,12 +82,12 @@ const OptionItem = ({
       }}
     >
       <Box sx={{ mb: 2 }}>
-        <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+        <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:optionTitle', { optionNumber })}
           <Typography ml={1}>{language}</Typography>
         </Typography>
         <MDEditor
-          data-color-mode="light"
+          data-color-mode='light'
           height={200}
           value={optionTitle}
           onChange={setOptionTitle}
@@ -96,12 +96,12 @@ const OptionItem = ({
 
       {optionData && (
         <Box sx={{ mb: 2 }}>
-          <Typography sx={{ display: 'flex', mb: 2 }} variant="h6">
+          <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
             {t('admin:optionText', { optionNumber })}
             <Typography ml={1}>{language}</Typography>
           </Typography>
           <MDEditor
-            data-color-mode="light"
+            data-color-mode='light'
             height={400}
             value={optionData}
             onChange={setOptionData}
@@ -109,7 +109,7 @@ const OptionItem = ({
         </Box>
       )}
 
-      <Button variant="outlined" onClick={handleSave}>
+      <Button variant='outlined' onClick={handleSave}>
         {t('admin:save')}
       </Button>
     </Box>
@@ -152,8 +152,8 @@ const EditOptions = ({
           ml: 4,
           alignSelf: 'center',
         }}
-        variant="outlined"
-        color="error"
+        variant='outlined'
+        color='error'
         onClick={() => setOpenAlert(!openAlert)}
       >
         {t('admin:optionRemove')} {`'${optionTitle}'`}
@@ -165,7 +165,7 @@ const EditOptions = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display="flex">
+      <Box mb={5} display='flex'>
         <OptionItem
           option={option}
           optionNumber={optionNumber}

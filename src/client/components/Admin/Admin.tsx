@@ -16,7 +16,7 @@ const Admin = () => {
 
   if (isLoading) return null
 
-  if (!user || !user.isAdmin) return <Navigate to="/" />
+  if (!user || !user.isAdmin) return <Navigate to='/' />
 
   const pathParts = location.pathname.split('/').filter(Boolean)
 
@@ -32,47 +32,47 @@ const Admin = () => {
     >
       <Tabs
         value={tab}
-        variant="scrollable"
+        variant='scrollable'
         scrollButtons
         allowScrollButtonsMobile
       >
         <Tab
           component={Link}
-          to="."
+          to='.'
           label={t('admin:indexTab')}
-          value="admin"
+          value='admin'
         />
         <Tab
           component={Link}
-          to="./edit-dimensions"
+          to='./edit-dimensions'
           label={t('admin:dimensionTab')}
-          value="edit-dimensions"
+          value='edit-dimensions'
         />
         <Tab
           component={Link}
-          to="./edit-questions"
+          to='./edit-questions'
           label={t('admin:questionTab')}
-          value="edit-questions"
+          value='edit-questions'
         />
         <Tab
           component={Link}
-          to="./edit-results"
+          to='./edit-results'
           label={t('admin:resultTab')}
-          value="edit-results"
+          value='edit-results'
         />
         <Tab
           component={Link}
-          to="./edit-recommendations"
+          to='./edit-recommendations'
           label={t('admin:recommendationTab')}
-          value="edit-recommendations"
+          value='edit-recommendations'
         />
       </Tabs>
-      <Alert sx={{ ...common.alertStyle, m: 4 }} severity="info">
-        <Trans i18nKey="admin:markdown">
+      <Alert sx={{ ...common.alertStyle, m: 4 }} severity='info'>
+        <Trans i18nKey='admin:markdown'>
           <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://commonmark.org/help/"
+            target='_blank'
+            rel='noreferrer'
+            href='https://commonmark.org/help/'
           >
             Markdown
           </a>

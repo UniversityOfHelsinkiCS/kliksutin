@@ -64,7 +64,7 @@ export const DialogLocalesField = ({
                   mb: 2,
                   color: isError ? '#d32f2f' : 'inherit',
                 }}
-                variant="h6"
+                variant='h6'
               >
                 {inputlabel}
                 <Typography ml={1}>{language}</Typography>
@@ -74,7 +74,7 @@ export const DialogLocalesField = ({
                   {error[language as keyof Locales]?.message}
                 </Typography>
               )}
-              <MDEditor {...field} data-color-mode="light" height={200} />
+              <MDEditor {...field} data-color-mode='light' height={200} />
             </Box>
           )}
         />

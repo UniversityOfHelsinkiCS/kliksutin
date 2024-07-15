@@ -88,7 +88,7 @@ const SendSummaryEmail = () => {
 
   return (
     <Box sx={cardStyles.nestedSubSection}>
-      <Typography variant="body2">
+      <Typography variant='body2'>
         {t('results:proceedEmailInfoText')}
       </Typography>
       <Box sx={cardStyles.content}>
@@ -106,7 +106,7 @@ const SendSummaryEmail = () => {
             <TextField
               sx={cardStyles.inputField}
               required
-              size="small"
+              size='small'
               value={notes}
               fullWidth
               multiline
@@ -119,13 +119,13 @@ const SendSummaryEmail = () => {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
-              name="emails"
+              name='emails'
               control={control}
               render={({ field }) => (
                 <Autocomplete
                   {...field}
-                  data-cy="share-results"
-                  size="small"
+                  data-cy='share-results'
+                  size='small'
                   multiple
                   options={[]}
                   freeSolo
@@ -140,7 +140,7 @@ const SendSummaryEmail = () => {
                         {...getTagProps({ index })}
                         data-cy={`share-results-chip-${option}`}
                         key={option as unknown as string}
-                        variant="outlined"
+                        variant='outlined'
                         label={option}
                         color={
                           errors.emails && errors?.emails[index]
@@ -153,10 +153,10 @@ const SendSummaryEmail = () => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      data-cy="share-results-input"
-                      size="small"
-                      margin="dense"
-                      variant="outlined"
+                      data-cy='share-results-input'
+                      size='small'
+                      margin='dense'
+                      variant='outlined'
                       placeholder={
                         t('results:summaryEmailSharePlaceholder') ?? ''
                       }
@@ -168,9 +168,9 @@ const SendSummaryEmail = () => {
               )}
             />
             <Button
-              data-cy="summary-email-button"
-              variant="contained"
-              type="submit"
+              data-cy='summary-email-button'
+              variant='contained'
+              type='submit'
               sx={{ mt: 2 }}
               disabled={!user?.email || isSent}
             >

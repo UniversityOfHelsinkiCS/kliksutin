@@ -21,8 +21,8 @@ export const SESSION_TOKEN = 'curre_session_token'
 export const FULL_URL = inProduction
   ? 'https://curre.helsinki.fi'
   : inStaging
-  ? 'https://toska-staging.cs.helsinki.fi/kliksutin'
-  : 'http://localhost:3000'
+    ? 'https://toska-staging.cs.helsinki.fi/kliksutin'
+    : 'http://localhost:3000'
 
 export const validModels = [
   {

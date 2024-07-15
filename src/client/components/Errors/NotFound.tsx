@@ -13,16 +13,16 @@ const NotFound = () => {
       }}
     >
       <Container>
-        <Typography variant="h2" sx={{ my: 4, fontWeight: 'bold' }}>
+        <Typography variant='h2' sx={{ my: 4, fontWeight: 'bold' }}>
           NOT FOUND (404)
         </Typography>
-        <Typography variant="h6">
+        <Typography variant='h6'>
           Sorry, but the page cannot be found. The page may have been moved or
           deleted.
         </Typography>
         <Button
           sx={{ mt: 4 }}
-          variant="contained"
+          variant='contained'
           onClick={() => navigate('/')}
         >
           Back Home

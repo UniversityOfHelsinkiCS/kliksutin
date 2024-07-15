@@ -25,10 +25,10 @@ const AdministativeTools = ({
   return (
     <Box sx={{ mt: 4 }}>
       <Typography
-        data-cy="recommendation-administration-section-title"
-        variant="h5"
+        data-cy='recommendation-administration-section-title'
+        variant='h5'
         sx={cardStyles.heading}
-        component="span"
+        component='span'
       >
         {t('recommendations:administrationTitle')}
       </Typography>

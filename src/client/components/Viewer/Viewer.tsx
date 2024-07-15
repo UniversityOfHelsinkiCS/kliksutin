@@ -36,7 +36,7 @@ const CourseInfo = ({ course }: CourseInfoProps) => {
 
   return (
     <Container sx={{ mt: 4 }}>
-      <Typography variant="body2" sx={cardStyles.question}>
+      <Typography variant='body2' sx={cardStyles.question}>
         {t('viewer:entryViewCourse')}: {courseName[language]} - {course.id}
       </Typography>
     </Container>
@@ -51,25 +51,25 @@ const EntryInfo = ({ entry }: any) => {
   return (
     <Container sx={{ mt: 4 }}>
       <Typography
-        data-cy="viewer-entryInfo-section-title"
-        variant="h5"
+        data-cy='viewer-entryInfo-section-title'
+        variant='h5'
         sx={resultStyles.heading}
-        component="div"
+        component='div'
       >
         {t('viewer:entryInfoTitle')}
       </Typography>
       <Box>
-        <Typography variant="body2" sx={cardStyles.question}>
+        <Typography variant='body2' sx={cardStyles.question}>
           {t('viewer:entryViewSurvey')}: {t(`common:appName`)}
         </Typography>
-        <Typography variant="body2" sx={cardStyles.question}>
+        <Typography variant='body2' sx={cardStyles.question}>
           {t('viewer:entryViewFaculty')}: {entry.data.faculty}
         </Typography>
-        <Typography variant="body2" sx={cardStyles.question}>
+        <Typography variant='body2' sx={cardStyles.question}>
           {t('viewer:entryViewCreated')}:{' '}
           {new Date(entry.createdAt).toLocaleString()}
         </Typography>
-        <Typography variant="body2" sx={cardStyles.question}>
+        <Typography variant='body2' sx={cardStyles.question}>
           {t('viewer:entryViewUpdated')}:{' '}
           {new Date(entry.updatedAt).toLocaleString()}
         </Typography>
@@ -110,10 +110,10 @@ const Viewer = () => {
         <CourseInfo course={course} />
         <Container sx={{ mt: 4 }}>
           <Typography
-            data-cy="viewer-results-section-title"
-            variant="h5"
+            data-cy='viewer-results-section-title'
+            variant='h5'
             sx={resultStyles.heading}
-            component="div"
+            component='div'
           >
             {t('viewer:entryViewTitle')}
           </Typography>
