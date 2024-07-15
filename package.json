@@ -129,7 +129,6 @@
     "trailingComma": "es5",
     "semi": false,
     "singleQuote": true,
-    "pluginSearchDirs": false,
     "useTabs": false,
     "tabWidth": 2,
     "printWidth": 80,
