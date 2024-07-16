@@ -46,7 +46,6 @@ const Markdown = ({ children, ...props }: MarkdownProps) => {
     <ReactMarkdown
       remarkPlugins={[remarkBreaks]}
       components={{ ...defaultComponents }}
-      linkTarget='_blank'
       {...props}
     >
       {content}
