@@ -25,7 +25,9 @@
     "src/**/*",
     "types/@unfuck-utf8-headers-middleware.d..ts",
     "cypress.config.js",
-    "cypress/**/*"
+    "cypress/**/*",
+    "vite.config.ts",
+    "vite-env.d.ts"
   ],
   "ts-node": {
     "esm": true,
