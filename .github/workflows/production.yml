@@ -24,7 +24,7 @@ jobs:
           containerfiles: |
             ./Dockerfile
           build-args: |
-            BASE_PATH=/
+            BASE_PATH= 
             GIT_SHA=${{ github.sha }}
             E2E=false
           # Extra args are needed to increase the number of open files

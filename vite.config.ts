@@ -4,7 +4,7 @@ import { inStaging } from './src/config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: inStaging ? '/kliksutin' : '/',
+  base: inStaging ? '/kliksutin' : '',
   plugins: [react()],
   server: {
     proxy: {
