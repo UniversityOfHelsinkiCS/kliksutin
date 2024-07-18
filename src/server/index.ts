@@ -21,10 +21,10 @@ app.use(['/api', '/public/api'], (_, res) => res.sendStatus(404))
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(
     dirname(fileURLToPath(import.meta.url)),
-    '../../build'
+    '../../dist'
   )
-
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
+
   app.use(express.static(DIST_PATH))
   app.get('*', (_, res) => res.sendFile(INDEX_PATH))
 }
