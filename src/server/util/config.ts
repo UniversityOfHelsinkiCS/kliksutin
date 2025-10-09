@@ -4,6 +4,7 @@ import { inProduction, inStaging } from '../../config'
 
 dotenv.config()
 
+export const HOST_BASE_PATH = '/kuraattori'
 export const PORT = process.env.PORT || 8000
 
 export const { API_TOKEN } = process.env

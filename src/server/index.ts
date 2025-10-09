@@ -11,12 +11,12 @@ import seed from './db/seeders'
 import { connectToDatabase } from './db/connection'
 
 import logger from './util/logger'
-import { PORT } from './util/config'
+import { PORT, HOST_BASE_PATH } from './util/config'
 
 const app = express()
 
-app.use(['/api', '/public/api'], (req, res, next) => router(req, res, next))
-app.use(['/api', '/public/api'], (_, res) => res.sendStatus(404))
+app.use([HOST_BASE_PATH + '/api', HOST_BASE_PATH + '/public/api'], (req, res, next) => router(req, res, next))
+app.use([HOST_BASE_PATH + '/api', HOST_BASE_PATH + '/public/api'], (_, res) => res.sendStatus(404))
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(
@@ -25,8 +25,8 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   )
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
 
-  app.use(express.static(DIST_PATH))
-  app.get('*', (_, res) => res.sendFile(INDEX_PATH))
+  app.use(HOST_BASE_PATH, express.static(DIST_PATH))
+  app.get(HOST_BASE_PATH + '*', (_, res) => res.sendFile(INDEX_PATH))
 }
 
 app.listen(PORT, async () => {
