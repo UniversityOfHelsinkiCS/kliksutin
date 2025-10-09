@@ -19,10 +19,10 @@ export const SESSION_TOKEN = 'curre_session_token'
 
 // eslint-disable-next-line no-nested-ternary
 export const FULL_URL = inProduction
-  ? 'https://curre.helsinki.fi'
+  ? 'https://curre.helsinki.fi/kuraattori'
   : inStaging
-    ? 'https://toska-staging.cs.helsinki.fi/kliksutin'
-    : 'http://localhost:3000'
+    ? 'https://toska-staging.cs.helsinki.fi/kliksutin/kuraattori'
+    : 'http://localhost:3000/kuraattori'
 
 export const validModels = [
   {
