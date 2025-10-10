@@ -5,7 +5,7 @@ export default defineConfig({
   viewportWidth: 1280,
   viewportHeight: 720,
   e2e: {
-    baseUrl: 'http://localhost:8000',
+    baseUrl: 'http://localhost:8000/kuraattori',
     experimentalRunAllSpecs: true,
   },
 })

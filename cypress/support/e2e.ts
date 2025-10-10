@@ -17,7 +17,7 @@
 import './commands'
 
 // eslint-disable-next-line import/prefer-default-export
-export const baseUrl = 'localhost:8000'
+export const baseUrl = 'localhost:8000/kuraattori'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
