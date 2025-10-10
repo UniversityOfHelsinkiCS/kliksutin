@@ -29,9 +29,7 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   )
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
 
-  app.use(express.static(DIST_PATH))
-  app.get('*', (_, res) => res.sendFile(INDEX_PATH))
-
+  app.use(`${BASE_URL}`, express.static(DIST_PATH))
   app.get(`${BASE_URL}*`, (_, res) => res.sendFile(INDEX_PATH))
 }
 
