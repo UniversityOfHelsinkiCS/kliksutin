@@ -31,6 +31,8 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
 
   app.use(express.static(DIST_PATH))
   app.get('*', (_, res) => res.sendFile(INDEX_PATH))
+
+  app.get('/kuraattori/*', (_, res) => res.sendFile(INDEX_PATH))
 }
 
 app.listen(PORT, async () => {
