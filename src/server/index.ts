@@ -11,12 +11,16 @@ import seed from './db/seeders'
 import { connectToDatabase } from './db/connection'
 
 import logger from './util/logger'
-import { PORT } from './util/config'
+import { BASE_URL, PORT } from './util/config'
 
 const app = express()
 
-app.use(['/api', '/public/api'], (req, res, next) => router(req, res, next))
-app.use(['/api', '/public/api'], (_, res) => res.sendStatus(404))
+app.use([`${BASE_URL}/api`, `${BASE_URL}/public/api`], (req, res, next) =>
+  router(req, res, next)
+)
+app.use([`${BASE_URL}/api`, `${BASE_URL}/public/api`], (_, res) =>
+  res.sendStatus(404)
+)
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(
