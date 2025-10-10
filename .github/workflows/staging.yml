@@ -33,7 +33,7 @@ jobs:
           containerfiles: |
             ./Dockerfile
           build-args: |
-            BASE_PATH=/kliksutin
+            BASE_PATH=/kuraattori
             GIT_SHA=${{ github.sha }}
             STAGING=true
             E2E=false

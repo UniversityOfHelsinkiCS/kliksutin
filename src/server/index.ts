@@ -15,12 +15,8 @@ import { BASE_URL, PORT } from './util/config'
 
 const app = express()
 
-app.use([`${BASE_URL}/api`, `${BASE_URL}/public/api`], (req, res, next) =>
-  router(req, res, next)
-)
-app.use([`${BASE_URL}/api`, `${BASE_URL}/public/api`], (_, res) =>
-  res.sendStatus(404)
-)
+app.use([`/api`, `/public/api`], (req, res, next) => router(req, res, next))
+app.use([`/api`, `/public/api`], (_, res) => res.sendStatus(404))
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const DIST_PATH = path.resolve(
@@ -29,8 +25,8 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   )
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
 
-  app.use(`${BASE_URL}`, express.static(DIST_PATH))
-  app.get(`${BASE_URL}*`, (_, res) => res.sendFile(INDEX_PATH))
+  app.use(express.static(DIST_PATH))
+  app.get(`*`, (_, res) => res.sendFile(INDEX_PATH))
 }
 
 app.listen(PORT, async () => {
