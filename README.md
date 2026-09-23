@@ -54,8 +54,6 @@ Create a `.env` file inside the project's root directory. In that file, copy the
 
 Get the JAMI api key from Openshift JAMI pod. Use version.helsinki.fi documentation for that.
 
-Get the OPENAI api key from someone developing currently.
-
 ## Credits
 
 Curre emojis & gif by https://github.com/googlefonts/noto-emoji/ licenced under SIL

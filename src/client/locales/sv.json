@@ -80,18 +80,7 @@
   },
   "openai": {
     "title": "Artificiell intelligens i undervisningen",
-    "infoBoxText": "[Artificiell intelligens i undervisningen]( https://teaching.helsinki.fi/instruktioner/artikel/artificiell-intelligens-i-undervisningen) är för tillfället ett aktuellt ämne. Curre ger dig möjligheten att prova vilken typ av möjligheter [OpenAI:n](https://openai.com/) ChatGPT-språkmodell kan erbjuda dig för att stödja din undervisning. Det är dock viktigt att notera att dessa förslag kan innehålla sakfel och att det har förts in som en del av Curre. Detta för att varje lärare vid Helsingfors Universitet ska genom att testa ha möjlighet att bekanta sig med det aktuella ämnet. \n\n Det finns två olika alternativ tillgängliga för att ställa frågor till den artificiella intelligensen relaterade till din undervisning. Alternativt genom det fria textfältet kan man erbjuda den artificiella intelligensen kursens titel och se hurdana rubriker den föreslår för kursens föreläsningar. I det andra alternativet kan man välja någon av Curres inlärningsmetoder, varefter den artificiella intelligensen föreslår olika sätt man kan utnyttja programvaran som Curre har föreslagit. Detta för att stödja den valda inlärningsmetoden under kursen. \n\n Helsingfors universitets utbildningsråd har publicerat [Universitets riktlinjer för användning av AI]( https://studies.helsinki.fi/system/files/inline-files/AI_riktlinjer_undervisning_Helsingfors_universitet.pdf) 16.2.2023. [Global Campus](https://blogs.helsinki.fi/globalcampus/) undersöker och utvecklar olika användningsområden för ChatGPT. Om ämnet intresserar dig kan du också vara i direkt kontakt med Global Campus projekts expert Jussi Wrighti (jussi.wright@helsinki.fi)",
-    "giveCourseInfoText": "Om du vill ha föreläsnings idéer till dina kurser, ange kursnamnet nedan.",
-    "courseInfoText": "Om du vill ha föreläsnings idéer till dina kurser, tryck på skicka knappen",
-    "courseCompletionPrompt": "Ange 5 föreläsningsämnen för kursen med rubriken \"{{courseName}}\".",
-    "selectDimensionInfoText": "Om du vill ha idéer för användningen av verktygen, välj en inlärningsmetod som stöds",
-    "dimensionSelect": "Inlärningsmetod",
-    "dimensionCompletionPrompt": "Hur kan jag stödja ämnet \"{{dimensionName}}\" på universitetskursen? Ange 3 exempel med hjälp av programvaran {{recommendations}}?",
-    "send": "Fråga AI",
-    "or": " eller ",
-    "zero": "Nolla",
-    "apiErrorMessage": "Det gick inte att få kontakt med servern",
-    "spinnerMessage": "AI tänker..."
+    "infoBoxText": "Möjligheten att använda artificiell intelligens utmanar oss att förnya planeringen av lärandet samt utformningen, genomförandet och bedömningen av lärandeuppgifter. Syftet med denna [vägledning](https://teaching.helsinki.fi/ohjeet/artikkeli/tekoaly-opetuksessa) är att ge lärare bakgrundsinformation och idéer som stöd för planeringen och införandet av undervisningen. Användningen av olika AI-tillämpningar kommer att bli en del av vår vardag, våra studier, vårt arbetsliv och vår forskning. Därför är det viktigt att dess användning som en del av akademiska färdigheter och färdigheter för arbetslivet beaktas redan under studietiden."
   },
   "viewer": {
     "entryInfoTitle": "Entry information",

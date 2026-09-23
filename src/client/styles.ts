@@ -100,12 +100,6 @@ const cardStyles = {
     mt: 2,
     width: '100%',
   },
-  answerBox: {
-    my: 4,
-    maxWidth: 1560,
-    border: 1,
-    borderColor: 'grey.300',
-  },
 }
 
 const formStyles = {

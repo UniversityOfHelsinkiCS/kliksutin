@@ -4,8 +4,6 @@ import { Box, Container, Typography } from '@mui/material'
 
 import styles from '../../styles'
 import InfoBox from './InfoBox'
-import CourseCompletion from './CourseCompletion'
-import DimensionCompletion from './DimensionCompletion'
 
 const { cardStyles, resultStyles } = styles
 
@@ -21,10 +19,6 @@ const Openai = () => {
           </Typography>
           <InfoBox />
         </Container>
-        <Box>
-          <CourseCompletion />
-          <DimensionCompletion />
-        </Box>
       </Box>
     </Box>
   )
