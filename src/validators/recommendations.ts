@@ -33,7 +33,10 @@ export const UpdatedRecommendationZod = z.object({
 
 export type UpdatedRecommendation = z.infer<typeof UpdatedRecommendationZod>
 
-export const UpdatedRecommendationDimensionZod = z.record(z.boolean())
+export const UpdatedRecommendationDimensionZod = z.record(
+  z.string(),
+  z.boolean()
+)
 
 export type UpdatedRecommendationDimensions = z.infer<
   typeof UpdatedRecommendationDimensionZod
