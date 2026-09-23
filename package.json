@@ -7,7 +7,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@fontsource/roboto": "^5.0.0",
-    "@hookform/resolvers": "^3.0.0",
+    "@hookform/resolvers": "^5.0.0",
     "@mui/icons-material": "^9.4.0",
     "@mui/material": "^9.4.0",
     "@sentry/browser": "^10.75.2",
