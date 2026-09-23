@@ -1,8 +1,6 @@
 import path from 'path'
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'express-async-errors'
 import express from 'express'
 
 import router from './routes'
@@ -26,7 +24,7 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   const INDEX_PATH = path.resolve(DIST_PATH, 'index.html')
 
   app.use(express.static(DIST_PATH))
-  app.get('*', (_, res) => res.sendFile(INDEX_PATH))
+  app.get('/*splat', (_, res) => res.sendFile(INDEX_PATH))
 }
 
 app.listen(PORT, async () => {

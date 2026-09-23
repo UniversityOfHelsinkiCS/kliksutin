@@ -134,10 +134,10 @@ const SendSummaryEmail = () => {
                   handleHomeEndKeys
                   disabled={isSent}
                   onChange={(_, data) => field.onChange(data)}
-                  renderTags={(value, getTagProps) =>
+                  renderValue={(value, getItemProps) =>
                     value.map((option, index) => (
                       <Chip
-                        {...getTagProps({ index })}
+                        {...getItemProps({ index })}
                         data-cy={`share-results-chip-${option}`}
                         key={option as unknown as string}
                         variant='outlined'

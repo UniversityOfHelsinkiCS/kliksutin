@@ -69,7 +69,7 @@ const SurveyItem = ({
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:surveyTitle')}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -82,7 +82,7 @@ const SurveyItem = ({
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:surveyText')}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -106,7 +106,7 @@ const EditSurvey = ({
   language: keyof Locales
   survey: Survey
 }) => (
-  <Box display='flex'>
+  <Box sx={{ display: 'flex' }}>
     <SurveyItem language={'fi' as keyof Locales} survey={survey} />
     <SurveyItem language={language} survey={survey} />
   </Box>

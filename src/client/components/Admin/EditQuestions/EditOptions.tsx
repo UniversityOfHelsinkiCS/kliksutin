@@ -84,7 +84,7 @@ const OptionItem = ({
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:optionTitle', { optionNumber })}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -98,7 +98,7 @@ const OptionItem = ({
         <Box sx={{ mb: 2 }}>
           <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
             {t('admin:optionText', { optionNumber })}
-            <Typography ml={1}>{language}</Typography>
+            <Typography sx={{ ml: 1 }}>{language}</Typography>
           </Typography>
           <MDEditor
             data-color-mode='light'
@@ -165,7 +165,7 @@ const EditOptions = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display='flex'>
+      <Box sx={{ mb: 5, display: 'flex' }}>
         <OptionItem
           option={option}
           optionNumber={optionNumber}

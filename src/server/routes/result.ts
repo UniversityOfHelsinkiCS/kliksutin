@@ -28,7 +28,7 @@ resultRouter.put(
   async (req: RequestWithUser, res: any) => {
     const { id } = req.params
 
-    const updatedResult = await updateResult(id, req.body)
+    const updatedResult = await updateResult(id as string, req.body)
 
     return res.send(updatedResult)
   }
@@ -40,7 +40,7 @@ resultRouter.post(
   async (req: RequestWithUser, res: any) => {
     const { surveyId } = req.params
 
-    const newResult = await createResult(surveyId, req.body)
+    const newResult = await createResult(surveyId as string, req.body)
 
     return res.status(201).send(newResult)
   }
@@ -52,7 +52,7 @@ resultRouter.delete(
   async (req: RequestWithUser, res: any) => {
     const { id } = req.params
 
-    const deletedResult = await deleteResult(id)
+    const deletedResult = await deleteResult(id as string)
 
     return res.status(204).send(deletedResult)
   }

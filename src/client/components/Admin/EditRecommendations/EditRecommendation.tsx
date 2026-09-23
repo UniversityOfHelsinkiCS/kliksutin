@@ -74,7 +74,7 @@ const RecommendationItem = ({
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:recommendationTitle')}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -87,7 +87,7 @@ const RecommendationItem = ({
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:recommendationText')}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -152,7 +152,7 @@ const EditRecommendation = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display='flex'>
+      <Box sx={{ mb: 5, display: 'flex' }}>
         <RecommendationItem
           language={'fi' as keyof Locales}
           recommendation={recommendation}

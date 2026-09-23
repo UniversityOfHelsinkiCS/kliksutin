@@ -82,7 +82,11 @@ questionRouter.put(
   async (req: RequestWithUser, res: any) => {
     const { id, optionId } = req.params
 
-    const updatedQuestion = await updateOption(id, optionId, req.body)
+    const updatedQuestion = await updateOption(
+      id as string,
+      optionId as string,
+      req.body
+    )
 
     return res.status(200).send(updatedQuestion)
   }
@@ -94,7 +98,11 @@ questionRouter.put(
   async (req: RequestWithUser, res: any) => {
     const { id, dimensionId } = req.params
 
-    const updatedQuestion = await updateDimension(id, dimensionId, req.body)
+    const updatedQuestion = await updateDimension(
+      id as string,
+      dimensionId as string,
+      req.body
+    )
 
     return res.status(200).send(updatedQuestion)
   }
@@ -106,7 +114,7 @@ questionRouter.delete(
   async (req: RequestWithUser, res: any) => {
     const { id, optionId } = req.params
 
-    const updatedQuestion = await deleteOption(id, optionId)
+    const updatedQuestion = await deleteOption(id as string, optionId as string)
 
     return res.status(204).send(updatedQuestion)
   }

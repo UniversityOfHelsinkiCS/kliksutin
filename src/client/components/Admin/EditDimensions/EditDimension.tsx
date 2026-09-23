@@ -71,7 +71,7 @@ const DimensionItem = ({
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:dimensionTitle')}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -84,7 +84,7 @@ const DimensionItem = ({
       <Box sx={{ mb: 2 }}>
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:dimensionText')}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -151,7 +151,7 @@ const EditDimension = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display='flex'>
+      <Box sx={{ mb: 5, display: 'flex' }}>
         <DimensionItem language={'fi' as keyof Locales} dimension={dimension} />
         <DimensionItem language={language} dimension={dimension} />
       </Box>

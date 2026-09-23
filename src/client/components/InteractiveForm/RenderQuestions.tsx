@@ -69,7 +69,9 @@ const RenderQuestions = ({
   }
 
   const components: {
-    [key in PossibleChoiceTypes]: (...args: InputProps[]) => JSX.Element | null
+    [key in PossibleChoiceTypes]: (
+      ...args: InputProps[]
+    ) => React.JSX.Element | null
   } = {
     singleChoice: SingleChoice,
     multipleChoice: MultiChoice,

@@ -21,7 +21,7 @@ const SingleChoice = ({
         name={question.id.toString()}
         defaultValue=''
         render={({ field }) => (
-          <Box justifyContent='center'>
+          <Box sx={{ justifyContent: 'center' }}>
             <RadioGroup {...field} row>
               {question.optionData.options.map(
                 (singleOption: SingleChoiceType) => (

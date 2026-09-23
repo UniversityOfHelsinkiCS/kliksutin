@@ -58,7 +58,7 @@ const NavBar = () => {
         <Toolbar sx={navStyles.toolbar} disableGutters>
           <Box sx={navStyles.navBox}>
             <img src={hyLogo} alt='University of Helsinki' width='40' />
-            <Box ml='2rem'>
+            <Box sx={{ ml: '2rem' }}>
               <Typography sx={navStyles.appName}>{t('appName')}</Typography>
             </Box>
           </Box>

@@ -69,16 +69,13 @@ const InteractiveForm = () => {
   return (
     <Box sx={formStyles.formWrapper}>
       <Grid container>
-        <Grid item sm={12}>
+        <Grid size={{ sm: 12 }}>
           <HelloBanner />
         </Grid>
         <Grid
           id='curre-main-section'
           sx={{ px: 2, maxWidth: '100vw' }}
-          item
-          sm={12}
-          md={7}
-          xl={8}
+          size={{ sm: 12, md: 7, xl: 8 }}
         >
           <form
             style={{ display: showResults ? 'none' : 'block' }}
@@ -95,7 +92,7 @@ const InteractiveForm = () => {
             <Results setShowResults={setShowResults} />
           )}
         </Grid>
-        <Grid item sm={12} md={5} xl={4}>
+        <Grid size={{ sm: 12, md: 5, xl: 4 }}>
           <Recommendations watch={watch} />
         </Grid>
       </Grid>

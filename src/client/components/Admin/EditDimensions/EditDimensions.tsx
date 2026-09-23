@@ -67,7 +67,7 @@ const EditDimensions = () => {
   }
 
   return (
-    <Box width='100%' flexWrap='wrap'>
+    <Box sx={{ width: '100%', flexWrap: 'wrap' }}>
       {selectedDimension ? (
         <Box sx={{ my: 4 }}>
           <Typography sx={{ my: 4, pl: 1 }} variant='h4'>

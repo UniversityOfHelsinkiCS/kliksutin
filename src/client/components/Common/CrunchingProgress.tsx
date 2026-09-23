@@ -3,10 +3,12 @@ import { Box, CircularProgress, Typography } from '@mui/material'
 
 const CrunchingProgress = () => (
   <Box
-    display='flex'
-    justifyContent='center'
-    alignItems='center'
-    minHeight='80vh'
+    sx={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '80vh',
+    }}
   >
     <Box
       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}

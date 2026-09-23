@@ -27,11 +27,13 @@ const App = () => {
           >
             <NavBar />
             <Box
-              flexGrow={1}
-              display='flex'
-              justifyContent='center'
-              alignItems='center'
-              minHeight='100vh'
+              sx={{
+                flexGrow: 1,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '100vh',
+              }}
             >
               <Outlet />
             </Box>

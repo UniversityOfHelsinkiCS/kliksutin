@@ -17,7 +17,7 @@ entryRouter.get('/:entryId', async (req: RequestWithUser, res: any) => {
   const { entryId } = req.params
   const userId = req.user?.id
 
-  const entry = await getEntry(entryId, userId)
+  const entry = await getEntry(entryId as string, userId)
 
   return res.status(200).send(entry)
 })
@@ -27,7 +27,7 @@ entryRouter.post('/:surveyId', async (req: RequestWithUser, res: any) => {
   const { sessionToken } = req.body as EntryValues
   const userId = req.user?.id || `publicUser-${sessionToken}`
 
-  const entry = await createEntry(userId, surveyId, req.body)
+  const entry = await createEntry(userId, surveyId as string, req.body)
 
   return res.status(201).send(entry)
 })

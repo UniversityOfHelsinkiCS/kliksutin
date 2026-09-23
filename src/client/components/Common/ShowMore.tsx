@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { IconButton, Collapse } from '@mui/material'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutlineOutlined'
 import Markdown from './Markdown'
 
 const ShowMore = ({

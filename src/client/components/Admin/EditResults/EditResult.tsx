@@ -88,7 +88,7 @@ const ResultItem = ({
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:resultTitle')}{' '}
           {`'${optionData.title[selectedLanguage as keyof Locales]}'`}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -102,7 +102,7 @@ const ResultItem = ({
         <Typography sx={{ display: 'flex', mb: 2 }} variant='h6'>
           {t('admin:resultText')}{' '}
           {`'${optionData.title[selectedLanguage as keyof Locales]}'`}
-          <Typography ml={1}>{language}</Typography>
+          <Typography sx={{ ml: 1 }}>{language}</Typography>
         </Typography>
         <MDEditor
           data-color-mode='light'
@@ -171,7 +171,7 @@ const EditResult = ({
         setOpen={setOpenAlert}
         onSubmit={handleDelete}
       />
-      <Box mb={5} display='flex'>
+      <Box sx={{ mb: 5, display: 'flex' }}>
         <ResultItem
           dimensionId={dimensionId}
           language={'fi' as keyof Locales}

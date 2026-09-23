@@ -19,7 +19,7 @@ courseRouter.get(
   async (req: RequestWithUser, res: any) => {
     const { courseId } = req.params
 
-    const course = await getCourse(courseId)
+    const course = await getCourse(courseId as string)
 
     return res.send(course)
   }
