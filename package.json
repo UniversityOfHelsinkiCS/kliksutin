@@ -39,7 +39,7 @@
     "sequelize": "^6.28.0",
     "umzug": "^3.2.1",
     "unfuck-utf8-headers-middleware": "^1.0.1",
-    "uuid": "^10.0.0",
+    "uuid": "^11.0.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {
