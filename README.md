@@ -1,6 +1,6 @@
 # <img src=./public/pirated_curre.gif width=100px /> Curre
 
-Service is down: if data needs to be checked, check internal documentation for guidance.
+Service is down: check internal documentation for guidance, if data checks are still needed.
 
 ## Requirements
 
